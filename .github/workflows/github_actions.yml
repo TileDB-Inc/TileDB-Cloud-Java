@@ -35,3 +35,15 @@ jobs:
           name: ${{ github.event.release.tag_name }}
           draft: false
           prerelease: false
+
+      - name: Upload to maven
+        run: |
+          chmod +x ./ci/upload_to_maven.sh
+          ./ci/upload_to_maven.sh
+        shell: bash
+        env:
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GPG_SECRET_KEYS_ENC: ${{ secrets.GPG_SECRET_KEYS_ENC }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
