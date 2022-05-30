@@ -1,6 +1,9 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.+'
@@ -11,7 +14,11 @@ buildscript {
 
 plugins {
     id 'java'
+    id 'scala'
+    id 'java-library'
     id "com.github.johnrengelman.shadow" version "7.1.2"
+    id 'io.codearte.nexus-staging' version '0.30.0'
+    id 'signing'
 }
 
 apply plugin: 'idea'
@@ -19,15 +26,33 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
 
+group 'io.tiledb'
 version = '0.0.1'
-
-jar.enabled = false
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+    mavenLocal()
 }
+
+tasks.shadowJar.configure {
+    classifier = null
+}
+
+tasks.jar.configure {
+    classifier = 'default'
+}
+
+
 sourceSets {
     main.java.srcDirs = ['src/main/java']
+}
+
+nexusStaging {
+    username = System.getenv('SONATYPE_USERNAME')
+    password = System.getenv('SONATYPE_PASSWORD')
 }
 
 
@@ -157,4 +182,81 @@ spotless {
         removeUnusedImports()
         importOrder()
     }
+}
+
+
+import org.gradle.plugins.signing.Sign
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.allTasks.any { it instanceof Sign }) {
+        allprojects { ext."signing.keyId" = System.getenv('GPG_KEY_ID') }
+        allprojects { ext."signing.secretKeyRingFile" = System.getenv('GPG_KEY_LOCATION') }
+        allprojects { ext."signing.password" = System.getenv('GPG_PASSPHRASE') }
+    }
+    // Do not sign archives by default (a local build without gpg keyring should succeed)
+    if (taskGraph.allTasks.any { it.name == 'build' || it.name == 'assemble'  || it.name == 'publishToMavenLocal'}) {
+        tasks.findAll { it.name == 'signArchives' || it.name == 'signDocsJar' || it.name == 'signTestJar' || it.name == 'signMavenJavaPublication'}.each { task ->
+            task.enabled = false
+        }
+    }
+}
+
+task sourceJar(type: Jar) {
+    classifier "sources"
+    from sourceSets.main.allJava
+}
+
+artifacts {
+    archives jar
+    archives sourceJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+            artifact sourceJar
+
+            pom {
+                name = 'TileDB Cloud Java'
+                description = 'The Java client for the TileDB Cloud Service'
+                url = 'https://github.com/TileDB-Inc/TileDB-Cloud-Java'
+                licenses {
+                    license {
+                        name = 'The MIT License (MIT)'
+                        url = 'https://github.com/TileDB-Inc/TileDB-Cloud-Java/blob/master/LICENSE'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/TileDB-Inc/TileDB-Cloud-Java.git'
+                    developerConnection = 'scm:git:ssh://git@github.com/TileDB-Inc/TileDB-Cloud-Java'
+                    url = 'https://github.com/TileDB-Inc/TileDB-Cloud-Java'
+                }
+                developers {
+                    developer {
+                        name = 'TileDB, Inc'
+                        email = 'help@tiledb.io'
+                        organization = 'TileDB, Inc.'
+                        organizationUrl = 'https://tiledb.com/'
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username System.getenv('SONATYPE_USERNAME')
+                password System.getenv('SONATYPE_PASSWORD')
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+    sign configurations.archives
 }
