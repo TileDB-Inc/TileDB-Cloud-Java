@@ -4,7 +4,7 @@ package examples;
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
-import org.openapitools.client.api.FilesApi;
+import org.openapitools.client.api.GroupsApi;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.api.ArrayApi;
 import org.openapitools.client.model.ArrayInfo;
@@ -17,15 +17,13 @@ import org.openapitools.client.model.Dimension;
 import org.openapitools.client.model.DimensionTileExtent;
 import org.openapitools.client.model.Domain;
 import org.openapitools.client.model.DomainArray;
-import org.openapitools.client.model.FileExport;
-import org.openapitools.client.model.FileExported;
-import org.openapitools.client.model.FileUploaded;
 import org.openapitools.client.model.Filter;
 import org.openapitools.client.model.FilterPipeline;
 import org.openapitools.client.model.FilterType;
+import org.openapitools.client.model.GroupBrowserData;
 import org.openapitools.client.model.Layout;
 
-import java.io.File;
+import java.util.List;
 
 public class Examples
 {
@@ -35,30 +33,60 @@ public class Examples
 
         // Configure API key authorization: ApiKeyAuth
         ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("<ENTER API TOKEN HERE>");
+        ApiKeyAuth.setApiKey("<API_TOKEN>");
 
         ArrayApi apiInstance = new ArrayApi(defaultClient);
 
-        getArraySchema(apiInstance);
-        createArray(apiInstance);
-        registerArray(apiInstance);
-        uploadFile(defaultClient);
-        exportFile(defaultClient);
+//        getArraySchema(apiInstance);
+//        createArray(apiInstance);
+//        registerArray(apiInstance);
+//        listArrays(apiInstance);
+//        listGroups(defaultClient);
+    }
+
+    /**
+     * List groups
+     * @param defaultClient
+     */
+    private static void listGroups(ApiClient defaultClient)
+    {
+        GroupsApi apiInstance = new GroupsApi(defaultClient);
+        Integer page = null; // Integer | pagination offset
+        Integer perPage = null; // Integer | pagination limit
+        String search = null; // String | search string that will look at name, namespace or description fields
+        String namespace = "TileDB-Inc"; // String | namespace
+        String orderby = null; // String | sort by which field valid values include last_accessed, size, name
+        String permissions = null; // String | permissions valid values include read, read_write, write, admin
+        List<String> tag = null; // List<String> | tag to search for, more than one can be included
+        List<String> excludeTag = null; // List<String> | tags to exclude matching array in results, more than one can be included
+        Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
+        String parent = null; // String | search only the children of the groups with this uuid
+        try {
+            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+            //or use api.listOwnedGroups(...) / api.listSharedGroups(...)
+            System.out.println(result.getGroups());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupsApi#listPublicGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
 
     }
 
-    private static void exportFile(ApiClient defaultClient)
+    /**
+     * List arrays
+     * @param apiInstance
+     */
+    private static void listArrays(ArrayApi apiInstance)
     {
-        FilesApi apiInstance = new FilesApi(defaultClient);
-        String namespace = "<TILEDB_NAMESPACE>"; // String | The namespace of the file
-        String _file = "file"; // String | The file identifier
-        FileExport fileExport = new FileExport(); // FileExport | Export configuration information
-        fileExport.setOutputUri("s3://<BUCKET-NAME>/file.txt");
+        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         try {
-            FileExported result = apiInstance.handleExportFile(namespace, _file, fileExport);
+            List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FilesApi#handleExportFile");
+            System.err.println("Exception when calling ArrayApi#getArraysInNamespace");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -66,25 +94,6 @@ public class Examples
         }
     }
 
-
-    private static void uploadFile(ApiClient defaultClient)
-    {
-        FilesApi apiInstance = new FilesApi(defaultClient);
-        String namespace = "<TILEDB_NAMESPACE>"; // String | The namespace of the file
-        File inputFile = new File("file.txt"); // File | the file to upload
-        String outputUri = "s3://<BUCKET-NAME>/file"; // String | output location of the TileDB File
-        String name = "file"; // String | name to set for registered file
-        try {
-            FileUploaded result = apiInstance.handleUploadFile(namespace, inputFile, "dstara", outputUri, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FilesApi#handleUploadFile");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
 
     private static void getArraySchema(ArrayApi arrayApi){
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
