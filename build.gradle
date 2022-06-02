@@ -45,6 +45,11 @@ tasks.jar.configure {
     classifier = 'default'
 }
 
+tasks.withType(Javadoc) {
+    failOnError false
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
 
 sourceSets {
     main.java.srcDirs = ['src/main/java']
@@ -153,38 +158,6 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:3.11.2'
 }
 
-javadoc {
-    options.tags = [ "http.response.details:a:Http Response Details" ]
-}
-
-// Use spotless plugin to automatically format code, remove unused import, etc
-// To apply changes directly to the file, run `gradlew spotlessApply`
-// Ref: https://github.com/diffplug/spotless/tree/main/plugin-gradle
-spotless {
-    // comment out below to run spotless as part of the `check` task
-    enforceCheck false
-
-    format 'misc', {
-        // define the files (e.g. '*.gradle', '*.md') to apply `misc` to
-        target '.gitignore'
-
-        // define the steps to apply to those files
-        trimTrailingWhitespace()
-        indentWithSpaces() // Takes an integer argument if you don't like 4
-        endWithNewline()
-    }
-    java {
-        // don't need to set target, it is inferred from java
-
-        // apply a specific flavor of google-java-format
-        googleJavaFormat('1.8').aosp().reflowLongStrings()
-
-        removeUnusedImports()
-        importOrder()
-    }
-}
-
-
 import org.gradle.plugins.signing.Sign
 gradle.taskGraph.whenReady { taskGraph ->
     if (taskGraph.allTasks.any { it instanceof Sign }) {
@@ -205,9 +178,15 @@ task sourceJar(type: Jar) {
     from sourceSets.main.allJava
 }
 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier "javadoc"
+    from javadoc.destinationDir
+}
+
 artifacts {
     archives jar
     archives sourceJar
+    archives javadocJar
 }
 
 publishing {
@@ -215,6 +194,7 @@ publishing {
         mavenJava(MavenPublication) {
             artifact jar
             artifact sourceJar
+            artifact javadocJar
 
             pom {
                 name = 'TileDB Cloud Java'
