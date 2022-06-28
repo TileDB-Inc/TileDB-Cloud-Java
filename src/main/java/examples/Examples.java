@@ -42,6 +42,47 @@ public class Examples
 //        registerArray(apiInstance);
 //        listArrays(apiInstance);
 //        listGroups(defaultClient);
+//        deleteArray(apiInstance);
+//        deregisterArray(apiInstance);
+    }
+
+    /**
+     * Deregister an array
+     * @param apiInstance
+     */
+    private static void deregisterArray(ArrayApi apiInstance)
+    {
+        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
+        String array = "<ARRAY_NAME>"; // String | name/uri of array that is url-encoded
+        try {
+            apiInstance.deregisterArray(namespace, array);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArrayApi#deregisterArray");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Delete an array
+     * @param apiInstance
+     */
+    private static void deleteArray(ArrayApi apiInstance)
+    {
+        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
+        String array = "<ARRAY_NAME>"; // String | name/uri of array that is url-encoded
+        String contentType = "application/json"; // String | Content Type of input and return mime
+        try {
+            apiInstance.deleteArray(namespace, array, contentType);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArrayApi#deleteArray");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
 
     /**
