@@ -27,11 +27,31 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.PaginationMetadata;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Object including array end_timestamps (list of Unix epoch timestamps in milliseconds) and pagination metadata
  */
 @ApiModel(description = "Object including array end_timestamps (list of Unix epoch timestamps in milliseconds) and pagination metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class ArrayEndTimestampData {
   public static final String SERIALIZED_NAME_END_TIMESTAMPS = "end_timestamps";
   @SerializedName(SERIALIZED_NAME_END_TIMESTAMPS)
@@ -52,7 +72,7 @@ public class ArrayEndTimestampData {
 
   public ArrayEndTimestampData addEndTimestampsItem(Integer endTimestampsItem) {
     if (this.endTimestamps == null) {
-      this.endTimestamps = new ArrayList<Integer>();
+      this.endTimestamps = new ArrayList<>();
     }
     this.endTimestamps.add(endTimestampsItem);
     return this;
@@ -98,6 +118,7 @@ public class ArrayEndTimestampData {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -137,5 +158,99 @@ public class ArrayEndTimestampData {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("end_timestamps");
+    openapiFields.add("pagination_metadata");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ArrayEndTimestampData
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ArrayEndTimestampData.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayEndTimestampData is not found in the empty JSON string", ArrayEndTimestampData.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!ArrayEndTimestampData.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArrayEndTimestampData` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      // ensure the json data is an array
+      if (jsonObj.get("end_timestamps") != null && !jsonObj.get("end_timestamps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `end_timestamps` to be an array in the JSON string but got `%s`", jsonObj.get("end_timestamps").toString()));
+      }
+      // validate the optional field `pagination_metadata`
+      if (jsonObj.getAsJsonObject("pagination_metadata") != null) {
+        PaginationMetadata.validateJsonObject(jsonObj.getAsJsonObject("pagination_metadata"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ArrayEndTimestampData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ArrayEndTimestampData' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ArrayEndTimestampData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ArrayEndTimestampData.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ArrayEndTimestampData>() {
+           @Override
+           public void write(JsonWriter out, ArrayEndTimestampData value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ArrayEndTimestampData read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ArrayEndTimestampData given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ArrayEndTimestampData
+  * @throws IOException if the JSON string is invalid with respect to ArrayEndTimestampData
+  */
+  public static ArrayEndTimestampData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ArrayEndTimestampData.class);
+  }
+
+ /**
+  * Convert an instance of ArrayEndTimestampData to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

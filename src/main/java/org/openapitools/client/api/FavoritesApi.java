@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class FavoritesApi {
     private ApiClient localVarApiClient;
@@ -96,7 +97,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call addArrayFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -234,7 +234,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call addMLModelFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -372,7 +371,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call addNotebookFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -510,7 +508,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call addUDFFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -648,7 +645,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call deleteArrayFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -786,7 +782,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call deleteMLModelFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -924,7 +919,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call deleteNotebookFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1062,7 +1056,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call deleteUDFFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1200,7 +1193,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call getArrayFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1342,7 +1334,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call getMLModelFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1484,7 +1475,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call getNotebookFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1626,7 +1616,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call getUDFFavoriteCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1768,7 +1757,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call listArrayFavoritesCall(Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1904,7 +1892,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call listArrayFavoritesUUIDsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2028,7 +2015,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call listMLModelFavoritesCall(Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2164,7 +2150,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call listMLModelFavoritesUUIDsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2289,7 +2274,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call listNotebookFavoritesCall(Boolean isDashboard, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2432,7 +2416,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call listNotebookFavoritesUUIDsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2556,7 +2539,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call listUDFFavoritesCall(Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2692,7 +2674,6 @@ public class FavoritesApi {
      */
     public okhttp3.Call listUDFFavoritesUUIDsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

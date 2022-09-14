@@ -2,9 +2,9 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**notebooksNamespaceArrayEndTimestampsGet**](NotebooksApi.md#notebooksNamespaceArrayEndTimestampsGet) | **GET** /notebooks/{namespace}/{array}/end_timestamps | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**notebooksNamespaceArrayEndTimestampsGet**](NotebooksApi.md#notebooksNamespaceArrayEndTimestampsGet) | **GET** /notebooks/{namespace}/{array}/end_timestamps |  |
 
 
 <a name="notebooksNamespaceArrayEndTimestampsGet"></a>
@@ -62,12 +62,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
 
 ### Return type
 
@@ -85,6 +85,6 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | list of timestamps in milliseconds, paginated |  -  |
-**0** | error response |  -  |
+| **200** | list of timestamps in milliseconds, paginated |  -  |
+| **0** | error response |  -  |
 

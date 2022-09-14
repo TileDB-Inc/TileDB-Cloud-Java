@@ -2,13 +2,13 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**finalizeQuery**](QueryApi.md#finalizeQuery) | **POST** /arrays/{namespace}/{array}/query/finalize | 
-[**getEstResultSizes**](QueryApi.md#getEstResultSizes) | **POST** /arrays/{namespace}/{array}/query/est_result_sizes | 
-[**getFile**](QueryApi.md#getFile) | **GET** /arrays/{namespace}/{array}/query/get_file | 
-[**submitQuery**](QueryApi.md#submitQuery) | **POST** /arrays/{namespace}/{array}/query/submit | 
-[**submitQueryJson**](QueryApi.md#submitQueryJson) | **POST** /arrays/{namespace}/{array}/query/submit_query_json | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**finalizeQuery**](QueryApi.md#finalizeQuery) | **POST** /arrays/{namespace}/{array}/query/finalize |  |
+| [**getEstResultSizes**](QueryApi.md#getEstResultSizes) | **POST** /arrays/{namespace}/{array}/query/est_result_sizes |  |
+| [**getFile**](QueryApi.md#getFile) | **GET** /arrays/{namespace}/{array}/query/get_file |  |
+| [**submitQuery**](QueryApi.md#submitQuery) | **POST** /arrays/{namespace}/{array}/query/submit |  |
+| [**submitQueryJson**](QueryApi.md#submitQueryJson) | **POST** /arrays/{namespace}/{array}/query/submit_query_json |  |
 
 
 <a name="finalizeQuery"></a>
@@ -69,15 +69,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **type** | **String**| type of query |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
- **query** | [**Query**](Query.md)| query to run |
- **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional]
- **openAt** | **Integer**| open_at for array in unix epoch | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **type** | **String**| type of query | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **query** | [**Query**](Query.md)| query to run | |
+| **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional] |
+| **openAt** | **Integer**| open_at for array in unix epoch | [optional] |
 
 ### Return type
 
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | query completed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**204** | query completed successfully with no return |  -  |
-**0** | error response |  -  |
+| **200** | query completed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **204** | query completed successfully with no return |  -  |
+| **0** | error response |  -  |
 
 <a name="getEstResultSizes"></a>
 # **getEstResultSizes**
@@ -157,15 +157,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **type** | **String**| type of query |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
- **query** | [**Query**](Query.md)| query to run |
- **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional]
- **openAt** | **Integer**| open_at for array in unix epoch | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **type** | **String**| type of query | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **query** | [**Query**](Query.md)| query to run | |
+| **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional] |
+| **openAt** | **Integer**| open_at for array in unix epoch | [optional] |
 
 ### Return type
 
@@ -183,9 +183,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | query est result size computed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**204** | query completed successfully with no return |  -  |
-**0** | error response |  -  |
+| **200** | query est result size computed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **204** | query completed successfully with no return |  -  |
+| **0** | error response |  -  |
 
 <a name="getFile"></a>
 # **getFile**
@@ -242,12 +242,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
- **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional] |
 
 ### Return type
 
@@ -265,8 +265,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | query completed and result bytes are returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**0** | error response |  -  |
+| **200** | query completed and result bytes are returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **0** | error response |  -  |
 
 <a name="submitQuery"></a>
 # **submitQuery**
@@ -326,15 +326,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **type** | **String**| type of query |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
- **query** | [**Query**](Query.md)| query to run |
- **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional]
- **openAt** | **Integer**| open_at for array in unix epoch | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **type** | **String**| type of query | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **query** | [**Query**](Query.md)| query to run | |
+| **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional] |
+| **openAt** | **Integer**| open_at for array in unix epoch | [optional] |
 
 ### Return type
 
@@ -352,9 +352,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | query completed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**204** | query completed successfully with no return |  -  |
-**0** | error response |  -  |
+| **200** | query completed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **204** | query completed successfully with no return |  -  |
+| **0** | error response |  -  |
 
 <a name="submitQueryJson"></a>
 # **submitQueryJson**
@@ -412,13 +412,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
- **queryJson** | [**QueryJson**](QueryJson.md)| query to run |
- **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **queryJson** | [**QueryJson**](QueryJson.md)| query to run | |
+| **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional] |
 
 ### Return type
 
@@ -436,6 +436,6 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | query completed and results are returned in JSON format |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**0** | error response |  -  |
+| **200** | query completed and results are returned in JSON format |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **0** | error response |  -  |
 

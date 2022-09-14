@@ -2,9 +2,9 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getArrayTasksSidebar**](ArrayTasksApi.md#getArrayTasksSidebar) | **GET** /tasks/sidebar | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getArrayTasksSidebar**](ArrayTasksApi.md#getArrayTasksSidebar) | **GET** /tasks/sidebar |  |
 
 
 <a name="getArrayTasksSidebar"></a>
@@ -58,10 +58,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **start** | **Integer**| Fetch tasks created after this time, unix epoch in seconds, default 7 days ago | [optional]
- **end** | **Integer**| Fetch tasks created before this time, unix epoch in seconds, default now | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **start** | **Integer**| Fetch tasks created after this time, unix epoch in seconds, default 7 days ago | [optional] |
+| **end** | **Integer**| Fetch tasks created before this time, unix epoch in seconds, default now | [optional] |
 
 ### Return type
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | sidebar metadata for task definitions for all arrays user has access to |  -  |
-**404** | array tasks not found |  -  |
-**0** | error response |  -  |
+| **200** | sidebar metadata for task definitions for all arrays user has access to |  -  |
+| **404** | array tasks not found |  -  |
+| **0** | error response |  -  |
 

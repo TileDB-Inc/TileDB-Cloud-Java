@@ -31,11 +31,31 @@ import org.openapitools.client.model.Domain;
 import org.openapitools.client.model.FilterPipeline;
 import org.openapitools.client.model.Layout;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * ArraySchema during creation or retrieval
  */
 @ApiModel(description = "ArraySchema during creation or retrieval")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class ArraySchema {
   public static final String SERIALIZED_NAME_URI = "uri";
   @SerializedName(SERIALIZED_NAME_URI)
@@ -43,7 +63,7 @@ public class ArraySchema {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private List<Integer> version = new ArrayList<Integer>();
+  private List<Integer> version = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ARRAY_TYPE = "arrayType";
   @SerializedName(SERIALIZED_NAME_ARRAY_TYPE)
@@ -75,7 +95,7 @@ public class ArraySchema {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private List<Attribute> attributes = new ArrayList<Attribute>();
+  private List<Attribute> attributes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ALLOWS_DUPLICATES = "allowsDuplicates";
   @SerializedName(SERIALIZED_NAME_ALLOWS_DUPLICATES)
@@ -347,6 +367,7 @@ public class ArraySchema {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -404,5 +425,147 @@ public class ArraySchema {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("uri");
+    openapiFields.add("version");
+    openapiFields.add("arrayType");
+    openapiFields.add("tileOrder");
+    openapiFields.add("cellOrder");
+    openapiFields.add("capacity");
+    openapiFields.add("coordsFilterPipeline");
+    openapiFields.add("offsetFilterPipeline");
+    openapiFields.add("domain");
+    openapiFields.add("attributes");
+    openapiFields.add("allowsDuplicates");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("version");
+    openapiRequiredFields.add("arrayType");
+    openapiRequiredFields.add("tileOrder");
+    openapiRequiredFields.add("cellOrder");
+    openapiRequiredFields.add("capacity");
+    openapiRequiredFields.add("coordsFilterPipeline");
+    openapiRequiredFields.add("offsetFilterPipeline");
+    openapiRequiredFields.add("domain");
+    openapiRequiredFields.add("attributes");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ArraySchema
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ArraySchema.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ArraySchema is not found in the empty JSON string", ArraySchema.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!ArraySchema.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArraySchema` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ArraySchema.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version` to be an array in the JSON string but got `%s`", jsonObj.get("version").toString()));
+      }
+      // validate the optional field `coordsFilterPipeline`
+      if (jsonObj.getAsJsonObject("coordsFilterPipeline") != null) {
+        FilterPipeline.validateJsonObject(jsonObj.getAsJsonObject("coordsFilterPipeline"));
+      }
+      // validate the optional field `offsetFilterPipeline`
+      if (jsonObj.getAsJsonObject("offsetFilterPipeline") != null) {
+        FilterPipeline.validateJsonObject(jsonObj.getAsJsonObject("offsetFilterPipeline"));
+      }
+      // validate the optional field `domain`
+      if (jsonObj.getAsJsonObject("domain") != null) {
+        Domain.validateJsonObject(jsonObj.getAsJsonObject("domain"));
+      }
+      JsonArray jsonArrayattributes = jsonObj.getAsJsonArray("attributes");
+      if (jsonArrayattributes != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("attributes").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `attributes` to be an array in the JSON string but got `%s`", jsonObj.get("attributes").toString()));
+        }
+
+        // validate the optional field `attributes` (array)
+        for (int i = 0; i < jsonArrayattributes.size(); i++) {
+          Attribute.validateJsonObject(jsonArrayattributes.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ArraySchema.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ArraySchema' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ArraySchema> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ArraySchema.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ArraySchema>() {
+           @Override
+           public void write(JsonWriter out, ArraySchema value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ArraySchema read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ArraySchema given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ArraySchema
+  * @throws IOException if the JSON string is invalid with respect to ArraySchema
+  */
+  public static ArraySchema fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ArraySchema.class);
+  }
+
+ /**
+  * Convert an instance of ArraySchema to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

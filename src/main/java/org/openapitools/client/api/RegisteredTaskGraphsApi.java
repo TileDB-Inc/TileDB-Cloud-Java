@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class RegisteredTaskGraphsApi {
     private ApiClient localVarApiClient;
@@ -90,7 +91,6 @@ public class RegisteredTaskGraphsApi {
      */
     public okhttp3.Call deleteRegisteredTaskGraphCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -228,7 +228,6 @@ public class RegisteredTaskGraphsApi {
      */
     public okhttp3.Call getRegisteredTaskGraphCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -371,7 +370,6 @@ public class RegisteredTaskGraphsApi {
      */
     public okhttp3.Call getRegisteredTaskGraphSharingPoliciesCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -517,7 +515,6 @@ public class RegisteredTaskGraphsApi {
      */
     public okhttp3.Call registerRegisteredTaskGraphCall(String namespace, String name, RegisteredTaskGraph graph, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -660,7 +657,6 @@ public class RegisteredTaskGraphsApi {
      */
     public okhttp3.Call shareRegisteredTaskGraphCall(String namespace, String name, TaskGraphSharing taskGraphSharing, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -810,7 +806,6 @@ public class RegisteredTaskGraphsApi {
      */
     public okhttp3.Call updateRegisteredTaskGraphCall(String namespace, String name, RegisteredTaskGraph graph, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

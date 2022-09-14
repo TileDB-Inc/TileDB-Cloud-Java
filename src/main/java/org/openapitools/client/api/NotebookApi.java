@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class NotebookApi {
     private ApiClient localVarApiClient;
@@ -96,7 +97,6 @@ public class NotebookApi {
      */
     public okhttp3.Call getNotebookServerStatusCall(String namespace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -241,7 +241,6 @@ public class NotebookApi {
      */
     public okhttp3.Call handleCopyNotebookCall(String namespace, String array, NotebookCopy notebookCopy, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, Integer endTimestamp, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -408,7 +407,6 @@ public class NotebookApi {
      */
     public okhttp3.Call handleUploadNotebookCall(String namespace, File inputFile, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, String outputUri, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -574,7 +572,6 @@ public class NotebookApi {
      */
     public okhttp3.Call shutdownNotebookServerCall(String namespace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -707,7 +704,6 @@ public class NotebookApi {
      */
     public okhttp3.Call updateNotebookNameCall(String namespace, String array, ArrayInfoUpdate notebookMetadata, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

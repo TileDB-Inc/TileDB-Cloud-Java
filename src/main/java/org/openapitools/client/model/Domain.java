@@ -29,11 +29,31 @@ import org.openapitools.client.model.Datatype;
 import org.openapitools.client.model.Dimension;
 import org.openapitools.client.model.Layout;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Domain of array
  */
 @ApiModel(description = "Domain of array")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class Domain {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -49,7 +69,7 @@ public class Domain {
 
   public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
   @SerializedName(SERIALIZED_NAME_DIMENSIONS)
-  private List<Dimension> dimensions = new ArrayList<Dimension>();
+  private List<Dimension> dimensions = new ArrayList<>();
 
   public Domain() { 
   }
@@ -151,6 +171,7 @@ public class Domain {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -194,5 +215,116 @@ public class Domain {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("type");
+    openapiFields.add("tileOrder");
+    openapiFields.add("cellOrder");
+    openapiFields.add("dimensions");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("tileOrder");
+    openapiRequiredFields.add("cellOrder");
+    openapiRequiredFields.add("dimensions");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Domain
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Domain.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Domain is not found in the empty JSON string", Domain.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!Domain.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Domain` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Domain.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArraydimensions = jsonObj.getAsJsonArray("dimensions");
+      if (jsonArraydimensions != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("dimensions").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
+        }
+
+        // validate the optional field `dimensions` (array)
+        for (int i = 0; i < jsonArraydimensions.size(); i++) {
+          Dimension.validateJsonObject(jsonArraydimensions.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Domain.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Domain' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Domain> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Domain.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Domain>() {
+           @Override
+           public void write(JsonWriter out, Domain value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Domain read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Domain given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Domain
+  * @throws IOException if the JSON string is invalid with respect to Domain
+  */
+  public static Domain fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Domain.class);
+  }
+
+ /**
+  * Convert an instance of Domain to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

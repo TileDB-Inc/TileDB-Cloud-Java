@@ -29,11 +29,31 @@ import org.openapitools.client.model.PricingInterval;
 import org.openapitools.client.model.PricingType;
 import org.openapitools.client.model.PricingUnitLabel;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Pricing created by converting an array to product
  */
 @ApiModel(description = "Pricing created by converting an array to product")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class Pricing {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -389,6 +409,7 @@ public class Pricing {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -450,5 +471,117 @@ public class Pricing {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("array_uuid");
+    openapiFields.add("pricing_name");
+    openapiFields.add("pricing_type");
+    openapiFields.add("product_name");
+    openapiFields.add("product_statement_descriptor");
+    openapiFields.add("product_unit_label");
+    openapiFields.add("currency");
+    openapiFields.add("aggregate_usage");
+    openapiFields.add("interval");
+    openapiFields.add("divided_by");
+    openapiFields.add("charge");
+    openapiFields.add("activated");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Pricing
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Pricing.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Pricing is not found in the empty JSON string", Pricing.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!Pricing.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Pricing` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (jsonObj.get("array_uuid") != null && !jsonObj.get("array_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `array_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_uuid").toString()));
+      }
+      if (jsonObj.get("pricing_name") != null && !jsonObj.get("pricing_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pricing_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricing_name").toString()));
+      }
+      if (jsonObj.get("product_name") != null && !jsonObj.get("product_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `product_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product_name").toString()));
+      }
+      if (jsonObj.get("product_statement_descriptor") != null && !jsonObj.get("product_statement_descriptor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `product_statement_descriptor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product_statement_descriptor").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Pricing.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Pricing' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Pricing> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Pricing.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Pricing>() {
+           @Override
+           public void write(JsonWriter out, Pricing value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Pricing read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Pricing given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Pricing
+  * @throws IOException if the JSON string is invalid with respect to Pricing
+  */
+  public static Pricing fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Pricing.class);
+  }
+
+ /**
+  * Convert an instance of Pricing to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

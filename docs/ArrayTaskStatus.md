@@ -13,11 +13,13 @@
 
 * `RUNNING` (value: `"RUNNING"`)
 
-* `DENIED` (value: `"DENIED"`)
+* `RESOURCES_UNAVAILABLE` (value: `"RESOURCES_UNAVAILABLE"`)
 
 * `UNKNOWN` (value: `"UNKNOWN"`)
 
 * `CANCELLED` (value: `"CANCELLED"`)
+
+* `DENIED` (value: `"DENIED"`)
 
 
 

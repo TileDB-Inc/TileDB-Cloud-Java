@@ -2,13 +2,13 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createTaskGraphLog**](TaskGraphLogsApi.md#createTaskGraphLog) | **POST** /taskgraphs/{namespace}/log | 
-[**getTaskGraphLog**](TaskGraphLogsApi.md#getTaskGraphLog) | **GET** /taskgraphs/{namespace}/logs/{id} | 
-[**listTaskGraphLogs**](TaskGraphLogsApi.md#listTaskGraphLogs) | **GET** /taskgraphs/logs | 
-[**reportClientNode**](TaskGraphLogsApi.md#reportClientNode) | **POST** /taskgraphs/{namespace}/logs/{id}/report_client_node | 
-[**updateTaskGraphLog**](TaskGraphLogsApi.md#updateTaskGraphLog) | **PATCH** /taskgraphs/{namespace}/logs/{id} | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createTaskGraphLog**](TaskGraphLogsApi.md#createTaskGraphLog) | **POST** /taskgraphs/{namespace}/log |  |
+| [**getTaskGraphLog**](TaskGraphLogsApi.md#getTaskGraphLog) | **GET** /taskgraphs/{namespace}/logs/{id} |  |
+| [**listTaskGraphLogs**](TaskGraphLogsApi.md#listTaskGraphLogs) | **GET** /taskgraphs/logs |  |
+| [**reportClientNode**](TaskGraphLogsApi.md#reportClientNode) | **POST** /taskgraphs/{namespace}/logs/{id}/report_client_node |  |
+| [**updateTaskGraphLog**](TaskGraphLogsApi.md#updateTaskGraphLog) | **PATCH** /taskgraphs/{namespace}/logs/{id} |  |
 
 
 <a name="createTaskGraphLog"></a>
@@ -64,10 +64,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that will own this task graph log. |
- **log** | [**TaskGraphLog**](TaskGraphLog.md)|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that will own this task graph log. | |
+| **log** | [**TaskGraphLog**](TaskGraphLog.md)|  | |
 
 ### Return type
 
@@ -85,8 +85,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The task graph was created. The returned TaskGraphLog will include the data the client sent, with the server-defined fields added in.  |  -  |
-**0** | error response |  -  |
+| **201** | The task graph was created. The returned TaskGraphLog will include the data the client sent, with the server-defined fields added in.  |  -  |
+| **0** | error response |  -  |
 
 <a name="getTaskGraphLog"></a>
 # **getTaskGraphLog**
@@ -141,10 +141,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns this task graph log. |
- **id** | **String**| The UUID of the task graph log entry. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns this task graph log. | |
+| **id** | **String**| The UUID of the task graph log entry. | |
 
 ### Return type
 
@@ -162,8 +162,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Information about the execution of a single task graph. |  -  |
-**0** | error response |  -  |
+| **200** | Information about the execution of a single task graph. |  -  |
+| **0** | error response |  -  |
 
 <a name="listTaskGraphLogs"></a>
 # **listTaskGraphLogs**
@@ -223,15 +223,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| Include logs for this namespace. | [optional]
- **createdBy** | **String**| Include logs from only this user. | [optional]
- **search** | **String**| search string that will look at name. | [optional]
- **startTime** | **OffsetDateTime**| Include logs created after this time. | [optional]
- **endTime** | **OffsetDateTime**| Include logs created before this time. | [optional]
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| Include logs for this namespace. | [optional] |
+| **createdBy** | **String**| Include logs from only this user. | [optional] |
+| **search** | **String**| search string that will look at name. | [optional] |
+| **startTime** | **OffsetDateTime**| Include logs created after this time. | [optional] |
+| **endTime** | **OffsetDateTime**| Include logs created before this time. | [optional] |
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
 
 ### Return type
 
@@ -249,8 +249,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The task graph logs that matched the user&#39;s query. |  -  |
-**0** | error response |  -  |
+| **200** | The task graph logs that matched the user&#39;s query. |  -  |
+| **0** | error response |  -  |
 
 <a name="reportClientNode"></a>
 # **reportClientNode**
@@ -303,11 +303,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns this task graph log. |
- **id** | **String**| The UUID of the task graph log entry. |
- **report** | [**TaskGraphClientNodeStatus**](TaskGraphClientNodeStatus.md)| The node status to report. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns this task graph log. | |
+| **id** | **String**| The UUID of the task graph log entry. | |
+| **report** | [**TaskGraphClientNodeStatus**](TaskGraphClientNodeStatus.md)| The node status to report. | |
 
 ### Return type
 
@@ -325,8 +325,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Status reported successfully. |  -  |
-**0** | error response |  -  |
+| **204** | Status reported successfully. |  -  |
+| **0** | error response |  -  |
 
 <a name="updateTaskGraphLog"></a>
 # **updateTaskGraphLog**
@@ -381,11 +381,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns this task graph log. |
- **id** | **String**| The UUID of the task graph log entry. |
- **log** | [**TaskGraphLog**](TaskGraphLog.md)| Updates to make to the task graph log. The only manual update that a client should need to make to a task graph log is to update its completion status to &#x60;succeeded&#x60;, &#x60;failed&#x60;, or &#x60;cancelled&#x60;.  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns this task graph log. | |
+| **id** | **String**| The UUID of the task graph log entry. | |
+| **log** | [**TaskGraphLog**](TaskGraphLog.md)| Updates to make to the task graph log. The only manual update that a client should need to make to a task graph log is to update its completion status to &#x60;succeeded&#x60;, &#x60;failed&#x60;, or &#x60;cancelled&#x60;.  | |
 
 ### Return type
 
@@ -403,6 +403,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Log entry updated successfully. |  -  |
-**0** | error response |  -  |
+| **204** | Log entry updated successfully. |  -  |
+| **0** | error response |  -  |
 

@@ -38,11 +38,13 @@ public enum ArrayTaskStatus {
   
   RUNNING("RUNNING"),
   
-  DENIED("DENIED"),
+  RESOURCES_UNAVAILABLE("RESOURCES_UNAVAILABLE"),
   
   UNKNOWN("UNKNOWN"),
   
-  CANCELLED("CANCELLED");
+  CANCELLED("CANCELLED"),
+  
+  DENIED("DENIED");
 
   private String value;
 

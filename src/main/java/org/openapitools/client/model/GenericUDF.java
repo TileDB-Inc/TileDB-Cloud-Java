@@ -28,11 +28,31 @@ import java.util.List;
 import org.openapitools.client.model.ResultFormat;
 import org.openapitools.client.model.UDFLanguage;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * User-defined function
  */
 @ApiModel(description = "User-defined function")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class GenericUDF {
   public static final String SERIALIZED_NAME_UDF_INFO_NAME = "udf_info_name";
   @SerializedName(SERIALIZED_NAME_UDF_INFO_NAME)
@@ -293,7 +313,7 @@ public class GenericUDF {
 
   public GenericUDF addStoredParamUuidsItem(String storedParamUuidsItem) {
     if (this.storedParamUuids == null) {
-      this.storedParamUuids = new ArrayList<String>();
+      this.storedParamUuids = new ArrayList<>();
     }
     this.storedParamUuids.add(storedParamUuidsItem);
     return this;
@@ -477,6 +497,7 @@ public class GenericUDF {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -544,5 +565,139 @@ public class GenericUDF {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("udf_info_name");
+    openapiFields.add("language");
+    openapiFields.add("version");
+    openapiFields.add("image_name");
+    openapiFields.add("resource_class");
+    openapiFields.add("exec");
+    openapiFields.add("exec_raw");
+    openapiFields.add("argument");
+    openapiFields.add("stored_param_uuids");
+    openapiFields.add("result_format");
+    openapiFields.add("task_name");
+    openapiFields.add("store_results");
+    openapiFields.add("timeout");
+    openapiFields.add("dont_download_results");
+    openapiFields.add("task_graph_uuid");
+    openapiFields.add("client_node_uuid");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to GenericUDF
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (GenericUDF.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GenericUDF is not found in the empty JSON string", GenericUDF.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!GenericUDF.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GenericUDF` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("udf_info_name") != null && !jsonObj.get("udf_info_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `udf_info_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("udf_info_name").toString()));
+      }
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
+      }
+      if (jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `image_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_name").toString()));
+      }
+      if (jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `resource_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_class").toString()));
+      }
+      if (jsonObj.get("exec") != null && !jsonObj.get("exec").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exec` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec").toString()));
+      }
+      if (jsonObj.get("exec_raw") != null && !jsonObj.get("exec_raw").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exec_raw` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec_raw").toString()));
+      }
+      if (jsonObj.get("argument") != null && !jsonObj.get("argument").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `argument` to be a primitive type in the JSON string but got `%s`", jsonObj.get("argument").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("stored_param_uuids") != null && !jsonObj.get("stored_param_uuids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `stored_param_uuids` to be an array in the JSON string but got `%s`", jsonObj.get("stored_param_uuids").toString()));
+      }
+      if (jsonObj.get("task_name") != null && !jsonObj.get("task_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `task_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_name").toString()));
+      }
+      if (jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `task_graph_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_graph_uuid").toString()));
+      }
+      if (jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!GenericUDF.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GenericUDF' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<GenericUDF> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GenericUDF.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<GenericUDF>() {
+           @Override
+           public void write(JsonWriter out, GenericUDF value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public GenericUDF read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of GenericUDF given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of GenericUDF
+  * @throws IOException if the JSON string is invalid with respect to GenericUDF
+  */
+  public static GenericUDF fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GenericUDF.class);
+  }
+
+ /**
+  * Convert an instance of GenericUDF to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

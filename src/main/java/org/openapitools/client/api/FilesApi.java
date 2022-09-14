@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class FilesApi {
     private ApiClient localVarApiClient;
@@ -95,7 +96,6 @@ public class FilesApi {
      */
     public okhttp3.Call handleCreateFileCall(String namespace, FileCreate fileCreate, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -244,7 +244,6 @@ public class FilesApi {
      */
     public okhttp3.Call handleExportFileCall(String namespace, String _file, FileExport fileExport, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -397,7 +396,6 @@ public class FilesApi {
      */
     public okhttp3.Call handleUploadFileCall(String namespace, File inputFile, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, String outputUri, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

@@ -23,17 +23,38 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.NamespaceActions;
 import org.openapitools.client.model.OrganizationUser;
-import org.threeten.bp.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
  * User
  */
 @ApiModel(description = "User")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class User {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -376,7 +397,7 @@ public class User {
 
   public User addAllowedActionsItem(NamespaceActions allowedActionsItem) {
     if (this.allowedActions == null) {
-      this.allowedActions = new ArrayList<NamespaceActions>();
+      this.allowedActions = new ArrayList<>();
     }
     this.allowedActions.add(allowedActionsItem);
     return this;
@@ -496,6 +517,7 @@ public class User {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -525,9 +547,20 @@ public class User {
         Objects.equals(this.defaultNamespaceCharged, user.defaultNamespaceCharged);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, username, password, name, email, isValidEmail, stripeConnect, company, logo, lastActivityDate, timezone, organizations, allowedActions, enabledFeatures, unpaidSubscription, defaultS3Path, defaultS3PathCredentialsName, defaultNamespaceCharged);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -567,5 +600,168 @@ public class User {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("username");
+    openapiFields.add("password");
+    openapiFields.add("name");
+    openapiFields.add("email");
+    openapiFields.add("is_valid_email");
+    openapiFields.add("stripe_connect");
+    openapiFields.add("company");
+    openapiFields.add("logo");
+    openapiFields.add("last_activity_date");
+    openapiFields.add("timezone");
+    openapiFields.add("organizations");
+    openapiFields.add("allowed_actions");
+    openapiFields.add("enabled_features");
+    openapiFields.add("unpaid_subscription");
+    openapiFields.add("default_s3_path");
+    openapiFields.add("default_s3_path_credentials_name");
+    openapiFields.add("default_namespace_charged");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("username");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to User
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (User.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in User is not found in the empty JSON string", User.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!User.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `User` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : User.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (jsonObj.get("username") != null && !jsonObj.get("username").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+      }
+      if (jsonObj.get("password") != null && !jsonObj.get("password").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
+      }
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (jsonObj.get("email") != null && !jsonObj.get("email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
+      }
+      if (jsonObj.get("company") != null && !jsonObj.get("company").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
+      }
+      if (jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
+      }
+      if (jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
+      }
+      JsonArray jsonArrayorganizations = jsonObj.getAsJsonArray("organizations");
+      if (jsonArrayorganizations != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("organizations").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `organizations` to be an array in the JSON string but got `%s`", jsonObj.get("organizations").toString()));
+        }
+
+        // validate the optional field `organizations` (array)
+        for (int i = 0; i < jsonArrayorganizations.size(); i++) {
+          OrganizationUser.validateJsonObject(jsonArrayorganizations.get(i).getAsJsonObject());
+        };
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("allowed_actions") != null && !jsonObj.get("allowed_actions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `allowed_actions` to be an array in the JSON string but got `%s`", jsonObj.get("allowed_actions").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("enabled_features") != null && !jsonObj.get("enabled_features").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `enabled_features` to be an array in the JSON string but got `%s`", jsonObj.get("enabled_features").toString()));
+      }
+      if (jsonObj.get("default_s3_path") != null && !jsonObj.get("default_s3_path").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `default_s3_path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_s3_path").toString()));
+      }
+      if (jsonObj.get("default_s3_path_credentials_name") != null && !jsonObj.get("default_s3_path_credentials_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `default_s3_path_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_s3_path_credentials_name").toString()));
+      }
+      if (jsonObj.get("default_namespace_charged") != null && !jsonObj.get("default_namespace_charged").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `default_namespace_charged` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_namespace_charged").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!User.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'User' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<User> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(User.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<User>() {
+           @Override
+           public void write(JsonWriter out, User value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public User read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of User given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of User
+  * @throws IOException if the JSON string is invalid with respect to User
+  */
+  public static User fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, User.class);
+  }
+
+ /**
+  * Convert an instance of User to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

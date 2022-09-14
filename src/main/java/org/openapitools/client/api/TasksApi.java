@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class TasksApi {
     private ApiClient localVarApiClient;
@@ -93,7 +94,6 @@ public class TasksApi {
      */
     public okhttp3.Call runSQLCall(String namespace, SQLParameters sql, String acceptEncoding, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -243,7 +243,6 @@ public class TasksApi {
      */
     public okhttp3.Call taskIdGetCall(String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -378,7 +377,6 @@ public class TasksApi {
      */
     public okhttp3.Call taskIdResultGetCall(String id, String acceptEncoding, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -536,7 +534,6 @@ public class TasksApi {
      */
     public okhttp3.Call tasksGetCall(String namespace, String createdBy, String array, Integer start, Integer end, Integer page, Integer perPage, String type, List<String> excludeType, List<String> fileType, List<String> excludeFileType, String status, String search, String orderby, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

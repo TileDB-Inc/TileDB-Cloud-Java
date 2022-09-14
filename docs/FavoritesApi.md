@@ -2,28 +2,28 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**addArrayFavorite**](FavoritesApi.md#addArrayFavorite) | **POST** /arrays/favorites/{namespace}/{name} | 
-[**addMLModelFavorite**](FavoritesApi.md#addMLModelFavorite) | **POST** /ml_models/favorites/{namespace}/{name} | 
-[**addNotebookFavorite**](FavoritesApi.md#addNotebookFavorite) | **POST** /notebooks/favorites/{namespace}/{name} | 
-[**addUDFFavorite**](FavoritesApi.md#addUDFFavorite) | **POST** /udfs/favorites/{namespace}/{name} | 
-[**deleteArrayFavorite**](FavoritesApi.md#deleteArrayFavorite) | **DELETE** /arrays/favorites/{namespace}/{name} | 
-[**deleteMLModelFavorite**](FavoritesApi.md#deleteMLModelFavorite) | **DELETE** /ml_models/favorites/{namespace}/{name} | 
-[**deleteNotebookFavorite**](FavoritesApi.md#deleteNotebookFavorite) | **DELETE** /notebooks/favorites/{namespace}/{name} | 
-[**deleteUDFFavorite**](FavoritesApi.md#deleteUDFFavorite) | **DELETE** /udfs/favorites/{namespace}/{name} | 
-[**getArrayFavorite**](FavoritesApi.md#getArrayFavorite) | **GET** /arrays/favorites/{namespace}/{name} | 
-[**getMLModelFavorite**](FavoritesApi.md#getMLModelFavorite) | **GET** /ml_models/favorites/{namespace}/{name} | 
-[**getNotebookFavorite**](FavoritesApi.md#getNotebookFavorite) | **GET** /notebooks/favorites/{namespace}/{name} | 
-[**getUDFFavorite**](FavoritesApi.md#getUDFFavorite) | **GET** /udfs/favorites/{namespace}/{name} | 
-[**listArrayFavorites**](FavoritesApi.md#listArrayFavorites) | **GET** /arrays/favorites | 
-[**listArrayFavoritesUUIDs**](FavoritesApi.md#listArrayFavoritesUUIDs) | **GET** /arrays/favorites/uuids | 
-[**listMLModelFavorites**](FavoritesApi.md#listMLModelFavorites) | **GET** /ml_models/favorites | 
-[**listMLModelFavoritesUUIDs**](FavoritesApi.md#listMLModelFavoritesUUIDs) | **GET** /ml_models/favorites/uuids | 
-[**listNotebookFavorites**](FavoritesApi.md#listNotebookFavorites) | **GET** /notebooks/favorites | 
-[**listNotebookFavoritesUUIDs**](FavoritesApi.md#listNotebookFavoritesUUIDs) | **GET** /notebooks/favorites/uuids | 
-[**listUDFFavorites**](FavoritesApi.md#listUDFFavorites) | **GET** /udfs/favorites | 
-[**listUDFFavoritesUUIDs**](FavoritesApi.md#listUDFFavoritesUUIDs) | **GET** /udfs/favorites/uuids | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**addArrayFavorite**](FavoritesApi.md#addArrayFavorite) | **POST** /arrays/favorites/{namespace}/{name} |  |
+| [**addMLModelFavorite**](FavoritesApi.md#addMLModelFavorite) | **POST** /ml_models/favorites/{namespace}/{name} |  |
+| [**addNotebookFavorite**](FavoritesApi.md#addNotebookFavorite) | **POST** /notebooks/favorites/{namespace}/{name} |  |
+| [**addUDFFavorite**](FavoritesApi.md#addUDFFavorite) | **POST** /udfs/favorites/{namespace}/{name} |  |
+| [**deleteArrayFavorite**](FavoritesApi.md#deleteArrayFavorite) | **DELETE** /arrays/favorites/{namespace}/{name} |  |
+| [**deleteMLModelFavorite**](FavoritesApi.md#deleteMLModelFavorite) | **DELETE** /ml_models/favorites/{namespace}/{name} |  |
+| [**deleteNotebookFavorite**](FavoritesApi.md#deleteNotebookFavorite) | **DELETE** /notebooks/favorites/{namespace}/{name} |  |
+| [**deleteUDFFavorite**](FavoritesApi.md#deleteUDFFavorite) | **DELETE** /udfs/favorites/{namespace}/{name} |  |
+| [**getArrayFavorite**](FavoritesApi.md#getArrayFavorite) | **GET** /arrays/favorites/{namespace}/{name} |  |
+| [**getMLModelFavorite**](FavoritesApi.md#getMLModelFavorite) | **GET** /ml_models/favorites/{namespace}/{name} |  |
+| [**getNotebookFavorite**](FavoritesApi.md#getNotebookFavorite) | **GET** /notebooks/favorites/{namespace}/{name} |  |
+| [**getUDFFavorite**](FavoritesApi.md#getUDFFavorite) | **GET** /udfs/favorites/{namespace}/{name} |  |
+| [**listArrayFavorites**](FavoritesApi.md#listArrayFavorites) | **GET** /arrays/favorites |  |
+| [**listArrayFavoritesUUIDs**](FavoritesApi.md#listArrayFavoritesUUIDs) | **GET** /arrays/favorites/uuids |  |
+| [**listMLModelFavorites**](FavoritesApi.md#listMLModelFavorites) | **GET** /ml_models/favorites |  |
+| [**listMLModelFavoritesUUIDs**](FavoritesApi.md#listMLModelFavoritesUUIDs) | **GET** /ml_models/favorites/uuids |  |
+| [**listNotebookFavorites**](FavoritesApi.md#listNotebookFavorites) | **GET** /notebooks/favorites |  |
+| [**listNotebookFavoritesUUIDs**](FavoritesApi.md#listNotebookFavoritesUUIDs) | **GET** /notebooks/favorites/uuids |  |
+| [**listUDFFavorites**](FavoritesApi.md#listUDFFavorites) | **GET** /udfs/favorites |  |
+| [**listUDFFavoritesUUIDs**](FavoritesApi.md#listUDFFavoritesUUIDs) | **GET** /udfs/favorites/uuids |  |
 
 
 <a name="addArrayFavorite"></a>
@@ -78,10 +78,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the array |
- **name** | **String**| The name of the array |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the array | |
+| **name** | **String**| The name of the array | |
 
 ### Return type
 
@@ -99,8 +99,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Item added to favorites successfully |  -  |
-**0** | error response |  -  |
+| **204** | Item added to favorites successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="addMLModelFavorite"></a>
 # **addMLModelFavorite**
@@ -154,10 +154,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the ML model |
- **name** | **String**| The name of the ML model |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the ML model | |
+| **name** | **String**| The name of the ML model | |
 
 ### Return type
 
@@ -175,8 +175,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Item added to favorites successfully |  -  |
-**0** | error response |  -  |
+| **204** | Item added to favorites successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="addNotebookFavorite"></a>
 # **addNotebookFavorite**
@@ -230,10 +230,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the notebook |
- **name** | **String**| The name of the notebook |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the notebook | |
+| **name** | **String**| The name of the notebook | |
 
 ### Return type
 
@@ -251,8 +251,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Item added to favorites successfully |  -  |
-**0** | error response |  -  |
+| **204** | Item added to favorites successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="addUDFFavorite"></a>
 # **addUDFFavorite**
@@ -306,10 +306,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the UDF |
- **name** | **String**| The name of the UDF |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the UDF | |
+| **name** | **String**| The name of the UDF | |
 
 ### Return type
 
@@ -327,8 +327,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Item added to favorites successfully |  -  |
-**0** | error response |  -  |
+| **204** | Item added to favorites successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteArrayFavorite"></a>
 # **deleteArrayFavorite**
@@ -382,10 +382,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the array |
- **name** | **String**| The name of the array |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the array | |
+| **name** | **String**| The name of the array | |
 
 ### Return type
 
@@ -403,8 +403,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | array favorite item deleted successfully |  -  |
-**0** | error response |  -  |
+| **204** | array favorite item deleted successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteMLModelFavorite"></a>
 # **deleteMLModelFavorite**
@@ -458,10 +458,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the ML model |
- **name** | **String**| The name of the ML model |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the ML model | |
+| **name** | **String**| The name of the ML model | |
 
 ### Return type
 
@@ -479,8 +479,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | ML model favorite item deleted successfully |  -  |
-**0** | error response |  -  |
+| **204** | ML model favorite item deleted successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteNotebookFavorite"></a>
 # **deleteNotebookFavorite**
@@ -534,10 +534,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the notebook |
- **name** | **String**| The name of the notebook |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the notebook | |
+| **name** | **String**| The name of the notebook | |
 
 ### Return type
 
@@ -555,8 +555,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | notebook favorite item deleted successfully |  -  |
-**0** | error response |  -  |
+| **204** | notebook favorite item deleted successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteUDFFavorite"></a>
 # **deleteUDFFavorite**
@@ -610,10 +610,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the UDF |
- **name** | **String**| The name of the UDF |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the UDF | |
+| **name** | **String**| The name of the UDF | |
 
 ### Return type
 
@@ -631,8 +631,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | UDF favorite item deleted successfully |  -  |
-**0** | error response |  -  |
+| **204** | UDF favorite item deleted successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="getArrayFavorite"></a>
 # **getArrayFavorite**
@@ -687,10 +687,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the array |
- **name** | **String**| The name of the array |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the array | |
+| **name** | **String**| The name of the array | |
 
 ### Return type
 
@@ -708,8 +708,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**0** | error response |  -  |
+| **200** | OK |  -  |
+| **0** | error response |  -  |
 
 <a name="getMLModelFavorite"></a>
 # **getMLModelFavorite**
@@ -764,10 +764,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the ML model |
- **name** | **String**| The name of the ML model |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the ML model | |
+| **name** | **String**| The name of the ML model | |
 
 ### Return type
 
@@ -785,8 +785,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**0** | error response |  -  |
+| **200** | OK |  -  |
+| **0** | error response |  -  |
 
 <a name="getNotebookFavorite"></a>
 # **getNotebookFavorite**
@@ -841,10 +841,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the notebook |
- **name** | **String**| The name of the notebook |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the notebook | |
+| **name** | **String**| The name of the notebook | |
 
 ### Return type
 
@@ -862,8 +862,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**0** | error response |  -  |
+| **200** | OK |  -  |
+| **0** | error response |  -  |
 
 <a name="getUDFFavorite"></a>
 # **getUDFFavorite**
@@ -918,10 +918,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the UDF |
- **name** | **String**| The name of the UDF |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the UDF | |
+| **name** | **String**| The name of the UDF | |
 
 ### Return type
 
@@ -939,8 +939,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**0** | error response |  -  |
+| **200** | OK |  -  |
+| **0** | error response |  -  |
 
 <a name="listArrayFavorites"></a>
 # **listArrayFavorites**
@@ -995,10 +995,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
 
 ### Return type
 
@@ -1016,8 +1016,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Available array favorites are returned |  -  |
-**0** | error response |  -  |
+| **200** | Available array favorites are returned |  -  |
+| **0** | error response |  -  |
 
 <a name="listArrayFavoritesUUIDs"></a>
 # **listArrayFavoritesUUIDs**
@@ -1087,8 +1087,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Available favorites array uuids are returned |  -  |
-**0** | error response |  -  |
+| **200** | Available favorites array uuids are returned |  -  |
+| **0** | error response |  -  |
 
 <a name="listMLModelFavorites"></a>
 # **listMLModelFavorites**
@@ -1143,10 +1143,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
 
 ### Return type
 
@@ -1164,8 +1164,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Available ML models favorites are returned |  -  |
-**0** | error response |  -  |
+| **200** | Available ML models favorites are returned |  -  |
+| **0** | error response |  -  |
 
 <a name="listMLModelFavoritesUUIDs"></a>
 # **listMLModelFavoritesUUIDs**
@@ -1235,8 +1235,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Available favorites ML model uuids are returned |  -  |
-**0** | error response |  -  |
+| **200** | Available favorites ML model uuids are returned |  -  |
+| **0** | error response |  -  |
 
 <a name="listNotebookFavorites"></a>
 # **listNotebookFavorites**
@@ -1292,11 +1292,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **isDashboard** | **Boolean**| return only dashboards | [optional]
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **isDashboard** | **Boolean**| return only dashboards | [optional] |
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
 
 ### Return type
 
@@ -1314,8 +1314,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Available notebook favorites are returned |  -  |
-**0** | error response |  -  |
+| **200** | Available notebook favorites are returned |  -  |
+| **0** | error response |  -  |
 
 <a name="listNotebookFavoritesUUIDs"></a>
 # **listNotebookFavoritesUUIDs**
@@ -1385,8 +1385,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Available favorites notebook uuids are returned |  -  |
-**0** | error response |  -  |
+| **200** | Available favorites notebook uuids are returned |  -  |
+| **0** | error response |  -  |
 
 <a name="listUDFFavorites"></a>
 # **listUDFFavorites**
@@ -1441,10 +1441,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
 
 ### Return type
 
@@ -1462,8 +1462,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Available UDF favorites are returned |  -  |
-**0** | error response |  -  |
+| **200** | Available UDF favorites are returned |  -  |
+| **0** | error response |  -  |
 
 <a name="listUDFFavoritesUUIDs"></a>
 # **listUDFFavoritesUUIDs**
@@ -1533,6 +1533,6 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Available favorites UDF uuids are returned |  -  |
-**0** | error response |  -  |
+| **200** | Available favorites UDF uuids are returned |  -  |
+| **0** | error response |  -  |
 

@@ -31,11 +31,31 @@ import org.openapitools.client.model.TGUDFNodeData;
 import org.openapitools.client.model.UDFArrayDetails;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Information about a single node within a registered task graph. A single node represents one piece of data or a computational step; either as an input value, a data source, or a computation that acts upon earlier nodes. The structure parallels the existing &#x60;TaskGraphNodeMetadata&#x60;. 
  */
 @ApiModel(description = "Information about a single node within a registered task graph. A single node represents one piece of data or a computational step; either as an input value, a data source, or a computation that acts upon earlier nodes. The structure parallels the existing `TaskGraphNodeMetadata`. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class RegisteredTaskGraphNode {
   public static final String SERIALIZED_NAME_CLIENT_NODE_ID = "client_node_id";
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_ID)
@@ -122,7 +142,7 @@ public class RegisteredTaskGraphNode {
 
   public RegisteredTaskGraphNode addDependsOnItem(String dependsOnItem) {
     if (this.dependsOn == null) {
-      this.dependsOn = new ArrayList<String>();
+      this.dependsOn = new ArrayList<>();
     }
     this.dependsOn.add(dependsOnItem);
     return this;
@@ -237,6 +257,7 @@ public class RegisteredTaskGraphNode {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -297,5 +318,122 @@ public class RegisteredTaskGraphNode {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("client_node_id");
+    openapiFields.add("name");
+    openapiFields.add("depends_on");
+    openapiFields.add("array_node");
+    openapiFields.add("input_node");
+    openapiFields.add("sql_node");
+    openapiFields.add("udf_node");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to RegisteredTaskGraphNode
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (RegisteredTaskGraphNode.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RegisteredTaskGraphNode is not found in the empty JSON string", RegisteredTaskGraphNode.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!RegisteredTaskGraphNode.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RegisteredTaskGraphNode` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      if (jsonObj.get("client_node_id") != null && !jsonObj.get("client_node_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_node_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_id").toString()));
+      }
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("depends_on") != null && !jsonObj.get("depends_on").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `depends_on` to be an array in the JSON string but got `%s`", jsonObj.get("depends_on").toString()));
+      }
+      // validate the optional field `array_node`
+      if (jsonObj.getAsJsonObject("array_node") != null) {
+        UDFArrayDetails.validateJsonObject(jsonObj.getAsJsonObject("array_node"));
+      }
+      // validate the optional field `input_node`
+      if (jsonObj.getAsJsonObject("input_node") != null) {
+        TGInputNodeData.validateJsonObject(jsonObj.getAsJsonObject("input_node"));
+      }
+      // validate the optional field `sql_node`
+      if (jsonObj.getAsJsonObject("sql_node") != null) {
+        TGSQLNodeData.validateJsonObject(jsonObj.getAsJsonObject("sql_node"));
+      }
+      // validate the optional field `udf_node`
+      if (jsonObj.getAsJsonObject("udf_node") != null) {
+        TGUDFNodeData.validateJsonObject(jsonObj.getAsJsonObject("udf_node"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!RegisteredTaskGraphNode.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RegisteredTaskGraphNode' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<RegisteredTaskGraphNode> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RegisteredTaskGraphNode.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<RegisteredTaskGraphNode>() {
+           @Override
+           public void write(JsonWriter out, RegisteredTaskGraphNode value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public RegisteredTaskGraphNode read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of RegisteredTaskGraphNode given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of RegisteredTaskGraphNode
+  * @throws IOException if the JSON string is invalid with respect to RegisteredTaskGraphNode
+  */
+  public static RegisteredTaskGraphNode fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RegisteredTaskGraphNode.class);
+  }
+
+ /**
+  * Convert an instance of RegisteredTaskGraphNode to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

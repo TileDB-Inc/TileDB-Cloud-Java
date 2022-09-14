@@ -2,14 +2,14 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#deleteRegisteredTaskGraph) | **DELETE** /taskgraphs/{namespace}/registered/{name} | 
-[**getRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#getRegisteredTaskGraph) | **GET** /taskgraphs/{namespace}/registered/{name} | 
-[**getRegisteredTaskGraphSharingPolicies**](RegisteredTaskGraphsApi.md#getRegisteredTaskGraphSharingPolicies) | **GET** /taskgraphs/{namespace}/registered/{name}/share | 
-[**registerRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#registerRegisteredTaskGraph) | **POST** /taskgraphs/{namespace}/registered/{name} | 
-[**shareRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#shareRegisteredTaskGraph) | **PATCH** /taskgraphs/{namespace}/registered/{name}/share | 
-[**updateRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#updateRegisteredTaskGraph) | **PATCH** /taskgraphs/{namespace}/registered/{name} | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#deleteRegisteredTaskGraph) | **DELETE** /taskgraphs/{namespace}/registered/{name} |  |
+| [**getRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#getRegisteredTaskGraph) | **GET** /taskgraphs/{namespace}/registered/{name} |  |
+| [**getRegisteredTaskGraphSharingPolicies**](RegisteredTaskGraphsApi.md#getRegisteredTaskGraphSharingPolicies) | **GET** /taskgraphs/{namespace}/registered/{name}/share |  |
+| [**registerRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#registerRegisteredTaskGraph) | **POST** /taskgraphs/{namespace}/registered/{name} |  |
+| [**shareRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#shareRegisteredTaskGraph) | **PATCH** /taskgraphs/{namespace}/registered/{name}/share |  |
+| [**updateRegisteredTaskGraph**](RegisteredTaskGraphsApi.md#updateRegisteredTaskGraph) | **PATCH** /taskgraphs/{namespace}/registered/{name} |  |
 
 
 <a name="deleteRegisteredTaskGraph"></a>
@@ -64,10 +64,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns this registered UDF. |
- **name** | **String**| The name of the registered task graph. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns this registered UDF. | |
+| **name** | **String**| The name of the registered task graph. | |
 
 ### Return type
 
@@ -85,8 +85,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Task graph successfully deleted. |  -  |
-**0** | error response |  -  |
+| **204** | Task graph successfully deleted. |  -  |
+| **0** | error response |  -  |
 
 <a name="getRegisteredTaskGraph"></a>
 # **getRegisteredTaskGraph**
@@ -141,10 +141,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns this registered UDF. |
- **name** | **String**| The name of the registered task graph. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns this registered UDF. | |
+| **name** | **String**| The name of the registered task graph. | |
 
 ### Return type
 
@@ -162,8 +162,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The contents of the registered task graph. |  -  |
-**0** | error response |  -  |
+| **200** | The contents of the registered task graph. |  -  |
+| **0** | error response |  -  |
 
 <a name="getRegisteredTaskGraphSharingPolicies"></a>
 # **getRegisteredTaskGraphSharingPolicies**
@@ -218,10 +218,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns the registered task graph. |
- **name** | **String**| The name of the task graph. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns the registered task graph. | |
+| **name** | **String**| The name of the task graph. | |
 
 ### Return type
 
@@ -239,9 +239,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of all specific sharing policies |  -  |
-**404** | The task graph does not exist (or the user does not have permission to view policies)  |  -  |
-**0** | error response |  -  |
+| **200** | List of all specific sharing policies |  -  |
+| **404** | The task graph does not exist (or the user does not have permission to view policies)  |  -  |
+| **0** | error response |  -  |
 
 <a name="registerRegisteredTaskGraph"></a>
 # **registerRegisteredTaskGraph**
@@ -296,11 +296,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns this registered UDF. |
- **name** | **String**| The name of the registered task graph. |
- **graph** | [**RegisteredTaskGraph**](RegisteredTaskGraph.md)| Task graph to register. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns this registered UDF. | |
+| **name** | **String**| The name of the registered task graph. | |
+| **graph** | [**RegisteredTaskGraph**](RegisteredTaskGraph.md)| Task graph to register. | [optional] |
 
 ### Return type
 
@@ -318,8 +318,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Task graph registered successfully. |  -  |
-**0** | error response |  -  |
+| **204** | Task graph registered successfully. |  -  |
+| **0** | error response |  -  |
 
 <a name="shareRegisteredTaskGraph"></a>
 # **shareRegisteredTaskGraph**
@@ -374,11 +374,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns the registered task graph. |
- **name** | **String**| The name of the task graph. |
- **taskGraphSharing** | [**TaskGraphSharing**](TaskGraphSharing.md)| Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it&#39;s likely the UDF will not be shared with the namespace at all.  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns the registered task graph. | |
+| **name** | **String**| The name of the task graph. | |
+| **taskGraphSharing** | [**TaskGraphSharing**](TaskGraphSharing.md)| Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it&#39;s likely the UDF will not be shared with the namespace at all.  | |
 
 ### Return type
 
@@ -396,9 +396,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | UDF shared successfully |  -  |
-**404** | UDF does not exist or user does not have permissions to share UDF |  -  |
-**0** | error response |  -  |
+| **204** | UDF shared successfully |  -  |
+| **404** | UDF does not exist or user does not have permissions to share UDF |  -  |
+| **0** | error response |  -  |
 
 <a name="updateRegisteredTaskGraph"></a>
 # **updateRegisteredTaskGraph**
@@ -453,11 +453,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace that owns this registered UDF. |
- **name** | **String**| The name of the registered task graph. |
- **graph** | [**RegisteredTaskGraph**](RegisteredTaskGraph.md)| The new contents of the task graph. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace that owns this registered UDF. | |
+| **name** | **String**| The name of the registered task graph. | |
+| **graph** | [**RegisteredTaskGraph**](RegisteredTaskGraph.md)| The new contents of the task graph. | [optional] |
 
 ### Return type
 
@@ -475,6 +475,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Task graph updated successfully. |  -  |
-**0** | error response |  -  |
+| **204** | Task graph updated successfully. |  -  |
+| **0** | error response |  -  |
 

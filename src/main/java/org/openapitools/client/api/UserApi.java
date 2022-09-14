@@ -29,8 +29,8 @@ import java.io.IOException;
 
 import org.openapitools.client.model.AWSAccessCredentials;
 import org.openapitools.client.model.Error;
-import org.openapitools.client.model.InlineObject;
 import org.openapitools.client.model.OrganizationUser;
+import org.openapitools.client.model.ResetUserPasswordRequest;
 import org.openapitools.client.model.Token;
 import org.openapitools.client.model.TokenRequest;
 import org.openapitools.client.model.TokenScope;
@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class UserApi {
     private ApiClient localVarApiClient;
@@ -95,7 +96,6 @@ public class UserApi {
      */
     public okhttp3.Call addAWSAccessCredentialsCall(String namespace, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -232,7 +232,6 @@ public class UserApi {
      */
     public okhttp3.Call addUserToOrganizationCall(String organization, OrganizationUser user, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -368,7 +367,6 @@ public class UserApi {
      */
     public okhttp3.Call checkAWSAccessCredentialsCall(String namespace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -501,7 +499,6 @@ public class UserApi {
      */
     public okhttp3.Call checkAWSAccessCredentialsByNameCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -641,7 +638,6 @@ public class UserApi {
      */
     public okhttp3.Call confirmEmailCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -760,7 +756,6 @@ public class UserApi {
      */
     public okhttp3.Call createUserCall(User user, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -888,7 +883,6 @@ public class UserApi {
      */
     public okhttp3.Call deleteAWSAccessCredentialsCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1025,7 +1019,6 @@ public class UserApi {
      */
     public okhttp3.Call deleteUserCall(String username, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1154,7 +1147,6 @@ public class UserApi {
      */
     public okhttp3.Call deleteUserFromOrganizationCall(String organization, String username, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1293,7 +1285,6 @@ public class UserApi {
      */
     public okhttp3.Call getOrganizationUserCall(String organization, String username, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1437,7 +1428,6 @@ public class UserApi {
      */
     public okhttp3.Call getSessionCall(String rememberMe, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1566,7 +1556,6 @@ public class UserApi {
      */
     public okhttp3.Call getTokenScopesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1688,7 +1677,6 @@ public class UserApi {
      */
     public okhttp3.Call getUserCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1812,7 +1800,6 @@ public class UserApi {
      */
     public okhttp3.Call getUserWithUsernameCall(String username, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1947,7 +1934,6 @@ public class UserApi {
      */
     public okhttp3.Call requestTokenCall(TokenRequest tokenRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2060,7 +2046,7 @@ public class UserApi {
     }
     /**
      * Build call for resetUserPassword
-     * @param user  (required)
+     * @param user password to update for user requesting update (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2072,9 +2058,8 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call resetUserPasswordCall(InlineObject user, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call resetUserPasswordCall(ResetUserPasswordRequest user, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2119,7 +2104,7 @@ public class UserApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call resetUserPasswordValidateBeforeCall(InlineObject user, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call resetUserPasswordValidateBeforeCall(ResetUserPasswordRequest user, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'user' is set
         if (user == null) {
@@ -2135,7 +2120,7 @@ public class UserApi {
     /**
      * 
      * reset user password
-     * @param user  (required)
+     * @param user password to update for user requesting update (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2145,14 +2130,14 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void resetUserPassword(InlineObject user) throws ApiException {
+    public void resetUserPassword(ResetUserPasswordRequest user) throws ApiException {
         resetUserPasswordWithHttpInfo(user);
     }
 
     /**
      * 
      * reset user password
-     * @param user  (required)
+     * @param user password to update for user requesting update (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2163,7 +2148,7 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> resetUserPasswordWithHttpInfo(InlineObject user) throws ApiException {
+    public ApiResponse<Void> resetUserPasswordWithHttpInfo(ResetUserPasswordRequest user) throws ApiException {
         okhttp3.Call localVarCall = resetUserPasswordValidateBeforeCall(user, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -2171,7 +2156,7 @@ public class UserApi {
     /**
      *  (asynchronously)
      * reset user password
-     * @param user  (required)
+     * @param user password to update for user requesting update (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2183,7 +2168,7 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call resetUserPasswordAsync(InlineObject user, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call resetUserPasswordAsync(ResetUserPasswordRequest user, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = resetUserPasswordValidateBeforeCall(user, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -2204,7 +2189,6 @@ public class UserApi {
      */
     public okhttp3.Call revokeTokenCall(String token, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2331,7 +2315,6 @@ public class UserApi {
      */
     public okhttp3.Call tokensGetCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2453,7 +2436,6 @@ public class UserApi {
      */
     public okhttp3.Call tokensSessionGetCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2578,7 +2560,6 @@ public class UserApi {
      */
     public okhttp3.Call updateAWSAccessCredentialsCall(String namespace, String name, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2724,7 +2705,6 @@ public class UserApi {
      */
     public okhttp3.Call updateUserCall(String username, User user, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2862,7 +2842,6 @@ public class UserApi {
      */
     public okhttp3.Call updateUserInOrganizationCall(String organization, String username, OrganizationUser user, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

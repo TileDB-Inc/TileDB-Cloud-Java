@@ -21,3 +21,8 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+
+build.gradle
+src/main/java/org/openapitools/client/model/FilterType.java
+README.md

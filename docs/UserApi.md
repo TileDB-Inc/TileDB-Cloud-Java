@@ -2,30 +2,30 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**addAWSAccessCredentials**](UserApi.md#addAWSAccessCredentials) | **POST** /credentials/{namespace}/aws | 
-[**addUserToOrganization**](UserApi.md#addUserToOrganization) | **POST** /organizations/{organization}/user | 
-[**checkAWSAccessCredentials**](UserApi.md#checkAWSAccessCredentials) | **GET** /credentials/{namespace}/aws | 
-[**checkAWSAccessCredentialsByName**](UserApi.md#checkAWSAccessCredentialsByName) | **GET** /credentials/{namespace}/aws/{name} | 
-[**confirmEmail**](UserApi.md#confirmEmail) | **POST** /user/confirm_email | 
-[**createUser**](UserApi.md#createUser) | **POST** /user | 
-[**deleteAWSAccessCredentials**](UserApi.md#deleteAWSAccessCredentials) | **DELETE** /credentials/{namespace}/aws/{name} | 
-[**deleteUser**](UserApi.md#deleteUser) | **DELETE** /users/{username} | 
-[**deleteUserFromOrganization**](UserApi.md#deleteUserFromOrganization) | **DELETE** /organizations/{organization}/{username} | 
-[**getOrganizationUser**](UserApi.md#getOrganizationUser) | **GET** /organizations/{organization}/{username} | 
-[**getSession**](UserApi.md#getSession) | **GET** /session | 
-[**getTokenScopes**](UserApi.md#getTokenScopes) | **GET** /tokens/scopes | 
-[**getUser**](UserApi.md#getUser) | **GET** /user | 
-[**getUserWithUsername**](UserApi.md#getUserWithUsername) | **GET** /users/{username} | 
-[**requestToken**](UserApi.md#requestToken) | **POST** /token | 
-[**resetUserPassword**](UserApi.md#resetUserPassword) | **POST** /user/password_reset | 
-[**revokeToken**](UserApi.md#revokeToken) | **DELETE** /tokens/{token} | 
-[**tokensGet**](UserApi.md#tokensGet) | **GET** /tokens | 
-[**tokensSessionGet**](UserApi.md#tokensSessionGet) | **GET** /tokens/session | 
-[**updateAWSAccessCredentials**](UserApi.md#updateAWSAccessCredentials) | **PATCH** /credentials/{namespace}/aws/{name} | 
-[**updateUser**](UserApi.md#updateUser) | **PATCH** /users/{username} | 
-[**updateUserInOrganization**](UserApi.md#updateUserInOrganization) | **PATCH** /organizations/{organization}/{username} | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**addAWSAccessCredentials**](UserApi.md#addAWSAccessCredentials) | **POST** /credentials/{namespace}/aws |  |
+| [**addUserToOrganization**](UserApi.md#addUserToOrganization) | **POST** /organizations/{organization}/user |  |
+| [**checkAWSAccessCredentials**](UserApi.md#checkAWSAccessCredentials) | **GET** /credentials/{namespace}/aws |  |
+| [**checkAWSAccessCredentialsByName**](UserApi.md#checkAWSAccessCredentialsByName) | **GET** /credentials/{namespace}/aws/{name} |  |
+| [**confirmEmail**](UserApi.md#confirmEmail) | **POST** /user/confirm_email |  |
+| [**createUser**](UserApi.md#createUser) | **POST** /user |  |
+| [**deleteAWSAccessCredentials**](UserApi.md#deleteAWSAccessCredentials) | **DELETE** /credentials/{namespace}/aws/{name} |  |
+| [**deleteUser**](UserApi.md#deleteUser) | **DELETE** /users/{username} |  |
+| [**deleteUserFromOrganization**](UserApi.md#deleteUserFromOrganization) | **DELETE** /organizations/{organization}/{username} |  |
+| [**getOrganizationUser**](UserApi.md#getOrganizationUser) | **GET** /organizations/{organization}/{username} |  |
+| [**getSession**](UserApi.md#getSession) | **GET** /session |  |
+| [**getTokenScopes**](UserApi.md#getTokenScopes) | **GET** /tokens/scopes |  |
+| [**getUser**](UserApi.md#getUser) | **GET** /user |  |
+| [**getUserWithUsername**](UserApi.md#getUserWithUsername) | **GET** /users/{username} |  |
+| [**requestToken**](UserApi.md#requestToken) | **POST** /token |  |
+| [**resetUserPassword**](UserApi.md#resetUserPassword) | **POST** /user/password_reset |  |
+| [**revokeToken**](UserApi.md#revokeToken) | **DELETE** /tokens/{token} |  |
+| [**tokensGet**](UserApi.md#tokensGet) | **GET** /tokens |  |
+| [**tokensSessionGet**](UserApi.md#tokensSessionGet) | **GET** /tokens/session |  |
+| [**updateAWSAccessCredentials**](UserApi.md#updateAWSAccessCredentials) | **PATCH** /credentials/{namespace}/aws/{name} |  |
+| [**updateUser**](UserApi.md#updateUser) | **PATCH** /users/{username} |  |
+| [**updateUserInOrganization**](UserApi.md#updateUserInOrganization) | **PATCH** /organizations/{organization}/{username} |  |
 
 
 <a name="addAWSAccessCredentials"></a>
@@ -80,10 +80,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
- **awsAccessCredentials** | [**AWSAccessCredentials**](AWSAccessCredentials.md)| aws access credentials to store for a namespace |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
+| **awsAccessCredentials** | [**AWSAccessCredentials**](AWSAccessCredentials.md)| aws access credentials to store for a namespace | |
 
 ### Return type
 
@@ -101,8 +101,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | AWS keys added successfully |  -  |
-**0** | error response |  -  |
+| **204** | AWS keys added successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="addUserToOrganization"></a>
 # **addUserToOrganization**
@@ -156,10 +156,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name |
- **user** | [**OrganizationUser**](OrganizationUser.md)| user to add |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **user** | [**OrganizationUser**](OrganizationUser.md)| user to add | |
 
 ### Return type
 
@@ -177,8 +177,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user added to organization successfully |  -  |
-**0** | error response |  -  |
+| **204** | user added to organization successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="checkAWSAccessCredentials"></a>
 # **checkAWSAccessCredentials**
@@ -232,9 +232,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
 
 ### Return type
 
@@ -252,8 +252,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | AWS keys are set |  -  |
-**0** | error response |  -  |
+| **200** | AWS keys are set |  -  |
+| **0** | error response |  -  |
 
 <a name="checkAWSAccessCredentialsByName"></a>
 # **checkAWSAccessCredentialsByName**
@@ -308,10 +308,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
- **name** | **String**| name |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
+| **name** | **String**| name | |
 
 ### Return type
 
@@ -329,8 +329,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | AWS keys are set |  -  |
-**0** | error response |  -  |
+| **200** | AWS keys are set |  -  |
+| **0** | error response |  -  |
 
 <a name="confirmEmail"></a>
 # **confirmEmail**
@@ -399,8 +399,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | User email confirmed successfully |  -  |
-**0** | error response |  -  |
+| **204** | User email confirmed successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="createUser"></a>
 # **createUser**
@@ -453,9 +453,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md)| user to create |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **user** | [**User**](User.md)| user to create | |
 
 ### Return type
 
@@ -473,8 +473,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user created successfully |  -  |
-**0** | error response |  -  |
+| **204** | user created successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteAWSAccessCredentials"></a>
 # **deleteAWSAccessCredentials**
@@ -528,10 +528,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
- **name** | **String**| name |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
+| **name** | **String**| name | |
 
 ### Return type
 
@@ -549,8 +549,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | AWS credentials deleted |  -  |
-**0** | error response |  -  |
+| **204** | AWS credentials deleted |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteUser"></a>
 # **deleteUser**
@@ -603,9 +603,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| username or ID |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **username** | **String**| username or ID | |
 
 ### Return type
 
@@ -623,8 +623,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user deleted |  -  |
-**0** | error response |  -  |
+| **204** | user deleted |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteUserFromOrganization"></a>
 # **deleteUserFromOrganization**
@@ -678,10 +678,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name |
- **username** | **String**| username to manipulate |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **username** | **String**| username to manipulate | |
 
 ### Return type
 
@@ -699,8 +699,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user delete from organization successfully |  -  |
-**0** | error response |  -  |
+| **204** | user delete from organization successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="getOrganizationUser"></a>
 # **getOrganizationUser**
@@ -755,10 +755,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name |
- **username** | **String**| username to manipulate |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **username** | **String**| username to manipulate | |
 
 ### Return type
 
@@ -776,9 +776,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | user from organization |  -  |
-**404** | User is not in organization |  -  |
-**0** | error response |  -  |
+| **200** | user from organization |  -  |
+| **404** | User is not in organization |  -  |
+| **0** | error response |  -  |
 
 <a name="getSession"></a>
 # **getSession**
@@ -832,9 +832,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **rememberMe** | **String**| flag to create a token with expiration of 30 days, default is false | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **rememberMe** | **String**| flag to create a token with expiration of 30 days, default is false | [optional] |
 
 ### Return type
 
@@ -852,8 +852,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Session token |  -  |
-**0** | error response |  -  |
+| **200** | Session token |  -  |
+| **0** | error response |  -  |
 
 <a name="getTokenScopes"></a>
 # **getTokenScopes**
@@ -923,8 +923,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | available token scopes |  -  |
-**0** | error response |  -  |
+| **200** | available token scopes |  -  |
+| **0** | error response |  -  |
 
 <a name="getUser"></a>
 # **getUser**
@@ -994,8 +994,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | user details |  -  |
-**0** | error response |  -  |
+| **200** | user details |  -  |
+| **0** | error response |  -  |
 
 <a name="getUserWithUsername"></a>
 # **getUserWithUsername**
@@ -1049,9 +1049,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| username or ID |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **username** | **String**| username or ID | |
 
 ### Return type
 
@@ -1069,9 +1069,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | user details |  -  |
-**404** | User does not exist |  -  |
-**0** | error response |  -  |
+| **200** | user details |  -  |
+| **404** | User does not exist |  -  |
+| **0** | error response |  -  |
 
 <a name="requestToken"></a>
 # **requestToken**
@@ -1125,9 +1125,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tokenRequest** | [**TokenRequest**](TokenRequest.md)| token request object | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tokenRequest** | [**TokenRequest**](TokenRequest.md)| token request object | [optional] |
 
 ### Return type
 
@@ -1145,8 +1145,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | token |  -  |
-**0** | error response |  -  |
+| **200** | token |  -  |
+| **0** | error response |  -  |
 
 <a name="resetUserPassword"></a>
 # **resetUserPassword**
@@ -1183,7 +1183,7 @@ public class Example {
     BasicAuth.setPassword("YOUR PASSWORD");
 
     UserApi apiInstance = new UserApi(defaultClient);
-    InlineObject user = new InlineObject(); // InlineObject | 
+    ResetUserPasswordRequest user = new ResetUserPasswordRequest(); // ResetUserPasswordRequest | password to update for user requesting update
     try {
       apiInstance.resetUserPassword(user);
     } catch (ApiException e) {
@@ -1199,9 +1199,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user** | [**InlineObject**](InlineObject.md)|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **user** | [**ResetUserPasswordRequest**](ResetUserPasswordRequest.md)| password to update for user requesting update | |
 
 ### Return type
 
@@ -1219,9 +1219,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | User password updated successfully |  -  |
-**404** | User not found |  -  |
-**0** | error response |  -  |
+| **204** | User password updated successfully |  -  |
+| **404** | User not found |  -  |
+| **0** | error response |  -  |
 
 <a name="revokeToken"></a>
 # **revokeToken**
@@ -1274,9 +1274,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token** | **String**| token name or token itself |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **token** | **String**| token name or token itself | |
 
 ### Return type
 
@@ -1294,8 +1294,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | revokation successfully |  -  |
-**0** | error response |  -  |
+| **204** | revokation successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="tokensGet"></a>
 # **tokensGet**
@@ -1365,8 +1365,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array of user created non-session tokens |  -  |
-**0** | error response |  -  |
+| **200** | Array of user created non-session tokens |  -  |
+| **0** | error response |  -  |
 
 <a name="tokensSessionGet"></a>
 # **tokensSessionGet**
@@ -1436,8 +1436,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array of user created session tokens |  -  |
-**0** | error response |  -  |
+| **200** | Array of user created session tokens |  -  |
+| **0** | error response |  -  |
 
 <a name="updateAWSAccessCredentials"></a>
 # **updateAWSAccessCredentials**
@@ -1492,11 +1492,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
- **name** | **String**| name |
- **awsAccessCredentials** | [**AWSAccessCredentials**](AWSAccessCredentials.md)| aws credentials to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
+| **name** | **String**| name | |
+| **awsAccessCredentials** | [**AWSAccessCredentials**](AWSAccessCredentials.md)| aws credentials to update | |
 
 ### Return type
 
@@ -1514,8 +1514,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | AWS keys updated successfully |  -  |
-**0** | error response |  -  |
+| **204** | AWS keys updated successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="updateUser"></a>
 # **updateUser**
@@ -1569,10 +1569,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **String**| username or ID |
- **user** | [**User**](User.md)| user details to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **username** | **String**| username or ID | |
+| **user** | [**User**](User.md)| user details to update | |
 
 ### Return type
 
@@ -1590,8 +1590,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user updated successfully |  -  |
-**0** | error response |  -  |
+| **204** | user updated successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="updateUserInOrganization"></a>
 # **updateUserInOrganization**
@@ -1646,11 +1646,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name |
- **username** | **String**| username to manipulate |
- **user** | [**OrganizationUser**](OrganizationUser.md)| user details to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **username** | **String**| username to manipulate | |
+| **user** | [**OrganizationUser**](OrganizationUser.md)| user details to update | |
 
 ### Return type
 
@@ -1668,6 +1668,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user update in organization successfully |  -  |
-**0** | error response |  -  |
+| **204** | user update in organization successfully |  -  |
+| **0** | error response |  -  |
 

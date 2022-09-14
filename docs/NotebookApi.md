@@ -2,13 +2,13 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getNotebookServerStatus**](NotebookApi.md#getNotebookServerStatus) | **GET** /notebooks/server/{namespace}/status | 
-[**handleCopyNotebook**](NotebookApi.md#handleCopyNotebook) | **POST** /notebooks/{namespace}/{array}/copy | 
-[**handleUploadNotebook**](NotebookApi.md#handleUploadNotebook) | **POST** /notebooks/{namespace}/upload | 
-[**shutdownNotebookServer**](NotebookApi.md#shutdownNotebookServer) | **DELETE** /notebooks/server/{namespace} | 
-[**updateNotebookName**](NotebookApi.md#updateNotebookName) | **PATCH** /notebooks/{namespace}/{array}/rename | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getNotebookServerStatus**](NotebookApi.md#getNotebookServerStatus) | **GET** /notebooks/server/{namespace}/status |  |
+| [**handleCopyNotebook**](NotebookApi.md#handleCopyNotebook) | **POST** /notebooks/{namespace}/{array}/copy |  |
+| [**handleUploadNotebook**](NotebookApi.md#handleUploadNotebook) | **POST** /notebooks/{namespace}/upload |  |
+| [**shutdownNotebookServer**](NotebookApi.md#shutdownNotebookServer) | **DELETE** /notebooks/server/{namespace} |  |
+| [**updateNotebookName**](NotebookApi.md#updateNotebookName) | **PATCH** /notebooks/{namespace}/{array}/rename |  |
 
 
 <a name="getNotebookServerStatus"></a>
@@ -63,9 +63,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace notebook is in (an organization name or user&#39;s username) |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace notebook is in (an organization name or user&#39;s username) | |
 
 ### Return type
 
@@ -83,11 +83,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | status of running notebook |  -  |
-**202** | Notebook server is pending |  -  |
-**402** | Payment required |  -  |
-**404** | Notebook is not running |  -  |
-**0** | error response |  -  |
+| **200** | status of running notebook |  -  |
+| **202** | Notebook server is pending |  -  |
+| **402** | Payment required |  -  |
+| **404** | Notebook is not running |  -  |
+| **0** | error response |  -  |
 
 <a name="handleCopyNotebook"></a>
 # **handleCopyNotebook**
@@ -145,13 +145,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the notebook |
- **array** | **String**| The name of the notebook |
- **notebookCopy** | [**NotebookCopy**](NotebookCopy.md)| Input/Output information to create a new TileDB file |
- **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional]
- **endTimestamp** | **Integer**| Milliseconds since Unix epoch, copy will use open_at functionality to copy notebook created at the specific timestamp | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the notebook | |
+| **array** | **String**| The name of the notebook | |
+| **notebookCopy** | [**NotebookCopy**](NotebookCopy.md)| Input/Output information to create a new TileDB file | |
+| **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional] |
+| **endTimestamp** | **Integer**| Milliseconds since Unix epoch, copy will use open_at functionality to copy notebook created at the specific timestamp | [optional] |
 
 ### Return type
 
@@ -169,8 +169,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Notebook copied |  -  |
-**0** | error response |  -  |
+| **201** | Notebook copied |  -  |
+| **0** | error response |  -  |
 
 <a name="handleUploadNotebook"></a>
 # **handleUploadNotebook**
@@ -228,13 +228,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the notebook |
- **inputFile** | **File**| the notebook to upload |
- **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional]
- **outputUri** | **String**| output location of the TileDB File | [optional]
- **name** | **String**| name to set for registered file | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the notebook | |
+| **inputFile** | **File**| the notebook to upload | |
+| **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional] |
+| **outputUri** | **String**| output location of the TileDB File | [optional] |
+| **name** | **String**| name to set for registered file | [optional] |
 
 ### Return type
 
@@ -252,8 +252,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | File uploaded |  -  |
-**0** | error response |  -  |
+| **201** | File uploaded |  -  |
+| **0** | error response |  -  |
 
 <a name="shutdownNotebookServer"></a>
 # **shutdownNotebookServer**
@@ -306,9 +306,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace notebook is in (an organization name or user&#39;s username) |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace notebook is in (an organization name or user&#39;s username) | |
 
 ### Return type
 
@@ -326,9 +326,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Notebook shutdown successfully |  -  |
-**404** | Notebook is not running |  -  |
-**0** | error response |  -  |
+| **204** | Notebook shutdown successfully |  -  |
+| **404** | Notebook is not running |  -  |
+| **0** | error response |  -  |
 
 <a name="updateNotebookName"></a>
 # **updateNotebookName**
@@ -383,11 +383,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of notebook (array) that is url-encoded |
- **notebookMetadata** | [**ArrayInfoUpdate**](ArrayInfoUpdate.md)| notebook (array) metadata to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of notebook (array) that is url-encoded | |
+| **notebookMetadata** | [**ArrayInfoUpdate**](ArrayInfoUpdate.md)| notebook (array) metadata to update | |
 
 ### Return type
 
@@ -405,6 +405,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | notebook name updated successfully |  -  |
-**0** | error response |  -  |
+| **204** | notebook name updated successfully |  -  |
+| **0** | error response |  -  |
 
