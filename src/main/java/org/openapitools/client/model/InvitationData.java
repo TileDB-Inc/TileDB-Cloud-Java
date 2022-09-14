@@ -28,11 +28,31 @@ import java.util.List;
 import org.openapitools.client.model.Invitation;
 import org.openapitools.client.model.PaginationMetadata;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Object including invitations and metadata
  */
 @ApiModel(description = "Object including invitations and metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class InvitationData {
   public static final String SERIALIZED_NAME_INVITATIONS = "invitations";
   @SerializedName(SERIALIZED_NAME_INVITATIONS)
@@ -53,7 +73,7 @@ public class InvitationData {
 
   public InvitationData addInvitationsItem(Invitation invitationsItem) {
     if (this.invitations == null) {
-      this.invitations = new ArrayList<Invitation>();
+      this.invitations = new ArrayList<>();
     }
     this.invitations.add(invitationsItem);
     return this;
@@ -99,6 +119,7 @@ public class InvitationData {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -138,5 +159,107 @@ public class InvitationData {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("invitations");
+    openapiFields.add("pagination_metadata");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to InvitationData
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (InvitationData.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in InvitationData is not found in the empty JSON string", InvitationData.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!InvitationData.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InvitationData` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      JsonArray jsonArrayinvitations = jsonObj.getAsJsonArray("invitations");
+      if (jsonArrayinvitations != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("invitations").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `invitations` to be an array in the JSON string but got `%s`", jsonObj.get("invitations").toString()));
+        }
+
+        // validate the optional field `invitations` (array)
+        for (int i = 0; i < jsonArrayinvitations.size(); i++) {
+          Invitation.validateJsonObject(jsonArrayinvitations.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `pagination_metadata`
+      if (jsonObj.getAsJsonObject("pagination_metadata") != null) {
+        PaginationMetadata.validateJsonObject(jsonObj.getAsJsonObject("pagination_metadata"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!InvitationData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'InvitationData' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<InvitationData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(InvitationData.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<InvitationData>() {
+           @Override
+           public void write(JsonWriter out, InvitationData value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public InvitationData read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of InvitationData given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of InvitationData
+  * @throws IOException if the JSON string is invalid with respect to InvitationData
+  */
+  public static InvitationData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, InvitationData.class);
+  }
+
+ /**
+  * Convert an instance of InvitationData to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

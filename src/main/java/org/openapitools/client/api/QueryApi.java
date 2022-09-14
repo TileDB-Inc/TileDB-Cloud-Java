@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class QueryApi {
     private ApiClient localVarApiClient;
@@ -97,7 +98,6 @@ public class QueryApi {
      */
     public okhttp3.Call finalizeQueryCall(String namespace, String array, String type, String contentType, Query query, String xPayer, Integer openAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -294,7 +294,6 @@ public class QueryApi {
      */
     public okhttp3.Call getEstResultSizesCall(String namespace, String array, String type, String contentType, Query query, String xPayer, Integer openAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -487,7 +486,6 @@ public class QueryApi {
      */
     public okhttp3.Call getFileCall(String namespace, String array, String contentType, String xPayer, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -654,7 +652,6 @@ public class QueryApi {
      */
     public okhttp3.Call submitQueryCall(String namespace, String array, String type, String contentType, Query query, String xPayer, Integer openAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -848,7 +845,6 @@ public class QueryApi {
      */
     public okhttp3.Call submitQueryJsonCall(String namespace, String array, String contentType, QueryJson queryJson, String xPayer, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

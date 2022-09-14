@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,13 +32,32 @@ import java.util.Map;
 import org.openapitools.client.model.TaskGraphLogStatus;
 import org.openapitools.client.model.TaskGraphNodeMetadata;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.threeten.bp.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
  * Logging information about the execution of a task graph.
  */
 @ApiModel(description = "Logging information about the execution of a task graph.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class TaskGraphLog {
   public static final String SERIALIZED_NAME_UUID = "uuid";
   @SerializedName(SERIALIZED_NAME_UUID)
@@ -353,7 +373,7 @@ public class TaskGraphLog {
 
   public TaskGraphLog putStatusCountItem(String key, BigDecimal statusCountItem) {
     if (this.statusCount == null) {
-      this.statusCount = new HashMap<String, BigDecimal>();
+      this.statusCount = new HashMap<>();
     }
     this.statusCount.put(key, statusCountItem);
     return this;
@@ -384,7 +404,7 @@ public class TaskGraphLog {
 
   public TaskGraphLog addNodesItem(TaskGraphNodeMetadata nodesItem) {
     if (this.nodes == null) {
-      this.nodes = new ArrayList<TaskGraphNodeMetadata>();
+      this.nodes = new ArrayList<>();
     }
     this.nodes.add(nodesItem);
     return this;
@@ -405,6 +425,7 @@ public class TaskGraphLog {
   public void setNodes(List<TaskGraphNodeMetadata> nodes) {
     this.nodes = nodes;
   }
+
 
 
   @Override
@@ -481,5 +502,130 @@ public class TaskGraphLog {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("uuid");
+    openapiFields.add("namespace");
+    openapiFields.add("created_by");
+    openapiFields.add("name");
+    openapiFields.add("created_at");
+    openapiFields.add("start_time");
+    openapiFields.add("end_time");
+    openapiFields.add("status");
+    openapiFields.add("total_cost");
+    openapiFields.add("access_cost");
+    openapiFields.add("egress_cost");
+    openapiFields.add("execution_time");
+    openapiFields.add("status_count");
+    openapiFields.add("nodes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TaskGraphLog
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TaskGraphLog.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraphLog is not found in the empty JSON string", TaskGraphLog.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!TaskGraphLog.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TaskGraphLog` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uuid").toString()));
+      }
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
+      }
+      if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `created_by` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_by").toString()));
+      }
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (jsonObj.get("execution_time") != null && !jsonObj.get("execution_time").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `execution_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("execution_time").toString()));
+      }
+      JsonArray jsonArraynodes = jsonObj.getAsJsonArray("nodes");
+      if (jsonArraynodes != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("nodes").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `nodes` to be an array in the JSON string but got `%s`", jsonObj.get("nodes").toString()));
+        }
+
+        // validate the optional field `nodes` (array)
+        for (int i = 0; i < jsonArraynodes.size(); i++) {
+          TaskGraphNodeMetadata.validateJsonObject(jsonArraynodes.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!TaskGraphLog.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TaskGraphLog' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<TaskGraphLog> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TaskGraphLog.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<TaskGraphLog>() {
+           @Override
+           public void write(JsonWriter out, TaskGraphLog value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public TaskGraphLog read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of TaskGraphLog given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TaskGraphLog
+  * @throws IOException if the JSON string is invalid with respect to TaskGraphLog
+  */
+  public static TaskGraphLog fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TaskGraphLog.class);
+  }
+
+ /**
+  * Convert an instance of TaskGraphLog to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

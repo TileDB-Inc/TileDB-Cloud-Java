@@ -2,22 +2,22 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**addAWSAccessCredentials**](OrganizationApi.md#addAWSAccessCredentials) | **POST** /credentials/{namespace}/aws | 
-[**addUserToOrganization**](OrganizationApi.md#addUserToOrganization) | **POST** /organizations/{organization}/user | 
-[**checkAWSAccessCredentials**](OrganizationApi.md#checkAWSAccessCredentials) | **GET** /credentials/{namespace}/aws | 
-[**checkAWSAccessCredentialsByName**](OrganizationApi.md#checkAWSAccessCredentialsByName) | **GET** /credentials/{namespace}/aws/{name} | 
-[**createOrganization**](OrganizationApi.md#createOrganization) | **POST** /organization | 
-[**deleteAWSAccessCredentials**](OrganizationApi.md#deleteAWSAccessCredentials) | **DELETE** /credentials/{namespace}/aws/{name} | 
-[**deleteOrganization**](OrganizationApi.md#deleteOrganization) | **DELETE** /organizations/{organization} | 
-[**deleteUserFromOrganization**](OrganizationApi.md#deleteUserFromOrganization) | **DELETE** /organizations/{organization}/{username} | 
-[**getAllOrganizations**](OrganizationApi.md#getAllOrganizations) | **GET** /organizations | 
-[**getOrganization**](OrganizationApi.md#getOrganization) | **GET** /organizations/{organization} | 
-[**getOrganizationUser**](OrganizationApi.md#getOrganizationUser) | **GET** /organizations/{organization}/{username} | 
-[**updateAWSAccessCredentials**](OrganizationApi.md#updateAWSAccessCredentials) | **PATCH** /credentials/{namespace}/aws/{name} | 
-[**updateOrganization**](OrganizationApi.md#updateOrganization) | **PATCH** /organizations/{organization} | 
-[**updateUserInOrganization**](OrganizationApi.md#updateUserInOrganization) | **PATCH** /organizations/{organization}/{username} | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**addAWSAccessCredentials**](OrganizationApi.md#addAWSAccessCredentials) | **POST** /credentials/{namespace}/aws |  |
+| [**addUserToOrganization**](OrganizationApi.md#addUserToOrganization) | **POST** /organizations/{organization}/user |  |
+| [**checkAWSAccessCredentials**](OrganizationApi.md#checkAWSAccessCredentials) | **GET** /credentials/{namespace}/aws |  |
+| [**checkAWSAccessCredentialsByName**](OrganizationApi.md#checkAWSAccessCredentialsByName) | **GET** /credentials/{namespace}/aws/{name} |  |
+| [**createOrganization**](OrganizationApi.md#createOrganization) | **POST** /organization |  |
+| [**deleteAWSAccessCredentials**](OrganizationApi.md#deleteAWSAccessCredentials) | **DELETE** /credentials/{namespace}/aws/{name} |  |
+| [**deleteOrganization**](OrganizationApi.md#deleteOrganization) | **DELETE** /organizations/{organization} |  |
+| [**deleteUserFromOrganization**](OrganizationApi.md#deleteUserFromOrganization) | **DELETE** /organizations/{organization}/{username} |  |
+| [**getAllOrganizations**](OrganizationApi.md#getAllOrganizations) | **GET** /organizations |  |
+| [**getOrganization**](OrganizationApi.md#getOrganization) | **GET** /organizations/{organization} |  |
+| [**getOrganizationUser**](OrganizationApi.md#getOrganizationUser) | **GET** /organizations/{organization}/{username} |  |
+| [**updateAWSAccessCredentials**](OrganizationApi.md#updateAWSAccessCredentials) | **PATCH** /credentials/{namespace}/aws/{name} |  |
+| [**updateOrganization**](OrganizationApi.md#updateOrganization) | **PATCH** /organizations/{organization} |  |
+| [**updateUserInOrganization**](OrganizationApi.md#updateUserInOrganization) | **PATCH** /organizations/{organization}/{username} |  |
 
 
 <a name="addAWSAccessCredentials"></a>
@@ -72,10 +72,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
- **awsAccessCredentials** | [**AWSAccessCredentials**](AWSAccessCredentials.md)| aws access credentials to store for a namespace |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
+| **awsAccessCredentials** | [**AWSAccessCredentials**](AWSAccessCredentials.md)| aws access credentials to store for a namespace | |
 
 ### Return type
 
@@ -93,8 +93,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | AWS keys added successfully |  -  |
-**0** | error response |  -  |
+| **204** | AWS keys added successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="addUserToOrganization"></a>
 # **addUserToOrganization**
@@ -148,10 +148,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name |
- **user** | [**OrganizationUser**](OrganizationUser.md)| user to add |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **user** | [**OrganizationUser**](OrganizationUser.md)| user to add | |
 
 ### Return type
 
@@ -169,8 +169,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user added to organization successfully |  -  |
-**0** | error response |  -  |
+| **204** | user added to organization successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="checkAWSAccessCredentials"></a>
 # **checkAWSAccessCredentials**
@@ -224,9 +224,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
 
 ### Return type
 
@@ -244,8 +244,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | AWS keys are set |  -  |
-**0** | error response |  -  |
+| **200** | AWS keys are set |  -  |
+| **0** | error response |  -  |
 
 <a name="checkAWSAccessCredentialsByName"></a>
 # **checkAWSAccessCredentialsByName**
@@ -300,10 +300,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
- **name** | **String**| name |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
+| **name** | **String**| name | |
 
 ### Return type
 
@@ -321,8 +321,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | AWS keys are set |  -  |
-**0** | error response |  -  |
+| **200** | AWS keys are set |  -  |
+| **0** | error response |  -  |
 
 <a name="createOrganization"></a>
 # **createOrganization**
@@ -375,9 +375,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | [**Organization**](Organization.md)| organization to create |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | [**Organization**](Organization.md)| organization to create | |
 
 ### Return type
 
@@ -395,8 +395,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | organization created successfully |  -  |
-**0** | error response |  -  |
+| **204** | organization created successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteAWSAccessCredentials"></a>
 # **deleteAWSAccessCredentials**
@@ -450,10 +450,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
- **name** | **String**| name |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
+| **name** | **String**| name | |
 
 ### Return type
 
@@ -471,8 +471,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | AWS credentials deleted |  -  |
-**0** | error response |  -  |
+| **204** | AWS credentials deleted |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteOrganization"></a>
 # **deleteOrganization**
@@ -525,9 +525,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name or ID |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name or ID | |
 
 ### Return type
 
@@ -545,8 +545,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | organization deleted |  -  |
-**0** | error response |  -  |
+| **204** | organization deleted |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteUserFromOrganization"></a>
 # **deleteUserFromOrganization**
@@ -600,10 +600,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name |
- **username** | **String**| username to manipulate |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **username** | **String**| username to manipulate | |
 
 ### Return type
 
@@ -621,8 +621,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user delete from organization successfully |  -  |
-**0** | error response |  -  |
+| **204** | user delete from organization successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="getAllOrganizations"></a>
 # **getAllOrganizations**
@@ -692,10 +692,10 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array of organizations the user is member of |  -  |
-**400** | Error finding organizations |  -  |
-**500** | Request user not found, or has empty context |  -  |
-**0** | error response |  -  |
+| **200** | array of organizations the user is member of |  -  |
+| **400** | Error finding organizations |  -  |
+| **500** | Request user not found, or has empty context |  -  |
+| **0** | error response |  -  |
 
 <a name="getOrganization"></a>
 # **getOrganization**
@@ -749,9 +749,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name or ID |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name or ID | |
 
 ### Return type
 
@@ -769,9 +769,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | organization details |  -  |
-**404** | Organization does not exist |  -  |
-**0** | error response |  -  |
+| **200** | organization details |  -  |
+| **404** | Organization does not exist |  -  |
+| **0** | error response |  -  |
 
 <a name="getOrganizationUser"></a>
 # **getOrganizationUser**
@@ -826,10 +826,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name |
- **username** | **String**| username to manipulate |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **username** | **String**| username to manipulate | |
 
 ### Return type
 
@@ -847,9 +847,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | user from organization |  -  |
-**404** | User is not in organization |  -  |
-**0** | error response |  -  |
+| **200** | user from organization |  -  |
+| **404** | User is not in organization |  -  |
+| **0** | error response |  -  |
 
 <a name="updateAWSAccessCredentials"></a>
 # **updateAWSAccessCredentials**
@@ -904,11 +904,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace |
- **name** | **String**| name |
- **awsAccessCredentials** | [**AWSAccessCredentials**](AWSAccessCredentials.md)| aws credentials to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | |
+| **name** | **String**| name | |
+| **awsAccessCredentials** | [**AWSAccessCredentials**](AWSAccessCredentials.md)| aws credentials to update | |
 
 ### Return type
 
@@ -926,8 +926,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | AWS keys updated successfully |  -  |
-**0** | error response |  -  |
+| **204** | AWS keys updated successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="updateOrganization"></a>
 # **updateOrganization**
@@ -981,10 +981,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name or ID |
- **organizationDetails** | [**Organization**](Organization.md)| organization details to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name or ID | |
+| **organizationDetails** | [**Organization**](Organization.md)| organization details to update | |
 
 ### Return type
 
@@ -1002,8 +1002,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | organization updated successfully |  -  |
-**0** | error response |  -  |
+| **204** | organization updated successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="updateUserInOrganization"></a>
 # **updateUserInOrganization**
@@ -1058,11 +1058,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| organization name |
- **username** | **String**| username to manipulate |
- **user** | [**OrganizationUser**](OrganizationUser.md)| user details to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **username** | **String**| username to manipulate | |
+| **user** | [**OrganizationUser**](OrganizationUser.md)| user details to update | |
 
 ### Return type
 
@@ -1080,6 +1080,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | user update in organization successfully |  -  |
-**0** | error response |  -  |
+| **204** | user update in organization successfully |  -  |
+| **0** | error response |  -  |
 

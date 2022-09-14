@@ -13,5 +13,7 @@
 
 * `GENERIC_UDF` (value: `"GENERIC_UDF"`)
 
+* `CLIENT_COMPUTATION` (value: `"CLIENT_COMPUTATION"`)
+
 
 

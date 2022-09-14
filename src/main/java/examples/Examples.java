@@ -189,7 +189,7 @@ public class Examples
         schema.addVersionItem(10);
 
         FilterPipeline filterPipeline = new FilterPipeline();
-        filterPipeline.addFiltersItem(new Filter().type(FilterType.NONE));
+        filterPipeline.addFiltersItem(new Filter().type(FilterType.ZSTD));
 
         schema.setOffsetFilterPipeline(filterPipeline);
         schema.setCoordsFilterPipeline(filterPipeline);

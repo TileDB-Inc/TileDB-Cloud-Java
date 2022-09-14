@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import org.openapitools.client.model.Error;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
 import org.openapitools.client.model.TaskGraphClientNodeStatus;
 import org.openapitools.client.model.TaskGraphLog;
 import org.openapitools.client.model.TaskGraphLogsData;
@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class TaskGraphLogsApi {
     private ApiClient localVarApiClient;
@@ -92,7 +93,6 @@ public class TaskGraphLogsApi {
      */
     public okhttp3.Call createTaskGraphLogCall(String namespace, TaskGraphLog log, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -233,7 +233,6 @@ public class TaskGraphLogsApi {
      */
     public okhttp3.Call getTaskGraphLogCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -380,7 +379,6 @@ public class TaskGraphLogsApi {
      */
     public okhttp3.Call listTaskGraphLogsCall(String namespace, String createdBy, String search, OffsetDateTime startTime, OffsetDateTime endTime, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -554,7 +552,6 @@ public class TaskGraphLogsApi {
      */
     public okhttp3.Call reportClientNodeCall(String namespace, String id, TaskGraphClientNodeStatus report, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -701,7 +698,6 @@ public class TaskGraphLogsApi {
      */
     public okhttp3.Call updateTaskGraphLogCall(String namespace, String id, TaskGraphLog log, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

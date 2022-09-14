@@ -28,11 +28,31 @@ import java.util.List;
 import org.openapitools.client.model.ArrayInfo;
 import org.openapitools.client.model.PaginationMetadata;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Object including MLModel favorites and pagination metadata
  */
 @ApiModel(description = "Object including MLModel favorites and pagination metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class MLModelFavoritesData {
   public static final String SERIALIZED_NAME_MLMODELS = "mlmodels";
   @SerializedName(SERIALIZED_NAME_MLMODELS)
@@ -53,7 +73,7 @@ public class MLModelFavoritesData {
 
   public MLModelFavoritesData addMlmodelsItem(ArrayInfo mlmodelsItem) {
     if (this.mlmodels == null) {
-      this.mlmodels = new ArrayList<ArrayInfo>();
+      this.mlmodels = new ArrayList<>();
     }
     this.mlmodels.add(mlmodelsItem);
     return this;
@@ -99,6 +119,7 @@ public class MLModelFavoritesData {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -138,5 +159,107 @@ public class MLModelFavoritesData {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("mlmodels");
+    openapiFields.add("pagination_metadata");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to MLModelFavoritesData
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (MLModelFavoritesData.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MLModelFavoritesData is not found in the empty JSON string", MLModelFavoritesData.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!MLModelFavoritesData.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MLModelFavoritesData` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      JsonArray jsonArraymlmodels = jsonObj.getAsJsonArray("mlmodels");
+      if (jsonArraymlmodels != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("mlmodels").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `mlmodels` to be an array in the JSON string but got `%s`", jsonObj.get("mlmodels").toString()));
+        }
+
+        // validate the optional field `mlmodels` (array)
+        for (int i = 0; i < jsonArraymlmodels.size(); i++) {
+          ArrayInfo.validateJsonObject(jsonArraymlmodels.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `pagination_metadata`
+      if (jsonObj.getAsJsonObject("pagination_metadata") != null) {
+        PaginationMetadata.validateJsonObject(jsonObj.getAsJsonObject("pagination_metadata"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!MLModelFavoritesData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MLModelFavoritesData' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<MLModelFavoritesData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MLModelFavoritesData.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<MLModelFavoritesData>() {
+           @Override
+           public void write(JsonWriter out, MLModelFavoritesData value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public MLModelFavoritesData read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of MLModelFavoritesData given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of MLModelFavoritesData
+  * @throws IOException if the JSON string is invalid with respect to MLModelFavoritesData
+  */
+  public static MLModelFavoritesData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MLModelFavoritesData.class);
+  }
+
+ /**
+  * Convert an instance of MLModelFavoritesData to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

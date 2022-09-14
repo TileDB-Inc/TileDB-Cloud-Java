@@ -27,11 +27,31 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.ArrayActions;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * details for sharing a given array
  */
 @ApiModel(description = "details for sharing a given array")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class ArraySharing {
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
@@ -56,7 +76,7 @@ public class ArraySharing {
 
   public ArraySharing addActionsItem(ArrayActions actionsItem) {
     if (this.actions == null) {
-      this.actions = new ArrayList<ArrayActions>();
+      this.actions = new ArrayList<>();
     }
     this.actions.add(actionsItem);
     return this;
@@ -125,6 +145,7 @@ public class ArraySharing {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -166,5 +187,102 @@ public class ArraySharing {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("actions");
+    openapiFields.add("namespace");
+    openapiFields.add("namespace_type");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ArraySharing
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ArraySharing.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ArraySharing is not found in the empty JSON string", ArraySharing.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ArraySharing.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArraySharing` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `actions` to be an array in the JSON string but got `%s`", jsonObj.get("actions").toString()));
+      }
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
+      }
+      if (jsonObj.get("namespace_type") != null && !jsonObj.get("namespace_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `namespace_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace_type").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ArraySharing.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ArraySharing' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ArraySharing> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ArraySharing.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ArraySharing>() {
+           @Override
+           public void write(JsonWriter out, ArraySharing value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ArraySharing read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ArraySharing given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ArraySharing
+  * @throws IOException if the JSON string is invalid with respect to ArraySharing
+  */
+  public static ArraySharing fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ArraySharing.class);
+  }
+
+ /**
+  * Convert an instance of ArraySharing to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -33,11 +33,31 @@ import org.openapitools.client.model.UDFLanguage;
 import org.openapitools.client.model.UDFSubarray;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * User-defined function
  */
 @ApiModel(description = "User-defined function")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class MultiArrayUDF {
   public static final String SERIALIZED_NAME_UDF_INFO_NAME = "udf_info_name";
   @SerializedName(SERIALIZED_NAME_UDF_INFO_NAME)
@@ -364,7 +384,7 @@ public class MultiArrayUDF {
 
   public MultiArrayUDF addArgumentsJsonItem(TGUDFArgument argumentsJsonItem) {
     if (this.argumentsJson == null) {
-      this.argumentsJson = new ArrayList<TGUDFArgument>();
+      this.argumentsJson = new ArrayList<>();
     }
     this.argumentsJson.add(argumentsJsonItem);
     return this;
@@ -395,7 +415,7 @@ public class MultiArrayUDF {
 
   public MultiArrayUDF addStoredParamUuidsItem(String storedParamUuidsItem) {
     if (this.storedParamUuids == null) {
-      this.storedParamUuids = new ArrayList<String>();
+      this.storedParamUuids = new ArrayList<>();
     }
     this.storedParamUuids.add(storedParamUuidsItem);
     return this;
@@ -518,7 +538,7 @@ public class MultiArrayUDF {
 
   public MultiArrayUDF addBuffersItem(String buffersItem) {
     if (this.buffers == null) {
-      this.buffers = new ArrayList<String>();
+      this.buffers = new ArrayList<>();
     }
     this.buffers.add(buffersItem);
     return this;
@@ -549,7 +569,7 @@ public class MultiArrayUDF {
 
   public MultiArrayUDF addArraysItem(UDFArrayDetails arraysItem) {
     if (this.arrays == null) {
-      this.arrays = new ArrayList<UDFArrayDetails>();
+      this.arrays = new ArrayList<>();
     }
     this.arrays.add(arraysItem);
     return this;
@@ -641,6 +661,7 @@ public class MultiArrayUDF {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -729,5 +750,180 @@ public class MultiArrayUDF {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("udf_info_name");
+    openapiFields.add("language");
+    openapiFields.add("version");
+    openapiFields.add("image_name");
+    openapiFields.add("resource_class");
+    openapiFields.add("exec");
+    openapiFields.add("exec_raw");
+    openapiFields.add("result_format");
+    openapiFields.add("task_name");
+    openapiFields.add("argument");
+    openapiFields.add("arguments_json");
+    openapiFields.add("stored_param_uuids");
+    openapiFields.add("store_results");
+    openapiFields.add("dont_download_results");
+    openapiFields.add("ranges");
+    openapiFields.add("subarray");
+    openapiFields.add("buffers");
+    openapiFields.add("arrays");
+    openapiFields.add("timeout");
+    openapiFields.add("task_graph_uuid");
+    openapiFields.add("client_node_uuid");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to MultiArrayUDF
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (MultiArrayUDF.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiArrayUDF is not found in the empty JSON string", MultiArrayUDF.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!MultiArrayUDF.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MultiArrayUDF` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      if (jsonObj.get("udf_info_name") != null && !jsonObj.get("udf_info_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `udf_info_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("udf_info_name").toString()));
+      }
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
+      }
+      if (jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `image_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_name").toString()));
+      }
+      if (jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `resource_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_class").toString()));
+      }
+      if (jsonObj.get("exec") != null && !jsonObj.get("exec").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exec` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec").toString()));
+      }
+      if (jsonObj.get("exec_raw") != null && !jsonObj.get("exec_raw").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exec_raw` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec_raw").toString()));
+      }
+      if (jsonObj.get("task_name") != null && !jsonObj.get("task_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `task_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_name").toString()));
+      }
+      if (jsonObj.get("argument") != null && !jsonObj.get("argument").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `argument` to be a primitive type in the JSON string but got `%s`", jsonObj.get("argument").toString()));
+      }
+      JsonArray jsonArrayargumentsJson = jsonObj.getAsJsonArray("arguments_json");
+      if (jsonArrayargumentsJson != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("arguments_json").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `arguments_json` to be an array in the JSON string but got `%s`", jsonObj.get("arguments_json").toString()));
+        }
+
+        // validate the optional field `arguments_json` (array)
+        for (int i = 0; i < jsonArrayargumentsJson.size(); i++) {
+          TGUDFArgument.validateJsonObject(jsonArrayargumentsJson.get(i).getAsJsonObject());
+        };
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("stored_param_uuids") != null && !jsonObj.get("stored_param_uuids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `stored_param_uuids` to be an array in the JSON string but got `%s`", jsonObj.get("stored_param_uuids").toString()));
+      }
+      // validate the optional field `ranges`
+      if (jsonObj.getAsJsonObject("ranges") != null) {
+        QueryRanges.validateJsonObject(jsonObj.getAsJsonObject("ranges"));
+      }
+      // validate the optional field `subarray`
+      if (jsonObj.getAsJsonObject("subarray") != null) {
+        UDFSubarray.validateJsonObject(jsonObj.getAsJsonObject("subarray"));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("buffers") != null && !jsonObj.get("buffers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `buffers` to be an array in the JSON string but got `%s`", jsonObj.get("buffers").toString()));
+      }
+      JsonArray jsonArrayarrays = jsonObj.getAsJsonArray("arrays");
+      if (jsonArrayarrays != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("arrays").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `arrays` to be an array in the JSON string but got `%s`", jsonObj.get("arrays").toString()));
+        }
+
+        // validate the optional field `arrays` (array)
+        for (int i = 0; i < jsonArrayarrays.size(); i++) {
+          UDFArrayDetails.validateJsonObject(jsonArrayarrays.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `task_graph_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_graph_uuid").toString()));
+      }
+      if (jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!MultiArrayUDF.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MultiArrayUDF' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<MultiArrayUDF> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MultiArrayUDF.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<MultiArrayUDF>() {
+           @Override
+           public void write(JsonWriter out, MultiArrayUDF value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public MultiArrayUDF read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of MultiArrayUDF given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of MultiArrayUDF
+  * @throws IOException if the JSON string is invalid with respect to MultiArrayUDF
+  */
+  public static MultiArrayUDF fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MultiArrayUDF.class);
+  }
+
+ /**
+  * Convert an instance of MultiArrayUDF to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

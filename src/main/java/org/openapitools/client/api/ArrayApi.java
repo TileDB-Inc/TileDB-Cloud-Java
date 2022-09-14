@@ -49,6 +49,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class ArrayApi {
     private ApiClient localVarApiClient;
@@ -108,7 +109,6 @@ public class ArrayApi {
      */
     public okhttp3.Call arrayActivityLogCall(String namespace, String array, Integer start, Integer end, String eventTypes, String taskId, Boolean hasTaskId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -294,7 +294,6 @@ public class ArrayApi {
      */
     public okhttp3.Call arraysBrowserOwnedGetCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -493,7 +492,6 @@ public class ArrayApi {
      */
     public okhttp3.Call arraysBrowserOwnedSidebarGetCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -626,7 +624,6 @@ public class ArrayApi {
      */
     public okhttp3.Call arraysBrowserPublicGetCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -825,7 +822,6 @@ public class ArrayApi {
      */
     public okhttp3.Call arraysBrowserPublicSidebarGetCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -946,6 +942,7 @@ public class ArrayApi {
      * @param fileType file_type to search for, more than one can be included (optional)
      * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
      * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
+     * @param sharedTo namespaces to filter results of where there arrays were shared to (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -956,9 +953,8 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call arraysBrowserSharedGetCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call arraysBrowserSharedGetCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1026,6 +1022,10 @@ public class ArrayApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "file_property", fileProperty));
         }
 
+        if (sharedTo != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "shared_to", sharedTo));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1047,10 +1047,10 @@ public class ArrayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call arraysBrowserSharedGetValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call arraysBrowserSharedGetValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = arraysBrowserSharedGetCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, _callback);
+        okhttp3.Call localVarCall = arraysBrowserSharedGetCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo, _callback);
         return localVarCall;
 
     }
@@ -1069,6 +1069,7 @@ public class ArrayApi {
      * @param fileType file_type to search for, more than one can be included (optional)
      * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
      * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
+     * @param sharedTo namespaces to filter results of where there arrays were shared to (optional)
      * @return ArrayBrowserData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1078,8 +1079,8 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ArrayBrowserData arraysBrowserSharedGet(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty) throws ApiException {
-        ApiResponse<ArrayBrowserData> localVarResp = arraysBrowserSharedGetWithHttpInfo(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty);
+    public ArrayBrowserData arraysBrowserSharedGet(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo) throws ApiException {
+        ApiResponse<ArrayBrowserData> localVarResp = arraysBrowserSharedGetWithHttpInfo(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo);
         return localVarResp.getData();
     }
 
@@ -1097,6 +1098,7 @@ public class ArrayApi {
      * @param fileType file_type to search for, more than one can be included (optional)
      * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
      * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
+     * @param sharedTo namespaces to filter results of where there arrays were shared to (optional)
      * @return ApiResponse&lt;ArrayBrowserData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1106,8 +1108,8 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArrayBrowserData> arraysBrowserSharedGetWithHttpInfo(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty) throws ApiException {
-        okhttp3.Call localVarCall = arraysBrowserSharedGetValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, null);
+    public ApiResponse<ArrayBrowserData> arraysBrowserSharedGetWithHttpInfo(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo) throws ApiException {
+        okhttp3.Call localVarCall = arraysBrowserSharedGetValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo, null);
         Type localVarReturnType = new TypeToken<ArrayBrowserData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1126,6 +1128,7 @@ public class ArrayApi {
      * @param fileType file_type to search for, more than one can be included (optional)
      * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
      * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
+     * @param sharedTo namespaces to filter results of where there arrays were shared to (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1136,9 +1139,9 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call arraysBrowserSharedGetAsync(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback<ArrayBrowserData> _callback) throws ApiException {
+    public okhttp3.Call arraysBrowserSharedGetAsync(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo, final ApiCallback<ArrayBrowserData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = arraysBrowserSharedGetValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, _callback);
+        okhttp3.Call localVarCall = arraysBrowserSharedGetValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo, _callback);
         Type localVarReturnType = new TypeToken<ArrayBrowserData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1157,7 +1160,6 @@ public class ArrayApi {
      */
     public okhttp3.Call arraysBrowserSharedSidebarGetCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1283,7 +1285,6 @@ public class ArrayApi {
      */
     public okhttp3.Call arraysNamespaceArrayEndTimestampsGetCall(String namespace, String array, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1440,7 +1441,6 @@ public class ArrayApi {
      */
     public okhttp3.Call consolidateArrayCall(String namespace, String array, TileDBConfig tiledbConfig, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1589,7 +1589,6 @@ public class ArrayApi {
      */
     public okhttp3.Call createArrayCall(String namespace, String array, String contentType, ArraySchema arraySchema, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1755,7 +1754,6 @@ public class ArrayApi {
      */
     public okhttp3.Call deleteArrayCall(String namespace, String array, String contentType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1905,7 +1903,6 @@ public class ArrayApi {
      */
     public okhttp3.Call deregisterArrayCall(String namespace, String array, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2044,7 +2041,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getActivityLogByIdCall(String namespace, String array, String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2194,7 +2190,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getAllArrayMetadataCall(String publicShare, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2326,7 +2321,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArrayCall(String namespace, String array, String contentType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2483,7 +2477,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArrayMaxBufferSizesCall(String namespace, String array, String subarray, String contentType, String xPayer, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2658,7 +2651,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArrayMetaDataJsonCall(String namespace, String array, Integer length, Integer endTimestamp, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2814,7 +2806,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArrayMetadataCall(String namespace, String array, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2956,7 +2947,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArrayMetadataCapnpCall(String namespace, String array, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3100,7 +3090,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArrayNonEmptyDomainCall(String namespace, String array, String contentType, String xPayer, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3261,7 +3250,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArrayNonEmptyDomainJsonCall(String namespace, String array, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3404,7 +3392,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArraySampleDataCall(String namespace, String array, BigDecimal samples, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3554,7 +3541,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArraySharingPoliciesCall(String namespace, String array, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3698,7 +3684,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getArraysInNamespaceCall(String namespace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3832,7 +3817,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getFragmentEndTimestampCall(String namespace, String array, Integer endTimestamp, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -3979,7 +3963,6 @@ public class ArrayApi {
      */
     public okhttp3.Call getLastAccessedArraysCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -4104,7 +4087,6 @@ public class ArrayApi {
      */
     public okhttp3.Call registerArrayCall(String namespace, String array, ArrayInfoUpdate arrayMetadata, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -4256,7 +4238,6 @@ public class ArrayApi {
      */
     public okhttp3.Call shareArrayCall(String namespace, String array, ArraySharing arraySharing, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -4406,7 +4387,6 @@ public class ArrayApi {
      */
     public okhttp3.Call updateArrayMetadataCall(String namespace, String array, ArrayInfoUpdate arrayMetadata, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -4553,7 +4533,6 @@ public class ArrayApi {
      */
     public okhttp3.Call updateArrayMetadataCapnpCall(String namespace, String array, ArrayMetadata arrayMetadataEntries, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -4700,7 +4679,6 @@ public class ArrayApi {
      */
     public okhttp3.Call vacuumArrayCall(String namespace, String array, TileDBConfig tiledbConfig, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

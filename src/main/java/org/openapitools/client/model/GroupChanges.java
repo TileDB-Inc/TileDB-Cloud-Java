@@ -27,11 +27,31 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.GroupMember;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * A request to change the members of a group. Contains assets to add or remove.
  */
 @ApiModel(description = "A request to change the members of a group. Contains assets to add or remove.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class GroupChanges {
   public static final String SERIALIZED_NAME_ADD = "add";
   @SerializedName(SERIALIZED_NAME_ADD)
@@ -52,7 +72,7 @@ public class GroupChanges {
 
   public GroupChanges addAddItem(GroupMember addItem) {
     if (this.add == null) {
-      this.add = new ArrayList<GroupMember>();
+      this.add = new ArrayList<>();
     }
     this.add.add(addItem);
     return this;
@@ -83,7 +103,7 @@ public class GroupChanges {
 
   public GroupChanges addRemoveItem(GroupMember removeItem) {
     if (this.remove == null) {
-      this.remove = new ArrayList<GroupMember>();
+      this.remove = new ArrayList<>();
     }
     this.remove.add(removeItem);
     return this;
@@ -104,6 +124,7 @@ public class GroupChanges {
   public void setRemove(List<GroupMember> remove) {
     this.remove = remove;
   }
+
 
 
   @Override
@@ -145,5 +166,115 @@ public class GroupChanges {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("add");
+    openapiFields.add("remove");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to GroupChanges
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (GroupChanges.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GroupChanges is not found in the empty JSON string", GroupChanges.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!GroupChanges.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GroupChanges` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      JsonArray jsonArrayadd = jsonObj.getAsJsonArray("add");
+      if (jsonArrayadd != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("add").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `add` to be an array in the JSON string but got `%s`", jsonObj.get("add").toString()));
+        }
+
+        // validate the optional field `add` (array)
+        for (int i = 0; i < jsonArrayadd.size(); i++) {
+          GroupMember.validateJsonObject(jsonArrayadd.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArrayremove = jsonObj.getAsJsonArray("remove");
+      if (jsonArrayremove != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("remove").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `remove` to be an array in the JSON string but got `%s`", jsonObj.get("remove").toString()));
+        }
+
+        // validate the optional field `remove` (array)
+        for (int i = 0; i < jsonArrayremove.size(); i++) {
+          GroupMember.validateJsonObject(jsonArrayremove.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!GroupChanges.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GroupChanges' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<GroupChanges> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GroupChanges.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<GroupChanges>() {
+           @Override
+           public void write(JsonWriter out, GroupChanges value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public GroupChanges read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of GroupChanges given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of GroupChanges
+  * @throws IOException if the JSON string is invalid with respect to GroupChanges
+  */
+  public static GroupChanges fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GroupChanges.class);
+  }
+
+ /**
+  * Convert an instance of GroupChanges to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -30,11 +30,31 @@ import org.openapitools.client.model.TGUDFArgument;
 import org.openapitools.client.model.TGUDFEnvironment;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * A node specifying the execution of a user-defined function.
  */
 @ApiModel(description = "A node specifying the execution of a user-defined function.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class TGUDFNodeData {
   public static final String SERIALIZED_NAME_REGISTERED_UDF_NAME = "registered_udf_name";
   @SerializedName(SERIALIZED_NAME_REGISTERED_UDF_NAME)
@@ -163,7 +183,7 @@ public class TGUDFNodeData {
 
   public TGUDFNodeData addArgumentsItem(TGUDFArgument argumentsItem) {
     if (this.arguments == null) {
-      this.arguments = new ArrayList<TGUDFArgument>();
+      this.arguments = new ArrayList<>();
     }
     this.arguments.add(argumentsItem);
     return this;
@@ -207,6 +227,7 @@ public class TGUDFNodeData {
   public void setResultFormat(ResultFormat resultFormat) {
     this.resultFormat = resultFormat;
   }
+
 
 
   @Override
@@ -267,5 +288,120 @@ public class TGUDFNodeData {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("registered_udf_name");
+    openapiFields.add("executable_code");
+    openapiFields.add("source_text");
+    openapiFields.add("environment");
+    openapiFields.add("arguments");
+    openapiFields.add("result_format");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TGUDFNodeData
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TGUDFNodeData.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TGUDFNodeData is not found in the empty JSON string", TGUDFNodeData.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!TGUDFNodeData.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TGUDFNodeData` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      if (jsonObj.get("registered_udf_name") != null && !jsonObj.get("registered_udf_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `registered_udf_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("registered_udf_name").toString()));
+      }
+      if (jsonObj.get("executable_code") != null && !jsonObj.get("executable_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `executable_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("executable_code").toString()));
+      }
+      if (jsonObj.get("source_text") != null && !jsonObj.get("source_text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_text").toString()));
+      }
+      // validate the optional field `environment`
+      if (jsonObj.getAsJsonObject("environment") != null) {
+        TGUDFEnvironment.validateJsonObject(jsonObj.getAsJsonObject("environment"));
+      }
+      JsonArray jsonArrayarguments = jsonObj.getAsJsonArray("arguments");
+      if (jsonArrayarguments != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("arguments").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `arguments` to be an array in the JSON string but got `%s`", jsonObj.get("arguments").toString()));
+        }
+
+        // validate the optional field `arguments` (array)
+        for (int i = 0; i < jsonArrayarguments.size(); i++) {
+          TGUDFArgument.validateJsonObject(jsonArrayarguments.get(i).getAsJsonObject());
+        };
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!TGUDFNodeData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TGUDFNodeData' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<TGUDFNodeData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TGUDFNodeData.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<TGUDFNodeData>() {
+           @Override
+           public void write(JsonWriter out, TGUDFNodeData value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public TGUDFNodeData read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of TGUDFNodeData given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TGUDFNodeData
+  * @throws IOException if the JSON string is invalid with respect to TGUDFNodeData
+  */
+  public static TGUDFNodeData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TGUDFNodeData.class);
+  }
+
+ /**
+  * Convert an instance of TGUDFNodeData to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

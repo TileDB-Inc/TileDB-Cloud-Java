@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class GroupsApi {
     private ApiClient localVarApiClient;
@@ -100,7 +101,6 @@ public class GroupsApi {
      */
     public okhttp3.Call changeGroupContentsCall(String groupNamespace, String groupName, GroupChanges groupChanges, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -241,7 +241,6 @@ public class GroupsApi {
      */
     public okhttp3.Call createGroupCall(String namespace, GroupCreate groupCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -373,7 +372,6 @@ public class GroupsApi {
      */
     public okhttp3.Call deleteGroupCall(String groupNamespace, String groupName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -511,7 +509,6 @@ public class GroupsApi {
      */
     public okhttp3.Call getGroupCall(String groupNamespace, String groupName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -662,7 +659,6 @@ public class GroupsApi {
      */
     public okhttp3.Call getGroupContentsCall(String groupNamespace, String groupName, Integer page, Integer perPage, String namespace, String search, String orderby, List<String> tag, List<String> excludeTag, List<String> memberType, List<String> excludeMemberType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -868,7 +864,6 @@ public class GroupsApi {
      */
     public okhttp3.Call getGroupSharingPoliciesCall(String groupNamespace, String groupName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1011,7 +1006,6 @@ public class GroupsApi {
      */
     public okhttp3.Call groupsBrowserOwnedFiltersGetCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1133,7 +1127,6 @@ public class GroupsApi {
      */
     public okhttp3.Call groupsBrowserPublicFiltersGetCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1255,7 +1248,6 @@ public class GroupsApi {
      */
     public okhttp3.Call groupsBrowserSharedFiltersGetCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1379,7 +1371,6 @@ public class GroupsApi {
      */
     public okhttp3.Call groupsGroupNamespaceGroupNameContentsFiltersGetCall(String groupNamespace, String groupName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1529,7 +1520,6 @@ public class GroupsApi {
      */
     public okhttp3.Call listOwnedGroupsCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1731,7 +1721,6 @@ public class GroupsApi {
      */
     public okhttp3.Call listPublicGroupsCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1921,6 +1910,7 @@ public class GroupsApi {
      * @param excludeTag tags to exclude matching array in results, more than one can be included (optional)
      * @param flat if true, ignores the nesting of groups and searches all of them (optional)
      * @param parent search only the children of the groups with this uuid (optional)
+     * @param sharedTo namespaces to filter results of where there groups were shared to (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1931,9 +1921,8 @@ public class GroupsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSharedGroupsCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listSharedGroupsCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1997,6 +1986,10 @@ public class GroupsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("parent", parent));
         }
 
+        if (sharedTo != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "shared_to", sharedTo));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2018,10 +2011,10 @@ public class GroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSharedGroupsValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listSharedGroupsValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listSharedGroupsCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
+        okhttp3.Call localVarCall = listSharedGroupsCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, _callback);
         return localVarCall;
 
     }
@@ -2039,6 +2032,7 @@ public class GroupsApi {
      * @param excludeTag tags to exclude matching array in results, more than one can be included (optional)
      * @param flat if true, ignores the nesting of groups and searches all of them (optional)
      * @param parent search only the children of the groups with this uuid (optional)
+     * @param sharedTo namespaces to filter results of where there groups were shared to (optional)
      * @return GroupBrowserData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2048,8 +2042,8 @@ public class GroupsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public GroupBrowserData listSharedGroups(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
-        ApiResponse<GroupBrowserData> localVarResp = listSharedGroupsWithHttpInfo(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+    public GroupBrowserData listSharedGroups(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo) throws ApiException {
+        ApiResponse<GroupBrowserData> localVarResp = listSharedGroupsWithHttpInfo(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo);
         return localVarResp.getData();
     }
 
@@ -2066,6 +2060,7 @@ public class GroupsApi {
      * @param excludeTag tags to exclude matching array in results, more than one can be included (optional)
      * @param flat if true, ignores the nesting of groups and searches all of them (optional)
      * @param parent search only the children of the groups with this uuid (optional)
+     * @param sharedTo namespaces to filter results of where there groups were shared to (optional)
      * @return ApiResponse&lt;GroupBrowserData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2075,8 +2070,8 @@ public class GroupsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GroupBrowserData> listSharedGroupsWithHttpInfo(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
-        okhttp3.Call localVarCall = listSharedGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, null);
+    public ApiResponse<GroupBrowserData> listSharedGroupsWithHttpInfo(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo) throws ApiException {
+        okhttp3.Call localVarCall = listSharedGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, null);
         Type localVarReturnType = new TypeToken<GroupBrowserData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2094,6 +2089,7 @@ public class GroupsApi {
      * @param excludeTag tags to exclude matching array in results, more than one can be included (optional)
      * @param flat if true, ignores the nesting of groups and searches all of them (optional)
      * @param parent search only the children of the groups with this uuid (optional)
+     * @param sharedTo namespaces to filter results of where there groups were shared to (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2104,9 +2100,9 @@ public class GroupsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSharedGroupsAsync(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback<GroupBrowserData> _callback) throws ApiException {
+    public okhttp3.Call listSharedGroupsAsync(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback<GroupBrowserData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listSharedGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
+        okhttp3.Call localVarCall = listSharedGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, _callback);
         Type localVarReturnType = new TypeToken<GroupBrowserData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2128,7 +2124,6 @@ public class GroupsApi {
      */
     public okhttp3.Call registerGroupCall(String namespace, String array, GroupRegister groupRegister, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2271,7 +2266,6 @@ public class GroupsApi {
      */
     public okhttp3.Call shareGroupCall(String groupNamespace, String groupName, GroupSharingRequest groupSharingRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -2421,7 +2415,6 @@ public class GroupsApi {
      */
     public okhttp3.Call updateGroupCall(String groupNamespace, String groupName, GroupUpdate groupUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

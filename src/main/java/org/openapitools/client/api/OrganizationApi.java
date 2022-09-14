@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class OrganizationApi {
     private ApiClient localVarApiClient;
@@ -91,7 +92,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call addAWSAccessCredentialsCall(String namespace, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -228,7 +228,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call addUserToOrganizationCall(String organization, OrganizationUser user, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -364,7 +363,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call checkAWSAccessCredentialsCall(String namespace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -497,7 +495,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call checkAWSAccessCredentialsByNameCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -638,7 +635,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call createOrganizationCall(Organization organization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -766,7 +762,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call deleteAWSAccessCredentialsCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -903,7 +898,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call deleteOrganizationCall(String organization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1032,7 +1026,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call deleteUserFromOrganizationCall(String organization, String username, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1170,7 +1163,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call getAllOrganizationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1300,7 +1292,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call getOrganizationCall(String organization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1437,7 +1428,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call getOrganizationUserCall(String organization, String username, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1583,7 +1573,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call updateAWSAccessCredentialsCall(String namespace, String name, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1729,7 +1718,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call updateOrganizationCall(String organization, Organization organizationDetails, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1867,7 +1855,6 @@ public class OrganizationApi {
      */
     public okhttp3.Call updateUserInOrganizationCall(String organization, String username, OrganizationUser user, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

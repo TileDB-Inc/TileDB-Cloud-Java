@@ -36,7 +36,9 @@ public enum ArrayTaskType {
   
   QUERY("QUERY"),
   
-  GENERIC_UDF("GENERIC_UDF");
+  GENERIC_UDF("GENERIC_UDF"),
+  
+  CLIENT_COMPUTATION("CLIENT_COMPUTATION");
 
   private String value;
 

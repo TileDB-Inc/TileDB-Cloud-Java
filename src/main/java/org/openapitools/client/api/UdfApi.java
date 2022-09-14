@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class UdfApi {
     private ApiClient localVarApiClient;
@@ -97,7 +98,6 @@ public class UdfApi {
      */
     public okhttp3.Call deleteUDFInfoCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -236,7 +236,6 @@ public class UdfApi {
      */
     public okhttp3.Call getUDFInfoCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -382,7 +381,6 @@ public class UdfApi {
      */
     public okhttp3.Call getUDFInfoSharingPoliciesCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -530,7 +528,6 @@ public class UdfApi {
      */
     public okhttp3.Call handleCopyUDFCall(String namespace, String name, UDFCopy udFCopy, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, Integer endTimestamp, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -695,7 +692,6 @@ public class UdfApi {
      */
     public okhttp3.Call registerUDFInfoCall(String namespace, String name, UDFInfoUpdate udf, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -843,7 +839,6 @@ public class UdfApi {
      */
     public okhttp3.Call shareUDFInfoCall(String namespace, String name, UDFSharing udfSharing, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -993,7 +988,6 @@ public class UdfApi {
      */
     public okhttp3.Call submitGenericUDFCall(String namespace, GenericUDF udf, String acceptEncoding, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1142,7 +1136,6 @@ public class UdfApi {
      */
     public okhttp3.Call submitMultiArrayUDFCall(String namespace, MultiArrayUDF udf, String acceptEncoding, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1294,7 +1287,6 @@ public class UdfApi {
      */
     public okhttp3.Call submitUDFCall(String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1467,7 +1459,6 @@ public class UdfApi {
      */
     public okhttp3.Call udfNamespaceArrayEndTimestampsGetCall(String namespace, String array, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -1624,7 +1615,6 @@ public class UdfApi {
      */
     public okhttp3.Call updateUDFInfoCall(String namespace, String name, UDFInfoUpdate udf, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

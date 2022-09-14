@@ -26,11 +26,31 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import org.openapitools.client.model.ActivityEventType;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Information related to last access of an array
  */
 @ApiModel(description = "Information related to last access of an array")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class LastAccessedArray {
   public static final String SERIALIZED_NAME_ARRAY_ID = "array_id";
   @SerializedName(SERIALIZED_NAME_ARRAY_ID)
@@ -170,6 +190,7 @@ public class LastAccessedArray {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -215,5 +236,103 @@ public class LastAccessedArray {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("array_id");
+    openapiFields.add("array_name");
+    openapiFields.add("namespace");
+    openapiFields.add("accessed_time");
+    openapiFields.add("access_type");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to LastAccessedArray
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (LastAccessedArray.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LastAccessedArray is not found in the empty JSON string", LastAccessedArray.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!LastAccessedArray.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LastAccessedArray` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("array_id") != null && !jsonObj.get("array_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `array_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_id").toString()));
+      }
+      if (jsonObj.get("array_name") != null && !jsonObj.get("array_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `array_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_name").toString()));
+      }
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!LastAccessedArray.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LastAccessedArray' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<LastAccessedArray> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LastAccessedArray.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<LastAccessedArray>() {
+           @Override
+           public void write(JsonWriter out, LastAccessedArray value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public LastAccessedArray read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of LastAccessedArray given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of LastAccessedArray
+  * @throws IOException if the JSON string is invalid with respect to LastAccessedArray
+  */
+  public static LastAccessedArray fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LastAccessedArray.class);
+  }
+
+ /**
+  * Convert an instance of LastAccessedArray to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

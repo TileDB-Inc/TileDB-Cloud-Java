@@ -26,11 +26,31 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Domain object for an array of each type
  */
 @ApiModel(description = "Domain object for an array of each type")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class DomainArray {
   public static final String SERIALIZED_NAME_INT8 = "int8";
   @SerializedName(SERIALIZED_NAME_INT8)
@@ -83,7 +103,7 @@ public class DomainArray {
 
   public DomainArray addInt8Item(Integer int8Item) {
     if (this.int8 == null) {
-      this.int8 = new ArrayList<Integer>();
+      this.int8 = new ArrayList<>();
     }
     this.int8.add(int8Item);
     return this;
@@ -114,7 +134,7 @@ public class DomainArray {
 
   public DomainArray addUint8Item(Integer uint8Item) {
     if (this.uint8 == null) {
-      this.uint8 = new ArrayList<Integer>();
+      this.uint8 = new ArrayList<>();
     }
     this.uint8.add(uint8Item);
     return this;
@@ -145,7 +165,7 @@ public class DomainArray {
 
   public DomainArray addInt16Item(Integer int16Item) {
     if (this.int16 == null) {
-      this.int16 = new ArrayList<Integer>();
+      this.int16 = new ArrayList<>();
     }
     this.int16.add(int16Item);
     return this;
@@ -176,7 +196,7 @@ public class DomainArray {
 
   public DomainArray addUint16Item(Integer uint16Item) {
     if (this.uint16 == null) {
-      this.uint16 = new ArrayList<Integer>();
+      this.uint16 = new ArrayList<>();
     }
     this.uint16.add(uint16Item);
     return this;
@@ -207,7 +227,7 @@ public class DomainArray {
 
   public DomainArray addInt32Item(Integer int32Item) {
     if (this.int32 == null) {
-      this.int32 = new ArrayList<Integer>();
+      this.int32 = new ArrayList<>();
     }
     this.int32.add(int32Item);
     return this;
@@ -238,7 +258,7 @@ public class DomainArray {
 
   public DomainArray addUint32Item(Integer uint32Item) {
     if (this.uint32 == null) {
-      this.uint32 = new ArrayList<Integer>();
+      this.uint32 = new ArrayList<>();
     }
     this.uint32.add(uint32Item);
     return this;
@@ -269,7 +289,7 @@ public class DomainArray {
 
   public DomainArray addInt64Item(Long int64Item) {
     if (this.int64 == null) {
-      this.int64 = new ArrayList<Long>();
+      this.int64 = new ArrayList<>();
     }
     this.int64.add(int64Item);
     return this;
@@ -300,7 +320,7 @@ public class DomainArray {
 
   public DomainArray addUint64Item(Integer uint64Item) {
     if (this.uint64 == null) {
-      this.uint64 = new ArrayList<Integer>();
+      this.uint64 = new ArrayList<>();
     }
     this.uint64.add(uint64Item);
     return this;
@@ -331,7 +351,7 @@ public class DomainArray {
 
   public DomainArray addFloat32Item(Float float32Item) {
     if (this.float32 == null) {
-      this.float32 = new ArrayList<Float>();
+      this.float32 = new ArrayList<>();
     }
     this.float32.add(float32Item);
     return this;
@@ -362,7 +382,7 @@ public class DomainArray {
 
   public DomainArray addFloat64Item(Double float64Item) {
     if (this.float64 == null) {
-      this.float64 = new ArrayList<Double>();
+      this.float64 = new ArrayList<>();
     }
     this.float64.add(float64Item);
     return this;
@@ -383,6 +403,7 @@ public class DomainArray {
   public void setFloat64(List<Double> float64) {
     this.float64 = float64;
   }
+
 
 
   @Override
@@ -440,5 +461,139 @@ public class DomainArray {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("int8");
+    openapiFields.add("uint8");
+    openapiFields.add("int16");
+    openapiFields.add("uint16");
+    openapiFields.add("int32");
+    openapiFields.add("uint32");
+    openapiFields.add("int64");
+    openapiFields.add("uint64");
+    openapiFields.add("float32");
+    openapiFields.add("float64");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DomainArray
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (DomainArray.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DomainArray is not found in the empty JSON string", DomainArray.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!DomainArray.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DomainArray` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      // ensure the json data is an array
+      if (jsonObj.get("int8") != null && !jsonObj.get("int8").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `int8` to be an array in the JSON string but got `%s`", jsonObj.get("int8").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("uint8") != null && !jsonObj.get("uint8").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uint8` to be an array in the JSON string but got `%s`", jsonObj.get("uint8").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("int16") != null && !jsonObj.get("int16").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `int16` to be an array in the JSON string but got `%s`", jsonObj.get("int16").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("uint16") != null && !jsonObj.get("uint16").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uint16` to be an array in the JSON string but got `%s`", jsonObj.get("uint16").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("int32") != null && !jsonObj.get("int32").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `int32` to be an array in the JSON string but got `%s`", jsonObj.get("int32").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("uint32") != null && !jsonObj.get("uint32").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uint32` to be an array in the JSON string but got `%s`", jsonObj.get("uint32").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("int64") != null && !jsonObj.get("int64").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `int64` to be an array in the JSON string but got `%s`", jsonObj.get("int64").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("uint64") != null && !jsonObj.get("uint64").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uint64` to be an array in the JSON string but got `%s`", jsonObj.get("uint64").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("float32") != null && !jsonObj.get("float32").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `float32` to be an array in the JSON string but got `%s`", jsonObj.get("float32").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("float64") != null && !jsonObj.get("float64").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `float64` to be an array in the JSON string but got `%s`", jsonObj.get("float64").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DomainArray.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DomainArray' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DomainArray> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DomainArray.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DomainArray>() {
+           @Override
+           public void write(JsonWriter out, DomainArray value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DomainArray read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DomainArray given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DomainArray
+  * @throws IOException if the JSON string is invalid with respect to DomainArray
+  */
+  public static DomainArray fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DomainArray.class);
+  }
+
+ /**
+  * Convert an instance of DomainArray to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

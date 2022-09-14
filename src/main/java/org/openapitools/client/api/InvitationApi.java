@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class InvitationApi {
     private ApiClient localVarApiClient;
@@ -91,7 +92,6 @@ public class InvitationApi {
      */
     public okhttp3.Call acceptInvitationCall(String invitation, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -224,7 +224,6 @@ public class InvitationApi {
      */
     public okhttp3.Call cancelJoinOrganizationCall(String invitation, String organization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -367,7 +366,6 @@ public class InvitationApi {
      */
     public okhttp3.Call cancelShareArrayByInviteCall(String namespace, String invitation, String array, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -524,7 +522,6 @@ public class InvitationApi {
      */
     public okhttp3.Call fetchInvitationsCall(String organization, String array, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -712,7 +709,6 @@ public class InvitationApi {
      */
     public okhttp3.Call joinOrganizationCall(String organization, InvitationOrganizationJoinEmail emailInvite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -854,7 +850,6 @@ public class InvitationApi {
      */
     public okhttp3.Call shareArrayByInviteCall(String namespace, String array, InvitationArrayShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 

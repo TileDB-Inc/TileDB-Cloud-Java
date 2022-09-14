@@ -2,14 +2,14 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**acceptInvitation**](InvitationApi.md#acceptInvitation) | **POST** /invitations/{invitation} | 
-[**cancelJoinOrganization**](InvitationApi.md#cancelJoinOrganization) | **DELETE** /invitations/{invitation}/{organization}/join | 
-[**cancelShareArrayByInvite**](InvitationApi.md#cancelShareArrayByInvite) | **DELETE** /invitations/{invitation}/{namespace}/{array}/share | 
-[**fetchInvitations**](InvitationApi.md#fetchInvitations) | **GET** /invitations | 
-[**joinOrganization**](InvitationApi.md#joinOrganization) | **POST** /invitations/{organization}/join | 
-[**shareArrayByInvite**](InvitationApi.md#shareArrayByInvite) | **POST** /invitations/{namespace}/{array}/share | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**acceptInvitation**](InvitationApi.md#acceptInvitation) | **POST** /invitations/{invitation} |  |
+| [**cancelJoinOrganization**](InvitationApi.md#cancelJoinOrganization) | **DELETE** /invitations/{invitation}/{organization}/join |  |
+| [**cancelShareArrayByInvite**](InvitationApi.md#cancelShareArrayByInvite) | **DELETE** /invitations/{invitation}/{namespace}/{array}/share |  |
+| [**fetchInvitations**](InvitationApi.md#fetchInvitations) | **GET** /invitations |  |
+| [**joinOrganization**](InvitationApi.md#joinOrganization) | **POST** /invitations/{organization}/join |  |
+| [**shareArrayByInvite**](InvitationApi.md#shareArrayByInvite) | **POST** /invitations/{namespace}/{array}/share |  |
 
 
 <a name="acceptInvitation"></a>
@@ -63,9 +63,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **invitation** | **String**| the ID of invitation about to be accepted |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **invitation** | **String**| the ID of invitation about to be accepted | |
 
 ### Return type
 
@@ -83,9 +83,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Invitation was accepted successfully |  -  |
-**404** | Could not find invitation identifier |  -  |
-**0** | error response |  -  |
+| **204** | Invitation was accepted successfully |  -  |
+| **404** | Could not find invitation identifier |  -  |
+| **0** | error response |  -  |
 
 <a name="cancelJoinOrganization"></a>
 # **cancelJoinOrganization**
@@ -139,10 +139,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **invitation** | **String**| the ID of invitation about to be cancelled |
- **organization** | **String**| name or UUID of organization |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **invitation** | **String**| the ID of invitation about to be cancelled | |
+| **organization** | **String**| name or UUID of organization | |
 
 ### Return type
 
@@ -160,9 +160,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Invitation cancelled successfully |  -  |
-**404** | No invitation was found to cancel |  -  |
-**0** | error response |  -  |
+| **204** | Invitation cancelled successfully |  -  |
+| **404** | No invitation was found to cancel |  -  |
+| **0** | error response |  -  |
 
 <a name="cancelShareArrayByInvite"></a>
 # **cancelShareArrayByInvite**
@@ -217,11 +217,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **invitation** | **String**| the ID of invitation about to be cancelled |
- **array** | **String**| name/uri of array that is url-encoded |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **invitation** | **String**| the ID of invitation about to be cancelled | |
+| **array** | **String**| name/uri of array that is url-encoded | |
 
 ### Return type
 
@@ -239,9 +239,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Invitation cancelled successfully |  -  |
-**404** | No invitation was found to cancel |  -  |
-**0** | error response |  -  |
+| **204** | Invitation cancelled successfully |  -  |
+| **404** | No invitation was found to cancel |  -  |
+| **0** | error response |  -  |
 
 <a name="fetchInvitations"></a>
 # **fetchInvitations**
@@ -303,17 +303,17 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| name or ID of organization to filter | [optional]
- **array** | **String**| name/uri of array that is url-encoded to filter | [optional]
- **start** | **Integer**| start time for tasks to filter by | [optional]
- **end** | **Integer**| end time for tasks to filter by | [optional]
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
- **type** | **String**| invitation type, \&quot;ARRAY_SHARE\&quot;, \&quot;JOIN_ORGANIZATION\&quot; | [optional]
- **status** | **String**| Filter to only return \&quot;PENDING\&quot;, \&quot;ACCEPTED\&quot; | [optional]
- **orderby** | **String**| sort by which field valid values include timestamp, array_name, organization_name | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| name or ID of organization to filter | [optional] |
+| **array** | **String**| name/uri of array that is url-encoded to filter | [optional] |
+| **start** | **Integer**| start time for tasks to filter by | [optional] |
+| **end** | **Integer**| end time for tasks to filter by | [optional] |
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
+| **type** | **String**| invitation type, \&quot;ARRAY_SHARE\&quot;, \&quot;JOIN_ORGANIZATION\&quot; | [optional] |
+| **status** | **String**| Filter to only return \&quot;PENDING\&quot;, \&quot;ACCEPTED\&quot; | [optional] |
+| **orderby** | **String**| sort by which field valid values include timestamp, array_name, organization_name | [optional] |
 
 ### Return type
 
@@ -331,8 +331,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of invitations and pagination metadata |  -  |
-**0** | error response |  -  |
+| **200** | List of invitations and pagination metadata |  -  |
+| **0** | error response |  -  |
 
 <a name="joinOrganization"></a>
 # **joinOrganization**
@@ -386,10 +386,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization** | **String**| name or UUID of organization |
- **emailInvite** | [**InvitationOrganizationJoinEmail**](InvitationOrganizationJoinEmail.md)| list of email recipients |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| name or UUID of organization | |
+| **emailInvite** | [**InvitationOrganizationJoinEmail**](InvitationOrganizationJoinEmail.md)| list of email recipients | |
 
 ### Return type
 
@@ -407,9 +407,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Email sent successfully to user for email confirmation link |  -  |
-**404** | Could not reach one or more recipients |  -  |
-**0** | error response |  -  |
+| **204** | Email sent successfully to user for email confirmation link |  -  |
+| **404** | Could not reach one or more recipients |  -  |
+| **0** | error response |  -  |
 
 <a name="shareArrayByInvite"></a>
 # **shareArrayByInvite**
@@ -464,11 +464,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **emailInvite** | [**InvitationArrayShareEmail**](InvitationArrayShareEmail.md)| list of email recipients |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **emailInvite** | [**InvitationArrayShareEmail**](InvitationArrayShareEmail.md)| list of email recipients | |
 
 ### Return type
 
@@ -486,7 +486,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Email sent successfully to user for email confirmation link |  -  |
-**404** | Could not reach one or more recipients |  -  |
-**0** | error response |  -  |
+| **204** | Email sent successfully to user for email confirmation link |  -  |
+| **404** | Could not reach one or more recipients |  -  |
+| **0** | error response |  -  |
 

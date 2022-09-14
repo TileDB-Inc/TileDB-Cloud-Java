@@ -2,39 +2,39 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**arrayActivityLog**](ArrayApi.md#arrayActivityLog) | **GET** /arrays/{namespace}/{array}/activity | 
-[**arraysBrowserOwnedGet**](ArrayApi.md#arraysBrowserOwnedGet) | **GET** /arrays/browser/owned | 
-[**arraysBrowserOwnedSidebarGet**](ArrayApi.md#arraysBrowserOwnedSidebarGet) | **GET** /arrays/browser/owned/sidebar | 
-[**arraysBrowserPublicGet**](ArrayApi.md#arraysBrowserPublicGet) | **GET** /arrays/browser/public | 
-[**arraysBrowserPublicSidebarGet**](ArrayApi.md#arraysBrowserPublicSidebarGet) | **GET** /arrays/browser/public/sidebar | 
-[**arraysBrowserSharedGet**](ArrayApi.md#arraysBrowserSharedGet) | **GET** /arrays/browser/shared | 
-[**arraysBrowserSharedSidebarGet**](ArrayApi.md#arraysBrowserSharedSidebarGet) | **GET** /arrays/browser/shared/sidebar | 
-[**arraysNamespaceArrayEndTimestampsGet**](ArrayApi.md#arraysNamespaceArrayEndTimestampsGet) | **GET** /arrays/{namespace}/{array}/end_timestamps | 
-[**consolidateArray**](ArrayApi.md#consolidateArray) | **POST** /arrays/{namespace}/{array}/consolidate | 
-[**createArray**](ArrayApi.md#createArray) | **POST** /arrays/{namespace}/{array} | 
-[**deleteArray**](ArrayApi.md#deleteArray) | **DELETE** /arrays/{namespace}/{array} | 
-[**deregisterArray**](ArrayApi.md#deregisterArray) | **DELETE** /arrays/{namespace}/{array}/deregister | 
-[**getActivityLogById**](ArrayApi.md#getActivityLogById) | **GET** /arrays/{namespace}/{array}/activity/{id} | 
-[**getAllArrayMetadata**](ArrayApi.md#getAllArrayMetadata) | **GET** /arrays | 
-[**getArray**](ArrayApi.md#getArray) | **GET** /arrays/{namespace}/{array} | 
-[**getArrayMaxBufferSizes**](ArrayApi.md#getArrayMaxBufferSizes) | **GET** /arrays/{namespace}/{array}/max_buffer_sizes | 
-[**getArrayMetaDataJson**](ArrayApi.md#getArrayMetaDataJson) | **GET** /arrays/{namespace}/{array}/metadata_json | 
-[**getArrayMetadata**](ArrayApi.md#getArrayMetadata) | **GET** /arrays/{namespace}/{array}/metadata | 
-[**getArrayMetadataCapnp**](ArrayApi.md#getArrayMetadataCapnp) | **GET** /arrays/{namespace}/{array}/array_metadata | 
-[**getArrayNonEmptyDomain**](ArrayApi.md#getArrayNonEmptyDomain) | **GET** /arrays/{namespace}/{array}/non_empty_domain | 
-[**getArrayNonEmptyDomainJson**](ArrayApi.md#getArrayNonEmptyDomainJson) | **GET** /arrays/{namespace}/{array}/non_empty_domain_json | 
-[**getArraySampleData**](ArrayApi.md#getArraySampleData) | **GET** /arrays/{namespace}/{array}/sample | 
-[**getArraySharingPolicies**](ArrayApi.md#getArraySharingPolicies) | **GET** /arrays/{namespace}/{array}/share | 
-[**getArraysInNamespace**](ArrayApi.md#getArraysInNamespace) | **GET** /arrays/{namespace} | 
-[**getFragmentEndTimestamp**](ArrayApi.md#getFragmentEndTimestamp) | **GET** /arrays/{namespace}/{array}/fragment_end_timestamp | 
-[**getLastAccessedArrays**](ArrayApi.md#getLastAccessedArrays) | **GET** /arrays/last_accessed | 
-[**registerArray**](ArrayApi.md#registerArray) | **POST** /arrays/{namespace}/{array}/register | 
-[**shareArray**](ArrayApi.md#shareArray) | **PATCH** /arrays/{namespace}/{array}/share | 
-[**updateArrayMetadata**](ArrayApi.md#updateArrayMetadata) | **PATCH** /arrays/{namespace}/{array}/metadata | 
-[**updateArrayMetadataCapnp**](ArrayApi.md#updateArrayMetadataCapnp) | **POST** /arrays/{namespace}/{array}/array_metadata | 
-[**vacuumArray**](ArrayApi.md#vacuumArray) | **POST** /arrays/{namespace}/{array}/vacuum | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**arrayActivityLog**](ArrayApi.md#arrayActivityLog) | **GET** /arrays/{namespace}/{array}/activity |  |
+| [**arraysBrowserOwnedGet**](ArrayApi.md#arraysBrowserOwnedGet) | **GET** /arrays/browser/owned |  |
+| [**arraysBrowserOwnedSidebarGet**](ArrayApi.md#arraysBrowserOwnedSidebarGet) | **GET** /arrays/browser/owned/sidebar |  |
+| [**arraysBrowserPublicGet**](ArrayApi.md#arraysBrowserPublicGet) | **GET** /arrays/browser/public |  |
+| [**arraysBrowserPublicSidebarGet**](ArrayApi.md#arraysBrowserPublicSidebarGet) | **GET** /arrays/browser/public/sidebar |  |
+| [**arraysBrowserSharedGet**](ArrayApi.md#arraysBrowserSharedGet) | **GET** /arrays/browser/shared |  |
+| [**arraysBrowserSharedSidebarGet**](ArrayApi.md#arraysBrowserSharedSidebarGet) | **GET** /arrays/browser/shared/sidebar |  |
+| [**arraysNamespaceArrayEndTimestampsGet**](ArrayApi.md#arraysNamespaceArrayEndTimestampsGet) | **GET** /arrays/{namespace}/{array}/end_timestamps |  |
+| [**consolidateArray**](ArrayApi.md#consolidateArray) | **POST** /arrays/{namespace}/{array}/consolidate |  |
+| [**createArray**](ArrayApi.md#createArray) | **POST** /arrays/{namespace}/{array} |  |
+| [**deleteArray**](ArrayApi.md#deleteArray) | **DELETE** /arrays/{namespace}/{array} |  |
+| [**deregisterArray**](ArrayApi.md#deregisterArray) | **DELETE** /arrays/{namespace}/{array}/deregister |  |
+| [**getActivityLogById**](ArrayApi.md#getActivityLogById) | **GET** /arrays/{namespace}/{array}/activity/{id} |  |
+| [**getAllArrayMetadata**](ArrayApi.md#getAllArrayMetadata) | **GET** /arrays |  |
+| [**getArray**](ArrayApi.md#getArray) | **GET** /arrays/{namespace}/{array} |  |
+| [**getArrayMaxBufferSizes**](ArrayApi.md#getArrayMaxBufferSizes) | **GET** /arrays/{namespace}/{array}/max_buffer_sizes |  |
+| [**getArrayMetaDataJson**](ArrayApi.md#getArrayMetaDataJson) | **GET** /arrays/{namespace}/{array}/metadata_json |  |
+| [**getArrayMetadata**](ArrayApi.md#getArrayMetadata) | **GET** /arrays/{namespace}/{array}/metadata |  |
+| [**getArrayMetadataCapnp**](ArrayApi.md#getArrayMetadataCapnp) | **GET** /arrays/{namespace}/{array}/array_metadata |  |
+| [**getArrayNonEmptyDomain**](ArrayApi.md#getArrayNonEmptyDomain) | **GET** /arrays/{namespace}/{array}/non_empty_domain |  |
+| [**getArrayNonEmptyDomainJson**](ArrayApi.md#getArrayNonEmptyDomainJson) | **GET** /arrays/{namespace}/{array}/non_empty_domain_json |  |
+| [**getArraySampleData**](ArrayApi.md#getArraySampleData) | **GET** /arrays/{namespace}/{array}/sample |  |
+| [**getArraySharingPolicies**](ArrayApi.md#getArraySharingPolicies) | **GET** /arrays/{namespace}/{array}/share |  |
+| [**getArraysInNamespace**](ArrayApi.md#getArraysInNamespace) | **GET** /arrays/{namespace} |  |
+| [**getFragmentEndTimestamp**](ArrayApi.md#getFragmentEndTimestamp) | **GET** /arrays/{namespace}/{array}/fragment_end_timestamp |  |
+| [**getLastAccessedArrays**](ArrayApi.md#getLastAccessedArrays) | **GET** /arrays/last_accessed |  |
+| [**registerArray**](ArrayApi.md#registerArray) | **POST** /arrays/{namespace}/{array}/register |  |
+| [**shareArray**](ArrayApi.md#shareArray) | **PATCH** /arrays/{namespace}/{array}/share |  |
+| [**updateArrayMetadata**](ArrayApi.md#updateArrayMetadata) | **PATCH** /arrays/{namespace}/{array}/metadata |  |
+| [**updateArrayMetadataCapnp**](ArrayApi.md#updateArrayMetadataCapnp) | **POST** /arrays/{namespace}/{array}/array_metadata |  |
+| [**vacuumArray**](ArrayApi.md#vacuumArray) | **POST** /arrays/{namespace}/{array}/vacuum |  |
 
 
 <a name="arrayActivityLog"></a>
@@ -95,15 +95,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **start** | **Integer**| Start time of window of fetch logs, unix epoch in seconds (default: seven days ago) | [optional]
- **end** | **Integer**| End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp) | [optional]
- **eventTypes** | **String**| Event values can be one or more of the following read, write, create, delete, register, deregister, comma separated | [optional]
- **taskId** | **String**| Array task ID To filter activity to | [optional]
- **hasTaskId** | **Boolean**| Excludes activity log results that do not contain an array task UUID | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **start** | **Integer**| Start time of window of fetch logs, unix epoch in seconds (default: seven days ago) | [optional] |
+| **end** | **Integer**| End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp) | [optional] |
+| **eventTypes** | **String**| Event values can be one or more of the following read, write, create, delete, register, deregister, comma separated | [optional] |
+| **taskId** | **String**| Array task ID To filter activity to | [optional] |
+| **hasTaskId** | **Boolean**| Excludes activity log results that do not contain an array task UUID | [optional] |
 
 ### Return type
 
@@ -121,8 +121,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | log of array activity |  -  |
-**0** | error response |  -  |
+| **200** | log of array activity |  -  |
+| **0** | error response |  -  |
 
 <a name="arraysBrowserOwnedGet"></a>
 # **arraysBrowserOwnedGet**
@@ -186,19 +186,19 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
- **search** | **String**| search string that will look at name, namespace or description fields | [optional]
- **namespace** | **String**| namespace | [optional]
- **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional]
- **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional]
- **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional]
- **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional]
- **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional]
- **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional]
- **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
+| **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
+| **namespace** | **String**| namespace | [optional] |
+| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
+| **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
+| **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
+| **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional] |
+| **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
+| **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
 
 ### Return type
 
@@ -216,8 +216,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array of array info that are owned directly by user or user&#39;s organizations |  -  |
-**0** | error response |  -  |
+| **200** | Array of array info that are owned directly by user or user&#39;s organizations |  -  |
+| **0** | error response |  -  |
 
 <a name="arraysBrowserOwnedSidebarGet"></a>
 # **arraysBrowserOwnedSidebarGet**
@@ -287,8 +287,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array of array info that are owned directly by user or user&#39;s organizations |  -  |
-**0** | error response |  -  |
+| **200** | Array of array info that are owned directly by user or user&#39;s organizations |  -  |
+| **0** | error response |  -  |
 
 <a name="arraysBrowserPublicGet"></a>
 # **arraysBrowserPublicGet**
@@ -352,19 +352,19 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
- **search** | **String**| search string that will look at name, namespace or description fields | [optional]
- **namespace** | **String**| namespace | [optional]
- **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional]
- **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional]
- **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional]
- **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional]
- **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional]
- **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional]
- **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
+| **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
+| **namespace** | **String**| namespace | [optional] |
+| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
+| **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
+| **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
+| **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional] |
+| **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
+| **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
 
 ### Return type
 
@@ -382,8 +382,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array of array info that has been shared publically |  -  |
-**0** | error response |  -  |
+| **200** | Array of array info that has been shared publically |  -  |
+| **0** | error response |  -  |
 
 <a name="arraysBrowserPublicSidebarGet"></a>
 # **arraysBrowserPublicSidebarGet**
@@ -453,12 +453,12 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array of array info that has been shared publically |  -  |
-**0** | error response |  -  |
+| **200** | Array of array info that has been shared publically |  -  |
+| **0** | error response |  -  |
 
 <a name="arraysBrowserSharedGet"></a>
 # **arraysBrowserSharedGet**
-> ArrayBrowserData arraysBrowserSharedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty)
+> ArrayBrowserData arraysBrowserSharedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo)
 
 
 
@@ -502,8 +502,9 @@ public class Example {
     List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
     List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
     List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
+    List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there arrays were shared to
     try {
-      ArrayBrowserData result = apiInstance.arraysBrowserSharedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty);
+      ArrayBrowserData result = apiInstance.arraysBrowserSharedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ArrayApi#arraysBrowserSharedGet");
@@ -518,19 +519,20 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
- **search** | **String**| search string that will look at name, namespace or description fields | [optional]
- **namespace** | **String**| namespace | [optional]
- **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional]
- **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional]
- **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional]
- **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional]
- **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional]
- **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional]
- **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
+| **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
+| **namespace** | **String**| namespace | [optional] |
+| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
+| **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
+| **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
+| **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional] |
+| **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
+| **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
+| **sharedTo** | [**List&lt;String&gt;**](String.md)| namespaces to filter results of where there arrays were shared to | [optional] |
 
 ### Return type
 
@@ -548,8 +550,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array of array info that has been shared with the user |  -  |
-**0** | error response |  -  |
+| **200** | Array of array info that has been shared with the user |  -  |
+| **0** | error response |  -  |
 
 <a name="arraysBrowserSharedSidebarGet"></a>
 # **arraysBrowserSharedSidebarGet**
@@ -619,8 +621,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Array of array info that has been shared with the user |  -  |
-**0** | error response |  -  |
+| **200** | Array of array info that has been shared with the user |  -  |
+| **0** | error response |  -  |
 
 <a name="arraysNamespaceArrayEndTimestampsGet"></a>
 # **arraysNamespaceArrayEndTimestampsGet**
@@ -677,12 +679,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
 
 ### Return type
 
@@ -700,8 +702,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | list of timestamps in milliseconds, paginated |  -  |
-**0** | error response |  -  |
+| **200** | list of timestamps in milliseconds, paginated |  -  |
+| **0** | error response |  -  |
 
 <a name="consolidateArray"></a>
 # **consolidateArray**
@@ -756,11 +758,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **tiledbConfig** | [**TileDBConfig**](TileDBConfig.md)| tiledb configuration |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **tiledbConfig** | [**TileDBConfig**](TileDBConfig.md)| tiledb configuration | |
 
 ### Return type
 
@@ -778,8 +780,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | array consolidated successfully |  -  |
-**0** | error response |  -  |
+| **204** | array consolidated successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="createArray"></a>
 # **createArray**
@@ -836,13 +838,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
- **arraySchema** | [**ArraySchema**](ArraySchema.md)| ArraySchema being created |
- **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **arraySchema** | [**ArraySchema**](ArraySchema.md)| ArraySchema being created | |
+| **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional] |
 
 ### Return type
 
@@ -860,8 +862,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | schema created successfully |  -  |
-**0** | error response |  -  |
+| **204** | schema created successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteArray"></a>
 # **deleteArray**
@@ -916,11 +918,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
 
 ### Return type
 
@@ -938,8 +940,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | delete array successful |  -  |
-**0** | error response |  -  |
+| **204** | delete array successful |  -  |
+| **0** | error response |  -  |
 
 <a name="deregisterArray"></a>
 # **deregisterArray**
@@ -993,10 +995,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
 
 ### Return type
 
@@ -1014,8 +1016,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | deregistered array successful |  -  |
-**0** | error response |  -  |
+| **204** | deregistered array successful |  -  |
+| **0** | error response |  -  |
 
 <a name="getActivityLogById"></a>
 # **getActivityLogById**
@@ -1071,11 +1073,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **id** | **String**| ID of the activity |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **id** | **String**| ID of the activity | |
 
 ### Return type
 
@@ -1093,8 +1095,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array activity |  -  |
-**0** | error response |  -  |
+| **200** | array activity |  -  |
+| **0** | error response |  -  |
 
 <a name="getAllArrayMetadata"></a>
 # **getAllArrayMetadata**
@@ -1148,9 +1150,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **publicShare** | **String**| Public share values can be one of exclude, only | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **publicShare** | **String**| Public share values can be one of exclude, only | [optional] |
 
 ### Return type
 
@@ -1168,8 +1170,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array metadata for all arrays user has access to |  -  |
-**0** | error response |  -  |
+| **200** | array metadata for all arrays user has access to |  -  |
+| **0** | error response |  -  |
 
 <a name="getArray"></a>
 # **getArray**
@@ -1225,11 +1227,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
 
 ### Return type
 
@@ -1247,8 +1249,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | get ArraySchema |  -  |
-**0** | error response |  -  |
+| **200** | get ArraySchema |  -  |
+| **0** | error response |  -  |
 
 <a name="getArrayMaxBufferSizes"></a>
 # **getArrayMaxBufferSizes**
@@ -1306,13 +1308,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **subarray** | **String**| CSV string of subarray to get max buffer sizes for |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
- **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **subarray** | **String**| CSV string of subarray to get max buffer sizes for | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional] |
 
 ### Return type
 
@@ -1330,8 +1332,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | get the max buffer sizes of an array for a subarray |  -  |
-**0** | error response |  -  |
+| **200** | get the max buffer sizes of an array for a subarray |  -  |
+| **0** | error response |  -  |
 
 <a name="getArrayMetaDataJson"></a>
 # **getArrayMetaDataJson**
@@ -1388,12 +1390,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **length** | **Integer**| (optional) limit character length of returned values | [optional]
- **endTimestamp** | **Integer**| Milliseconds since Unix epoch, metadata will use open_at functionality to open array at the specific timestamp | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **length** | **Integer**| (optional) limit character length of returned values | [optional] |
+| **endTimestamp** | **Integer**| Milliseconds since Unix epoch, metadata will use open_at functionality to open array at the specific timestamp | [optional] |
 
 ### Return type
 
@@ -1411,8 +1413,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | get array metadata |  -  |
-**0** | error response |  -  |
+| **200** | get array metadata |  -  |
+| **0** | error response |  -  |
 
 <a name="getArrayMetadata"></a>
 # **getArrayMetadata**
@@ -1467,10 +1469,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
 
 ### Return type
 
@@ -1488,8 +1490,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array metadata for an array |  -  |
-**0** | error response |  -  |
+| **200** | array metadata for an array |  -  |
+| **0** | error response |  -  |
 
 <a name="getArrayMetadataCapnp"></a>
 # **getArrayMetadataCapnp**
@@ -1544,10 +1546,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
 
 ### Return type
 
@@ -1565,8 +1567,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array metadata for an array |  -  |
-**0** | error response |  -  |
+| **200** | array metadata for an array |  -  |
+| **0** | error response |  -  |
 
 <a name="getArrayNonEmptyDomain"></a>
 # **getArrayNonEmptyDomain**
@@ -1623,12 +1625,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **contentType** | **String**| Content Type of input and return mime | [default to application/json]
- **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional] |
 
 ### Return type
 
@@ -1646,8 +1648,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | get the non empty domain of an array |  -  |
-**0** | error response |  -  |
+| **200** | get the non empty domain of an array |  -  |
+| **0** | error response |  -  |
 
 <a name="getArrayNonEmptyDomainJson"></a>
 # **getArrayNonEmptyDomainJson**
@@ -1702,10 +1704,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
 
 ### Return type
 
@@ -1723,8 +1725,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | get array non-empty domaim |  -  |
-**0** | error response |  -  |
+| **200** | get array non-empty domaim |  -  |
+| **0** | error response |  -  |
 
 <a name="getArraySampleData"></a>
 # **getArraySampleData**
@@ -1780,11 +1782,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **samples** | **BigDecimal**| Number of sample results to return | [optional] [default to 5.0]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **samples** | **BigDecimal**| Number of sample results to return | [optional] [default to 5.0] |
 
 ### Return type
 
@@ -1802,8 +1804,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | get array sample data |  -  |
-**0** | error response |  -  |
+| **200** | get array sample data |  -  |
+| **0** | error response |  -  |
 
 <a name="getArraySharingPolicies"></a>
 # **getArraySharingPolicies**
@@ -1858,10 +1860,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
 
 ### Return type
 
@@ -1879,9 +1881,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of all specific sharing policies |  -  |
-**404** | Array does not exist or user does not have permissions to view array-sharing policies |  -  |
-**0** | error response |  -  |
+| **200** | List of all specific sharing policies |  -  |
+| **404** | Array does not exist or user does not have permissions to view array-sharing policies |  -  |
+| **0** | error response |  -  |
 
 <a name="getArraysInNamespace"></a>
 # **getArraysInNamespace**
@@ -1935,9 +1937,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
 
 ### Return type
 
@@ -1955,8 +1957,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array metadata for all arrays in a namespace |  -  |
-**0** | error response |  -  |
+| **200** | array metadata for all arrays in a namespace |  -  |
+| **0** | error response |  -  |
 
 <a name="getFragmentEndTimestamp"></a>
 # **getFragmentEndTimestamp**
@@ -2012,11 +2014,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **endTimestamp** | **Integer**| Milliseconds since Unix epoch | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **endTimestamp** | **Integer**| Milliseconds since Unix epoch | [optional] |
 
 ### Return type
 
@@ -2034,8 +2036,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | fragment end_timestamp on an array |  -  |
-**0** | error response |  -  |
+| **200** | fragment end_timestamp on an array |  -  |
+| **0** | error response |  -  |
 
 <a name="getLastAccessedArrays"></a>
 # **getLastAccessedArrays**
@@ -2103,8 +2105,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | gets last accessed arrays |  -  |
-**0** | error response |  -  |
+| **200** | gets last accessed arrays |  -  |
+| **0** | error response |  -  |
 
 <a name="registerArray"></a>
 # **registerArray**
@@ -2160,11 +2162,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **arrayMetadata** | [**ArrayInfoUpdate**](ArrayInfoUpdate.md)| metadata associated with array |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **arrayMetadata** | [**ArrayInfoUpdate**](ArrayInfoUpdate.md)| metadata associated with array | |
 
 ### Return type
 
@@ -2182,8 +2184,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array registered successfully |  -  |
-**0** | error response |  -  |
+| **200** | array registered successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="shareArray"></a>
 # **shareArray**
@@ -2238,11 +2240,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **arraySharing** | [**ArraySharing**](ArraySharing.md)| Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it&#39;s likely the array will not be shared with the namespace at all. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **arraySharing** | [**ArraySharing**](ArraySharing.md)| Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it&#39;s likely the array will not be shared with the namespace at all. | |
 
 ### Return type
 
@@ -2260,9 +2262,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Array shared successfully |  -  |
-**404** | Array does not exist or user does not have permissions to share array |  -  |
-**0** | error response |  -  |
+| **204** | Array shared successfully |  -  |
+| **404** | Array does not exist or user does not have permissions to share array |  -  |
+| **0** | error response |  -  |
 
 <a name="updateArrayMetadata"></a>
 # **updateArrayMetadata**
@@ -2317,11 +2319,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **arrayMetadata** | [**ArrayInfoUpdate**](ArrayInfoUpdate.md)| array metadata to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **arrayMetadata** | [**ArrayInfoUpdate**](ArrayInfoUpdate.md)| array metadata to update | |
 
 ### Return type
 
@@ -2339,8 +2341,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | array metadata updated successfully |  -  |
-**0** | error response |  -  |
+| **204** | array metadata updated successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="updateArrayMetadataCapnp"></a>
 # **updateArrayMetadataCapnp**
@@ -2395,11 +2397,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **arrayMetadataEntries** | [**ArrayMetadata**](ArrayMetadata.md)| List of metadata entries |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **arrayMetadataEntries** | [**ArrayMetadata**](ArrayMetadata.md)| List of metadata entries | |
 
 ### Return type
 
@@ -2417,8 +2419,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array metadata updated successfully |  -  |
-**0** | error response |  -  |
+| **200** | array metadata updated successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="vacuumArray"></a>
 # **vacuumArray**
@@ -2473,11 +2475,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **tiledbConfig** | [**TileDBConfig**](TileDBConfig.md)| tiledb configuration |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **tiledbConfig** | [**TileDBConfig**](TileDBConfig.md)| tiledb configuration | |
 
 ### Return type
 
@@ -2495,6 +2497,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | array vacuumed successfully |  -  |
-**0** | error response |  -  |
+| **204** | array vacuumed successfully |  -  |
+| **0** | error response |  -  |
 

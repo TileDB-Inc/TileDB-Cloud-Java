@@ -2,14 +2,14 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getTiledbStats**](StatsApi.md#getTiledbStats) | **GET** /.stats | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getTiledbStats**](StatsApi.md#getTiledbStats) | **GET** /.stats |  |
 
 
 <a name="getTiledbStats"></a>
 # **getTiledbStats**
-> InlineResponse200 getTiledbStats()
+> GetTiledbStats200Response getTiledbStats()
 
 
 
@@ -43,7 +43,7 @@ public class Example {
 
     StatsApi apiInstance = new StatsApi(defaultClient);
     try {
-      InlineResponse200 result = apiInstance.getTiledbStats();
+      GetTiledbStats200Response result = apiInstance.getTiledbStats();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling StatsApi#getTiledbStats");
@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**GetTiledbStats200Response**](GetTiledbStats200Response.md)
 
 ### Authorization
 
@@ -75,6 +75,6 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | stats |  -  |
-**0** | error response |  -  |
+| **200** | stats |  -  |
+| **0** | error response |  -  |
 

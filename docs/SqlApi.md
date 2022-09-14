@@ -2,9 +2,9 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**runSQL**](SqlApi.md#runSQL) | **POST** /sql/{namespace} | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**runSQL**](SqlApi.md#runSQL) | **POST** /sql/{namespace} |  |
 
 
 <a name="runSQL"></a>
@@ -61,11 +61,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace to run task under is in (an organization name or user&#39;s username) |
- **sql** | [**SQLParameters**](SQLParameters.md)| sql being submitted |
- **acceptEncoding** | **String**| Encoding to use | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace to run task under is in (an organization name or user&#39;s username) | |
+| **sql** | [**SQLParameters**](SQLParameters.md)| sql being submitted | |
+| **acceptEncoding** | **String**| Encoding to use | [optional] |
 
 ### Return type
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | JSON results in array of objects form, if the query returns results |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**204** | SQL executed successfully |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**0** | error response |  -  |
+| **200** | JSON results in array of objects form, if the query returns results |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **204** | SQL executed successfully |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **0** | error response |  -  |
 

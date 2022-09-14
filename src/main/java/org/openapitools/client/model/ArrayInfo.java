@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,13 +34,32 @@ import org.openapitools.client.model.FileType;
 import org.openapitools.client.model.Pricing;
 import org.openapitools.client.model.Subscription;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.threeten.bp.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
 
 /**
  * metadata of an array
  */
 @ApiModel(description = "metadata of an array")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class ArrayInfo {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -202,7 +222,7 @@ public class ArrayInfo {
 
   public ArrayInfo putFilePropertiesItem(String key, String filePropertiesItem) {
     if (this.fileProperties == null) {
-      this.fileProperties = new HashMap<String, String>();
+      this.fileProperties = new HashMap<>();
     }
     this.fileProperties.put(key, filePropertiesItem);
     return this;
@@ -371,7 +391,7 @@ public class ArrayInfo {
 
   public ArrayInfo addAllowedActionsItem(ArrayActions allowedActionsItem) {
     if (this.allowedActions == null) {
-      this.allowedActions = new ArrayList<ArrayActions>();
+      this.allowedActions = new ArrayList<>();
     }
     this.allowedActions.add(allowedActionsItem);
     return this;
@@ -402,7 +422,7 @@ public class ArrayInfo {
 
   public ArrayInfo addPricingItem(Pricing pricingItem) {
     if (this.pricing == null) {
-      this.pricing = new ArrayList<Pricing>();
+      this.pricing = new ArrayList<>();
     }
     this.pricing.add(pricingItem);
     return this;
@@ -433,7 +453,7 @@ public class ArrayInfo {
 
   public ArrayInfo addSubscriptionsItem(Subscription subscriptionsItem) {
     if (this.subscriptions == null) {
-      this.subscriptions = new ArrayList<Subscription>();
+      this.subscriptions = new ArrayList<>();
     }
     this.subscriptions.add(subscriptionsItem);
     return this;
@@ -616,7 +636,7 @@ public class ArrayInfo {
 
   public ArrayInfo addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -731,6 +751,7 @@ public class ArrayInfo {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -825,5 +846,178 @@ public class ArrayInfo {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("file_type");
+    openapiFields.add("file_properties");
+    openapiFields.add("uri");
+    openapiFields.add("namespace");
+    openapiFields.add("size");
+    openapiFields.add("last_accessed");
+    openapiFields.add("description");
+    openapiFields.add("name");
+    openapiFields.add("allowed_actions");
+    openapiFields.add("pricing");
+    openapiFields.add("subscriptions");
+    openapiFields.add("logo");
+    openapiFields.add("access_credentials_name");
+    openapiFields.add("type");
+    openapiFields.add("share_count");
+    openapiFields.add("public_share");
+    openapiFields.add("namespace_subscribed");
+    openapiFields.add("tiledb_uri");
+    openapiFields.add("tags");
+    openapiFields.add("license_id");
+    openapiFields.add("license_text");
+    openapiFields.add("read_only");
+    openapiFields.add("is_favorite");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ArrayInfo
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ArrayInfo.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayInfo is not found in the empty JSON string", ArrayInfo.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ArrayInfo.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArrayInfo` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
+      }
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
+      }
+      if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("allowed_actions") != null && !jsonObj.get("allowed_actions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `allowed_actions` to be an array in the JSON string but got `%s`", jsonObj.get("allowed_actions").toString()));
+      }
+      JsonArray jsonArraypricing = jsonObj.getAsJsonArray("pricing");
+      if (jsonArraypricing != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("pricing").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `pricing` to be an array in the JSON string but got `%s`", jsonObj.get("pricing").toString()));
+        }
+
+        // validate the optional field `pricing` (array)
+        for (int i = 0; i < jsonArraypricing.size(); i++) {
+          Pricing.validateJsonObject(jsonArraypricing.get(i).getAsJsonObject());
+        };
+      }
+      JsonArray jsonArraysubscriptions = jsonObj.getAsJsonArray("subscriptions");
+      if (jsonArraysubscriptions != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("subscriptions").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `subscriptions` to be an array in the JSON string but got `%s`", jsonObj.get("subscriptions").toString()));
+        }
+
+        // validate the optional field `subscriptions` (array)
+        for (int i = 0; i < jsonArraysubscriptions.size(); i++) {
+          Subscription.validateJsonObject(jsonArraysubscriptions.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
+      }
+      if (jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `access_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_credentials_name").toString()));
+      }
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if (jsonObj.get("tiledb_uri") != null && !jsonObj.get("tiledb_uri").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tiledb_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tiledb_uri").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      }
+      if (jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `license_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_id").toString()));
+      }
+      if (jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `license_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_text").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ArrayInfo.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ArrayInfo' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ArrayInfo> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ArrayInfo.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ArrayInfo>() {
+           @Override
+           public void write(JsonWriter out, ArrayInfo value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ArrayInfo read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ArrayInfo given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ArrayInfo
+  * @throws IOException if the JSON string is invalid with respect to ArrayInfo
+  */
+  public static ArrayInfo fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ArrayInfo.class);
+  }
+
+ /**
+  * Convert an instance of ArrayInfo to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

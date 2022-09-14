@@ -2,19 +2,19 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteUDFInfo**](UdfApi.md#deleteUDFInfo) | **DELETE** /udf/{namespace}/{name} | 
-[**getUDFInfo**](UdfApi.md#getUDFInfo) | **GET** /udf/{namespace}/{name} | 
-[**getUDFInfoSharingPolicies**](UdfApi.md#getUDFInfoSharingPolicies) | **GET** /udf/{namespace}/{name}/share | 
-[**handleCopyUDF**](UdfApi.md#handleCopyUDF) | **POST** /udf/{namespace}/{name}/copy | 
-[**registerUDFInfo**](UdfApi.md#registerUDFInfo) | **POST** /udf/{namespace}/{name} | 
-[**shareUDFInfo**](UdfApi.md#shareUDFInfo) | **PATCH** /udf/{namespace}/{name}/share | 
-[**submitGenericUDF**](UdfApi.md#submitGenericUDF) | **POST** /udfs/generic/{namespace} | 
-[**submitMultiArrayUDF**](UdfApi.md#submitMultiArrayUDF) | **POST** /udfs/arrays/{namespace} | 
-[**submitUDF**](UdfApi.md#submitUDF) | **POST** /arrays/{namespace}/{array}/udf/submit | 
-[**udfNamespaceArrayEndTimestampsGet**](UdfApi.md#udfNamespaceArrayEndTimestampsGet) | **GET** /udf/{namespace}/{array}/end_timestamps | 
-[**updateUDFInfo**](UdfApi.md#updateUDFInfo) | **PATCH** /udf/{namespace}/{name} | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteUDFInfo**](UdfApi.md#deleteUDFInfo) | **DELETE** /udf/{namespace}/{name} |  |
+| [**getUDFInfo**](UdfApi.md#getUDFInfo) | **GET** /udf/{namespace}/{name} |  |
+| [**getUDFInfoSharingPolicies**](UdfApi.md#getUDFInfoSharingPolicies) | **GET** /udf/{namespace}/{name}/share |  |
+| [**handleCopyUDF**](UdfApi.md#handleCopyUDF) | **POST** /udf/{namespace}/{name}/copy |  |
+| [**registerUDFInfo**](UdfApi.md#registerUDFInfo) | **POST** /udf/{namespace}/{name} |  |
+| [**shareUDFInfo**](UdfApi.md#shareUDFInfo) | **PATCH** /udf/{namespace}/{name}/share |  |
+| [**submitGenericUDF**](UdfApi.md#submitGenericUDF) | **POST** /udfs/generic/{namespace} |  |
+| [**submitMultiArrayUDF**](UdfApi.md#submitMultiArrayUDF) | **POST** /udfs/arrays/{namespace} |  |
+| [**submitUDF**](UdfApi.md#submitUDF) | **POST** /arrays/{namespace}/{array}/udf/submit |  |
+| [**udfNamespaceArrayEndTimestampsGet**](UdfApi.md#udfNamespaceArrayEndTimestampsGet) | **GET** /udf/{namespace}/{array}/end_timestamps |  |
+| [**updateUDFInfo**](UdfApi.md#updateUDFInfo) | **PATCH** /udf/{namespace}/{name} |  |
 
 
 <a name="deleteUDFInfo"></a>
@@ -69,10 +69,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **name** | **String**| name to register UDF under |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **name** | **String**| name to register UDF under | |
 
 ### Return type
 
@@ -90,8 +90,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | UDF deleted successfully |  -  |
-**0** | error response |  -  |
+| **204** | UDF deleted successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="getUDFInfo"></a>
 # **getUDFInfo**
@@ -146,10 +146,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **name** | **String**| name to register UDF under |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **name** | **String**| name to register UDF under | |
 
 ### Return type
 
@@ -167,9 +167,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | UDFInfo was retrieved successfully |  -  |
-**404** | UDF not found |  -  |
-**0** | error response |  -  |
+| **200** | UDFInfo was retrieved successfully |  -  |
+| **404** | UDF not found |  -  |
+| **0** | error response |  -  |
 
 <a name="getUDFInfoSharingPolicies"></a>
 # **getUDFInfoSharingPolicies**
@@ -224,10 +224,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **name** | **String**| name of UDFInfo |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **name** | **String**| name of UDFInfo | |
 
 ### Return type
 
@@ -245,9 +245,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of all specific sharing policies |  -  |
-**404** | UDF does not exist or user does not have permissions to view array-sharing policies |  -  |
-**0** | error response |  -  |
+| **200** | List of all specific sharing policies |  -  |
+| **404** | UDF does not exist or user does not have permissions to view array-sharing policies |  -  |
+| **0** | error response |  -  |
 
 <a name="handleCopyUDF"></a>
 # **handleCopyUDF**
@@ -305,13 +305,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **name** | **String**| name of UDFInfo |
- **udFCopy** | [**UDFCopy**](UDFCopy.md)| Input/Output information to copy a UDF |
- **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional]
- **endTimestamp** | **Integer**| Milliseconds since Unix epoch | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **name** | **String**| name of UDFInfo | |
+| **udFCopy** | [**UDFCopy**](UDFCopy.md)| Input/Output information to copy a UDF | |
+| **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional] |
+| **endTimestamp** | **Integer**| Milliseconds since Unix epoch | [optional] |
 
 ### Return type
 
@@ -329,8 +329,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | UDF copied |  -  |
-**0** | error response |  -  |
+| **201** | UDF copied |  -  |
+| **0** | error response |  -  |
 
 <a name="registerUDFInfo"></a>
 # **registerUDFInfo**
@@ -385,11 +385,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **name** | **String**| name to register UDF under |
- **udf** | [**UDFInfoUpdate**](UDFInfoUpdate.md)| UDF to register |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **name** | **String**| name to register UDF under | |
+| **udf** | [**UDFInfoUpdate**](UDFInfoUpdate.md)| UDF to register | |
 
 ### Return type
 
@@ -407,8 +407,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | UDF registered successfully |  -  |
-**0** | error response |  -  |
+| **204** | UDF registered successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="shareUDFInfo"></a>
 # **shareUDFInfo**
@@ -463,11 +463,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **name** | **String**| name of UDFInfo |
- **udfSharing** | [**UDFSharing**](UDFSharing.md)| Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it&#39;s likely the UDF will not be shared with the namespace at all. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **name** | **String**| name of UDFInfo | |
+| **udfSharing** | [**UDFSharing**](UDFSharing.md)| Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it&#39;s likely the UDF will not be shared with the namespace at all. | |
 
 ### Return type
 
@@ -485,9 +485,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | UDF shared successfully |  -  |
-**404** | UDF does not exist or user does not have permissions to share UDF |  -  |
-**0** | error response |  -  |
+| **204** | UDF shared successfully |  -  |
+| **404** | UDF does not exist or user does not have permissions to share UDF |  -  |
+| **0** | error response |  -  |
 
 <a name="submitGenericUDF"></a>
 # **submitGenericUDF**
@@ -543,11 +543,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **udf** | [**GenericUDF**](GenericUDF.md)| UDF to run |
- **acceptEncoding** | **String**| Encoding to use | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **udf** | [**GenericUDF**](GenericUDF.md)| UDF to run | |
+| **acceptEncoding** | **String**| Encoding to use | [optional] |
 
 ### Return type
 
@@ -565,8 +565,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
 <a name="submitMultiArrayUDF"></a>
 # **submitMultiArrayUDF**
@@ -622,11 +622,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **udf** | [**MultiArrayUDF**](MultiArrayUDF.md)| UDF to run |
- **acceptEncoding** | **String**| Encoding to use | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **udf** | [**MultiArrayUDF**](MultiArrayUDF.md)| UDF to run | |
+| **acceptEncoding** | **String**| Encoding to use | [optional] |
 
 ### Return type
 
@@ -644,8 +644,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
 <a name="submitUDF"></a>
 # **submitUDF**
@@ -704,14 +704,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **udf** | [**MultiArrayUDF**](MultiArrayUDF.md)| UDF to run |
- **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional]
- **acceptEncoding** | **String**| Encoding to use | [optional]
- **v2** | **String**| flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **udf** | [**MultiArrayUDF**](MultiArrayUDF.md)| UDF to run | |
+| **xPayer** | **String**| Name of organization or user who should be charged for this request | [optional] |
+| **acceptEncoding** | **String**| Encoding to use | [optional] |
+| **v2** | **String**| flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. | [optional] |
 
 ### Return type
 
@@ -729,8 +729,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
-**0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
 <a name="udfNamespaceArrayEndTimestampsGet"></a>
 # **udfNamespaceArrayEndTimestampsGet**
@@ -787,12 +787,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **array** | **String**| name/uri of array that is url-encoded |
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
 
 ### Return type
 
@@ -810,8 +810,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | list of timestamps in milliseconds, paginated |  -  |
-**0** | error response |  -  |
+| **200** | list of timestamps in milliseconds, paginated |  -  |
+| **0** | error response |  -  |
 
 <a name="updateUDFInfo"></a>
 # **updateUDFInfo**
@@ -866,11 +866,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) |
- **name** | **String**| name to register UDF under |
- **udf** | [**UDFInfoUpdate**](UDFInfoUpdate.md)| UDF to update |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **name** | **String**| name to register UDF under | |
+| **udf** | [**UDFInfoUpdate**](UDFInfoUpdate.md)| UDF to update | |
 
 ### Return type
 
@@ -888,6 +888,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | UDF updated successfully |  -  |
-**0** | error response |  -  |
+| **204** | UDF updated successfully |  -  |
+| **0** | error response |  -  |
 

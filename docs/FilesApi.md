@@ -2,11 +2,11 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**handleCreateFile**](FilesApi.md#handleCreateFile) | **POST** /files/{namespace} | 
-[**handleExportFile**](FilesApi.md#handleExportFile) | **POST** /files/{namespace}/{file}/export | 
-[**handleUploadFile**](FilesApi.md#handleUploadFile) | **POST** /files/{namespace}/upload | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**handleCreateFile**](FilesApi.md#handleCreateFile) | **POST** /files/{namespace} |  |
+| [**handleExportFile**](FilesApi.md#handleExportFile) | **POST** /files/{namespace}/{file}/export |  |
+| [**handleUploadFile**](FilesApi.md#handleUploadFile) | **POST** /files/{namespace}/upload |  |
 
 
 <a name="handleCreateFile"></a>
@@ -63,11 +63,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the file |
- **fileCreate** | [**FileCreate**](FileCreate.md)| Input/Output information to create a new TileDB file |
- **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the file | |
+| **fileCreate** | [**FileCreate**](FileCreate.md)| Input/Output information to create a new TileDB file | |
+| **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional] |
 
 ### Return type
 
@@ -85,8 +85,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | File created |  -  |
-**0** | error response |  -  |
+| **201** | File created |  -  |
+| **0** | error response |  -  |
 
 <a name="handleExportFile"></a>
 # **handleExportFile**
@@ -142,11 +142,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the file |
- **_file** | **String**| The file identifier |
- **fileExport** | [**FileExport**](FileExport.md)| Export configuration information |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the file | |
+| **_file** | **String**| The file identifier | |
+| **fileExport** | [**FileExport**](FileExport.md)| Export configuration information | |
 
 ### Return type
 
@@ -164,8 +164,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | File exported |  -  |
-**0** | error response |  -  |
+| **201** | File exported |  -  |
+| **0** | error response |  -  |
 
 <a name="handleUploadFile"></a>
 # **handleUploadFile**
@@ -223,13 +223,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the file |
- **inputFile** | **File**| the file to upload |
- **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional]
- **outputUri** | **String**| output location of the TileDB File | [optional]
- **name** | **String**| name to set for registered file | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the file | |
+| **inputFile** | **File**| the file to upload | |
+| **X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME** | **String**| Optional registered access credentials to use for creation | [optional] |
+| **outputUri** | **String**| output location of the TileDB File | [optional] |
+| **name** | **String**| name to set for registered file | [optional] |
 
 ### Return type
 
@@ -247,6 +247,6 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | File uploaded |  -  |
-**0** | error response |  -  |
+| **201** | File uploaded |  -  |
+| **0** | error response |  -  |
 

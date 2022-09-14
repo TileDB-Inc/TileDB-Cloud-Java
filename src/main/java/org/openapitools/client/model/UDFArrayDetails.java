@@ -28,11 +28,31 @@ import java.util.List;
 import org.openapitools.client.model.QueryRanges;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Contains array details for multi-array query including uri, ranges buffers
  */
 @ApiModel(description = "Contains array details for multi-array query including uri, ranges buffers")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class UDFArrayDetails {
   public static final String SERIALIZED_NAME_PARAMETER_ID = "parameter_id";
   @SerializedName(SERIALIZED_NAME_PARAMETER_ID)
@@ -130,7 +150,7 @@ public class UDFArrayDetails {
 
   public UDFArrayDetails addBuffersItem(String buffersItem) {
     if (this.buffers == null) {
-      this.buffers = new ArrayList<String>();
+      this.buffers = new ArrayList<>();
     }
     this.buffers.add(buffersItem);
     return this;
@@ -151,6 +171,7 @@ public class UDFArrayDetails {
   public void setBuffers(List<String> buffers) {
     this.buffers = buffers;
   }
+
 
 
   @Override
@@ -207,5 +228,107 @@ public class UDFArrayDetails {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("parameter_id");
+    openapiFields.add("uri");
+    openapiFields.add("ranges");
+    openapiFields.add("buffers");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to UDFArrayDetails
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (UDFArrayDetails.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UDFArrayDetails is not found in the empty JSON string", UDFArrayDetails.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!UDFArrayDetails.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UDFArrayDetails` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+      if (jsonObj.get("parameter_id") != null && !jsonObj.get("parameter_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `parameter_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parameter_id").toString()));
+      }
+      if (jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
+      }
+      // validate the optional field `ranges`
+      if (jsonObj.getAsJsonObject("ranges") != null) {
+        QueryRanges.validateJsonObject(jsonObj.getAsJsonObject("ranges"));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("buffers") != null && !jsonObj.get("buffers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `buffers` to be an array in the JSON string but got `%s`", jsonObj.get("buffers").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!UDFArrayDetails.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UDFArrayDetails' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<UDFArrayDetails> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UDFArrayDetails.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<UDFArrayDetails>() {
+           @Override
+           public void write(JsonWriter out, UDFArrayDetails value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public UDFArrayDetails read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of UDFArrayDetails given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of UDFArrayDetails
+  * @throws IOException if the JSON string is invalid with respect to UDFArrayDetails
+  */
+  public static UDFArrayDetails fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UDFArrayDetails.class);
+  }
+
+ /**
+  * Convert an instance of UDFArrayDetails to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

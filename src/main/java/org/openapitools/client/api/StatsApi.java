@@ -28,13 +28,14 @@ import java.io.IOException;
 
 
 import org.openapitools.client.model.Error;
-import org.openapitools.client.model.InlineResponse200;
+import org.openapitools.client.model.GetTiledbStats200Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class StatsApi {
     private ApiClient localVarApiClient;
@@ -87,7 +88,6 @@ public class StatsApi {
      */
     public okhttp3.Call getTiledbStatsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
-
         // Operation Servers
         String[] localBasePaths = new String[] {  };
 
@@ -143,7 +143,7 @@ public class StatsApi {
     /**
      * 
      * Fetch libtiledb stat
-     * @return InlineResponse200
+     * @return GetTiledbStats200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -152,15 +152,15 @@ public class StatsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse200 getTiledbStats() throws ApiException {
-        ApiResponse<InlineResponse200> localVarResp = getTiledbStatsWithHttpInfo();
+    public GetTiledbStats200Response getTiledbStats() throws ApiException {
+        ApiResponse<GetTiledbStats200Response> localVarResp = getTiledbStatsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * 
      * Fetch libtiledb stat
-     * @return ApiResponse&lt;InlineResponse200&gt;
+     * @return ApiResponse&lt;GetTiledbStats200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -169,9 +169,9 @@ public class StatsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse200> getTiledbStatsWithHttpInfo() throws ApiException {
+    public ApiResponse<GetTiledbStats200Response> getTiledbStatsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTiledbStatsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetTiledbStats200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -188,10 +188,10 @@ public class StatsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTiledbStatsAsync(final ApiCallback<InlineResponse200> _callback) throws ApiException {
+    public okhttp3.Call getTiledbStatsAsync(final ApiCallback<GetTiledbStats200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTiledbStatsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetTiledbStats200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

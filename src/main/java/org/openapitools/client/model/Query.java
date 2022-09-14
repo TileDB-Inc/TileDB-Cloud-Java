@@ -32,10 +32,30 @@ import org.openapitools.client.model.Querystatus;
 import org.openapitools.client.model.Querytype;
 import org.openapitools.client.model.Writer;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.openapitools.client.JSON;
+
 /**
  * Query
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-19T15:04:32.581406+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
 public class Query {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -51,7 +71,7 @@ public class Query {
 
   public static final String SERIALIZED_NAME_ATTRIBUTE_BUFFER_HEADERS = "attributeBufferHeaders";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE_BUFFER_HEADERS)
-  private List<AttributeBufferHeader> attributeBufferHeaders = new ArrayList<AttributeBufferHeader>();
+  private List<AttributeBufferHeader> attributeBufferHeaders = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_WRITER = "writer";
   @SerializedName(SERIALIZED_NAME_WRITER)
@@ -288,6 +308,7 @@ public class Query {
   }
 
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -341,5 +362,136 @@ public class Query {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("type");
+    openapiFields.add("layout");
+    openapiFields.add("status");
+    openapiFields.add("attributeBufferHeaders");
+    openapiFields.add("writer");
+    openapiFields.add("reader");
+    openapiFields.add("array");
+    openapiFields.add("totalFixedLengthBufferBytes");
+    openapiFields.add("totalVarLenBufferBytes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("layout");
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("attributeBufferHeaders");
+    openapiRequiredFields.add("array");
+    openapiRequiredFields.add("totalFixedLengthBufferBytes");
+    openapiRequiredFields.add("totalVarLenBufferBytes");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Query
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Query.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Query is not found in the empty JSON string", Query.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+//      for (Entry<String, JsonElement> entry : entries) {
+//        if (!Query.openapiFields.contains(entry.getKey())) {
+//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Query` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+//        }
+//      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Query.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      JsonArray jsonArrayattributeBufferHeaders = jsonObj.getAsJsonArray("attributeBufferHeaders");
+      if (jsonArrayattributeBufferHeaders != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("attributeBufferHeaders").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `attributeBufferHeaders` to be an array in the JSON string but got `%s`", jsonObj.get("attributeBufferHeaders").toString()));
+        }
+
+        // validate the optional field `attributeBufferHeaders` (array)
+        for (int i = 0; i < jsonArrayattributeBufferHeaders.size(); i++) {
+          AttributeBufferHeader.validateJsonObject(jsonArrayattributeBufferHeaders.get(i).getAsJsonObject());
+        };
+      }
+      // validate the optional field `writer`
+      if (jsonObj.getAsJsonObject("writer") != null) {
+        Writer.validateJsonObject(jsonObj.getAsJsonObject("writer"));
+      }
+      // validate the optional field `reader`
+      if (jsonObj.getAsJsonObject("reader") != null) {
+        QueryReader.validateJsonObject(jsonObj.getAsJsonObject("reader"));
+      }
+      // validate the optional field `array`
+      if (jsonObj.getAsJsonObject("array") != null) {
+        Array.validateJsonObject(jsonObj.getAsJsonObject("array"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Query.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Query' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Query> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Query.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Query>() {
+           @Override
+           public void write(JsonWriter out, Query value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Query read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Query given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Query
+  * @throws IOException if the JSON string is invalid with respect to Query
+  */
+  public static Query fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Query.class);
+  }
+
+ /**
+  * Convert an instance of Query to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

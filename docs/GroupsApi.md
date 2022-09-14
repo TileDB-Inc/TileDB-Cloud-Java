@@ -2,24 +2,24 @@
 
 All URIs are relative to */v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**changeGroupContents**](GroupsApi.md#changeGroupContents) | **POST** /groups/{group_namespace}/{group_name}/contents | 
-[**createGroup**](GroupsApi.md#createGroup) | **POST** /groups/{namespace}/create | 
-[**deleteGroup**](GroupsApi.md#deleteGroup) | **DELETE** /groups/{group_namespace}/{group_name} | 
-[**getGroup**](GroupsApi.md#getGroup) | **GET** /groups/{group_namespace}/{group_name} | 
-[**getGroupContents**](GroupsApi.md#getGroupContents) | **GET** /groups/{group_namespace}/{group_name}/contents | 
-[**getGroupSharingPolicies**](GroupsApi.md#getGroupSharingPolicies) | **GET** /groups/{group_namespace}/{group_name}/share | 
-[**groupsBrowserOwnedFiltersGet**](GroupsApi.md#groupsBrowserOwnedFiltersGet) | **GET** /groups/browser/owned/filters | 
-[**groupsBrowserPublicFiltersGet**](GroupsApi.md#groupsBrowserPublicFiltersGet) | **GET** /groups/browser/public/filters | 
-[**groupsBrowserSharedFiltersGet**](GroupsApi.md#groupsBrowserSharedFiltersGet) | **GET** /groups/browser/shared/filters | 
-[**groupsGroupNamespaceGroupNameContentsFiltersGet**](GroupsApi.md#groupsGroupNamespaceGroupNameContentsFiltersGet) | **GET** /groups/{group_namespace}/{group_name}/contents/filters | 
-[**listOwnedGroups**](GroupsApi.md#listOwnedGroups) | **GET** /groups/browser/owned | 
-[**listPublicGroups**](GroupsApi.md#listPublicGroups) | **GET** /groups/browser/public | 
-[**listSharedGroups**](GroupsApi.md#listSharedGroups) | **GET** /groups/browser/shared | 
-[**registerGroup**](GroupsApi.md#registerGroup) | **POST** /groups/{namespace}/{array}/register | 
-[**shareGroup**](GroupsApi.md#shareGroup) | **PATCH** /groups/{group_namespace}/{group_name}/share | 
-[**updateGroup**](GroupsApi.md#updateGroup) | **PATCH** /groups/{group_namespace}/{group_name} | 
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**changeGroupContents**](GroupsApi.md#changeGroupContents) | **POST** /groups/{group_namespace}/{group_name}/contents |  |
+| [**createGroup**](GroupsApi.md#createGroup) | **POST** /groups/{namespace}/create |  |
+| [**deleteGroup**](GroupsApi.md#deleteGroup) | **DELETE** /groups/{group_namespace}/{group_name} |  |
+| [**getGroup**](GroupsApi.md#getGroup) | **GET** /groups/{group_namespace}/{group_name} |  |
+| [**getGroupContents**](GroupsApi.md#getGroupContents) | **GET** /groups/{group_namespace}/{group_name}/contents |  |
+| [**getGroupSharingPolicies**](GroupsApi.md#getGroupSharingPolicies) | **GET** /groups/{group_namespace}/{group_name}/share |  |
+| [**groupsBrowserOwnedFiltersGet**](GroupsApi.md#groupsBrowserOwnedFiltersGet) | **GET** /groups/browser/owned/filters |  |
+| [**groupsBrowserPublicFiltersGet**](GroupsApi.md#groupsBrowserPublicFiltersGet) | **GET** /groups/browser/public/filters |  |
+| [**groupsBrowserSharedFiltersGet**](GroupsApi.md#groupsBrowserSharedFiltersGet) | **GET** /groups/browser/shared/filters |  |
+| [**groupsGroupNamespaceGroupNameContentsFiltersGet**](GroupsApi.md#groupsGroupNamespaceGroupNameContentsFiltersGet) | **GET** /groups/{group_namespace}/{group_name}/contents/filters |  |
+| [**listOwnedGroups**](GroupsApi.md#listOwnedGroups) | **GET** /groups/browser/owned |  |
+| [**listPublicGroups**](GroupsApi.md#listPublicGroups) | **GET** /groups/browser/public |  |
+| [**listSharedGroups**](GroupsApi.md#listSharedGroups) | **GET** /groups/browser/shared |  |
+| [**registerGroup**](GroupsApi.md#registerGroup) | **POST** /groups/{namespace}/{array}/register |  |
+| [**shareGroup**](GroupsApi.md#shareGroup) | **PATCH** /groups/{group_namespace}/{group_name}/share |  |
+| [**updateGroup**](GroupsApi.md#updateGroup) | **PATCH** /groups/{group_namespace}/{group_name} |  |
 
 
 <a name="changeGroupContents"></a>
@@ -75,11 +75,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupNamespace** | **String**| The namespace of the group |
- **groupName** | **String**| The unique name or id of the group |
- **groupChanges** | [**GroupChanges**](GroupChanges.md)|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
+| **groupChanges** | [**GroupChanges**](GroupChanges.md)|  | [optional] |
 
 ### Return type
 
@@ -97,8 +97,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | all changes applied successfully |  -  |
-**0** | error response |  -  |
+| **204** | all changes applied successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="createGroup"></a>
 # **createGroup**
@@ -152,10 +152,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the group |
- **groupCreate** | [**GroupCreate**](GroupCreate.md)|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the group | |
+| **groupCreate** | [**GroupCreate**](GroupCreate.md)|  | [optional] |
 
 ### Return type
 
@@ -173,8 +173,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | group created successfully |  -  |
-**0** | error response |  -  |
+| **204** | group created successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="deleteGroup"></a>
 # **deleteGroup**
@@ -228,10 +228,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupNamespace** | **String**| The namespace of the group |
- **groupName** | **String**| The unique name or id of the group |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
 
 ### Return type
 
@@ -249,8 +249,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | group deleted successfully |  -  |
-**0** | error response |  -  |
+| **204** | group deleted successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="getGroup"></a>
 # **getGroup**
@@ -305,10 +305,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupNamespace** | **String**| The namespace of the group |
- **groupName** | **String**| The unique name or id of the group |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
 
 ### Return type
 
@@ -326,8 +326,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the group metadata |  -  |
-**0** | error response |  -  |
+| **200** | the group metadata |  -  |
+| **0** | error response |  -  |
 
 <a name="getGroupContents"></a>
 # **getGroupContents**
@@ -391,19 +391,19 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupNamespace** | **String**| The namespace of the group |
- **groupName** | **String**| The unique name or id of the group |
- **page** | **Integer**| pagination offset for assets | [optional]
- **perPage** | **Integer**| pagination limit for assets | [optional]
- **namespace** | **String**| namespace to search for | [optional]
- **search** | **String**| search string that will look at name, namespace or description fields | [optional]
- **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional]
- **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional]
- **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional]
- **memberType** | [**List&lt;String&gt;**](String.md)| member type to search for, more than one can be included | [optional]
- **excludeMemberType** | [**List&lt;String&gt;**](String.md)| member type to exclude matching groups in results, more than one can be included | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
+| **page** | **Integer**| pagination offset for assets | [optional] |
+| **perPage** | **Integer**| pagination limit for assets | [optional] |
+| **namespace** | **String**| namespace to search for | [optional] |
+| **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
+| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
+| **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
+| **memberType** | [**List&lt;String&gt;**](String.md)| member type to search for, more than one can be included | [optional] |
+| **excludeMemberType** | [**List&lt;String&gt;**](String.md)| member type to exclude matching groups in results, more than one can be included | [optional] |
 
 ### Return type
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the group contents |  -  |
-**0** | error response |  -  |
+| **200** | the group contents |  -  |
+| **0** | error response |  -  |
 
 <a name="getGroupSharingPolicies"></a>
 # **getGroupSharingPolicies**
@@ -477,10 +477,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupNamespace** | **String**| The namespace of the group |
- **groupName** | **String**| The unique name or id of the group |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
 
 ### Return type
 
@@ -498,9 +498,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of all specific sharing policies |  -  |
-**404** | Group does not exist or user does not have permissions to view group-sharing policies |  -  |
-**0** | error response |  -  |
+| **200** | List of all specific sharing policies |  -  |
+| **404** | Group does not exist or user does not have permissions to view group-sharing policies |  -  |
+| **0** | error response |  -  |
 
 <a name="groupsBrowserOwnedFiltersGet"></a>
 # **groupsBrowserOwnedFiltersGet**
@@ -570,8 +570,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Filter data |  -  |
-**0** | error response |  -  |
+| **200** | Filter data |  -  |
+| **0** | error response |  -  |
 
 <a name="groupsBrowserPublicFiltersGet"></a>
 # **groupsBrowserPublicFiltersGet**
@@ -641,8 +641,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Filter data |  -  |
-**0** | error response |  -  |
+| **200** | Filter data |  -  |
+| **0** | error response |  -  |
 
 <a name="groupsBrowserSharedFiltersGet"></a>
 # **groupsBrowserSharedFiltersGet**
@@ -712,8 +712,8 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Filter data |  -  |
-**0** | error response |  -  |
+| **200** | Filter data |  -  |
+| **0** | error response |  -  |
 
 <a name="groupsGroupNamespaceGroupNameContentsFiltersGet"></a>
 # **groupsGroupNamespaceGroupNameContentsFiltersGet**
@@ -768,10 +768,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupNamespace** | **String**| The namespace of the group |
- **groupName** | **String**| The unique name or id of the group |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
 
 ### Return type
 
@@ -789,8 +789,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Filter data |  -  |
-**0** | error response |  -  |
+| **200** | Filter data |  -  |
+| **0** | error response |  -  |
 
 <a name="listOwnedGroups"></a>
 # **listOwnedGroups**
@@ -853,18 +853,18 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
- **search** | **String**| search string that will look at name, namespace or description fields | [optional]
- **namespace** | **String**| namespace | [optional]
- **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional]
- **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional]
- **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional]
- **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional]
- **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional]
- **parent** | **String**| search only the children of the groups with this uuid | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
+| **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
+| **namespace** | **String**| namespace | [optional] |
+| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
+| **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
+| **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
+| **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional] |
+| **parent** | **String**| search only the children of the groups with this uuid | [optional] |
 
 ### Return type
 
@@ -882,8 +882,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the group contents |  -  |
-**0** | error response |  -  |
+| **200** | the group contents |  -  |
+| **0** | error response |  -  |
 
 <a name="listPublicGroups"></a>
 # **listPublicGroups**
@@ -946,18 +946,18 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
- **search** | **String**| search string that will look at name, namespace or description fields | [optional]
- **namespace** | **String**| namespace | [optional]
- **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional]
- **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional]
- **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional]
- **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional]
- **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional]
- **parent** | **String**| search only the children of the groups with this uuid | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
+| **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
+| **namespace** | **String**| namespace | [optional] |
+| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
+| **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
+| **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
+| **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional] |
+| **parent** | **String**| search only the children of the groups with this uuid | [optional] |
 
 ### Return type
 
@@ -975,12 +975,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the group contents |  -  |
-**0** | error response |  -  |
+| **200** | the group contents |  -  |
+| **0** | error response |  -  |
 
 <a name="listSharedGroups"></a>
 # **listSharedGroups**
-> GroupBrowserData listSharedGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent)
+> GroupBrowserData listSharedGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo)
 
 
 
@@ -1023,8 +1023,9 @@ public class Example {
     List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
     Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
     String parent = "parent_example"; // String | search only the children of the groups with this uuid
+    List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there groups were shared to
     try {
-      GroupBrowserData result = apiInstance.listSharedGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+      GroupBrowserData result = apiInstance.listSharedGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling GroupsApi#listSharedGroups");
@@ -1039,18 +1040,19 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **Integer**| pagination offset | [optional]
- **perPage** | **Integer**| pagination limit | [optional]
- **search** | **String**| search string that will look at name, namespace or description fields | [optional]
- **namespace** | **String**| namespace | [optional]
- **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional]
- **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional]
- **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional]
- **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional]
- **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional]
- **parent** | **String**| search only the children of the groups with this uuid | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
+| **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
+| **namespace** | **String**| namespace | [optional] |
+| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
+| **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
+| **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
+| **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional] |
+| **parent** | **String**| search only the children of the groups with this uuid | [optional] |
+| **sharedTo** | [**List&lt;String&gt;**](String.md)| namespaces to filter results of where there groups were shared to | [optional] |
 
 ### Return type
 
@@ -1068,8 +1070,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | the group contents |  -  |
-**0** | error response |  -  |
+| **200** | the group contents |  -  |
+| **0** | error response |  -  |
 
 <a name="registerGroup"></a>
 # **registerGroup**
@@ -1124,11 +1126,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **namespace** | **String**| The namespace of the group |
- **array** | **String**| The unique name or id of the group |
- **groupRegister** | [**GroupRegister**](GroupRegister.md)|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| The namespace of the group | |
+| **array** | **String**| The unique name or id of the group | |
+| **groupRegister** | [**GroupRegister**](GroupRegister.md)|  | [optional] |
 
 ### Return type
 
@@ -1146,8 +1148,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | group created successfully |  -  |
-**0** | error response |  -  |
+| **204** | group created successfully |  -  |
+| **0** | error response |  -  |
 
 <a name="shareGroup"></a>
 # **shareGroup**
@@ -1202,11 +1204,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupNamespace** | **String**| The namespace of the group |
- **groupName** | **String**| The unique name or id of the group |
- **groupSharingRequest** | [**GroupSharingRequest**](GroupSharingRequest.md)| Namespace and list of permissions to share with. Sharing is recursive, it is applied to all reachable subgroups and arrays of the group. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it&#39;s likely the group will not be shared with the namespace at all. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
+| **groupSharingRequest** | [**GroupSharingRequest**](GroupSharingRequest.md)| Namespace and list of permissions to share with. Sharing is recursive, it is applied to all reachable subgroups and arrays of the group. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it&#39;s likely the group will not be shared with the namespace at all. | |
 
 ### Return type
 
@@ -1224,9 +1226,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Group shared successfully |  -  |
-**404** | Group does not exist or user does not have permissions to share group |  -  |
-**0** | error response |  -  |
+| **204** | Group shared successfully |  -  |
+| **404** | Group does not exist or user does not have permissions to share group |  -  |
+| **0** | error response |  -  |
 
 <a name="updateGroup"></a>
 # **updateGroup**
@@ -1281,11 +1283,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupNamespace** | **String**| The namespace of the group |
- **groupName** | **String**| The unique name or id of the group |
- **groupUpdate** | [**GroupUpdate**](GroupUpdate.md)|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
+| **groupUpdate** | [**GroupUpdate**](GroupUpdate.md)|  | [optional] |
 
 ### Return type
 
@@ -1303,6 +1305,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | attributes changed successfully |  -  |
-**0** | error response |  -  |
+| **204** | attributes changed successfully |  -  |
+| **0** | error response |  -  |
 
