@@ -20,45 +20,46 @@ All URIs are relative to */v1*
 Create a task graph log.
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.TaskGraphLogsApi;
+
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.model.*;
+import io.tiledb.cloud.rest_api.api.TaskGraphLogsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
-    String namespace = "namespace_example"; // String | The namespace that will own this task graph log.
-    TaskGraphLog log = new TaskGraphLog(); // TaskGraphLog | 
-    try {
-      TaskGraphLog result = apiInstance.createTaskGraphLog(namespace, log);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TaskGraphLogsApi#createTaskGraphLog");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
+        String namespace = "namespace_example"; // String | The namespace that will own this task graph log.
+        TaskGraphLog log = new TaskGraphLog(); // TaskGraphLog | 
+        try {
+            TaskGraphLog result = apiInstance.createTaskGraphLog(namespace, log);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskGraphLogsApi#createTaskGraphLog");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -97,45 +98,46 @@ public class Example {
 Fetch information about a single task graph execution. 
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.TaskGraphLogsApi;
+import TaskGraphLogsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
-    String namespace = "namespace_example"; // String | The namespace that owns this task graph log.
-    String id = "id_example"; // String | The UUID of the task graph log entry.
-    try {
-      TaskGraphLog result = apiInstance.getTaskGraphLog(namespace, id);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TaskGraphLogsApi#getTaskGraphLog");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
+        String namespace = "namespace_example"; // String | The namespace that owns this task graph log.
+        String id = "id_example"; // String | The UUID of the task graph log entry.
+        try {
+            TaskGraphLog result = apiInstance.getTaskGraphLog(namespace, id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskGraphLogsApi#getTaskGraphLog");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -174,50 +176,51 @@ public class Example {
 Fetch the task graph logs of a namespace the user has access to. The returned entries will include only summary data, and will not include information about the individual tasks that were executed. (This information is available when requesting an individual task graph log.) Entries in the response are ordered from newest to oldest. Pagination parameters work as in other API methods; see PaginationMetadata. 
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.TaskGraphLogsApi;
+import TaskGraphLogsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
-    String namespace = "namespace_example"; // String | Include logs for this namespace.
-    String createdBy = "createdBy_example"; // String | Include logs from only this user.
-    String search = "search_example"; // String | search string that will look at name.
-    OffsetDateTime startTime = OffsetDateTime.now(); // OffsetDateTime | Include logs created after this time.
-    OffsetDateTime endTime = OffsetDateTime.now(); // OffsetDateTime | Include logs created before this time.
-    Integer page = 56; // Integer | pagination offset
-    Integer perPage = 56; // Integer | pagination limit
-    try {
-      TaskGraphLogsData result = apiInstance.listTaskGraphLogs(namespace, createdBy, search, startTime, endTime, page, perPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TaskGraphLogsApi#listTaskGraphLogs");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
+        String namespace = "namespace_example"; // String | Include logs for this namespace.
+        String createdBy = "createdBy_example"; // String | Include logs from only this user.
+        String search = "search_example"; // String | search string that will look at name.
+        OffsetDateTime startTime = OffsetDateTime.now(); // OffsetDateTime | Include logs created after this time.
+        OffsetDateTime endTime = OffsetDateTime.now(); // OffsetDateTime | Include logs created before this time.
+        Integer page = 56; // Integer | pagination offset
+        Integer perPage = 56; // Integer | pagination limit
+        try {
+            TaskGraphLogsData result = apiInstance.listTaskGraphLogs(namespace, createdBy, search, startTime, endTime, page, perPage);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskGraphLogsApi#listTaskGraphLogs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -259,45 +262,46 @@ public class Example {
 
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.TaskGraphLogsApi;
+import TaskGraphLogsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
-    String namespace = "namespace_example"; // String | The namespace that owns this task graph log.
-    String id = "id_example"; // String | The UUID of the task graph log entry.
-    TaskGraphClientNodeStatus report = new TaskGraphClientNodeStatus(); // TaskGraphClientNodeStatus | The node status to report.
-    try {
-      apiInstance.reportClientNode(namespace, id, report);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TaskGraphLogsApi#reportClientNode");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
+        String namespace = "namespace_example"; // String | The namespace that owns this task graph log.
+        String id = "id_example"; // String | The UUID of the task graph log entry.
+        TaskGraphClientNodeStatus report = new TaskGraphClientNodeStatus(); // TaskGraphClientNodeStatus | The node status to report.
+        try {
+            apiInstance.reportClientNode(namespace, id, report);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskGraphLogsApi#reportClientNode");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -337,45 +341,46 @@ null (empty response body)
 Update information about a single task graph execution. 
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.TaskGraphLogsApi;
+import TaskGraphLogsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
-    String namespace = "namespace_example"; // String | The namespace that owns this task graph log.
-    String id = "id_example"; // String | The UUID of the task graph log entry.
-    TaskGraphLog log = new TaskGraphLog(); // TaskGraphLog | Updates to make to the task graph log. The only manual update that a client should need to make to a task graph log is to update its completion status to `succeeded`, `failed`, or `cancelled`. 
-    try {
-      apiInstance.updateTaskGraphLog(namespace, id, log);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TaskGraphLogsApi#updateTaskGraphLog");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        TaskGraphLogsApi apiInstance = new TaskGraphLogsApi(defaultClient);
+        String namespace = "namespace_example"; // String | The namespace that owns this task graph log.
+        String id = "id_example"; // String | The UUID of the task graph log entry.
+        TaskGraphLog log = new TaskGraphLog(); // TaskGraphLog | Updates to make to the task graph log. The only manual update that a client should need to make to a task graph log is to update its completion status to `succeeded`, `failed`, or `cancelled`. 
+        try {
+            apiInstance.updateTaskGraphLog(namespace, id, log);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskGraphLogsApi#updateTaskGraphLog");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
