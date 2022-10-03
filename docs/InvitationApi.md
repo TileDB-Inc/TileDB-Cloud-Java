@@ -21,43 +21,44 @@ All URIs are relative to */v1*
 Accepts invitation
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.InvitationApi;
+
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.model.*;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    InvitationApi apiInstance = new InvitationApi(defaultClient);
-    String invitation = "invitation_example"; // String | the ID of invitation about to be accepted
-    try {
-      apiInstance.acceptInvitation(invitation);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InvitationApi#acceptInvitation");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        InvitationApi apiInstance = new InvitationApi(defaultClient);
+        String invitation = "invitation_example"; // String | the ID of invitation about to be accepted
+        try {
+            apiInstance.acceptInvitation(invitation);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvitationApi#acceptInvitation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -96,44 +97,45 @@ null (empty response body)
 Cancels join organization invitation
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.InvitationApi;
+import InvitationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    InvitationApi apiInstance = new InvitationApi(defaultClient);
-    String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
-    String organization = "organization_example"; // String | name or UUID of organization
-    try {
-      apiInstance.cancelJoinOrganization(invitation, organization);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InvitationApi#cancelJoinOrganization");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        InvitationApi apiInstance = new InvitationApi(defaultClient);
+        String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
+        String organization = "organization_example"; // String | name or UUID of organization
+        try {
+            apiInstance.cancelJoinOrganization(invitation, organization);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvitationApi#cancelJoinOrganization");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -173,45 +175,46 @@ null (empty response body)
 Cancels array sharing invitation
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.InvitationApi;
+import InvitationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    InvitationApi apiInstance = new InvitationApi(defaultClient);
-    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-    String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
-    String array = "array_example"; // String | name/uri of array that is url-encoded
-    try {
-      apiInstance.cancelShareArrayByInvite(namespace, invitation, array);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InvitationApi#cancelShareArrayByInvite");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        InvitationApi apiInstance = new InvitationApi(defaultClient);
+        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+        String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
+        String array = "array_example"; // String | name/uri of array that is url-encoded
+        try {
+            apiInstance.cancelShareArrayByInvite(namespace, invitation, array);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvitationApi#cancelShareArrayByInvite");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -252,52 +255,53 @@ null (empty response body)
 Fetch a list of invitations
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.InvitationApi;
+import InvitationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    InvitationApi apiInstance = new InvitationApi(defaultClient);
-    String organization = "organization_example"; // String | name or ID of organization to filter
-    String array = "array_example"; // String | name/uri of array that is url-encoded to filter
-    Integer start = 56; // Integer | start time for tasks to filter by
-    Integer end = 56; // Integer | end time for tasks to filter by
-    Integer page = 56; // Integer | pagination offset
-    Integer perPage = 56; // Integer | pagination limit
-    String type = "type_example"; // String | invitation type, \"ARRAY_SHARE\", \"JOIN_ORGANIZATION\"
-    String status = "status_example"; // String | Filter to only return \"PENDING\", \"ACCEPTED\"
-    String orderby = "orderby_example"; // String | sort by which field valid values include timestamp, array_name, organization_name
-    try {
-      InvitationData result = apiInstance.fetchInvitations(organization, array, start, end, page, perPage, type, status, orderby);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InvitationApi#fetchInvitations");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        InvitationApi apiInstance = new InvitationApi(defaultClient);
+        String organization = "organization_example"; // String | name or ID of organization to filter
+        String array = "array_example"; // String | name/uri of array that is url-encoded to filter
+        Integer start = 56; // Integer | start time for tasks to filter by
+        Integer end = 56; // Integer | end time for tasks to filter by
+        Integer page = 56; // Integer | pagination offset
+        Integer perPage = 56; // Integer | pagination limit
+        String type = "type_example"; // String | invitation type, \"ARRAY_SHARE\", \"JOIN_ORGANIZATION\"
+        String status = "status_example"; // String | Filter to only return \"PENDING\", \"ACCEPTED\"
+        String orderby = "orderby_example"; // String | sort by which field valid values include timestamp, array_name, organization_name
+        try {
+            InvitationData result = apiInstance.fetchInvitations(organization, array, start, end, page, perPage, type, status, orderby);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvitationApi#fetchInvitations");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -343,44 +347,45 @@ public class Example {
 Sends email to multiple recipients with joining information regarding an organization
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.InvitationApi;
+import InvitationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    InvitationApi apiInstance = new InvitationApi(defaultClient);
-    String organization = "organization_example"; // String | name or UUID of organization
-    InvitationOrganizationJoinEmail emailInvite = new InvitationOrganizationJoinEmail(); // InvitationOrganizationJoinEmail | list of email recipients
-    try {
-      apiInstance.joinOrganization(organization, emailInvite);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InvitationApi#joinOrganization");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        InvitationApi apiInstance = new InvitationApi(defaultClient);
+        String organization = "organization_example"; // String | name or UUID of organization
+        InvitationOrganizationJoinEmail emailInvite = new InvitationOrganizationJoinEmail(); // InvitationOrganizationJoinEmail | list of email recipients
+        try {
+            apiInstance.joinOrganization(organization, emailInvite);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvitationApi#joinOrganization");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -420,45 +425,46 @@ null (empty response body)
 Sends email to multiple recipients with sharing information regarding an array
 
 ### Example
+
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
+
+import ApiClient;
+import ApiException;
+import Configuration;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.InvitationApi;
+import InvitationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    InvitationApi apiInstance = new InvitationApi(defaultClient);
-    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-    String array = "array_example"; // String | name/uri of array that is url-encoded
-    InvitationArrayShareEmail emailInvite = new InvitationArrayShareEmail(); // InvitationArrayShareEmail | list of email recipients
-    try {
-      apiInstance.shareArrayByInvite(namespace, array, emailInvite);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InvitationApi#shareArrayByInvite");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        InvitationApi apiInstance = new InvitationApi(defaultClient);
+        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+        String array = "array_example"; // String | name/uri of array that is url-encoded
+        InvitationArrayShareEmail emailInvite = new InvitationArrayShareEmail(); // InvitationArrayShareEmail | list of email recipients
+        try {
+            apiInstance.shareArrayByInvite(namespace, array, emailInvite);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvitationApi#shareArrayByInvite");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

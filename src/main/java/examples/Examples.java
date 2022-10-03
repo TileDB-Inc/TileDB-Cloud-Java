@@ -1,27 +1,27 @@
 package examples;
 
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.api.GroupsApi;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.api.ArrayApi;
-import org.openapitools.client.model.ArrayInfo;
-import org.openapitools.client.model.ArrayInfoUpdate;
-import org.openapitools.client.model.ArraySchema;
-import org.openapitools.client.model.ArrayType;
-import org.openapitools.client.model.Attribute;
-import org.openapitools.client.model.Datatype;
-import org.openapitools.client.model.Dimension;
-import org.openapitools.client.model.DimensionTileExtent;
-import org.openapitools.client.model.Domain;
-import org.openapitools.client.model.DomainArray;
-import org.openapitools.client.model.Filter;
-import org.openapitools.client.model.FilterPipeline;
-import org.openapitools.client.model.FilterType;
-import org.openapitools.client.model.GroupBrowserData;
-import org.openapitools.client.model.Layout;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.api.GroupsApi;
+import io.tiledb.cloud.rest_api.auth.ApiKeyAuth;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.model.ArrayInfo;
+import io.tiledb.cloud.rest_api.model.ArrayInfoUpdate;
+import io.tiledb.cloud.rest_api.model.ArraySchema;
+import io.tiledb.cloud.rest_api.model.ArrayType;
+import io.tiledb.cloud.rest_api.model.Attribute;
+import io.tiledb.cloud.rest_api.model.Datatype;
+import io.tiledb.cloud.rest_api.model.Dimension;
+import io.tiledb.cloud.rest_api.model.DimensionTileExtent;
+import io.tiledb.cloud.rest_api.model.Domain;
+import io.tiledb.cloud.rest_api.model.DomainArray;
+import io.tiledb.cloud.rest_api.model.Filter;
+import io.tiledb.cloud.rest_api.model.FilterPipeline;
+import io.tiledb.cloud.rest_api.model.FilterType;
+import io.tiledb.cloud.rest_api.model.GroupBrowserData;
+import io.tiledb.cloud.rest_api.model.Layout;
 
 import java.util.List;
 
