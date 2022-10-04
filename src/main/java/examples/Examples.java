@@ -4,6 +4,7 @@ package examples;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.Login;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
 import io.tiledb.cloud.rest_api.auth.ApiKeyAuth;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
@@ -28,15 +29,24 @@ import java.util.List;
 public class Examples
 {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.tiledb.com/v1");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("<API_TOKEN>");
+//      if using cloud for the first time create the client with a Login object to pass your credentials.
+        ApiClient apiClient = new ApiClient(
+                new Login(null,
+                        null,
+                        "https://api.tiledb.com/v1",
+                        "<TILEDB_API_TOKEN>",
+                        true,
+                        true,
+                        false));
 
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
+//      If the "RememberME" option is set to true in your first login you can access TileDB-Cloud without the need
+//      to pass any credentials from now on. Just create the client as follows:
+//      ApiClient apiClient = new ApiClient();
 
+        ArrayApi apiInstance = new ArrayApi(apiClient);
+
+//        Uncomment to run whichever example you want
 //        getArraySchema(apiInstance);
 //        createArray(apiInstance);
 //        registerArray(apiInstance);
@@ -95,7 +105,7 @@ public class Examples
         Integer page = null; // Integer | pagination offset
         Integer perPage = null; // Integer | pagination limit
         String search = null; // String | search string that will look at name, namespace or description fields
-        String namespace = "TileDB-Inc"; // String | namespace
+        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace
         String orderby = null; // String | sort by which field valid values include last_accessed, size, name
         String permissions = null; // String | permissions valid values include read, read_write, write, admin
         List<String> tag = null; // List<String> | tag to search for, more than one can be included
@@ -138,7 +148,7 @@ public class Examples
 
     private static void getArraySchema(ArrayApi arrayApi){
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
-        String array = "my_array"; // String | name/uri of array that is url-encoded
+        String array = "<ARRAY_NAME>"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime
         try {
             ArraySchema result = arrayApi.getArray(namespace, array, contentType);
