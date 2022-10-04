@@ -27,3 +27,7 @@ build.gradle
 src/main/java/org/openapitools/client/model/FilterType.java
 README.md
 settings.gradle
+
+#the api client contains the custom code for static initialization from the json file
+src/main/java/io/tiledb/cloud/rest_api/ApiClient.java
+src/main/java/io/tiledb/cloud/rest_api/Login.java

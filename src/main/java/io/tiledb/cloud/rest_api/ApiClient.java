@@ -24,10 +24,7 @@ import okio.Okio;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
 
 import javax.net.ssl.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URLConnection;
@@ -56,13 +53,14 @@ import io.tiledb.cloud.rest_api.auth.ApiKeyAuth;
 import io.tiledb.cloud.rest_api.auth.OAuth;
 import io.tiledb.cloud.rest_api.auth.RetryingOAuth;
 import io.tiledb.cloud.rest_api.auth.OAuthFlow;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 /**
  * <p>ApiClient class.</p>
  */
 public class ApiClient {
 
-    private String basePath = "/v1";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
@@ -76,27 +74,182 @@ public class ApiClient {
     private int dateLength;
 
     private InputStream sslCaCert;
-    private boolean verifyingSsl;
+    private static boolean verifyingSsl = true;
     private KeyManager[] keyManagers;
 
     private OkHttpClient httpClient;
     private JSON json;
 
+    private static String apiKey;
+    private static String username;
+    private static String password;
+    private static String basePath;
+
     private HttpLoggingInterceptor loggingInterceptor;
+
+    private static boolean loginInfoIsInJSONFile;
+
+    private static final String homeDir = System.getProperty("user.home");
+
+    /**
+     * Static initialization.
+     */
+    static
+    {
+        apiKey = "";
+        username = "";
+        password = "";
+        basePath = "https://api.tiledb.com/v1";
+        loginInfoIsInJSONFile = true;
+        System.out.println("STATIC INIT");
+        boolean ok =  false;
+        try {
+            ok = loadCloudJSONFileFromHome();
+        } catch (Exception e) {
+            loginInfoIsInJSONFile = false;
+        }
+        if (!ok) {
+            loginInfoIsInJSONFile = false;
+        }
+    }
+
+    /**
+     * If exists, it reads the cloud.json file which is stored in the home
+     * folder to look for stored credentials.
+     * @return true if found
+     * @throws IOException
+     */
+    private static boolean loadCloudJSONFileFromHome() throws IOException {
+        String fileName = homeDir + "/.tiledb/cloud.json";
+
+        File initialFile = new File(fileName);
+        InputStream is = Files.newInputStream(initialFile.toPath());
+
+        JSONTokener tokener = new JSONTokener(is);
+        JSONObject object = new JSONObject(tokener);
+
+        if (object.has("api_key")){
+            apiKey = object.getString("api_key");
+        }
+        if (object.has("username")){
+            username = object.getString("username");
+        }
+        if (object.has("password")){
+            password = object.getString("password");
+        }
+        if (object.has("host")){
+            basePath = object.getString("host");
+        }
+        if (object.has("verify_ssl")){
+            boolean verifySSL = object.getBoolean("verify_ssl");
+            verifyingSsl = verifySSL;
+        }
+
+        // check if credentials are adequate for logging in
+        if (Objects.equals(basePath, "") ||
+                (Objects.equals(apiKey, "") && (Objects.equals(password, "") && !Objects.equals(username, ""))
+                || (Objects.equals(apiKey, "") && ((Objects.equals(password, "") || Objects.equals(username, "")))))){
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * This method throws an exception if there is no login information in the json file or passed
+     * as a parameter. If the login information has data it calls another helper method to save it.
+     * @param login
+     */
+    private void setupCredentials(Login login) {
+        if (!loginInfoIsInJSONFile) {
+            //requires login from user for the first time
+            if (login == null || !login.isValid()){
+                throw new RuntimeException("No login info was provided nor found. " +
+                        "Use the Login class to login for the first time");
+            } else {
+                populateFieldsFromLogin(login);
+            }
+        } else if (login != null && login.overwritePrevious()){ //in this case the data in the json is overwritten.
+            populateFieldsFromLogin(login);
+        }
+    }
+
+    /**
+     * Saves the data from the Login object.
+     * @param login The Login object
+     */
+    private void populateFieldsFromLogin(Login login) {
+        apiKey = login.getApiKey();
+        username = login.getUsername();
+        password = login.getPassword();
+        basePath = login.getHost();
+        verifyingSsl = login.isVerifySSL();
+        if (login.rememberMe()) { //save credentials
+            writeAuthJSONFileToHome();
+        }
+    }
+
+    /**
+     * Writes the json file to the home folder
+     */
+    private void writeAuthJSONFileToHome() {
+        JSONObject jsonObject = new JSONObject();
+        //Inserting key-value pairs into the json object
+        jsonObject.put("api_key", apiKey);
+        jsonObject.put("username", username);
+        jsonObject.put("password", password);
+        jsonObject.put("host", basePath);
+        jsonObject.put("verify_ssl", verifyingSsl);
+        try {
+            File file = new File(homeDir + "/.tiledb/cloud.json");
+            file.getParentFile().mkdirs(); //create /.tiledb dir if not present
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(jsonObject.toString());
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Uses all authentication data to create an authentications map
+     */
+    private void createAuthentications() {
+        // Setup authentications (key: authentication name, value: authentication).
+        ApiKeyAuth apiKeyAuth = new ApiKeyAuth("header", "X-TILEDB-REST-API-KEY");
+        apiKeyAuth.setApiKey(apiKey);
+        authentications.put("ApiKeyAuth", apiKeyAuth);
+
+        HttpBasicAuth httpBasicAuth = new HttpBasicAuth();
+        httpBasicAuth.setUsername(username);
+        httpBasicAuth.setPassword(password);
+        authentications.put("BasicAuth", httpBasicAuth);
+
+        authentications.put("OAuth2", new OAuth());
+
+        // Prevent the authentications from being modified.
+        authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    /**
+     * Empty constructor
+     */
+    public ApiClient(){
+        this(new Login());
+    }
 
     /**
      * Basic constructor for ApiClient
      */
-    public ApiClient() {
+    public ApiClient(Login login) {
         init();
         initHttpClient();
 
-        // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("ApiKeyAuth", new ApiKeyAuth("header", "X-TILEDB-REST-API-KEY"));
-        authentications.put("BasicAuth", new HttpBasicAuth());
-        authentications.put("OAuth2", new OAuth());
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
+        //setup all credentials either from the json file or from the login object.
+        setupCredentials(login);
+
+        //create the authentication by using the credentials
+        createAuthentications();
     }
 
     /**
@@ -104,62 +257,27 @@ public class ApiClient {
      *
      * @param client a {@link okhttp3.OkHttpClient} object
      */
-    public ApiClient(OkHttpClient client) {
+    public ApiClient(OkHttpClient client, Login login) {
         init();
 
         httpClient = client;
 
-        // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("ApiKeyAuth", new ApiKeyAuth("header", "X-TILEDB-REST-API-KEY"));
-        authentications.put("BasicAuth", new HttpBasicAuth());
-        authentications.put("OAuth2", new OAuth());
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
-    }
+        //setup all credentials either from the json file or from the login object.
+        setupCredentials(login);
 
-    /**
-     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID
-     *
-     * @param clientId client ID
-     */
-    public ApiClient(String clientId) {
-        this(clientId, null, null);
-    }
-
-    /**
-     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and additional parameters
-     *
-     * @param clientId client ID
-     * @param parameters a {@link java.util.Map} of parameters
-     */
-    public ApiClient(String clientId, Map<String, String> parameters) {
-        this(clientId, null, parameters);
-    }
-
-    /**
-     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID, secret, and additional parameters
-     *
-     * @param clientId client ID
-     * @param clientSecret client secret
-     * @param parameters a {@link java.util.Map} of parameters
-     */
-    public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
-        this(null, clientId, clientSecret, parameters);
+        //create the authentication by using the credentials
+        createAuthentications();
     }
 
     /**
      * Constructor for ApiClient to support access token retry on 401/403 configured with base path, client ID, secret, and additional parameters
      *
-     * @param basePath base path
      * @param clientId client ID
      * @param clientSecret client secret
      * @param parameters a {@link java.util.Map} of parameters
      */
-    public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters) {
+    public ApiClient(String clientId, String clientSecret, Map<String, String> parameters, Login login) {
         init();
-        if (basePath != null) {
-            this.basePath = basePath;
-        }
 
         String tokenUrl = "https://oauth2.tiledb.com/oauth2/token";
         if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
@@ -177,12 +295,12 @@ public class ApiClient {
                 retryingOAuth
         );
         initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
-        // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("ApiKeyAuth", new ApiKeyAuth("header", "X-TILEDB-REST-API-KEY"));
-        authentications.put("BasicAuth", new HttpBasicAuth());
 
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
+        //setup all credentials either from the json file or from the login object.
+        setupCredentials(login);
+
+        //create the authentication by using the credentials
+        createAuthentications();
     }
 
     private void initHttpClient() {
@@ -200,8 +318,6 @@ public class ApiClient {
     }
 
     private void init() {
-        verifyingSsl = true;
-
         json = new JSON();
 
         // Set default User-Agent.
@@ -1534,7 +1650,7 @@ public class ApiClient {
     /**
      * Convert the HTTP request body to a string.
      *
-     * @param request The HTTP request object
+     * @param requestBody The HTTP request object
      * @return The string representation of the HTTP request body
      * @throws ApiException If fail to serialize the request body object into a string
      */
