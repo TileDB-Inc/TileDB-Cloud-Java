@@ -26,3 +26,4 @@
 build.gradle
 src/main/java/org/openapitools/client/model/FilterType.java
 README.md
+settings.gradle
