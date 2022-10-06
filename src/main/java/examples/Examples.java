@@ -1,12 +1,11 @@
 package examples;
 
 // Import classes:
+import io.tiledb.cloud.TileDBClient;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Login;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
-import io.tiledb.cloud.rest_api.auth.ApiKeyAuth;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
 import io.tiledb.cloud.rest_api.model.ArrayInfo;
 import io.tiledb.cloud.rest_api.model.ArrayInfoUpdate;
@@ -31,20 +30,20 @@ public class Examples
     public static void main(String[] args) {
 
 //      if using cloud for the first time create the client with a Login object to pass your credentials.
-        ApiClient apiClient = new ApiClient(
+        TileDBClient tileDBClient = new TileDBClient(
                 new Login(null,
                         null,
                         "https://api.tiledb.com/v1",
                         "<TILEDB_API_TOKEN>",
                         true,
                         true,
-                        false));
+                        true));
 
 //      If the "RememberME" option is set to true in your first login you can access TileDB-Cloud without the need
 //      to pass any credentials from now on. Just create the client as follows:
-//      ApiClient apiClient = new ApiClient();
+//      TileDBClient tileDBClient = new TileDBClient();
 
-        ArrayApi apiInstance = new ArrayApi(apiClient);
+        ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
 //        Uncomment to run whichever example you want
 //        getArraySchema(apiInstance);
@@ -147,8 +146,8 @@ public class Examples
 
 
     private static void getArraySchema(ArrayApi arrayApi){
-        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
-        String array = "<ARRAY_NAME>"; // String | name/uri of array that is url-encoded
+        String namespace = "TileDB-Inc"; // String | namespace array is in (an organization name or user's username)
+        String array = "quickstart_sparse"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime
         try {
             ArraySchema result = arrayApi.getArray(namespace, array, contentType);
