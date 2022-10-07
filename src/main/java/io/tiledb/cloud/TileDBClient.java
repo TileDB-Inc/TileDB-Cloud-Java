@@ -1,7 +1,6 @@
 package io.tiledb.cloud;
 
 import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.Login;
 import okhttp3.OkHttpClient;
 import org.json.JSONObject;
 import org.json.JSONTokener;

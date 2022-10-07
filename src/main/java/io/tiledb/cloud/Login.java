@@ -1,4 +1,4 @@
-package io.tiledb.cloud.rest_api;
+package io.tiledb.cloud;
 
 import java.util.Objects;
 
