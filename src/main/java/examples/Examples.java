@@ -4,7 +4,7 @@ package examples;
 import io.tiledb.cloud.TileDBClient;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Login;
+import io.tiledb.cloud.Login;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
 import io.tiledb.cloud.rest_api.model.ArrayInfo;
@@ -146,8 +146,8 @@ public class Examples
 
 
     private static void getArraySchema(ArrayApi arrayApi){
-        String namespace = "TileDB-Inc"; // String | namespace array is in (an organization name or user's username)
-        String array = "quickstart_sparse"; // String | name/uri of array that is url-encoded
+        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
+        String array = "<ARRAY_URI>"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime
         try {
             ArraySchema result = arrayApi.getArray(namespace, array, contentType);
