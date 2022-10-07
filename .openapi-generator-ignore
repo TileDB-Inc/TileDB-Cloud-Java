@@ -30,4 +30,4 @@ settings.gradle
 
 #the api client contains the custom code for static initialization from the json file
 src/main/java/io/tiledb/cloud/TileDBClient.java
-src/main/java/io/tiledb/cloud/rest_api/Login.java
+src/main/java/io/tiledb/cloud/Login.java
