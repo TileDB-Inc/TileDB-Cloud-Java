@@ -2,32 +2,33 @@ package io.tiledb.cloud;
 
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.api.SqlApi;
-import io.tiledb.cloud.rest_api.model.ResultFormat;
 import io.tiledb.cloud.rest_api.model.SQLParameters;
 import org.apache.arrow.memory.RootAllocator;
+import org.apache.arrow.vector.FieldVector;
+import org.apache.arrow.vector.ValueVector;
 import org.apache.arrow.vector.VectorSchemaRoot;
 import org.apache.arrow.vector.ipc.ArrowStreamReader;
-import org.apache.arrow.vector.types.pojo.Schema;
+import org.apache.arrow.vector.util.TransferPair;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import org.apache.arrow.compression.CommonsCompressionFactory;
 
-public class TileDBSQL {
-    String namespace;
+public class TileDBSQL implements AutoCloseable{
+    private String namespace;
 
-    SQLParameters sql;
+    private SQLParameters sql;
 
-    TileDBClient tileDBClient;
+    private TileDBClient tileDBClient;
 
-    SqlApi apiInstance;
+    private SqlApi apiInstance;
 
-    ArrayList<VectorSchemaRoot> readBatches;
+    private ArrayList<VectorSchemaRoot> readBatches;
 
-    List<Object> results;
+    private List<Object> results;
+
+    private ArrowStreamReader reader;
 
     /**
      *
@@ -48,29 +49,40 @@ public class TileDBSQL {
 
     /**
      * Exec an SQL query and get results in arrow format.
+     *
+     * @return A pair that consists of an ArrayList of all valueVectors and the
+     * number of batches read.
      */
-    public void execArrow(){
+    public io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> execArrow(){
         try {
             assert sql.getResultFormat() != null;
-            byte[] bytes =  apiInstance.runSQLBytes(namespace, sql, sql.getResultFormat().toString());
-            System.out.println(Arrays.toString(bytes));
+            byte[] bytes =  apiInstance.runSQLBytes(namespace, sql, "none");
+            ArrayList<ValueVector> valueVectors = null;
+            int readBatchesCount = 0;
 
             RootAllocator allocator = new RootAllocator(Long.MAX_VALUE);
-            try (ArrowStreamReader reader = new ArrowStreamReader(new ByteArrayInputStream(bytes), allocator)) {
-                while (reader.loadNextBatch()) {
-                    // This will be loaded with new values on every call to loadNextBatch
-                    VectorSchemaRoot readBatch = reader.getVectorSchemaRoot();
-                    readBatches.add(readBatch);
+            ArrowStreamReader reader = new ArrowStreamReader(new ByteArrayInputStream(bytes), allocator, CommonsCompressionFactory.INSTANCE);
+
+            VectorSchemaRoot root = reader.getVectorSchemaRoot();
+
+            while(reader.loadNextBatch()) {
+                readBatchesCount++;
+                valueVectors = new ArrayList<>();
+                for (FieldVector f : root.getFieldVectors()) {
+                    // transfer will not copy data but transfer ownership of memory
+                    // from ArrowStreamReader to TileDBSQL. This is necessary because
+                    // otherwise we are not able to close the reader and retain the
+                    // data.
+                    TransferPair t = f.getTransferPair(allocator);
+                    t.transfer();
+                    valueVectors.add(t.getTo());
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
-        } catch (ApiException e) {
-            System.err.println("Exception when calling SqlApi#runSQL/runSQLBytes");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
+            reader.close();
+            return new io.tiledb.java.api.Pair<>(valueVectors, readBatchesCount);
+
+        } catch (IOException | ApiException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -79,10 +91,10 @@ public class TileDBSQL {
      *
      * @return
      */
-    public void execStandard(){
+    public List<Object> exec(){
         try {
             assert sql.getResultFormat() != null;
-            results = apiInstance.runSQL(namespace, sql, sql.getResultFormat().toString());
+            return apiInstance.runSQL(namespace, sql, sql.getResultFormat().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling SqlApi#runSQL/runSQLBytes");
             System.err.println("Status code: " + e.getCode());
@@ -90,32 +102,17 @@ public class TileDBSQL {
             System.err.println("Response headers: " + e.getResponseHeaders());
             e.printStackTrace();
         }
+        return null;
     }
 
     /**
-     * Exec an SQL query
+     *
      */
-    public void exec(){
-        if (this.sql.getResultFormat() == ResultFormat.ARROW){
-            execArrow();
-        }else {
-            execStandard();
+    public void close(){
+        try {
+            reader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Get the results in Arrow format
-     * @return
-     */
-    public ArrayList<VectorSchemaRoot> getReadBatches() {
-        return readBatches;
-    }
-
-    /**
-     * Get the results as lists of Objects
-     * @return
-     */
-    public List<Object> getResults() {
-        return results;
     }
 }
