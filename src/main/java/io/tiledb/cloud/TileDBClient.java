@@ -12,6 +12,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.Map;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TileDBClient{
 
@@ -26,6 +28,8 @@ public class TileDBClient{
 
     private static final String homeDir = System.getProperty("user.home");
 
+    static Logger logger = Logger.getLogger(TileDBClient.class.getName());
+
     private ApiClient apiClient;
 
     /**
@@ -38,7 +42,6 @@ public class TileDBClient{
         password = "";
         basePath = "https://api.tiledb.com/v1";
         loginInfoIsInJSONFile = true;
-        System.out.println("STATIC INIT");
         boolean ok =  false;
         try {
             ok = loadCloudJSONFileFromHome();
@@ -66,25 +69,28 @@ public class TileDBClient{
         JSONObject object = new JSONObject(tokener);
 
         if (object.has("api_key")){
-            apiKey = object.getString("api_key");
+            JSONObject apiKeyObject = object.getJSONObject("api_key");
+            if (apiKeyObject.has("X-TILEDB-REST-API-KEY")) {
+                apiKey = apiKeyObject.getString("X-TILEDB-REST-API-KEY");
+                logger.log(Level.INFO, "Found apiKey from disk");
+            }
         }
         if (object.has("username")){
             username = object.getString("username");
+            logger.log(Level.INFO, "Found username from disk");
         }
         if (object.has("password")){
             password = object.getString("password");
-        }
-        if (object.has("host")){
-            basePath = object.getString("host");
+            logger.log(Level.INFO, "Found password from disk");
         }
         if (object.has("verify_ssl")){
             boolean verifySSL = object.getBoolean("verify_ssl");
             verifyingSsl = verifySSL;
+            logger.log(Level.INFO, "Found verifySSL from disk");
         }
 
         // check if credentials are adequate for logging in
-        if (Objects.equals(basePath, "") ||
-                (Objects.equals(apiKey, "") && (Objects.equals(password, "") && !Objects.equals(username, ""))
+        if ((Objects.equals(apiKey, "") && (Objects.equals(password, "") && !Objects.equals(username, ""))
                         || (Objects.equals(apiKey, "") && ((Objects.equals(password, "") || Objects.equals(username, "")))))){
             return false;
         }
@@ -93,35 +99,34 @@ public class TileDBClient{
     }
 
     /**
-     * This method throws an exception if there is no login information in the json file or passed
+     * This method throws a warning if there is no login information in the json file or passed
      * as a parameter. If the login information has data it calls another helper method to save it.
-     * @param login
+     * @param tileDBLogin
      */
-    private void findCredentials(Login login) {
+    private void findCredentials(TileDBLogin tileDBLogin) {
         if (!loginInfoIsInJSONFile) {
             //requires login from user for the first time
-            if (login == null || !login.isValid()){
-                throw new RuntimeException("No login info was provided nor found. " +
+            if (tileDBLogin == null || !tileDBLogin.isValid()){
+                logger.warning("No login info was provided nor found. " +
                         "Use the Login class to login for the first time");
             } else {
-                populateFieldsFromLogin(login);
+                populateFieldsFromLogin(tileDBLogin);
             }
-        } else if (login != null && login.overwritePrevious()){ //in this case the data in the json is overwritten.
-            populateFieldsFromLogin(login);
+        } else if (tileDBLogin != null && tileDBLogin.overwritePrevious()){ //in this case the data in the json is overwritten.
+            populateFieldsFromLogin(tileDBLogin);
         }
     }
 
     /**
      * Saves the data from the Login object.
-     * @param login The Login object
+     * @param tileDBLogin The Login object
      */
-    private void populateFieldsFromLogin(Login login) {
-        apiKey = login.getApiKey();
-        username = login.getUsername();
-        password = login.getPassword();
-        basePath = login.getHost();
-        verifyingSsl = login.isVerifySSL();
-        if (login.rememberMe()) { //save credentials
+    private void populateFieldsFromLogin(TileDBLogin tileDBLogin) {
+        apiKey = tileDBLogin.getApiKey();
+        username = tileDBLogin.getUsername();
+        password = tileDBLogin.getPassword();
+        verifyingSsl = tileDBLogin.isVerifySSL();
+        if (tileDBLogin.rememberMe()) { //save credentials
             writeAuthJSONFileToHome();
         }
     }
@@ -131,11 +136,16 @@ public class TileDBClient{
      */
     private void writeAuthJSONFileToHome() {
         JSONObject jsonObject = new JSONObject();
+
+        //create nested object for apiKey
+        JSONObject apiKeyObject = new JSONObject();
+        apiKeyObject.put("X-TILEDB-REST-API-KEY", apiKey);
+
         //Inserting key-value pairs into the json object
-        jsonObject.put("api_key", apiKey);
+        jsonObject.put("api_key", apiKeyObject);
         jsonObject.put("username", username);
         jsonObject.put("password", password);
-        jsonObject.put("host", basePath);
+        jsonObject.put("host", "https://api.tiledb.com");
         jsonObject.put("verify_ssl", verifyingSsl);
         try {
             File file = new File(homeDir + "/.tiledb/cloud.json");
@@ -152,11 +162,11 @@ public class TileDBClient{
      * Basic constructor with custom OkHttpClient
      *
      * @param client an okhttp3.OkHttpClient object
-     * @param login Login object with credentials
+     * @param tileDBLogin Login object with credentials
      */
-    public TileDBClient(OkHttpClient client, Login login){
+    public TileDBClient(OkHttpClient client, TileDBLogin tileDBLogin){
         apiClient = new ApiClient(client);
-        setClientCredentials(login);
+        setClientCredentials(tileDBLogin);
     }
 
     /**
@@ -166,17 +176,17 @@ public class TileDBClient{
      */
     public TileDBClient(OkHttpClient client){
         apiClient = new ApiClient(client);
-        setClientCredentials(new Login());
+        setClientCredentials(new TileDBLogin());
     }
 
     /**
      * Basic constructor
      *
-     * @param login Login object with credentials
+     * @param tileDBLogin Login object with credentials
      */
-    public TileDBClient(Login login){
+    public TileDBClient(TileDBLogin tileDBLogin){
         apiClient = new ApiClient();
-        setClientCredentials(login);
+        setClientCredentials(tileDBLogin);
     }
 
     /**
@@ -185,7 +195,7 @@ public class TileDBClient{
      */
     public TileDBClient(){
         apiClient = new ApiClient();
-        setClientCredentials(new Login());
+        setClientCredentials(new TileDBLogin());
     }
 
     /**
@@ -198,7 +208,7 @@ public class TileDBClient{
      */
     public TileDBClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters){
         apiClient = new ApiClient(basePath, clientId, clientSecret, parameters);
-        setClientCredentials(new Login());
+        setClientCredentials(new TileDBLogin());
     }
 
     /**
@@ -208,19 +218,27 @@ public class TileDBClient{
      * @param clientId client ID
      * @param clientSecret client secret
      * @param parameters a java.util.Map of parameters
-     * @param login Login object with credentials
+     * @param tileDBLogin Login object with credentials
      */
-    public TileDBClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters, Login login){
+    public TileDBClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters, TileDBLogin tileDBLogin){
         apiClient = new ApiClient(basePath, clientId, clientSecret, parameters);
-        setClientCredentials(login);
+        setClientCredentials(tileDBLogin);
     }
 
     /**
-     * Finds and sets the credentials to the client
-     * @param login
+     * Set timeout timer
+     * @param timeout timeout timer in milliseconds
      */
-    private void setClientCredentials(Login login) {
-        findCredentials(login);
+    public void setReadTimeout(int timeout){
+        this.apiClient = this.apiClient.setReadTimeout(timeout);
+    }
+
+    /**
+     * Sets the credentials for the client. Can be called during runtime.
+     * @param tileDBLogin A TileDBLogin Object
+     */
+    public void setClientCredentials(TileDBLogin tileDBLogin) {
+        findCredentials(tileDBLogin);
         apiClient.setApiKey(apiKey);
         apiClient.setUsername(username);
         apiClient.setPassword(password);
