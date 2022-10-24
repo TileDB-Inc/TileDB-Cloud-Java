@@ -4,7 +4,7 @@ package examples;
 import io.tiledb.cloud.TileDBClient;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.Login;
+import io.tiledb.cloud.TileDBLogin;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
 import io.tiledb.cloud.rest_api.model.ArrayInfo;
@@ -31,9 +31,8 @@ public class Examples
 
 //      if using cloud for the first time create the client with a Login object to pass your credentials.
         TileDBClient tileDBClient = new TileDBClient(
-                new Login(null,
+                new TileDBLogin(null,
                         null,
-                        "https://api.tiledb.com/v1",
                         "<TILEDB_API_TOKEN>",
                         true,
                         true,
