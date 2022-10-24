@@ -2,7 +2,7 @@ package io.tiledb.cloud;
 
 import java.util.Objects;
 
-public class Login {
+public class TileDBLogin {
     /** The client password */
     private String password;
 
@@ -24,18 +24,16 @@ public class Login {
     /** True if the user wants their current login input to overwrite the last one */
     private boolean overwritePrevious;
 
-    public Login(String username, String password, String host, String apiKey, boolean verifySSL, boolean rememberMe, boolean overwritePrevious) {
-        Objects.requireNonNull(host, "host must not be null");
+    public TileDBLogin(String username, String password, String apiKey, boolean verifySSL, boolean rememberMe, boolean overwritePrevious) {
         this.password = password;
         this.username = username;
-        this.host = host;
         this.apiKey = apiKey;
         this.verifySSL = verifySSL;
         this.rememberMe = rememberMe;
         this.overwritePrevious = overwritePrevious;
     }
 
-    public Login() {
+    public TileDBLogin() {
         this.overwritePrevious = false;
     }
 
@@ -45,10 +43,6 @@ public class Login {
 
     public String getUsername() {
         return username;
-    }
-
-    public String getHost() {
-        return host;
     }
 
     public String getApiKey() {
