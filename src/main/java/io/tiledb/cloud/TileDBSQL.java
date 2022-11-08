@@ -4,6 +4,7 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.api.SqlApi;
 import io.tiledb.cloud.rest_api.model.SQLParameters;
 import org.apache.arrow.memory.RootAllocator;
+import org.apache.arrow.memory.UnsafeAllocationManager;
 import org.apache.arrow.vector.FieldVector;
 import org.apache.arrow.vector.ValueVector;
 import org.apache.arrow.vector.VectorSchemaRoot;
@@ -60,7 +61,8 @@ public class TileDBSQL implements AutoCloseable{
             ArrayList<ValueVector> valueVectors = null;
             int readBatchesCount = 0;
 
-            RootAllocator allocator = new RootAllocator(Long.MAX_VALUE);
+//            RootAllocator allocator = new RootAllocator(Long.MAX_VALUE);
+            RootAllocator allocator = new RootAllocator(RootAllocator.configBuilder().allocationManagerFactory(UnsafeAllocationManager.FACTORY).build());
             ArrowStreamReader reader = new ArrowStreamReader(new ByteArrayInputStream(bytes), allocator, CommonsCompressionFactory.INSTANCE);
 
             VectorSchemaRoot root = reader.getVectorSchemaRoot();

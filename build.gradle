@@ -27,7 +27,7 @@ apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
 
 group 'io.tiledb'
-version = '0.0.8-SNAPSHOT'
+version = '0.0.9-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -157,7 +157,7 @@ dependencies {
     implementation "jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version"
     implementation group: 'org.apache.arrow', name: 'arrow-vector', version: '9.0.0'
     implementation group: 'org.apache.arrow', name: 'arrow-compression', version: '9.0.0'
-    implementation group: 'org.apache.arrow', name: 'arrow-memory-netty', version: '9.0.0'
+    implementation group: 'org.apache.arrow', name: 'arrow-memory-unsafe', version: '9.0.0'
     implementation 'io.tiledb:tiledb-java:0.13.6'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testImplementation 'org.mockito:mockito-core:3.12.4'
