@@ -28,6 +28,8 @@ public class TileDBClient{
 
     private static final String homeDir = System.getProperty("user.home");
 
+    private static String cloudFilePath;
+
     static Logger logger = Logger.getLogger(TileDBClient.class.getName());
 
     private ApiClient apiClient;
@@ -42,6 +44,14 @@ public class TileDBClient{
         password = "";
         basePath = "https://api.tiledb.com/v1";
         loginInfoIsInJSONFile = true;
+
+        // set path according to OS
+        if (System.getProperty("os.name").toLowerCase().contains("windows")){
+            cloudFilePath = "\\.tiledb\\cloud.json";
+        } else{
+            cloudFilePath = "/.tiledb/cloud.json";
+        }
+
         boolean ok =  false;
         try {
             ok = loadCloudJSONFileFromHome();
@@ -60,7 +70,7 @@ public class TileDBClient{
      * @throws IOException
      */
     private static boolean loadCloudJSONFileFromHome() throws IOException {
-        String fileName = homeDir + "/.tiledb/cloud.json";
+        String fileName = homeDir + cloudFilePath;
 
         File initialFile = new File(fileName);
         InputStream is = Files.newInputStream(initialFile.toPath());
@@ -148,7 +158,7 @@ public class TileDBClient{
         jsonObject.put("host", "https://api.tiledb.com");
         jsonObject.put("verify_ssl", verifyingSsl);
         try {
-            File file = new File(homeDir + "/.tiledb/cloud.json");
+            File file = new File(homeDir + cloudFilePath);
             file.getParentFile().mkdirs(); //create /.tiledb dir if not present
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(jsonObject.toString());
