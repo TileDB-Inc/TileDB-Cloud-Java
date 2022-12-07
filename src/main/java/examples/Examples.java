@@ -2,27 +2,18 @@ package examples;
 
 // Import classes:
 import io.tiledb.cloud.TileDBClient;
+import io.tiledb.cloud.TileDBUDF;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.TileDBLogin;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
-import io.tiledb.cloud.rest_api.model.ArrayInfo;
-import io.tiledb.cloud.rest_api.model.ArrayInfoUpdate;
-import io.tiledb.cloud.rest_api.model.ArraySchema;
-import io.tiledb.cloud.rest_api.model.ArrayType;
-import io.tiledb.cloud.rest_api.model.Attribute;
-import io.tiledb.cloud.rest_api.model.Datatype;
-import io.tiledb.cloud.rest_api.model.Dimension;
-import io.tiledb.cloud.rest_api.model.DimensionTileExtent;
-import io.tiledb.cloud.rest_api.model.Domain;
-import io.tiledb.cloud.rest_api.model.DomainArray;
-import io.tiledb.cloud.rest_api.model.Filter;
-import io.tiledb.cloud.rest_api.model.FilterPipeline;
-import io.tiledb.cloud.rest_api.model.FilterType;
-import io.tiledb.cloud.rest_api.model.GroupBrowserData;
-import io.tiledb.cloud.rest_api.model.Layout;
+import io.tiledb.cloud.rest_api.model.*;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Examples
@@ -45,6 +36,9 @@ public class Examples
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
 //        Uncomment to run whichever example you want
+//        runGenericUDF(tileDBClient);
+//        runArrayUDF(tileDBClient);
+//        runMultiArrayUDF(tileDBClient);
 //        getArraySchema(apiInstance);
 //        createArray(apiInstance);
 //        registerArray(apiInstance);
@@ -52,6 +46,96 @@ public class Examples
 //        listGroups(defaultClient);
 //        deleteArray(apiInstance);
 //        deregisterArray(apiInstance);
+    }
+
+    /**
+     * Runs a generic UDF
+     * @param tileDBClient
+     */
+    private static void runGenericUDF(TileDBClient tileDBClient){
+        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "TileDB-Inc");
+        GenericUDF genericUDF = new GenericUDF();
+        genericUDF.setUdfInfoName("TileDB-Inc/args-udf");
+        HashMap<String,Object> arguments = new HashMap<>();
+        arguments.put("arg1", "a1");
+        arguments.put("arg2", "a2");
+        System.out.println(tileDBUDF.executeGeneric(genericUDF, arguments)); //could be JSON or Arrow
+    }
+
+    /**
+     * Runs an array UDF on a TileDB Arrray
+     * @param tileDBClient
+     */
+    public static void runArrayUDF(TileDBClient tileDBClient){
+        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "TileDB-Inc");
+        ArrayList<BigDecimal> range1 = new ArrayList<>();
+        range1.add(BigDecimal.valueOf(1));
+        range1.add(BigDecimal.valueOf(4));
+
+        ArrayList<BigDecimal> range2 = new ArrayList<>();
+        range2.add(BigDecimal.valueOf(1));
+        range2.add(BigDecimal.valueOf(4));
+
+        QueryRanges queryRanges = new QueryRanges();
+        queryRanges.addRangesItem(range1);
+        queryRanges.addRangesItem(range2);
+
+
+        HashMap<String,Object> argumentsForArrayUDF = new HashMap<>();
+        argumentsForArrayUDF.put("attr", "rows");
+        argumentsForArrayUDF.put("scale", 9);
+
+        MultiArrayUDF multiArrayUDF = new MultiArrayUDF();
+        multiArrayUDF.setUdfInfoName("TileDB-Inc/array-udf");
+        multiArrayUDF.setRanges(queryRanges);
+        System.out.println(tileDBUDF.executeSingleArray(multiArrayUDF, argumentsForArrayUDF, "tiledb://TileDB-Inc/quickstart_sparse", "TileDB-Inc"));
+    }
+
+    /**
+     * Runs a multi-array UDF on multiple TileDB arrays
+     * @param tileDBClient
+     */
+    public static void runMultiArrayUDF(TileDBClient tileDBClient){
+        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "TileDB-Inc");
+
+        ArrayList<BigDecimal> range1 = new ArrayList<>();
+        range1.add(BigDecimal.valueOf(1));
+        range1.add(BigDecimal.valueOf(4));
+
+        ArrayList<BigDecimal> range2 = new ArrayList<>();
+        range2.add(BigDecimal.valueOf(1));
+        range2.add(BigDecimal.valueOf(4));
+
+        QueryRanges queryRanges = new QueryRanges();
+        queryRanges.addRangesItem(range1);
+        queryRanges.addRangesItem(range2);
+
+        MultiArrayUDF multiArrayUDF = new MultiArrayUDF();
+        multiArrayUDF.setUdfInfoName("TileDB-Inc/multi-array-udf");
+
+        List<UDFArrayDetails> arrays = new ArrayList<>();
+
+        //array1
+        UDFArrayDetails array1 = new UDFArrayDetails();
+        array1.setUri("tiledb://TileDB-Inc/dense-array");
+        array1.setRanges(queryRanges);
+        array1.setBuffers(Arrays.asList("rows", "cols", "a1"));
+        arrays.add(array1);
+
+        //array2
+        UDFArrayDetails array2 = new UDFArrayDetails();
+        array2.setUri("tiledb://TileDB-Inc/quickstart_dense");
+        array2.setRanges(queryRanges);
+        array2.setBuffers(Arrays.asList("rows", "cols", "a"));
+        arrays.add(array2);
+
+        multiArrayUDF.setArrays(arrays);
+
+        HashMap<String,Object> arguments = new HashMap<>();
+        arguments.put("attr1", "a1");
+        arguments.put("attr2", "a");
+
+        System.out.println(tileDBUDF.executeMultiArray(multiArrayUDF, arguments));
     }
 
     /**
@@ -239,3 +323,4 @@ public class Examples
         }
     }
 }
+
