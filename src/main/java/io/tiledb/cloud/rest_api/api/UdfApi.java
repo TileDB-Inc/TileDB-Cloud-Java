@@ -1076,7 +1076,7 @@ public class UdfApi {
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param udf UDF to run (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return ApiResponse&lt;File&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -1097,7 +1097,7 @@ public class UdfApi {
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param udf UDF to run (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return File
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -1158,7 +1158,7 @@ public class UdfApi {
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param udf UDF to run (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return ApiResponse&lt;File&gt;
+     * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -1179,7 +1179,7 @@ public class UdfApi {
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param udf UDF to run (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return list<Object>
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -1199,7 +1199,7 @@ public class UdfApi {
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param udf UDF to run (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return ApiResponse&lt;File&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -1387,7 +1387,7 @@ public class UdfApi {
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param udf UDF to run (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return ApiResponse&lt;File&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -1428,7 +1428,7 @@ public class UdfApi {
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param udf UDF to run (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return ApiResponse&lt;File&gt;
+     * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -1646,7 +1646,7 @@ public class UdfApi {
      * @param xPayer Name of organization or user who should be charged for this request (optional)
      * @param acceptEncoding Encoding to use (optional)
      * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
-     * @return ApiResponse&lt;File&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -1693,7 +1693,7 @@ public class UdfApi {
      * @param xPayer Name of organization or user who should be charged for this request (optional)
      * @param acceptEncoding Encoding to use (optional)
      * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
-     * @return ApiResponse&lt;File&gt;
+     * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
