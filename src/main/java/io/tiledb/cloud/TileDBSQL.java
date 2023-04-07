@@ -13,6 +13,7 @@ import org.apache.arrow.vector.util.TransferPair;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 import org.apache.arrow.compression.CommonsCompressionFactory;
 
@@ -54,16 +55,16 @@ public class TileDBSQL implements AutoCloseable{
      * @return A pair that consists of an ArrayList of all valueVectors and the
      * number of batches read.
      */
-    public io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> execArrow(){
+    public io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> execArrow() {
         try {
             assert sql.getResultFormat() != null;
-            byte[] bytes =  apiInstance.runSQLBytes(namespace, sql, "none");
+            InputStream in = apiInstance.runSQLBytes(namespace, sql, "none");
+
             ArrayList<ValueVector> valueVectors = null;
             int readBatchesCount = 0;
 
-//            RootAllocator allocator = new RootAllocator(Long.MAX_VALUE);
             RootAllocator allocator = new RootAllocator(RootAllocator.configBuilder().allocationManagerFactory(UnsafeAllocationManager.FACTORY).build());
-            ArrowStreamReader reader = new ArrowStreamReader(new ByteArrayInputStream(bytes), allocator, CommonsCompressionFactory.INSTANCE);
+            ArrowStreamReader reader = new ArrowStreamReader(in, allocator, CommonsCompressionFactory.INSTANCE);
 
             VectorSchemaRoot root = reader.getVectorSchemaRoot();
 

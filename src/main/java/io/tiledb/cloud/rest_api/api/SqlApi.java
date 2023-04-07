@@ -25,7 +25,11 @@ import com.google.gson.reflect.TypeToken;
 
 import io.tiledb.cloud.rest_api.model.SQLParameters;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -180,7 +184,7 @@ public class SqlApi {
      * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
      * @param sql sql being submitted (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return byte[]
+     * @return Input stream of bytes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -190,8 +194,8 @@ public class SqlApi {
     <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
     </table>
      */
-    public byte[] runSQLBytes(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
-        ApiResponse<byte[]> localVarResp = runSQLWithHttpInfoBytes(namespace, sql, acceptEncoding);
+    public InputStream runSQLBytes(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
+        ApiResponse<InputStream> localVarResp = runSQLWithHttpInfoBytes(namespace, sql, acceptEncoding);
         return localVarResp.getData();
     }
 
@@ -223,7 +227,7 @@ public class SqlApi {
      * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
      * @param sql sql being submitted (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return ApiResponse with byte[]
+     * @return ApiResponse with an InputStream of bytes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
     <table summary="Response Details" border="1">
@@ -233,9 +237,9 @@ public class SqlApi {
     <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
     </table>
      */
-    public ApiResponse<byte[]> runSQLWithHttpInfoBytes(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
+    public ApiResponse<InputStream> runSQLWithHttpInfoBytes(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
         okhttp3.Call localVarCall = runSQLValidateBeforeCall(namespace, sql, acceptEncoding, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<InputStream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 

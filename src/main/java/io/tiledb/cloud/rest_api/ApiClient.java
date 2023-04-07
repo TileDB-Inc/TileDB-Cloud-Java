@@ -916,6 +916,8 @@ public class ApiClient {
         } else if (returnType.equals(File.class)) {
             // Handle file downloading.
             return (T) downloadFileFromResponse(response);
+        } else if ("class java.io.InputStream".equals(returnType.toString())) {
+            return (T) response.body().byteStream();
         }
 
         String respBody;

@@ -2,6 +2,7 @@ package examples;
 
 // Import classes:
 import io.tiledb.cloud.TileDBClient;
+import io.tiledb.cloud.TileDBSQL;
 import io.tiledb.cloud.TileDBUDF;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
@@ -9,6 +10,8 @@ import io.tiledb.cloud.TileDBLogin;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
 import io.tiledb.cloud.rest_api.model.*;
+import io.tiledb.java.api.Pair;
+import org.apache.arrow.vector.ValueVector;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -37,6 +40,7 @@ public class Examples
 
 //        Uncomment to run whichever example you want
 //        runGenericUDF(tileDBClient);
+//        runSQL("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`", tileDBClient);
 //        runArrayUDF(tileDBClient);
 //        runMultiArrayUDF(tileDBClient);
 //        getArraySchema(apiInstance);
@@ -46,6 +50,27 @@ public class Examples
 //        listGroups(defaultClient);
 //        deleteArray(apiInstance);
 //        deregisterArray(apiInstance);
+    }
+
+    /**
+     * Runs a simple SQL query
+     * @param s the query
+     * @param tileDBClient
+     */
+    private static void runSQL(String s, TileDBClient tileDBClient) {
+        SQLParameters sqlParameters = new SQLParameters();
+        sqlParameters.setQuery(s);
+        // get results in arrow format
+        sqlParameters.setResultFormat(ResultFormat.ARROW);
+
+        //set timeout to unlimited
+        tileDBClient.setReadTimeout(0);
+
+        // create TileDBSQL object
+        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "TileDB-Inc", sqlParameters);
+
+        // run query and expect results in arrow format
+        Pair<ArrayList<ValueVector>, Integer> valueVectors = tileDBSQL.execArrow();
     }
 
     /**
