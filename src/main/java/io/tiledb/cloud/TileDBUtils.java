@@ -1,5 +1,6 @@
 package io.tiledb.cloud;
 
+import com.google.gson.Gson;
 import org.apache.arrow.compression.CommonsCompressionFactory;
 import org.apache.arrow.memory.RootAllocator;
 import org.apache.arrow.memory.UnsafeAllocationManager;
@@ -12,8 +13,21 @@ import org.apache.arrow.vector.util.TransferPair;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TileDBUtils {
+
+    /**
+     * Serializes the arguments to a String
+     *
+     * @param arguments The input arguments in a HashMap
+     * @return The arguments in a String
+     */
+    public static String serializeArgs(HashMap<String, Object> arguments) {
+        if (arguments == null || arguments.isEmpty()) return "";
+        Gson gson = new Gson();
+        return gson.toJson(arguments);
+    }
 
     /**
      *
@@ -22,7 +36,7 @@ public class TileDBUtils {
      * @return A pair that consists of an ArrayList of all valueVectors and the number of batches read.
      * @throws IOException
      */
-    static io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> createValueVectors(byte[] bytes) throws IOException {
+    protected static io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> createValueVectors(byte[] bytes) throws IOException {
         ArrayList<ValueVector> valueVectors = null;
         int readBatchesCount = 0;
 
