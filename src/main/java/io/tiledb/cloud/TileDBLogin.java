@@ -1,7 +1,5 @@
 package io.tiledb.cloud;
 
-import java.util.Objects;
-
 public class TileDBLogin {
     /** The client password */
     private String password;

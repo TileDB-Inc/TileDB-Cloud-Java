@@ -36,7 +36,7 @@ public class TileDBUtils {
      * @return A pair that consists of an ArrayList of all valueVectors and the number of batches read.
      * @throws IOException
      */
-    protected static io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> createValueVectors(byte[] bytes) throws IOException {
+    protected static Pair<ArrayList<ValueVector>, Integer> createValueVectors(byte[] bytes) throws IOException {
         ArrayList<ValueVector> valueVectors = null;
         int readBatchesCount = 0;
 
@@ -59,6 +59,6 @@ public class TileDBUtils {
             }
         }
         reader.close();
-        return new io.tiledb.java.api.Pair<>(valueVectors, readBatchesCount);
+        return new Pair<>(valueVectors, readBatchesCount);
     }
 }
