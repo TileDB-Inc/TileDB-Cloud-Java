@@ -3,7 +3,6 @@ package examples;
 // Import classes:
 import io.tiledb.cloud.TileDBClient;
 import io.tiledb.cloud.TileDBUDF;
-import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.TileDBLogin;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
@@ -15,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import static io.tiledb.cloud.TileDBUtils.serializeArgs;
 
 public class Examples
 {
@@ -33,19 +34,18 @@ public class Examples
 //      to pass any credentials from now on. Just create the client as follows:
 //      TileDBClient tileDBClient = new TileDBClient();
 
-        ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
 //        Uncomment to run whichever example you want
 //        runGenericUDF(tileDBClient);
 //        runArrayUDF(tileDBClient);
 //        runMultiArrayUDF(tileDBClient);
-//        getArraySchema(apiInstance);
-//        createArray(apiInstance);
-//        registerArray(apiInstance);
-//        listArrays(apiInstance);
-//        listGroups(defaultClient);
-//        deleteArray(apiInstance);
-//        deregisterArray(apiInstance);
+//        getArraySchema(tileDBClient);
+//        createArray(tileDBClient);
+//        registerArray(tileDBClient);
+//        listArrays(tileDBClient);
+//        listGroups(tileDBClient);
+//        deleteArray(tileDBClient);
+//        deregisterArray(tileDBClient);
     }
 
     /**
@@ -59,11 +59,12 @@ public class Examples
         HashMap<String,Object> arguments = new HashMap<>();
         arguments.put("arg1", "a1");
         arguments.put("arg2", "a2");
-        System.out.println(tileDBUDF.executeGeneric(genericUDF, arguments)); //could be JSON or Arrow
+        genericUDF.setArgument(serializeArgs(arguments));
+        System.out.println(tileDBUDF.executeGeneric(genericUDF)); //could be JSON or Arrow
     }
 
     /**
-     * Runs an array UDF on a TileDB Arrray
+     * Runs an array UDF on a TileDB Array
      * @param tileDBClient
      */
     public static void runArrayUDF(TileDBClient tileDBClient){
@@ -80,15 +81,18 @@ public class Examples
         queryRanges.addRangesItem(range1);
         queryRanges.addRangesItem(range2);
 
-
         HashMap<String,Object> argumentsForArrayUDF = new HashMap<>();
         argumentsForArrayUDF.put("attr", "rows");
         argumentsForArrayUDF.put("scale", 9);
 
-        MultiArrayUDF multiArrayUDF = new MultiArrayUDF();
-        multiArrayUDF.setUdfInfoName("TileDB-Inc/array-udf");
-        multiArrayUDF.setRanges(queryRanges);
-        System.out.println(tileDBUDF.executeSingleArray(multiArrayUDF, argumentsForArrayUDF, "tiledb://TileDB-Inc/quickstart_sparse", "TileDB-Inc"));
+        GenericUDF genericUDF = new GenericUDF();
+        genericUDF.setUdfInfoName("TileDB-Inc/array-udf");
+        genericUDF.setArgument(serializeArgs(argumentsForArrayUDF));
+
+        UDFArrayDetails array = new UDFArrayDetails();
+        array.setUri("tiledb://TileDB-Inc/quickstart_sparse");
+
+        System.out.println(tileDBUDF.executeSingleArray(genericUDF, array, queryRanges, "TileDB-Inc"));
     }
 
     /**
@@ -117,7 +121,7 @@ public class Examples
 
         //array1
         UDFArrayDetails array1 = new UDFArrayDetails();
-        array1.setUri("tiledb://TileDB-Inc/dense-array");
+        array1.setUri("tiledb://shaunreed/dense-array");
         array1.setRanges(queryRanges);
         array1.setBuffers(Arrays.asList("rows", "cols", "a1"));
         arrays.add(array1);
@@ -135,17 +139,19 @@ public class Examples
         arguments.put("attr1", "a1");
         arguments.put("attr2", "a");
 
-        System.out.println(tileDBUDF.executeMultiArray(multiArrayUDF, arguments));
+        multiArrayUDF.setArgument(serializeArgs(arguments));
+
+        System.out.println(tileDBUDF.executeMultiArray(multiArrayUDF));
     }
 
     /**
      * Deregister an array
-     * @param apiInstance
      */
-    private static void deregisterArray(ArrayApi apiInstance)
+    private static void deregisterArray(TileDBClient tileDBClient)
     {
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         String array = "<ARRAY_NAME>"; // String | name/uri of array that is url-encoded
+        ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
         try {
             apiInstance.deregisterArray(namespace, array);
         } catch (ApiException e) {
@@ -159,13 +165,13 @@ public class Examples
 
     /**
      * Delete an array
-     * @param apiInstance
      */
-    private static void deleteArray(ArrayApi apiInstance)
+    private static void deleteArray(TileDBClient tileDBClient)
     {
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         String array = "<ARRAY_NAME>"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime
+        ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
         try {
             apiInstance.deleteArray(namespace, array, contentType);
         } catch (ApiException e) {
@@ -177,13 +183,9 @@ public class Examples
         }
     }
 
-    /**
-     * List groups
-     * @param defaultClient
-     */
-    private static void listGroups(ApiClient defaultClient)
+    private static void listGroups(TileDBClient tileDBClient)
     {
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
+        GroupsApi apiInstance = new GroupsApi(tileDBClient.getApiClient());
         Integer page = null; // Integer | pagination offset
         Integer perPage = null; // Integer | pagination limit
         String search = null; // String | search string that will look at name, namespace or description fields
@@ -208,13 +210,11 @@ public class Examples
 
     }
 
-    /**
-     * List arrays
-     * @param apiInstance
-     */
-    private static void listArrays(ArrayApi apiInstance)
+    private static void listArrays(TileDBClient tileDBClient)
     {
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
+        ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
+
         try {
             List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace);
             System.out.println(result);
@@ -228,12 +228,14 @@ public class Examples
     }
 
 
-    private static void getArraySchema(ArrayApi arrayApi){
-        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
-        String array = "<ARRAY_URI>"; // String | name/uri of array that is url-encoded
+    private static void getArraySchema(TileDBClient tileDBClient){
+        String namespace = "TileDB-Inc"; // String | namespace array is in (an organization name or user's username)
+        String array = "quickstart_sparse"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime
+        ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
+
         try {
-            ArraySchema result = arrayApi.getArray(namespace, array, contentType);
+            ArraySchema result = apiInstance.getArray(namespace, array, contentType);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#getArray");
@@ -244,7 +246,7 @@ public class Examples
         }
     }
 
-    private static void createArray(ArrayApi arrayApi){
+    private static void createArray(TileDBClient tileDBClient){
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         String arrayName = "s3://<BUCKET-NAME>/my_array"; // String | name/uri of array that is url-encoded //
         String contentType = "application/json"; // String | Content Type of input and return mime
@@ -294,8 +296,10 @@ public class Examples
         schema.setCellOrder(Layout.ROW_MAJOR);
         System.out.println(schema);
 
+        ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
+
         try {
-            arrayApi.createArray(namespace, arrayName, contentType, schema, null);
+            apiInstance.createArray(namespace, arrayName, contentType, schema, null);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#createArray");
             System.err.println("Status code: " + e.getCode());
@@ -305,14 +309,16 @@ public class Examples
         }
     }
 
-    public static void registerArray(ArrayApi arrayApi){
+    public static void registerArray(TileDBClient tileDBClient){
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         String array = "s3://<BUCKET-NAME>/<ARRAY-URI>/"; // String | name/uri of array that is url-encoded
         ArrayInfoUpdate arrayMetadata = new ArrayInfoUpdate(); // ArrayInfoUpdate | metadata associated with array
         arrayMetadata.setUri("s3://<BUCKET-NAME>/<ARRAY-URI>/");
         arrayMetadata.setName("<ARRAY-NAME>");
+        ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
+
         try {
-            ArrayInfo result = arrayApi.registerArray(namespace, array, arrayMetadata);
+            ArrayInfo result = apiInstance.registerArray(namespace, array, arrayMetadata);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#registerArray");
