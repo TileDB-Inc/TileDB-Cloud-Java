@@ -6,6 +6,7 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
 import io.tiledb.cloud.rest_api.model.*;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.apache.arrow.vector.ValueVector;
 
 import java.math.BigDecimal;
@@ -24,7 +25,7 @@ public class Examples
         TileDBClient tileDBClient = new TileDBClient(
                 new TileDBLogin(null,
                         null,
-                        "<TILEDB_API_TOKEN>",
+                        System.getenv("API_TOKEN"),
                         true,
                         true,
                         true));
@@ -35,18 +36,18 @@ public class Examples
 
 
 //        Uncomment to run whichever example you want
-//        runGenericUDF(tileDBClient);
-//        runArrayUDF(tileDBClient);
-//        runMultiArrayUDF(tileDBClient);
-//        getArraySchema(tileDBClient);
+        runGenericUDF(tileDBClient);
+        runArrayUDF(tileDBClient);
+        runMultiArrayUDF(tileDBClient);
+        getArraySchema(tileDBClient);
 //        createArray(tileDBClient);
 //        registerArray(tileDBClient);
-//        listArrays(tileDBClient);
-//        listGroups(tileDBClient);
+        listArrays(tileDBClient);
+        listGroups(tileDBClient);
 //        deleteArray(tileDBClient);
 //        deregisterArray(tileDBClient);
-//        runSQL(tileDBClient);
-//        runSQLArrow(tileDBClient);
+        runSQL(tileDBClient);
+        runSQLArrow(tileDBClient);
 
     }
 
@@ -205,7 +206,7 @@ public class Examples
         Integer page = null; // Integer | pagination offset
         Integer perPage = null; // Integer | pagination limit
         String search = null; // String | search string that will look at name, namespace or description fields
-        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace
+        String namespace = "TileDB-Inc"; // String | namespace
         String orderby = null; // String | sort by which field valid values include last_accessed, size, name
         String permissions = null; // String | permissions valid values include read, read_write, write, admin
         List<String> tag = null; // List<String> | tag to search for, more than one can be included
@@ -228,7 +229,7 @@ public class Examples
 
     private static void listArrays(TileDBClient tileDBClient)
     {
-        String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
+        String namespace = "dstara"; // String | namespace array is in (an organization name or user's username)
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
         try {
