@@ -163,6 +163,8 @@ public class TileDBUDF {
      * @param arrayURI The array URI
      * @param xPayer Name of organization or user who should be charged for this request
      * @return The results as a String
+     * @apiNote is replaced by executeSingleArray(GenericUDF genericUDF, UDFArrayDetails array,
+     *                                      QueryRanges queryRanges, String xPayer)
      */
     public String executeSingleArray(MultiArrayUDF multiArrayUDF, HashMap<String, Object> arguments, String arrayURI, String xPayer){
         String serializedArgs = serializeArgs(arguments);
@@ -224,6 +226,8 @@ public class TileDBUDF {
      * @param arrayURI The array URI
      * @param xPayer Name of organization or user who should be charged for this request
      * @return The results as a JSON Object
+     * @apiNote Is replaced by executeSingleArrayJSON(GenericUDF genericUDF, UDFArrayDetails array,
+     *                                              QueryRanges queryRanges,  String xPayer)
      */
     public JSONObject executeSingleArrayJSON(MultiArrayUDF multiArrayUDF, HashMap<String, Object> arguments, String arrayURI, String xPayer){
         multiArrayUDF.setResultFormat(ResultFormat.JSON);
@@ -275,6 +279,8 @@ public class TileDBUDF {
      * @param arrayURI The array URI
      * @param xPayer Name of organization or user who should be charged for this request
      * @return The results as a JSON array
+     * @apiNote Is replaced by executeSingleArrayJSONArray(GenericUDF genericUDF, UDFArrayDetails array,
+     *                                              QueryRanges queryRanges,  String xPayer)
      */
     public JSONArray executeSingleArrayJSONArray(MultiArrayUDF multiArrayUDF, HashMap<String,
             Object> arguments, String arrayURI, String xPayer){
@@ -326,6 +332,8 @@ public class TileDBUDF {
      * @param arrayURI The array URI
      * @param xPayer Name of organization or user who should be charged for this request
      * @return The results in arrow format
+     * @apiNote Is replaced by executeSingleArrayArrow(GenericUDF genericUDF, UDFArrayDetails array,
+     *                                                                          QueryRanges queryRanges,  String xPayer)
      */
     public Pair<ArrayList<ValueVector>, Integer> executeSingleArrayArrow(MultiArrayUDF multiArrayUDF, HashMap<String, Object> arguments, String arrayURI, String xPayer){
         String serializedArgs = serializeArgs(arguments);
