@@ -659,6 +659,7 @@ public class GroupInfo {
     openapiFields.add("tags");
     openapiFields.add("license_id");
     openapiFields.add("license_text");
+    openapiFields.add("group_type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
