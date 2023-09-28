@@ -54,7 +54,7 @@ public class TileDBSQL implements AutoCloseable{
      * @return A pair that consists of an ArrayList of all valueVectors and the
      * number of batches read.
      */
-    public io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> execArrow(){
+    public Pair<ArrayList<ValueVector>, Integer> execArrow(){
         try {
             assert sql.getResultFormat() != null;
             byte[] bytes =  apiInstance.runSQLBytes(namespace, sql, "none");
@@ -81,7 +81,7 @@ public class TileDBSQL implements AutoCloseable{
                 }
             }
             reader.close();
-            return new io.tiledb.java.api.Pair<>(valueVectors, readBatchesCount);
+            return new Pair<>(valueVectors, readBatchesCount);
 
         } catch (IOException | ApiException e) {
             throw new RuntimeException(e);

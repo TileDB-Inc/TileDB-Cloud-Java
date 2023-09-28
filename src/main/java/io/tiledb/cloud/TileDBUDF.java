@@ -1,25 +1,14 @@
 package io.tiledb.cloud;
 
-import com.google.gson.Gson;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.api.UdfApi;
 import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.java.api.Pair;
-import org.apache.arrow.compression.CommonsCompressionFactory;
-import org.apache.arrow.memory.RootAllocator;
-import org.apache.arrow.memory.UnsafeAllocationManager;
-import org.apache.arrow.vector.FieldVector;
 import org.apache.arrow.vector.ValueVector;
-import org.apache.arrow.vector.VectorSchemaRoot;
-import org.apache.arrow.vector.ipc.ArrowStreamReader;
-import org.apache.arrow.vector.util.TransferPair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -134,7 +123,7 @@ public class TileDBUDF {
      * @param arguments The UDF arguments
      * @return A pair that consists of an ArrayList of all valueVectors and the number of batches read.
      */
-    public io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> executeGenericArrow(GenericUDF genericUDF,
+    public Pair<ArrayList<ValueVector>, Integer> executeGenericArrow(GenericUDF genericUDF,
                                                                                         HashMap<String, Object> arguments){
         String serializedArgs = serializeArgs(arguments);
         genericUDF.setArgument(serializedArgs);
@@ -154,7 +143,7 @@ public class TileDBUDF {
      * @param genericUDF The generic UDF definition
      * @return A pair that consists of an ArrayList of all valueVectors and the number of batches read.
      */
-    public io.tiledb.java.api.Pair<ArrayList<ValueVector>, Integer> executeGenericArrow(GenericUDF genericUDF){
+    public Pair<ArrayList<ValueVector>, Integer> executeGenericArrow(GenericUDF genericUDF){
         genericUDF.setResultFormat(ResultFormat.ARROW);
         try {
             byte[] bytes = apiInstance.submitGenericUDFBytes(namespace, genericUDF, "none");
