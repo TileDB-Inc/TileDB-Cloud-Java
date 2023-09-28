@@ -1,13 +1,12 @@
 package examples;
 
 // Import classes:
-import io.tiledb.cloud.TileDBClient;
-import io.tiledb.cloud.TileDBUDF;
+import io.tiledb.cloud.*;
 import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.TileDBLogin;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
 import io.tiledb.cloud.rest_api.model.*;
+import org.apache.arrow.vector.ValueVector;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -46,6 +45,23 @@ public class Examples
 //        listGroups(tileDBClient);
 //        deleteArray(tileDBClient);
 //        deregisterArray(tileDBClient);
+//        runSQL(tileDBClient);
+//        runSQLArrow(tileDBClient);
+
+    }
+
+    private static void runSQL(TileDBClient tileDBClient) {
+        SQLParameters sqlParameters = new SQLParameters();
+        sqlParameters.setQuery("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`");
+        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "TileDB-Inc", sqlParameters);
+        System.out.println(tileDBSQL.exec());
+    }
+
+    private static void runSQLArrow(TileDBClient tileDBClient) {
+        SQLParameters sqlParameters = new SQLParameters();
+        sqlParameters.setQuery("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`");
+        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "TileDB-Inc", sqlParameters);
+        Pair<ArrayList<ValueVector>, Integer> a = tileDBSQL.execArrow();
     }
 
     /**

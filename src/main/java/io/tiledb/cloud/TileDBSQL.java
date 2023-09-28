@@ -2,6 +2,7 @@ package io.tiledb.cloud;
 
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.api.SqlApi;
+import io.tiledb.cloud.rest_api.model.ResultFormat;
 import io.tiledb.cloud.rest_api.model.SQLParameters;
 import org.apache.arrow.memory.RootAllocator;
 import org.apache.arrow.memory.UnsafeAllocationManager;
@@ -56,7 +57,11 @@ public class TileDBSQL implements AutoCloseable{
      */
     public Pair<ArrayList<ValueVector>, Integer> execArrow(){
         try {
-            assert sql.getResultFormat() != null;
+            if (sql.getResultFormat() != ResultFormat.ARROW && sql.getResultFormat() != null){
+                throw new ApiException("The ResultFormat you specified is not 'ARROW'. Since you are calling " +
+                        "'execArrow()' you can not specify a different ResultFormat. ");
+            }
+            sql.setResultFormat(ResultFormat.ARROW);
             byte[] bytes =  apiInstance.runSQLBytes(namespace, sql, "none");
             ArrayList<ValueVector> valueVectors = null;
             int readBatchesCount = 0;
@@ -95,8 +100,11 @@ public class TileDBSQL implements AutoCloseable{
      */
     public List<Object> exec(){
         try {
-            assert sql.getResultFormat() != null;
-            return apiInstance.runSQL(namespace, sql, sql.getResultFormat().toString());
+            if (sql.getResultFormat() == null ){
+                return apiInstance.runSQL(namespace, sql, ResultFormat.TILEDB_JSON.toString());
+            } else {
+                return apiInstance.runSQL(namespace, sql, sql.getResultFormat().toString());
+            }
         } catch (ApiException e) {
             System.err.println("Exception when calling SqlApi#runSQL/runSQLBytes");
             System.err.println("Status code: " + e.getCode());
