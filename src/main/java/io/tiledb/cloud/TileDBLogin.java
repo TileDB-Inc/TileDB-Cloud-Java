@@ -1,5 +1,7 @@
 package io.tiledb.cloud;
 
+import io.tiledb.cloud.rest_api.ApiException;
+
 public class TileDBLogin {
     /** The client password */
     private String password;
@@ -22,13 +24,54 @@ public class TileDBLogin {
     /** True if the user wants their current login input to overwrite the last one */
     private boolean overwritePrevious;
 
-    public TileDBLogin(String username, String password, String apiKey, boolean verifySSL, boolean rememberMe, boolean overwritePrevious) {
+    /**
+     * Constructor
+     *
+     * @param username The username
+     * @param password The password
+     * @param apiKey The User's api token. Can be found in the TileDB console at https://www.console.tiledb.com
+     * @param verifySSL True to verify SSL
+     * @param rememberMe True if the user wants their login credentials to be remembered
+     * @param overwritePrevious True if the user wants their current login input to overwrite the last one
+     */
+    public TileDBLogin(String username, String password, String apiKey, boolean verifySSL,
+                       boolean rememberMe, boolean overwritePrevious) {
         this.password = password;
         this.username = username;
         this.apiKey = apiKey;
         this.verifySSL = verifySSL;
         this.rememberMe = rememberMe;
         this.overwritePrevious = overwritePrevious;
+        this.host = "";
+    }
+
+    /**
+     * Constructor
+     *
+     * @param username The username
+     * @param password The password
+     * @param apiKey The User's api token. Can be found in the TileDB console at https://www.console.tiledb.com
+     * @param verifySSL True to verify SSL
+     * @param rememberMe True if the user wants their login credentials to be remembered
+     * @param overwritePrevious True if the user wants their current login input to overwrite the last one
+     * @param host The host name
+     */
+    public TileDBLogin(String username, String password, String apiKey, boolean verifySSL,
+                       boolean rememberMe, boolean overwritePrevious, String host) throws ApiException {
+        if (host.equals("https://api.tiledb.com/v2")){
+            throw new ApiException("https://api.tiledb.com/v2 is not yet supported");
+        }
+        this.password = password;
+        this.username = username;
+        this.apiKey = apiKey;
+        this.verifySSL = verifySSL;
+        this.rememberMe = rememberMe;
+        this.host = host;
+        this.overwritePrevious = overwritePrevious;
+    }
+
+    public String getHost() {
+        return host;
     }
 
     public TileDBLogin() {
