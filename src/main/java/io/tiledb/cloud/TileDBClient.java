@@ -22,7 +22,7 @@ public class TileDBClient{
     private static String password;
     private static String basePath;
 
-    private static boolean verifyingSsl = true;
+    private static boolean verifyingSsl;
 
     private static boolean loginInfoIsInJSONFile;
 
@@ -42,8 +42,9 @@ public class TileDBClient{
         apiKey = "";
         username = "";
         password = "";
-        basePath = "https://api.tiledb.com/v1";
+        basePath = "https://api.tiledb.com/v1"; //default is TileDB
         loginInfoIsInJSONFile = true;
+        verifyingSsl = true;
 
         // set path according to OS
         if (System.getProperty("os.name").toLowerCase().contains("windows")){
@@ -99,6 +100,16 @@ public class TileDBClient{
             logger.log(Level.INFO, "Found verifySSL from disk");
         }
 
+        if (object.has("host")){
+            String host = object.getString("host");
+            if (host.equals("https://api.tiledb.com")){
+                basePath = host + "/v1";
+            } else {
+                basePath = host;
+            }
+            logger.log(Level.INFO, "Found host from disk");
+        }
+
         // check if credentials are adequate for logging in
         if ((Objects.equals(apiKey, "") && (Objects.equals(password, "") && !Objects.equals(username, ""))
                         || (Objects.equals(apiKey, "") && ((Objects.equals(password, "") || Objects.equals(username, "")))))){
@@ -132,6 +143,11 @@ public class TileDBClient{
      * @param tileDBLogin The Login object
      */
     private void populateFieldsFromLogin(TileDBLogin tileDBLogin) {
+        if (!tileDBLogin.getHost().equals("")){
+            basePath = tileDBLogin.getHost();
+        } else {
+            basePath = "https://api.tiledb.com/v1";
+        }
         apiKey = tileDBLogin.getApiKey();
         username = tileDBLogin.getUsername();
         password = tileDBLogin.getPassword();
@@ -155,7 +171,11 @@ public class TileDBClient{
         jsonObject.put("api_key", apiKeyObject);
         jsonObject.put("username", username);
         jsonObject.put("password", password);
-        jsonObject.put("host", "https://api.tiledb.com");
+        if (basePath.equals("https://api.tiledb.com/v1")){
+            jsonObject.put("host", "https://api.tiledb.com");
+        }else{
+            jsonObject.put("host", basePath);
+        }
         jsonObject.put("verify_ssl", verifyingSsl);
         try {
             File file = new File(homeDir + cloudFilePath);
