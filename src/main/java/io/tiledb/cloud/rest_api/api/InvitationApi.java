@@ -13,6 +13,10 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.model.InvitationArrayShareEmail;
+import io.tiledb.cloud.rest_api.model.InvitationData;
+import io.tiledb.cloud.rest_api.model.InvitationGroupShareEmail;
+import io.tiledb.cloud.rest_api.model.InvitationOrganizationJoinEmail;
 import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
@@ -22,10 +26,6 @@ import io.tiledb.cloud.rest_api.Pair;
 
 import com.google.gson.reflect.TypeToken;
 
-
-import io.tiledb.cloud.rest_api.model.InvitationArrayShareEmail;
-import io.tiledb.cloud.rest_api.model.InvitationData;
-import io.tiledb.cloud.rest_api.model.InvitationOrganizationJoinEmail;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -81,6 +81,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation was accepted successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Could not find invitation identifier </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -154,6 +155,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation was accepted successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Could not find invitation identifier </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -172,6 +174,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation was accepted successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Could not find invitation identifier </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -192,6 +195,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation was accepted successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Could not find invitation identifier </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -213,6 +217,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -293,6 +298,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -312,6 +318,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -333,6 +340,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -355,6 +363,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -442,6 +451,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -462,6 +472,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -484,6 +495,7 @@ public class InvitationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -494,9 +506,165 @@ public class InvitationApi {
         return localVarCall;
     }
     /**
+     * Build call for cancelShareGroupByInvite
+     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param invitation the ID of invitation about to be cancelled (required)
+     * @param groupName name/uuid of group that is url-encoded (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call cancelShareGroupByInviteCall(String namespace, String invitation, String groupName, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/invitations/group/{invitation}/{namespace}/{group_name}/share"
+            .replaceAll("\\{" + "namespace" + "\\}", localVarApiClient.escapeString(namespace.toString()))
+            .replaceAll("\\{" + "invitation" + "\\}", localVarApiClient.escapeString(invitation.toString()))
+            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call cancelShareGroupByInviteValidateBeforeCall(String namespace, String invitation, String groupName, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'namespace' is set
+        if (namespace == null) {
+            throw new ApiException("Missing the required parameter 'namespace' when calling cancelShareGroupByInvite(Async)");
+        }
+        
+        // verify the required parameter 'invitation' is set
+        if (invitation == null) {
+            throw new ApiException("Missing the required parameter 'invitation' when calling cancelShareGroupByInvite(Async)");
+        }
+        
+        // verify the required parameter 'groupName' is set
+        if (groupName == null) {
+            throw new ApiException("Missing the required parameter 'groupName' when calling cancelShareGroupByInvite(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = cancelShareGroupByInviteCall(namespace, invitation, groupName, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Cancels group sharing invitation
+     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param invitation the ID of invitation about to be cancelled (required)
+     * @param groupName name/uuid of group that is url-encoded (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public void cancelShareGroupByInvite(String namespace, String invitation, String groupName) throws ApiException {
+        cancelShareGroupByInviteWithHttpInfo(namespace, invitation, groupName);
+    }
+
+    /**
+     * 
+     * Cancels group sharing invitation
+     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param invitation the ID of invitation about to be cancelled (required)
+     * @param groupName name/uuid of group that is url-encoded (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> cancelShareGroupByInviteWithHttpInfo(String namespace, String invitation, String groupName) throws ApiException {
+        okhttp3.Call localVarCall = cancelShareGroupByInviteValidateBeforeCall(namespace, invitation, groupName, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Cancels group sharing invitation
+     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param invitation the ID of invitation about to be cancelled (required)
+     * @param groupName name/uuid of group that is url-encoded (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Invitation cancelled successfully </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> No invitation was found to cancel </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call cancelShareGroupByInviteAsync(String namespace, String invitation, String groupName, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelShareGroupByInviteValidateBeforeCall(namespace, invitation, groupName, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for fetchInvitations
      * @param organization name or ID of organization to filter (optional)
      * @param array name/uri of array that is url-encoded to filter (optional)
+     * @param group name or ID of group to filter (optional)
      * @param start start time for tasks to filter by (optional)
      * @param end end time for tasks to filter by (optional)
      * @param page pagination offset (optional)
@@ -511,10 +679,11 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of invitations and pagination metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchInvitationsCall(String organization, String array, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call fetchInvitationsCall(String organization, String array, String group, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -545,6 +714,10 @@ public class InvitationApi {
 
         if (array != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("array", array));
+        }
+
+        if (group != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("group", group));
         }
 
         if (start != null) {
@@ -596,10 +769,10 @@ public class InvitationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call fetchInvitationsValidateBeforeCall(String organization, String array, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call fetchInvitationsValidateBeforeCall(String organization, String array, String group, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = fetchInvitationsCall(organization, array, start, end, page, perPage, type, status, orderby, _callback);
+        okhttp3.Call localVarCall = fetchInvitationsCall(organization, array, group, start, end, page, perPage, type, status, orderby, _callback);
         return localVarCall;
 
     }
@@ -609,6 +782,7 @@ public class InvitationApi {
      * Fetch a list of invitations
      * @param organization name or ID of organization to filter (optional)
      * @param array name/uri of array that is url-encoded to filter (optional)
+     * @param group name or ID of group to filter (optional)
      * @param start start time for tasks to filter by (optional)
      * @param end end time for tasks to filter by (optional)
      * @param page pagination offset (optional)
@@ -622,11 +796,12 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of invitations and pagination metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public InvitationData fetchInvitations(String organization, String array, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby) throws ApiException {
-        ApiResponse<InvitationData> localVarResp = fetchInvitationsWithHttpInfo(organization, array, start, end, page, perPage, type, status, orderby);
+    public InvitationData fetchInvitations(String organization, String array, String group, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby) throws ApiException {
+        ApiResponse<InvitationData> localVarResp = fetchInvitationsWithHttpInfo(organization, array, group, start, end, page, perPage, type, status, orderby);
         return localVarResp.getData();
     }
 
@@ -635,6 +810,7 @@ public class InvitationApi {
      * Fetch a list of invitations
      * @param organization name or ID of organization to filter (optional)
      * @param array name/uri of array that is url-encoded to filter (optional)
+     * @param group name or ID of group to filter (optional)
      * @param start start time for tasks to filter by (optional)
      * @param end end time for tasks to filter by (optional)
      * @param page pagination offset (optional)
@@ -648,11 +824,12 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of invitations and pagination metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvitationData> fetchInvitationsWithHttpInfo(String organization, String array, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby) throws ApiException {
-        okhttp3.Call localVarCall = fetchInvitationsValidateBeforeCall(organization, array, start, end, page, perPage, type, status, orderby, null);
+    public ApiResponse<InvitationData> fetchInvitationsWithHttpInfo(String organization, String array, String group, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby) throws ApiException {
+        okhttp3.Call localVarCall = fetchInvitationsValidateBeforeCall(organization, array, group, start, end, page, perPage, type, status, orderby, null);
         Type localVarReturnType = new TypeToken<InvitationData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -662,6 +839,7 @@ public class InvitationApi {
      * Fetch a list of invitations
      * @param organization name or ID of organization to filter (optional)
      * @param array name/uri of array that is url-encoded to filter (optional)
+     * @param group name or ID of group to filter (optional)
      * @param start start time for tasks to filter by (optional)
      * @param end end time for tasks to filter by (optional)
      * @param page pagination offset (optional)
@@ -676,12 +854,13 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of invitations and pagination metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchInvitationsAsync(String organization, String array, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby, final ApiCallback<InvitationData> _callback) throws ApiException {
+    public okhttp3.Call fetchInvitationsAsync(String organization, String array, String group, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby, final ApiCallback<InvitationData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = fetchInvitationsValidateBeforeCall(organization, array, start, end, page, perPage, type, status, orderby, _callback);
+        okhttp3.Call localVarCall = fetchInvitationsValidateBeforeCall(organization, array, group, start, end, page, perPage, type, status, orderby, _callback);
         Type localVarReturnType = new TypeToken<InvitationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -697,7 +876,9 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Email sent successfully to user for email confirmation link </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Could not reach one or more recipients </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -776,7 +957,9 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Email sent successfully to user for email confirmation link </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Could not reach one or more recipients </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -795,7 +978,9 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Email sent successfully to user for email confirmation link </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Could not reach one or more recipients </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -816,7 +1001,9 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Email sent successfully to user for email confirmation link </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Could not reach one or more recipients </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -838,7 +1025,9 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Email sent successfully to user for email confirmation link </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Could not reach one or more recipients </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -924,7 +1113,9 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Email sent successfully to user for email confirmation link </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Could not reach one or more recipients </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -944,7 +1135,9 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Email sent successfully to user for email confirmation link </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Could not reach one or more recipients </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -966,13 +1159,173 @@ public class InvitationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Email sent successfully to user for email confirmation link </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Could not reach one or more recipients </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call shareArrayByInviteAsync(String namespace, String array, InvitationArrayShareEmail emailInvite, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = shareArrayByInviteValidateBeforeCall(namespace, array, emailInvite, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for shareGroupByInvite
+     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param group name/uri of group that is url-encoded (required)
+     * @param emailInvite list of email/namespace recipients (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Email sent successfully to user with an email confirmation link </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call shareGroupByInviteCall(String namespace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = emailInvite;
+
+        // create path and map variables
+        String localVarPath = "/invitations/group/{namespace}/{group}/share"
+            .replaceAll("\\{" + "namespace" + "\\}", localVarApiClient.escapeString(namespace.toString()))
+            .replaceAll("\\{" + "group" + "\\}", localVarApiClient.escapeString(group.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call shareGroupByInviteValidateBeforeCall(String namespace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'namespace' is set
+        if (namespace == null) {
+            throw new ApiException("Missing the required parameter 'namespace' when calling shareGroupByInvite(Async)");
+        }
+        
+        // verify the required parameter 'group' is set
+        if (group == null) {
+            throw new ApiException("Missing the required parameter 'group' when calling shareGroupByInvite(Async)");
+        }
+        
+        // verify the required parameter 'emailInvite' is set
+        if (emailInvite == null) {
+            throw new ApiException("Missing the required parameter 'emailInvite' when calling shareGroupByInvite(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = shareGroupByInviteCall(namespace, group, emailInvite, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Sends email to multiple recipients with sharing information regarding a group
+     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param group name/uri of group that is url-encoded (required)
+     * @param emailInvite list of email/namespace recipients (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Email sent successfully to user with an email confirmation link </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public void shareGroupByInvite(String namespace, String group, InvitationGroupShareEmail emailInvite) throws ApiException {
+        shareGroupByInviteWithHttpInfo(namespace, group, emailInvite);
+    }
+
+    /**
+     * 
+     * Sends email to multiple recipients with sharing information regarding a group
+     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param group name/uri of group that is url-encoded (required)
+     * @param emailInvite list of email/namespace recipients (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Email sent successfully to user with an email confirmation link </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> shareGroupByInviteWithHttpInfo(String namespace, String group, InvitationGroupShareEmail emailInvite) throws ApiException {
+        okhttp3.Call localVarCall = shareGroupByInviteValidateBeforeCall(namespace, group, emailInvite, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Sends email to multiple recipients with sharing information regarding a group
+     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param group name/uri of group that is url-encoded (required)
+     * @param emailInvite list of email/namespace recipients (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Email sent successfully to user with an email confirmation link </td><td>  -  </td></tr>
+        <tr><td> 207 </td><td> Only a portion of the invitations succeeded, some failed </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Could not reach any recipients </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call shareGroupByInviteAsync(String namespace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = shareGroupByInviteValidateBeforeCall(namespace, group, emailInvite, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

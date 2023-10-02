@@ -2,13 +2,13 @@
 
 # TileDBConfig
 
-user's TileDB config
+TileDB config used for interaction with the embedded library
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**configs** | **Map&lt;String, String&gt;** |  |  [optional] |
+|**entries** | [**List&lt;TileDBConfigEntriesInner&gt;**](TileDBConfigEntriesInner.md) |  |  [optional] |
 
 
 

@@ -13,8 +13,8 @@
 
 package io.tiledb.cloud.rest_api.auth;
 
-import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ApiException;
 
 import java.net.URI;
 import java.util.Map;

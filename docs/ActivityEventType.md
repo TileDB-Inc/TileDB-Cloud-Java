@@ -15,6 +15,8 @@
 
 * `QUERY_WRITE` (value: `"query_write"`)
 
+* `QUERY_DELETE` (value: `"query_delete"`)
+
 * `CREATE` (value: `"create"`)
 
 * `DELETE` (value: `"delete"`)
@@ -30,6 +32,8 @@
 * `ARRAY_METADATA_UPDATE` (value: `"array_metadata_update"`)
 
 * `ESTIMATED_RESULT_SIZES` (value: `"estimated_result_sizes"`)
+
+* `READ_FRAGMENT_INFO` (value: `"read_fragment_info"`)
 
 
 

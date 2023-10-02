@@ -31,9 +31,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
 
 import io.tiledb.cloud.rest_api.JSON;
 
@@ -41,7 +41,7 @@ import io.tiledb.cloud.rest_api.JSON;
  * key/value pair representing an array metadata map entry
  */
 @ApiModel(description = "key/value pair representing an array metadata map entry")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class ArrayMetadataEntry {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -63,7 +63,7 @@ public class ArrayMetadataEntry {
   @SerializedName(SERIALIZED_NAME_DEL)
   private Boolean del;
 
-  public ArrayMetadataEntry() { 
+  public ArrayMetadataEntry() {
   }
 
   public ArrayMetadataEntry key(String key) {
@@ -188,6 +188,41 @@ public class ArrayMetadataEntry {
     this.del = del;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public ArrayMetadataEntry putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -203,12 +238,13 @@ public class ArrayMetadataEntry {
         Objects.equals(this.type, arrayMetadataEntry.type) &&
         Objects.equals(this.valueNum, arrayMetadataEntry.valueNum) &&
         Objects.equals(this.value, arrayMetadataEntry.value) &&
-        Objects.equals(this.del, arrayMetadataEntry.del);
+        Objects.equals(this.del, arrayMetadataEntry.del)&&
+        Objects.equals(this.additionalProperties, arrayMetadataEntry.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, type, valueNum, value, del);
+    return Objects.hash(key, type, valueNum, value, del, additionalProperties);
   }
 
   @Override
@@ -220,6 +256,7 @@ public class ArrayMetadataEntry {
     sb.append("    valueNum: ").append(toIndentedString(valueNum)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    del: ").append(toIndentedString(del)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -266,22 +303,14 @@ public class ArrayMetadataEntry {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayMetadataEntry is not found in the empty JSON string", ArrayMetadataEntry.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-//      for (Entry<String, JsonElement> entry : entries) {
-//        if (!ArrayMetadataEntry.openapiFields.contains(entry.getKey())) {
-//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArrayMetadataEntry` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-//        }
-//      }
-      if (jsonObj.get("key") != null && !jsonObj.get("key").isJsonPrimitive()) {
+      if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
       }
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // ensure the json data is an array
-      if (jsonObj.get("value") != null && !jsonObj.get("value").isJsonArray()) {
+      if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `value` to be an array in the JSON string but got `%s`", jsonObj.get("value").toString()));
       }
   }
@@ -301,6 +330,23 @@ public class ArrayMetadataEntry {
            @Override
            public void write(JsonWriter out, ArrayMetadataEntry value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -308,7 +354,25 @@ public class ArrayMetadataEntry {
            public ArrayMetadataEntry read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             ArrayMetadataEntry instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

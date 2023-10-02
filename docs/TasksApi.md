@@ -23,11 +23,11 @@ Run a sql query
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.TasksApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import TasksApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -89,6 +89,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | JSON results in array of objects form, if the query returns results |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 | **204** | SQL executed successfully |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="taskIdGet"></a>
@@ -107,7 +108,7 @@ Fetch an array task
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import TasksApi;
 
 public class Example {
@@ -165,6 +166,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array task |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="taskIdResultGet"></a>
@@ -183,7 +185,7 @@ Retrieve results of an array task
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import TasksApi;
 
 public class Example {
@@ -245,6 +247,7 @@ public class Example {
 | **200** | output and format of originating request |  * Content-Type - format results are delivered in <br>  |
 | **202** | task is still executing |  -  |
 | **404** | results were not saved, or results have expored |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="tasksGet"></a>
@@ -263,7 +266,7 @@ Fetch a list of all array tasks a user has access to
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import TasksApi;
 
 public class Example {
@@ -347,5 +350,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of all tasks user has access too |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

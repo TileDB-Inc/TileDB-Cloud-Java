@@ -13,12 +13,12 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
-import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.Pair;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import io.tiledb.cloud.rest_api.model.ArrayActivityLog;
 import io.tiledb.cloud.rest_api.model.ArrayBrowserData;
 import io.tiledb.cloud.rest_api.model.ArrayBrowserSidebar;
+import io.tiledb.cloud.rest_api.model.ArrayConsolidationRequest;
 import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
 import io.tiledb.cloud.rest_api.model.ArrayInfo;
 import io.tiledb.cloud.rest_api.model.ArrayInfoUpdate;
@@ -33,12 +34,14 @@ import io.tiledb.cloud.rest_api.model.ArrayMetadata;
 import io.tiledb.cloud.rest_api.model.ArraySample;
 import io.tiledb.cloud.rest_api.model.ArraySchema;
 import io.tiledb.cloud.rest_api.model.ArraySharing;
+import io.tiledb.cloud.rest_api.model.ArrayVacuumRequest;
 import java.math.BigDecimal;
 
+import io.tiledb.cloud.rest_api.model.FragmentInfo;
+import io.tiledb.cloud.rest_api.model.FragmentInfoRequest;
 import io.tiledb.cloud.rest_api.model.LastAccessedArray;
 import io.tiledb.cloud.rest_api.model.MaxBufferSizes;
 import io.tiledb.cloud.rest_api.model.NonEmptyDomain;
-import io.tiledb.cloud.rest_api.model.TileDBConfig;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -89,7 +92,7 @@ public class ArrayApi {
      * @param array name/uri of array that is url-encoded (required)
      * @param start Start time of window of fetch logs, unix epoch in seconds (default: seven days ago) (optional)
      * @param end End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp) (optional)
-     * @param eventTypes Event values can be one or more of the following read, write, create, delete, register, deregister, comma separated (optional)
+     * @param eventTypes Refer to ActivityEventType for possible values (optional)
      * @param taskId Array task ID To filter activity to (optional)
      * @param hasTaskId Excludes activity log results that do not contain an array task UUID (optional)
      * @param _callback Callback for upload/download progress
@@ -99,6 +102,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> log of array activity </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -195,7 +199,7 @@ public class ArrayApi {
      * @param array name/uri of array that is url-encoded (required)
      * @param start Start time of window of fetch logs, unix epoch in seconds (default: seven days ago) (optional)
      * @param end End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp) (optional)
-     * @param eventTypes Event values can be one or more of the following read, write, create, delete, register, deregister, comma separated (optional)
+     * @param eventTypes Refer to ActivityEventType for possible values (optional)
      * @param taskId Array task ID To filter activity to (optional)
      * @param hasTaskId Excludes activity log results that do not contain an array task UUID (optional)
      * @return List&lt;ArrayActivityLog&gt;
@@ -204,6 +208,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> log of array activity </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -219,7 +224,7 @@ public class ArrayApi {
      * @param array name/uri of array that is url-encoded (required)
      * @param start Start time of window of fetch logs, unix epoch in seconds (default: seven days ago) (optional)
      * @param end End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp) (optional)
-     * @param eventTypes Event values can be one or more of the following read, write, create, delete, register, deregister, comma separated (optional)
+     * @param eventTypes Refer to ActivityEventType for possible values (optional)
      * @param taskId Array task ID To filter activity to (optional)
      * @param hasTaskId Excludes activity log results that do not contain an array task UUID (optional)
      * @return ApiResponse&lt;List&lt;ArrayActivityLog&gt;&gt;
@@ -228,6 +233,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> log of array activity </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -244,7 +250,7 @@ public class ArrayApi {
      * @param array name/uri of array that is url-encoded (required)
      * @param start Start time of window of fetch logs, unix epoch in seconds (default: seven days ago) (optional)
      * @param end End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp) (optional)
-     * @param eventTypes Event values can be one or more of the following read, write, create, delete, register, deregister, comma separated (optional)
+     * @param eventTypes Refer to ActivityEventType for possible values (optional)
      * @param taskId Array task ID To filter activity to (optional)
      * @param hasTaskId Excludes activity log results that do not contain an array task UUID (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -254,6 +260,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> log of array activity </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -284,6 +291,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that are owned directly by user or user&#39;s organizations </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -405,6 +413,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that are owned directly by user or user&#39;s organizations </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -433,6 +442,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that are owned directly by user or user&#39;s organizations </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -463,6 +473,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that are owned directly by user or user&#39;s organizations </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -475,6 +486,9 @@ public class ArrayApi {
     }
     /**
      * Build call for arraysBrowserOwnedSidebarGet
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -482,10 +496,11 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that are owned directly by user or user&#39;s organizations </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call arraysBrowserOwnedSidebarGetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call arraysBrowserOwnedSidebarGetCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -510,6 +525,18 @@ public class ArrayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (fileType != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "file_type", fileType));
+        }
+
+        if (excludeFileType != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "exclude_file_type", excludeFileType));
+        }
+
+        if (fileProperty != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "file_property", fileProperty));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -531,10 +558,10 @@ public class ArrayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call arraysBrowserOwnedSidebarGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call arraysBrowserOwnedSidebarGetValidateBeforeCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = arraysBrowserOwnedSidebarGetCall(_callback);
+        okhttp3.Call localVarCall = arraysBrowserOwnedSidebarGetCall(fileType, excludeFileType, fileProperty, _callback);
         return localVarCall;
 
     }
@@ -542,34 +569,42 @@ public class ArrayApi {
     /**
      * 
      * Fetch a sidebar for arrays that are owned directly by user or user&#39;s organizations
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
      * @return ArrayBrowserSidebar
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that are owned directly by user or user&#39;s organizations </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ArrayBrowserSidebar arraysBrowserOwnedSidebarGet() throws ApiException {
-        ApiResponse<ArrayBrowserSidebar> localVarResp = arraysBrowserOwnedSidebarGetWithHttpInfo();
+    public ArrayBrowserSidebar arraysBrowserOwnedSidebarGet(List<String> fileType, List<String> excludeFileType, List<String> fileProperty) throws ApiException {
+        ApiResponse<ArrayBrowserSidebar> localVarResp = arraysBrowserOwnedSidebarGetWithHttpInfo(fileType, excludeFileType, fileProperty);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Fetch a sidebar for arrays that are owned directly by user or user&#39;s organizations
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
      * @return ApiResponse&lt;ArrayBrowserSidebar&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that are owned directly by user or user&#39;s organizations </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArrayBrowserSidebar> arraysBrowserOwnedSidebarGetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = arraysBrowserOwnedSidebarGetValidateBeforeCall(null);
+    public ApiResponse<ArrayBrowserSidebar> arraysBrowserOwnedSidebarGetWithHttpInfo(List<String> fileType, List<String> excludeFileType, List<String> fileProperty) throws ApiException {
+        okhttp3.Call localVarCall = arraysBrowserOwnedSidebarGetValidateBeforeCall(fileType, excludeFileType, fileProperty, null);
         Type localVarReturnType = new TypeToken<ArrayBrowserSidebar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -577,6 +612,9 @@ public class ArrayApi {
     /**
      *  (asynchronously)
      * Fetch a sidebar for arrays that are owned directly by user or user&#39;s organizations
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -584,12 +622,13 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that are owned directly by user or user&#39;s organizations </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call arraysBrowserOwnedSidebarGetAsync(final ApiCallback<ArrayBrowserSidebar> _callback) throws ApiException {
+    public okhttp3.Call arraysBrowserOwnedSidebarGetAsync(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback<ArrayBrowserSidebar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = arraysBrowserOwnedSidebarGetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = arraysBrowserOwnedSidebarGetValidateBeforeCall(fileType, excludeFileType, fileProperty, _callback);
         Type localVarReturnType = new TypeToken<ArrayBrowserSidebar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -614,6 +653,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared publically </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -735,6 +775,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared publically </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -763,6 +804,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared publically </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -793,6 +835,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared publically </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -805,6 +848,9 @@ public class ArrayApi {
     }
     /**
      * Build call for arraysBrowserPublicSidebarGet
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -812,10 +858,11 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared publically </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call arraysBrowserPublicSidebarGetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call arraysBrowserPublicSidebarGetCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -840,6 +887,18 @@ public class ArrayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (fileType != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "file_type", fileType));
+        }
+
+        if (excludeFileType != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "exclude_file_type", excludeFileType));
+        }
+
+        if (fileProperty != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "file_property", fileProperty));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -861,10 +920,10 @@ public class ArrayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call arraysBrowserPublicSidebarGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call arraysBrowserPublicSidebarGetValidateBeforeCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = arraysBrowserPublicSidebarGetCall(_callback);
+        okhttp3.Call localVarCall = arraysBrowserPublicSidebarGetCall(fileType, excludeFileType, fileProperty, _callback);
         return localVarCall;
 
     }
@@ -872,34 +931,42 @@ public class ArrayApi {
     /**
      * 
      * Fetch a sidebar of all arrays that have been shared publically
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
      * @return ArrayBrowserSidebar
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared publically </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ArrayBrowserSidebar arraysBrowserPublicSidebarGet() throws ApiException {
-        ApiResponse<ArrayBrowserSidebar> localVarResp = arraysBrowserPublicSidebarGetWithHttpInfo();
+    public ArrayBrowserSidebar arraysBrowserPublicSidebarGet(List<String> fileType, List<String> excludeFileType, List<String> fileProperty) throws ApiException {
+        ApiResponse<ArrayBrowserSidebar> localVarResp = arraysBrowserPublicSidebarGetWithHttpInfo(fileType, excludeFileType, fileProperty);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Fetch a sidebar of all arrays that have been shared publically
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
      * @return ApiResponse&lt;ArrayBrowserSidebar&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared publically </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArrayBrowserSidebar> arraysBrowserPublicSidebarGetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = arraysBrowserPublicSidebarGetValidateBeforeCall(null);
+    public ApiResponse<ArrayBrowserSidebar> arraysBrowserPublicSidebarGetWithHttpInfo(List<String> fileType, List<String> excludeFileType, List<String> fileProperty) throws ApiException {
+        okhttp3.Call localVarCall = arraysBrowserPublicSidebarGetValidateBeforeCall(fileType, excludeFileType, fileProperty, null);
         Type localVarReturnType = new TypeToken<ArrayBrowserSidebar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -907,6 +974,9 @@ public class ArrayApi {
     /**
      *  (asynchronously)
      * Fetch a sidebar of all arrays that have been shared publically
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -914,12 +984,13 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared publically </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call arraysBrowserPublicSidebarGetAsync(final ApiCallback<ArrayBrowserSidebar> _callback) throws ApiException {
+    public okhttp3.Call arraysBrowserPublicSidebarGetAsync(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback<ArrayBrowserSidebar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = arraysBrowserPublicSidebarGetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = arraysBrowserPublicSidebarGetValidateBeforeCall(fileType, excludeFileType, fileProperty, _callback);
         Type localVarReturnType = new TypeToken<ArrayBrowserSidebar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -945,6 +1016,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared with the user </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1071,6 +1143,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared with the user </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1100,6 +1173,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared with the user </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1131,6 +1205,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared with the user </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1143,6 +1218,10 @@ public class ArrayApi {
     }
     /**
      * Build call for arraysBrowserSharedSidebarGet
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
+     * @param sharedTo namespaces to filter results of where there groups were shared to (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1150,10 +1229,11 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared with the user </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call arraysBrowserSharedSidebarGetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call arraysBrowserSharedSidebarGetCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1178,6 +1258,22 @@ public class ArrayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (fileType != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "file_type", fileType));
+        }
+
+        if (excludeFileType != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "exclude_file_type", excludeFileType));
+        }
+
+        if (fileProperty != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "file_property", fileProperty));
+        }
+
+        if (sharedTo != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "shared_to", sharedTo));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1199,10 +1295,10 @@ public class ArrayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call arraysBrowserSharedSidebarGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call arraysBrowserSharedSidebarGetValidateBeforeCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = arraysBrowserSharedSidebarGetCall(_callback);
+        okhttp3.Call localVarCall = arraysBrowserSharedSidebarGetCall(fileType, excludeFileType, fileProperty, sharedTo, _callback);
         return localVarCall;
 
     }
@@ -1210,34 +1306,44 @@ public class ArrayApi {
     /**
      * 
      * Fetch a list of all arrays that have been shared with the user
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
+     * @param sharedTo namespaces to filter results of where there groups were shared to (optional)
      * @return ArrayBrowserSidebar
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared with the user </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ArrayBrowserSidebar arraysBrowserSharedSidebarGet() throws ApiException {
-        ApiResponse<ArrayBrowserSidebar> localVarResp = arraysBrowserSharedSidebarGetWithHttpInfo();
+    public ArrayBrowserSidebar arraysBrowserSharedSidebarGet(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo) throws ApiException {
+        ApiResponse<ArrayBrowserSidebar> localVarResp = arraysBrowserSharedSidebarGetWithHttpInfo(fileType, excludeFileType, fileProperty, sharedTo);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Fetch a list of all arrays that have been shared with the user
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
+     * @param sharedTo namespaces to filter results of where there groups were shared to (optional)
      * @return ApiResponse&lt;ArrayBrowserSidebar&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared with the user </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArrayBrowserSidebar> arraysBrowserSharedSidebarGetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = arraysBrowserSharedSidebarGetValidateBeforeCall(null);
+    public ApiResponse<ArrayBrowserSidebar> arraysBrowserSharedSidebarGetWithHttpInfo(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo) throws ApiException {
+        okhttp3.Call localVarCall = arraysBrowserSharedSidebarGetValidateBeforeCall(fileType, excludeFileType, fileProperty, sharedTo, null);
         Type localVarReturnType = new TypeToken<ArrayBrowserSidebar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1245,6 +1351,10 @@ public class ArrayApi {
     /**
      *  (asynchronously)
      * Fetch a list of all arrays that have been shared with the user
+     * @param fileType file_type to search for, more than one can be included (optional)
+     * @param excludeFileType file_type to exclude matching array in results, more than one can be included (optional)
+     * @param fileProperty file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included (optional)
+     * @param sharedTo namespaces to filter results of where there groups were shared to (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1252,12 +1362,13 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of array info that has been shared with the user </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call arraysBrowserSharedSidebarGetAsync(final ApiCallback<ArrayBrowserSidebar> _callback) throws ApiException {
+    public okhttp3.Call arraysBrowserSharedSidebarGetAsync(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo, final ApiCallback<ArrayBrowserSidebar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = arraysBrowserSharedSidebarGetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = arraysBrowserSharedSidebarGetValidateBeforeCall(fileType, excludeFileType, fileProperty, sharedTo, _callback);
         Type localVarReturnType = new TypeToken<ArrayBrowserSidebar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1275,6 +1386,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> list of timestamps in milliseconds, paginated </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1365,6 +1477,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> list of timestamps in milliseconds, paginated </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1386,6 +1499,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> list of timestamps in milliseconds, paginated </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1409,6 +1523,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> list of timestamps in milliseconds, paginated </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1423,7 +1538,7 @@ public class ArrayApi {
      * Build call for consolidateArray
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @param tiledbConfig tiledb configuration (required)
+     * @param consolidateRequest Consolidate Request (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1431,10 +1546,11 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array consolidated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call consolidateArrayCall(String namespace, String array, TileDBConfig tiledbConfig, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call consolidateArrayCall(String namespace, String array, ArrayConsolidationRequest consolidateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1448,7 +1564,7 @@ public class ArrayApi {
             basePath = null;
         }
 
-        Object localVarPostBody = tiledbConfig;
+        Object localVarPostBody = consolidateRequest;
 
         // create path and map variables
         String localVarPath = "/arrays/{namespace}/{array}/consolidate"
@@ -1482,7 +1598,7 @@ public class ArrayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call consolidateArrayValidateBeforeCall(String namespace, String array, TileDBConfig tiledbConfig, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call consolidateArrayValidateBeforeCall(String namespace, String array, ArrayConsolidationRequest consolidateRequest, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'namespace' is set
         if (namespace == null) {
@@ -1494,13 +1610,13 @@ public class ArrayApi {
             throw new ApiException("Missing the required parameter 'array' when calling consolidateArray(Async)");
         }
         
-        // verify the required parameter 'tiledbConfig' is set
-        if (tiledbConfig == null) {
-            throw new ApiException("Missing the required parameter 'tiledbConfig' when calling consolidateArray(Async)");
+        // verify the required parameter 'consolidateRequest' is set
+        if (consolidateRequest == null) {
+            throw new ApiException("Missing the required parameter 'consolidateRequest' when calling consolidateArray(Async)");
         }
         
 
-        okhttp3.Call localVarCall = consolidateArrayCall(namespace, array, tiledbConfig, _callback);
+        okhttp3.Call localVarCall = consolidateArrayCall(namespace, array, consolidateRequest, _callback);
         return localVarCall;
 
     }
@@ -1510,17 +1626,18 @@ public class ArrayApi {
      * consolidate an array at a specified URI
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @param tiledbConfig tiledb configuration (required)
+     * @param consolidateRequest Consolidate Request (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array consolidated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void consolidateArray(String namespace, String array, TileDBConfig tiledbConfig) throws ApiException {
-        consolidateArrayWithHttpInfo(namespace, array, tiledbConfig);
+    public void consolidateArray(String namespace, String array, ArrayConsolidationRequest consolidateRequest) throws ApiException {
+        consolidateArrayWithHttpInfo(namespace, array, consolidateRequest);
     }
 
     /**
@@ -1528,18 +1645,19 @@ public class ArrayApi {
      * consolidate an array at a specified URI
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @param tiledbConfig tiledb configuration (required)
+     * @param consolidateRequest Consolidate Request (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array consolidated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> consolidateArrayWithHttpInfo(String namespace, String array, TileDBConfig tiledbConfig) throws ApiException {
-        okhttp3.Call localVarCall = consolidateArrayValidateBeforeCall(namespace, array, tiledbConfig, null);
+    public ApiResponse<Void> consolidateArrayWithHttpInfo(String namespace, String array, ArrayConsolidationRequest consolidateRequest) throws ApiException {
+        okhttp3.Call localVarCall = consolidateArrayValidateBeforeCall(namespace, array, consolidateRequest, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1548,7 +1666,7 @@ public class ArrayApi {
      * consolidate an array at a specified URI
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @param tiledbConfig tiledb configuration (required)
+     * @param consolidateRequest Consolidate Request (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1556,12 +1674,13 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array consolidated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call consolidateArrayAsync(String namespace, String array, TileDBConfig tiledbConfig, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call consolidateArrayAsync(String namespace, String array, ArrayConsolidationRequest consolidateRequest, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = consolidateArrayValidateBeforeCall(namespace, array, tiledbConfig, _callback);
+        okhttp3.Call localVarCall = consolidateArrayValidateBeforeCall(namespace, array, consolidateRequest, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1579,6 +1698,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> schema created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1679,6 +1799,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> schema created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1700,6 +1821,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> schema created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1723,6 +1845,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> schema created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1744,6 +1867,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> delete array successful </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1833,6 +1957,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> delete array successful </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1852,6 +1977,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> delete array successful </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1873,6 +1999,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> delete array successful </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1893,6 +2020,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> deregistered array successful </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1972,6 +2100,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> deregistered array successful </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1990,6 +2119,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> deregistered array successful </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2010,6 +2140,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> deregistered array successful </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2017,6 +2148,169 @@ public class ArrayApi {
 
         okhttp3.Call localVarCall = deregisterArrayValidateBeforeCall(namespace, array, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for fragmentInfo
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param contentType Content Type of input and return mime (required)
+     * @param fragmentInfoRequest ArraySchema being created (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> fragment info </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fragmentInfoCall(String namespace, String array, String contentType, FragmentInfoRequest fragmentInfoRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = fragmentInfoRequest;
+
+        // create path and map variables
+        String localVarPath = "/arrays/{namespace}/{array}/fragment_info"
+            .replaceAll("\\{" + "namespace" + "\\}", localVarApiClient.escapeString(namespace.toString()))
+            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (contentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarApiClient.parameterToString(contentType));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call fragmentInfoValidateBeforeCall(String namespace, String array, String contentType, FragmentInfoRequest fragmentInfoRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'namespace' is set
+        if (namespace == null) {
+            throw new ApiException("Missing the required parameter 'namespace' when calling fragmentInfo(Async)");
+        }
+        
+        // verify the required parameter 'array' is set
+        if (array == null) {
+            throw new ApiException("Missing the required parameter 'array' when calling fragmentInfo(Async)");
+        }
+        
+        // verify the required parameter 'contentType' is set
+        if (contentType == null) {
+            throw new ApiException("Missing the required parameter 'contentType' when calling fragmentInfo(Async)");
+        }
+        
+        // verify the required parameter 'fragmentInfoRequest' is set
+        if (fragmentInfoRequest == null) {
+            throw new ApiException("Missing the required parameter 'fragmentInfoRequest' when calling fragmentInfo(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = fragmentInfoCall(namespace, array, contentType, fragmentInfoRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * fetch an array&#39;s fragment info
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param contentType Content Type of input and return mime (required)
+     * @param fragmentInfoRequest ArraySchema being created (required)
+     * @return FragmentInfo
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> fragment info </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public FragmentInfo fragmentInfo(String namespace, String array, String contentType, FragmentInfoRequest fragmentInfoRequest) throws ApiException {
+        ApiResponse<FragmentInfo> localVarResp = fragmentInfoWithHttpInfo(namespace, array, contentType, fragmentInfoRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * fetch an array&#39;s fragment info
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param contentType Content Type of input and return mime (required)
+     * @param fragmentInfoRequest ArraySchema being created (required)
+     * @return ApiResponse&lt;FragmentInfo&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> fragment info </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FragmentInfo> fragmentInfoWithHttpInfo(String namespace, String array, String contentType, FragmentInfoRequest fragmentInfoRequest) throws ApiException {
+        okhttp3.Call localVarCall = fragmentInfoValidateBeforeCall(namespace, array, contentType, fragmentInfoRequest, null);
+        Type localVarReturnType = new TypeToken<FragmentInfo>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * fetch an array&#39;s fragment info
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param contentType Content Type of input and return mime (required)
+     * @param fragmentInfoRequest ArraySchema being created (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> fragment info </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fragmentInfoAsync(String namespace, String array, String contentType, FragmentInfoRequest fragmentInfoRequest, final ApiCallback<FragmentInfo> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = fragmentInfoValidateBeforeCall(namespace, array, contentType, fragmentInfoRequest, _callback);
+        Type localVarReturnType = new TypeToken<FragmentInfo>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2031,6 +2325,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array activity </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2118,6 +2413,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array activity </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2138,6 +2434,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array activity </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2160,6 +2457,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array activity </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2180,6 +2478,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for all arrays user has access to </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2251,6 +2550,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for all arrays user has access to </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2269,6 +2569,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for all arrays user has access to </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2289,6 +2590,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for all arrays user has access to </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2311,6 +2613,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get ArraySchema </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2401,6 +2704,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get ArraySchema </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2421,6 +2725,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get ArraySchema </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2443,6 +2748,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get ArraySchema </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2467,6 +2773,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get the max buffer sizes of an array for a subarray </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2572,6 +2879,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get the max buffer sizes of an array for a subarray </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2594,6 +2902,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get the max buffer sizes of an array for a subarray </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2618,6 +2927,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get the max buffer sizes of an array for a subarray </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2641,6 +2951,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2731,6 +3042,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2752,6 +3064,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2775,6 +3088,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2796,6 +3110,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2876,6 +3191,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2895,6 +3211,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2916,6 +3233,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2937,6 +3255,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3017,6 +3336,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3036,6 +3356,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3057,6 +3378,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3080,6 +3402,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get the non empty domain of an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3175,6 +3498,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get the non empty domain of an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3196,6 +3520,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get the non empty domain of an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3219,6 +3544,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get the non empty domain of an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3240,6 +3566,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array non-empty domaim </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3320,6 +3647,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array non-empty domaim </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3339,6 +3667,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array non-empty domaim </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3360,6 +3689,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array non-empty domaim </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3382,6 +3712,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array sample data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3467,6 +3798,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array sample data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3487,6 +3819,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array sample data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3509,6 +3842,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> get array sample data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3531,6 +3865,7 @@ public class ArrayApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of all specific sharing policies </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Array does not exist or user does not have permissions to view array-sharing policies </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3612,6 +3947,7 @@ public class ArrayApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of all specific sharing policies </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Array does not exist or user does not have permissions to view array-sharing policies </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3632,6 +3968,7 @@ public class ArrayApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of all specific sharing policies </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Array does not exist or user does not have permissions to view array-sharing policies </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3654,6 +3991,7 @@ public class ArrayApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of all specific sharing policies </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Array does not exist or user does not have permissions to view array-sharing policies </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3674,6 +4012,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for all arrays in a namespace </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3747,6 +4086,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for all arrays in a namespace </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3765,6 +4105,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for all arrays in a namespace </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3785,6 +4126,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata for all arrays in a namespace </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3807,6 +4149,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> fragment end_timestamp on an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3892,6 +4235,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> fragment end_timestamp on an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3912,6 +4256,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> fragment end_timestamp on an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3934,6 +4279,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> fragment end_timestamp on an array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -3953,6 +4299,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> gets last accessed arrays </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4019,6 +4366,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> gets last accessed arrays </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4036,6 +4384,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> gets last accessed arrays </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4055,6 +4404,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> gets last accessed arrays </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4077,6 +4427,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array registered successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4163,6 +4514,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array registered successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4183,6 +4535,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array registered successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4205,6 +4558,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array registered successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4228,6 +4582,7 @@ public class ArrayApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Array shared successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Array does not exist or user does not have permissions to share array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4314,6 +4669,7 @@ public class ArrayApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Array shared successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Array does not exist or user does not have permissions to share array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4334,6 +4690,7 @@ public class ArrayApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Array shared successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Array does not exist or user does not have permissions to share array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4356,6 +4713,7 @@ public class ArrayApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Array shared successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Array does not exist or user does not have permissions to share array </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4377,6 +4735,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array metadata updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4462,6 +4821,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array metadata updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4481,6 +4841,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array metadata updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4502,6 +4863,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array metadata updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4523,6 +4885,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4608,6 +4971,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4627,6 +4991,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4648,6 +5013,7 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> array metadata updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -4661,7 +5027,7 @@ public class ArrayApi {
      * Build call for vacuumArray
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @param tiledbConfig tiledb configuration (required)
+     * @param vaccumRequest Vaccum Request (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4669,10 +5035,11 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array vacuumed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call vacuumArrayCall(String namespace, String array, TileDBConfig tiledbConfig, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call vacuumArrayCall(String namespace, String array, ArrayVacuumRequest vaccumRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4686,7 +5053,7 @@ public class ArrayApi {
             basePath = null;
         }
 
-        Object localVarPostBody = tiledbConfig;
+        Object localVarPostBody = vaccumRequest;
 
         // create path and map variables
         String localVarPath = "/arrays/{namespace}/{array}/vacuum"
@@ -4720,7 +5087,7 @@ public class ArrayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call vacuumArrayValidateBeforeCall(String namespace, String array, TileDBConfig tiledbConfig, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call vacuumArrayValidateBeforeCall(String namespace, String array, ArrayVacuumRequest vaccumRequest, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'namespace' is set
         if (namespace == null) {
@@ -4732,13 +5099,13 @@ public class ArrayApi {
             throw new ApiException("Missing the required parameter 'array' when calling vacuumArray(Async)");
         }
         
-        // verify the required parameter 'tiledbConfig' is set
-        if (tiledbConfig == null) {
-            throw new ApiException("Missing the required parameter 'tiledbConfig' when calling vacuumArray(Async)");
+        // verify the required parameter 'vaccumRequest' is set
+        if (vaccumRequest == null) {
+            throw new ApiException("Missing the required parameter 'vaccumRequest' when calling vacuumArray(Async)");
         }
         
 
-        okhttp3.Call localVarCall = vacuumArrayCall(namespace, array, tiledbConfig, _callback);
+        okhttp3.Call localVarCall = vacuumArrayCall(namespace, array, vaccumRequest, _callback);
         return localVarCall;
 
     }
@@ -4748,17 +5115,18 @@ public class ArrayApi {
      * vacuum an array at a specified URI
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @param tiledbConfig tiledb configuration (required)
+     * @param vaccumRequest Vaccum Request (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array vacuumed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void vacuumArray(String namespace, String array, TileDBConfig tiledbConfig) throws ApiException {
-        vacuumArrayWithHttpInfo(namespace, array, tiledbConfig);
+    public void vacuumArray(String namespace, String array, ArrayVacuumRequest vaccumRequest) throws ApiException {
+        vacuumArrayWithHttpInfo(namespace, array, vaccumRequest);
     }
 
     /**
@@ -4766,18 +5134,19 @@ public class ArrayApi {
      * vacuum an array at a specified URI
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @param tiledbConfig tiledb configuration (required)
+     * @param vaccumRequest Vaccum Request (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array vacuumed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> vacuumArrayWithHttpInfo(String namespace, String array, TileDBConfig tiledbConfig) throws ApiException {
-        okhttp3.Call localVarCall = vacuumArrayValidateBeforeCall(namespace, array, tiledbConfig, null);
+    public ApiResponse<Void> vacuumArrayWithHttpInfo(String namespace, String array, ArrayVacuumRequest vaccumRequest) throws ApiException {
+        okhttp3.Call localVarCall = vacuumArrayValidateBeforeCall(namespace, array, vaccumRequest, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4786,7 +5155,7 @@ public class ArrayApi {
      * vacuum an array at a specified URI
      * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @param tiledbConfig tiledb configuration (required)
+     * @param vaccumRequest Vaccum Request (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4794,12 +5163,13 @@ public class ArrayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> array vacuumed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call vacuumArrayAsync(String namespace, String array, TileDBConfig tiledbConfig, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call vacuumArrayAsync(String namespace, String array, ArrayVacuumRequest vaccumRequest, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = vacuumArrayValidateBeforeCall(namespace, array, tiledbConfig, _callback);
+        okhttp3.Call localVarCall = vacuumArrayValidateBeforeCall(namespace, array, vaccumRequest, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

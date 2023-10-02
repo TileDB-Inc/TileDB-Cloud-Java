@@ -7,9 +7,11 @@ All URIs are relative to */v1*
 | [**acceptInvitation**](InvitationApi.md#acceptInvitation) | **POST** /invitations/{invitation} |  |
 | [**cancelJoinOrganization**](InvitationApi.md#cancelJoinOrganization) | **DELETE** /invitations/{invitation}/{organization}/join |  |
 | [**cancelShareArrayByInvite**](InvitationApi.md#cancelShareArrayByInvite) | **DELETE** /invitations/{invitation}/{namespace}/{array}/share |  |
+| [**cancelShareGroupByInvite**](InvitationApi.md#cancelShareGroupByInvite) | **DELETE** /invitations/group/{invitation}/{namespace}/{group_name}/share |  |
 | [**fetchInvitations**](InvitationApi.md#fetchInvitations) | **GET** /invitations |  |
 | [**joinOrganization**](InvitationApi.md#joinOrganization) | **POST** /invitations/{organization}/join |  |
 | [**shareArrayByInvite**](InvitationApi.md#shareArrayByInvite) | **POST** /invitations/{namespace}/{array}/share |  |
+| [**shareGroupByInvite**](InvitationApi.md#shareGroupByInvite) | **POST** /invitations/group/{namespace}/{group}/share |  |
 
 
 <a name="acceptInvitation"></a>
@@ -25,11 +27,11 @@ Accepts invitation
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.InvitationApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import InvitationApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -86,6 +88,7 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | Invitation was accepted successfully |  -  |
 | **404** | Could not find invitation identifier |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="cancelJoinOrganization"></a>
@@ -104,7 +107,7 @@ Cancels join organization invitation
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import InvitationApi;
 
 public class Example {
@@ -164,6 +167,7 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | Invitation cancelled successfully |  -  |
 | **404** | No invitation was found to cancel |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="cancelShareArrayByInvite"></a>
@@ -182,7 +186,7 @@ Cancels array sharing invitation
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import InvitationApi;
 
 public class Example {
@@ -244,11 +248,93 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | Invitation cancelled successfully |  -  |
 | **404** | No invitation was found to cancel |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="cancelShareGroupByInvite"></a>
+# **cancelShareGroupByInvite**
+> cancelShareGroupByInvite(namespace, invitation, groupName)
+
+
+
+Cancels group sharing invitation
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import InvitationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        InvitationApi apiInstance = new InvitationApi(defaultClient);
+        String namespace = "namespace_example"; // String | namespace group is in (an organization name or user's username)
+        String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
+        String groupName = "groupName_example"; // String | name/uuid of group that is url-encoded
+        try {
+            apiInstance.cancelShareGroupByInvite(namespace, invitation, groupName);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvitationApi#cancelShareGroupByInvite");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace group is in (an organization name or user&#39;s username) | |
+| **invitation** | **String**| the ID of invitation about to be cancelled | |
+| **groupName** | **String**| name/uuid of group that is url-encoded | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Invitation cancelled successfully |  -  |
+| **404** | No invitation was found to cancel |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="fetchInvitations"></a>
 # **fetchInvitations**
-> InvitationData fetchInvitations(organization, array, start, end, page, perPage, type, status, orderby)
+> InvitationData fetchInvitations(organization, array, group, start, end, page, perPage, type, status, orderby)
 
 
 
@@ -262,7 +348,7 @@ Fetch a list of invitations
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import InvitationApi;
 
 public class Example {
@@ -284,6 +370,7 @@ public class Example {
         InvitationApi apiInstance = new InvitationApi(defaultClient);
         String organization = "organization_example"; // String | name or ID of organization to filter
         String array = "array_example"; // String | name/uri of array that is url-encoded to filter
+        String group = "group_example"; // String | name or ID of group to filter
         Integer start = 56; // Integer | start time for tasks to filter by
         Integer end = 56; // Integer | end time for tasks to filter by
         Integer page = 56; // Integer | pagination offset
@@ -292,7 +379,7 @@ public class Example {
         String status = "status_example"; // String | Filter to only return \"PENDING\", \"ACCEPTED\"
         String orderby = "orderby_example"; // String | sort by which field valid values include timestamp, array_name, organization_name
         try {
-            InvitationData result = apiInstance.fetchInvitations(organization, array, start, end, page, perPage, type, status, orderby);
+            InvitationData result = apiInstance.fetchInvitations(organization, array, group, start, end, page, perPage, type, status, orderby);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InvitationApi#fetchInvitations");
@@ -311,6 +398,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **organization** | **String**| name or ID of organization to filter | [optional] |
 | **array** | **String**| name/uri of array that is url-encoded to filter | [optional] |
+| **group** | **String**| name or ID of group to filter | [optional] |
 | **start** | **Integer**| start time for tasks to filter by | [optional] |
 | **end** | **Integer**| end time for tasks to filter by | [optional] |
 | **page** | **Integer**| pagination offset | [optional] |
@@ -336,6 +424,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of invitations and pagination metadata |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="joinOrganization"></a>
@@ -354,7 +443,7 @@ Sends email to multiple recipients with joining information regarding an organiz
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import InvitationApi;
 
 public class Example {
@@ -413,7 +502,9 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Email sent successfully to user for email confirmation link |  -  |
-| **404** | Could not reach one or more recipients |  -  |
+| **207** | Only a portion of the invitations succeeded, some failed |  -  |
+| **500** | Could not reach any recipients |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="shareArrayByInvite"></a>
@@ -432,7 +523,7 @@ Sends email to multiple recipients with sharing information regarding an array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import InvitationApi;
 
 public class Example {
@@ -493,6 +584,90 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Email sent successfully to user for email confirmation link |  -  |
-| **404** | Could not reach one or more recipients |  -  |
+| **207** | Only a portion of the invitations succeeded, some failed |  -  |
+| **500** | Could not reach any recipients |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="shareGroupByInvite"></a>
+# **shareGroupByInvite**
+> shareGroupByInvite(namespace, group, emailInvite)
+
+
+
+Sends email to multiple recipients with sharing information regarding a group
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import InvitationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        InvitationApi apiInstance = new InvitationApi(defaultClient);
+        String namespace = "namespace_example"; // String | namespace group is in (an organization name or user's username)
+        String group = "group_example"; // String | name/uri of group that is url-encoded
+        InvitationGroupShareEmail emailInvite = new InvitationGroupShareEmail(); // InvitationGroupShareEmail | list of email/namespace recipients
+        try {
+            apiInstance.shareGroupByInvite(namespace, group, emailInvite);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvitationApi#shareGroupByInvite");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace group is in (an organization name or user&#39;s username) | |
+| **group** | **String**| name/uri of group that is url-encoded | |
+| **emailInvite** | [**InvitationGroupShareEmail**](InvitationGroupShareEmail.md)| list of email/namespace recipients | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Email sent successfully to user with an email confirmation link |  -  |
+| **207** | Only a portion of the invitations succeeded, some failed |  -  |
+| **500** | Could not reach any recipients |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

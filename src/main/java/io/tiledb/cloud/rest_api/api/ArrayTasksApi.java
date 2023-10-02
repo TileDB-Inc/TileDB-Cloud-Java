@@ -13,17 +13,16 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.model.ArrayTaskBrowserSidebar;
+import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ApiCallback;
-import io.tiledb.cloud.rest_api.Configuration;
 
 import com.google.gson.reflect.TypeToken;
 
-
-import io.tiledb.cloud.rest_api.model.ArrayTaskBrowserSidebar;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -80,6 +79,7 @@ public class ArrayTasksApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> sidebar metadata for task definitions for all arrays user has access to </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> array tasks not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -157,6 +157,7 @@ public class ArrayTasksApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> sidebar metadata for task definitions for all arrays user has access to </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> array tasks not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -177,6 +178,7 @@ public class ArrayTasksApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> sidebar metadata for task definitions for all arrays user has access to </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> array tasks not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -199,6 +201,7 @@ public class ArrayTasksApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> sidebar metadata for task definitions for all arrays user has access to </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> array tasks not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */

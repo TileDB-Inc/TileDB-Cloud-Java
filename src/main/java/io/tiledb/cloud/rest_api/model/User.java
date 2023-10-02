@@ -22,11 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.tiledb.cloud.rest_api.JSON;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -36,15 +34,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
+
+import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * User
  */
 @ApiModel(description = "User")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class User {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -82,10 +82,6 @@ public class User {
   @SerializedName(SERIALIZED_NAME_LOGO)
   private String logo;
 
-  public static final String SERIALIZED_NAME_LAST_ACTIVITY_DATE = "last_activity_date";
-  @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY_DATE)
-  private OffsetDateTime lastActivityDate;
-
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
   private String timezone;
@@ -112,20 +108,23 @@ public class User {
 
   public static final String SERIALIZED_NAME_DEFAULT_S3_PATH_CREDENTIALS_NAME = "default_s3_path_credentials_name";
   @SerializedName(SERIALIZED_NAME_DEFAULT_S3_PATH_CREDENTIALS_NAME)
-  private String defaultS3PathCredentialsName;
+  private Object defaultS3PathCredentialsName;
+
+  public static final String SERIALIZED_NAME_ASSET_LOCATIONS = "asset_locations";
+  @SerializedName(SERIALIZED_NAME_ASSET_LOCATIONS)
+  private AssetLocations assetLocations;
 
   public static final String SERIALIZED_NAME_DEFAULT_NAMESPACE_CHARGED = "default_namespace_charged";
   @SerializedName(SERIALIZED_NAME_DEFAULT_NAMESPACE_CHARGED)
   private String defaultNamespaceCharged;
 
-  public User() { 
+  public User() {
   }
 
   
   public User(
      Boolean isValidEmail, 
      Boolean stripeConnect, 
-     OffsetDateTime lastActivityDate, 
      List<OrganizationUser> organizations, 
      List<String> enabledFeatures, 
      Boolean unpaidSubscription
@@ -133,7 +132,6 @@ public class User {
     this();
     this.isValidEmail = isValidEmail;
     this.stripeConnect = stripeConnect;
-    this.lastActivityDate = lastActivityDate;
     this.organizations = organizations;
     this.enabledFeatures = enabledFeatures;
     this.unpaidSubscription = unpaidSubscription;
@@ -328,20 +326,6 @@ public class User {
   }
 
 
-   /**
-   * when the user last logged in (set by the server)
-   * @return lastActivityDate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "when the user last logged in (set by the server)")
-
-  public OffsetDateTime getLastActivityDate() {
-    return lastActivityDate;
-  }
-
-
-
-
   public User timezone(String timezone) {
     
     this.timezone = timezone;
@@ -445,11 +429,11 @@ public class User {
   }
 
    /**
-   * default S3 path to store newly created notebooks
+   * The default location to store newly-created notebooks and other assets like UDFs. The name &#x60;default_s3_path&#x60; is a legacy holdover; it may refer to any supported storage location. 
    * @return defaultS3Path
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "default S3 path to store newly created notebooks")
+  @ApiModelProperty(value = "The default location to store newly-created notebooks and other assets like UDFs. The name `default_s3_path` is a legacy holdover; it may refer to any supported storage location. ")
 
   public String getDefaultS3Path() {
     return defaultS3Path;
@@ -461,26 +445,49 @@ public class User {
   }
 
 
-  public User defaultS3PathCredentialsName(String defaultS3PathCredentialsName) {
+  public User defaultS3PathCredentialsName(Object defaultS3PathCredentialsName) {
     
     this.defaultS3PathCredentialsName = defaultS3PathCredentialsName;
     return this;
   }
 
    /**
-   * Default S3 path credentials name is the credentials name to use along with default_s3_path
+   * The name of the credentials used to create and access files in the &#x60;default_s3_path&#x60;, if needed. 
    * @return defaultS3PathCredentialsName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Default S3 path credentials name is the credentials name to use along with default_s3_path")
+  @ApiModelProperty(value = "The name of the credentials used to create and access files in the `default_s3_path`, if needed. ")
 
-  public String getDefaultS3PathCredentialsName() {
+  public Object getDefaultS3PathCredentialsName() {
     return defaultS3PathCredentialsName;
   }
 
 
-  public void setDefaultS3PathCredentialsName(String defaultS3PathCredentialsName) {
+  public void setDefaultS3PathCredentialsName(Object defaultS3PathCredentialsName) {
     this.defaultS3PathCredentialsName = defaultS3PathCredentialsName;
+  }
+
+
+  public User assetLocations(AssetLocations assetLocations) {
+    
+    this.assetLocations = assetLocations;
+    return this;
+  }
+
+   /**
+   * Get assetLocations
+   * @return assetLocations
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AssetLocations getAssetLocations() {
+    return assetLocations;
+  }
+
+
+  public void setAssetLocations(AssetLocations assetLocations) {
+    this.assetLocations = assetLocations;
   }
 
 
@@ -506,6 +513,41 @@ public class User {
     this.defaultNamespaceCharged = defaultNamespaceCharged;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public User putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -526,7 +568,6 @@ public class User {
         Objects.equals(this.stripeConnect, user.stripeConnect) &&
         Objects.equals(this.company, user.company) &&
         Objects.equals(this.logo, user.logo) &&
-        Objects.equals(this.lastActivityDate, user.lastActivityDate) &&
         Objects.equals(this.timezone, user.timezone) &&
         Objects.equals(this.organizations, user.organizations) &&
         Objects.equals(this.allowedActions, user.allowedActions) &&
@@ -534,7 +575,9 @@ public class User {
         Objects.equals(this.unpaidSubscription, user.unpaidSubscription) &&
         Objects.equals(this.defaultS3Path, user.defaultS3Path) &&
         Objects.equals(this.defaultS3PathCredentialsName, user.defaultS3PathCredentialsName) &&
-        Objects.equals(this.defaultNamespaceCharged, user.defaultNamespaceCharged);
+        Objects.equals(this.assetLocations, user.assetLocations) &&
+        Objects.equals(this.defaultNamespaceCharged, user.defaultNamespaceCharged)&&
+        Objects.equals(this.additionalProperties, user.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -543,7 +586,7 @@ public class User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, password, name, email, isValidEmail, stripeConnect, company, logo, lastActivityDate, timezone, organizations, allowedActions, enabledFeatures, unpaidSubscription, defaultS3Path, defaultS3PathCredentialsName, defaultNamespaceCharged);
+    return Objects.hash(id, username, password, name, email, isValidEmail, stripeConnect, company, logo, timezone, organizations, allowedActions, enabledFeatures, unpaidSubscription, defaultS3Path, defaultS3PathCredentialsName, assetLocations, defaultNamespaceCharged, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -566,7 +609,6 @@ public class User {
     sb.append("    stripeConnect: ").append(toIndentedString(stripeConnect)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
-    sb.append("    lastActivityDate: ").append(toIndentedString(lastActivityDate)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    organizations: ").append(toIndentedString(organizations)).append("\n");
     sb.append("    allowedActions: ").append(toIndentedString(allowedActions)).append("\n");
@@ -574,7 +616,9 @@ public class User {
     sb.append("    unpaidSubscription: ").append(toIndentedString(unpaidSubscription)).append("\n");
     sb.append("    defaultS3Path: ").append(toIndentedString(defaultS3Path)).append("\n");
     sb.append("    defaultS3PathCredentialsName: ").append(toIndentedString(defaultS3PathCredentialsName)).append("\n");
+    sb.append("    assetLocations: ").append(toIndentedString(assetLocations)).append("\n");
     sb.append("    defaultNamespaceCharged: ").append(toIndentedString(defaultNamespaceCharged)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -606,7 +650,6 @@ public class User {
     openapiFields.add("stripe_connect");
     openapiFields.add("company");
     openapiFields.add("logo");
-    openapiFields.add("last_activity_date");
     openapiFields.add("timezone");
     openapiFields.add("organizations");
     openapiFields.add("allowed_actions");
@@ -614,6 +657,7 @@ public class User {
     openapiFields.add("unpaid_subscription");
     openapiFields.add("default_s3_path");
     openapiFields.add("default_s3_path_credentials_name");
+    openapiFields.add("asset_locations");
     openapiFields.add("default_namespace_charged");
 
     // a set of required properties/fields (JSON key names)
@@ -636,42 +680,34 @@ public class User {
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-//      for (Entry<String, JsonElement> entry : entries) {
-//        if (!User.openapiFields.contains(entry.getKey())) {
-//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `User` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-//        }
-//      }
-
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : User.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (jsonObj.get("username") != null && !jsonObj.get("username").isJsonPrimitive()) {
+      if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
-      if (jsonObj.get("password") != null && !jsonObj.get("password").isJsonPrimitive()) {
+      if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (jsonObj.get("email") != null && !jsonObj.get("email").isJsonPrimitive()) {
+      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
       }
-      if (jsonObj.get("company") != null && !jsonObj.get("company").isJsonPrimitive()) {
+      if ((jsonObj.get("company") != null && !jsonObj.get("company").isJsonNull()) && !jsonObj.get("company").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
       }
-      if (jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonPrimitive()) {
+      if ((jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonNull()) && !jsonObj.get("logo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
       }
-      if (jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonPrimitive()) {
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
       }
       JsonArray jsonArrayorganizations = jsonObj.getAsJsonArray("organizations");
@@ -687,20 +723,21 @@ public class User {
         };
       }
       // ensure the json data is an array
-      if (jsonObj.get("allowed_actions") != null && !jsonObj.get("allowed_actions").isJsonArray()) {
+      if ((jsonObj.get("allowed_actions") != null && !jsonObj.get("allowed_actions").isJsonNull()) && !jsonObj.get("allowed_actions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `allowed_actions` to be an array in the JSON string but got `%s`", jsonObj.get("allowed_actions").toString()));
       }
       // ensure the json data is an array
-      if (jsonObj.get("enabled_features") != null && !jsonObj.get("enabled_features").isJsonArray()) {
+      if ((jsonObj.get("enabled_features") != null && !jsonObj.get("enabled_features").isJsonNull()) && !jsonObj.get("enabled_features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `enabled_features` to be an array in the JSON string but got `%s`", jsonObj.get("enabled_features").toString()));
       }
-      if (jsonObj.get("default_s3_path") != null && !jsonObj.get("default_s3_path").isJsonPrimitive()) {
+      if ((jsonObj.get("default_s3_path") != null && !jsonObj.get("default_s3_path").isJsonNull()) && !jsonObj.get("default_s3_path").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `default_s3_path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_s3_path").toString()));
       }
-      if (jsonObj.get("default_s3_path_credentials_name") != null && !jsonObj.get("default_s3_path_credentials_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `default_s3_path_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_s3_path_credentials_name").toString()));
+      // validate the optional field `asset_locations`
+      if (jsonObj.get("asset_locations") != null && !jsonObj.get("asset_locations").isJsonNull()) {
+        AssetLocations.validateJsonObject(jsonObj.getAsJsonObject("asset_locations"));
       }
-      if (jsonObj.get("default_namespace_charged") != null && !jsonObj.get("default_namespace_charged").isJsonPrimitive()) {
+      if ((jsonObj.get("default_namespace_charged") != null && !jsonObj.get("default_namespace_charged").isJsonNull()) && !jsonObj.get("default_namespace_charged").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `default_namespace_charged` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_namespace_charged").toString()));
       }
   }
@@ -720,6 +757,23 @@ public class User {
            @Override
            public void write(JsonWriter out, User value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -727,7 +781,25 @@ public class User {
            public User read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             User instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

@@ -30,11 +30,11 @@ delete a registered UDF -- this will remove all sharing and can not be undone
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.UdfApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -92,6 +92,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | UDF deleted successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getUDFInfo"></a>
@@ -110,7 +111,7 @@ get a specific UDF in the given namespace
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -171,6 +172,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | UDFInfo was retrieved successfully |  -  |
 | **404** | UDF not found |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getUDFInfoSharingPolicies"></a>
@@ -189,7 +191,7 @@ Get all sharing details of the UDF
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -250,6 +252,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | List of all specific sharing policies |  -  |
 | **404** | UDF does not exist or user does not have permissions to view array-sharing policies |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="handleCopyUDF"></a>
@@ -268,7 +271,7 @@ Copy a tiledb udf at the specified location
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -334,6 +337,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | UDF copied |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="registerUDFInfo"></a>
@@ -352,7 +356,7 @@ register a UDF in the given namespace
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -413,6 +417,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | UDF registered successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="shareUDFInfo"></a>
@@ -431,7 +436,7 @@ Share a UDF with a user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -493,6 +498,7 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | UDF shared successfully |  -  |
 | **404** | UDF does not exist or user does not have permissions to share UDF |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="submitGenericUDF"></a>
@@ -511,7 +517,7 @@ submit a generic UDF in the given namespace
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -573,6 +579,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
 <a name="submitMultiArrayUDF"></a>
@@ -591,7 +598,7 @@ submit a multi-array UDF in the given namespace
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -653,6 +660,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
 <a name="submitUDF"></a>
@@ -671,7 +679,7 @@ send a UDF to run against a specified array/URI registered to a group/project
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -739,6 +747,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | UDF completed and the UDF-type specific result is returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
 <a name="udfNamespaceArrayEndTimestampsGet"></a>
@@ -757,7 +766,7 @@ retrieve a list of timestamps from the array fragment info listing in millisecon
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -821,6 +830,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | list of timestamps in milliseconds, paginated |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateUDFInfo"></a>
@@ -839,7 +849,7 @@ update an existing registered UDF in the given namespace
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UdfApi;
 
 public class Example {
@@ -900,5 +910,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | UDF updated successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

@@ -20,11 +20,11 @@ Fetch libtiledb stat
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.StatsApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import StatsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -77,5 +77,6 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | stats |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

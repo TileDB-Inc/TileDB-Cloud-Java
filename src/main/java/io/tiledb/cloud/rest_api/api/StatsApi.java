@@ -13,6 +13,7 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.model.GetTiledbStats200Response;
 import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
@@ -22,8 +23,6 @@ import io.tiledb.cloud.rest_api.Pair;
 
 import com.google.gson.reflect.TypeToken;
 
-
-import io.tiledb.cloud.rest_api.model.GetTiledbStats200Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,6 +76,7 @@ public class StatsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> stats </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -143,6 +143,7 @@ public class StatsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> stats </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -160,6 +161,7 @@ public class StatsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> stats </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -179,6 +181,7 @@ public class StatsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> stats </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */

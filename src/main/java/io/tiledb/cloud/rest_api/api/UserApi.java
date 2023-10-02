@@ -13,12 +13,12 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
-import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.Pair;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -85,6 +85,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS keys added successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -163,6 +164,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS keys added successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -181,6 +183,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS keys added successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -201,6 +204,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS keys added successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -221,6 +225,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user added to organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -299,6 +304,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user added to organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -317,6 +323,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user added to organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -337,6 +344,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user added to organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -356,6 +364,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> AWS keys are set </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -429,6 +438,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> AWS keys are set </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -447,6 +457,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> AWS keys are set </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -467,6 +478,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> AWS keys are set </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -488,6 +500,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> AWS keys are set </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -568,6 +581,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> AWS keys are set </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -587,6 +601,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> AWS keys are set </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -608,6 +623,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> AWS keys are set </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -627,6 +643,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> User email confirmed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -692,6 +709,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> User email confirmed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -708,6 +726,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> User email confirmed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -726,6 +745,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> User email confirmed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -745,6 +765,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -816,6 +837,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -833,6 +855,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -852,6 +875,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -872,6 +896,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS credentials deleted </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -951,6 +976,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS credentials deleted </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -969,6 +995,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS credentials deleted </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -989,6 +1016,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS credentials deleted </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1008,6 +1036,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user deleted </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1080,6 +1109,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user deleted </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1097,6 +1127,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user deleted </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1116,6 +1147,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user deleted </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1136,6 +1168,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user delete from organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1215,6 +1248,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user delete from organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1233,6 +1267,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user delete from organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1253,6 +1288,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user delete from organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1274,6 +1310,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user from organization </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User is not in organization </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1355,6 +1392,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user from organization </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User is not in organization </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1375,6 +1413,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user from organization </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User is not in organization </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1397,6 +1436,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user from organization </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User is not in organization </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1417,6 +1457,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Session token </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1488,6 +1529,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Session token </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1506,6 +1548,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Session token </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1526,6 +1569,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Session token </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1545,6 +1589,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> available token scopes </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1611,6 +1656,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> available token scopes </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1628,6 +1674,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> available token scopes </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1647,6 +1694,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> available token scopes </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1666,6 +1714,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user details </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1732,6 +1781,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user details </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1749,6 +1799,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user details </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1768,6 +1819,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user details </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1789,6 +1841,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user details </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User does not exist </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1863,6 +1916,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user details </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User does not exist </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1882,6 +1936,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user details </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User does not exist </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1903,6 +1958,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> user details </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User does not exist </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1923,6 +1979,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> token </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1990,6 +2047,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> token </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2008,6 +2066,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> token </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2028,6 +2087,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> token </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2049,6 +2109,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> User password updated successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2121,6 +2182,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> User password updated successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2139,6 +2201,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> User password updated successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2159,6 +2222,7 @@ public class UserApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> User password updated successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2178,6 +2242,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> revokation successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2250,6 +2315,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> revokation successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2267,6 +2333,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> revokation successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2286,6 +2353,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> revokation successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2304,6 +2372,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of user created non-session tokens </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2370,6 +2439,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of user created non-session tokens </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2387,6 +2457,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of user created non-session tokens </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2406,6 +2477,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of user created non-session tokens </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2425,6 +2497,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of user created session tokens </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2491,6 +2564,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of user created session tokens </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2508,6 +2582,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of user created session tokens </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2527,6 +2602,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of user created session tokens </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2549,6 +2625,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS keys updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2634,6 +2711,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS keys updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2653,6 +2731,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS keys updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2674,6 +2753,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> AWS keys updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2694,6 +2774,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2772,6 +2853,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2790,6 +2872,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2810,6 +2893,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user updated successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2831,6 +2915,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user update in organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2916,6 +3001,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user update in organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2935,6 +3021,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user update in organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2956,6 +3043,7 @@ public class UserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> user update in organization successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */

@@ -25,23 +25,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.tiledb.cloud.rest_api.JSON;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
+
+import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * Object including array end_timestamps (list of Unix epoch timestamps in milliseconds) and pagination metadata
  */
 @ApiModel(description = "Object including array end_timestamps (list of Unix epoch timestamps in milliseconds) and pagination metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class ArrayEndTimestampData {
   public static final String SERIALIZED_NAME_END_TIMESTAMPS = "end_timestamps";
   @SerializedName(SERIALIZED_NAME_END_TIMESTAMPS)
@@ -51,7 +51,7 @@ public class ArrayEndTimestampData {
   @SerializedName(SERIALIZED_NAME_PAGINATION_METADATA)
   private PaginationMetadata paginationMetadata;
 
-  public ArrayEndTimestampData() { 
+  public ArrayEndTimestampData() {
   }
 
   public ArrayEndTimestampData endTimestamps(List<Integer> endTimestamps) {
@@ -107,6 +107,41 @@ public class ArrayEndTimestampData {
     this.paginationMetadata = paginationMetadata;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public ArrayEndTimestampData putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -119,12 +154,13 @@ public class ArrayEndTimestampData {
     }
     ArrayEndTimestampData arrayEndTimestampData = (ArrayEndTimestampData) o;
     return Objects.equals(this.endTimestamps, arrayEndTimestampData.endTimestamps) &&
-        Objects.equals(this.paginationMetadata, arrayEndTimestampData.paginationMetadata);
+        Objects.equals(this.paginationMetadata, arrayEndTimestampData.paginationMetadata)&&
+        Objects.equals(this.additionalProperties, arrayEndTimestampData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(endTimestamps, paginationMetadata);
+    return Objects.hash(endTimestamps, paginationMetadata, additionalProperties);
   }
 
   @Override
@@ -133,6 +169,7 @@ public class ArrayEndTimestampData {
     sb.append("class ArrayEndTimestampData {\n");
     sb.append("    endTimestamps: ").append(toIndentedString(endTimestamps)).append("\n");
     sb.append("    paginationMetadata: ").append(toIndentedString(paginationMetadata)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,20 +213,12 @@ public class ArrayEndTimestampData {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayEndTimestampData is not found in the empty JSON string", ArrayEndTimestampData.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-//      for (Entry<String, JsonElement> entry : entries) {
-//        if (!ArrayEndTimestampData.openapiFields.contains(entry.getKey())) {
-//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArrayEndTimestampData` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-//        }
-//      }
       // ensure the json data is an array
-      if (jsonObj.get("end_timestamps") != null && !jsonObj.get("end_timestamps").isJsonArray()) {
+      if ((jsonObj.get("end_timestamps") != null && !jsonObj.get("end_timestamps").isJsonNull()) && !jsonObj.get("end_timestamps").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `end_timestamps` to be an array in the JSON string but got `%s`", jsonObj.get("end_timestamps").toString()));
       }
       // validate the optional field `pagination_metadata`
-      if (jsonObj.getAsJsonObject("pagination_metadata") != null) {
+      if (jsonObj.get("pagination_metadata") != null && !jsonObj.get("pagination_metadata").isJsonNull()) {
         PaginationMetadata.validateJsonObject(jsonObj.getAsJsonObject("pagination_metadata"));
       }
   }
@@ -209,6 +238,23 @@ public class ArrayEndTimestampData {
            @Override
            public void write(JsonWriter out, ArrayEndTimestampData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -216,7 +262,25 @@ public class ArrayEndTimestampData {
            public ArrayEndTimestampData read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             ArrayEndTimestampData instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

@@ -18,11 +18,11 @@ All URIs are relative to */v1*
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.ArrayTasksApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import ArrayTasksApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -82,5 +82,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | sidebar metadata for task definitions for all arrays user has access to |  -  |
 | **404** | array tasks not found |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

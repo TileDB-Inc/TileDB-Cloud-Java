@@ -13,6 +13,8 @@
 
 * `GENERIC_UDF` (value: `"GENERIC_UDF"`)
 
+* `BATCH_UDF` (value: `"BATCH_UDF"`)
+
 * `CLIENT_COMPUTATION` (value: `"CLIENT_COMPUTATION"`)
 
 

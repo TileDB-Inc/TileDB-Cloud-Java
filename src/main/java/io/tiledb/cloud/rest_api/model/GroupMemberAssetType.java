@@ -37,7 +37,21 @@ public enum GroupMemberAssetType {
   
   ML_MODEL("ml_model"),
   
-  FILE("file");
+  FILE("file"),
+  
+  BIOIMG("bioimg"),
+  
+  SOMA("soma"),
+  
+  VCF("vcf"),
+  
+  POINTCLOUD("pointcloud"),
+  
+  RASTER("raster"),
+  
+  GEOMETRY("geometry"),
+  
+  VECTOR_SEARCH("vector_search");
 
   private String value;
 

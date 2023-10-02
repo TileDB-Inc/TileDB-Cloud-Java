@@ -13,6 +13,9 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.model.ArrayTask;
+import io.tiledb.cloud.rest_api.model.ArrayTaskData;
+import io.tiledb.cloud.rest_api.model.SQLParameters;
 import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
@@ -22,10 +25,6 @@ import io.tiledb.cloud.rest_api.Pair;
 
 import com.google.gson.reflect.TypeToken;
 
-
-import io.tiledb.cloud.rest_api.model.ArrayTask;
-import io.tiledb.cloud.rest_api.model.ArrayTaskData;
-import io.tiledb.cloud.rest_api.model.SQLParameters;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +82,7 @@ public class TasksApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
         <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -168,6 +168,7 @@ public class TasksApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
         <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -189,6 +190,7 @@ public class TasksApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
         <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -212,6 +214,7 @@ public class TasksApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
         <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -232,6 +235,7 @@ public class TasksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array task </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -305,6 +309,7 @@ public class TasksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array task </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -323,6 +328,7 @@ public class TasksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array task </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -343,6 +349,7 @@ public class TasksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array task </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -366,6 +373,7 @@ public class TasksApi {
         <tr><td> 200 </td><td> output and format of originating request </td><td>  * Content-Type - format results are delivered in <br>  </td></tr>
         <tr><td> 202 </td><td> task is still executing </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> results were not saved, or results have expored </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -446,6 +454,7 @@ public class TasksApi {
         <tr><td> 200 </td><td> output and format of originating request </td><td>  * Content-Type - format results are delivered in <br>  </td></tr>
         <tr><td> 202 </td><td> task is still executing </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> results were not saved, or results have expored </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -467,6 +476,7 @@ public class TasksApi {
         <tr><td> 200 </td><td> output and format of originating request </td><td>  * Content-Type - format results are delivered in <br>  </td></tr>
         <tr><td> 202 </td><td> task is still executing </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> results were not saved, or results have expored </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -490,6 +500,7 @@ public class TasksApi {
         <tr><td> 200 </td><td> output and format of originating request </td><td>  * Content-Type - format results are delivered in <br>  </td></tr>
         <tr><td> 202 </td><td> task is still executing </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> results were not saved, or results have expored </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -523,6 +534,7 @@ public class TasksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of all tasks user has access too </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -659,6 +671,7 @@ public class TasksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of all tasks user has access too </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -690,6 +703,7 @@ public class TasksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of all tasks user has access too </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -723,6 +737,7 @@ public class TasksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Array of all tasks user has access too </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */

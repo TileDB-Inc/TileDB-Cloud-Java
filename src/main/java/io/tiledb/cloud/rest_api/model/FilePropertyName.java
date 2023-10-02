@@ -33,7 +33,11 @@ public enum FilePropertyName {
   
   UDF_LANGUAGE("udf_language"),
   
-  IS_DASHBOARD("is_dashboard");
+  IS_DASHBOARD("is_dashboard"),
+  
+  VERSION_PRUNING_LIMIT("version_pruning_limit"),
+  
+  VERSION_PRUNING_ENABLED("version_pruning_enabled");
 
   private String value;
 

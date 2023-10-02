@@ -41,11 +41,11 @@ Add aws keys
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.UserApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -103,6 +103,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | AWS keys added successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="addUserToOrganization"></a>
@@ -121,7 +122,7 @@ add a user to an organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -180,6 +181,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user added to organization successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="checkAWSAccessCredentials"></a>
@@ -198,7 +200,7 @@ Check if aws keys are set
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -256,6 +258,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | AWS keys are set |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="checkAWSAccessCredentialsByName"></a>
@@ -274,7 +277,7 @@ Check if aws keys are set by name
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -334,6 +337,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | AWS keys are set |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="confirmEmail"></a>
@@ -352,7 +356,7 @@ confirm user email
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -405,6 +409,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | User email confirmed successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="createUser"></a>
@@ -423,7 +428,7 @@ create a user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -480,6 +485,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user created successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteAWSAccessCredentials"></a>
@@ -498,7 +504,7 @@ delete a AWS Access credentials in a namespace. This will likely cause arrays to
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -557,6 +563,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | AWS credentials deleted |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteUser"></a>
@@ -575,7 +582,7 @@ delete a user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -632,6 +639,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user deleted |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteUserFromOrganization"></a>
@@ -650,7 +658,7 @@ delete a user from an organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -709,6 +717,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user delete from organization successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getOrganizationUser"></a>
@@ -727,7 +736,7 @@ get a user from an organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -788,6 +797,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | user from organization |  -  |
 | **404** | User is not in organization |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getSession"></a>
@@ -806,7 +816,7 @@ Get session token for user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -864,6 +874,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Session token |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getTokenScopes"></a>
@@ -882,7 +893,7 @@ retrieves available token scopes for a user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -936,6 +947,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | available token scopes |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getUser"></a>
@@ -954,7 +966,7 @@ get a user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1008,6 +1020,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | user details |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getUserWithUsername"></a>
@@ -1026,7 +1039,7 @@ get a user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1085,6 +1098,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | user details |  -  |
 | **404** | User does not exist |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="requestToken"></a>
@@ -1103,7 +1117,7 @@ Request an authorization token, optionally taken a TokenRequest object to set pa
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1161,6 +1175,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | token |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="resetUserPassword"></a>
@@ -1179,7 +1194,7 @@ reset user password
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1237,6 +1252,7 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | User password updated successfully |  -  |
 | **404** | User not found |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="revokeToken"></a>
@@ -1255,7 +1271,7 @@ revoke an authorization token
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1312,6 +1328,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | revokation successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="tokensGet"></a>
@@ -1330,7 +1347,7 @@ Fetch a list of user tokens
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1384,6 +1401,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of user created non-session tokens |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="tokensSessionGet"></a>
@@ -1402,7 +1420,7 @@ Fetch a list of user session tokens
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1456,6 +1474,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of user created session tokens |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateAWSAccessCredentials"></a>
@@ -1474,7 +1493,7 @@ Update aws keys or associated buckets. This will update the key associations for
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1535,6 +1554,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | AWS keys updated successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateUser"></a>
@@ -1553,7 +1573,7 @@ update a user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1612,6 +1632,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user updated successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateUserInOrganization"></a>
@@ -1630,7 +1651,7 @@ update a user in an organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import UserApi;
 
 public class Example {
@@ -1691,5 +1712,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user update in organization successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

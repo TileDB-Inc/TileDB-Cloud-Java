@@ -27,7 +27,9 @@ public enum Querytype {
   
   READ("READ"),
   
-  WRITE("WRITE");
+  WRITE("WRITE"),
+  
+  DELETE("DELETE");
 
   private String value;
 

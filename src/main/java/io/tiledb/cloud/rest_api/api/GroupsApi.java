@@ -13,16 +13,17 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
-import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.Pair;
 
 import com.google.gson.reflect.TypeToken;
 
 
+import io.tiledb.cloud.rest_api.model.GroupActivityResponse;
 import io.tiledb.cloud.rest_api.model.GroupBrowserData;
 import io.tiledb.cloud.rest_api.model.GroupBrowserFilterData;
 import io.tiledb.cloud.rest_api.model.GroupChanges;
@@ -90,6 +91,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> all changes applied successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -170,6 +172,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> all changes applied successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -189,6 +192,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> all changes applied successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -210,6 +214,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> all changes applied successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -230,6 +235,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -303,6 +309,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -321,6 +328,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -341,6 +349,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -361,6 +370,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group deleted successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -440,6 +450,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group deleted successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -458,6 +469,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group deleted successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -478,6 +490,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group deleted successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -498,6 +511,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -578,6 +592,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -597,6 +612,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -618,6 +634,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -625,6 +642,167 @@ public class GroupsApi {
 
         okhttp3.Call localVarCall = getGroupValidateBeforeCall(groupNamespace, groupName, _callback);
         Type localVarReturnType = new TypeToken<GroupInfo>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getGroupActivity
+     * @param groupNamespace The namespace of the group (required)
+     * @param groupName The unique name or id of the group (required)
+     * @param page pagination offset (optional)
+     * @param perPage pagination limit (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Activity logs of group contents along with the pagination metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGroupActivityCall(String groupNamespace, String groupName, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/groups/{group_namespace}/{group_name}/content_activity"
+            .replaceAll("\\{" + "group_namespace" + "\\}", localVarApiClient.escapeString(groupNamespace.toString()))
+            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGroupActivityValidateBeforeCall(String groupNamespace, String groupName, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'groupNamespace' is set
+        if (groupNamespace == null) {
+            throw new ApiException("Missing the required parameter 'groupNamespace' when calling getGroupActivity(Async)");
+        }
+        
+        // verify the required parameter 'groupName' is set
+        if (groupName == null) {
+            throw new ApiException("Missing the required parameter 'groupName' when calling getGroupActivity(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getGroupActivityCall(groupNamespace, groupName, page, perPage, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Returns the activity of group content
+     * @param groupNamespace The namespace of the group (required)
+     * @param groupName The unique name or id of the group (required)
+     * @param page pagination offset (optional)
+     * @param perPage pagination limit (optional)
+     * @return GroupActivityResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Activity logs of group contents along with the pagination metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public GroupActivityResponse getGroupActivity(String groupNamespace, String groupName, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<GroupActivityResponse> localVarResp = getGroupActivityWithHttpInfo(groupNamespace, groupName, page, perPage);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns the activity of group content
+     * @param groupNamespace The namespace of the group (required)
+     * @param groupName The unique name or id of the group (required)
+     * @param page pagination offset (optional)
+     * @param perPage pagination limit (optional)
+     * @return ApiResponse&lt;GroupActivityResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Activity logs of group contents along with the pagination metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GroupActivityResponse> getGroupActivityWithHttpInfo(String groupNamespace, String groupName, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = getGroupActivityValidateBeforeCall(groupNamespace, groupName, page, perPage, null);
+        Type localVarReturnType = new TypeToken<GroupActivityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns the activity of group content
+     * @param groupNamespace The namespace of the group (required)
+     * @param groupName The unique name or id of the group (required)
+     * @param page pagination offset (optional)
+     * @param perPage pagination limit (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Activity logs of group contents along with the pagination metadata </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGroupActivityAsync(String groupNamespace, String groupName, Integer page, Integer perPage, final ApiCallback<GroupActivityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGroupActivityValidateBeforeCall(groupNamespace, groupName, page, perPage, _callback);
+        Type localVarReturnType = new TypeToken<GroupActivityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -648,6 +826,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -773,6 +952,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -801,6 +981,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -831,6 +1012,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -853,6 +1035,7 @@ public class GroupsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of all specific sharing policies </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Group does not exist or user does not have permissions to view group-sharing policies </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -934,6 +1117,7 @@ public class GroupsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of all specific sharing policies </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Group does not exist or user does not have permissions to view group-sharing policies </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -954,6 +1138,7 @@ public class GroupsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of all specific sharing policies </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Group does not exist or user does not have permissions to view group-sharing policies </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -976,6 +1161,7 @@ public class GroupsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of all specific sharing policies </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Group does not exist or user does not have permissions to view group-sharing policies </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -988,6 +1174,7 @@ public class GroupsApi {
     }
     /**
      * Build call for groupsBrowserOwnedFiltersGet
+     * @param namespace namespace (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -995,10 +1182,11 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call groupsBrowserOwnedFiltersGetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call groupsBrowserOwnedFiltersGetCall(String namespace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1023,6 +1211,10 @@ public class GroupsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1044,10 +1236,10 @@ public class GroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call groupsBrowserOwnedFiltersGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call groupsBrowserOwnedFiltersGetValidateBeforeCall(String namespace, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = groupsBrowserOwnedFiltersGetCall(_callback);
+        okhttp3.Call localVarCall = groupsBrowserOwnedFiltersGetCall(namespace, _callback);
         return localVarCall;
 
     }
@@ -1055,34 +1247,38 @@ public class GroupsApi {
     /**
      * 
      * Fetch data to initialize filters for the groups browser
+     * @param namespace namespace (optional)
      * @return GroupBrowserFilterData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public GroupBrowserFilterData groupsBrowserOwnedFiltersGet() throws ApiException {
-        ApiResponse<GroupBrowserFilterData> localVarResp = groupsBrowserOwnedFiltersGetWithHttpInfo();
+    public GroupBrowserFilterData groupsBrowserOwnedFiltersGet(String namespace) throws ApiException {
+        ApiResponse<GroupBrowserFilterData> localVarResp = groupsBrowserOwnedFiltersGetWithHttpInfo(namespace);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Fetch data to initialize filters for the groups browser
+     * @param namespace namespace (optional)
      * @return ApiResponse&lt;GroupBrowserFilterData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GroupBrowserFilterData> groupsBrowserOwnedFiltersGetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = groupsBrowserOwnedFiltersGetValidateBeforeCall(null);
+    public ApiResponse<GroupBrowserFilterData> groupsBrowserOwnedFiltersGetWithHttpInfo(String namespace) throws ApiException {
+        okhttp3.Call localVarCall = groupsBrowserOwnedFiltersGetValidateBeforeCall(namespace, null);
         Type localVarReturnType = new TypeToken<GroupBrowserFilterData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1090,6 +1286,7 @@ public class GroupsApi {
     /**
      *  (asynchronously)
      * Fetch data to initialize filters for the groups browser
+     * @param namespace namespace (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1097,12 +1294,13 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call groupsBrowserOwnedFiltersGetAsync(final ApiCallback<GroupBrowserFilterData> _callback) throws ApiException {
+    public okhttp3.Call groupsBrowserOwnedFiltersGetAsync(String namespace, final ApiCallback<GroupBrowserFilterData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = groupsBrowserOwnedFiltersGetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = groupsBrowserOwnedFiltersGetValidateBeforeCall(namespace, _callback);
         Type localVarReturnType = new TypeToken<GroupBrowserFilterData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1116,6 +1314,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1182,6 +1381,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1199,6 +1399,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1218,6 +1419,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1230,6 +1432,7 @@ public class GroupsApi {
     }
     /**
      * Build call for groupsBrowserSharedFiltersGet
+     * @param namespace namespace (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1237,10 +1440,11 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call groupsBrowserSharedFiltersGetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call groupsBrowserSharedFiltersGetCall(String namespace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1265,6 +1469,10 @@ public class GroupsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (namespace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("namespace", namespace));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1286,10 +1494,10 @@ public class GroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call groupsBrowserSharedFiltersGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call groupsBrowserSharedFiltersGetValidateBeforeCall(String namespace, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = groupsBrowserSharedFiltersGetCall(_callback);
+        okhttp3.Call localVarCall = groupsBrowserSharedFiltersGetCall(namespace, _callback);
         return localVarCall;
 
     }
@@ -1297,34 +1505,38 @@ public class GroupsApi {
     /**
      * 
      * Fetch data to initialize filters for the groups browser
+     * @param namespace namespace (optional)
      * @return GroupBrowserFilterData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public GroupBrowserFilterData groupsBrowserSharedFiltersGet() throws ApiException {
-        ApiResponse<GroupBrowserFilterData> localVarResp = groupsBrowserSharedFiltersGetWithHttpInfo();
+    public GroupBrowserFilterData groupsBrowserSharedFiltersGet(String namespace) throws ApiException {
+        ApiResponse<GroupBrowserFilterData> localVarResp = groupsBrowserSharedFiltersGetWithHttpInfo(namespace);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Fetch data to initialize filters for the groups browser
+     * @param namespace namespace (optional)
      * @return ApiResponse&lt;GroupBrowserFilterData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GroupBrowserFilterData> groupsBrowserSharedFiltersGetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = groupsBrowserSharedFiltersGetValidateBeforeCall(null);
+    public ApiResponse<GroupBrowserFilterData> groupsBrowserSharedFiltersGetWithHttpInfo(String namespace) throws ApiException {
+        okhttp3.Call localVarCall = groupsBrowserSharedFiltersGetValidateBeforeCall(namespace, null);
         Type localVarReturnType = new TypeToken<GroupBrowserFilterData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1332,6 +1544,7 @@ public class GroupsApi {
     /**
      *  (asynchronously)
      * Fetch data to initialize filters for the groups browser
+     * @param namespace namespace (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1339,12 +1552,13 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call groupsBrowserSharedFiltersGetAsync(final ApiCallback<GroupBrowserFilterData> _callback) throws ApiException {
+    public okhttp3.Call groupsBrowserSharedFiltersGetAsync(String namespace, final ApiCallback<GroupBrowserFilterData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = groupsBrowserSharedFiltersGetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = groupsBrowserSharedFiltersGetValidateBeforeCall(namespace, _callback);
         Type localVarReturnType = new TypeToken<GroupBrowserFilterData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1360,6 +1574,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1440,6 +1655,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1459,6 +1675,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1480,6 +1697,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Filter data </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -1494,6 +1712,7 @@ public class GroupsApi {
      * Build call for listOwnedGroups
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1509,10 +1728,11 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listOwnedGroupsCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listOwnedGroupsCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1545,6 +1765,10 @@ public class GroupsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
         }
 
+        if (groupType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("group_type", groupType));
+        }
+
         if (search != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
@@ -1598,10 +1822,10 @@ public class GroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listOwnedGroupsValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listOwnedGroupsValidateBeforeCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listOwnedGroupsCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
+        okhttp3.Call localVarCall = listOwnedGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
         return localVarCall;
 
     }
@@ -1611,6 +1835,7 @@ public class GroupsApi {
      * Returns one page of owned groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1625,11 +1850,12 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public GroupBrowserData listOwnedGroups(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
-        ApiResponse<GroupBrowserData> localVarResp = listOwnedGroupsWithHttpInfo(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+    public GroupBrowserData listOwnedGroups(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
+        ApiResponse<GroupBrowserData> localVarResp = listOwnedGroupsWithHttpInfo(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
         return localVarResp.getData();
     }
 
@@ -1638,6 +1864,7 @@ public class GroupsApi {
      * Returns one page of owned groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1652,11 +1879,12 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GroupBrowserData> listOwnedGroupsWithHttpInfo(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
-        okhttp3.Call localVarCall = listOwnedGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, null);
+    public ApiResponse<GroupBrowserData> listOwnedGroupsWithHttpInfo(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
+        okhttp3.Call localVarCall = listOwnedGroupsValidateBeforeCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, null);
         Type localVarReturnType = new TypeToken<GroupBrowserData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1666,6 +1894,7 @@ public class GroupsApi {
      * Returns one page of owned groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1681,12 +1910,13 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listOwnedGroupsAsync(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback<GroupBrowserData> _callback) throws ApiException {
+    public okhttp3.Call listOwnedGroupsAsync(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback<GroupBrowserData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listOwnedGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
+        okhttp3.Call localVarCall = listOwnedGroupsValidateBeforeCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
         Type localVarReturnType = new TypeToken<GroupBrowserData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1695,6 +1925,7 @@ public class GroupsApi {
      * Build call for listPublicGroups
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1710,10 +1941,11 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPublicGroupsCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listPublicGroupsCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1746,6 +1978,10 @@ public class GroupsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
         }
 
+        if (groupType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("group_type", groupType));
+        }
+
         if (search != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
@@ -1799,10 +2035,10 @@ public class GroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPublicGroupsValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPublicGroupsValidateBeforeCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listPublicGroupsCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
+        okhttp3.Call localVarCall = listPublicGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
         return localVarCall;
 
     }
@@ -1812,6 +2048,7 @@ public class GroupsApi {
      * Returns one page of public groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1826,11 +2063,12 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public GroupBrowserData listPublicGroups(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
-        ApiResponse<GroupBrowserData> localVarResp = listPublicGroupsWithHttpInfo(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+    public GroupBrowserData listPublicGroups(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
+        ApiResponse<GroupBrowserData> localVarResp = listPublicGroupsWithHttpInfo(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
         return localVarResp.getData();
     }
 
@@ -1839,6 +2077,7 @@ public class GroupsApi {
      * Returns one page of public groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1853,11 +2092,12 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GroupBrowserData> listPublicGroupsWithHttpInfo(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
-        okhttp3.Call localVarCall = listPublicGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, null);
+    public ApiResponse<GroupBrowserData> listPublicGroupsWithHttpInfo(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent) throws ApiException {
+        okhttp3.Call localVarCall = listPublicGroupsValidateBeforeCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, null);
         Type localVarReturnType = new TypeToken<GroupBrowserData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1867,6 +2107,7 @@ public class GroupsApi {
      * Returns one page of public groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1882,12 +2123,13 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listPublicGroupsAsync(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback<GroupBrowserData> _callback) throws ApiException {
+    public okhttp3.Call listPublicGroupsAsync(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, final ApiCallback<GroupBrowserData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPublicGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
+        okhttp3.Call localVarCall = listPublicGroupsValidateBeforeCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, _callback);
         Type localVarReturnType = new TypeToken<GroupBrowserData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1896,6 +2138,7 @@ public class GroupsApi {
      * Build call for listSharedGroups
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -1912,10 +2155,11 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSharedGroupsCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listSharedGroupsCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1946,6 +2190,10 @@ public class GroupsApi {
 
         if (perPage != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (groupType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("group_type", groupType));
         }
 
         if (search != null) {
@@ -2005,10 +2253,10 @@ public class GroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSharedGroupsValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listSharedGroupsValidateBeforeCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listSharedGroupsCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, _callback);
+        okhttp3.Call localVarCall = listSharedGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, _callback);
         return localVarCall;
 
     }
@@ -2018,6 +2266,7 @@ public class GroupsApi {
      * Returns one page of shared groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -2033,11 +2282,12 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public GroupBrowserData listSharedGroups(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo) throws ApiException {
-        ApiResponse<GroupBrowserData> localVarResp = listSharedGroupsWithHttpInfo(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo);
+    public GroupBrowserData listSharedGroups(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo) throws ApiException {
+        ApiResponse<GroupBrowserData> localVarResp = listSharedGroupsWithHttpInfo(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo);
         return localVarResp.getData();
     }
 
@@ -2046,6 +2296,7 @@ public class GroupsApi {
      * Returns one page of shared groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -2061,11 +2312,12 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GroupBrowserData> listSharedGroupsWithHttpInfo(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo) throws ApiException {
-        okhttp3.Call localVarCall = listSharedGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, null);
+    public ApiResponse<GroupBrowserData> listSharedGroupsWithHttpInfo(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo) throws ApiException {
+        okhttp3.Call localVarCall = listSharedGroupsValidateBeforeCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, null);
         Type localVarReturnType = new TypeToken<GroupBrowserData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2075,6 +2327,7 @@ public class GroupsApi {
      * Returns one page of shared groups.
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
+     * @param groupType filter by a specific group type (optional)
      * @param search search string that will look at name, namespace or description fields (optional)
      * @param namespace namespace (optional)
      * @param orderby sort by which field valid values include last_accessed, size, name (optional)
@@ -2091,12 +2344,13 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> the group contents </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSharedGroupsAsync(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback<GroupBrowserData> _callback) throws ApiException {
+    public okhttp3.Call listSharedGroupsAsync(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, final ApiCallback<GroupBrowserData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listSharedGroupsValidateBeforeCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, _callback);
+        okhttp3.Call localVarCall = listSharedGroupsValidateBeforeCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, _callback);
         Type localVarReturnType = new TypeToken<GroupBrowserData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2113,6 +2367,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2193,6 +2448,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2212,6 +2468,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2233,6 +2490,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> group created successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2255,6 +2513,7 @@ public class GroupsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Group shared successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Group does not exist or user does not have permissions to share group </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2341,6 +2600,7 @@ public class GroupsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Group shared successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Group does not exist or user does not have permissions to share group </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2361,6 +2621,7 @@ public class GroupsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Group shared successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Group does not exist or user does not have permissions to share group </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2383,6 +2644,7 @@ public class GroupsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Group shared successfully </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Group does not exist or user does not have permissions to share group </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2404,6 +2666,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> attributes changed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2484,6 +2747,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> attributes changed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2503,6 +2767,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> attributes changed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -2524,6 +2789,7 @@ public class GroupsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> attributes changed successfully </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */

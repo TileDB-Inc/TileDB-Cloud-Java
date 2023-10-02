@@ -39,11 +39,11 @@ Add a new array favorite
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.FavoritesApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -101,6 +101,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Item added to favorites successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="addMLModelFavorite"></a>
@@ -119,7 +120,7 @@ Add a new ML model favorite
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -178,6 +179,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Item added to favorites successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="addNotebookFavorite"></a>
@@ -196,7 +198,7 @@ Add a new notebook favorite
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -255,6 +257,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Item added to favorites successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="addUDFFavorite"></a>
@@ -273,7 +276,7 @@ Add a new UDF favorite
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -332,6 +335,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Item added to favorites successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteArrayFavorite"></a>
@@ -350,7 +354,7 @@ Delete specific array favorite
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -409,6 +413,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | array favorite item deleted successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteMLModelFavorite"></a>
@@ -427,7 +432,7 @@ Delete specific ML model favorite
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -486,6 +491,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | ML model favorite item deleted successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteNotebookFavorite"></a>
@@ -504,7 +510,7 @@ Delete specific notebook favorite
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -563,6 +569,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | notebook favorite item deleted successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteUDFFavorite"></a>
@@ -581,7 +588,7 @@ Delete specific UDF favorite
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -640,6 +647,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | UDF favorite item deleted successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArrayFavorite"></a>
@@ -658,7 +666,7 @@ Fetch array favorite of a specific array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -718,6 +726,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getMLModelFavorite"></a>
@@ -736,7 +745,7 @@ Fetch ML model favorite of a specific ML model
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -796,6 +805,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getNotebookFavorite"></a>
@@ -814,7 +824,7 @@ Fetch notebook favorite of a specific notebook
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -874,6 +884,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getUDFFavorite"></a>
@@ -892,7 +903,7 @@ Fetch UDF favorite of a specific UDF
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -952,6 +963,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listArrayFavorites"></a>
@@ -970,7 +982,7 @@ Fetch a page of array favorites of connected user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -1030,6 +1042,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Available array favorites are returned |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listArrayFavoritesUUIDs"></a>
@@ -1048,7 +1061,7 @@ Fetch all favorite array uuids of connected user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -1102,6 +1115,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Available favorites array uuids are returned |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listMLModelFavorites"></a>
@@ -1120,7 +1134,7 @@ Fetch a page of ML models favorites of connected user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -1180,6 +1194,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Available ML models favorites are returned |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listMLModelFavoritesUUIDs"></a>
@@ -1198,7 +1213,7 @@ Fetch all favorite ML models uuids of connected user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -1252,6 +1267,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Available favorites ML model uuids are returned |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listNotebookFavorites"></a>
@@ -1270,7 +1286,7 @@ Fetch a page of notebook favorites of connected user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -1332,6 +1348,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Available notebook favorites are returned |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listNotebookFavoritesUUIDs"></a>
@@ -1350,7 +1367,7 @@ Fetch all favorite notebook uuids of connected user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -1404,6 +1421,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Available favorites notebook uuids are returned |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listUDFFavorites"></a>
@@ -1422,7 +1440,7 @@ Fetch a page of UDF favorites of connected user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -1482,6 +1500,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Available UDF favorites are returned |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listUDFFavoritesUUIDs"></a>
@@ -1500,7 +1519,7 @@ Fetch all favorite UDF uuids of connected user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FavoritesApi;
 
 public class Example {
@@ -1554,5 +1573,6 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Available favorites UDF uuids are returned |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

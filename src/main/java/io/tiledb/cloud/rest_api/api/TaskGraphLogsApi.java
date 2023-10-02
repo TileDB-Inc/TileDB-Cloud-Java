@@ -13,6 +13,9 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.model.TaskGraphClientNodeStatus;
+import io.tiledb.cloud.rest_api.model.TaskGraphLog;
+import io.tiledb.cloud.rest_api.model.TaskGraphLogsData;
 import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
@@ -24,9 +27,6 @@ import com.google.gson.reflect.TypeToken;
 
 
 import java.time.OffsetDateTime;
-import io.tiledb.cloud.rest_api.model.TaskGraphClientNodeStatus;
-import io.tiledb.cloud.rest_api.model.TaskGraphLog;
-import io.tiledb.cloud.rest_api.model.TaskGraphLogsData;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -82,6 +82,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The task graph was created. The returned TaskGraphLog will include the data the client sent, with the server-defined fields added in.  </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -161,6 +162,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The task graph was created. The returned TaskGraphLog will include the data the client sent, with the server-defined fields added in.  </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -180,6 +182,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The task graph was created. The returned TaskGraphLog will include the data the client sent, with the server-defined fields added in.  </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -201,6 +204,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The task graph was created. The returned TaskGraphLog will include the data the client sent, with the server-defined fields added in.  </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -222,6 +226,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Information about the execution of a single task graph. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -302,6 +307,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Information about the execution of a single task graph. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -321,6 +327,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Information about the execution of a single task graph. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -342,6 +349,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Information about the execution of a single task graph. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -368,6 +376,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The task graph logs that matched the user&#39;s query. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -469,6 +478,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The task graph logs that matched the user&#39;s query. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -493,6 +503,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The task graph logs that matched the user&#39;s query. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -519,6 +530,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The task graph logs that matched the user&#39;s query. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -541,6 +553,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Status reported successfully. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -626,6 +639,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Status reported successfully. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -645,6 +659,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Status reported successfully. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -666,6 +681,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Status reported successfully. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -673,6 +689,586 @@ public class TaskGraphLogsApi {
 
         okhttp3.Call localVarCall = reportClientNodeValidateBeforeCall(namespace, id, report, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for resubmitTaskGraphExecution
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call resubmitTaskGraphExecutionCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/taskgraphs/{namespace}/executions/{id}/resubmit"
+            .replaceAll("\\{" + "namespace" + "\\}", localVarApiClient.escapeString(namespace.toString()))
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call resubmitTaskGraphExecutionValidateBeforeCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'namespace' is set
+        if (namespace == null) {
+            throw new ApiException("Missing the required parameter 'namespace' when calling resubmitTaskGraphExecution(Async)");
+        }
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling resubmitTaskGraphExecution(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = resubmitTaskGraphExecutionCall(namespace, id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Resubmits a task graph in the given namespace using the associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @return TaskGraphLog
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public TaskGraphLog resubmitTaskGraphExecution(String namespace, String id) throws ApiException {
+        ApiResponse<TaskGraphLog> localVarResp = resubmitTaskGraphExecutionWithHttpInfo(namespace, id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Resubmits a task graph in the given namespace using the associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @return ApiResponse&lt;TaskGraphLog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TaskGraphLog> resubmitTaskGraphExecutionWithHttpInfo(String namespace, String id) throws ApiException {
+        okhttp3.Call localVarCall = resubmitTaskGraphExecutionValidateBeforeCall(namespace, id, null);
+        Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Resubmits a task graph in the given namespace using the associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call resubmitTaskGraphExecutionAsync(String namespace, String id, final ApiCallback<TaskGraphLog> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = resubmitTaskGraphExecutionValidateBeforeCall(namespace, id, _callback);
+        Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for retryTaskGraphExecution
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call retryTaskGraphExecutionCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/taskgraphs/{namespace}/executions/{id}/retry"
+            .replaceAll("\\{" + "namespace" + "\\}", localVarApiClient.escapeString(namespace.toString()))
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call retryTaskGraphExecutionValidateBeforeCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'namespace' is set
+        if (namespace == null) {
+            throw new ApiException("Missing the required parameter 'namespace' when calling retryTaskGraphExecution(Async)");
+        }
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling retryTaskGraphExecution(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = retryTaskGraphExecutionCall(namespace, id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Retries failed tasks of a task graph in the given namespace using the associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @return TaskGraphLog
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public TaskGraphLog retryTaskGraphExecution(String namespace, String id) throws ApiException {
+        ApiResponse<TaskGraphLog> localVarResp = retryTaskGraphExecutionWithHttpInfo(namespace, id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Retries failed tasks of a task graph in the given namespace using the associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @return ApiResponse&lt;TaskGraphLog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TaskGraphLog> retryTaskGraphExecutionWithHttpInfo(String namespace, String id) throws ApiException {
+        okhttp3.Call localVarCall = retryTaskGraphExecutionValidateBeforeCall(namespace, id, null);
+        Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Retries failed tasks of a task graph in the given namespace using the associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call retryTaskGraphExecutionAsync(String namespace, String id, final ApiCallback<TaskGraphLog> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = retryTaskGraphExecutionValidateBeforeCall(namespace, id, _callback);
+        Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for stopTaskGraphExecution
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call stopTaskGraphExecutionCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/taskgraphs/{namespace}/executions/{id}/stop"
+            .replaceAll("\\{" + "namespace" + "\\}", localVarApiClient.escapeString(namespace.toString()))
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call stopTaskGraphExecutionValidateBeforeCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'namespace' is set
+        if (namespace == null) {
+            throw new ApiException("Missing the required parameter 'namespace' when calling stopTaskGraphExecution(Async)");
+        }
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling stopTaskGraphExecution(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = stopTaskGraphExecutionCall(namespace, id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Stops a task graph execution in the given namespace using the associated associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @return TaskGraphLog
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public TaskGraphLog stopTaskGraphExecution(String namespace, String id) throws ApiException {
+        ApiResponse<TaskGraphLog> localVarResp = stopTaskGraphExecutionWithHttpInfo(namespace, id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Stops a task graph execution in the given namespace using the associated associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @return ApiResponse&lt;TaskGraphLog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TaskGraphLog> stopTaskGraphExecutionWithHttpInfo(String namespace, String id) throws ApiException {
+        okhttp3.Call localVarCall = stopTaskGraphExecutionValidateBeforeCall(namespace, id, null);
+        Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Stops a task graph execution in the given namespace using the associated associated execution id.
+     * @param namespace The namespace that owns this task graph execution. (required)
+     * @param id The UUID of the task graph execution (TaskGraphLog). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the task graph execution. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call stopTaskGraphExecutionAsync(String namespace, String id, final ApiCallback<TaskGraphLog> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = stopTaskGraphExecutionValidateBeforeCall(namespace, id, _callback);
+        Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for submitTaskGraph
+     * @param namespace The namespace that owns this task graph. (required)
+     * @param id The UUID of the task graph entry. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the execution of a single task graph. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call submitTaskGraphCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/taskgraphs/{namespace}/graphs/{id}/submit"
+            .replaceAll("\\{" + "namespace" + "\\}", localVarApiClient.escapeString(namespace.toString()))
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call submitTaskGraphValidateBeforeCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'namespace' is set
+        if (namespace == null) {
+            throw new ApiException("Missing the required parameter 'namespace' when calling submitTaskGraph(Async)");
+        }
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling submitTaskGraph(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = submitTaskGraphCall(namespace, id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Submit a single task graph for execution. 
+     * @param namespace The namespace that owns this task graph. (required)
+     * @param id The UUID of the task graph entry. (required)
+     * @return TaskGraphLog
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the execution of a single task graph. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public TaskGraphLog submitTaskGraph(String namespace, String id) throws ApiException {
+        ApiResponse<TaskGraphLog> localVarResp = submitTaskGraphWithHttpInfo(namespace, id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Submit a single task graph for execution. 
+     * @param namespace The namespace that owns this task graph. (required)
+     * @param id The UUID of the task graph entry. (required)
+     * @return ApiResponse&lt;TaskGraphLog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the execution of a single task graph. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TaskGraphLog> submitTaskGraphWithHttpInfo(String namespace, String id) throws ApiException {
+        okhttp3.Call localVarCall = submitTaskGraphValidateBeforeCall(namespace, id, null);
+        Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Submit a single task graph for execution. 
+     * @param namespace The namespace that owns this task graph. (required)
+     * @param id The UUID of the task graph entry. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Information about the execution of a single task graph. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call submitTaskGraphAsync(String namespace, String id, final ApiCallback<TaskGraphLog> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = submitTaskGraphValidateBeforeCall(namespace, id, _callback);
+        Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -687,6 +1283,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Log entry updated successfully. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -772,6 +1369,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Log entry updated successfully. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -791,6 +1389,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Log entry updated successfully. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -812,6 +1411,7 @@ public class TaskGraphLogsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Log entry updated successfully. </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
