@@ -16,6 +16,7 @@ All URIs are relative to */v1*
 | [**createArray**](ArrayApi.md#createArray) | **POST** /arrays/{namespace}/{array} |  |
 | [**deleteArray**](ArrayApi.md#deleteArray) | **DELETE** /arrays/{namespace}/{array} |  |
 | [**deregisterArray**](ArrayApi.md#deregisterArray) | **DELETE** /arrays/{namespace}/{array}/deregister |  |
+| [**fragmentInfo**](ArrayApi.md#fragmentInfo) | **POST** /arrays/{namespace}/{array}/fragment_info |  |
 | [**getActivityLogById**](ArrayApi.md#getActivityLogById) | **GET** /arrays/{namespace}/{array}/activity/{id} |  |
 | [**getAllArrayMetadata**](ArrayApi.md#getAllArrayMetadata) | **GET** /arrays |  |
 | [**getArray**](ArrayApi.md#getArray) | **GET** /arrays/{namespace}/{array} |  |
@@ -50,11 +51,11 @@ get array activity logs
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.ArrayApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -77,7 +78,7 @@ public class Example {
         String array = "array_example"; // String | name/uri of array that is url-encoded
         Integer start = 56; // Integer | Start time of window of fetch logs, unix epoch in seconds (default: seven days ago)
         Integer end = 56; // Integer | End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp)
-        String eventTypes = "eventTypes_example"; // String | Event values can be one or more of the following read, write, create, delete, register, deregister, comma separated
+        String eventTypes = "eventTypes_example"; // String | Refer to ActivityEventType for possible values
         String taskId = "taskId_example"; // String | Array task ID To filter activity to
         Boolean hasTaskId = true; // Boolean | Excludes activity log results that do not contain an array task UUID
         try {
@@ -102,7 +103,7 @@ public class Example {
 | **array** | **String**| name/uri of array that is url-encoded | |
 | **start** | **Integer**| Start time of window of fetch logs, unix epoch in seconds (default: seven days ago) | [optional] |
 | **end** | **Integer**| End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp) | [optional] |
-| **eventTypes** | **String**| Event values can be one or more of the following read, write, create, delete, register, deregister, comma separated | [optional] |
+| **eventTypes** | **String**| Refer to ActivityEventType for possible values | [optional] |
 | **taskId** | **String**| Array task ID To filter activity to | [optional] |
 | **hasTaskId** | **Boolean**| Excludes activity log results that do not contain an array task UUID | [optional] |
 
@@ -123,6 +124,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | log of array activity |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="arraysBrowserOwnedGet"></a>
@@ -141,7 +143,7 @@ Fetch a list of all arrays that are owned directly by user or user&#39;s organiz
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -219,11 +221,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of array info that are owned directly by user or user&#39;s organizations |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="arraysBrowserOwnedSidebarGet"></a>
 # **arraysBrowserOwnedSidebarGet**
-> ArrayBrowserSidebar arraysBrowserOwnedSidebarGet()
+> ArrayBrowserSidebar arraysBrowserOwnedSidebarGet(fileType, excludeFileType, fileProperty)
 
 
 
@@ -237,7 +240,7 @@ Fetch a sidebar for arrays that are owned directly by user or user&#39;s organiz
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -257,8 +260,11 @@ public class Example {
         BasicAuth.setPassword("YOUR PASSWORD");
 
         ArrayApi apiInstance = new ArrayApi(defaultClient);
+        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
         try {
-            ArrayBrowserSidebar result = apiInstance.arraysBrowserOwnedSidebarGet();
+            ArrayBrowserSidebar result = apiInstance.arraysBrowserOwnedSidebarGet(fileType, excludeFileType, fileProperty);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#arraysBrowserOwnedSidebarGet");
@@ -272,7 +278,12 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional] |
+| **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
+| **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
 
 ### Return type
 
@@ -291,6 +302,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of array info that are owned directly by user or user&#39;s organizations |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="arraysBrowserPublicGet"></a>
@@ -309,7 +321,7 @@ Fetch a list of all arrays that have been shared publically
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -387,11 +399,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of array info that has been shared publically |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="arraysBrowserPublicSidebarGet"></a>
 # **arraysBrowserPublicSidebarGet**
-> ArrayBrowserSidebar arraysBrowserPublicSidebarGet()
+> ArrayBrowserSidebar arraysBrowserPublicSidebarGet(fileType, excludeFileType, fileProperty)
 
 
 
@@ -405,7 +418,7 @@ Fetch a sidebar of all arrays that have been shared publically
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -425,8 +438,11 @@ public class Example {
         BasicAuth.setPassword("YOUR PASSWORD");
 
         ArrayApi apiInstance = new ArrayApi(defaultClient);
+        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
         try {
-            ArrayBrowserSidebar result = apiInstance.arraysBrowserPublicSidebarGet();
+            ArrayBrowserSidebar result = apiInstance.arraysBrowserPublicSidebarGet(fileType, excludeFileType, fileProperty);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#arraysBrowserPublicSidebarGet");
@@ -440,7 +456,12 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional] |
+| **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
+| **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
 
 ### Return type
 
@@ -459,6 +480,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of array info that has been shared publically |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="arraysBrowserSharedGet"></a>
@@ -477,7 +499,7 @@ Fetch a list of all arrays that have been shared with the user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -557,11 +579,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of array info that has been shared with the user |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="arraysBrowserSharedSidebarGet"></a>
 # **arraysBrowserSharedSidebarGet**
-> ArrayBrowserSidebar arraysBrowserSharedSidebarGet()
+> ArrayBrowserSidebar arraysBrowserSharedSidebarGet(fileType, excludeFileType, fileProperty, sharedTo)
 
 
 
@@ -575,7 +598,7 @@ Fetch a list of all arrays that have been shared with the user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -595,8 +618,12 @@ public class Example {
         BasicAuth.setPassword("YOUR PASSWORD");
 
         ArrayApi apiInstance = new ArrayApi(defaultClient);
+        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
+        List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there groups were shared to
         try {
-            ArrayBrowserSidebar result = apiInstance.arraysBrowserSharedSidebarGet();
+            ArrayBrowserSidebar result = apiInstance.arraysBrowserSharedSidebarGet(fileType, excludeFileType, fileProperty, sharedTo);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#arraysBrowserSharedSidebarGet");
@@ -610,7 +637,13 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional] |
+| **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
+| **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
+| **sharedTo** | [**List&lt;String&gt;**](String.md)| namespaces to filter results of where there groups were shared to | [optional] |
 
 ### Return type
 
@@ -629,6 +662,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Array of array info that has been shared with the user |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="arraysNamespaceArrayEndTimestampsGet"></a>
@@ -647,7 +681,7 @@ retrieve a list of timestamps from the array fragment info listing in millisecon
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -711,11 +745,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | list of timestamps in milliseconds, paginated |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="consolidateArray"></a>
 # **consolidateArray**
-> consolidateArray(namespace, array, tiledbConfig)
+> consolidateArray(namespace, array, consolidateRequest)
 
 
 
@@ -729,7 +764,7 @@ consolidate an array at a specified URI
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -751,9 +786,9 @@ public class Example {
         ArrayApi apiInstance = new ArrayApi(defaultClient);
         String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
         String array = "array_example"; // String | name/uri of array that is url-encoded
-        TileDBConfig tiledbConfig = new TileDBConfig(); // TileDBConfig | tiledb configuration
+        ArrayConsolidationRequest consolidateRequest = new ArrayConsolidationRequest(); // ArrayConsolidationRequest | Consolidate Request
         try {
-            apiInstance.consolidateArray(namespace, array, tiledbConfig);
+            apiInstance.consolidateArray(namespace, array, consolidateRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#consolidateArray");
             System.err.println("Status code: " + e.getCode());
@@ -771,7 +806,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
 | **array** | **String**| name/uri of array that is url-encoded | |
-| **tiledbConfig** | [**TileDBConfig**](TileDBConfig.md)| tiledb configuration | |
+| **consolidateRequest** | [**ArrayConsolidationRequest**](ArrayConsolidationRequest.md)| Consolidate Request | |
 
 ### Return type
 
@@ -790,6 +825,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | array consolidated successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="createArray"></a>
@@ -808,7 +844,7 @@ create a array schema at a specified URI registered to a group/project
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -873,6 +909,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | schema created successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteArray"></a>
@@ -891,7 +928,7 @@ delete a array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -952,6 +989,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | delete array successful |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deregisterArray"></a>
@@ -970,7 +1008,7 @@ deregister a array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1029,6 +1067,89 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | deregistered array successful |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="fragmentInfo"></a>
+# **fragmentInfo**
+> FragmentInfo fragmentInfo(namespace, array, contentType, fragmentInfoRequest)
+
+
+
+fetch an array&#39;s fragment info
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import ArrayApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        ArrayApi apiInstance = new ArrayApi(defaultClient);
+        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+        String array = "array_example"; // String | name/uri of array that is url-encoded
+        String contentType = "application/json"; // String | Content Type of input and return mime
+        FragmentInfoRequest fragmentInfoRequest = new FragmentInfoRequest(); // FragmentInfoRequest | ArraySchema being created
+        try {
+            FragmentInfo result = apiInstance.fragmentInfo(namespace, array, contentType, fragmentInfoRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArrayApi#fragmentInfo");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **contentType** | **String**| Content Type of input and return mime | [default to application/json] |
+| **fragmentInfoRequest** | [**FragmentInfoRequest**](FragmentInfoRequest.md)| ArraySchema being created | |
+
+### Return type
+
+[**FragmentInfo**](FragmentInfo.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | fragment info |  -  |
 | **0** | error response |  -  |
 
 <a name="getActivityLogById"></a>
@@ -1047,7 +1168,7 @@ get activity log by ID
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1109,6 +1230,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | array activity |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getAllArrayMetadata"></a>
@@ -1127,7 +1249,7 @@ get all array metadata user has access to
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1185,6 +1307,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | array metadata for all arrays user has access to |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArray"></a>
@@ -1203,7 +1326,7 @@ get an ArraySchema using a url encoded uri
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1265,6 +1388,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | get ArraySchema |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArrayMaxBufferSizes"></a>
@@ -1283,7 +1407,7 @@ get the max buffer sizes of an array for a subarray
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1349,6 +1473,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | get the max buffer sizes of an array for a subarray |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArrayMetaDataJson"></a>
@@ -1367,7 +1492,7 @@ get metadata from the array in JSON format
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1431,6 +1556,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | get array metadata |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArrayMetadata"></a>
@@ -1449,7 +1575,7 @@ get metadata on an array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1509,6 +1635,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | array metadata for an array |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArrayMetadataCapnp"></a>
@@ -1527,7 +1654,7 @@ get metadata on an array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1587,6 +1714,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | array metadata for an array |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArrayNonEmptyDomain"></a>
@@ -1605,7 +1733,7 @@ get the non empty domain of an array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1669,6 +1797,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | get the non empty domain of an array |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArrayNonEmptyDomainJson"></a>
@@ -1687,7 +1816,7 @@ get non-empty domain from the array in json format
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1747,6 +1876,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | get array non-empty domaim |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArraySampleData"></a>
@@ -1765,7 +1895,7 @@ get an sample set of data from the array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1827,6 +1957,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | get array sample data |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArraySharingPolicies"></a>
@@ -1845,7 +1976,7 @@ Get all sharing details of the array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1906,6 +2037,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | List of all specific sharing policies |  -  |
 | **404** | Array does not exist or user does not have permissions to view array-sharing policies |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getArraysInNamespace"></a>
@@ -1924,7 +2056,7 @@ get metadata on all arrays in a namespace
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -1982,6 +2114,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | array metadata for all arrays in a namespace |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getFragmentEndTimestamp"></a>
@@ -2000,7 +2133,7 @@ Get fragment end_timestamp on an array, will search for the closest end_timestam
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -2062,6 +2195,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | fragment end_timestamp on an array |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getLastAccessedArrays"></a>
@@ -2078,7 +2212,7 @@ public class Example {
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -2132,6 +2266,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gets last accessed arrays |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="registerArray"></a>
@@ -2150,7 +2285,7 @@ register an array at a specified URI registered to the given namespace
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -2212,6 +2347,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | array registered successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="shareArray"></a>
@@ -2230,7 +2366,7 @@ Share an array with a user
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -2292,6 +2428,7 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | Array shared successfully |  -  |
 | **404** | Array does not exist or user does not have permissions to share array |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateArrayMetadata"></a>
@@ -2310,7 +2447,7 @@ update metadata on an array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -2371,6 +2508,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | array metadata updated successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateArrayMetadataCapnp"></a>
@@ -2389,7 +2527,7 @@ update metadata on an array
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -2450,11 +2588,12 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | array metadata updated successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="vacuumArray"></a>
 # **vacuumArray**
-> vacuumArray(namespace, array, tiledbConfig)
+> vacuumArray(namespace, array, vaccumRequest)
 
 
 
@@ -2468,7 +2607,7 @@ vacuum an array at a specified URI
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import ArrayApi;
 
 public class Example {
@@ -2490,9 +2629,9 @@ public class Example {
         ArrayApi apiInstance = new ArrayApi(defaultClient);
         String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
         String array = "array_example"; // String | name/uri of array that is url-encoded
-        TileDBConfig tiledbConfig = new TileDBConfig(); // TileDBConfig | tiledb configuration
+        ArrayVacuumRequest vaccumRequest = new ArrayVacuumRequest(); // ArrayVacuumRequest | Vaccum Request
         try {
-            apiInstance.vacuumArray(namespace, array, tiledbConfig);
+            apiInstance.vacuumArray(namespace, array, vaccumRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#vacuumArray");
             System.err.println("Status code: " + e.getCode());
@@ -2510,7 +2649,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
 | **array** | **String**| name/uri of array that is url-encoded | |
-| **tiledbConfig** | [**TileDBConfig**](TileDBConfig.md)| tiledb configuration | |
+| **vaccumRequest** | [**ArrayVacuumRequest**](ArrayVacuumRequest.md)| Vaccum Request | |
 
 ### Return type
 
@@ -2529,5 +2668,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | array vacuumed successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

@@ -10,6 +10,7 @@ Synchronous Task to Run
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | task ID |  [optional] |
 |**name** | **String** | Optional task name |  [optional] |
+|**username** | **String** | username that executed this task |  [optional] |
 |**description** | **String** | Optional task description (Tasks purpose) |  [optional] |
 |**arrayMetadata** | [**ArrayInfo**](ArrayInfo.md) |  |  [optional] |
 |**subarray** | [**DomainArray**](DomainArray.md) |  |  [optional] |
@@ -17,6 +18,7 @@ Synchronous Task to Run
 |**cpu** | **Integer** | millicpu allocated to task |  [optional] |
 |**namespace** | **String** | namespace task is tied to |  [optional] |
 |**status** | **ArrayTaskStatus** |  |  [optional] |
+|**statusMessage** | **String** | The reason the array task status is in the state |  [optional] |
 |**startTime** | **OffsetDateTime** | Start time RFC3339 for job |  [optional] |
 |**finishTime** | **OffsetDateTime** | Finish time RFC3339 for job |  [optional] |
 |**cost** | **Double** | Total accumulated for task in USD, example is $0.12 |  [optional] |

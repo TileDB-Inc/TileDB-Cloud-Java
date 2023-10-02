@@ -15,5 +15,9 @@
 
 * `IS_DASHBOARD` (value: `"is_dashboard"`)
 
+* `VERSION_PRUNING_LIMIT` (value: `"version_pruning_limit"`)
+
+* `VERSION_PRUNING_ENABLED` (value: `"version_pruning_enabled"`)
+
 
 

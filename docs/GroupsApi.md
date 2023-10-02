@@ -8,6 +8,7 @@ All URIs are relative to */v1*
 | [**createGroup**](GroupsApi.md#createGroup) | **POST** /groups/{namespace}/create |  |
 | [**deleteGroup**](GroupsApi.md#deleteGroup) | **DELETE** /groups/{group_namespace}/{group_name} |  |
 | [**getGroup**](GroupsApi.md#getGroup) | **GET** /groups/{group_namespace}/{group_name} |  |
+| [**getGroupActivity**](GroupsApi.md#getGroupActivity) | **GET** /groups/{group_namespace}/{group_name}/content_activity |  |
 | [**getGroupContents**](GroupsApi.md#getGroupContents) | **GET** /groups/{group_namespace}/{group_name}/contents |  |
 | [**getGroupSharingPolicies**](GroupsApi.md#getGroupSharingPolicies) | **GET** /groups/{group_namespace}/{group_name}/share |  |
 | [**groupsBrowserOwnedFiltersGet**](GroupsApi.md#groupsBrowserOwnedFiltersGet) | **GET** /groups/browser/owned/filters |  |
@@ -35,11 +36,11 @@ Changes the contents of the group by adding/removing members.
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.GroupsApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import GroupsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -99,6 +100,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | all changes applied successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="createGroup"></a>
@@ -117,7 +119,7 @@ Creates a new group in the namespace.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -176,6 +178,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | group created successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteGroup"></a>
@@ -194,7 +197,7 @@ Deletes the group. The assets are not deleted nor are not relocated to any other
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -253,6 +256,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | group deleted successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getGroup"></a>
@@ -271,7 +275,7 @@ Returns the the group
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -331,6 +335,90 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the group metadata |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="getGroupActivity"></a>
+# **getGroupActivity**
+> GroupActivityResponse getGroupActivity(groupNamespace, groupName, page, perPage)
+
+
+
+Returns the activity of group content
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import GroupsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        GroupsApi apiInstance = new GroupsApi(defaultClient);
+        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+        String groupName = "groupName_example"; // String | The unique name or id of the group
+        Integer page = 56; // Integer | pagination offset
+        Integer perPage = 56; // Integer | pagination limit
+        try {
+            GroupActivityResponse result = apiInstance.getGroupActivity(groupNamespace, groupName, page, perPage);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupsApi#getGroupActivity");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupNamespace** | **String**| The namespace of the group | |
+| **groupName** | **String**| The unique name or id of the group | |
+| **page** | **Integer**| pagination offset | [optional] |
+| **perPage** | **Integer**| pagination limit | [optional] |
+
+### Return type
+
+[**GroupActivityResponse**](GroupActivityResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Activity logs of group contents along with the pagination metadata |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getGroupContents"></a>
@@ -349,7 +437,7 @@ Returns the contents of the group
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -427,6 +515,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the group contents |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getGroupSharingPolicies"></a>
@@ -445,7 +534,7 @@ Get all sharing details of the group
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -506,11 +595,12 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | List of all specific sharing policies |  -  |
 | **404** | Group does not exist or user does not have permissions to view group-sharing policies |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="groupsBrowserOwnedFiltersGet"></a>
 # **groupsBrowserOwnedFiltersGet**
-> GroupBrowserFilterData groupsBrowserOwnedFiltersGet()
+> GroupBrowserFilterData groupsBrowserOwnedFiltersGet(namespace)
 
 
 
@@ -524,7 +614,7 @@ Fetch data to initialize filters for the groups browser
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -544,8 +634,9 @@ public class Example {
         BasicAuth.setPassword("YOUR PASSWORD");
 
         GroupsApi apiInstance = new GroupsApi(defaultClient);
+        String namespace = "namespace_example"; // String | namespace
         try {
-            GroupBrowserFilterData result = apiInstance.groupsBrowserOwnedFiltersGet();
+            GroupBrowserFilterData result = apiInstance.groupsBrowserOwnedFiltersGet(namespace);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupsApi#groupsBrowserOwnedFiltersGet");
@@ -559,7 +650,10 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | [optional] |
 
 ### Return type
 
@@ -578,6 +672,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Filter data |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="groupsBrowserPublicFiltersGet"></a>
@@ -596,7 +691,7 @@ Fetch data to initialize filters for the groups browser
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -650,11 +745,12 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Filter data |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="groupsBrowserSharedFiltersGet"></a>
 # **groupsBrowserSharedFiltersGet**
-> GroupBrowserFilterData groupsBrowserSharedFiltersGet()
+> GroupBrowserFilterData groupsBrowserSharedFiltersGet(namespace)
 
 
 
@@ -668,7 +764,7 @@ Fetch data to initialize filters for the groups browser
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -688,8 +784,9 @@ public class Example {
         BasicAuth.setPassword("YOUR PASSWORD");
 
         GroupsApi apiInstance = new GroupsApi(defaultClient);
+        String namespace = "namespace_example"; // String | namespace
         try {
-            GroupBrowserFilterData result = apiInstance.groupsBrowserSharedFiltersGet();
+            GroupBrowserFilterData result = apiInstance.groupsBrowserSharedFiltersGet(namespace);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupsApi#groupsBrowserSharedFiltersGet");
@@ -703,7 +800,10 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace | [optional] |
 
 ### Return type
 
@@ -722,6 +822,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Filter data |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="groupsGroupNamespaceGroupNameContentsFiltersGet"></a>
@@ -740,7 +841,7 @@ Fetch data to initialize filters for the group contents
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -800,11 +901,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Filter data |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listOwnedGroups"></a>
 # **listOwnedGroups**
-> GroupBrowserData listOwnedGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent)
+> GroupBrowserData listOwnedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent)
 
 
 
@@ -818,7 +920,7 @@ Returns one page of owned groups.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -840,6 +942,7 @@ public class Example {
         GroupsApi apiInstance = new GroupsApi(defaultClient);
         Integer page = 56; // Integer | pagination offset
         Integer perPage = 56; // Integer | pagination limit
+        String groupType = "groupType_example"; // String | filter by a specific group type
         String search = "search_example"; // String | search string that will look at name, namespace or description fields
         String namespace = "namespace_example"; // String | namespace
         String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
@@ -849,7 +952,7 @@ public class Example {
         Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
         String parent = "parent_example"; // String | search only the children of the groups with this uuid
         try {
-            GroupBrowserData result = apiInstance.listOwnedGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+            GroupBrowserData result = apiInstance.listOwnedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupsApi#listOwnedGroups");
@@ -868,6 +971,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **page** | **Integer**| pagination offset | [optional] |
 | **perPage** | **Integer**| pagination limit | [optional] |
+| **groupType** | **String**| filter by a specific group type | [optional] |
 | **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
 | **namespace** | **String**| namespace | [optional] |
 | **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
@@ -894,11 +998,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the group contents |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listPublicGroups"></a>
 # **listPublicGroups**
-> GroupBrowserData listPublicGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent)
+> GroupBrowserData listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent)
 
 
 
@@ -912,7 +1017,7 @@ Returns one page of public groups.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -934,6 +1039,7 @@ public class Example {
         GroupsApi apiInstance = new GroupsApi(defaultClient);
         Integer page = 56; // Integer | pagination offset
         Integer perPage = 56; // Integer | pagination limit
+        String groupType = "groupType_example"; // String | filter by a specific group type
         String search = "search_example"; // String | search string that will look at name, namespace or description fields
         String namespace = "namespace_example"; // String | namespace
         String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
@@ -943,7 +1049,7 @@ public class Example {
         Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
         String parent = "parent_example"; // String | search only the children of the groups with this uuid
         try {
-            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupsApi#listPublicGroups");
@@ -962,6 +1068,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **page** | **Integer**| pagination offset | [optional] |
 | **perPage** | **Integer**| pagination limit | [optional] |
+| **groupType** | **String**| filter by a specific group type | [optional] |
 | **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
 | **namespace** | **String**| namespace | [optional] |
 | **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
@@ -988,11 +1095,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the group contents |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="listSharedGroups"></a>
 # **listSharedGroups**
-> GroupBrowserData listSharedGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo)
+> GroupBrowserData listSharedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo)
 
 
 
@@ -1006,7 +1114,7 @@ Returns one page of shared groups.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -1028,6 +1136,7 @@ public class Example {
         GroupsApi apiInstance = new GroupsApi(defaultClient);
         Integer page = 56; // Integer | pagination offset
         Integer perPage = 56; // Integer | pagination limit
+        String groupType = "groupType_example"; // String | filter by a specific group type
         String search = "search_example"; // String | search string that will look at name, namespace or description fields
         String namespace = "namespace_example"; // String | namespace
         String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
@@ -1038,7 +1147,7 @@ public class Example {
         String parent = "parent_example"; // String | search only the children of the groups with this uuid
         List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there groups were shared to
         try {
-            GroupBrowserData result = apiInstance.listSharedGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo);
+            GroupBrowserData result = apiInstance.listSharedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupsApi#listSharedGroups");
@@ -1057,6 +1166,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **page** | **Integer**| pagination offset | [optional] |
 | **perPage** | **Integer**| pagination limit | [optional] |
+| **groupType** | **String**| filter by a specific group type | [optional] |
 | **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
 | **namespace** | **String**| namespace | [optional] |
 | **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
@@ -1084,6 +1194,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the group contents |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="registerGroup"></a>
@@ -1102,7 +1213,7 @@ Registers an existing group in the namespace.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -1163,6 +1274,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | group created successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="shareGroup"></a>
@@ -1181,7 +1293,7 @@ Share a group with a namespace
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -1243,6 +1355,7 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | Group shared successfully |  -  |
 | **404** | Group does not exist or user does not have permissions to share group |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateGroup"></a>
@@ -1261,7 +1374,7 @@ Changes attributes of the group
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import GroupsApi;
 
 public class Example {
@@ -1322,5 +1435,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | attributes changed successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

@@ -12,6 +12,7 @@ User-defined function
 |**language** | **UDFLanguage** |  |  [optional] |
 |**version** | **String** | Type-specific version |  [optional] |
 |**imageName** | **String** | Docker image name to use for UDF |  [optional] |
+|**accessCredentialsName** | **String** | The name of the access credentials to use. if unset, no credentials will be configured in the environment. |  [optional] |
 |**resourceClass** | **String** | The resource class to use for the UDF execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the UDF will execute in the standard resource class of the TileDB Cloud provider.  |  [optional] |
 |**exec** | **String** | Type-specific executable text |  [optional] |
 |**execRaw** | **String** | optional raw text to store of serialized function, used for showing in UI |  [optional] |

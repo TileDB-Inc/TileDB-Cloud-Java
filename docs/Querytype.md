@@ -9,5 +9,7 @@
 
 * `WRITE` (value: `"WRITE"`)
 
+* `DELETE` (value: `"DELETE"`)
+
 
 

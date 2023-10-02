@@ -22,8 +22,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
-import io.tiledb.cloud.rest_api.JSON;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -32,15 +32,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
+
+import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * Metadata about the environment where we want to execute a UDF.
  */
 @ApiModel(description = "Metadata about the environment where we want to execute a UDF.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class TGUDFEnvironment {
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
@@ -54,6 +56,10 @@ public class TGUDFEnvironment {
   @SerializedName(SERIALIZED_NAME_IMAGE_NAME)
   private String imageName;
 
+  public static final String SERIALIZED_NAME_ACCESS_CREDENTIALS_NAME = "access_credentials_name";
+  @SerializedName(SERIALIZED_NAME_ACCESS_CREDENTIALS_NAME)
+  private String accessCredentialsName;
+
   public static final String SERIALIZED_NAME_NAMESPACE = "namespace";
   @SerializedName(SERIALIZED_NAME_NAMESPACE)
   private String namespace;
@@ -62,11 +68,19 @@ public class TGUDFEnvironment {
   @SerializedName(SERIALIZED_NAME_RESOURCE_CLASS)
   private String resourceClass;
 
+  public static final String SERIALIZED_NAME_RESOURCES = "resources";
+  @SerializedName(SERIALIZED_NAME_RESOURCES)
+  private TGUDFEnvironmentResources resources;
+
   public static final String SERIALIZED_NAME_RUN_CLIENT_SIDE = "run_client_side";
   @SerializedName(SERIALIZED_NAME_RUN_CLIENT_SIDE)
   private Boolean runClientSide;
 
-  public TGUDFEnvironment() { 
+  public static final String SERIALIZED_NAME_TIMEOUT = "timeout";
+  @SerializedName(SERIALIZED_NAME_TIMEOUT)
+  private BigDecimal timeout;
+
+  public TGUDFEnvironment() {
   }
 
   public TGUDFEnvironment language(UDFLanguage language) {
@@ -138,6 +152,29 @@ public class TGUDFEnvironment {
   }
 
 
+  public TGUDFEnvironment accessCredentialsName(String accessCredentialsName) {
+    
+    this.accessCredentialsName = accessCredentialsName;
+    return this;
+  }
+
+   /**
+   * The name of the access credentials to use. if unset, no credentials will be configured in the environment. 
+   * @return accessCredentialsName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The name of the access credentials to use. if unset, no credentials will be configured in the environment. ")
+
+  public String getAccessCredentialsName() {
+    return accessCredentialsName;
+  }
+
+
+  public void setAccessCredentialsName(String accessCredentialsName) {
+    this.accessCredentialsName = accessCredentialsName;
+  }
+
+
   public TGUDFEnvironment namespace(String namespace) {
     
     this.namespace = namespace;
@@ -184,6 +221,29 @@ public class TGUDFEnvironment {
   }
 
 
+  public TGUDFEnvironment resources(TGUDFEnvironmentResources resources) {
+    
+    this.resources = resources;
+    return this;
+  }
+
+   /**
+   * Get resources
+   * @return resources
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public TGUDFEnvironmentResources getResources() {
+    return resources;
+  }
+
+
+  public void setResources(TGUDFEnvironmentResources resources) {
+    this.resources = resources;
+  }
+
+
   public TGUDFEnvironment runClientSide(Boolean runClientSide) {
     
     this.runClientSide = runClientSide;
@@ -207,6 +267,64 @@ public class TGUDFEnvironment {
   }
 
 
+  public TGUDFEnvironment timeout(BigDecimal timeout) {
+    
+    this.timeout = timeout;
+    return this;
+  }
+
+   /**
+   * The maximum length of time this UDF is allowed to execute for before it is killed and fails. If not present (or zero), the function is allowed to run indefinitely (subject to the server’s global limits). 
+   * @return timeout
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The maximum length of time this UDF is allowed to execute for before it is killed and fails. If not present (or zero), the function is allowed to run indefinitely (subject to the server’s global limits). ")
+
+  public BigDecimal getTimeout() {
+    return timeout;
+  }
+
+
+  public void setTimeout(BigDecimal timeout) {
+    this.timeout = timeout;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public TGUDFEnvironment putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -220,9 +338,13 @@ public class TGUDFEnvironment {
     return Objects.equals(this.language, tgUDFEnvironment.language) &&
         Objects.equals(this.languageVersion, tgUDFEnvironment.languageVersion) &&
         Objects.equals(this.imageName, tgUDFEnvironment.imageName) &&
+        Objects.equals(this.accessCredentialsName, tgUDFEnvironment.accessCredentialsName) &&
         Objects.equals(this.namespace, tgUDFEnvironment.namespace) &&
         Objects.equals(this.resourceClass, tgUDFEnvironment.resourceClass) &&
-        Objects.equals(this.runClientSide, tgUDFEnvironment.runClientSide);
+        Objects.equals(this.resources, tgUDFEnvironment.resources) &&
+        Objects.equals(this.runClientSide, tgUDFEnvironment.runClientSide) &&
+        Objects.equals(this.timeout, tgUDFEnvironment.timeout)&&
+        Objects.equals(this.additionalProperties, tgUDFEnvironment.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -231,7 +353,7 @@ public class TGUDFEnvironment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(language, languageVersion, imageName, namespace, resourceClass, runClientSide);
+    return Objects.hash(language, languageVersion, imageName, accessCredentialsName, namespace, resourceClass, resources, runClientSide, timeout, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -248,9 +370,13 @@ public class TGUDFEnvironment {
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    languageVersion: ").append(toIndentedString(languageVersion)).append("\n");
     sb.append("    imageName: ").append(toIndentedString(imageName)).append("\n");
+    sb.append("    accessCredentialsName: ").append(toIndentedString(accessCredentialsName)).append("\n");
     sb.append("    namespace: ").append(toIndentedString(namespace)).append("\n");
     sb.append("    resourceClass: ").append(toIndentedString(resourceClass)).append("\n");
+    sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    runClientSide: ").append(toIndentedString(runClientSide)).append("\n");
+    sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -276,9 +402,12 @@ public class TGUDFEnvironment {
     openapiFields.add("language");
     openapiFields.add("language_version");
     openapiFields.add("image_name");
+    openapiFields.add("access_credentials_name");
     openapiFields.add("namespace");
     openapiFields.add("resource_class");
+    openapiFields.add("resources");
     openapiFields.add("run_client_side");
+    openapiFields.add("timeout");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -298,25 +427,24 @@ public class TGUDFEnvironment {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TGUDFEnvironment is not found in the empty JSON string", TGUDFEnvironment.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-//      for (Entry<String, JsonElement> entry : entries) {
-//        if (!TGUDFEnvironment.openapiFields.contains(entry.getKey())) {
-//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TGUDFEnvironment` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-//        }
-//      }
-      if (jsonObj.get("language_version") != null && !jsonObj.get("language_version").isJsonPrimitive()) {
+      if ((jsonObj.get("language_version") != null && !jsonObj.get("language_version").isJsonNull()) && !jsonObj.get("language_version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `language_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language_version").toString()));
       }
-      if (jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonPrimitive()) {
+      if ((jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonNull()) && !jsonObj.get("image_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_name").toString()));
       }
-      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if ((jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonNull()) && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `access_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_credentials_name").toString()));
+      }
+      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
       }
-      if (jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonPrimitive()) {
+      if ((jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonNull()) && !jsonObj.get("resource_class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `resource_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_class").toString()));
+      }
+      // validate the optional field `resources`
+      if (jsonObj.get("resources") != null && !jsonObj.get("resources").isJsonNull()) {
+        TGUDFEnvironmentResources.validateJsonObject(jsonObj.getAsJsonObject("resources"));
       }
   }
 
@@ -335,6 +463,23 @@ public class TGUDFEnvironment {
            @Override
            public void write(JsonWriter out, TGUDFEnvironment value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -342,7 +487,25 @@ public class TGUDFEnvironment {
            public TGUDFEnvironment read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             TGUDFEnvironment instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

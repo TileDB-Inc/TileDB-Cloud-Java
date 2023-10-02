@@ -27,7 +27,6 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.tiledb.cloud.rest_api.JSON;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -37,15 +36,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
+
+import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * Synchronous Task to Run
  */
 @ApiModel(description = "Synchronous Task to Run")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class ArrayTask {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -54,6 +55,10 @@ public class ArrayTask {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_USERNAME = "username";
+  @SerializedName(SERIALIZED_NAME_USERNAME)
+  private String username;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -82,6 +87,10 @@ public class ArrayTask {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private ArrayTaskStatus status;
+
+  public static final String SERIALIZED_NAME_STATUS_MESSAGE = "status_message";
+  @SerializedName(SERIALIZED_NAME_STATUS_MESSAGE)
+  private String statusMessage;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
@@ -155,7 +164,7 @@ public class ArrayTask {
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_UUID)
   private String clientNodeUuid;
 
-  public ArrayTask() { 
+  public ArrayTask() {
   }
 
   public ArrayTask id(String id) {
@@ -201,6 +210,29 @@ public class ArrayTask {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public ArrayTask username(String username) {
+    
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * username that executed this task
+   * @return username
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "demo", value = "username that executed this task")
+
+  public String getUsername() {
+    return username;
+  }
+
+
+  public void setUsername(String username) {
+    this.username = username;
   }
 
 
@@ -362,6 +394,29 @@ public class ArrayTask {
 
   public void setStatus(ArrayTaskStatus status) {
     this.status = status;
+  }
+
+
+  public ArrayTask statusMessage(String statusMessage) {
+    
+    this.statusMessage = statusMessage;
+    return this;
+  }
+
+   /**
+   * The reason the array task status is in the state
+   * @return statusMessage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The reason the array task status is in the state")
+
+  public String getStatusMessage() {
+    return statusMessage;
+  }
+
+
+  public void setStatusMessage(String statusMessage) {
+    this.statusMessage = statusMessage;
   }
 
 
@@ -802,6 +857,41 @@ public class ArrayTask {
     this.clientNodeUuid = clientNodeUuid;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public ArrayTask putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -815,6 +905,7 @@ public class ArrayTask {
     ArrayTask arrayTask = (ArrayTask) o;
     return Objects.equals(this.id, arrayTask.id) &&
         Objects.equals(this.name, arrayTask.name) &&
+        Objects.equals(this.username, arrayTask.username) &&
         Objects.equals(this.description, arrayTask.description) &&
         Objects.equals(this.arrayMetadata, arrayTask.arrayMetadata) &&
         Objects.equals(this.subarray, arrayTask.subarray) &&
@@ -822,6 +913,7 @@ public class ArrayTask {
         Objects.equals(this.cpu, arrayTask.cpu) &&
         Objects.equals(this.namespace, arrayTask.namespace) &&
         Objects.equals(this.status, arrayTask.status) &&
+        Objects.equals(this.statusMessage, arrayTask.statusMessage) &&
         Objects.equals(this.startTime, arrayTask.startTime) &&
         Objects.equals(this.finishTime, arrayTask.finishTime) &&
         Objects.equals(this.cost, arrayTask.cost) &&
@@ -839,7 +931,8 @@ public class ArrayTask {
         Objects.equals(this.sqlParameters, arrayTask.sqlParameters) &&
         Objects.equals(this.resultFormat, arrayTask.resultFormat) &&
         Objects.equals(this.taskGraphUuid, arrayTask.taskGraphUuid) &&
-        Objects.equals(this.clientNodeUuid, arrayTask.clientNodeUuid);
+        Objects.equals(this.clientNodeUuid, arrayTask.clientNodeUuid)&&
+        Objects.equals(this.additionalProperties, arrayTask.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -848,7 +941,7 @@ public class ArrayTask {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, arrayMetadata, subarray, memory, cpu, namespace, status, startTime, finishTime, cost, egressCost, accessCost, queryType, udfCode, udfLanguage, sqlQuery, type, activity, logs, duration, sqlInitCommands, sqlParameters, resultFormat, taskGraphUuid, clientNodeUuid);
+    return Objects.hash(id, name, username, description, arrayMetadata, subarray, memory, cpu, namespace, status, statusMessage, startTime, finishTime, cost, egressCost, accessCost, queryType, udfCode, udfLanguage, sqlQuery, type, activity, logs, duration, sqlInitCommands, sqlParameters, resultFormat, taskGraphUuid, clientNodeUuid, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -864,6 +957,7 @@ public class ArrayTask {
     sb.append("class ArrayTask {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    arrayMetadata: ").append(toIndentedString(arrayMetadata)).append("\n");
     sb.append("    subarray: ").append(toIndentedString(subarray)).append("\n");
@@ -871,6 +965,7 @@ public class ArrayTask {
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
     sb.append("    namespace: ").append(toIndentedString(namespace)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    statusMessage: ").append(toIndentedString(statusMessage)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    finishTime: ").append(toIndentedString(finishTime)).append("\n");
     sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
@@ -889,6 +984,7 @@ public class ArrayTask {
     sb.append("    resultFormat: ").append(toIndentedString(resultFormat)).append("\n");
     sb.append("    taskGraphUuid: ").append(toIndentedString(taskGraphUuid)).append("\n");
     sb.append("    clientNodeUuid: ").append(toIndentedString(clientNodeUuid)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -913,6 +1009,7 @@ public class ArrayTask {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("name");
+    openapiFields.add("username");
     openapiFields.add("description");
     openapiFields.add("array_metadata");
     openapiFields.add("subarray");
@@ -920,6 +1017,7 @@ public class ArrayTask {
     openapiFields.add("cpu");
     openapiFields.add("namespace");
     openapiFields.add("status");
+    openapiFields.add("status_message");
     openapiFields.add("start_time");
     openapiFields.add("finish_time");
     openapiFields.add("cost");
@@ -957,41 +1055,39 @@ public class ArrayTask {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayTask is not found in the empty JSON string", ArrayTask.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-//      for (Entry<String, JsonElement> entry : entries) {
-//        if (!ArrayTask.openapiFields.contains(entry.getKey())) {
-//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArrayTask` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-//        }
-//      }
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the optional field `array_metadata`
-      if (jsonObj.getAsJsonObject("array_metadata") != null) {
+      if (jsonObj.get("array_metadata") != null && !jsonObj.get("array_metadata").isJsonNull()) {
         ArrayInfo.validateJsonObject(jsonObj.getAsJsonObject("array_metadata"));
       }
       // validate the optional field `subarray`
-      if (jsonObj.getAsJsonObject("subarray") != null) {
+      if (jsonObj.get("subarray") != null && !jsonObj.get("subarray").isJsonNull()) {
         DomainArray.validateJsonObject(jsonObj.getAsJsonObject("subarray"));
       }
-      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
       }
-      if (jsonObj.get("udf_code") != null && !jsonObj.get("udf_code").isJsonPrimitive()) {
+      if ((jsonObj.get("status_message") != null && !jsonObj.get("status_message").isJsonNull()) && !jsonObj.get("status_message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status_message").toString()));
+      }
+      if ((jsonObj.get("udf_code") != null && !jsonObj.get("udf_code").isJsonNull()) && !jsonObj.get("udf_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `udf_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("udf_code").toString()));
       }
-      if (jsonObj.get("udf_language") != null && !jsonObj.get("udf_language").isJsonPrimitive()) {
+      if ((jsonObj.get("udf_language") != null && !jsonObj.get("udf_language").isJsonNull()) && !jsonObj.get("udf_language").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `udf_language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("udf_language").toString()));
       }
-      if (jsonObj.get("sql_query") != null && !jsonObj.get("sql_query").isJsonPrimitive()) {
+      if ((jsonObj.get("sql_query") != null && !jsonObj.get("sql_query").isJsonNull()) && !jsonObj.get("sql_query").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sql_query` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sql_query").toString()));
       }
       JsonArray jsonArrayactivity = jsonObj.getAsJsonArray("activity");
@@ -1006,21 +1102,21 @@ public class ArrayTask {
           ArrayActivityLog.validateJsonObject(jsonArrayactivity.get(i).getAsJsonObject());
         };
       }
-      if (jsonObj.get("logs") != null && !jsonObj.get("logs").isJsonPrimitive()) {
+      if ((jsonObj.get("logs") != null && !jsonObj.get("logs").isJsonNull()) && !jsonObj.get("logs").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `logs` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logs").toString()));
       }
       // ensure the json data is an array
-      if (jsonObj.get("sql_init_commands") != null && !jsonObj.get("sql_init_commands").isJsonArray()) {
+      if ((jsonObj.get("sql_init_commands") != null && !jsonObj.get("sql_init_commands").isJsonNull()) && !jsonObj.get("sql_init_commands").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `sql_init_commands` to be an array in the JSON string but got `%s`", jsonObj.get("sql_init_commands").toString()));
       }
       // ensure the json data is an array
-      if (jsonObj.get("sql_parameters") != null && !jsonObj.get("sql_parameters").isJsonArray()) {
+      if ((jsonObj.get("sql_parameters") != null && !jsonObj.get("sql_parameters").isJsonNull()) && !jsonObj.get("sql_parameters").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `sql_parameters` to be an array in the JSON string but got `%s`", jsonObj.get("sql_parameters").toString()));
       }
-      if (jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonNull()) && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `task_graph_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_graph_uuid").toString()));
       }
-      if (jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonNull()) && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
       }
   }
@@ -1040,6 +1136,23 @@ public class ArrayTask {
            @Override
            public void write(JsonWriter out, ArrayTask value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -1047,7 +1160,25 @@ public class ArrayTask {
            public ArrayTask read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             ArrayTask instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

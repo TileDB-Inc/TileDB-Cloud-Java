@@ -22,11 +22,11 @@ Create a tiledb file at the specified location
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.FilesApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import FilesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -87,6 +87,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | File created |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="handleExportFile"></a>
@@ -105,7 +106,7 @@ Export a TileDB File back to its original file format
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FilesApi;
 
 public class Example {
@@ -167,6 +168,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | File exported |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="handleUploadFile"></a>
@@ -185,7 +187,7 @@ Upload a tiledb file at the specified location
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import FilesApi;
 
 public class Example {
@@ -251,5 +253,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | File uploaded |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

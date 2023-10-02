@@ -13,17 +13,16 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.model.SQLParameters;
+import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ApiCallback;
-import io.tiledb.cloud.rest_api.Configuration;
 
 import com.google.gson.reflect.TypeToken;
 
-
-import io.tiledb.cloud.rest_api.model.SQLParameters;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -81,6 +80,7 @@ public class SqlApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
         <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -154,24 +154,25 @@ public class SqlApi {
     }
 
     /**
-     * 
+     *
      * Run a sql query
      * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
      * @param sql sql being submitted (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return List&lt;Object&gt;
+     * @return ApiResponse with byte[]
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
-        <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
-        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
-     </table>
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+    </table>
      */
-    public List<Object> runSQL(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
-        ApiResponse<List<Object>> localVarResp = runSQLWithHttpInfo(namespace, sql, acceptEncoding);
-        return localVarResp.getData();
+    public ApiResponse<byte[]> runSQLWithHttpInfoBytes(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = runSQLValidateBeforeCall(namespace, sql, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -201,6 +202,28 @@ public class SqlApi {
      * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
      * @param sql sql being submitted (required)
      * @param acceptEncoding Encoding to use (optional)
+     * @return List&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<Object> runSQL(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
+        ApiResponse<List<Object>> localVarResp = runSQLWithHttpInfo(namespace, sql, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Run a sql query
+     * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
+     * @param sql sql being submitted (required)
+     * @param acceptEncoding Encoding to use (optional)
      * @return ApiResponse&lt;List&lt;Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -208,34 +231,13 @@ public class SqlApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
         <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<Object>> runSQLWithHttpInfo(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
         okhttp3.Call localVarCall = runSQLValidateBeforeCall(namespace, sql, acceptEncoding, null);
         Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *
-     * Run a sql query
-     * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
-     * @param sql sql being submitted (required)
-     * @param acceptEncoding Encoding to use (optional)
-     * @return ApiResponse with byte[]
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-    <table summary="Response Details" border="1">
-    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-    <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
-    <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
-    <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
-    </table>
-     */
-    public ApiResponse<byte[]> runSQLWithHttpInfoBytes(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
-        okhttp3.Call localVarCall = runSQLValidateBeforeCall(namespace, sql, acceptEncoding, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -253,6 +255,7 @@ public class SqlApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
         <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */

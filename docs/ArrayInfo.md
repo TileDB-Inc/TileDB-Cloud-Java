@@ -22,7 +22,7 @@ metadata of an array
 |**subscriptions** | [**List&lt;Subscription&gt;**](Subscription.md) | list of subscriptions created for this array |  [optional] |
 |**logo** | **String** | logo (base64 encoded) for the array. Optional |  [optional] |
 |**accessCredentialsName** | **String** | the name of the access credentials to use. if unset, the default credentials will be used |  [optional] |
-|**type** | **String** | Array type (dense, key-value, sparse) |  [optional] |
+|**type** | **ArrayType** |  |  [optional] |
 |**shareCount** | **BigDecimal** | number of unique namespaces this array is shared with |  [optional] |
 |**publicShare** | **Boolean** | Suggests if the array was shared to public by owner |  [optional] |
 |**namespaceSubscribed** | **Boolean** | Depends on the namespace asking, denotes the existence of subscription of namespace to this array |  [optional] [readonly] |

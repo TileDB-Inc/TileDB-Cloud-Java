@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.tiledb.cloud.rest_api.JSON;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -34,15 +32,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
+
+import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * ArraySchema during creation or retrieval
  */
 @ApiModel(description = "ArraySchema during creation or retrieval")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class ArraySchema {
   public static final String SERIALIZED_NAME_URI = "uri";
   @SerializedName(SERIALIZED_NAME_URI)
@@ -88,7 +88,7 @@ public class ArraySchema {
   @SerializedName(SERIALIZED_NAME_ALLOWS_DUPLICATES)
   private Boolean allowsDuplicates;
 
-  public ArraySchema() { 
+  public ArraySchema() {
   }
 
   public ArraySchema uri(String uri) {
@@ -353,6 +353,41 @@ public class ArraySchema {
     this.allowsDuplicates = allowsDuplicates;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public ArraySchema putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -374,12 +409,13 @@ public class ArraySchema {
         Objects.equals(this.offsetFilterPipeline, arraySchema.offsetFilterPipeline) &&
         Objects.equals(this.domain, arraySchema.domain) &&
         Objects.equals(this.attributes, arraySchema.attributes) &&
-        Objects.equals(this.allowsDuplicates, arraySchema.allowsDuplicates);
+        Objects.equals(this.allowsDuplicates, arraySchema.allowsDuplicates)&&
+        Objects.equals(this.additionalProperties, arraySchema.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uri, version, arrayType, tileOrder, cellOrder, capacity, coordsFilterPipeline, offsetFilterPipeline, domain, attributes, allowsDuplicates);
+    return Objects.hash(uri, version, arrayType, tileOrder, cellOrder, capacity, coordsFilterPipeline, offsetFilterPipeline, domain, attributes, allowsDuplicates, additionalProperties);
   }
 
   @Override
@@ -397,6 +433,7 @@ public class ArraySchema {
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    allowsDuplicates: ").append(toIndentedString(allowsDuplicates)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -459,37 +496,29 @@ public class ArraySchema {
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-//      for (Entry<String, JsonElement> entry : entries) {
-//        if (!ArraySchema.openapiFields.contains(entry.getKey())) {
-//          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArraySchema` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-//        }
-//      }
-
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ArraySchema.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonPrimitive()) {
+      if ((jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonNull()) && !jsonObj.get("uri").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
       }
       // ensure the json data is an array
-      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonArray()) {
+      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `version` to be an array in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
       // validate the optional field `coordsFilterPipeline`
-      if (jsonObj.getAsJsonObject("coordsFilterPipeline") != null) {
+      if (jsonObj.get("coordsFilterPipeline") != null && !jsonObj.get("coordsFilterPipeline").isJsonNull()) {
         FilterPipeline.validateJsonObject(jsonObj.getAsJsonObject("coordsFilterPipeline"));
       }
       // validate the optional field `offsetFilterPipeline`
-      if (jsonObj.getAsJsonObject("offsetFilterPipeline") != null) {
+      if (jsonObj.get("offsetFilterPipeline") != null && !jsonObj.get("offsetFilterPipeline").isJsonNull()) {
         FilterPipeline.validateJsonObject(jsonObj.getAsJsonObject("offsetFilterPipeline"));
       }
       // validate the optional field `domain`
-      if (jsonObj.getAsJsonObject("domain") != null) {
+      if (jsonObj.get("domain") != null && !jsonObj.get("domain").isJsonNull()) {
         Domain.validateJsonObject(jsonObj.getAsJsonObject("domain"));
       }
       JsonArray jsonArrayattributes = jsonObj.getAsJsonArray("attributes");
@@ -510,28 +539,28 @@ public class ArraySchema {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ArraySchema.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ArraySchema' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ArraySchema> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ArraySchema.class));
+      if (!ArraySchema.class.isAssignableFrom(type.getRawType())) {
+        return null; // this class only serializes 'ArraySchema' and its subtypes
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<ArraySchema> thisAdapter
+              = gson.getDelegateAdapter(this, TypeToken.get(ArraySchema.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ArraySchema>() {
-           @Override
-           public void write(JsonWriter out, ArraySchema value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
+      return (TypeAdapter<T>) new TypeAdapter<ArraySchema>() {
+        @Override
+        public void write(JsonWriter out, ArraySchema value) throws IOException {
+          JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+          elementAdapter.write(out, obj);
+        }
 
-           @Override
-           public ArraySchema read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
+        @Override
+        public ArraySchema read(JsonReader in) throws IOException {
+          JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+          validateJsonObject(jsonObj);
+          return thisAdapter.fromJsonTree(jsonObj);
+        }
 
-       }.nullSafe();
+      }.nullSafe();
     }
   }
 

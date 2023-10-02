@@ -8,15 +8,21 @@ All URIs are relative to */v1*
 | [**addUserToOrganization**](OrganizationApi.md#addUserToOrganization) | **POST** /organizations/{organization}/user |  |
 | [**checkAWSAccessCredentials**](OrganizationApi.md#checkAWSAccessCredentials) | **GET** /credentials/{namespace}/aws |  |
 | [**checkAWSAccessCredentialsByName**](OrganizationApi.md#checkAWSAccessCredentialsByName) | **GET** /credentials/{namespace}/aws/{name} |  |
+| [**checkSSODomain**](OrganizationApi.md#checkSSODomain) | **POST** /organizations/{organization}/sso_domains/{uuid}/run_check |  |
 | [**createOrganization**](OrganizationApi.md#createOrganization) | **POST** /organization |  |
+| [**createSSODomain**](OrganizationApi.md#createSSODomain) | **POST** /organizations/{organization}/sso_domain |  |
 | [**deleteAWSAccessCredentials**](OrganizationApi.md#deleteAWSAccessCredentials) | **DELETE** /credentials/{namespace}/aws/{name} |  |
 | [**deleteOrganization**](OrganizationApi.md#deleteOrganization) | **DELETE** /organizations/{organization} |  |
+| [**deleteSSODomain**](OrganizationApi.md#deleteSSODomain) | **DELETE** /organizations/{organization}/sso_domains/{uuid} |  |
 | [**deleteUserFromOrganization**](OrganizationApi.md#deleteUserFromOrganization) | **DELETE** /organizations/{organization}/{username} |  |
 | [**getAllOrganizations**](OrganizationApi.md#getAllOrganizations) | **GET** /organizations |  |
 | [**getOrganization**](OrganizationApi.md#getOrganization) | **GET** /organizations/{organization} |  |
 | [**getOrganizationUser**](OrganizationApi.md#getOrganizationUser) | **GET** /organizations/{organization}/{username} |  |
+| [**getSSODomain**](OrganizationApi.md#getSSODomain) | **GET** /organizations/{organization}/sso_domains/{uuid} |  |
+| [**getSSODomains**](OrganizationApi.md#getSSODomains) | **GET** /organizations/{organization}/sso_domains |  |
 | [**updateAWSAccessCredentials**](OrganizationApi.md#updateAWSAccessCredentials) | **PATCH** /credentials/{namespace}/aws/{name} |  |
 | [**updateOrganization**](OrganizationApi.md#updateOrganization) | **PATCH** /organizations/{organization} |  |
+| [**updateSSODomain**](OrganizationApi.md#updateSSODomain) | **PATCH** /organizations/{organization}/sso_domains/{uuid} |  |
 | [**updateUserInOrganization**](OrganizationApi.md#updateUserInOrganization) | **PATCH** /organizations/{organization}/{username} |  |
 
 
@@ -33,11 +39,11 @@ Add aws keys
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.OrganizationApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import OrganizationApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -95,6 +101,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | AWS keys added successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="addUserToOrganization"></a>
@@ -113,7 +120,7 @@ add a user to an organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -172,6 +179,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user added to organization successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="checkAWSAccessCredentials"></a>
@@ -190,7 +198,7 @@ Check if aws keys are set
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -248,6 +256,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | AWS keys are set |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="checkAWSAccessCredentialsByName"></a>
@@ -266,7 +275,7 @@ Check if aws keys are set by name
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -326,6 +335,85 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | AWS keys are set |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="checkSSODomain"></a>
+# **checkSSODomain**
+> DomainCheckResult checkSSODomain(organization, uuid)
+
+
+
+Immediately verify ownership of the specified SSO domain ownership claim. 
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import OrganizationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        OrganizationApi apiInstance = new OrganizationApi(defaultClient);
+        String organization = "organization_example"; // String | organization name
+        String uuid = "uuid_example"; // String | configuration ID
+        try {
+            DomainCheckResult result = apiInstance.checkSSODomain(organization, uuid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationApi#checkSSODomain");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **uuid** | **String**| configuration ID | |
+
+### Return type
+
+[**DomainCheckResult**](DomainCheckResult.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The check executed. Detailed results are available in the response.  |  -  |
 | **0** | error response |  -  |
 
 <a name="createOrganization"></a>
@@ -344,7 +432,7 @@ create a organization, the user creating will be listed as owner
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -401,6 +489,85 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | organization created successfully |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="createSSODomain"></a>
+# **createSSODomain**
+> SSODomainConfig createSSODomain(organization, config)
+
+
+
+Create a new SSO connection that connects this organization to this domain. 
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import OrganizationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        OrganizationApi apiInstance = new OrganizationApi(defaultClient);
+        String organization = "organization_example"; // String | organization name
+        SSODomainConfig config = new SSODomainConfig(); // SSODomainConfig | The SSO connection to create.
+        try {
+            SSODomainConfig result = apiInstance.createSSODomain(organization, config);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationApi#createSSODomain");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **config** | [**SSODomainConfig**](SSODomainConfig.md)| The SSO connection to create. | |
+
+### Return type
+
+[**SSODomainConfig**](SSODomainConfig.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Claim created successfully. |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteAWSAccessCredentials"></a>
@@ -419,7 +586,7 @@ delete a AWS Access credentials in a namespace. This will likely cause arrays to
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -478,6 +645,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | AWS credentials deleted |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteOrganization"></a>
@@ -496,7 +664,7 @@ delete a organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -553,6 +721,84 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | organization deleted |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="deleteSSODomain"></a>
+# **deleteSSODomain**
+> deleteSSODomain(organization, uuid)
+
+
+
+Deletes the configuration for the given SSO connection.
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import OrganizationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        OrganizationApi apiInstance = new OrganizationApi(defaultClient);
+        String organization = "organization_example"; // String | organization name
+        String uuid = "uuid_example"; // String | configuration ID
+        try {
+            apiInstance.deleteSSODomain(organization, uuid);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationApi#deleteSSODomain");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **uuid** | **String**| configuration ID | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Deletion successful. |  -  |
 | **0** | error response |  -  |
 
 <a name="deleteUserFromOrganization"></a>
@@ -571,7 +817,7 @@ delete a user from an organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -630,6 +876,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user delete from organization successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getAllOrganizations"></a>
@@ -648,7 +895,7 @@ get all organizations that the user is member of
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -704,6 +951,7 @@ This endpoint does not need any parameter.
 | **200** | array of organizations the user is member of |  -  |
 | **400** | Error finding organizations |  -  |
 | **500** | Request user not found, or has empty context |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getOrganization"></a>
@@ -722,7 +970,7 @@ get a organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -781,6 +1029,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | organization details |  -  |
 | **404** | Organization does not exist |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getOrganizationUser"></a>
@@ -799,7 +1048,7 @@ get a user from an organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -860,6 +1109,161 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | user from organization |  -  |
 | **404** | User is not in organization |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="getSSODomain"></a>
+# **getSSODomain**
+> SSODomainConfig getSSODomain(organization, uuid)
+
+
+
+Gets details about the given SSO domain connection.
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import OrganizationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        OrganizationApi apiInstance = new OrganizationApi(defaultClient);
+        String organization = "organization_example"; // String | organization name
+        String uuid = "uuid_example"; // String | configuration ID
+        try {
+            SSODomainConfig result = apiInstance.getSSODomain(organization, uuid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationApi#getSSODomain");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **uuid** | **String**| configuration ID | |
+
+### Return type
+
+[**SSODomainConfig**](SSODomainConfig.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The details about this domain connection. |  -  |
+| **0** | error response |  -  |
+
+<a name="getSSODomains"></a>
+# **getSSODomains**
+> SSODomainConfigResponse getSSODomains(organization)
+
+
+
+Lists all the SSO connections associated with the given organization. 
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import OrganizationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        OrganizationApi apiInstance = new OrganizationApi(defaultClient);
+        String organization = "organization_example"; // String | organization name
+        try {
+            SSODomainConfigResponse result = apiInstance.getSSODomains(organization);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationApi#getSSODomains");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+
+### Return type
+
+[**SSODomainConfigResponse**](SSODomainConfigResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The SSO domains associated with the org. |  -  |
 | **0** | error response |  -  |
 
 <a name="updateAWSAccessCredentials"></a>
@@ -878,7 +1282,7 @@ Update aws keys or associated buckets. This will update the key associations for
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -939,6 +1343,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | AWS keys updated successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateOrganization"></a>
@@ -957,7 +1362,7 @@ update a organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -1016,6 +1421,87 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | organization updated successfully |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="updateSSODomain"></a>
+# **updateSSODomain**
+> SSODomainConfig updateSSODomain(organization, uuid, config)
+
+
+
+Updates the configuration for the given SSO connection.
+
+### Example
+
+```java
+// Import classes:
+
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import OrganizationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
+
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        OrganizationApi apiInstance = new OrganizationApi(defaultClient);
+        String organization = "organization_example"; // String | organization name
+        String uuid = "uuid_example"; // String | configuration ID
+        SSODomainConfig config = new SSODomainConfig(); // SSODomainConfig | The changes to make to the configuration.
+        try {
+            SSODomainConfig result = apiInstance.updateSSODomain(organization, uuid, config);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrganizationApi#updateSSODomain");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **organization** | **String**| organization name | |
+| **uuid** | **String**| configuration ID | |
+| **config** | [**SSODomainConfig**](SSODomainConfig.md)| The changes to make to the configuration. | |
+
+### Return type
+
+[**SSODomainConfig**](SSODomainConfig.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated details about the SSO connection. |  -  |
 | **0** | error response |  -  |
 
 <a name="updateUserInOrganization"></a>
@@ -1034,7 +1520,7 @@ update a user in an organization
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import OrganizationApi;
 
 public class Example {
@@ -1095,5 +1581,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | user update in organization successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

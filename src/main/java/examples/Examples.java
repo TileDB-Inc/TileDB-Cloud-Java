@@ -6,7 +6,6 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.api.GroupsApi;
 import io.tiledb.cloud.rest_api.api.ArrayApi;
 import io.tiledb.cloud.rest_api.model.*;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.apache.arrow.vector.ValueVector;
 
 import java.math.BigDecimal;
@@ -39,7 +38,7 @@ public class Examples
         runGenericUDF(tileDBClient);
         runArrayUDF(tileDBClient);
         runMultiArrayUDF(tileDBClient);
-        getArraySchema(tileDBClient);
+        getArray(tileDBClient);
 //        createArray(tileDBClient);
 //        registerArray(tileDBClient);
         listArrays(tileDBClient);
@@ -209,12 +208,13 @@ public class Examples
         String namespace = "TileDB-Inc"; // String | namespace
         String orderby = null; // String | sort by which field valid values include last_accessed, size, name
         String permissions = null; // String | permissions valid values include read, read_write, write, admin
+        String groupType = "generic"; // String | filter by a specific group type
         List<String> tag = null; // List<String> | tag to search for, more than one can be included
         List<String> excludeTag = null; // List<String> | tags to exclude matching array in results, more than one can be included
         Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
         String parent = null; // String | search only the children of the groups with this uuid
         try {
-            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
             //or use api.listOwnedGroups(...) / api.listSharedGroups(...)
             System.out.println(result.getGroups());
         } catch (ApiException e) {
@@ -244,8 +244,7 @@ public class Examples
         }
     }
 
-
-    private static void getArraySchema(TileDBClient tileDBClient){
+    private static void getArray(TileDBClient tileDBClient){
         String namespace = "TileDB-Inc"; // String | namespace array is in (an organization name or user's username)
         String array = "quickstart_sparse"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime

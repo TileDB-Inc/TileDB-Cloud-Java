@@ -13,6 +13,7 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
 import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
@@ -22,8 +23,6 @@ import io.tiledb.cloud.rest_api.Pair;
 
 import com.google.gson.reflect.TypeToken;
 
-
-import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -81,6 +80,7 @@ public class NotebooksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> list of timestamps in milliseconds, paginated </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -171,6 +171,7 @@ public class NotebooksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> list of timestamps in milliseconds, paginated </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -192,6 +193,7 @@ public class NotebooksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> list of timestamps in milliseconds, paginated </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -215,6 +217,7 @@ public class NotebooksApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> list of timestamps in milliseconds, paginated </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
@@ -223,6 +226,155 @@ public class NotebooksApi {
         okhttp3.Call localVarCall = notebooksNamespaceArrayEndTimestampsGetValidateBeforeCall(namespace, array, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<ArrayEndTimestampData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for notebooksNamespaceArrayPrunePost
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param keepVersions The number of most recents fragment to preserve (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> notebook pruned </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call notebooksNamespaceArrayPrunePostCall(String namespace, String array, Integer keepVersions, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/notebooks/{namespace}/{array}/prune"
+            .replaceAll("\\{" + "namespace" + "\\}", localVarApiClient.escapeString(namespace.toString()))
+            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (keepVersions != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("keep_versions", keepVersions));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call notebooksNamespaceArrayPrunePostValidateBeforeCall(String namespace, String array, Integer keepVersions, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'namespace' is set
+        if (namespace == null) {
+            throw new ApiException("Missing the required parameter 'namespace' when calling notebooksNamespaceArrayPrunePost(Async)");
+        }
+        
+        // verify the required parameter 'array' is set
+        if (array == null) {
+            throw new ApiException("Missing the required parameter 'array' when calling notebooksNamespaceArrayPrunePost(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = notebooksNamespaceArrayPrunePostCall(namespace, array, keepVersions, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * prune fragments of the notebook
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param keepVersions The number of most recents fragment to preserve (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> notebook pruned </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public void notebooksNamespaceArrayPrunePost(String namespace, String array, Integer keepVersions) throws ApiException {
+        notebooksNamespaceArrayPrunePostWithHttpInfo(namespace, array, keepVersions);
+    }
+
+    /**
+     * 
+     * prune fragments of the notebook
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param keepVersions The number of most recents fragment to preserve (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> notebook pruned </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> notebooksNamespaceArrayPrunePostWithHttpInfo(String namespace, String array, Integer keepVersions) throws ApiException {
+        okhttp3.Call localVarCall = notebooksNamespaceArrayPrunePostValidateBeforeCall(namespace, array, keepVersions, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * prune fragments of the notebook
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param keepVersions The number of most recents fragment to preserve (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> notebook pruned </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> Bad Gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call notebooksNamespaceArrayPrunePostAsync(String namespace, String array, Integer keepVersions, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = notebooksNamespaceArrayPrunePostValidateBeforeCall(namespace, array, keepVersions, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

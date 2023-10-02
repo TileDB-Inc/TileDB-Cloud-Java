@@ -24,23 +24,23 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 
-import io.tiledb.cloud.rest_api.JSON;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
+
+import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * Invitations to share or collaborate
  */
 @ApiModel(description = "Invitations to share or collaborate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class Invitation {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -53,6 +53,10 @@ public class Invitation {
   public static final String SERIALIZED_NAME_OWNER_NAMESPACE_UUID = "owner_namespace_uuid";
   @SerializedName(SERIALIZED_NAME_OWNER_NAMESPACE_UUID)
   private String ownerNamespaceUuid;
+
+  public static final String SERIALIZED_NAME_INVITER_UUID = "inviter_uuid";
+  @SerializedName(SERIALIZED_NAME_INVITER_UUID)
+  private String inviterUuid;
 
   public static final String SERIALIZED_NAME_USER_NAMESPACE_UUID = "user_namespace_uuid";
   @SerializedName(SERIALIZED_NAME_USER_NAMESPACE_UUID)
@@ -70,9 +74,17 @@ public class Invitation {
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_ROLE)
   private OrganizationRoles organizationRole;
 
+  public static final String SERIALIZED_NAME_ORGANIZATION_UUID = "organization_uuid";
+  @SerializedName(SERIALIZED_NAME_ORGANIZATION_UUID)
+  private String organizationUuid;
+
   public static final String SERIALIZED_NAME_ARRAY_UUID = "array_uuid";
   @SerializedName(SERIALIZED_NAME_ARRAY_UUID)
   private String arrayUuid;
+
+  public static final String SERIALIZED_NAME_GROUP_UUID = "group_uuid";
+  @SerializedName(SERIALIZED_NAME_GROUP_UUID)
+  private String groupUuid;
 
   public static final String SERIALIZED_NAME_ARRAY_NAME = "array_name";
   @SerializedName(SERIALIZED_NAME_ARRAY_NAME)
@@ -85,6 +97,10 @@ public class Invitation {
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   private String actions;
+
+  public static final String SERIALIZED_NAME_GROUP_ACTIONS = "group_actions";
+  @SerializedName(SERIALIZED_NAME_GROUP_ACTIONS)
+  private String groupActions;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -102,7 +118,11 @@ public class Invitation {
   @SerializedName(SERIALIZED_NAME_ACCEPTED_AT)
   private OffsetDateTime acceptedAt;
 
-  public Invitation() { 
+  public static final String SERIALIZED_NAME_NAMESPACE_INVITED = "namespace_invited";
+  @SerializedName(SERIALIZED_NAME_NAMESPACE_INVITED)
+  private String namespaceInvited;
+
+  public Invitation() {
   }
 
   public Invitation id(String id) {
@@ -171,6 +191,29 @@ public class Invitation {
 
   public void setOwnerNamespaceUuid(String ownerNamespaceUuid) {
     this.ownerNamespaceUuid = ownerNamespaceUuid;
+  }
+
+
+  public Invitation inviterUuid(String inviterUuid) {
+    
+    this.inviterUuid = inviterUuid;
+    return this;
+  }
+
+   /**
+   * Unique ID of the user that sent the invitation
+   * @return inviterUuid
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the user that sent the invitation")
+
+  public String getInviterUuid() {
+    return inviterUuid;
+  }
+
+
+  public void setInviterUuid(String inviterUuid) {
+    this.inviterUuid = inviterUuid;
   }
 
 
@@ -266,6 +309,29 @@ public class Invitation {
   }
 
 
+  public Invitation organizationUuid(String organizationUuid) {
+    
+    this.organizationUuid = organizationUuid;
+    return this;
+  }
+
+   /**
+   * Unique ID of the organization whose user(s) accepted the invitation
+   * @return organizationUuid
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the organization whose user(s) accepted the invitation")
+
+  public String getOrganizationUuid() {
+    return organizationUuid;
+  }
+
+
+  public void setOrganizationUuid(String organizationUuid) {
+    this.organizationUuid = organizationUuid;
+  }
+
+
   public Invitation arrayUuid(String arrayUuid) {
     
     this.arrayUuid = arrayUuid;
@@ -286,6 +352,29 @@ public class Invitation {
 
   public void setArrayUuid(String arrayUuid) {
     this.arrayUuid = arrayUuid;
+  }
+
+
+  public Invitation groupUuid(String groupUuid) {
+    
+    this.groupUuid = groupUuid;
+    return this;
+  }
+
+   /**
+   * Unique ID of the group
+   * @return groupUuid
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the group")
+
+  public String getGroupUuid() {
+    return groupUuid;
+  }
+
+
+  public void setGroupUuid(String groupUuid) {
+    this.groupUuid = groupUuid;
   }
 
 
@@ -355,6 +444,29 @@ public class Invitation {
 
   public void setActions(String actions) {
     this.actions = actions;
+  }
+
+
+  public Invitation groupActions(String groupActions) {
+    
+    this.groupActions = groupActions;
+    return this;
+  }
+
+   /**
+   * A comma separated list of GroupActions
+   * @return groupActions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "read,write", value = "A comma separated list of GroupActions")
+
+  public String getGroupActions() {
+    return groupActions;
+  }
+
+
+  public void setGroupActions(String groupActions) {
+    this.groupActions = groupActions;
   }
 
 
@@ -450,6 +562,64 @@ public class Invitation {
   }
 
 
+  public Invitation namespaceInvited(String namespaceInvited) {
+    
+    this.namespaceInvited = namespaceInvited;
+    return this;
+  }
+
+   /**
+   * The namespace invited (user or organization, if it exists in the DB)
+   * @return namespaceInvited
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The namespace invited (user or organization, if it exists in the DB)")
+
+  public String getNamespaceInvited() {
+    return namespaceInvited;
+  }
+
+
+  public void setNamespaceInvited(String namespaceInvited) {
+    this.namespaceInvited = namespaceInvited;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public Invitation putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -463,23 +633,29 @@ public class Invitation {
     return Objects.equals(this.id, invitation.id) &&
         Objects.equals(this.invitationType, invitation.invitationType) &&
         Objects.equals(this.ownerNamespaceUuid, invitation.ownerNamespaceUuid) &&
+        Objects.equals(this.inviterUuid, invitation.inviterUuid) &&
         Objects.equals(this.userNamespaceUuid, invitation.userNamespaceUuid) &&
         Objects.equals(this.organizationUserUuid, invitation.organizationUserUuid) &&
         Objects.equals(this.organizationName, invitation.organizationName) &&
         Objects.equals(this.organizationRole, invitation.organizationRole) &&
+        Objects.equals(this.organizationUuid, invitation.organizationUuid) &&
         Objects.equals(this.arrayUuid, invitation.arrayUuid) &&
+        Objects.equals(this.groupUuid, invitation.groupUuid) &&
         Objects.equals(this.arrayName, invitation.arrayName) &&
         Objects.equals(this.email, invitation.email) &&
         Objects.equals(this.actions, invitation.actions) &&
+        Objects.equals(this.groupActions, invitation.groupActions) &&
         Objects.equals(this.status, invitation.status) &&
         Objects.equals(this.createdAt, invitation.createdAt) &&
         Objects.equals(this.expiresAt, invitation.expiresAt) &&
-        Objects.equals(this.acceptedAt, invitation.acceptedAt);
+        Objects.equals(this.acceptedAt, invitation.acceptedAt) &&
+        Objects.equals(this.namespaceInvited, invitation.namespaceInvited)&&
+        Objects.equals(this.additionalProperties, invitation.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, invitationType, ownerNamespaceUuid, userNamespaceUuid, organizationUserUuid, organizationName, organizationRole, arrayUuid, arrayName, email, actions, status, createdAt, expiresAt, acceptedAt);
+    return Objects.hash(id, invitationType, ownerNamespaceUuid, inviterUuid, userNamespaceUuid, organizationUserUuid, organizationName, organizationRole, organizationUuid, arrayUuid, groupUuid, arrayName, email, actions, groupActions, status, createdAt, expiresAt, acceptedAt, namespaceInvited, additionalProperties);
   }
 
   @Override
@@ -489,18 +665,24 @@ public class Invitation {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    invitationType: ").append(toIndentedString(invitationType)).append("\n");
     sb.append("    ownerNamespaceUuid: ").append(toIndentedString(ownerNamespaceUuid)).append("\n");
+    sb.append("    inviterUuid: ").append(toIndentedString(inviterUuid)).append("\n");
     sb.append("    userNamespaceUuid: ").append(toIndentedString(userNamespaceUuid)).append("\n");
     sb.append("    organizationUserUuid: ").append(toIndentedString(organizationUserUuid)).append("\n");
     sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
     sb.append("    organizationRole: ").append(toIndentedString(organizationRole)).append("\n");
+    sb.append("    organizationUuid: ").append(toIndentedString(organizationUuid)).append("\n");
     sb.append("    arrayUuid: ").append(toIndentedString(arrayUuid)).append("\n");
+    sb.append("    groupUuid: ").append(toIndentedString(groupUuid)).append("\n");
     sb.append("    arrayName: ").append(toIndentedString(arrayName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
+    sb.append("    groupActions: ").append(toIndentedString(groupActions)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    acceptedAt: ").append(toIndentedString(acceptedAt)).append("\n");
+    sb.append("    namespaceInvited: ").append(toIndentedString(namespaceInvited)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -526,18 +708,23 @@ public class Invitation {
     openapiFields.add("id");
     openapiFields.add("invitation_type");
     openapiFields.add("owner_namespace_uuid");
+    openapiFields.add("inviter_uuid");
     openapiFields.add("user_namespace_uuid");
     openapiFields.add("organization_user_uuid");
     openapiFields.add("organization_name");
     openapiFields.add("organization_role");
+    openapiFields.add("organization_uuid");
     openapiFields.add("array_uuid");
+    openapiFields.add("group_uuid");
     openapiFields.add("array_name");
     openapiFields.add("email");
     openapiFields.add("actions");
+    openapiFields.add("group_actions");
     openapiFields.add("status");
     openapiFields.add("created_at");
     openapiFields.add("expires_at");
     openapiFields.add("accepted_at");
+    openapiFields.add("namespace_invited");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -557,40 +744,47 @@ public class Invitation {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Invitation is not found in the empty JSON string", Invitation.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Invitation.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Invitation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (jsonObj.get("owner_namespace_uuid") != null && !jsonObj.get("owner_namespace_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("owner_namespace_uuid") != null && !jsonObj.get("owner_namespace_uuid").isJsonNull()) && !jsonObj.get("owner_namespace_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `owner_namespace_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner_namespace_uuid").toString()));
       }
-      if (jsonObj.get("user_namespace_uuid") != null && !jsonObj.get("user_namespace_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("inviter_uuid") != null && !jsonObj.get("inviter_uuid").isJsonNull()) && !jsonObj.get("inviter_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `inviter_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("inviter_uuid").toString()));
+      }
+      if ((jsonObj.get("user_namespace_uuid") != null && !jsonObj.get("user_namespace_uuid").isJsonNull()) && !jsonObj.get("user_namespace_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_namespace_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_namespace_uuid").toString()));
       }
-      if (jsonObj.get("organization_user_uuid") != null && !jsonObj.get("organization_user_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("organization_user_uuid") != null && !jsonObj.get("organization_user_uuid").isJsonNull()) && !jsonObj.get("organization_user_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `organization_user_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_user_uuid").toString()));
       }
-      if (jsonObj.get("organization_name") != null && !jsonObj.get("organization_name").isJsonPrimitive()) {
+      if ((jsonObj.get("organization_name") != null && !jsonObj.get("organization_name").isJsonNull()) && !jsonObj.get("organization_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `organization_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_name").toString()));
       }
-      if (jsonObj.get("array_uuid") != null && !jsonObj.get("array_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("organization_uuid") != null && !jsonObj.get("organization_uuid").isJsonNull()) && !jsonObj.get("organization_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `organization_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_uuid").toString()));
+      }
+      if ((jsonObj.get("array_uuid") != null && !jsonObj.get("array_uuid").isJsonNull()) && !jsonObj.get("array_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_uuid").toString()));
       }
-      if (jsonObj.get("array_name") != null && !jsonObj.get("array_name").isJsonPrimitive()) {
+      if ((jsonObj.get("group_uuid") != null && !jsonObj.get("group_uuid").isJsonNull()) && !jsonObj.get("group_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `group_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group_uuid").toString()));
+      }
+      if ((jsonObj.get("array_name") != null && !jsonObj.get("array_name").isJsonNull()) && !jsonObj.get("array_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_name").toString()));
       }
-      if (jsonObj.get("email") != null && !jsonObj.get("email").isJsonPrimitive()) {
+      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
       }
-      if (jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonPrimitive()) {
+      if ((jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonNull()) && !jsonObj.get("actions").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `actions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actions").toString()));
+      }
+      if ((jsonObj.get("group_actions") != null && !jsonObj.get("group_actions").isJsonNull()) && !jsonObj.get("group_actions").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `group_actions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group_actions").toString()));
+      }
+      if ((jsonObj.get("namespace_invited") != null && !jsonObj.get("namespace_invited").isJsonNull()) && !jsonObj.get("namespace_invited").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `namespace_invited` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace_invited").toString()));
       }
   }
 
@@ -609,6 +803,23 @@ public class Invitation {
            @Override
            public void write(JsonWriter out, Invitation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -616,7 +827,25 @@ public class Invitation {
            public Invitation read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             Invitation instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

@@ -35,6 +35,8 @@ public enum ActivityEventType {
   
   QUERY_WRITE("query_write"),
   
+  QUERY_DELETE("query_delete"),
+  
   CREATE("create"),
   
   DELETE("delete"),
@@ -49,7 +51,9 @@ public enum ActivityEventType {
   
   ARRAY_METADATA_UPDATE("array_metadata_update"),
   
-  ESTIMATED_RESULT_SIZES("estimated_result_sizes");
+  ESTIMATED_RESULT_SIZES("estimated_result_sizes"),
+  
+  READ_FRAGMENT_INFO("read_fragment_info");
 
   private String value;
 

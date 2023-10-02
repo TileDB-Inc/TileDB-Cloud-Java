@@ -24,11 +24,11 @@ Get status of the notebook server
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.NotebookApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import NotebookApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -88,6 +88,7 @@ public class Example {
 | **202** | Notebook server is pending |  -  |
 | **402** | Payment required |  -  |
 | **404** | Notebook is not running |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="handleCopyNotebook"></a>
@@ -106,7 +107,7 @@ Copy a tiledb notebook at the specified location
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import NotebookApi;
 
 public class Example {
@@ -172,6 +173,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Notebook copied |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="handleUploadNotebook"></a>
@@ -190,7 +192,7 @@ Upload a notebook at the specified location
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import NotebookApi;
 
 public class Example {
@@ -256,6 +258,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | File uploaded |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="shutdownNotebookServer"></a>
@@ -274,7 +277,7 @@ Shutdown a notebook server
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import NotebookApi;
 
 public class Example {
@@ -332,6 +335,7 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | Notebook shutdown successfully |  -  |
 | **404** | Notebook is not running |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateNotebookName"></a>
@@ -350,7 +354,7 @@ update name on a notebok, moving related S3 object to new location
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import NotebookApi;
 
 public class Example {
@@ -411,5 +415,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | notebook name updated successfully |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

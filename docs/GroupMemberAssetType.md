@@ -19,5 +19,19 @@
 
 * `FILE` (value: `"file"`)
 
+* `BIOIMG` (value: `"bioimg"`)
+
+* `SOMA` (value: `"soma"`)
+
+* `VCF` (value: `"vcf"`)
+
+* `POINTCLOUD` (value: `"pointcloud"`)
+
+* `RASTER` (value: `"raster"`)
+
+* `GEOMETRY` (value: `"geometry"`)
+
+* `VECTOR_SEARCH` (value: `"vector_search"`)
+
 
 

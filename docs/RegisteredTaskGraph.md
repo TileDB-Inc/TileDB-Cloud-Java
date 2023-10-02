@@ -15,7 +15,7 @@ The structure and metadata of a task graph that can be stored on TileDB Cloud an
 |**licenseId** | **String** | SPDX license identifier. |  [optional] |
 |**licenseText** | **String** | Full text of the license. |  [optional] |
 |**tags** | **List&lt;String&gt;** | Optional tags to classify the graph. |  [optional] |
-|**nodes** | [**List&lt;RegisteredTaskGraphNode&gt;**](RegisteredTaskGraphNode.md) | The structure of the graph, in the form of the nodes that make it up. As with &#x60;TaskGraphLog&#x60;, nodes must topologically sorted, so that any node appears after all the nodes it depends on.  |  [optional] |
+|**nodes** | [**List&lt;TaskGraphNode&gt;**](TaskGraphNode.md) | The structure of the graph, in the form of the nodes that make it up. As with &#x60;TaskGraphLog&#x60;, nodes must topologically sorted, so that any node appears after all the nodes it depends on.  |  [optional] |
 
 
 

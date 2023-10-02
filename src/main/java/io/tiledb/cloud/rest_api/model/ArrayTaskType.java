@@ -33,6 +33,8 @@ public enum ArrayTaskType {
   
   GENERIC_UDF("GENERIC_UDF"),
   
+  BATCH_UDF("BATCH_UDF"),
+  
   CLIENT_COMPUTATION("CLIENT_COMPUTATION");
 
   private String value;

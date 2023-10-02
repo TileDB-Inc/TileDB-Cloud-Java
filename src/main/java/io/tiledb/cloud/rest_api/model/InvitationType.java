@@ -27,6 +27,8 @@ public enum InvitationType {
   
   ARRAY_SHARE("ARRAY_SHARE"),
   
+  GROUP_SHARE("GROUP_SHARE"),
+  
   JOIN_ORGANIZATION("JOIN_ORGANIZATION");
 
   private String value;

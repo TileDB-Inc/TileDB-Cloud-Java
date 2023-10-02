@@ -25,11 +25,11 @@ Delete the given registered task graph.
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.RegisteredTaskGraphsApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import RegisteredTaskGraphsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -87,6 +87,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Task graph successfully deleted. |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getRegisteredTaskGraph"></a>
@@ -105,7 +106,7 @@ Fetch the contents of this registered task graph.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import RegisteredTaskGraphsApi;
 
 public class Example {
@@ -165,6 +166,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The contents of the registered task graph. |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getRegisteredTaskGraphSharingPolicies"></a>
@@ -183,7 +185,7 @@ Get sharing policies for the task graph.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import RegisteredTaskGraphsApi;
 
 public class Example {
@@ -244,6 +246,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | List of all specific sharing policies |  -  |
 | **404** | The task graph does not exist (or the user does not have permission to view policies)  |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="registerRegisteredTaskGraph"></a>
@@ -262,7 +265,7 @@ Register a task graph in the given namespace, with the given name.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import RegisteredTaskGraphsApi;
 
 public class Example {
@@ -323,6 +326,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Task graph registered successfully. |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="shareRegisteredTaskGraph"></a>
@@ -341,7 +345,7 @@ Share a task graph.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import RegisteredTaskGraphsApi;
 
 public class Example {
@@ -403,6 +407,7 @@ null (empty response body)
 |-------------|-------------|------------------|
 | **204** | UDF shared successfully |  -  |
 | **404** | UDF does not exist or user does not have permissions to share UDF |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="updateRegisteredTaskGraph"></a>
@@ -421,7 +426,7 @@ Update the contents of an existing registered task graph.
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import RegisteredTaskGraphsApi;
 
 public class Example {
@@ -482,5 +487,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Task graph updated successfully. |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

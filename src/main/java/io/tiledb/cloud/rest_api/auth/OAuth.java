@@ -13,14 +13,14 @@
 
 package io.tiledb.cloud.rest_api.auth;
 
-import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ApiException;
 
 import java.net.URI;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-14T18:46:41.869452+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class OAuth implements Authentication {
   private String accessToken;
 

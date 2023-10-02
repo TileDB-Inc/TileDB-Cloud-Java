@@ -22,6 +22,8 @@ Logging information about the execution of a task graph.
 |**executionTime** | **String** | The total execution time of all the nodes in this graph, in ISO 8601 format with hours, minutes, and seconds.  |  [optional] |
 |**statusCount** | **Map&lt;String, BigDecimal&gt;** | A mapping from &#x60;ArrayTaskStatus&#x60; string value to the number of nodes in this graph that are in that status.  |  [optional] |
 |**nodes** | [**List&lt;TaskGraphNodeMetadata&gt;**](TaskGraphNodeMetadata.md) | The structure of the graph. This is provided by the client when first setting up the task graph. Thereafter, it is read-only. This must be topographically sorted; that is, each node must appear after all nodes that it depends upon.  |  [optional] |
+|**taskGraphType** | **TaskGraphType** |  |  [optional] |
+|**taskGraphId** | **String** | The UUID of the task graph. |  [optional] |
 
 
 

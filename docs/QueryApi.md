@@ -24,11 +24,11 @@ send a query to run against a specified array/URI registered to a group/project
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.QueryApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import QueryApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -98,6 +98,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | query completed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 | **204** | query completed successfully with no return |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getEstResultSizes"></a>
@@ -116,7 +117,7 @@ send a query to run against a specified array/URI registered to a group/project
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import QueryApi;
 
 public class Example {
@@ -187,6 +188,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | query est result size computed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 | **204** | query completed successfully with no return |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="getFile"></a>
@@ -205,7 +207,7 @@ send a query to run against a specified array/URI registered to a group/project,
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import QueryApi;
 
 public class Example {
@@ -269,6 +271,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | query completed and result bytes are returned |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="submitQuery"></a>
@@ -287,7 +290,7 @@ send a query to run against a specified array/URI registered to a group/project
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import QueryApi;
 
 public class Example {
@@ -358,6 +361,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | query completed and results are returned in query object |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 | **204** | query completed successfully with no return |  -  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
 <a name="submitQueryJson"></a>
@@ -376,7 +380,7 @@ send a query to run against a specified array/URI registered to a group/project,
 import ApiClient;
 import ApiException;
 import Configuration;
-import org.openapitools.client.models.*;
+import io.tiledb.cloud.rest_api.models.*;
 import QueryApi;
 
 public class Example {
@@ -442,5 +446,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | query completed and results are returned in JSON format |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

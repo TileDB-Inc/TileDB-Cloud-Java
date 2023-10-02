@@ -20,11 +20,11 @@ Run a sql query
 ```java
 // Import classes:
 
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.model.*;
-import io.tiledb.cloud.rest_api.api.SqlApi;
+import ApiClient;
+import ApiException;
+import Configuration;
+import io.tiledb.cloud.rest_api.models.*;
+import SqlApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -86,5 +86,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | JSON results in array of objects form, if the query returns results |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 | **204** | SQL executed successfully |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
+| **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 

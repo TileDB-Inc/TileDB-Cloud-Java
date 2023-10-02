@@ -19,6 +19,7 @@ metadata of a group
 |**size** | **BigDecimal** | A count of direct members. This is the sum of asset_count and group_count |  [optional] |
 |**lastAccessed** | **OffsetDateTime** | Datetime groups was last accessed in UTC |  [optional] |
 |**allowedActions** | **List&lt;GroupActions&gt;** | list of actions user is allowed to do on this group |  [optional] |
+|**groupType** | **GroupType** |  |  [optional] |
 |**logo** | **String** | logo (base64 encoded) for the gruop. Optional |  [optional] |
 |**accessCredentialsName** | **String** | the name of the access credentials to use. if unset, the default credentials will be used |  [optional] |
 |**shareCount** | **BigDecimal** | number of unique namespaces this group is shared with |  [optional] |
