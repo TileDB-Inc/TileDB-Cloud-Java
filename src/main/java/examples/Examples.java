@@ -33,6 +33,7 @@ public class Examples
 //      If the "RememberME" option is set to true in your first login you can access TileDB-Cloud without the need
 //      to pass any credentials from now on. Just create the client as follows:
 //      TileDBClient tileDBClient = new TileDBClient();
+        tileDBClient.setDebugging(true);
 
 
 //        Uncomment to run whichever example you want

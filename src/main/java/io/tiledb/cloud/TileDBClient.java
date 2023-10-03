@@ -120,6 +120,14 @@ public class TileDBClient{
     }
 
     /**
+     * Enables debugging logs
+     * @param flag True to enable
+     */
+    public void setDebugging(boolean flag){
+        this.apiClient.setDebugging(flag);
+    }
+
+    /**
      * This method throws a warning if there is no login information in the json file or passed
      * as a parameter. If the login information has data it calls another helper method to save it.
      * @param tileDBLogin
