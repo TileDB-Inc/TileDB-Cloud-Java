@@ -18,7 +18,7 @@ import static io.tiledb.cloud.TileDBUtils.serializeArgs;
 
 public class Examples
 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ApiException {
 
 //      if using cloud for the first time create the client with a Login object to pass your credentials.
         TileDBClient tileDBClient = new TileDBClient(
@@ -27,7 +27,8 @@ public class Examples
                         System.getenv("API_TOKEN"),
                         true,
                         true,
-                        true));
+                        true,
+                        "https://api.tiledb.com"));
 
 //      If the "RememberME" option is set to true in your first login you can access TileDB-Cloud without the need
 //      to pass any credentials from now on. Just create the client as follows:
