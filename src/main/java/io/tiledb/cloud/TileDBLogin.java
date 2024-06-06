@@ -58,15 +58,13 @@ public class TileDBLogin {
      */
     public TileDBLogin(String username, String password, String apiKey, boolean verifySSL,
                        boolean rememberMe, boolean overwritePrevious, String host) throws ApiException {
-        if (host.equals("https://api.tiledb.com/v2")){
-            throw new ApiException("https://api.tiledb.com/v2 is not yet supported");
-        }
+
         this.password = password;
         this.username = username;
         this.apiKey = apiKey;
         this.verifySSL = verifySSL;
         this.rememberMe = rememberMe;
-        this.host = host;
+        this.host = host + "/v1";
         this.overwritePrevious = overwritePrevious;
     }
 
