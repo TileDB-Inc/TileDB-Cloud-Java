@@ -2,10 +2,10 @@ package examples;
 
 // Import classes:
 import io.tiledb.cloud.*;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.api.GroupsApi;
-import io.tiledb.cloud.rest_api.api.ArrayApi;
-import io.tiledb.cloud.rest_api.model.*;
+import io.tiledb.cloud.rest_api.v1.ApiException;
+import io.tiledb.cloud.rest_api.v1.api.GroupsApi;
+import io.tiledb.cloud.rest_api.v1.api.ArrayApi;
+import io.tiledb.cloud.rest_api.v1.model.*;
 import org.apache.arrow.vector.ValueVector;
 
 import java.math.BigDecimal;
