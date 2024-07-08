@@ -205,6 +205,7 @@ public class TileDBClient{
     public TileDBClient(OkHttpClient client, TileDBLogin tileDBLogin){
         apiClient = new ApiClient(client);
         setClientCredentials(tileDBLogin);
+        setReadTimeout(0);
     }
 
     /**
@@ -215,6 +216,7 @@ public class TileDBClient{
     public TileDBClient(OkHttpClient client){
         apiClient = new ApiClient(client);
         setClientCredentials(new TileDBLogin());
+        setReadTimeout(0);
     }
 
     /**
@@ -225,6 +227,7 @@ public class TileDBClient{
     public TileDBClient(TileDBLogin tileDBLogin){
         apiClient = new ApiClient();
         setClientCredentials(tileDBLogin);
+        setReadTimeout(0);
     }
 
     /**
@@ -234,6 +237,7 @@ public class TileDBClient{
     public TileDBClient(){
         apiClient = new ApiClient();
         setClientCredentials(new TileDBLogin());
+        setReadTimeout(0);
     }
 
     /**
@@ -247,6 +251,7 @@ public class TileDBClient{
     public TileDBClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters){
         apiClient = new ApiClient(basePath, clientId, clientSecret, parameters);
         setClientCredentials(new TileDBLogin());
+        setReadTimeout(0);
     }
 
     /**
@@ -261,6 +266,7 @@ public class TileDBClient{
     public TileDBClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters, TileDBLogin tileDBLogin){
         apiClient = new ApiClient(basePath, clientId, clientSecret, parameters);
         setClientCredentials(tileDBLogin);
+        setReadTimeout(0);
     }
 
     /**
