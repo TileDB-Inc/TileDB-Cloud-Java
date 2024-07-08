@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.tiledb.cloud.rest_api.JSON;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -37,13 +38,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import io.tiledb.cloud.rest_api.JSON;
-
 /**
  * Information about a single node within a registered task graph. A single node represents one piece of data or a computational step; either as an input value, a data source, or a computation that acts upon earlier nodes. The structure parallels the existing &#x60;TaskGraphNodeMetadata&#x60;. 
  */
 @ApiModel(description = "Information about a single node within a registered task graph. A single node represents one piece of data or a computational step; either as an input value, a data source, or a computation that acts upon earlier nodes. The structure parallels the existing `TaskGraphNodeMetadata`. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class TaskGraphNode {
   public static final String SERIALIZED_NAME_CLIENT_NODE_ID = "client_node_id";
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_ID)

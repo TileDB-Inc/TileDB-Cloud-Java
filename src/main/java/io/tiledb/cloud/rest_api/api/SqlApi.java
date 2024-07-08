@@ -13,8 +13,8 @@
 
 package io.tiledb.cloud.rest_api.api;
 
-import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.model.SQLParameters;
+import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
@@ -30,6 +30,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class SqlApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

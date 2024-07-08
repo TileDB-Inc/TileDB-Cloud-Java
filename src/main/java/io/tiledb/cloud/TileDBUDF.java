@@ -1,8 +1,8 @@
 package io.tiledb.cloud;
 
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.api.UdfApi;
-import io.tiledb.cloud.rest_api.model.*;
+import io.tiledb.cloud.rest_api.v1.ApiException;
+import io.tiledb.cloud.rest_api.v1.api.UdfApi;
+import io.tiledb.cloud.rest_api.v1.model.*;
 import org.apache.arrow.vector.ValueVector;
 import org.json.JSONArray;
 import org.json.JSONObject;

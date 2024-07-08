@@ -43,6 +43,10 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "Response data for a task graph list, including pagination metadata.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class TaskGraphLogsData {
   public static final String SERIALIZED_NAME_TASK_GRAPH_LOGS = "task_graph_logs";
   @SerializedName(SERIALIZED_NAME_TASK_GRAPH_LOGS)

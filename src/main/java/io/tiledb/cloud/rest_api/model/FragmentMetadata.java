@@ -42,6 +42,10 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "Fragment Metadata")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class FragmentMetadata {
   public static final String SERIALIZED_NAME_FILE_SIZES = "fileSizes";
   @SerializedName(SERIALIZED_NAME_FILE_SIZES)

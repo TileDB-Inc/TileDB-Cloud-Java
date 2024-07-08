@@ -13,6 +13,12 @@
 
 package io.tiledb.cloud.rest_api;
 
+import io.tiledb.cloud.rest_api.auth.ApiKeyAuth;
+import io.tiledb.cloud.rest_api.auth.Authentication;
+import io.tiledb.cloud.rest_api.auth.HttpBasicAuth;
+import io.tiledb.cloud.rest_api.auth.OAuth;
+import io.tiledb.cloud.rest_api.auth.OAuthFlow;
+import io.tiledb.cloud.rest_api.auth.RetryingOAuth;
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
 import okhttp3.internal.tls.OkHostnameVerifier;
@@ -49,13 +55,6 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import io.tiledb.cloud.rest_api.auth.Authentication;
-import io.tiledb.cloud.rest_api.auth.HttpBasicAuth;
-import io.tiledb.cloud.rest_api.auth.ApiKeyAuth;
-import io.tiledb.cloud.rest_api.auth.OAuth;
-import io.tiledb.cloud.rest_api.auth.RetryingOAuth;
-import io.tiledb.cloud.rest_api.auth.OAuthFlow;
 
 /**
  * <p>ApiClient class.</p>

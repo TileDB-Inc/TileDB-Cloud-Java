@@ -15,7 +15,9 @@ package io.tiledb.cloud.rest_api.auth;
 
 /**
  * OAuth flows that are supported by this client
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.auth
  */
+@Deprecated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public enum OAuthFlow {
     ACCESS_CODE, //called authorizationCode  in OpenAPI 3.0

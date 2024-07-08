@@ -1,9 +1,9 @@
 package io.tiledb.cloud;
 
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.api.SqlApi;
-import io.tiledb.cloud.rest_api.model.ResultFormat;
-import io.tiledb.cloud.rest_api.model.SQLParameters;
+import io.tiledb.cloud.rest_api.v1.ApiException;
+import io.tiledb.cloud.rest_api.v1.api.SqlApi;
+import io.tiledb.cloud.rest_api.v1.model.ResultFormat;
+import io.tiledb.cloud.rest_api.v1.model.SQLParameters;
 import org.apache.arrow.memory.RootAllocator;
 import org.apache.arrow.memory.UnsafeAllocationManager;
 import org.apache.arrow.vector.FieldVector;

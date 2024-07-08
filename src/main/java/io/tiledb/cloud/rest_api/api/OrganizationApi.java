@@ -14,6 +14,7 @@
 package io.tiledb.cloud.rest_api.api;
 
 import io.tiledb.cloud.rest_api.ApiCallback;
+import io.tiledb.cloud.rest_api.model.SSODomainConfig;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
@@ -27,7 +28,6 @@ import io.tiledb.cloud.rest_api.model.AWSAccessCredentials;
 import io.tiledb.cloud.rest_api.model.DomainCheckResult;
 import io.tiledb.cloud.rest_api.model.Organization;
 import io.tiledb.cloud.rest_api.model.OrganizationUser;
-import io.tiledb.cloud.rest_api.model.SSODomainConfig;
 import io.tiledb.cloud.rest_api.model.SSODomainConfigResponse;
 
 import java.lang.reflect.Type;
@@ -36,6 +36,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class OrganizationApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

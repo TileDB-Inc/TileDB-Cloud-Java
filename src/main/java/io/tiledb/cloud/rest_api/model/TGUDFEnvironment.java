@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import io.tiledb.cloud.rest_api.JSON;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -36,13 +37,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import io.tiledb.cloud.rest_api.JSON;
-
 /**
  * Metadata about the environment where we want to execute a UDF.
  */
 @ApiModel(description = "Metadata about the environment where we want to execute a UDF.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class TGUDFEnvironment {
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)

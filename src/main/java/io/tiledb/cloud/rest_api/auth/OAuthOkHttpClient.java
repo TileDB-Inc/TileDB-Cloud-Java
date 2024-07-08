@@ -17,6 +17,10 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.auth
+ */
+@Deprecated
 public class OAuthOkHttpClient implements HttpClient {
     private OkHttpClient client;
 

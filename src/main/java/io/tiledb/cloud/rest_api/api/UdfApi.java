@@ -13,7 +13,8 @@
 
 package io.tiledb.cloud.rest_api.api;
 
-import io.tiledb.cloud.rest_api.model.*;
+import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
+import io.tiledb.cloud.rest_api.model.UDFCopy;
 import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
@@ -24,13 +25,10 @@ import io.tiledb.cloud.rest_api.Pair;
 import com.google.gson.reflect.TypeToken;
 
 
-import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
-
 import java.io.File;
 import io.tiledb.cloud.rest_api.model.GenericUDF;
 import io.tiledb.cloud.rest_api.model.MultiArrayUDF;
 import io.tiledb.cloud.rest_api.model.UDFCopied;
-import io.tiledb.cloud.rest_api.model.UDFCopy;
 import io.tiledb.cloud.rest_api.model.UDFInfo;
 import io.tiledb.cloud.rest_api.model.UDFInfoUpdate;
 import io.tiledb.cloud.rest_api.model.UDFSharing;
@@ -41,6 +39,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class UdfApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

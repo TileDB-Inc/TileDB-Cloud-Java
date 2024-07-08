@@ -14,6 +14,7 @@
 package io.tiledb.cloud.rest_api.api;
 
 import io.tiledb.cloud.rest_api.ApiCallback;
+import io.tiledb.cloud.rest_api.model.FileCreated;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
@@ -25,7 +26,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import io.tiledb.cloud.rest_api.model.FileCreate;
-import io.tiledb.cloud.rest_api.model.FileCreated;
 import io.tiledb.cloud.rest_api.model.FileExport;
 import io.tiledb.cloud.rest_api.model.FileExported;
 import io.tiledb.cloud.rest_api.model.FileUploaded;
@@ -36,6 +36,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class FilesApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

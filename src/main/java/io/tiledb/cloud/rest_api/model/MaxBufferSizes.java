@@ -43,6 +43,10 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "a list of max buffer sizes, one per attribute")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class MaxBufferSizes {
   public static final String SERIALIZED_NAME_MAX_BUFFER_SIZES = "maxBufferSizes";
   @SerializedName(SERIALIZED_NAME_MAX_BUFFER_SIZES)

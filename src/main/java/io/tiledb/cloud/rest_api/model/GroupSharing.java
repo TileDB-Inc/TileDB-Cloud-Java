@@ -42,6 +42,10 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "sharing state of a group with a namespace")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class GroupSharing {
   public static final String SERIALIZED_NAME_GROUP_ACTIONS = "group_actions";
   @SerializedName(SERIALIZED_NAME_GROUP_ACTIONS)

@@ -45,6 +45,10 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "The information used to set up a single-sign on connection to a customer domain. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class SSODomainConfig {
   public static final String SERIALIZED_NAME_UUID = "uuid";
   @SerializedName(SERIALIZED_NAME_UUID)

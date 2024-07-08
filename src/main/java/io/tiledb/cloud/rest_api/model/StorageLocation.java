@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import io.tiledb.cloud.rest_api.JSON;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -34,13 +36,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import io.tiledb.cloud.rest_api.JSON;
-
 /**
  * The path at which a given asset will be stored, and the credentials used to access that asset. 
  */
 @ApiModel(description = "The path at which a given asset will be stored, and the credentials used to access that asset. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class StorageLocation {
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)

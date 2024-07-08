@@ -13,11 +13,11 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.model.InvitationArrayShareEmail;
 import io.tiledb.cloud.rest_api.model.InvitationData;
 import io.tiledb.cloud.rest_api.model.InvitationGroupShareEmail;
 import io.tiledb.cloud.rest_api.model.InvitationOrganizationJoinEmail;
-import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
@@ -33,6 +33,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class InvitationApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

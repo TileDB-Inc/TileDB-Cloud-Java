@@ -14,6 +14,8 @@
 package io.tiledb.cloud.rest_api.api;
 
 import io.tiledb.cloud.rest_api.ApiCallback;
+import io.tiledb.cloud.rest_api.model.ResetUserPasswordRequest;
+import io.tiledb.cloud.rest_api.model.TokenScope;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
@@ -25,10 +27,8 @@ import com.google.gson.reflect.TypeToken;
 
 import io.tiledb.cloud.rest_api.model.AWSAccessCredentials;
 import io.tiledb.cloud.rest_api.model.OrganizationUser;
-import io.tiledb.cloud.rest_api.model.ResetUserPasswordRequest;
 import io.tiledb.cloud.rest_api.model.Token;
 import io.tiledb.cloud.rest_api.model.TokenRequest;
-import io.tiledb.cloud.rest_api.model.TokenScope;
 import io.tiledb.cloud.rest_api.model.User;
 
 import java.lang.reflect.Type;
@@ -37,6 +37,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class UserApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

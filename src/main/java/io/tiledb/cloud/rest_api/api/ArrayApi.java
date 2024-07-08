@@ -14,6 +14,11 @@
 package io.tiledb.cloud.rest_api.api;
 
 import io.tiledb.cloud.rest_api.ApiCallback;
+import io.tiledb.cloud.rest_api.model.ArrayActivityLog;
+import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
+import io.tiledb.cloud.rest_api.model.FragmentInfo;
+import io.tiledb.cloud.rest_api.model.FragmentInfoRequest;
+import io.tiledb.cloud.rest_api.model.LastAccessedArray;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
@@ -23,11 +28,9 @@ import io.tiledb.cloud.rest_api.Pair;
 import com.google.gson.reflect.TypeToken;
 
 
-import io.tiledb.cloud.rest_api.model.ArrayActivityLog;
 import io.tiledb.cloud.rest_api.model.ArrayBrowserData;
 import io.tiledb.cloud.rest_api.model.ArrayBrowserSidebar;
 import io.tiledb.cloud.rest_api.model.ArrayConsolidationRequest;
-import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
 import io.tiledb.cloud.rest_api.model.ArrayInfo;
 import io.tiledb.cloud.rest_api.model.ArrayInfoUpdate;
 import io.tiledb.cloud.rest_api.model.ArrayMetadata;
@@ -37,9 +40,6 @@ import io.tiledb.cloud.rest_api.model.ArraySharing;
 import io.tiledb.cloud.rest_api.model.ArrayVacuumRequest;
 import java.math.BigDecimal;
 
-import io.tiledb.cloud.rest_api.model.FragmentInfo;
-import io.tiledb.cloud.rest_api.model.FragmentInfoRequest;
-import io.tiledb.cloud.rest_api.model.LastAccessedArray;
 import io.tiledb.cloud.rest_api.model.MaxBufferSizes;
 import io.tiledb.cloud.rest_api.model.NonEmptyDomain;
 
@@ -49,6 +49,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class ArrayApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

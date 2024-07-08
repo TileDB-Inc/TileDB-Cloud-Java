@@ -43,6 +43,10 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "Model representing aws keys or service role, service roles are currently ignored, but will be preferred option in the future")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class AWSAccessCredentials {
   public static final String SERIALIZED_NAME_SECRET_ACCESS_KEY = "secret_access_key";
   @SerializedName(SERIALIZED_NAME_SECRET_ACCESS_KEY)

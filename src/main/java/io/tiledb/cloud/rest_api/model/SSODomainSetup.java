@@ -40,6 +40,10 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "Configuration settings to verify ownership of a given domain. At least one of these must be completed enable user login from the domain. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class SSODomainSetup {
   public static final String SERIALIZED_NAME_TXT = "txt";
   @SerializedName(SERIALIZED_NAME_TXT)

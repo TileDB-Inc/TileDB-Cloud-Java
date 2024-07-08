@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.tiledb.cloud.rest_api.JSON;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -40,13 +41,15 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.HashSet;
 
-import io.tiledb.cloud.rest_api.JSON;
-
 /**
  * metadata of an array
  */
 @ApiModel(description = "metadata of an array")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
+ */
+@Deprecated
 public class ArrayInfo {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

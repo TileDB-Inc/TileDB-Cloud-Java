@@ -13,10 +13,10 @@
 
 package io.tiledb.cloud.rest_api.api;
 
-import io.tiledb.cloud.rest_api.model.TaskGraphClientNodeStatus;
-import io.tiledb.cloud.rest_api.model.TaskGraphLog;
-import io.tiledb.cloud.rest_api.model.TaskGraphLogsData;
 import io.tiledb.cloud.rest_api.ApiCallback;
+import io.tiledb.cloud.rest_api.model.TaskGraphLog;
+import io.tiledb.cloud.rest_api.model.TaskGraphClientNodeStatus;
+import io.tiledb.cloud.rest_api.model.TaskGraphLogsData;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
@@ -34,6 +34,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class TaskGraphLogsApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

@@ -13,9 +13,9 @@
 
 package io.tiledb.cloud.rest_api.api;
 
+import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.model.Query;
 import io.tiledb.cloud.rest_api.model.QueryJson;
-import io.tiledb.cloud.rest_api.ApiCallback;
 import io.tiledb.cloud.rest_api.ApiClient;
 import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
@@ -33,6 +33,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
+ */
+@Deprecated
 public class QueryApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
