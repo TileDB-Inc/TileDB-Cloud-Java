@@ -1,6 +1,6 @@
 package io.tiledb.cloud;
 
-import io.tiledb.cloud.rest_api.v1.ApiException;
+import io.tiledb.cloud.rest_api.ApiException;
 
 public class TileDBLogin {
     /** The client password */
