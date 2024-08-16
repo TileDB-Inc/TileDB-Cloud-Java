@@ -43,10 +43,7 @@ import java.util.Map;
  */
 @ApiModel(description = "Information about a single node within a registered task graph. A single node represents one piece of data or a computational step; either as an input value, a data source, or a computation that acts upon earlier nodes. The structure parallels the existing `TaskGraphNodeMetadata`. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
- */
-@Deprecated
+
 public class TaskGraphNode {
   public static final String SERIALIZED_NAME_CLIENT_NODE_ID = "client_node_id";
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_ID)

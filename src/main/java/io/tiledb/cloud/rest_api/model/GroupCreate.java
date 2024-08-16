@@ -42,10 +42,6 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "Initial attributes for the creation of a group.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
- */
-@Deprecated
 public class GroupCreate {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)

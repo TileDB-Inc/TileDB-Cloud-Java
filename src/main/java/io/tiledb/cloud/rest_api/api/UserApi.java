@@ -37,10 +37,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.api
- */
-@Deprecated
 public class UserApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;

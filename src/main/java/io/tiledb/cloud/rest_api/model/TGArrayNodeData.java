@@ -40,10 +40,7 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "The details of an array that should be queried and provided as the input to a UDF Node. This is essentially a `UDFArrayDetails`, but you’re allowed to provide most of the values as Nodes if you want. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
- */
-@Deprecated
+
 public class TGArrayNodeData {
   public static final String SERIALIZED_NAME_URI = "uri";
   @SerializedName(SERIALIZED_NAME_URI)

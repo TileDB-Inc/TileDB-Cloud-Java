@@ -41,10 +41,7 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "Specifies that a node is an “input value”, allowing for parameterized task graphs. An input node may not depend upon any other nodes. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
- */
-@Deprecated
+
 public class TGInputNodeData {
   public static final String SERIALIZED_NAME_DEFAULT_VALUE = "default_value";
   @SerializedName(SERIALIZED_NAME_DEFAULT_VALUE)

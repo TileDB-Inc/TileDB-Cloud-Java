@@ -20,10 +20,6 @@ import java.net.URI;
 import java.util.Map;
 import java.util.List;
 
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.auth
- */
-@Deprecated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
 public class OAuth implements Authentication {
   private String accessToken;
