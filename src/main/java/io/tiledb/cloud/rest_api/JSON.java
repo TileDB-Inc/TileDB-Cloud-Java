@@ -159,7 +159,6 @@ import io.tiledb.cloud.rest_api.model.UDFSubarray;
 import io.tiledb.cloud.rest_api.model.UDFSubarrayRange;
 import io.tiledb.cloud.rest_api.model.User;
 import io.tiledb.cloud.rest_api.model.Writer;
-import io.tiledb.cloud.rest_api.v1.model.*;
 import io.tiledb.cloud.rest_api.model.Error;
 import okio.ByteString;
 

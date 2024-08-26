@@ -43,10 +43,7 @@ import java.util.Map;
  */
 @ApiModel(description = "A node specifying an SQL query to execute in TileDB Cloud. ")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
- */
-@Deprecated
+
 public class TGSQLNodeData {
   public static final String SERIALIZED_NAME_INIT_COMMANDS = "init_commands";
   @SerializedName(SERIALIZED_NAME_INIT_COMMANDS)

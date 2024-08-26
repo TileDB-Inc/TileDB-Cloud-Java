@@ -22,10 +22,6 @@ import java.net.URI;
 import java.util.Map;
 import java.util.List;
 
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.auth
- */
-@Deprecated
 public class HttpBasicAuth implements Authentication {
     private String username;
     private String password;

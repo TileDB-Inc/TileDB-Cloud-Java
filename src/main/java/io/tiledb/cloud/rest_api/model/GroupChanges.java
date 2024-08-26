@@ -43,10 +43,7 @@ import io.tiledb.cloud.rest_api.JSON;
  */
 @ApiModel(description = "A request to change the members of a group. Contains assets to add or remove.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
-/**
- * @deprecated This class is now moved to io.tiledb.cloud.rest_api.v1.model
- */
-@Deprecated
+
 public class GroupChanges {
   public static final String SERIALIZED_NAME_ADD = "add";
   @SerializedName(SERIALIZED_NAME_ADD)
