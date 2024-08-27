@@ -27,7 +27,7 @@ apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
 
 group 'io.tiledb'
-version = '0.4.2'
+version = '0.4.3-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -155,9 +155,9 @@ dependencies {
     implementation group: 'org.apache.oltu.oauth2', name: 'org.apache.oltu.oauth2.client', version: '1.0.1'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.14.0'
     implementation "jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version"
-    implementation group: 'org.apache.arrow', name: 'arrow-vector', version: '9.0.0'
-    implementation group: 'org.apache.arrow', name: 'arrow-compression', version: '9.0.0'
-    implementation group: 'org.apache.arrow', name: 'arrow-memory-unsafe', version: '9.0.0'
+    implementation group: 'org.apache.arrow', name: 'arrow-vector', version: '17.0.0'
+    implementation group: 'org.apache.arrow', name: 'arrow-compression', version: '17.0.0'
+    implementation group: 'org.apache.arrow', name: 'arrow-memory-unsafe', version: '17.0.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testImplementation 'org.mockito:mockito-core:5.12.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'

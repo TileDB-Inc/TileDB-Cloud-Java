@@ -3,7 +3,7 @@ package io.tiledb.cloud;
 import com.google.gson.Gson;
 import org.apache.arrow.compression.CommonsCompressionFactory;
 import org.apache.arrow.memory.RootAllocator;
-import org.apache.arrow.memory.UnsafeAllocationManager;
+import org.apache.arrow.memory.unsafe.UnsafeAllocationManager;
 import org.apache.arrow.vector.FieldVector;
 import org.apache.arrow.vector.ValueVector;
 import org.apache.arrow.vector.VectorSchemaRoot;
