@@ -5,7 +5,7 @@ import io.tiledb.cloud.rest_api.api.SqlApi;
 import io.tiledb.cloud.rest_api.model.ResultFormat;
 import io.tiledb.cloud.rest_api.model.SQLParameters;
 import org.apache.arrow.memory.RootAllocator;
-import org.apache.arrow.memory.UnsafeAllocationManager;
+import org.apache.arrow.memory.unsafe.UnsafeAllocationManager;
 import org.apache.arrow.vector.FieldVector;
 import org.apache.arrow.vector.ValueVector;
 import org.apache.arrow.vector.VectorSchemaRoot;
