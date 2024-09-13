@@ -35,5 +35,7 @@
 
 * `READ_FRAGMENT_INFO` (value: `"read_fragment_info"`)
 
+* `READ_ENUMERATIONS` (value: `"read_enumerations"`)
+
 
 

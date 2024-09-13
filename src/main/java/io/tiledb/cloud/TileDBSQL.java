@@ -98,7 +98,7 @@ public class TileDBSQL implements AutoCloseable{
      *
      * @return
      */
-    public List<Object> exec(){
+    public List<Map<String, Object>> exec(){
         try {
             if (sql.getResultFormat() == null ){
                 return apiInstance.runSQL(namespace, sql, ResultFormat.TILEDB_JSON.toString());

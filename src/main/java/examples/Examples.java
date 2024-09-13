@@ -215,8 +215,9 @@ public class Examples
         List<String> excludeTag = null; // List<String> | tags to exclude matching array in results, more than one can be included
         Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
         String parent = null; // String | search only the children of the groups with this uuid
+        Boolean withMetadata = false;
         try {
-            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
+            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata);
             //or use api.listOwnedGroups(...) / api.listSharedGroups(...)
             System.out.println(result.getGroups());
         } catch (ApiException e) {
@@ -232,10 +233,11 @@ public class Examples
     private static void listArrays(TileDBClient tileDBClient)
     {
         String namespace = "dstara"; // String | namespace array is in (an organization name or user's username)
+        Boolean withMetadata = false;
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
         try {
-            List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace);
+            List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace, withMetadata);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#getArraysInNamespace");

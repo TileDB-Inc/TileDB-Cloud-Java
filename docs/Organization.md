@@ -24,6 +24,7 @@ Organization
 |**defaultS3PathCredentialsName** | **String** | The name of the credentials used to create and access files in the &#x60;default_s3_path&#x60;, if needed.  |  [optional] |
 |**assetLocations** | [**AssetLocations**](AssetLocations.md) |  |  [optional] |
 |**stripeConnect** | **Boolean** | Denotes that the organization is able to apply pricing to arrays by means of Stripe Connect |  [optional] [readonly] |
+|**assumeRoleArn** | **String** | A AWS Role that will be first assumed before assuming the organization&#39;s AWS Role. Visible to owners and admins.  |  [optional] |
 
 
 

@@ -8,13 +8,15 @@ All URIs are relative to */v1*
 | [**cancelJoinOrganization**](InvitationApi.md#cancelJoinOrganization) | **DELETE** /invitations/{invitation}/{organization}/join |  |
 | [**cancelShareArrayByInvite**](InvitationApi.md#cancelShareArrayByInvite) | **DELETE** /invitations/{invitation}/{namespace}/{array}/share |  |
 | [**cancelShareGroupByInvite**](InvitationApi.md#cancelShareGroupByInvite) | **DELETE** /invitations/group/{invitation}/{namespace}/{group_name}/share |  |
+| [**cancelSharePayment**](InvitationApi.md#cancelSharePayment) | **DELETE** /invitations/share_payment/{namespace}/{target} |  |
 | [**fetchInvitations**](InvitationApi.md#fetchInvitations) | **GET** /invitations |  |
 | [**joinOrganization**](InvitationApi.md#joinOrganization) | **POST** /invitations/{organization}/join |  |
 | [**shareArrayByInvite**](InvitationApi.md#shareArrayByInvite) | **POST** /invitations/{namespace}/{array}/share |  |
 | [**shareGroupByInvite**](InvitationApi.md#shareGroupByInvite) | **POST** /invitations/group/{namespace}/{group}/share |  |
+| [**sharePayment**](InvitationApi.md#sharePayment) | **POST** /invitations/share_payment/{namespace} |  |
 
 
-<a name="acceptInvitation"></a>
+<a id="acceptInvitation"></a>
 # **acceptInvitation**
 > acceptInvitation(invitation)
 
@@ -23,44 +25,43 @@ All URIs are relative to */v1*
 Accepts invitation
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import InvitationApi;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        InvitationApi apiInstance = new InvitationApi(defaultClient);
-        String invitation = "invitation_example"; // String | the ID of invitation about to be accepted
-        try {
-            apiInstance.acceptInvitation(invitation);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InvitationApi#acceptInvitation");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String invitation = "invitation_example"; // String | the ID of invitation about to be accepted
+    try {
+      apiInstance.acceptInvitation(invitation);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#acceptInvitation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -76,7 +77,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -91,7 +92,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="cancelJoinOrganization"></a>
+<a id="cancelJoinOrganization"></a>
 # **cancelJoinOrganization**
 > cancelJoinOrganization(invitation, organization)
 
@@ -100,45 +101,44 @@ null (empty response body)
 Cancels join organization invitation
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import InvitationApi;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        InvitationApi apiInstance = new InvitationApi(defaultClient);
-        String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
-        String organization = "organization_example"; // String | name or UUID of organization
-        try {
-            apiInstance.cancelJoinOrganization(invitation, organization);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InvitationApi#cancelJoinOrganization");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
+    String organization = "organization_example"; // String | name or UUID of organization
+    try {
+      apiInstance.cancelJoinOrganization(invitation, organization);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#cancelJoinOrganization");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -155,7 +155,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -170,7 +170,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="cancelShareArrayByInvite"></a>
+<a id="cancelShareArrayByInvite"></a>
 # **cancelShareArrayByInvite**
 > cancelShareArrayByInvite(namespace, invitation, array)
 
@@ -179,46 +179,45 @@ null (empty response body)
 Cancels array sharing invitation
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import InvitationApi;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        InvitationApi apiInstance = new InvitationApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        try {
-            apiInstance.cancelShareArrayByInvite(namespace, invitation, array);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InvitationApi#cancelShareArrayByInvite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    try {
+      apiInstance.cancelShareArrayByInvite(namespace, invitation, array);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#cancelShareArrayByInvite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -236,7 +235,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -251,7 +250,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="cancelShareGroupByInvite"></a>
+<a id="cancelShareGroupByInvite"></a>
 # **cancelShareGroupByInvite**
 > cancelShareGroupByInvite(namespace, invitation, groupName)
 
@@ -260,46 +259,45 @@ null (empty response body)
 Cancels group sharing invitation
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import InvitationApi;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        InvitationApi apiInstance = new InvitationApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace group is in (an organization name or user's username)
-        String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
-        String groupName = "groupName_example"; // String | name/uuid of group that is url-encoded
-        try {
-            apiInstance.cancelShareGroupByInvite(namespace, invitation, groupName);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InvitationApi#cancelShareGroupByInvite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace group is in (an organization name or user's username)
+    String invitation = "invitation_example"; // String | the ID of invitation about to be cancelled
+    String groupName = "groupName_example"; // String | name/uuid of group that is url-encoded
+    try {
+      apiInstance.cancelShareGroupByInvite(namespace, invitation, groupName);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#cancelShareGroupByInvite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -317,7 +315,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -332,7 +330,84 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="fetchInvitations"></a>
+<a id="cancelSharePayment"></a>
+# **cancelSharePayment**
+> cancelSharePayment(namespace, target)
+
+
+
+Revokes invitation from the source namespace to the target.
+
+### Example
+```java
+// Import classes:
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
+import io.tiledb.cloud.rest_api.models.*;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String namespace = "namespace_example"; // String | name or UUID of namespace sharing their payment info
+    String target = "target_example"; // String | name or UUID of recipient namespace
+    try {
+      apiInstance.cancelSharePayment(namespace, target);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#cancelSharePayment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| name or UUID of namespace sharing their payment info | |
+| **target** | **String**| name or UUID of recipient namespace | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Invitation cancelled successfully |  -  |
+| **404** | No invitation was found to cancel |  -  |
+| **0** | error response |  -  |
+
+<a id="fetchInvitations"></a>
 # **fetchInvitations**
 > InvitationData fetchInvitations(organization, array, group, start, end, page, perPage, type, status, orderby)
 
@@ -341,54 +416,53 @@ null (empty response body)
 Fetch a list of invitations
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import InvitationApi;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        InvitationApi apiInstance = new InvitationApi(defaultClient);
-        String organization = "organization_example"; // String | name or ID of organization to filter
-        String array = "array_example"; // String | name/uri of array that is url-encoded to filter
-        String group = "group_example"; // String | name or ID of group to filter
-        Integer start = 56; // Integer | start time for tasks to filter by
-        Integer end = 56; // Integer | end time for tasks to filter by
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        String type = "type_example"; // String | invitation type, \"ARRAY_SHARE\", \"JOIN_ORGANIZATION\"
-        String status = "status_example"; // String | Filter to only return \"PENDING\", \"ACCEPTED\"
-        String orderby = "orderby_example"; // String | sort by which field valid values include timestamp, array_name, organization_name
-        try {
-            InvitationData result = apiInstance.fetchInvitations(organization, array, group, start, end, page, perPage, type, status, orderby);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InvitationApi#fetchInvitations");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String organization = "organization_example"; // String | name or ID of organization to filter
+    String array = "array_example"; // String | name/uri of array that is url-encoded to filter
+    String group = "group_example"; // String | name or ID of group to filter
+    Integer start = 56; // Integer | start time for tasks to filter by
+    Integer end = 56; // Integer | end time for tasks to filter by
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    String type = "type_example"; // String | invitation type, \"ARRAY_SHARE\", \"JOIN_ORGANIZATION\"
+    String status = "status_example"; // String | Filter to only return \"PENDING\", \"ACCEPTED\"
+    String orderby = "orderby_example"; // String | sort by which field valid values include timestamp, array_name, organization_name
+    try {
+      InvitationData result = apiInstance.fetchInvitations(organization, array, group, start, end, page, perPage, type, status, orderby);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#fetchInvitations");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -413,7 +487,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -427,7 +501,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="joinOrganization"></a>
+<a id="joinOrganization"></a>
 # **joinOrganization**
 > joinOrganization(organization, emailInvite)
 
@@ -436,45 +510,44 @@ public class Example {
 Sends email to multiple recipients with joining information regarding an organization
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import InvitationApi;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        InvitationApi apiInstance = new InvitationApi(defaultClient);
-        String organization = "organization_example"; // String | name or UUID of organization
-        InvitationOrganizationJoinEmail emailInvite = new InvitationOrganizationJoinEmail(); // InvitationOrganizationJoinEmail | list of email recipients
-        try {
-            apiInstance.joinOrganization(organization, emailInvite);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InvitationApi#joinOrganization");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String organization = "organization_example"; // String | name or UUID of organization
+    InvitationOrganizationJoinEmail emailInvite = new InvitationOrganizationJoinEmail(); // InvitationOrganizationJoinEmail | list of email recipients
+    try {
+      apiInstance.joinOrganization(organization, emailInvite);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#joinOrganization");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -491,7 +564,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -507,7 +580,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="shareArrayByInvite"></a>
+<a id="shareArrayByInvite"></a>
 # **shareArrayByInvite**
 > shareArrayByInvite(namespace, array, emailInvite)
 
@@ -516,46 +589,45 @@ null (empty response body)
 Sends email to multiple recipients with sharing information regarding an array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import InvitationApi;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        InvitationApi apiInstance = new InvitationApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        InvitationArrayShareEmail emailInvite = new InvitationArrayShareEmail(); // InvitationArrayShareEmail | list of email recipients
-        try {
-            apiInstance.shareArrayByInvite(namespace, array, emailInvite);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InvitationApi#shareArrayByInvite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    InvitationArrayShareEmail emailInvite = new InvitationArrayShareEmail(); // InvitationArrayShareEmail | list of email recipients
+    try {
+      apiInstance.shareArrayByInvite(namespace, array, emailInvite);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#shareArrayByInvite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -573,7 +645,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -589,7 +661,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="shareGroupByInvite"></a>
+<a id="shareGroupByInvite"></a>
 # **shareGroupByInvite**
 > shareGroupByInvite(namespace, group, emailInvite)
 
@@ -598,46 +670,45 @@ null (empty response body)
 Sends email to multiple recipients with sharing information regarding a group
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import InvitationApi;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        InvitationApi apiInstance = new InvitationApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace group is in (an organization name or user's username)
-        String group = "group_example"; // String | name/uri of group that is url-encoded
-        InvitationGroupShareEmail emailInvite = new InvitationGroupShareEmail(); // InvitationGroupShareEmail | list of email/namespace recipients
-        try {
-            apiInstance.shareGroupByInvite(namespace, group, emailInvite);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling InvitationApi#shareGroupByInvite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace group is in (an organization name or user's username)
+    String group = "group_example"; // String | name/uri of group that is url-encoded
+    InvitationGroupShareEmail emailInvite = new InvitationGroupShareEmail(); // InvitationGroupShareEmail | list of email/namespace recipients
+    try {
+      apiInstance.shareGroupByInvite(namespace, group, emailInvite);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#shareGroupByInvite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -655,7 +726,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -666,6 +737,85 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Email sent successfully to user with an email confirmation link |  -  |
+| **207** | Only a portion of the invitations succeeded, some failed |  -  |
+| **500** | Could not reach any recipients |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a id="sharePayment"></a>
+# **sharePayment**
+> sharePayment(namespace, emailInvite)
+
+
+
+Sends email to multiple recipients allowing them to use the payment instrument provided by the source namespace. 
+
+### Example
+```java
+// Import classes:
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
+import io.tiledb.cloud.rest_api.models.*;
+import io.tiledb.cloud.rest_api.api.InvitationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    InvitationApi apiInstance = new InvitationApi(defaultClient);
+    String namespace = "namespace_example"; // String | name or UUID of namespace sharing their payment info
+    SharePaymentRequest emailInvite = new SharePaymentRequest(); // SharePaymentRequest | Recipients of the invitation. These may only be namespaces, not email addresses. 
+    try {
+      apiInstance.sharePayment(namespace, emailInvite);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InvitationApi#sharePayment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| name or UUID of namespace sharing their payment info | |
+| **emailInvite** | [**SharePaymentRequest**](SharePaymentRequest.md)| Recipients of the invitation. These may only be namespaces, not email addresses.  | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Email sent successfully to user for email confirmation link |  -  |
 | **207** | Only a portion of the invitations succeeded, some failed |  -  |
 | **500** | Could not reach any recipients |  -  |
 | **502** | Bad Gateway |  -  |

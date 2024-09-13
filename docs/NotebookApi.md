@@ -11,7 +11,7 @@ All URIs are relative to */v1*
 | [**updateNotebookName**](NotebookApi.md#updateNotebookName) | **PATCH** /notebooks/{namespace}/{array}/rename |  |
 
 
-<a name="getNotebookServerStatus"></a>
+<a id="getNotebookServerStatus"></a>
 # **getNotebookServerStatus**
 > NotebookStatus getNotebookServerStatus(namespace)
 
@@ -20,45 +20,44 @@ All URIs are relative to */v1*
 Get status of the notebook server
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import NotebookApi;
+import io.tiledb.cloud.rest_api.api.NotebookApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        NotebookApi apiInstance = new NotebookApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace notebook is in (an organization name or user's username)
-        try {
-            NotebookStatus result = apiInstance.getNotebookServerStatus(namespace);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NotebookApi#getNotebookServerStatus");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    NotebookApi apiInstance = new NotebookApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace notebook is in (an organization name or user's username)
+    try {
+      NotebookStatus result = apiInstance.getNotebookServerStatus(namespace);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NotebookApi#getNotebookServerStatus");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -74,7 +73,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -85,13 +84,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | status of running notebook |  -  |
-| **202** | Notebook server is pending |  -  |
 | **402** | Payment required |  -  |
 | **404** | Notebook is not running |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="handleCopyNotebook"></a>
+<a id="handleCopyNotebook"></a>
 # **handleCopyNotebook**
 > NotebookCopied handleCopyNotebook(namespace, array, notebookCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp)
 
@@ -100,49 +98,48 @@ public class Example {
 Copy a tiledb notebook at the specified location
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import NotebookApi;
+import io.tiledb.cloud.rest_api.api.NotebookApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        NotebookApi apiInstance = new NotebookApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the notebook
-        String array = "array_example"; // String | The name of the notebook
-        NotebookCopy notebookCopy = new NotebookCopy(); // NotebookCopy | Input/Output information to create a new TileDB file
-        String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME = "X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME_example"; // String | Optional registered access credentials to use for creation
-        Integer endTimestamp = 56; // Integer | Milliseconds since Unix epoch, copy will use open_at functionality to copy notebook created at the specific timestamp
-        try {
-            NotebookCopied result = apiInstance.handleCopyNotebook(namespace, array, notebookCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NotebookApi#handleCopyNotebook");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    NotebookApi apiInstance = new NotebookApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the notebook
+    String array = "array_example"; // String | The name of the notebook
+    NotebookCopy notebookCopy = new NotebookCopy(); // NotebookCopy | Input/Output information to create a new TileDB file
+    String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME = "X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME_example"; // String | Optional registered access credentials to use for creation
+    Integer endTimestamp = 56; // Integer | Milliseconds since Unix epoch, copy will use open_at functionality to copy notebook created at the specific timestamp
+    try {
+      NotebookCopied result = apiInstance.handleCopyNotebook(namespace, array, notebookCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NotebookApi#handleCopyNotebook");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -162,7 +159,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -176,7 +173,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="handleUploadNotebook"></a>
+<a id="handleUploadNotebook"></a>
 # **handleUploadNotebook**
 > FileUploaded handleUploadNotebook(namespace, inputFile, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, outputUri, name)
 
@@ -185,49 +182,48 @@ public class Example {
 Upload a notebook at the specified location
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import NotebookApi;
+import io.tiledb.cloud.rest_api.api.NotebookApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        NotebookApi apiInstance = new NotebookApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the notebook
-        File inputFile = new File("/path/to/file"); // File | the notebook to upload
-        String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME = "X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME_example"; // String | Optional registered access credentials to use for creation
-        String outputUri = "outputUri_example"; // String | output location of the TileDB File
-        String name = "name_example"; // String | name to set for registered file
-        try {
-            FileUploaded result = apiInstance.handleUploadNotebook(namespace, inputFile, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, outputUri, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NotebookApi#handleUploadNotebook");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    NotebookApi apiInstance = new NotebookApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the notebook
+    File inputFile = new File("/path/to/file"); // File | the notebook to upload
+    String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME = "X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME_example"; // String | Optional registered access credentials to use for creation
+    String outputUri = "outputUri_example"; // String | output location of the TileDB File
+    String name = "name_example"; // String | name to set for registered file
+    try {
+      FileUploaded result = apiInstance.handleUploadNotebook(namespace, inputFile, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, outputUri, name);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NotebookApi#handleUploadNotebook");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -247,7 +243,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -261,7 +257,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="shutdownNotebookServer"></a>
+<a id="shutdownNotebookServer"></a>
 # **shutdownNotebookServer**
 > shutdownNotebookServer(namespace)
 
@@ -270,44 +266,43 @@ public class Example {
 Shutdown a notebook server
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import NotebookApi;
+import io.tiledb.cloud.rest_api.api.NotebookApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        NotebookApi apiInstance = new NotebookApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace notebook is in (an organization name or user's username)
-        try {
-            apiInstance.shutdownNotebookServer(namespace);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NotebookApi#shutdownNotebookServer");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    NotebookApi apiInstance = new NotebookApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace notebook is in (an organization name or user's username)
+    try {
+      apiInstance.shutdownNotebookServer(namespace);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NotebookApi#shutdownNotebookServer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -323,7 +318,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -338,7 +333,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="updateNotebookName"></a>
+<a id="updateNotebookName"></a>
 # **updateNotebookName**
 > updateNotebookName(namespace, array, notebookMetadata)
 
@@ -347,46 +342,45 @@ null (empty response body)
 update name on a notebok, moving related S3 object to new location
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import NotebookApi;
+import io.tiledb.cloud.rest_api.api.NotebookApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        NotebookApi apiInstance = new NotebookApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of notebook (array) that is url-encoded
-        ArrayInfoUpdate notebookMetadata = new ArrayInfoUpdate(); // ArrayInfoUpdate | notebook (array) metadata to update
-        try {
-            apiInstance.updateNotebookName(namespace, array, notebookMetadata);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NotebookApi#updateNotebookName");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    NotebookApi apiInstance = new NotebookApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of notebook (array) that is url-encoded
+    ArrayInfoUpdate notebookMetadata = new ArrayInfoUpdate(); // ArrayInfoUpdate | notebook (array) metadata to update
+    try {
+      apiInstance.updateNotebookName(namespace, array, notebookMetadata);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling NotebookApi#updateNotebookName");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -404,7 +398,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
