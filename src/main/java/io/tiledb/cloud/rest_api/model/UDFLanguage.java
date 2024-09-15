@@ -31,7 +31,9 @@ public enum UDFLanguage {
   
   PYTHON("python"),
   
-  R("r");
+  R("r"),
+
+  NEXTFLOW("nextflow");
 
   private String value;
 
