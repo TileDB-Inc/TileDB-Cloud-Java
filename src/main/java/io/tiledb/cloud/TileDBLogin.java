@@ -27,14 +27,12 @@ public class TileDBLogin {
     /**
      * Constructor
      *
-     * @param username The username
-     * @param password The password
      * @param apiKey The User's api token. Can be found in the TileDB console at https://www.console.tiledb.com
      * @param verifySSL True to verify SSL
      * @param rememberMe True if the user wants their login credentials to be remembered
      * @param overwritePrevious True if the user wants their current login input to overwrite the last one
      */
-    public TileDBLogin(String username, String password, String apiKey, boolean verifySSL,
+    public TileDBLogin(String apiKey, boolean verifySSL,
                        boolean rememberMe, boolean overwritePrevious) {
         this.password = password;
         this.username = username;
@@ -48,14 +46,53 @@ public class TileDBLogin {
     /**
      * Constructor
      *
-     * @param username The username
-     * @param password The password
      * @param apiKey The User's api token. Can be found in the TileDB console at https://www.console.tiledb.com
+     * @param host The host name
      * @param verifySSL True to verify SSL
      * @param rememberMe True if the user wants their login credentials to be remembered
      * @param overwritePrevious True if the user wants their current login input to overwrite the last one
-     * @param host The host name
      */
+    public TileDBLogin(String apiKey, String host, boolean verifySSL,
+                       boolean rememberMe, boolean overwritePrevious) {
+        this.apiKey = apiKey;
+        this.verifySSL = verifySSL;
+        this.rememberMe = rememberMe;
+        this.overwritePrevious = overwritePrevious;
+        this.host = host;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param username The username
+     * @param password The password
+     * @param host The host name
+     * @param verifySSL True to verify SSL
+     * @param rememberMe True if the user wants their login credentials to be remembered
+     * @param overwritePrevious True if the user wants their current login input to overwrite the last one
+     */
+    public TileDBLogin(String username, String password,  String host, boolean verifySSL,
+                       boolean rememberMe, boolean overwritePrevious) {
+        this.password = password;
+        this.username = username;
+        this.verifySSL = verifySSL;
+        this.rememberMe = rememberMe;
+        this.overwritePrevious = overwritePrevious;
+        this.host = host;
+    }
+
+
+        /**
+         * Constructor
+         *
+         * @param username The username
+         * @param password The password
+         * @param apiKey The User's api token. Can be found in the TileDB console at https://www.console.tiledb.com
+         * @param verifySSL True to verify SSL
+         * @param rememberMe True if the user wants their login credentials to be remembered
+         * @param overwritePrevious True if the user wants their current login input to overwrite the last one
+         * @param host The host name
+         */
     public TileDBLogin(String username, String password, String apiKey, boolean verifySSL,
                        boolean rememberMe, boolean overwritePrevious, String host) throws ApiException {
 
