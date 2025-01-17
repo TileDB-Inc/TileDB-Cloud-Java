@@ -503,7 +503,7 @@ public class TaskGraphsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call submitTaskGraphCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call submitTaskGraphCall(String namespace, String id, String rootId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -530,6 +530,10 @@ public class TaskGraphsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (rootId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("root_task_graph_uuid", rootId));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -550,7 +554,7 @@ public class TaskGraphsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call submitTaskGraphValidateBeforeCall(String namespace, String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call submitTaskGraphValidateBeforeCall(String namespace, String id, String rootId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'namespace' is set
         if (namespace == null) {
             throw new ApiException("Missing the required parameter 'namespace' when calling submitTaskGraph(Async)");
@@ -561,7 +565,7 @@ public class TaskGraphsApi {
             throw new ApiException("Missing the required parameter 'id' when calling submitTaskGraph(Async)");
         }
 
-        return submitTaskGraphCall(namespace, id, _callback);
+        return submitTaskGraphCall(namespace, id, rootId, _callback);
 
     }
 
@@ -580,8 +584,8 @@ public class TaskGraphsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public TaskGraphLog submitTaskGraph(String namespace, String id) throws ApiException {
-        ApiResponse<TaskGraphLog> localVarResp = submitTaskGraphWithHttpInfo(namespace, id);
+    public TaskGraphLog submitTaskGraph(String namespace, String id, String rootId) throws ApiException {
+        ApiResponse<TaskGraphLog> localVarResp = submitTaskGraphWithHttpInfo(namespace, id, rootId);
         return localVarResp.getData();
     }
 
@@ -600,8 +604,8 @@ public class TaskGraphsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TaskGraphLog> submitTaskGraphWithHttpInfo(String namespace, String id) throws ApiException {
-        okhttp3.Call localVarCall = submitTaskGraphValidateBeforeCall(namespace, id, null);
+    public ApiResponse<TaskGraphLog> submitTaskGraphWithHttpInfo(String namespace, String id, String rootId) throws ApiException {
+        okhttp3.Call localVarCall = submitTaskGraphValidateBeforeCall(namespace, id, rootId, null);
         Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -622,9 +626,9 @@ public class TaskGraphsApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call submitTaskGraphAsync(String namespace, String id, final ApiCallback<TaskGraphLog> _callback) throws ApiException {
+    public okhttp3.Call submitTaskGraphAsync(String namespace, String id, String rootId, final ApiCallback<TaskGraphLog> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = submitTaskGraphValidateBeforeCall(namespace, id, _callback);
+        okhttp3.Call localVarCall = submitTaskGraphValidateBeforeCall(namespace, id, rootId, _callback);
         Type localVarReturnType = new TypeToken<TaskGraphLog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

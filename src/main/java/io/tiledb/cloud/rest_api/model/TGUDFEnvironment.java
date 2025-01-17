@@ -93,9 +93,9 @@ public class TGUDFEnvironment {
   @SerializedName(SERIALIZED_NAME_TIMEOUT)
   private BigDecimal timeout;
 
-  public static final String SERIALIZED_NAME_PATHS = "paths";
-  @SerializedName(SERIALIZED_NAME_PATHS)
-  private List<Object> paths = new ArrayList<>();
+  public static final String SERIALIZED_NAME_STORAGE = "storage";
+  @SerializedName(SERIALIZED_NAME_STORAGE)
+  private List<Object> storage = new ArrayList<>();
 
   public TGUDFEnvironment() {
   }
@@ -271,30 +271,30 @@ public class TGUDFEnvironment {
   }
 
 
-  public TGUDFEnvironment paths(List<Object> paths) {
-    this.paths = paths;
+  public TGUDFEnvironment storage(List<Object> storage) {
+    this.storage = storage;
     return this;
   }
 
-  public TGUDFEnvironment addPathsItem(Object pathsItem) {
-    if (this.paths == null) {
-      this.paths = new ArrayList<>();
+  public TGUDFEnvironment addStorageItem(Object storageItem) {
+    if (this.storage == null) {
+      this.storage = new ArrayList<>();
     }
-    this.paths.add(pathsItem);
+    this.storage.add(storageItem);
     return this;
   }
 
   /**
-   * Mapping for storage paths to mount
-   * @return paths
+   * Storage options for mounting persistent volumes
+   * @return storage
    */
   @javax.annotation.Nullable
-  public List<Object> getPaths() {
-    return paths;
+  public List<Object> getStorage() {
+    return storage;
   }
 
-  public void setPaths(List<Object> paths) {
-    this.paths = paths;
+  public void setStorage(List<Object> storage) {
+    this.storage = storage;
   }
 
   /**
@@ -361,7 +361,7 @@ public class TGUDFEnvironment {
         Objects.equals(this.resources, tgUDFEnvironment.resources) &&
         Objects.equals(this.runClientSide, tgUDFEnvironment.runClientSide) &&
         Objects.equals(this.timeout, tgUDFEnvironment.timeout) &&
-        Objects.equals(this.paths, tgUDFEnvironment.paths)&&
+        Objects.equals(this.storage, tgUDFEnvironment.storage)&&
         Objects.equals(this.additionalProperties, tgUDFEnvironment.additionalProperties);
   }
 
@@ -371,7 +371,7 @@ public class TGUDFEnvironment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(language, languageVersion, imageName, accessCredentialsName, namespace, resourceClass, resources, runClientSide, timeout, paths, additionalProperties);
+    return Objects.hash(language, languageVersion, imageName, accessCredentialsName, namespace, resourceClass, resources, runClientSide, timeout, storage, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -394,7 +394,7 @@ public class TGUDFEnvironment {
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    runClientSide: ").append(toIndentedString(runClientSide)).append("\n");
     sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
-    sb.append("    paths: ").append(toIndentedString(paths)).append("\n");
+    sb.append("    storage: ").append(toIndentedString(storage)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -427,7 +427,7 @@ public class TGUDFEnvironment {
     openapiFields.add("resources");
     openapiFields.add("run_client_side");
     openapiFields.add("timeout");
-    openapiFields.add("paths");
+    openapiFields.add("storage");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -470,8 +470,8 @@ public class TGUDFEnvironment {
         TGUDFEnvironmentResources.validateJsonElement(jsonObj.get("resources"));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("paths") != null && !jsonObj.get("paths").isJsonNull() && !jsonObj.get("paths").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `paths` to be an array in the JSON string but got `%s`", jsonObj.get("paths").toString()));
+      if (jsonObj.get("storage") != null && !jsonObj.get("storage").isJsonNull() && !jsonObj.get("storage").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `storage` to be an array in the JSON string but got `%s`", jsonObj.get("storage").toString()));
       }
   }
 
