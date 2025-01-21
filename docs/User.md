@@ -26,6 +26,7 @@ User
 |**defaultS3PathCredentialsName** | **Object** | The name of the credentials used to create and access files in the &#x60;default_s3_path&#x60;, if needed.  |  [optional] |
 |**assetLocations** | [**AssetLocations**](AssetLocations.md) |  |  [optional] |
 |**defaultNamespaceCharged** | **String** | Override the default namespace charged for actions when no namespace is specified |  [optional] |
+|**defaultRegion** | **String** | The default region to use for notebooks and other operations. It must be a region supported by TileDB, see https://docs.tiledb.com/cloud/concepts/tiledb-cloud-internals/architecture#orchestration  |  [optional] |
 
 
 

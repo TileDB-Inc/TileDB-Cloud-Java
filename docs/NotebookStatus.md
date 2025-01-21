@@ -19,6 +19,7 @@ Status details of a notebook server
 |**storageLimit** | **Integer** | storage allocated to notebook server in bytes |  [optional] |
 |**cpuCount** | **Integer** | millicpu allocated to notebook server |  [optional] |
 |**cost** | **Double** | cost in USD for the current notebook session |  [optional] |
+|**podStatus** | **PodStatus** |  |  [optional] |
 
 
 

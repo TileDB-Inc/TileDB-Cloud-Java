@@ -37,6 +37,8 @@ Synchronous Task to Run
 |**resultFormat** | **ResultFormat** |  |  [optional] |
 |**taskGraphUuid** | **String** | If set, the ID of the log for the task graph that this was part of.  |  [optional] |
 |**clientNodeUuid** | **String** | If set, the client-defined ID of the node within this task&#39;s graph.  |  [optional] |
+|**cloudProvider** | **String** | The name of the cloud provider where this task executed. |  [optional] |
+|**cloudRegion** | **String** | The region of the cloud provider where this task executed. |  [optional] |
 
 
 

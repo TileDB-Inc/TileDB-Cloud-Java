@@ -27,6 +27,9 @@ metadata of a group
 |**tags** | **List&lt;String&gt;** | optional tags for group |  [optional] |
 |**licenseId** | **String** | License identifier from SPDX License List or Custom |  [optional] |
 |**licenseText** | **String** | License text |  [optional] |
+|**createdAt** | **OffsetDateTime** | Datetime the group was registered with tiledb |  [optional] |
+|**createdBy** | **String** | The username of the group&#39;s creator, if known. |  [optional] |
+|**metadata** | [**List&lt;MetadataStringifiedEntry&gt;**](MetadataStringifiedEntry.md) | Contains metadata of the group. **Note:** This property is included in the response only if the &#x60;with_metadata&#x60; query parameter is set to &#x60;true&#x60;.  |  [optional] |
 
 
 

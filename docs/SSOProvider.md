@@ -13,5 +13,9 @@
 
 * `OKTA` (value: `"okta"`)
 
+* `PERDOMAIN` (value: `"perdomain"`)
+
+* `SCIM` (value: `"scim"`)
+
 
 

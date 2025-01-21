@@ -23,7 +23,7 @@ All URIs are relative to */v1*
 | [**updateGroup**](GroupsApi.md#updateGroup) | **PATCH** /groups/{group_namespace}/{group_name} |  |
 
 
-<a name="changeGroupContents"></a>
+<a id="changeGroupContents"></a>
 # **changeGroupContents**
 > changeGroupContents(groupNamespace, groupName, groupChanges)
 
@@ -32,46 +32,45 @@ All URIs are relative to */v1*
 Changes the contents of the group by adding/removing members.
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        GroupChanges groupChanges = new GroupChanges(); // GroupChanges | 
-        try {
-            apiInstance.changeGroupContents(groupNamespace, groupName, groupChanges);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#changeGroupContents");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    GroupChanges groupChanges = new GroupChanges(); // GroupChanges | 
+    try {
+      apiInstance.changeGroupContents(groupNamespace, groupName, groupChanges);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#changeGroupContents");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -89,7 +88,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -103,7 +102,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="createGroup"></a>
+<a id="createGroup"></a>
 # **createGroup**
 > createGroup(namespace, groupCreate)
 
@@ -112,45 +111,44 @@ null (empty response body)
 Creates a new group in the namespace.
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the group
-        GroupCreate groupCreate = new GroupCreate(); // GroupCreate | 
-        try {
-            apiInstance.createGroup(namespace, groupCreate);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#createGroup");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the group
+    GroupCreate groupCreate = new GroupCreate(); // GroupCreate | 
+    try {
+      apiInstance.createGroup(namespace, groupCreate);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#createGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -167,7 +165,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -181,7 +179,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="deleteGroup"></a>
+<a id="deleteGroup"></a>
 # **deleteGroup**
 > deleteGroup(groupNamespace, groupName)
 
@@ -190,45 +188,44 @@ null (empty response body)
 Deletes the group. The assets are not deleted nor are not relocated to any other group
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        try {
-            apiInstance.deleteGroup(groupNamespace, groupName);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#deleteGroup");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    try {
+      apiInstance.deleteGroup(groupNamespace, groupName);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#deleteGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -245,7 +242,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -259,7 +256,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="getGroup"></a>
+<a id="getGroup"></a>
 # **getGroup**
 > GroupInfo getGroup(groupNamespace, groupName)
 
@@ -268,46 +265,45 @@ null (empty response body)
 Returns the the group
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        try {
-            GroupInfo result = apiInstance.getGroup(groupNamespace, groupName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#getGroup");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    try {
+      GroupInfo result = apiInstance.getGroup(groupNamespace, groupName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#getGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -324,7 +320,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -338,57 +334,56 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="getGroupActivity"></a>
+<a id="getGroupActivity"></a>
 # **getGroupActivity**
-> GroupActivityResponse getGroupActivity(groupNamespace, groupName, page, perPage)
+> GroupContentActivityResponse getGroupActivity(groupNamespace, groupName, page, perPage)
 
 
 
 Returns the activity of group content
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        try {
-            GroupActivityResponse result = apiInstance.getGroupActivity(groupNamespace, groupName, page, perPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#getGroupActivity");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    try {
+      GroupContentActivityResponse result = apiInstance.getGroupActivity(groupNamespace, groupName, page, perPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#getGroupActivity");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -403,11 +398,11 @@ public class Example {
 
 ### Return type
 
-[**GroupActivityResponse**](GroupActivityResponse.md)
+[**GroupContentActivityResponse**](GroupContentActivityResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -421,7 +416,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="getGroupContents"></a>
+<a id="getGroupContents"></a>
 # **getGroupContents**
 > GroupContents getGroupContents(groupNamespace, groupName, page, perPage, namespace, search, orderby, tag, excludeTag, memberType, excludeMemberType)
 
@@ -430,55 +425,54 @@ public class Example {
 Returns the contents of the group
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        Integer page = 56; // Integer | pagination offset for assets
-        Integer perPage = 56; // Integer | pagination limit for assets
-        String namespace = "namespace_example"; // String | namespace to search for
-        String search = "search_example"; // String | search string that will look at name, namespace or description fields
-        String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
-        List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
-        List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
-        List<String> memberType = Arrays.asList(); // List<String> | member type to search for, more than one can be included
-        List<String> excludeMemberType = Arrays.asList(); // List<String> | member type to exclude matching groups in results, more than one can be included
-        try {
-            GroupContents result = apiInstance.getGroupContents(groupNamespace, groupName, page, perPage, namespace, search, orderby, tag, excludeTag, memberType, excludeMemberType);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#getGroupContents");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    Integer page = 56; // Integer | pagination offset for assets
+    Integer perPage = 56; // Integer | pagination limit for assets
+    String namespace = "namespace_example"; // String | namespace to search for
+    String search = "search_example"; // String | search string that will look at name, namespace or description fields
+    String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
+    List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
+    List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
+    List<String> memberType = Arrays.asList(); // List<String> | member type to search for, more than one can be included
+    List<String> excludeMemberType = Arrays.asList(); // List<String> | member type to exclude matching groups in results, more than one can be included
+    try {
+      GroupContents result = apiInstance.getGroupContents(groupNamespace, groupName, page, perPage, namespace, search, orderby, tag, excludeTag, memberType, excludeMemberType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#getGroupContents");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -504,7 +498,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -518,7 +512,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="getGroupSharingPolicies"></a>
+<a id="getGroupSharingPolicies"></a>
 # **getGroupSharingPolicies**
 > List&lt;GroupSharing&gt; getGroupSharingPolicies(groupNamespace, groupName)
 
@@ -527,46 +521,45 @@ public class Example {
 Get all sharing details of the group
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        try {
-            List<GroupSharing> result = apiInstance.getGroupSharingPolicies(groupNamespace, groupName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#getGroupSharingPolicies");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    try {
+      List<GroupSharing> result = apiInstance.getGroupSharingPolicies(groupNamespace, groupName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#getGroupSharingPolicies");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -583,7 +576,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -598,7 +591,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="groupsBrowserOwnedFiltersGet"></a>
+<a id="groupsBrowserOwnedFiltersGet"></a>
 # **groupsBrowserOwnedFiltersGet**
 > GroupBrowserFilterData groupsBrowserOwnedFiltersGet(namespace)
 
@@ -607,45 +600,44 @@ public class Example {
 Fetch data to initialize filters for the groups browser
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace
-        try {
-            GroupBrowserFilterData result = apiInstance.groupsBrowserOwnedFiltersGet(namespace);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#groupsBrowserOwnedFiltersGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace
+    try {
+      GroupBrowserFilterData result = apiInstance.groupsBrowserOwnedFiltersGet(namespace);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#groupsBrowserOwnedFiltersGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -661,7 +653,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -675,7 +667,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="groupsBrowserPublicFiltersGet"></a>
+<a id="groupsBrowserPublicFiltersGet"></a>
 # **groupsBrowserPublicFiltersGet**
 > GroupBrowserFilterData groupsBrowserPublicFiltersGet()
 
@@ -684,44 +676,43 @@ public class Example {
 Fetch data to initialize filters for the groups browser
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        try {
-            GroupBrowserFilterData result = apiInstance.groupsBrowserPublicFiltersGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#groupsBrowserPublicFiltersGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    try {
+      GroupBrowserFilterData result = apiInstance.groupsBrowserPublicFiltersGet();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#groupsBrowserPublicFiltersGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -734,7 +725,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -748,7 +739,7 @@ This endpoint does not need any parameter.
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="groupsBrowserSharedFiltersGet"></a>
+<a id="groupsBrowserSharedFiltersGet"></a>
 # **groupsBrowserSharedFiltersGet**
 > GroupBrowserFilterData groupsBrowserSharedFiltersGet(namespace)
 
@@ -757,45 +748,44 @@ This endpoint does not need any parameter.
 Fetch data to initialize filters for the groups browser
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace
-        try {
-            GroupBrowserFilterData result = apiInstance.groupsBrowserSharedFiltersGet(namespace);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#groupsBrowserSharedFiltersGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace
+    try {
+      GroupBrowserFilterData result = apiInstance.groupsBrowserSharedFiltersGet(namespace);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#groupsBrowserSharedFiltersGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -811,7 +801,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -825,7 +815,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="groupsGroupNamespaceGroupNameContentsFiltersGet"></a>
+<a id="groupsGroupNamespaceGroupNameContentsFiltersGet"></a>
 # **groupsGroupNamespaceGroupNameContentsFiltersGet**
 > GroupContentsFilterData groupsGroupNamespaceGroupNameContentsFiltersGet(groupNamespace, groupName)
 
@@ -834,46 +824,45 @@ public class Example {
 Fetch data to initialize filters for the group contents
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        try {
-            GroupContentsFilterData result = apiInstance.groupsGroupNamespaceGroupNameContentsFiltersGet(groupNamespace, groupName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#groupsGroupNamespaceGroupNameContentsFiltersGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    try {
+      GroupContentsFilterData result = apiInstance.groupsGroupNamespaceGroupNameContentsFiltersGet(groupNamespace, groupName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#groupsGroupNamespaceGroupNameContentsFiltersGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -890,7 +879,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -904,64 +893,64 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="listOwnedGroups"></a>
+<a id="listOwnedGroups"></a>
 # **listOwnedGroups**
-> GroupBrowserData listOwnedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent)
+> GroupBrowserData listOwnedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata)
 
 
 
 Returns one page of owned groups.
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        String groupType = "groupType_example"; // String | filter by a specific group type
-        String search = "search_example"; // String | search string that will look at name, namespace or description fields
-        String namespace = "namespace_example"; // String | namespace
-        String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
-        String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
-        List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
-        List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
-        Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
-        String parent = "parent_example"; // String | search only the children of the groups with this uuid
-        try {
-            GroupBrowserData result = apiInstance.listOwnedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#listOwnedGroups");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    String groupType = "groupType_example"; // String | filter by a specific group type
+    String search = "search_example"; // String | search string that will look at name, namespace or description fields
+    String namespace = "namespace_example"; // String | namespace
+    String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
+    String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
+    List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
+    List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
+    Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
+    String parent = "parent_example"; // String | search only the children of the groups with this uuid
+    Boolean withMetadata = true; // Boolean | include the metadata of the groups
+    try {
+      GroupBrowserData result = apiInstance.listOwnedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#listOwnedGroups");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -980,6 +969,7 @@ public class Example {
 | **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
 | **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional] |
 | **parent** | **String**| search only the children of the groups with this uuid | [optional] |
+| **withMetadata** | **Boolean**| include the metadata of the groups | [optional] |
 
 ### Return type
 
@@ -987,7 +977,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1001,64 +991,64 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="listPublicGroups"></a>
+<a id="listPublicGroups"></a>
 # **listPublicGroups**
-> GroupBrowserData listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent)
+> GroupBrowserData listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata)
 
 
 
 Returns one page of public groups.
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        String groupType = "groupType_example"; // String | filter by a specific group type
-        String search = "search_example"; // String | search string that will look at name, namespace or description fields
-        String namespace = "namespace_example"; // String | namespace
-        String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
-        String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
-        List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
-        List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
-        Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
-        String parent = "parent_example"; // String | search only the children of the groups with this uuid
-        try {
-            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#listPublicGroups");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    String groupType = "groupType_example"; // String | filter by a specific group type
+    String search = "search_example"; // String | search string that will look at name, namespace or description fields
+    String namespace = "namespace_example"; // String | namespace
+    String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
+    String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
+    List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
+    List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
+    Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
+    String parent = "parent_example"; // String | search only the children of the groups with this uuid
+    Boolean withMetadata = true; // Boolean | include the metadata of the groups
+    try {
+      GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#listPublicGroups");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1077,6 +1067,7 @@ public class Example {
 | **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
 | **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional] |
 | **parent** | **String**| search only the children of the groups with this uuid | [optional] |
+| **withMetadata** | **Boolean**| include the metadata of the groups | [optional] |
 
 ### Return type
 
@@ -1084,7 +1075,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1098,65 +1089,65 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="listSharedGroups"></a>
+<a id="listSharedGroups"></a>
 # **listSharedGroups**
-> GroupBrowserData listSharedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo)
+> GroupBrowserData listSharedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, withMetadata)
 
 
 
 Returns one page of shared groups.
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        String groupType = "groupType_example"; // String | filter by a specific group type
-        String search = "search_example"; // String | search string that will look at name, namespace or description fields
-        String namespace = "namespace_example"; // String | namespace
-        String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
-        String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
-        List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
-        List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
-        Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
-        String parent = "parent_example"; // String | search only the children of the groups with this uuid
-        List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there groups were shared to
-        try {
-            GroupBrowserData result = apiInstance.listSharedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#listSharedGroups");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    String groupType = "groupType_example"; // String | filter by a specific group type
+    String search = "search_example"; // String | search string that will look at name, namespace or description fields
+    String namespace = "namespace_example"; // String | namespace
+    String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
+    String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
+    List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
+    List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
+    Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
+    String parent = "parent_example"; // String | search only the children of the groups with this uuid
+    List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there groups were shared to
+    Boolean withMetadata = true; // Boolean | include the metadata of the groups
+    try {
+      GroupBrowserData result = apiInstance.listSharedGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, withMetadata);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#listSharedGroups");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1176,6 +1167,7 @@ public class Example {
 | **flat** | **Boolean**| if true, ignores the nesting of groups and searches all of them | [optional] |
 | **parent** | **String**| search only the children of the groups with this uuid | [optional] |
 | **sharedTo** | [**List&lt;String&gt;**](String.md)| namespaces to filter results of where there groups were shared to | [optional] |
+| **withMetadata** | **Boolean**| include the metadata of the groups | [optional] |
 
 ### Return type
 
@@ -1183,7 +1175,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1197,7 +1189,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="registerGroup"></a>
+<a id="registerGroup"></a>
 # **registerGroup**
 > registerGroup(namespace, array, groupRegister)
 
@@ -1206,46 +1198,45 @@ public class Example {
 Registers an existing group in the namespace.
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the group
-        String array = "array_example"; // String | The unique name or id of the group
-        GroupRegister groupRegister = new GroupRegister(); // GroupRegister | 
-        try {
-            apiInstance.registerGroup(namespace, array, groupRegister);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#registerGroup");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the group
+    String array = "array_example"; // String | The unique name or id of the group
+    GroupRegister groupRegister = new GroupRegister(); // GroupRegister | 
+    try {
+      apiInstance.registerGroup(namespace, array, groupRegister);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#registerGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1263,7 +1254,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1277,7 +1268,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="shareGroup"></a>
+<a id="shareGroup"></a>
 # **shareGroup**
 > shareGroup(groupNamespace, groupName, groupSharingRequest)
 
@@ -1286,46 +1277,45 @@ null (empty response body)
 Share a group with a namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        GroupSharingRequest groupSharingRequest = new GroupSharingRequest(); // GroupSharingRequest | Namespace and list of permissions to share with. Sharing is recursive, it is applied to all reachable subgroups and arrays of the group. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it's likely the group will not be shared with the namespace at all.
-        try {
-            apiInstance.shareGroup(groupNamespace, groupName, groupSharingRequest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#shareGroup");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    GroupSharingRequest groupSharingRequest = new GroupSharingRequest(); // GroupSharingRequest | Namespace and list of permissions to share with. Sharing is recursive, it is applied to all reachable subgroups and arrays of the group. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it's likely the group will not be shared with the namespace at all.
+    try {
+      apiInstance.shareGroup(groupNamespace, groupName, groupSharingRequest);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#shareGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1343,7 +1333,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1358,7 +1348,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="updateGroup"></a>
+<a id="updateGroup"></a>
 # **updateGroup**
 > updateGroup(groupNamespace, groupName, groupUpdate)
 
@@ -1367,46 +1357,45 @@ null (empty response body)
 Changes attributes of the group
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import GroupsApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.GroupsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        GroupsApi apiInstance = new GroupsApi(defaultClient);
-        String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
-        String groupName = "groupName_example"; // String | The unique name or id of the group
-        GroupUpdate groupUpdate = new GroupUpdate(); // GroupUpdate | 
-        try {
-            apiInstance.updateGroup(groupNamespace, groupName, groupUpdate);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling GroupsApi#updateGroup");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    GroupsApi apiInstance = new GroupsApi(defaultClient);
+    String groupNamespace = "groupNamespace_example"; // String | The namespace of the group
+    String groupName = "groupName_example"; // String | The unique name or id of the group
+    GroupUpdate groupUpdate = new GroupUpdate(); // GroupUpdate | 
+    try {
+      apiInstance.updateGroup(groupNamespace, groupName, groupUpdate);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GroupsApi#updateGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1424,7 +1413,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

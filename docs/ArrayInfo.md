@@ -32,6 +32,9 @@ metadata of an array
 |**licenseText** | **String** | License text |  [optional] |
 |**readOnly** | **Boolean** | Suggests if the array is in read_only mode |  [optional] |
 |**isFavorite** | **Boolean** | Indicates whether the array is in user favorites |  [optional] |
+|**createdAt** | **OffsetDateTime** | Datetime array was registered with tiledb |  [optional] |
+|**createdBy** | **String** | The user who created the array, if known. |  [optional] |
+|**metadata** | [**List&lt;MetadataStringifiedEntry&gt;**](MetadataStringifiedEntry.md) | Contains the metadata of the array. **Note:** This property is included in the response only if the &#x60;with_metadata&#x60; query parameter is set to &#x60;true&#x60;.  |  [optional] |
 
 
 

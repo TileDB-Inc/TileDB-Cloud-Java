@@ -10,56 +10,55 @@ All URIs are relative to */v1*
 | [**tasksGet**](TasksApi.md#tasksGet) | **GET** /tasks |  |
 
 
-<a name="runSQL"></a>
+<a id="runSQL"></a>
 # **runSQL**
-> List&lt;Object&gt; runSQL(namespace, sql, acceptEncoding)
+> List&lt;Map&lt;String, Object&gt;&gt; runSQL(namespace, sql, acceptEncoding)
 
 
 
 Run a sql query
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import TasksApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.TasksApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        TasksApi apiInstance = new TasksApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace to run task under is in (an organization name or user's username)
-        SQLParameters sql = new SQLParameters(); // SQLParameters | sql being submitted
-        String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
-        try {
-            List<Object> result = apiInstance.runSQL(namespace, sql, acceptEncoding);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TasksApi#runSQL");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    TasksApi apiInstance = new TasksApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace to run task under is in (an organization name or user's username)
+    SQLParameters sql = new SQLParameters(); // SQLParameters | sql being submitted
+    String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
+    try {
+      List<Map<String, Object>> result = apiInstance.runSQL(namespace, sql, acceptEncoding);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TasksApi#runSQL");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -73,11 +72,11 @@ public class Example {
 
 ### Return type
 
-**List&lt;Object&gt;**
+[**List&lt;Map&lt;String, Object&gt;&gt;**](Map.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -92,7 +91,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="taskIdGet"></a>
+<a id="taskIdGet"></a>
 # **taskIdGet**
 > ArrayTask taskIdGet(id)
 
@@ -101,45 +100,44 @@ public class Example {
 Fetch an array task
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import TasksApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.TasksApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        TasksApi apiInstance = new TasksApi(defaultClient);
-        String id = "id_example"; // String | task ID to fetch
-        try {
-            ArrayTask result = apiInstance.taskIdGet(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TasksApi#taskIdGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    TasksApi apiInstance = new TasksApi(defaultClient);
+    String id = "id_example"; // String | task ID to fetch
+    try {
+      ArrayTask result = apiInstance.taskIdGet(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TasksApi#taskIdGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -155,7 +153,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -169,7 +167,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="taskIdResultGet"></a>
+<a id="taskIdResultGet"></a>
 # **taskIdResultGet**
 > String taskIdResultGet(id, acceptEncoding)
 
@@ -178,46 +176,45 @@ public class Example {
 Retrieve results of an array task
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import TasksApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.TasksApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        TasksApi apiInstance = new TasksApi(defaultClient);
-        String id = "id_example"; // String | task ID to retrieve stored results
-        String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
-        try {
-            String result = apiInstance.taskIdResultGet(id, acceptEncoding);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TasksApi#taskIdResultGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    TasksApi apiInstance = new TasksApi(defaultClient);
+    String id = "id_example"; // String | task ID to retrieve stored results
+    String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
+    try {
+      String result = apiInstance.taskIdResultGet(id, acceptEncoding);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TasksApi#taskIdResultGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -234,7 +231,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -250,7 +247,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="tasksGet"></a>
+<a id="tasksGet"></a>
 # **tasksGet**
 > ArrayTaskData tasksGet(namespace, createdBy, array, start, end, page, perPage, type, excludeType, fileType, excludeFileType, status, search, orderby)
 
@@ -259,58 +256,57 @@ public class Example {
 Fetch a list of all array tasks a user has access to
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
-import io.tiledb.cloud.rest_api.models.*;
-import TasksApi;
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.TasksApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        TasksApi apiInstance = new TasksApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace to filter
-        String createdBy = "createdBy_example"; // String | username to filter
-        String array = "array_example"; // String | name/uri of array that is url-encoded to filter
-        Integer start = 56; // Integer | start time for tasks to filter by
-        Integer end = 56; // Integer | end time for tasks to filter by
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        String type = "type_example"; // String | task type, \"QUERY\", \"SQL\", \"UDF\", \"GENERIC_UDF\"
-        List<String> excludeType = Arrays.asList(); // List<String> | task_type to exclude matching array in results, more than one can be included
-        List<String> fileType = Arrays.asList(); // List<String> | match file_type of task array, more than one can be included
-        List<String> excludeFileType = Arrays.asList(); // List<String> | exclude file_type of task arrays, more than one can be included
-        String status = "status_example"; // String | Filter to only return these statuses
-        String search = "search_example"; // String | search string that will look at name, namespace or description fields
-        String orderby = "orderby_example"; // String | sort by which field valid values include start_time, name
-        try {
-            ArrayTaskData result = apiInstance.tasksGet(namespace, createdBy, array, start, end, page, perPage, type, excludeType, fileType, excludeFileType, status, search, orderby);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TasksApi#tasksGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    TasksApi apiInstance = new TasksApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace to filter
+    String createdBy = "createdBy_example"; // String | username to filter
+    String array = "array_example"; // String | name/uri of array that is url-encoded to filter
+    Integer start = 56; // Integer | start time for tasks to filter by
+    Integer end = 56; // Integer | end time for tasks to filter by
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    String type = "type_example"; // String | task type, \"QUERY\", \"SQL\", \"UDF\", \"GENERIC_UDF\"
+    List<String> excludeType = Arrays.asList(); // List<String> | task_type to exclude matching array in results, more than one can be included
+    List<String> fileType = Arrays.asList(); // List<String> | match file_type of task array, more than one can be included
+    List<String> excludeFileType = Arrays.asList(); // List<String> | exclude file_type of task arrays, more than one can be included
+    String status = "status_example"; // String | Filter to only return these statuses
+    String search = "search_example"; // String | search string that will look at name, namespace or description fields
+    String orderby = "orderby_example"; // String | sort by which field valid values include start_time, name
+    try {
+      ArrayTaskData result = apiInstance.tasksGet(namespace, createdBy, array, start, end, page, perPage, type, excludeType, fileType, excludeFileType, status, search, orderby);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TasksApi#tasksGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -339,7 +335,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
