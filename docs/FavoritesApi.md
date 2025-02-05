@@ -35,45 +35,44 @@ All URIs are relative to */v1*
 Add a new array favorite
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the array
-        String name = "name_example"; // String | The name of the array
-        try {
-            apiInstance.addArrayFavorite(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#addArrayFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the array
+    String name = "name_example"; // String | The name of the array
+    try {
+      apiInstance.addArrayFavorite(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#addArrayFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -113,45 +112,44 @@ null (empty response body)
 Add a new ML model favorite
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the ML model
-        String name = "name_example"; // String | The name of the ML model
-        try {
-            apiInstance.addMLModelFavorite(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#addMLModelFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the ML model
+    String name = "name_example"; // String | The name of the ML model
+    try {
+      apiInstance.addMLModelFavorite(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#addMLModelFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -191,45 +189,44 @@ null (empty response body)
 Add a new notebook favorite
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the notebook
-        String name = "name_example"; // String | The name of the notebook
-        try {
-            apiInstance.addNotebookFavorite(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#addNotebookFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the notebook
+    String name = "name_example"; // String | The name of the notebook
+    try {
+      apiInstance.addNotebookFavorite(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#addNotebookFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -269,45 +266,44 @@ null (empty response body)
 Add a new UDF favorite
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the UDF
-        String name = "name_example"; // String | The name of the UDF
-        try {
-            apiInstance.addUDFFavorite(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#addUDFFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the UDF
+    String name = "name_example"; // String | The name of the UDF
+    try {
+      apiInstance.addUDFFavorite(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#addUDFFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -347,45 +343,44 @@ null (empty response body)
 Delete specific array favorite
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the array
-        String name = "name_example"; // String | The name of the array
-        try {
-            apiInstance.deleteArrayFavorite(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#deleteArrayFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the array
+    String name = "name_example"; // String | The name of the array
+    try {
+      apiInstance.deleteArrayFavorite(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#deleteArrayFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -425,45 +420,44 @@ null (empty response body)
 Delete specific ML model favorite
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the ML model
-        String name = "name_example"; // String | The name of the ML model
-        try {
-            apiInstance.deleteMLModelFavorite(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#deleteMLModelFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the ML model
+    String name = "name_example"; // String | The name of the ML model
+    try {
+      apiInstance.deleteMLModelFavorite(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#deleteMLModelFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -503,45 +497,44 @@ null (empty response body)
 Delete specific notebook favorite
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the notebook
-        String name = "name_example"; // String | The name of the notebook
-        try {
-            apiInstance.deleteNotebookFavorite(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#deleteNotebookFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the notebook
+    String name = "name_example"; // String | The name of the notebook
+    try {
+      apiInstance.deleteNotebookFavorite(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#deleteNotebookFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -581,45 +574,44 @@ null (empty response body)
 Delete specific UDF favorite
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the UDF
-        String name = "name_example"; // String | The name of the UDF
-        try {
-            apiInstance.deleteUDFFavorite(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#deleteUDFFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the UDF
+    String name = "name_example"; // String | The name of the UDF
+    try {
+      apiInstance.deleteUDFFavorite(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#deleteUDFFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -659,46 +651,45 @@ null (empty response body)
 Fetch array favorite of a specific array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the array
-        String name = "name_example"; // String | The name of the array
-        try {
-            ArrayFavorite result = apiInstance.getArrayFavorite(namespace, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#getArrayFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the array
+    String name = "name_example"; // String | The name of the array
+    try {
+      ArrayFavorite result = apiInstance.getArrayFavorite(namespace, name);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#getArrayFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -738,46 +729,45 @@ public class Example {
 Fetch ML model favorite of a specific ML model
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the ML model
-        String name = "name_example"; // String | The name of the ML model
-        try {
-            MLModelFavorite result = apiInstance.getMLModelFavorite(namespace, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#getMLModelFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the ML model
+    String name = "name_example"; // String | The name of the ML model
+    try {
+      MLModelFavorite result = apiInstance.getMLModelFavorite(namespace, name);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#getMLModelFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -817,46 +807,45 @@ public class Example {
 Fetch notebook favorite of a specific notebook
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the notebook
-        String name = "name_example"; // String | The name of the notebook
-        try {
-            NotebookFavorite result = apiInstance.getNotebookFavorite(namespace, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#getNotebookFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the notebook
+    String name = "name_example"; // String | The name of the notebook
+    try {
+      NotebookFavorite result = apiInstance.getNotebookFavorite(namespace, name);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#getNotebookFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -896,46 +885,45 @@ public class Example {
 Fetch UDF favorite of a specific UDF
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        String namespace = "namespace_example"; // String | The namespace of the UDF
-        String name = "name_example"; // String | The name of the UDF
-        try {
-            UDFFavorite result = apiInstance.getUDFFavorite(namespace, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#getUDFFavorite");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    String namespace = "namespace_example"; // String | The namespace of the UDF
+    String name = "name_example"; // String | The name of the UDF
+    try {
+      UDFFavorite result = apiInstance.getUDFFavorite(namespace, name);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#getUDFFavorite");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -975,46 +963,45 @@ public class Example {
 Fetch a page of array favorites of connected user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        try {
-            ArrayFavoritesData result = apiInstance.listArrayFavorites(page, perPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#listArrayFavorites");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    try {
+      ArrayFavoritesData result = apiInstance.listArrayFavorites(page, perPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#listArrayFavorites");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1054,44 +1041,43 @@ public class Example {
 Fetch all favorite array uuids of connected user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        try {
-            List<ArrayFavorite> result = apiInstance.listArrayFavoritesUUIDs();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#listArrayFavoritesUUIDs");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    try {
+      List<ArrayFavorite> result = apiInstance.listArrayFavoritesUUIDs();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#listArrayFavoritesUUIDs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1127,46 +1113,45 @@ This endpoint does not need any parameter.
 Fetch a page of ML models favorites of connected user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        try {
-            MLModelFavoritesData result = apiInstance.listMLModelFavorites(page, perPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#listMLModelFavorites");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    try {
+      MLModelFavoritesData result = apiInstance.listMLModelFavorites(page, perPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#listMLModelFavorites");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1206,44 +1191,43 @@ public class Example {
 Fetch all favorite ML models uuids of connected user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        try {
-            List<MLModelFavorite> result = apiInstance.listMLModelFavoritesUUIDs();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#listMLModelFavoritesUUIDs");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    try {
+      List<MLModelFavorite> result = apiInstance.listMLModelFavoritesUUIDs();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#listMLModelFavoritesUUIDs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1279,47 +1263,46 @@ This endpoint does not need any parameter.
 Fetch a page of notebook favorites of connected user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        Boolean isDashboard = true; // Boolean | return only dashboards
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        try {
-            NotebookFavoritesData result = apiInstance.listNotebookFavorites(isDashboard, page, perPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#listNotebookFavorites");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    Boolean isDashboard = true; // Boolean | return only dashboards
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    try {
+      NotebookFavoritesData result = apiInstance.listNotebookFavorites(isDashboard, page, perPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#listNotebookFavorites");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1360,44 +1343,43 @@ public class Example {
 Fetch all favorite notebook uuids of connected user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        try {
-            List<NotebookFavorite> result = apiInstance.listNotebookFavoritesUUIDs();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#listNotebookFavoritesUUIDs");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    try {
+      List<NotebookFavorite> result = apiInstance.listNotebookFavoritesUUIDs();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#listNotebookFavoritesUUIDs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1433,46 +1415,45 @@ This endpoint does not need any parameter.
 Fetch a page of UDF favorites of connected user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        try {
-            UDFFavoritesData result = apiInstance.listUDFFavorites(page, perPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#listUDFFavorites");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    try {
+      UDFFavoritesData result = apiInstance.listUDFFavorites(page, perPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#listUDFFavorites");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1512,44 +1493,43 @@ public class Example {
 Fetch all favorite UDF uuids of connected user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import FavoritesApi;
+import io.tiledb.cloud.rest_api.FavoritesApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        FavoritesApi apiInstance = new FavoritesApi(defaultClient);
-        try {
-            List<UDFFavorite> result = apiInstance.listUDFFavoritesUUIDs();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FavoritesApi#listUDFFavoritesUUIDs");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    FavoritesApi apiInstance = new FavoritesApi(defaultClient);
+    try {
+      List<UDFFavorite> result = apiInstance.listUDFFavoritesUUIDs();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FavoritesApi#listUDFFavoritesUUIDs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 

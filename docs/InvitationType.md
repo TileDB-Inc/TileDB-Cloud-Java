@@ -11,5 +11,7 @@
 
 * `JOIN_ORGANIZATION` (value: `"JOIN_ORGANIZATION"`)
 
+* `PAYMENT_SHARE` (value: `"PAYMENT_SHARE"`)
+
 
 

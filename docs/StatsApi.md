@@ -16,44 +16,43 @@ All URIs are relative to */v1*
 Fetch libtiledb stat
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import StatsApi;
+import io.tiledb.cloud.rest_api.StatsApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        StatsApi apiInstance = new StatsApi(defaultClient);
-        try {
-            GetTiledbStats200Response result = apiInstance.getTiledbStats();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling StatsApi#getTiledbStats");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    StatsApi apiInstance = new StatsApi(defaultClient);
+    try {
+      GetTiledbStats200Response result = apiInstance.getTiledbStats();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StatsApi#getTiledbStats");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 

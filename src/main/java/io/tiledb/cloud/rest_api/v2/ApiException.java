@@ -16,7 +16,6 @@ package io.tiledb.cloud.rest_api.v2;
 import java.util.Map;
 import java.util.List;
 
-import javax.ws.rs.core.GenericType;
 
 /**
  * <p>ApiException class.</p>

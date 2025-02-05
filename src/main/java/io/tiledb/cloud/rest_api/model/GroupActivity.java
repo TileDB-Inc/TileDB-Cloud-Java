@@ -14,7 +14,6 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
@@ -39,7 +38,7 @@ import io.tiledb.cloud.rest_api.JSON;
  * Object containing activity of an asset of a group
  */
 @ApiModel(description = "Object containing activity of an asset of a group")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-02T12:25:58.319138+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-05T12:07:56.250391Z[Etc/UTC]")
 public class GroupActivity {
   public static final String SERIALIZED_NAME_ASSET = "asset";
   @SerializedName(SERIALIZED_NAME_ASSET)

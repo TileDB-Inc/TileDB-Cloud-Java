@@ -31,6 +31,8 @@ All URIs are relative to */v1*
 | [**getArraysInNamespace**](ArrayApi.md#getArraysInNamespace) | **GET** /arrays/{namespace} |  |
 | [**getFragmentEndTimestamp**](ArrayApi.md#getFragmentEndTimestamp) | **GET** /arrays/{namespace}/{array}/fragment_end_timestamp |  |
 | [**getLastAccessedArrays**](ArrayApi.md#getLastAccessedArrays) | **GET** /arrays/last_accessed |  |
+| [**loadArraySchema**](ArrayApi.md#loadArraySchema) | **POST** /arrays/{namespace}/{array}/schema |  |
+| [**loadEnumerations**](ArrayApi.md#loadEnumerations) | **POST** /arrays/{namespace}/{array}/enumerations |  |
 | [**registerArray**](ArrayApi.md#registerArray) | **POST** /arrays/{namespace}/{array}/register |  |
 | [**shareArray**](ArrayApi.md#shareArray) | **PATCH** /arrays/{namespace}/{array}/share |  |
 | [**updateArrayMetadata**](ArrayApi.md#updateArrayMetadata) | **PATCH** /arrays/{namespace}/{array}/metadata |  |
@@ -47,51 +49,50 @@ All URIs are relative to */v1*
 get array activity logs
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        Integer start = 56; // Integer | Start time of window of fetch logs, unix epoch in seconds (default: seven days ago)
-        Integer end = 56; // Integer | End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp)
-        String eventTypes = "eventTypes_example"; // String | Refer to ActivityEventType for possible values
-        String taskId = "taskId_example"; // String | Array task ID To filter activity to
-        Boolean hasTaskId = true; // Boolean | Excludes activity log results that do not contain an array task UUID
-        try {
-            List<ArrayActivityLog> result = apiInstance.arrayActivityLog(namespace, array, start, end, eventTypes, taskId, hasTaskId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#arrayActivityLog");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    Integer start = 56; // Integer | Start time of window of fetch logs, unix epoch in seconds (default: seven days ago)
+    Integer end = 56; // Integer | End time of window of fetch logs, unix epoch in seconds (default: current utc timestamp)
+    String eventTypes = "eventTypes_example"; // String | Refer to ActivityEventType for possible values
+    String taskId = "taskId_example"; // String | Array task ID To filter activity to
+    Boolean hasTaskId = true; // Boolean | Excludes activity log results that do not contain an array task UUID
+    try {
+      List<ArrayActivityLog> result = apiInstance.arrayActivityLog(namespace, array, start, end, eventTypes, taskId, hasTaskId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#arrayActivityLog");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -129,62 +130,62 @@ public class Example {
 
 <a name="arraysBrowserOwnedGet"></a>
 # **arraysBrowserOwnedGet**
-> ArrayBrowserData arraysBrowserOwnedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty)
+> ArrayBrowserData arraysBrowserOwnedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, withMetadata)
 
 
 
 Fetch a list of all arrays that are owned directly by user or user&#39;s organizations
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        String search = "search_example"; // String | search string that will look at name, namespace or description fields
-        String namespace = "namespace_example"; // String | namespace
-        String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
-        String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
-        List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
-        List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
-        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
-        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
-        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
-        try {
-            ArrayBrowserData result = apiInstance.arraysBrowserOwnedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#arraysBrowserOwnedGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    String search = "search_example"; // String | search string that will look at name, namespace or description fields
+    String namespace = "namespace_example"; // String | namespace
+    String orderby = "orderby_example"; // String | sort by which field valid values include size, name
+    String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
+    List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
+    List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
+    List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+    List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+    List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
+    Boolean withMetadata = true; // Boolean | include the metadata of the array
+    try {
+      ArrayBrowserData result = apiInstance.arraysBrowserOwnedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, withMetadata);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#arraysBrowserOwnedGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -196,13 +197,14 @@ public class Example {
 | **perPage** | **Integer**| pagination limit | [optional] |
 | **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
 | **namespace** | **String**| namespace | [optional] |
-| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **orderby** | **String**| sort by which field valid values include size, name | [optional] |
 | **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
 | **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
 | **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
 | **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional] |
 | **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
 | **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
+| **withMetadata** | **Boolean**| include the metadata of the array | [optional] |
 
 ### Return type
 
@@ -233,47 +235,46 @@ public class Example {
 Fetch a sidebar for arrays that are owned directly by user or user&#39;s organizations
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
-        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
-        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
-        try {
-            ArrayBrowserSidebar result = apiInstance.arraysBrowserOwnedSidebarGet(fileType, excludeFileType, fileProperty);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#arraysBrowserOwnedSidebarGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+    List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+    List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
+    try {
+      ArrayBrowserSidebar result = apiInstance.arraysBrowserOwnedSidebarGet(fileType, excludeFileType, fileProperty);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#arraysBrowserOwnedSidebarGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -307,62 +308,62 @@ public class Example {
 
 <a name="arraysBrowserPublicGet"></a>
 # **arraysBrowserPublicGet**
-> ArrayBrowserData arraysBrowserPublicGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty)
+> ArrayBrowserData arraysBrowserPublicGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, withMetadata)
 
 
 
 Fetch a list of all arrays that have been shared publically
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        String search = "search_example"; // String | search string that will look at name, namespace or description fields
-        String namespace = "namespace_example"; // String | namespace
-        String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
-        String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
-        List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
-        List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
-        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
-        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
-        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
-        try {
-            ArrayBrowserData result = apiInstance.arraysBrowserPublicGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#arraysBrowserPublicGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    String search = "search_example"; // String | search string that will look at name, namespace or description fields
+    String namespace = "namespace_example"; // String | namespace
+    String orderby = "orderby_example"; // String | sort by which field valid values include size, name
+    String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
+    List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
+    List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
+    List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+    List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+    List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
+    Boolean withMetadata = true; // Boolean | include the metadata of the array
+    try {
+      ArrayBrowserData result = apiInstance.arraysBrowserPublicGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, withMetadata);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#arraysBrowserPublicGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -374,13 +375,14 @@ public class Example {
 | **perPage** | **Integer**| pagination limit | [optional] |
 | **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
 | **namespace** | **String**| namespace | [optional] |
-| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **orderby** | **String**| sort by which field valid values include size, name | [optional] |
 | **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
 | **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
 | **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
 | **fileType** | [**List&lt;String&gt;**](String.md)| file_type to search for, more than one can be included | [optional] |
 | **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
 | **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
+| **withMetadata** | **Boolean**| include the metadata of the array | [optional] |
 
 ### Return type
 
@@ -411,47 +413,46 @@ public class Example {
 Fetch a sidebar of all arrays that have been shared publically
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
-        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
-        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
-        try {
-            ArrayBrowserSidebar result = apiInstance.arraysBrowserPublicSidebarGet(fileType, excludeFileType, fileProperty);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#arraysBrowserPublicSidebarGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+    List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+    List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
+    try {
+      ArrayBrowserSidebar result = apiInstance.arraysBrowserPublicSidebarGet(fileType, excludeFileType, fileProperty);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#arraysBrowserPublicSidebarGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -485,63 +486,63 @@ public class Example {
 
 <a name="arraysBrowserSharedGet"></a>
 # **arraysBrowserSharedGet**
-> ArrayBrowserData arraysBrowserSharedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo)
+> ArrayBrowserData arraysBrowserSharedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo, withMetadata)
 
 
 
 Fetch a list of all arrays that have been shared with the user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        String search = "search_example"; // String | search string that will look at name, namespace or description fields
-        String namespace = "namespace_example"; // String | namespace
-        String orderby = "orderby_example"; // String | sort by which field valid values include last_accessed, size, name
-        String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
-        List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
-        List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
-        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
-        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
-        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
-        List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there arrays were shared to
-        try {
-            ArrayBrowserData result = apiInstance.arraysBrowserSharedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#arraysBrowserSharedGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    String search = "search_example"; // String | search string that will look at name, namespace or description fields
+    String namespace = "namespace_example"; // String | namespace
+    String orderby = "orderby_example"; // String | sort by which field valid values include size, name
+    String permissions = "permissions_example"; // String | permissions valid values include read, read_write, write, admin
+    List<String> tag = Arrays.asList(); // List<String> | tag to search for, more than one can be included
+    List<String> excludeTag = Arrays.asList(); // List<String> | tags to exclude matching array in results, more than one can be included
+    List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+    List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+    List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
+    List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there arrays were shared to
+    Boolean withMetadata = true; // Boolean | include the metadata of the array
+    try {
+      ArrayBrowserData result = apiInstance.arraysBrowserSharedGet(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo, withMetadata);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#arraysBrowserSharedGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -553,7 +554,7 @@ public class Example {
 | **perPage** | **Integer**| pagination limit | [optional] |
 | **search** | **String**| search string that will look at name, namespace or description fields | [optional] |
 | **namespace** | **String**| namespace | [optional] |
-| **orderby** | **String**| sort by which field valid values include last_accessed, size, name | [optional] |
+| **orderby** | **String**| sort by which field valid values include size, name | [optional] |
 | **permissions** | **String**| permissions valid values include read, read_write, write, admin | [optional] |
 | **tag** | [**List&lt;String&gt;**](String.md)| tag to search for, more than one can be included | [optional] |
 | **excludeTag** | [**List&lt;String&gt;**](String.md)| tags to exclude matching array in results, more than one can be included | [optional] |
@@ -561,6 +562,7 @@ public class Example {
 | **excludeFileType** | [**List&lt;String&gt;**](String.md)| file_type to exclude matching array in results, more than one can be included | [optional] |
 | **fileProperty** | [**List&lt;String&gt;**](String.md)| file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included | [optional] |
 | **sharedTo** | [**List&lt;String&gt;**](String.md)| namespaces to filter results of where there arrays were shared to | [optional] |
+| **withMetadata** | **Boolean**| include the metadata of the array | [optional] |
 
 ### Return type
 
@@ -591,48 +593,47 @@ public class Example {
 Fetch a list of all arrays that have been shared with the user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
-        List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
-        List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
-        List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there groups were shared to
-        try {
-            ArrayBrowserSidebar result = apiInstance.arraysBrowserSharedSidebarGet(fileType, excludeFileType, fileProperty, sharedTo);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#arraysBrowserSharedSidebarGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    List<String> fileType = Arrays.asList(); // List<String> | file_type to search for, more than one can be included
+    List<String> excludeFileType = Arrays.asList(); // List<String> | file_type to exclude matching array in results, more than one can be included
+    List<String> fileProperty = Arrays.asList(); // List<String> | file_property key-value pair (comma separated, i.e. key,value) to search for, more than one can be included
+    List<String> sharedTo = Arrays.asList(); // List<String> | namespaces to filter results of where there groups were shared to
+    try {
+      ArrayBrowserSidebar result = apiInstance.arraysBrowserSharedSidebarGet(fileType, excludeFileType, fileProperty, sharedTo);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#arraysBrowserSharedSidebarGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -674,48 +675,47 @@ public class Example {
 retrieve a list of timestamps from the array fragment info listing in milliseconds, paginated
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        try {
-            ArrayEndTimestampData result = apiInstance.arraysNamespaceArrayEndTimestampsGet(namespace, array, page, perPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#arraysNamespaceArrayEndTimestampsGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    try {
+      ArrayEndTimestampData result = apiInstance.arraysNamespaceArrayEndTimestampsGet(namespace, array, page, perPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#arraysNamespaceArrayEndTimestampsGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -757,46 +757,45 @@ public class Example {
 consolidate an array at a specified URI
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        ArrayConsolidationRequest consolidateRequest = new ArrayConsolidationRequest(); // ArrayConsolidationRequest | Consolidate Request
-        try {
-            apiInstance.consolidateArray(namespace, array, consolidateRequest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#consolidateArray");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    ArrayConsolidationRequest consolidateRequest = new ArrayConsolidationRequest(); // ArrayConsolidationRequest | Consolidate Request
+    try {
+      apiInstance.consolidateArray(namespace, array, consolidateRequest);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#consolidateArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -837,48 +836,47 @@ null (empty response body)
 create a array schema at a specified URI registered to a group/project
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        String contentType = "application/json"; // String | Content Type of input and return mime
-        ArraySchema arraySchema = new ArraySchema(); // ArraySchema | ArraySchema being created
-        String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME = "X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME_example"; // String | Optional registered access credentials to use for creation
-        try {
-            apiInstance.createArray(namespace, array, contentType, arraySchema, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#createArray");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    String contentType = "application/json"; // String | Content Type of input and return mime
+    ArraySchema arraySchema = new ArraySchema(); // ArraySchema | ArraySchema being created
+    String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME = "X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME_example"; // String | Optional registered access credentials to use for creation
+    try {
+      apiInstance.createArray(namespace, array, contentType, arraySchema, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#createArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -921,46 +919,45 @@ null (empty response body)
 delete a array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        String contentType = "application/json"; // String | Content Type of input and return mime
-        try {
-            apiInstance.deleteArray(namespace, array, contentType);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#deleteArray");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    String contentType = "application/json"; // String | Content Type of input and return mime
+    try {
+      apiInstance.deleteArray(namespace, array, contentType);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#deleteArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1001,45 +998,44 @@ null (empty response body)
 deregister a array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        try {
-            apiInstance.deregisterArray(namespace, array);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#deregisterArray");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    try {
+      apiInstance.deregisterArray(namespace, array);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#deregisterArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1079,48 +1075,47 @@ null (empty response body)
 fetch an array&#39;s fragment info
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        String contentType = "application/json"; // String | Content Type of input and return mime
-        FragmentInfoRequest fragmentInfoRequest = new FragmentInfoRequest(); // FragmentInfoRequest | ArraySchema being created
-        try {
-            FragmentInfo result = apiInstance.fragmentInfo(namespace, array, contentType, fragmentInfoRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#fragmentInfo");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    String contentType = "application/json"; // String | Content Type of input and return mime
+    FragmentInfoRequest fragmentInfoRequest = new FragmentInfoRequest(); // FragmentInfoRequest | ArraySchema being created
+    try {
+      FragmentInfo result = apiInstance.fragmentInfo(namespace, array, contentType, fragmentInfoRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#fragmentInfo");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1161,47 +1156,46 @@ public class Example {
 get activity log by ID
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        String id = "id_example"; // String | ID of the activity
-        try {
-            ArrayActivityLog result = apiInstance.getActivityLogById(namespace, array, id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getActivityLogById");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    String id = "id_example"; // String | ID of the activity
+    try {
+      ArrayActivityLog result = apiInstance.getActivityLogById(namespace, array, id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getActivityLogById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1242,45 +1236,44 @@ public class Example {
 get all array metadata user has access to
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String publicShare = "publicShare_example"; // String | Public share values can be one of exclude, only
-        try {
-            List<ArrayInfo> result = apiInstance.getAllArrayMetadata(publicShare);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getAllArrayMetadata");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String publicShare = "publicShare_example"; // String | Public share values can be one of exclude, only
+    try {
+      List<ArrayInfo> result = apiInstance.getAllArrayMetadata(publicShare);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getAllArrayMetadata");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1319,47 +1312,46 @@ public class Example {
 get an ArraySchema using a url encoded uri
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        String contentType = "application/json"; // String | Content Type of input and return mime
-        try {
-            ArraySchema result = apiInstance.getArray(namespace, array, contentType);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArray");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    String contentType = "application/json"; // String | Content Type of input and return mime
+    try {
+      ArraySchema result = apiInstance.getArray(namespace, array, contentType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1400,49 +1392,48 @@ public class Example {
 get the max buffer sizes of an array for a subarray
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        String subarray = "subarray_example"; // String | CSV string of subarray to get max buffer sizes for
-        String contentType = "application/json"; // String | Content Type of input and return mime
-        String xPayer = "xPayer_example"; // String | Name of organization or user who should be charged for this request
-        try {
-            MaxBufferSizes result = apiInstance.getArrayMaxBufferSizes(namespace, array, subarray, contentType, xPayer);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArrayMaxBufferSizes");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    String subarray = "subarray_example"; // String | CSV string of subarray to get max buffer sizes for
+    String contentType = "application/json"; // String | Content Type of input and return mime
+    String xPayer = "xPayer_example"; // String | Name of organization or user who should be charged for this request
+    try {
+      MaxBufferSizes result = apiInstance.getArrayMaxBufferSizes(namespace, array, subarray, contentType, xPayer);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArrayMaxBufferSizes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1485,48 +1476,47 @@ public class Example {
 get metadata from the array in JSON format
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        Integer length = 56; // Integer | (optional) limit character length of returned values
-        Integer endTimestamp = 56; // Integer | Milliseconds since Unix epoch, metadata will use open_at functionality to open array at the specific timestamp
-        try {
-            Object result = apiInstance.getArrayMetaDataJson(namespace, array, length, endTimestamp);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArrayMetaDataJson");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    Integer length = 56; // Integer | (optional) limit character length of returned values
+    Integer endTimestamp = 56; // Integer | Milliseconds since Unix epoch, metadata will use open_at functionality to open array at the specific timestamp
+    try {
+      Object result = apiInstance.getArrayMetaDataJson(namespace, array, length, endTimestamp);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArrayMetaDataJson");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1568,46 +1558,45 @@ public class Example {
 get metadata on an array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        try {
-            ArrayInfo result = apiInstance.getArrayMetadata(namespace, array);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArrayMetadata");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    try {
+      ArrayInfo result = apiInstance.getArrayMetadata(namespace, array);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArrayMetadata");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1647,46 +1636,45 @@ public class Example {
 get metadata on an array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        try {
-            ArrayMetadata result = apiInstance.getArrayMetadataCapnp(namespace, array);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArrayMetadataCapnp");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    try {
+      ArrayMetadata result = apiInstance.getArrayMetadataCapnp(namespace, array);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArrayMetadataCapnp");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1726,48 +1714,47 @@ public class Example {
 get the non empty domain of an array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        String contentType = "application/json"; // String | Content Type of input and return mime
-        String xPayer = "xPayer_example"; // String | Name of organization or user who should be charged for this request
-        try {
-            NonEmptyDomain result = apiInstance.getArrayNonEmptyDomain(namespace, array, contentType, xPayer);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArrayNonEmptyDomain");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    String contentType = "application/json"; // String | Content Type of input and return mime
+    String xPayer = "xPayer_example"; // String | Name of organization or user who should be charged for this request
+    try {
+      NonEmptyDomain result = apiInstance.getArrayNonEmptyDomain(namespace, array, contentType, xPayer);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArrayNonEmptyDomain");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1809,46 +1796,45 @@ public class Example {
 get non-empty domain from the array in json format
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        try {
-            Object result = apiInstance.getArrayNonEmptyDomainJson(namespace, array);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArrayNonEmptyDomainJson");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    try {
+      Object result = apiInstance.getArrayNonEmptyDomainJson(namespace, array);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArrayNonEmptyDomainJson");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1888,47 +1874,46 @@ public class Example {
 get an sample set of data from the array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        BigDecimal samples = new BigDecimal("5.0"); // BigDecimal | Number of sample results to return
-        try {
-            ArraySample result = apiInstance.getArraySampleData(namespace, array, samples);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArraySampleData");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    BigDecimal samples = new BigDecimal("5.0"); // BigDecimal | Number of sample results to return
+    try {
+      ArraySample result = apiInstance.getArraySampleData(namespace, array, samples);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArraySampleData");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1969,46 +1954,45 @@ public class Example {
 Get all sharing details of the array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        try {
-            List<ArraySharing> result = apiInstance.getArraySharingPolicies(namespace, array);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArraySharingPolicies");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    try {
+      List<ArraySharing> result = apiInstance.getArraySharingPolicies(namespace, array);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArraySharingPolicies");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -2042,52 +2026,52 @@ public class Example {
 
 <a name="getArraysInNamespace"></a>
 # **getArraysInNamespace**
-> List&lt;ArrayInfo&gt; getArraysInNamespace(namespace)
+> List&lt;ArrayInfo&gt; getArraysInNamespace(namespace, withMetadata)
 
 
 
 get metadata on all arrays in a namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        try {
-            List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getArraysInNamespace");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    Boolean withMetadata = true; // Boolean | include the metadata of the arrays
+    try {
+      List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace, withMetadata);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getArraysInNamespace");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -2096,6 +2080,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **withMetadata** | **Boolean**| include the metadata of the arrays | [optional] |
 
 ### Return type
 
@@ -2126,47 +2111,46 @@ public class Example {
 Get fragment end_timestamp on an array, will search for the closest end_timestamp to the timestamp asked
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        Integer endTimestamp = 56; // Integer | Milliseconds since Unix epoch
-        try {
-            Integer result = apiInstance.getFragmentEndTimestamp(namespace, array, endTimestamp);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getFragmentEndTimestamp");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    Integer endTimestamp = 56; // Integer | Milliseconds since Unix epoch
+    try {
+      Integer result = apiInstance.getFragmentEndTimestamp(namespace, array, endTimestamp);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getFragmentEndTimestamp");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -2205,44 +2189,43 @@ public class Example {
 
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        try {
-            List<LastAccessedArray> result = apiInstance.getLastAccessedArrays();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#getLastAccessedArrays");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    try {
+      List<LastAccessedArray> result = apiInstance.getLastAccessedArrays();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#getLastAccessedArrays");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -2269,6 +2252,168 @@ This endpoint does not need any parameter.
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
+<a name="loadArraySchema"></a>
+# **loadArraySchema**
+> LoadArraySchemaResponse loadArraySchema(namespace, array, loadArraySchemaRequest)
+
+
+
+request to get the array schema
+
+### Example
+```java
+// Import classes:
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
+import io.tiledb.cloud.rest_api.models.*;
+import io.tiledb.cloud.rest_api.ArrayApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    LoadArraySchemaRequest loadArraySchemaRequest = new LoadArraySchemaRequest(); // LoadArraySchemaRequest | Load Array Schema Request
+    try {
+      LoadArraySchemaResponse result = apiInstance.loadArraySchema(namespace, array, loadArraySchemaRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#loadArraySchema");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **loadArraySchemaRequest** | [**LoadArraySchemaRequest**](LoadArraySchemaRequest.md)| Load Array Schema Request | |
+
+### Return type
+
+[**LoadArraySchemaResponse**](LoadArraySchemaResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | array schemas returned successfully |  -  |
+| **404** | Array does not exist or user does not have permissions to access it |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
+<a name="loadEnumerations"></a>
+# **loadEnumerations**
+> LoadEnumerationsResponse loadEnumerations(namespace, array, loadEnumerationsRequest)
+
+
+
+request to get the enumerations of the arrays&#39; attributes
+
+### Example
+```java
+// Import classes:
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
+import io.tiledb.cloud.rest_api.models.*;
+import io.tiledb.cloud.rest_api.ArrayApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
+
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    LoadEnumerationsRequest loadEnumerationsRequest = new LoadEnumerationsRequest(); // LoadEnumerationsRequest | Load Enumerations Request
+    try {
+      LoadEnumerationsResponse result = apiInstance.loadEnumerations(namespace, array, loadEnumerationsRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#loadEnumerations");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **array** | **String**| name/uri of array that is url-encoded | |
+| **loadEnumerationsRequest** | [**LoadEnumerationsRequest**](LoadEnumerationsRequest.md)| Load Enumerations Request | |
+
+### Return type
+
+[**LoadEnumerationsResponse**](LoadEnumerationsResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | enumerations returned successfully |  -  |
+| **404** | Array does not exist or user does not have permissions to access it |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | error response |  -  |
+
 <a name="registerArray"></a>
 # **registerArray**
 > ArrayInfo registerArray(namespace, array, arrayMetadata)
@@ -2278,47 +2423,46 @@ This endpoint does not need any parameter.
 register an array at a specified URI registered to the given namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        ArrayInfoUpdate arrayMetadata = new ArrayInfoUpdate(); // ArrayInfoUpdate | metadata associated with array
-        try {
-            ArrayInfo result = apiInstance.registerArray(namespace, array, arrayMetadata);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#registerArray");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    ArrayInfoUpdate arrayMetadata = new ArrayInfoUpdate(); // ArrayInfoUpdate | metadata associated with array
+    try {
+      ArrayInfo result = apiInstance.registerArray(namespace, array, arrayMetadata);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#registerArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -2359,46 +2503,45 @@ public class Example {
 Share an array with a user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        ArraySharing arraySharing = new ArraySharing(); // ArraySharing | Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it's likely the array will not be shared with the namespace at all.
-        try {
-            apiInstance.shareArray(namespace, array, arraySharing);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#shareArray");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    ArraySharing arraySharing = new ArraySharing(); // ArraySharing | Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it's likely the array will not be shared with the namespace at all.
+    try {
+      apiInstance.shareArray(namespace, array, arraySharing);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#shareArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -2440,46 +2583,45 @@ null (empty response body)
 update metadata on an array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        ArrayInfoUpdate arrayMetadata = new ArrayInfoUpdate(); // ArrayInfoUpdate | array metadata to update
-        try {
-            apiInstance.updateArrayMetadata(namespace, array, arrayMetadata);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#updateArrayMetadata");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    ArrayInfoUpdate arrayMetadata = new ArrayInfoUpdate(); // ArrayInfoUpdate | array metadata to update
+    try {
+      apiInstance.updateArrayMetadata(namespace, array, arrayMetadata);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#updateArrayMetadata");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -2520,46 +2662,45 @@ null (empty response body)
 update metadata on an array
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        ArrayMetadata arrayMetadataEntries = new ArrayMetadata(); // ArrayMetadata | List of metadata entries
-        try {
-            apiInstance.updateArrayMetadataCapnp(namespace, array, arrayMetadataEntries);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#updateArrayMetadataCapnp");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    ArrayMetadata arrayMetadataEntries = new ArrayMetadata(); // ArrayMetadata | List of metadata entries
+    try {
+      apiInstance.updateArrayMetadataCapnp(namespace, array, arrayMetadataEntries);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#updateArrayMetadataCapnp");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -2600,46 +2741,45 @@ null (empty response body)
 vacuum an array at a specified URI
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import ArrayApi;
+import io.tiledb.cloud.rest_api.ArrayApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        ArrayApi apiInstance = new ArrayApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        ArrayVacuumRequest vaccumRequest = new ArrayVacuumRequest(); // ArrayVacuumRequest | Vaccum Request
-        try {
-            apiInstance.vacuumArray(namespace, array, vaccumRequest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ArrayApi#vacuumArray");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    ArrayApi apiInstance = new ArrayApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    ArrayVacuumRequest vaccumRequest = new ArrayVacuumRequest(); // ArrayVacuumRequest | Vaccum Request
+    try {
+      apiInstance.vacuumArray(namespace, array, vaccumRequest);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ArrayApi#vacuumArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 

@@ -37,45 +37,44 @@ All URIs are relative to */v1*
 Add aws keys
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace
-        AWSAccessCredentials awsAccessCredentials = new AWSAccessCredentials(); // AWSAccessCredentials | aws access credentials to store for a namespace
-        try {
-            apiInstance.addAWSAccessCredentials(namespace, awsAccessCredentials);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#addAWSAccessCredentials");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace
+    AWSAccessCredentials awsAccessCredentials = new AWSAccessCredentials(); // AWSAccessCredentials | aws access credentials to store for a namespace
+    try {
+      apiInstance.addAWSAccessCredentials(namespace, awsAccessCredentials);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#addAWSAccessCredentials");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -115,45 +114,44 @@ null (empty response body)
 add a user to an organization
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String organization = "organization_example"; // String | organization name
-        OrganizationUser user = new OrganizationUser(); // OrganizationUser | user to add
-        try {
-            apiInstance.addUserToOrganization(organization, user);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#addUserToOrganization");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String organization = "organization_example"; // String | organization name
+    OrganizationUser user = new OrganizationUser(); // OrganizationUser | user to add
+    try {
+      apiInstance.addUserToOrganization(organization, user);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#addUserToOrganization");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -193,45 +191,44 @@ null (empty response body)
 Check if aws keys are set
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace
-        try {
-            List<AWSAccessCredentials> result = apiInstance.checkAWSAccessCredentials(namespace);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#checkAWSAccessCredentials");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace
+    try {
+      List<AWSAccessCredentials> result = apiInstance.checkAWSAccessCredentials(namespace);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#checkAWSAccessCredentials");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -270,46 +267,45 @@ public class Example {
 Check if aws keys are set by name
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace
-        String name = "name_example"; // String | name
-        try {
-            AWSAccessCredentials result = apiInstance.checkAWSAccessCredentialsByName(namespace, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#checkAWSAccessCredentialsByName");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace
+    String name = "name_example"; // String | name
+    try {
+      AWSAccessCredentials result = apiInstance.checkAWSAccessCredentialsByName(namespace, name);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#checkAWSAccessCredentialsByName");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -349,43 +345,42 @@ public class Example {
 confirm user email
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        try {
-            apiInstance.confirmEmail();
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#confirmEmail");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    try {
+      apiInstance.confirmEmail();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#confirmEmail");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -421,44 +416,43 @@ null (empty response body)
 create a user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        User user = new User(); // User | user to create
-        try {
-            apiInstance.createUser(user);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#createUser");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    User user = new User(); // User | user to create
+    try {
+      apiInstance.createUser(user);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#createUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -497,45 +491,44 @@ null (empty response body)
 delete a AWS Access credentials in a namespace. This will likely cause arrays to become unreachable
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace
-        String name = "name_example"; // String | name
-        try {
-            apiInstance.deleteAWSAccessCredentials(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#deleteAWSAccessCredentials");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace
+    String name = "name_example"; // String | name
+    try {
+      apiInstance.deleteAWSAccessCredentials(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#deleteAWSAccessCredentials");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -575,44 +568,43 @@ null (empty response body)
 delete a user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String username = "username_example"; // String | username or ID
-        try {
-            apiInstance.deleteUser(username);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#deleteUser");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String username = "username_example"; // String | username or ID
+    try {
+      apiInstance.deleteUser(username);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#deleteUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -651,45 +643,44 @@ null (empty response body)
 delete a user from an organization
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String organization = "organization_example"; // String | organization name
-        String username = "username_example"; // String | username to manipulate
-        try {
-            apiInstance.deleteUserFromOrganization(organization, username);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#deleteUserFromOrganization");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String organization = "organization_example"; // String | organization name
+    String username = "username_example"; // String | username to manipulate
+    try {
+      apiInstance.deleteUserFromOrganization(organization, username);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#deleteUserFromOrganization");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -729,46 +720,45 @@ null (empty response body)
 get a user from an organization
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String organization = "organization_example"; // String | organization name
-        String username = "username_example"; // String | username to manipulate
-        try {
-            OrganizationUser result = apiInstance.getOrganizationUser(organization, username);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#getOrganizationUser");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String organization = "organization_example"; // String | organization name
+    String username = "username_example"; // String | username to manipulate
+    try {
+      OrganizationUser result = apiInstance.getOrganizationUser(organization, username);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#getOrganizationUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -802,52 +792,52 @@ public class Example {
 
 <a name="getSession"></a>
 # **getSession**
-> Token getSession(rememberMe)
+> Token getSession(rememberMe, expires)
 
 
 
 Get session token for user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String rememberMe = "rememberMe_example"; // String | flag to create a token with expiration of 30 days, default is false
-        try {
-            Token result = apiInstance.getSession(rememberMe);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#getSession");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String rememberMe = "rememberMe_example"; // String | flag to create a token with expiration of 30 days, default is false
+    OffsetDateTime expires = OffsetDateTime.now(); // OffsetDateTime | Expiration date for token, if empty token defaults to 30 minutes
+    try {
+      Token result = apiInstance.getSession(rememberMe, expires);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#getSession");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -856,6 +846,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **rememberMe** | **String**| flag to create a token with expiration of 30 days, default is false | [optional] |
+| **expires** | **OffsetDateTime**| Expiration date for token, if empty token defaults to 30 minutes | [optional] |
 
 ### Return type
 
@@ -886,44 +877,43 @@ public class Example {
 retrieves available token scopes for a user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        try {
-            List<TokenScope> result = apiInstance.getTokenScopes();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#getTokenScopes");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    try {
+      List<TokenScope> result = apiInstance.getTokenScopes();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#getTokenScopes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -959,44 +949,43 @@ This endpoint does not need any parameter.
 get a user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        try {
-            User result = apiInstance.getUser();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#getUser");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    try {
+      User result = apiInstance.getUser();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#getUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1032,45 +1021,44 @@ This endpoint does not need any parameter.
 get a user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String username = "username_example"; // String | username or ID
-        try {
-            User result = apiInstance.getUserWithUsername(username);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#getUserWithUsername");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String username = "username_example"; // String | username or ID
+    try {
+      User result = apiInstance.getUserWithUsername(username);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#getUserWithUsername");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1110,45 +1098,44 @@ public class Example {
 Request an authorization token, optionally taken a TokenRequest object to set parameters on the token
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        TokenRequest tokenRequest = new TokenRequest(); // TokenRequest | token request object
-        try {
-            Token result = apiInstance.requestToken(tokenRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#requestToken");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    TokenRequest tokenRequest = new TokenRequest(); // TokenRequest | token request object
+    try {
+      Token result = apiInstance.requestToken(tokenRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#requestToken");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1187,44 +1174,43 @@ public class Example {
 reset user password
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        ResetUserPasswordRequest user = new ResetUserPasswordRequest(); // ResetUserPasswordRequest | password to update for user requesting update
-        try {
-            apiInstance.resetUserPassword(user);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#resetUserPassword");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    ResetUserPasswordRequest user = new ResetUserPasswordRequest(); // ResetUserPasswordRequest | password to update for user requesting update
+    try {
+      apiInstance.resetUserPassword(user);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#resetUserPassword");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1264,44 +1250,43 @@ null (empty response body)
 revoke an authorization token
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String token = "token_example"; // String | token name or token itself
-        try {
-            apiInstance.revokeToken(token);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#revokeToken");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String token = "token_example"; // String | token name or token itself
+    try {
+      apiInstance.revokeToken(token);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#revokeToken");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1340,44 +1325,43 @@ null (empty response body)
 Fetch a list of user tokens
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        try {
-            List<Token> result = apiInstance.tokensGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#tokensGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    try {
+      List<Token> result = apiInstance.tokensGet();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#tokensGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1413,44 +1397,43 @@ This endpoint does not need any parameter.
 Fetch a list of user session tokens
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        try {
-            List<Token> result = apiInstance.tokensSessionGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#tokensSessionGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    try {
+      List<Token> result = apiInstance.tokensSessionGet();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#tokensSessionGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1486,46 +1469,45 @@ This endpoint does not need any parameter.
 Update aws keys or associated buckets. This will update the key associations for each array in the namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace
-        String name = "name_example"; // String | name
-        AWSAccessCredentials awsAccessCredentials = new AWSAccessCredentials(); // AWSAccessCredentials | aws credentials to update
-        try {
-            apiInstance.updateAWSAccessCredentials(namespace, name, awsAccessCredentials);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#updateAWSAccessCredentials");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace
+    String name = "name_example"; // String | name
+    AWSAccessCredentials awsAccessCredentials = new AWSAccessCredentials(); // AWSAccessCredentials | aws credentials to update
+    try {
+      apiInstance.updateAWSAccessCredentials(namespace, name, awsAccessCredentials);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#updateAWSAccessCredentials");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1566,45 +1548,44 @@ null (empty response body)
 update a user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String username = "username_example"; // String | username or ID
-        User user = new User(); // User | user details to update
-        try {
-            apiInstance.updateUser(username, user);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#updateUser");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String username = "username_example"; // String | username or ID
+    User user = new User(); // User | user details to update
+    try {
+      apiInstance.updateUser(username, user);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#updateUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -1644,46 +1625,45 @@ null (empty response body)
 update a user in an organization
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UserApi;
+import io.tiledb.cloud.rest_api.UserApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UserApi apiInstance = new UserApi(defaultClient);
-        String organization = "organization_example"; // String | organization name
-        String username = "username_example"; // String | username to manipulate
-        OrganizationUser user = new OrganizationUser(); // OrganizationUser | user details to update
-        try {
-            apiInstance.updateUserInOrganization(organization, username, user);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#updateUserInOrganization");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UserApi apiInstance = new UserApi(defaultClient);
+    String organization = "organization_example"; // String | organization name
+    String username = "username_example"; // String | username to manipulate
+    OrganizationUser user = new OrganizationUser(); // OrganizationUser | user details to update
+    try {
+      apiInstance.updateUserInOrganization(organization, username, user);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UserApi#updateUserInOrganization");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 

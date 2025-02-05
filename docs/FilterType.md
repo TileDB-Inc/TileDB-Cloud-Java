@@ -5,27 +5,27 @@
 ## Enum
 
 
-* `NONE` (value: `"FILTER_NONE"`)
+* `NONE` (value: `"NONE"`)
 
-* `GZIP` (value: `"FILTER_GZIP"`)
+* `GZIP` (value: `"GZIP"`)
 
-* `ZSTD` (value: `"FILTER_ZSTD"`)
+* `ZSTD` (value: `"ZSTD"`)
 
-* `LZ4` (value: `"FILTER_LZ4"`)
+* `LZ4` (value: `"LZ4"`)
 
-* `RLE` (value: `"FILTER_RLE"`)
+* `RLE` (value: `"RLE"`)
 
-* `BZIP2` (value: `"FILTER_BZIP2"`)
+* `BZIP2` (value: `"BZIP2"`)
 
-* `DOUBLE_DELTA` (value: `"FILTER_DOUBLE_DELTA"`)
+* `DOUBLE_DELTA` (value: `"DOUBLE_DELTA"`)
 
-* `BIT_WIDTH_REDUCTION` (value: `"FILTER_BIT_WIDTH_REDUCTION"`)
+* `BIT_WIDTH_REDUCTION` (value: `"BIT_WIDTH_REDUCTION"`)
 
-* `BITSHUFFLE` (value: `"FILTER_BITSHUFFLE"`)
+* `BITSHUFFLE` (value: `"BITSHUFFLE"`)
 
-* `BYTESHUFFLE` (value: `"FILTER_BYTESHUFFLE"`)
+* `BYTESHUFFLE` (value: `"BYTESHUFFLE"`)
 
-* `POSITIVE_DELTA` (value: `"FILTER_POSITIVE_DELTA"`)
+* `POSITIVE_DELTA` (value: `"POSITIVE_DELTA"`)
 
 
 

@@ -9,5 +9,7 @@
 
 * `R` (value: `"r"`)
 
+* `NEXTFLOW` (value: `"nextflow"`)
+
 
 
