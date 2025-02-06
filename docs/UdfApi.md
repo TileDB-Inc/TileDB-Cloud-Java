@@ -17,7 +17,7 @@ All URIs are relative to */v1*
 | [**updateUDFInfo**](UdfApi.md#updateUDFInfo) | **PATCH** /udf/{namespace}/{name} |  |
 
 
-<a name="deleteUDFInfo"></a>
+<a id="deleteUDFInfo"></a>
 # **deleteUDFInfo**
 > deleteUDFInfo(namespace, name)
 
@@ -26,45 +26,44 @@ All URIs are relative to */v1*
 delete a registered UDF -- this will remove all sharing and can not be undone
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String name = "name_example"; // String | name to register UDF under
-        try {
-            apiInstance.deleteUDFInfo(namespace, name);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#deleteUDFInfo");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String name = "name_example"; // String | name to register UDF under
+    try {
+      apiInstance.deleteUDFInfo(namespace, name);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#deleteUDFInfo");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -81,7 +80,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -95,7 +94,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="getUDFInfo"></a>
+<a id="getUDFInfo"></a>
 # **getUDFInfo**
 > UDFInfo getUDFInfo(namespace, name)
 
@@ -104,46 +103,45 @@ null (empty response body)
 get a specific UDF in the given namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String name = "name_example"; // String | name to register UDF under
-        try {
-            UDFInfo result = apiInstance.getUDFInfo(namespace, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#getUDFInfo");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String name = "name_example"; // String | name to register UDF under
+    try {
+      UDFInfo result = apiInstance.getUDFInfo(namespace, name);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#getUDFInfo");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -160,7 +158,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -175,7 +173,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="getUDFInfoSharingPolicies"></a>
+<a id="getUDFInfoSharingPolicies"></a>
 # **getUDFInfoSharingPolicies**
 > List&lt;UDFSharing&gt; getUDFInfoSharingPolicies(namespace, name)
 
@@ -184,46 +182,45 @@ public class Example {
 Get all sharing details of the UDF
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String name = "name_example"; // String | name of UDFInfo
-        try {
-            List<UDFSharing> result = apiInstance.getUDFInfoSharingPolicies(namespace, name);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#getUDFInfoSharingPolicies");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String name = "name_example"; // String | name of UDFInfo
+    try {
+      List<UDFSharing> result = apiInstance.getUDFInfoSharingPolicies(namespace, name);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#getUDFInfoSharingPolicies");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -240,7 +237,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -255,7 +252,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="handleCopyUDF"></a>
+<a id="handleCopyUDF"></a>
 # **handleCopyUDF**
 > UDFCopied handleCopyUDF(namespace, name, udFCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp)
 
@@ -264,49 +261,48 @@ public class Example {
 Copy a tiledb udf at the specified location
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String name = "name_example"; // String | name of UDFInfo
-        UDFCopy udFCopy = new UDFCopy(); // UDFCopy | Input/Output information to copy a UDF
-        String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME = "X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME_example"; // String | Optional registered access credentials to use for creation
-        Integer endTimestamp = 56; // Integer | Milliseconds since Unix epoch
-        try {
-            UDFCopied result = apiInstance.handleCopyUDF(namespace, name, udFCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#handleCopyUDF");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String name = "name_example"; // String | name of UDFInfo
+    UDFCopy udFCopy = new UDFCopy(); // UDFCopy | Input/Output information to copy a UDF
+    String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME = "X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME_example"; // String | Optional registered access credentials to use for creation
+    Integer endTimestamp = 56; // Integer | Milliseconds since Unix epoch
+    try {
+      UDFCopied result = apiInstance.handleCopyUDF(namespace, name, udFCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#handleCopyUDF");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -326,7 +322,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -340,7 +336,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="registerUDFInfo"></a>
+<a id="registerUDFInfo"></a>
 # **registerUDFInfo**
 > registerUDFInfo(namespace, name, udf)
 
@@ -349,46 +345,45 @@ public class Example {
 register a UDF in the given namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String name = "name_example"; // String | name to register UDF under
-        UDFInfoUpdate udf = new UDFInfoUpdate(); // UDFInfoUpdate | UDF to register
-        try {
-            apiInstance.registerUDFInfo(namespace, name, udf);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#registerUDFInfo");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String name = "name_example"; // String | name to register UDF under
+    UDFInfoUpdate udf = new UDFInfoUpdate(); // UDFInfoUpdate | UDF to register
+    try {
+      apiInstance.registerUDFInfo(namespace, name, udf);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#registerUDFInfo");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -406,7 +401,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -420,7 +415,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="shareUDFInfo"></a>
+<a id="shareUDFInfo"></a>
 # **shareUDFInfo**
 > shareUDFInfo(namespace, name, udfSharing)
 
@@ -429,46 +424,45 @@ null (empty response body)
 Share a UDF with a user
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String name = "name_example"; // String | name of UDFInfo
-        UDFSharing udfSharing = new UDFSharing(); // UDFSharing | Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it's likely the UDF will not be shared with the namespace at all.
-        try {
-            apiInstance.shareUDFInfo(namespace, name, udfSharing);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#shareUDFInfo");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String name = "name_example"; // String | name of UDFInfo
+    UDFSharing udfSharing = new UDFSharing(); // UDFSharing | Namespace and list of permissions to share with. An empty list of permissions will remove the namespace; if permissions already exist they will be deleted then new ones added. In the event of a failure, the new policies will be rolled back to prevent partial policies, and it's likely the UDF will not be shared with the namespace at all.
+    try {
+      apiInstance.shareUDFInfo(namespace, name, udfSharing);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#shareUDFInfo");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -486,7 +480,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -501,7 +495,7 @@ null (empty response body)
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="submitGenericUDF"></a>
+<a id="submitGenericUDF"></a>
 # **submitGenericUDF**
 > File submitGenericUDF(namespace, udf, acceptEncoding)
 
@@ -510,47 +504,46 @@ null (empty response body)
 submit a generic UDF in the given namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        GenericUDF udf = new GenericUDF(); // GenericUDF | UDF to run
-        String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
-        try {
-            File result = apiInstance.submitGenericUDF(namespace, udf, acceptEncoding);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#submitGenericUDF");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    GenericUDF udf = new GenericUDF(); // GenericUDF | UDF to run
+    String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
+    try {
+      File result = apiInstance.submitGenericUDF(namespace, udf, acceptEncoding);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#submitGenericUDF");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -568,7 +561,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -582,7 +575,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
-<a name="submitMultiArrayUDF"></a>
+<a id="submitMultiArrayUDF"></a>
 # **submitMultiArrayUDF**
 > File submitMultiArrayUDF(namespace, udf, acceptEncoding)
 
@@ -591,47 +584,46 @@ public class Example {
 submit a multi-array UDF in the given namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        MultiArrayUDF udf = new MultiArrayUDF(); // MultiArrayUDF | UDF to run
-        String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
-        try {
-            File result = apiInstance.submitMultiArrayUDF(namespace, udf, acceptEncoding);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#submitMultiArrayUDF");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    MultiArrayUDF udf = new MultiArrayUDF(); // MultiArrayUDF | UDF to run
+    String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
+    try {
+      File result = apiInstance.submitMultiArrayUDF(namespace, udf, acceptEncoding);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#submitMultiArrayUDF");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -649,7 +641,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -663,7 +655,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
-<a name="submitUDF"></a>
+<a id="submitUDF"></a>
 # **submitUDF**
 > File submitUDF(namespace, array, udf, xPayer, acceptEncoding, v2)
 
@@ -672,50 +664,49 @@ public class Example {
 send a UDF to run against a specified array/URI registered to a group/project
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        MultiArrayUDF udf = new MultiArrayUDF(); // MultiArrayUDF | UDF to run
-        String xPayer = "xPayer_example"; // String | Name of organization or user who should be charged for this request
-        String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
-        String v2 = "v2_example"; // String | flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs.
-        try {
-            File result = apiInstance.submitUDF(namespace, array, udf, xPayer, acceptEncoding, v2);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#submitUDF");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    MultiArrayUDF udf = new MultiArrayUDF(); // MultiArrayUDF | UDF to run
+    String xPayer = "xPayer_example"; // String | Name of organization or user who should be charged for this request
+    String acceptEncoding = "acceptEncoding_example"; // String | Encoding to use
+    String v2 = "v2_example"; // String | flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs.
+    try {
+      File result = apiInstance.submitUDF(namespace, array, udf, xPayer, acceptEncoding, v2);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#submitUDF");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -736,7 +727,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -750,7 +741,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  |
 
-<a name="udfNamespaceArrayEndTimestampsGet"></a>
+<a id="udfNamespaceArrayEndTimestampsGet"></a>
 # **udfNamespaceArrayEndTimestampsGet**
 > ArrayEndTimestampData udfNamespaceArrayEndTimestampsGet(namespace, array, page, perPage)
 
@@ -759,48 +750,47 @@ public class Example {
 retrieve a list of timestamps from the array fragment info listing in milliseconds, paginated
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String array = "array_example"; // String | name/uri of array that is url-encoded
-        Integer page = 56; // Integer | pagination offset
-        Integer perPage = 56; // Integer | pagination limit
-        try {
-            ArrayEndTimestampData result = apiInstance.udfNamespaceArrayEndTimestampsGet(namespace, array, page, perPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#udfNamespaceArrayEndTimestampsGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String array = "array_example"; // String | name/uri of array that is url-encoded
+    Integer page = 56; // Integer | pagination offset
+    Integer perPage = 56; // Integer | pagination limit
+    try {
+      ArrayEndTimestampData result = apiInstance.udfNamespaceArrayEndTimestampsGet(namespace, array, page, perPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#udfNamespaceArrayEndTimestampsGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -819,7 +809,7 @@ public class Example {
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -833,7 +823,7 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a name="updateUDFInfo"></a>
+<a id="updateUDFInfo"></a>
 # **updateUDFInfo**
 > updateUDFInfo(namespace, name, udf)
 
@@ -842,46 +832,45 @@ public class Example {
 update an existing registered UDF in the given namespace
 
 ### Example
-
 ```java
 // Import classes:
-
-import ApiClient;
-import ApiException;
-import Configuration;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.rest_api.auth.*;
 import io.tiledb.cloud.rest_api.models.*;
-import UdfApi;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("/v1");
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("/v1");
+    
+    // Configure HTTP basic authorization: BasicAuth
+    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+    BasicAuth.setUsername("YOUR USERNAME");
+    BasicAuth.setPassword("YOUR PASSWORD");
 
-        // Configure API key authorization: ApiKeyAuth
-        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        ApiKeyAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //ApiKeyAuth.setApiKeyPrefix("Token");
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
 
-        // Configure HTTP basic authorization: BasicAuth
-        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-        BasicAuth.setUsername("YOUR USERNAME");
-        BasicAuth.setPassword("YOUR PASSWORD");
-
-        UdfApi apiInstance = new UdfApi(defaultClient);
-        String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-        String name = "name_example"; // String | name to register UDF under
-        UDFInfoUpdate udf = new UDFInfoUpdate(); // UDFInfoUpdate | UDF to update
-        try {
-            apiInstance.updateUDFInfo(namespace, name, udf);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling UdfApi#updateUDFInfo");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
+    UdfApi apiInstance = new UdfApi(defaultClient);
+    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
+    String name = "name_example"; // String | name to register UDF under
+    UDFInfoUpdate udf = new UDFInfoUpdate(); // UDFInfoUpdate | UDF to update
+    try {
+      apiInstance.updateUDFInfo(namespace, name, udf);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UdfApi#updateUDFInfo");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -899,7 +888,7 @@ null (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

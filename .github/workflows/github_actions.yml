@@ -17,6 +17,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          check-latest: true
+
       - run: |
           unset SYSTEM
           ./gradlew assemble;
