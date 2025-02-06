@@ -139,9 +139,9 @@ public class Examples
 
         //array1
         UDFArrayDetails array1 = new UDFArrayDetails();
-        array1.setUri("tiledb://shaunreed/dense-array");
+        array1.setUri("tiledb://TileDB-Inc/quickstart_dense");
         array1.setRanges(queryRanges);
-        array1.setBuffers(Arrays.asList("rows", "cols", "a1"));
+        array1.setBuffers(Arrays.asList("rows", "cols", "a"));
         arrays.add(array1);
 
         //array2
@@ -154,7 +154,7 @@ public class Examples
         multiArrayUDF.setArrays(arrays);
 
         HashMap<String,Object> arguments = new HashMap<>();
-        arguments.put("attr1", "a1");
+        arguments.put("attr1", "a");
         arguments.put("attr2", "a");
 
         multiArrayUDF.setArgument(serializeArgs(arguments));
@@ -247,7 +247,7 @@ public class Examples
     }
 
     private static void getArray(TileDBClient tileDBClient){
-        String namespace = "unittest"; // String | namespace array is in (an organization name or user's username)
+        String namespace = "TileDB-Inc"; // String | namespace array is in (an organization name or user's username)
         String array = "quickstart_sparse"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
