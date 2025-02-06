@@ -139,7 +139,7 @@ public class Examples
 
         //array1
         UDFArrayDetails array1 = new UDFArrayDetails();
-        array1.setUri("tiledb://TileDB-Inc/quickstart_dense");
+        array1.setUri("tiledb://TileDB-Inc/quickstart_sparse");
         array1.setRanges(queryRanges);
         array1.setBuffers(Arrays.asList("rows", "cols", "a"));
         arrays.add(array1);
