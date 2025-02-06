@@ -57,7 +57,7 @@ public class TGUDFStorage {
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
-  private Integer size;
+  private String size;
 
   public static final String SERIALIZED_NAME_STORAGE_CLASS = "storage_class";
   @SerializedName(SERIALIZED_NAME_STORAGE_CLASS)
@@ -85,7 +85,7 @@ public class TGUDFStorage {
   }
 
 
-  public TGUDFStorage size(Integer size) {
+  public TGUDFStorage size(String size) {
     this.size = size;
     return this;
   }
@@ -95,11 +95,11 @@ public class TGUDFStorage {
    * @return size
    */
   @javax.annotation.Nullable
-  public Integer getSize() {
+  public String getSize() {
     return size;
   }
 
-  public void setSize(Integer size) {
+  public void setSize(String size) {
     this.size = size;
   }
 
