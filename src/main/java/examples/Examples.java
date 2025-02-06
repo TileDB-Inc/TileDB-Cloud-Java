@@ -55,14 +55,14 @@ public class Examples
     private static void runSQL(TileDBClient tileDBClient) {
         SQLParameters sqlParameters = new SQLParameters();
         sqlParameters.setQuery("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`");
-        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "TileDB-Inc", sqlParameters);
+        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "unittest", sqlParameters);
         System.out.println(tileDBSQL.exec());
     }
 
     private static void runSQLArrow(TileDBClient tileDBClient) {
         SQLParameters sqlParameters = new SQLParameters();
         sqlParameters.setQuery("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`");
-        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "TileDB-Inc", sqlParameters);
+        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "unittest", sqlParameters);
         Pair<ArrayList<ValueVector>, Integer> a = tileDBSQL.execArrow();
     }
 
@@ -71,7 +71,7 @@ public class Examples
      * @param tileDBClient
      */
     private static void runGenericUDF(TileDBClient tileDBClient){
-        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "TileDB-Inc");
+        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "unittest");
         GenericUDF genericUDF = new GenericUDF();
         genericUDF.setUdfInfoName("TileDB-Inc/args-udf");
         HashMap<String,Object> arguments = new HashMap<>();
@@ -86,7 +86,7 @@ public class Examples
      * @param tileDBClient
      */
     public static void runArrayUDF(TileDBClient tileDBClient){
-        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "TileDB-Inc");
+        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "unittest");
         ArrayList<BigDecimal> range1 = new ArrayList<>();
         range1.add(BigDecimal.valueOf(1));
         range1.add(BigDecimal.valueOf(4));
@@ -110,7 +110,7 @@ public class Examples
         UDFArrayDetails array = new UDFArrayDetails();
         array.setUri("tiledb://TileDB-Inc/quickstart_sparse");
 
-        System.out.println(tileDBUDF.executeSingleArray(genericUDF, array, queryRanges, "TileDB-Inc"));
+        System.out.println(tileDBUDF.executeSingleArray(genericUDF, array, queryRanges, "unittest"));
     }
 
     /**
@@ -118,7 +118,7 @@ public class Examples
      * @param tileDBClient
      */
     public static void runMultiArrayUDF(TileDBClient tileDBClient){
-        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "TileDB-Inc");
+        TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "unittest");
 
         ArrayList<BigDecimal> range1 = new ArrayList<>();
         range1.add(BigDecimal.valueOf(1));
@@ -139,14 +139,14 @@ public class Examples
 
         //array1
         UDFArrayDetails array1 = new UDFArrayDetails();
-        array1.setUri("tiledb://shaunreed/dense-array");
+        array1.setUri("tiledb://TileDB-Inc/quickstart_sparse");
         array1.setRanges(queryRanges);
-        array1.setBuffers(Arrays.asList("rows", "cols", "a1"));
+        array1.setBuffers(Arrays.asList("rows", "cols", "a"));
         arrays.add(array1);
 
         //array2
         UDFArrayDetails array2 = new UDFArrayDetails();
-        array2.setUri("tiledb://TileDB-Inc/quickstart_dense");
+        array2.setUri("tiledb://TileDB-Inc/quickstart_sparse-eu-west-2");
         array2.setRanges(queryRanges);
         array2.setBuffers(Arrays.asList("rows", "cols", "a"));
         arrays.add(array2);
@@ -154,7 +154,7 @@ public class Examples
         multiArrayUDF.setArrays(arrays);
 
         HashMap<String,Object> arguments = new HashMap<>();
-        arguments.put("attr1", "a1");
+        arguments.put("attr1", "a");
         arguments.put("attr2", "a");
 
         multiArrayUDF.setArgument(serializeArgs(arguments));
@@ -207,7 +207,7 @@ public class Examples
         Integer page = null; // Integer | pagination offset
         Integer perPage = null; // Integer | pagination limit
         String search = null; // String | search string that will look at name, namespace or description fields
-        String namespace = "TileDB-Inc"; // String | namespace
+        String namespace = "unittest"; // String | namespace
         String orderby = null; // String | sort by which field valid values include last_accessed, size, name
         String permissions = null; // String | permissions valid values include read, read_write, write, admin
         String groupType = "generic"; // String | filter by a specific group type
@@ -215,9 +215,8 @@ public class Examples
         List<String> excludeTag = null; // List<String> | tags to exclude matching array in results, more than one can be included
         Boolean flat = true; // Boolean | if true, ignores the nesting of groups and searches all of them
         String parent = null; // String | search only the children of the groups with this uuid
-        Boolean withMetadata = false;
         try {
-            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata);
+            GroupBrowserData result = apiInstance.listPublicGroups(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent);
             //or use api.listOwnedGroups(...) / api.listSharedGroups(...)
             System.out.println(result.getGroups());
         } catch (ApiException e) {
@@ -232,12 +231,11 @@ public class Examples
 
     private static void listArrays(TileDBClient tileDBClient)
     {
-        String namespace = "dstara"; // String | namespace array is in (an organization name or user's username)
-        Boolean withMetadata = false;
+        String namespace = "unittest"; // String | namespace array is in (an organization name or user's username)
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
         try {
-            List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace, withMetadata);
+            List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#getArraysInNamespace");
@@ -349,4 +347,3 @@ public class Examples
         }
     }
 }
-
