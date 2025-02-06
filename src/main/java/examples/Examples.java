@@ -54,14 +54,14 @@ public class Examples
 
     private static void runSQL(TileDBClient tileDBClient) {
         SQLParameters sqlParameters = new SQLParameters();
-        sqlParameters.setQuery("SELECT * FROM `tiledb://unittest/quickstart_sparse`");
+        sqlParameters.setQuery("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`");
         TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "unittest", sqlParameters);
         System.out.println(tileDBSQL.exec());
     }
 
     private static void runSQLArrow(TileDBClient tileDBClient) {
         SQLParameters sqlParameters = new SQLParameters();
-        sqlParameters.setQuery("SELECT * FROM `tiledb://unittest/quickstart_sparse`");
+        sqlParameters.setQuery("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`");
         TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "unittest", sqlParameters);
         Pair<ArrayList<ValueVector>, Integer> a = tileDBSQL.execArrow();
     }
@@ -73,7 +73,7 @@ public class Examples
     private static void runGenericUDF(TileDBClient tileDBClient){
         TileDBUDF tileDBUDF = new TileDBUDF(tileDBClient, "unittest");
         GenericUDF genericUDF = new GenericUDF();
-        genericUDF.setUdfInfoName("unittest/args-udf");
+        genericUDF.setUdfInfoName("TileDB-Inc/args-udf");
         HashMap<String,Object> arguments = new HashMap<>();
         arguments.put("arg1", "a1");
         arguments.put("arg2", "a2");
@@ -104,11 +104,11 @@ public class Examples
         argumentsForArrayUDF.put("scale", 9);
 
         GenericUDF genericUDF = new GenericUDF();
-        genericUDF.setUdfInfoName("unittest/array-udf");
+        genericUDF.setUdfInfoName("TileDB-Inc/array-udf");
         genericUDF.setArgument(serializeArgs(argumentsForArrayUDF));
 
         UDFArrayDetails array = new UDFArrayDetails();
-        array.setUri("tiledb://unittest/quickstart_sparse");
+        array.setUri("tiledb://TileDB-Inc/quickstart_sparse");
 
         System.out.println(tileDBUDF.executeSingleArray(genericUDF, array, queryRanges, "unittest"));
     }
@@ -133,7 +133,7 @@ public class Examples
         queryRanges.addRangesItem(range2);
 
         MultiArrayUDF multiArrayUDF = new MultiArrayUDF();
-        multiArrayUDF.setUdfInfoName("unittest/multi-array-udf");
+        multiArrayUDF.setUdfInfoName("TileDB-Inc/multi-array-udf");
 
         List<UDFArrayDetails> arrays = new ArrayList<>();
 
@@ -146,7 +146,7 @@ public class Examples
 
         //array2
         UDFArrayDetails array2 = new UDFArrayDetails();
-        array2.setUri("tiledb://unittest/quickstart_dense");
+        array2.setUri("tiledb://TileDB-Inc/quickstart_dense");
         array2.setRanges(queryRanges);
         array2.setBuffers(Arrays.asList("rows", "cols", "a"));
         arrays.add(array2);
@@ -231,7 +231,7 @@ public class Examples
 
     private static void listArrays(TileDBClient tileDBClient)
     {
-        String namespace = "dstara"; // String | namespace array is in (an organization name or user's username)
+        String namespace = "unittest"; // String | namespace array is in (an organization name or user's username)
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
         try {
