@@ -14,35 +14,26 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.TGQueryRanges;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -50,7 +41,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * The details of an array that should be queried and provided as the input to a UDF Node. This is essentially a &#x60;UDFArrayDetails&#x60;, but you’re allowed to provide most of the values as Nodes if you want. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "The details of an array that should be queried and provided as the input to a UDF Node. This is essentially a `UDFArrayDetails`, but you’re allowed to provide most of the values as Nodes if you want. ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class TGArrayNodeData {
   public static final String SERIALIZED_NAME_URI = "uri";
   @SerializedName(SERIALIZED_NAME_URI)
@@ -64,22 +56,26 @@ public class TGArrayNodeData {
   @SerializedName(SERIALIZED_NAME_BUFFERS)
   private Object buffers;
 
-  public TGArrayNodeData() {
+  public TGArrayNodeData() { 
   }
 
   public TGArrayNodeData uri(Object uri) {
+    
     this.uri = uri;
     return this;
   }
 
-  /**
+   /**
    * An argument provided to a node. This is one of a direct value (i.e., a raw JSON value) or a &#x60;TGSentinel&#x60;. For example this Python value:      {\&quot;a\&quot;: [1, \&quot;pipe\&quot;, range(30), None], \&quot;b\&quot;: b\&quot;bytes\&quot;}  is encoded thusly (with included comments):      {  // A dictionary with string keys is JSON-encodable.       \&quot;a\&quot;: [  // As is a list.         1,         \&quot;pipe\&quot;,         {  // A &#x60;range&#x60; is replaced with its pickle.           \&quot;__tdbudf__\&quot;: \&quot;immediate\&quot;,           \&quot;format\&quot;: \&quot;python_pickle\&quot;,           \&quot;base64_data\&quot;: \&quot;gASVIAAAAAAAAACMCGJ1aWx0aW5zlIwFcmFuZ2WUk5RLAEseSwGHlFKULg&#x3D;&#x3D;\&quot;         },         null       ],       \&quot;b\&quot;: {  // Raw binary data is encoded into base64.         \&quot;__tdbudf__\&quot;: \&quot;immediate\&quot;         \&quot;format\&quot;: \&quot;bytes\&quot;,         \&quot;base64_data\&quot;: \&quot;Ynl0ZXM&#x3D;\&quot;       }     } 
    * @return uri
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "An argument provided to a node. This is one of a direct value (i.e., a raw JSON value) or a `TGSentinel`. For example this Python value:      {\"a\": [1, \"pipe\", range(30), None], \"b\": b\"bytes\"}  is encoded thusly (with included comments):      {  // A dictionary with string keys is JSON-encodable.       \"a\": [  // As is a list.         1,         \"pipe\",         {  // A `range` is replaced with its pickle.           \"__tdbudf__\": \"immediate\",           \"format\": \"python_pickle\",           \"base64_data\": \"gASVIAAAAAAAAACMCGJ1aWx0aW5zlIwFcmFuZ2WUk5RLAEseSwGHlFKULg==\"         },         null       ],       \"b\": {  // Raw binary data is encoded into base64.         \"__tdbudf__\": \"immediate\"         \"format\": \"bytes\",         \"base64_data\": \"Ynl0ZXM=\"       }     } ")
+
   public Object getUri() {
     return uri;
   }
+
 
   public void setUri(Object uri) {
     this.uri = uri;
@@ -87,18 +83,22 @@ public class TGArrayNodeData {
 
 
   public TGArrayNodeData ranges(TGQueryRanges ranges) {
+    
     this.ranges = ranges;
     return this;
   }
 
-  /**
+   /**
    * Get ranges
    * @return ranges
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public TGQueryRanges getRanges() {
     return ranges;
   }
+
 
   public void setRanges(TGQueryRanges ranges) {
     this.ranges = ranges;
@@ -106,18 +106,22 @@ public class TGArrayNodeData {
 
 
   public TGArrayNodeData buffers(Object buffers) {
+    
     this.buffers = buffers;
     return this;
   }
 
-  /**
+   /**
    * An argument provided to a node. This is one of a direct value (i.e., a raw JSON value) or a &#x60;TGSentinel&#x60;. For example this Python value:      {\&quot;a\&quot;: [1, \&quot;pipe\&quot;, range(30), None], \&quot;b\&quot;: b\&quot;bytes\&quot;}  is encoded thusly (with included comments):      {  // A dictionary with string keys is JSON-encodable.       \&quot;a\&quot;: [  // As is a list.         1,         \&quot;pipe\&quot;,         {  // A &#x60;range&#x60; is replaced with its pickle.           \&quot;__tdbudf__\&quot;: \&quot;immediate\&quot;,           \&quot;format\&quot;: \&quot;python_pickle\&quot;,           \&quot;base64_data\&quot;: \&quot;gASVIAAAAAAAAACMCGJ1aWx0aW5zlIwFcmFuZ2WUk5RLAEseSwGHlFKULg&#x3D;&#x3D;\&quot;         },         null       ],       \&quot;b\&quot;: {  // Raw binary data is encoded into base64.         \&quot;__tdbudf__\&quot;: \&quot;immediate\&quot;         \&quot;format\&quot;: \&quot;bytes\&quot;,         \&quot;base64_data\&quot;: \&quot;Ynl0ZXM&#x3D;\&quot;       }     } 
    * @return buffers
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "An argument provided to a node. This is one of a direct value (i.e., a raw JSON value) or a `TGSentinel`. For example this Python value:      {\"a\": [1, \"pipe\", range(30), None], \"b\": b\"bytes\"}  is encoded thusly (with included comments):      {  // A dictionary with string keys is JSON-encodable.       \"a\": [  // As is a list.         1,         \"pipe\",         {  // A `range` is replaced with its pickle.           \"__tdbudf__\": \"immediate\",           \"format\": \"python_pickle\",           \"base64_data\": \"gASVIAAAAAAAAACMCGJ1aWx0aW5zlIwFcmFuZ2WUk5RLAEseSwGHlFKULg==\"         },         null       ],       \"b\": {  // Raw binary data is encoded into base64.         \"__tdbudf__\": \"immediate\"         \"format\": \"bytes\",         \"base64_data\": \"Ynl0ZXM=\"       }     } ")
+
   public Object getBuffers() {
     return buffers;
   }
+
 
   public void setBuffers(Object buffers) {
     this.buffers = buffers;
@@ -133,10 +137,6 @@ public class TGArrayNodeData {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the TGArrayNodeData instance itself
    */
   public TGArrayNodeData putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -148,8 +148,6 @@ public class TGArrayNodeData {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -157,9 +155,6 @@ public class TGArrayNodeData {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -227,22 +222,23 @@ public class TGArrayNodeData {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TGArrayNodeData
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!TGArrayNodeData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TGArrayNodeData
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TGArrayNodeData.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in TGArrayNodeData is not found in the empty JSON string", TGArrayNodeData.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `ranges`
-      if (jsonObj.get("ranges") != null && !jsonObj.get("ranges").isJsonNull()) {
-        TGQueryRanges.validateJsonElement(jsonObj.get("ranges"));
+      if (jsonObj.getAsJsonObject("ranges") != null) {
+        TGQueryRanges.validateJsonObject(jsonObj.getAsJsonObject("ranges"));
       }
   }
 
@@ -262,7 +258,7 @@ public class TGArrayNodeData {
            public void write(JsonWriter out, TGArrayNodeData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -274,12 +270,7 @@ public class TGArrayNodeData {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -288,9 +279,8 @@ public class TGArrayNodeData {
 
            @Override
            public TGArrayNodeData read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              TGArrayNodeData instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -304,10 +294,8 @@ public class TGArrayNodeData {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -318,22 +306,22 @@ public class TGArrayNodeData {
     }
   }
 
-  /**
-   * Create an instance of TGArrayNodeData given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of TGArrayNodeData
-   * @throws IOException if the JSON string is invalid with respect to TGArrayNodeData
-   */
+ /**
+  * Create an instance of TGArrayNodeData given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TGArrayNodeData
+  * @throws IOException if the JSON string is invalid with respect to TGArrayNodeData
+  */
   public static TGArrayNodeData fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TGArrayNodeData.class);
   }
 
-  /**
-   * Convert an instance of TGArrayNodeData to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of TGArrayNodeData to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

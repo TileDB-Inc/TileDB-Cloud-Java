@@ -19,8 +19,6 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ProgressRequestBody;
-import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -29,7 +27,6 @@ import java.io.IOException;
 
 import io.tiledb.cloud.rest_api.model.ArrayTask;
 import io.tiledb.cloud.rest_api.model.ArrayTaskData;
-import io.tiledb.cloud.rest_api.model.Error;
 import io.tiledb.cloud.rest_api.model.SQLParameters;
 
 import java.lang.reflect.Type;
@@ -77,7 +74,8 @@ public class TasksApi {
 
     /**
      * Build call for runSQL
-     * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param sql sql being submitted (required)
      * @param acceptEncoding Encoding to use (optional)
      * @param _callback Callback for upload/download progress
@@ -92,7 +90,7 @@ public class TasksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call runSQLCall(String namespace, SQLParameters sql, String acceptEncoding, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call runSQLCall(String workspace, String teamspace, SQLParameters sql, String acceptEncoding, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -109,8 +107,9 @@ public class TasksApi {
         Object localVarPostBody = sql;
 
         // create path and map variables
-        String localVarPath = "/sql/{namespace}"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()));
+        String localVarPath = "/sql/{workspace}/{teamspace}"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -138,33 +137,42 @@ public class TasksApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call runSQLValidateBeforeCall(String namespace, SQLParameters sql, String acceptEncoding, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling runSQL(Async)");
+    private okhttp3.Call runSQLValidateBeforeCall(String workspace, String teamspace, SQLParameters sql, String acceptEncoding, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling runSQL(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling runSQL(Async)");
+        }
+        
         // verify the required parameter 'sql' is set
         if (sql == null) {
             throw new ApiException("Missing the required parameter 'sql' when calling runSQL(Async)");
         }
+        
 
-        return runSQLCall(namespace, sql, acceptEncoding, _callback);
+        okhttp3.Call localVarCall = runSQLCall(workspace, teamspace, sql, acceptEncoding, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Run a sql query
-     * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param sql sql being submitted (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return List&lt;Map&lt;String, Object&gt;&gt;
+     * @return List&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -175,18 +183,19 @@ public class TasksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public List<Map<String, Object>> runSQL(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
-        ApiResponse<List<Map<String, Object>>> localVarResp = runSQLWithHttpInfo(namespace, sql, acceptEncoding);
+    public List<Object> runSQL(String workspace, String teamspace, SQLParameters sql, String acceptEncoding) throws ApiException {
+        ApiResponse<List<Object>> localVarResp = runSQLWithHttpInfo(workspace, teamspace, sql, acceptEncoding);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Run a sql query
-     * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param sql sql being submitted (required)
      * @param acceptEncoding Encoding to use (optional)
-     * @return ApiResponse&lt;List&lt;Map&lt;String, Object&gt;&gt;&gt;
+     * @return ApiResponse&lt;List&lt;Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -197,16 +206,17 @@ public class TasksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Map<String, Object>>> runSQLWithHttpInfo(String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
-        okhttp3.Call localVarCall = runSQLValidateBeforeCall(namespace, sql, acceptEncoding, null);
-        Type localVarReturnType = new TypeToken<List<Map<String, Object>>>(){}.getType();
+    public ApiResponse<List<Object>> runSQLWithHttpInfo(String workspace, String teamspace, SQLParameters sql, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = runSQLValidateBeforeCall(workspace, teamspace, sql, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
      * Run a sql query
-     * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param sql sql being submitted (required)
      * @param acceptEncoding Encoding to use (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -221,10 +231,10 @@ public class TasksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call runSQLAsync(String namespace, SQLParameters sql, String acceptEncoding, final ApiCallback<List<Map<String, Object>>> _callback) throws ApiException {
+    public okhttp3.Call runSQLAsync(String workspace, String teamspace, SQLParameters sql, String acceptEncoding, final ApiCallback<List<Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = runSQLValidateBeforeCall(namespace, sql, acceptEncoding, _callback);
-        Type localVarReturnType = new TypeToken<List<Map<String, Object>>>(){}.getType();
+        okhttp3.Call localVarCall = runSQLValidateBeforeCall(workspace, teamspace, sql, acceptEncoding, _callback);
+        Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -260,7 +270,7 @@ public class TasksApi {
 
         // create path and map variables
         String localVarPath = "/task/{id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -277,24 +287,28 @@ public class TasksApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call taskIdGetValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling taskIdGet(Async)");
         }
+        
 
-        return taskIdGetCall(id, _callback);
+        okhttp3.Call localVarCall = taskIdGetCall(id, _callback);
+        return localVarCall;
 
     }
 
@@ -394,7 +408,7 @@ public class TasksApi {
 
         // create path and map variables
         String localVarPath = "/task/{id}/result"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -415,24 +429,28 @@ public class TasksApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call taskIdResultGetValidateBeforeCall(String id, String acceptEncoding, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling taskIdResultGet(Async)");
         }
+        
 
-        return taskIdResultGetCall(id, acceptEncoding, _callback);
+        okhttp3.Call localVarCall = taskIdResultGetCall(id, acceptEncoding, _callback);
+        return localVarCall;
 
     }
 
@@ -623,19 +641,23 @@ public class TasksApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call tasksGetValidateBeforeCall(String namespace, String createdBy, String array, Integer start, Integer end, Integer page, Integer perPage, String type, List<String> excludeType, List<String> fileType, List<String> excludeFileType, String status, String search, String orderby, final ApiCallback _callback) throws ApiException {
-        return tasksGetCall(namespace, createdBy, array, start, end, page, perPage, type, excludeType, fileType, excludeFileType, status, search, orderby, _callback);
+        
+
+        okhttp3.Call localVarCall = tasksGetCall(namespace, createdBy, array, start, end, page, perPage, type, excludeType, fileType, excludeFileType, status, search, orderby, _callback);
+        return localVarCall;
 
     }
 

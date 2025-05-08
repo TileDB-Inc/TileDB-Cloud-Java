@@ -14,36 +14,28 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -51,7 +43,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Initial attributes for the registration of a an existing group.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Initial attributes for the registration of a an existing group.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class GroupRegister {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -79,7 +72,7 @@ public class GroupRegister {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags = null;
 
   public static final String SERIALIZED_NAME_LICENSE_ID = "license_id";
   @SerializedName(SERIALIZED_NAME_LICENSE_ID)
@@ -89,22 +82,26 @@ public class GroupRegister {
   @SerializedName(SERIALIZED_NAME_LICENSE_TEXT)
   private String licenseText;
 
-  public GroupRegister() {
+  public GroupRegister() { 
   }
 
   public GroupRegister description(String description) {
+    
     this.description = description;
     return this;
   }
 
-  /**
+   /**
    * A human readable description of the contents of the group.
    * @return description
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "A human readable description of the contents of the group.")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
@@ -112,18 +109,22 @@ public class GroupRegister {
 
 
   public GroupRegister name(String name) {
+    
     this.name = name;
     return this;
   }
 
-  /**
+   /**
    * The name of the group. If must be unique within the group.
    * @return name
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The name of the group. If must be unique within the group.")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
@@ -131,18 +132,22 @@ public class GroupRegister {
 
 
   public GroupRegister parent(String parent) {
+    
     this.parent = parent;
     return this;
   }
 
-  /**
+   /**
    * The unique name or id of the parent of the group. If empty, then the new group will be a top level group.
    * @return parent
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The unique name or id of the parent of the group. If empty, then the new group will be a top level group.")
+
   public String getParent() {
     return parent;
   }
+
 
   public void setParent(String parent) {
     this.parent = parent;
@@ -150,18 +155,22 @@ public class GroupRegister {
 
 
   public GroupRegister uri(String uri) {
+    
     this.uri = uri;
     return this;
   }
 
-  /**
+   /**
    * uri of group.
    * @return uri
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "uri of group.")
+
   public String getUri() {
     return uri;
   }
+
 
   public void setUri(String uri) {
     this.uri = uri;
@@ -169,18 +178,22 @@ public class GroupRegister {
 
 
   public GroupRegister logo(String logo) {
+    
     this.logo = logo;
     return this;
   }
 
-  /**
+   /**
    * logo (base64 encoded) for the group. Optional
    * @return logo
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "logo (base64 encoded) for the group. Optional")
+
   public String getLogo() {
     return logo;
   }
+
 
   public void setLogo(String logo) {
     this.logo = logo;
@@ -188,18 +201,22 @@ public class GroupRegister {
 
 
   public GroupRegister accessCredentialsName(String accessCredentialsName) {
+    
     this.accessCredentialsName = accessCredentialsName;
     return this;
   }
 
-  /**
+   /**
    * the name of the access credentials to use. if unset, the default credentials will be used.
    * @return accessCredentialsName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "the name of the access credentials to use. if unset, the default credentials will be used.")
+
   public String getAccessCredentialsName() {
     return accessCredentialsName;
   }
+
 
   public void setAccessCredentialsName(String accessCredentialsName) {
     this.accessCredentialsName = accessCredentialsName;
@@ -207,6 +224,7 @@ public class GroupRegister {
 
 
   public GroupRegister tags(List<String> tags) {
+    
     this.tags = tags;
     return this;
   }
@@ -219,14 +237,17 @@ public class GroupRegister {
     return this;
   }
 
-  /**
+   /**
    * optional tags for groups.
    * @return tags
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "optional tags for groups.")
+
   public List<String> getTags() {
     return tags;
   }
+
 
   public void setTags(List<String> tags) {
     this.tags = tags;
@@ -234,18 +255,22 @@ public class GroupRegister {
 
 
   public GroupRegister licenseId(String licenseId) {
+    
     this.licenseId = licenseId;
     return this;
   }
 
-  /**
+   /**
    * License identifier from SPDX License List or Custom.
    * @return licenseId
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "License identifier from SPDX License List or Custom.")
+
   public String getLicenseId() {
     return licenseId;
   }
+
 
   public void setLicenseId(String licenseId) {
     this.licenseId = licenseId;
@@ -253,18 +278,22 @@ public class GroupRegister {
 
 
   public GroupRegister licenseText(String licenseText) {
+    
     this.licenseText = licenseText;
     return this;
   }
 
-  /**
+   /**
    * License text
    * @return licenseText
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "License text")
+
   public String getLicenseText() {
     return licenseText;
   }
+
 
   public void setLicenseText(String licenseText) {
     this.licenseText = licenseText;
@@ -280,10 +309,6 @@ public class GroupRegister {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the GroupRegister instance itself
    */
   public GroupRegister putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -295,8 +320,6 @@ public class GroupRegister {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -304,9 +327,6 @@ public class GroupRegister {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -392,45 +412,46 @@ public class GroupRegister {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GroupRegister
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GroupRegister.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to GroupRegister
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (GroupRegister.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in GroupRegister is not found in the empty JSON string", GroupRegister.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+      if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("parent") != null && !jsonObj.get("parent").isJsonNull()) && !jsonObj.get("parent").isJsonPrimitive()) {
+      if (jsonObj.get("parent") != null && !jsonObj.get("parent").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `parent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parent").toString()));
       }
-      if ((jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonNull()) && !jsonObj.get("uri").isJsonPrimitive()) {
+      if (jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
       }
-      if ((jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonNull()) && !jsonObj.get("logo").isJsonPrimitive()) {
+      if (jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
       }
-      if ((jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonNull()) && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
+      if (jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_credentials_name").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      if ((jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonNull()) && !jsonObj.get("license_id").isJsonPrimitive()) {
+      if (jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `license_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_id").toString()));
       }
-      if ((jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonNull()) && !jsonObj.get("license_text").isJsonPrimitive()) {
+      if (jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `license_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_text").toString()));
       }
   }
@@ -451,7 +472,7 @@ public class GroupRegister {
            public void write(JsonWriter out, GroupRegister value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -463,12 +484,7 @@ public class GroupRegister {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -477,9 +493,8 @@ public class GroupRegister {
 
            @Override
            public GroupRegister read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              GroupRegister instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -493,10 +508,8 @@ public class GroupRegister {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -507,22 +520,22 @@ public class GroupRegister {
     }
   }
 
-  /**
-   * Create an instance of GroupRegister given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of GroupRegister
-   * @throws IOException if the JSON string is invalid with respect to GroupRegister
-   */
+ /**
+  * Create an instance of GroupRegister given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of GroupRegister
+  * @throws IOException if the JSON string is invalid with respect to GroupRegister
+  */
   public static GroupRegister fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, GroupRegister.class);
   }
 
-  /**
-   * Convert an instance of GroupRegister to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of GroupRegister to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

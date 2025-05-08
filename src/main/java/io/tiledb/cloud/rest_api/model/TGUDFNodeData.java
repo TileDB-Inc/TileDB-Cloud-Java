@@ -14,48 +14,39 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.ResultFormat;
-import io.tiledb.cloud.rest_api.model.TGUDFArgument;
-import io.tiledb.cloud.rest_api.model.TGUDFEnvironment;
+import io.tiledb.cloud.rest_api.JSON;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
-
-import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * A node specifying the execution of a user-defined function.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "A node specifying the execution of a user-defined function.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class TGUDFNodeData {
   public static final String SERIALIZED_NAME_REGISTERED_UDF_NAME = "registered_udf_name";
   @SerializedName(SERIALIZED_NAME_REGISTERED_UDF_NAME)
@@ -75,28 +66,32 @@ public class TGUDFNodeData {
 
   public static final String SERIALIZED_NAME_ARGUMENTS = "arguments";
   @SerializedName(SERIALIZED_NAME_ARGUMENTS)
-  private List<TGUDFArgument> arguments = new ArrayList<>();
+  private List<TGUDFArgument> arguments = null;
 
   public static final String SERIALIZED_NAME_RESULT_FORMAT = "result_format";
   @SerializedName(SERIALIZED_NAME_RESULT_FORMAT)
   private ResultFormat resultFormat;
 
-  public TGUDFNodeData() {
+  public TGUDFNodeData() { 
   }
 
   public TGUDFNodeData registeredUdfName(String registeredUdfName) {
+    
     this.registeredUdfName = registeredUdfName;
     return this;
   }
 
-  /**
+   /**
    * If set, the name of the registered UDF to execute, in the format &#x60;namespace/name&#x60;. Either this or &#x60;executable_code&#x60; should be set, but not both. 
    * @return registeredUdfName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "If set, the name of the registered UDF to execute, in the format `namespace/name`. Either this or `executable_code` should be set, but not both. ")
+
   public String getRegisteredUdfName() {
     return registeredUdfName;
   }
+
 
   public void setRegisteredUdfName(String registeredUdfName) {
     this.registeredUdfName = registeredUdfName;
@@ -104,18 +99,22 @@ public class TGUDFNodeData {
 
 
   public TGUDFNodeData executableCode(String executableCode) {
+    
     this.executableCode = executableCode;
     return this;
   }
 
-  /**
+   /**
    * If set, the base64 serialization of the code for this step, encoded in a language-specific format (e.g. Pickle for Python, serialization for R). 
    * @return executableCode
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "If set, the base64 serialization of the code for this step, encoded in a language-specific format (e.g. Pickle for Python, serialization for R). ")
+
   public String getExecutableCode() {
     return executableCode;
   }
+
 
   public void setExecutableCode(String executableCode) {
     this.executableCode = executableCode;
@@ -123,18 +122,22 @@ public class TGUDFNodeData {
 
 
   public TGUDFNodeData sourceText(String sourceText) {
+    
     this.sourceText = sourceText;
     return this;
   }
 
-  /**
+   /**
    * Optionally, the source text for the code passed in &#x60;executable_code&#x60;. *For reference only; only the code in &#x60;executable_code&#x60; is actually executed.* This will be included in activity logs and may be useful for debugging. 
    * @return sourceText
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Optionally, the source text for the code passed in `executable_code`. *For reference only; only the code in `executable_code` is actually executed.* This will be included in activity logs and may be useful for debugging. ")
+
   public String getSourceText() {
     return sourceText;
   }
+
 
   public void setSourceText(String sourceText) {
     this.sourceText = sourceText;
@@ -142,18 +145,22 @@ public class TGUDFNodeData {
 
 
   public TGUDFNodeData environment(TGUDFEnvironment environment) {
+    
     this.environment = environment;
     return this;
   }
 
-  /**
+   /**
    * Get environment
    * @return environment
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public TGUDFEnvironment getEnvironment() {
     return environment;
   }
+
 
   public void setEnvironment(TGUDFEnvironment environment) {
     this.environment = environment;
@@ -161,6 +168,7 @@ public class TGUDFNodeData {
 
 
   public TGUDFNodeData arguments(List<TGUDFArgument> arguments) {
+    
     this.arguments = arguments;
     return this;
   }
@@ -173,14 +181,17 @@ public class TGUDFNodeData {
     return this;
   }
 
-  /**
+   /**
    * The arguments to a UDF function. This encompasses both named and positional arguments. The format is designed to provide compatibility across languages like Python which have a fairly traditional split between positional arguments and named arguments, and languages like R which has a rather unique way of specifying arguments. For Python (and most other languages), all positional arguments will come before all named arguments (if any are present):      // fn(arg1, arg2, arg3)     [       {value: arg1},       {value: arg2},       {value: arg3},     ]     // fn(arg1, arg2, n&#x3D;kw1, a&#x3D;kw2)     [       {value: arg1},       {value: arg2},       {name: \&quot;n\&quot;, value: kw1},       {name: \&quot;a\&quot;, value: kw2},     ]     // fn(kw&#x3D;k1, only&#x3D;k2)     [       {name: \&quot;kw\&quot;, value: k1},       {name: \&quot;only\&quot;, value: k2},     ]  However, in R, named and positional arguments may be intermixed freely:      // fn(arg, n&#x3D;kw1, arg2)     [       {value: arg},       {name: \&quot;n\&quot;, value: kw1},       {value: arg2},     ] 
    * @return arguments
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The arguments to a UDF function. This encompasses both named and positional arguments. The format is designed to provide compatibility across languages like Python which have a fairly traditional split between positional arguments and named arguments, and languages like R which has a rather unique way of specifying arguments. For Python (and most other languages), all positional arguments will come before all named arguments (if any are present):      // fn(arg1, arg2, arg3)     [       {value: arg1},       {value: arg2},       {value: arg3},     ]     // fn(arg1, arg2, n=kw1, a=kw2)     [       {value: arg1},       {value: arg2},       {name: \"n\", value: kw1},       {name: \"a\", value: kw2},     ]     // fn(kw=k1, only=k2)     [       {name: \"kw\", value: k1},       {name: \"only\", value: k2},     ]  However, in R, named and positional arguments may be intermixed freely:      // fn(arg, n=kw1, arg2)     [       {value: arg},       {name: \"n\", value: kw1},       {value: arg2},     ] ")
+
   public List<TGUDFArgument> getArguments() {
     return arguments;
   }
+
 
   public void setArguments(List<TGUDFArgument> arguments) {
     this.arguments = arguments;
@@ -188,18 +199,22 @@ public class TGUDFNodeData {
 
 
   public TGUDFNodeData resultFormat(ResultFormat resultFormat) {
+    
     this.resultFormat = resultFormat;
     return this;
   }
 
-  /**
+   /**
    * Get resultFormat
    * @return resultFormat
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public ResultFormat getResultFormat() {
     return resultFormat;
   }
+
 
   public void setResultFormat(ResultFormat resultFormat) {
     this.resultFormat = resultFormat;
@@ -215,10 +230,6 @@ public class TGUDFNodeData {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the TGUDFNodeData instance itself
    */
   public TGUDFNodeData putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -230,8 +241,6 @@ public class TGUDFNodeData {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -239,9 +248,6 @@ public class TGUDFNodeData {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -329,49 +335,44 @@ public class TGUDFNodeData {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TGUDFNodeData
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!TGUDFNodeData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TGUDFNodeData
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TGUDFNodeData.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in TGUDFNodeData is not found in the empty JSON string", TGUDFNodeData.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("registered_udf_name") != null && !jsonObj.get("registered_udf_name").isJsonNull()) && !jsonObj.get("registered_udf_name").isJsonPrimitive()) {
+      if (jsonObj.get("registered_udf_name") != null && !jsonObj.get("registered_udf_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `registered_udf_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("registered_udf_name").toString()));
       }
-      if ((jsonObj.get("executable_code") != null && !jsonObj.get("executable_code").isJsonNull()) && !jsonObj.get("executable_code").isJsonPrimitive()) {
+      if (jsonObj.get("executable_code") != null && !jsonObj.get("executable_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `executable_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("executable_code").toString()));
       }
-      if ((jsonObj.get("source_text") != null && !jsonObj.get("source_text").isJsonNull()) && !jsonObj.get("source_text").isJsonPrimitive()) {
+      if (jsonObj.get("source_text") != null && !jsonObj.get("source_text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_text").toString()));
       }
       // validate the optional field `environment`
-      if (jsonObj.get("environment") != null && !jsonObj.get("environment").isJsonNull()) {
-        TGUDFEnvironment.validateJsonElement(jsonObj.get("environment"));
+      if (jsonObj.getAsJsonObject("environment") != null) {
+        TGUDFEnvironment.validateJsonObject(jsonObj.getAsJsonObject("environment"));
       }
-      if (jsonObj.get("arguments") != null && !jsonObj.get("arguments").isJsonNull()) {
-        JsonArray jsonArrayarguments = jsonObj.getAsJsonArray("arguments");
-        if (jsonArrayarguments != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("arguments").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `arguments` to be an array in the JSON string but got `%s`", jsonObj.get("arguments").toString()));
-          }
-
-          // validate the optional field `arguments` (array)
-          for (int i = 0; i < jsonArrayarguments.size(); i++) {
-            TGUDFArgument.validateJsonElement(jsonArrayarguments.get(i));
-          };
+      JsonArray jsonArrayarguments = jsonObj.getAsJsonArray("arguments");
+      if (jsonArrayarguments != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("arguments").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `arguments` to be an array in the JSON string but got `%s`", jsonObj.get("arguments").toString()));
         }
-      }
-      // validate the optional field `result_format`
-      if (jsonObj.get("result_format") != null && !jsonObj.get("result_format").isJsonNull()) {
-        ResultFormat.validateJsonElement(jsonObj.get("result_format"));
+
+        // validate the optional field `arguments` (array)
+        for (int i = 0; i < jsonArrayarguments.size(); i++) {
+          TGUDFArgument.validateJsonObject(jsonArrayarguments.get(i).getAsJsonObject());
+        };
       }
   }
 
@@ -391,7 +392,7 @@ public class TGUDFNodeData {
            public void write(JsonWriter out, TGUDFNodeData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -403,12 +404,7 @@ public class TGUDFNodeData {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -417,9 +413,8 @@ public class TGUDFNodeData {
 
            @Override
            public TGUDFNodeData read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              TGUDFNodeData instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -433,10 +428,8 @@ public class TGUDFNodeData {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -447,22 +440,22 @@ public class TGUDFNodeData {
     }
   }
 
-  /**
-   * Create an instance of TGUDFNodeData given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of TGUDFNodeData
-   * @throws IOException if the JSON string is invalid with respect to TGUDFNodeData
-   */
+ /**
+  * Create an instance of TGUDFNodeData given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TGUDFNodeData
+  * @throws IOException if the JSON string is invalid with respect to TGUDFNodeData
+  */
   public static TGUDFNodeData fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TGUDFNodeData.class);
   }
 
-  /**
-   * Convert an instance of TGUDFNodeData to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of TGUDFNodeData to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -14,36 +14,28 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -51,7 +43,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * The enumerations of a single attribute
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "The enumerations of a single attribute")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class Enumeration {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -75,28 +68,32 @@ public class Enumeration {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Integer> data = new ArrayList<>();
+  private List<Integer> data = null;
 
   public static final String SERIALIZED_NAME_OFFSETS = "offsets";
   @SerializedName(SERIALIZED_NAME_OFFSETS)
-  private List<Integer> offsets = new ArrayList<>();
+  private List<Integer> offsets = null;
 
-  public Enumeration() {
+  public Enumeration() { 
   }
 
   public Enumeration name(String name) {
+    
     this.name = name;
     return this;
   }
 
-  /**
+   /**
    * Get name
    * @return name
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
@@ -104,18 +101,22 @@ public class Enumeration {
 
 
   public Enumeration pathName(String pathName) {
+    
     this.pathName = pathName;
     return this;
   }
 
-  /**
+   /**
    * Get pathName
    * @return pathName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public String getPathName() {
     return pathName;
   }
+
 
   public void setPathName(String pathName) {
     this.pathName = pathName;
@@ -123,18 +124,22 @@ public class Enumeration {
 
 
   public Enumeration type(String type) {
+    
     this.type = type;
     return this;
   }
 
-  /**
+   /**
    * Get type
    * @return type
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public String getType() {
     return type;
   }
+
 
   public void setType(String type) {
     this.type = type;
@@ -142,18 +147,22 @@ public class Enumeration {
 
 
   public Enumeration cellValNum(Integer cellValNum) {
+    
     this.cellValNum = cellValNum;
     return this;
   }
 
-  /**
+   /**
    * Get cellValNum
    * @return cellValNum
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public Integer getCellValNum() {
     return cellValNum;
   }
+
 
   public void setCellValNum(Integer cellValNum) {
     this.cellValNum = cellValNum;
@@ -161,18 +170,22 @@ public class Enumeration {
 
 
   public Enumeration ordered(Boolean ordered) {
+    
     this.ordered = ordered;
     return this;
   }
 
-  /**
+   /**
    * Get ordered
    * @return ordered
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public Boolean getOrdered() {
     return ordered;
   }
+
 
   public void setOrdered(Boolean ordered) {
     this.ordered = ordered;
@@ -180,6 +193,7 @@ public class Enumeration {
 
 
   public Enumeration data(List<Integer> data) {
+    
     this.data = data;
     return this;
   }
@@ -192,14 +206,17 @@ public class Enumeration {
     return this;
   }
 
-  /**
+   /**
    * Get data
    * @return data
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getData() {
     return data;
   }
+
 
   public void setData(List<Integer> data) {
     this.data = data;
@@ -207,6 +224,7 @@ public class Enumeration {
 
 
   public Enumeration offsets(List<Integer> offsets) {
+    
     this.offsets = offsets;
     return this;
   }
@@ -219,14 +237,17 @@ public class Enumeration {
     return this;
   }
 
-  /**
+   /**
    * Get offsets
    * @return offsets
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getOffsets() {
     return offsets;
   }
+
 
   public void setOffsets(List<Integer> offsets) {
     this.offsets = offsets;
@@ -242,10 +263,6 @@ public class Enumeration {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the Enumeration instance itself
    */
   public Enumeration putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -257,8 +274,6 @@ public class Enumeration {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -266,9 +281,6 @@ public class Enumeration {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -348,34 +360,35 @@ public class Enumeration {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Enumeration
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Enumeration.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Enumeration
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Enumeration.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in Enumeration is not found in the empty JSON string", Enumeration.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("path_name") != null && !jsonObj.get("path_name").isJsonNull()) && !jsonObj.get("path_name").isJsonPrimitive()) {
+      if (jsonObj.get("path_name") != null && !jsonObj.get("path_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `path_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("path_name").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull() && !jsonObj.get("data").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("offsets") != null && !jsonObj.get("offsets").isJsonNull() && !jsonObj.get("offsets").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("offsets") != null && !jsonObj.get("offsets").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `offsets` to be an array in the JSON string but got `%s`", jsonObj.get("offsets").toString()));
       }
   }
@@ -396,7 +409,7 @@ public class Enumeration {
            public void write(JsonWriter out, Enumeration value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -408,12 +421,7 @@ public class Enumeration {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -422,9 +430,8 @@ public class Enumeration {
 
            @Override
            public Enumeration read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              Enumeration instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -438,10 +445,8 @@ public class Enumeration {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -452,22 +457,22 @@ public class Enumeration {
     }
   }
 
-  /**
-   * Create an instance of Enumeration given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of Enumeration
-   * @throws IOException if the JSON string is invalid with respect to Enumeration
-   */
+ /**
+  * Create an instance of Enumeration given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Enumeration
+  * @throws IOException if the JSON string is invalid with respect to Enumeration
+  */
   public static Enumeration fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Enumeration.class);
   }
 
-  /**
-   * Convert an instance of Enumeration to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of Enumeration to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

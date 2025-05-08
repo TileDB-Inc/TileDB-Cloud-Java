@@ -14,40 +14,31 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.ArrayTask;
-import io.tiledb.cloud.rest_api.model.ArrayTaskStatus;
-import io.tiledb.cloud.rest_api.model.TaskGraphLogRunLocation;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -55,7 +46,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Metadata about an individual node in a task graph.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Metadata about an individual node in a task graph.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class TaskGraphNodeMetadata {
   public static final String SERIALIZED_NAME_CLIENT_NODE_UUID = "client_node_uuid";
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_UUID)
@@ -67,7 +59,7 @@ public class TaskGraphNodeMetadata {
 
   public static final String SERIALIZED_NAME_DEPENDS_ON = "depends_on";
   @SerializedName(SERIALIZED_NAME_DEPENDS_ON)
-  private List<String> dependsOn = new ArrayList<>();
+  private List<String> dependsOn = null;
 
   public static final String SERIALIZED_NAME_RUN_LOCATION = "run_location";
   @SerializedName(SERIALIZED_NAME_RUN_LOCATION)
@@ -83,11 +75,12 @@ public class TaskGraphNodeMetadata {
 
   public static final String SERIALIZED_NAME_EXECUTIONS = "executions";
   @SerializedName(SERIALIZED_NAME_EXECUTIONS)
-  private List<ArrayTask> executions = new ArrayList<>();
+  private List<ArrayTask> executions = null;
 
-  public TaskGraphNodeMetadata() {
+  public TaskGraphNodeMetadata() { 
   }
 
+  
   public TaskGraphNodeMetadata(
      List<ArrayTask> executions
   ) {
@@ -96,18 +89,22 @@ public class TaskGraphNodeMetadata {
   }
 
   public TaskGraphNodeMetadata clientNodeUuid(String clientNodeUuid) {
+    
     this.clientNodeUuid = clientNodeUuid;
     return this;
   }
 
-  /**
+   /**
    * The client-generated UUID of the given graph node.
    * @return clientNodeUuid
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The client-generated UUID of the given graph node.")
+
   public String getClientNodeUuid() {
     return clientNodeUuid;
   }
+
 
   public void setClientNodeUuid(String clientNodeUuid) {
     this.clientNodeUuid = clientNodeUuid;
@@ -115,18 +112,22 @@ public class TaskGraphNodeMetadata {
 
 
   public TaskGraphNodeMetadata name(String name) {
+    
     this.name = name;
     return this;
   }
 
-  /**
+   /**
    * The client-generated name of the node. This is not guaranteed to be unique. 
    * @return name
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The client-generated name of the node. This is not guaranteed to be unique. ")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
@@ -134,6 +135,7 @@ public class TaskGraphNodeMetadata {
 
 
   public TaskGraphNodeMetadata dependsOn(List<String> dependsOn) {
+    
     this.dependsOn = dependsOn;
     return this;
   }
@@ -146,14 +148,17 @@ public class TaskGraphNodeMetadata {
     return this;
   }
 
-  /**
+   /**
    * The client_node_uuid of each node that this node depends upon. Used to define the structure of the graph. 
    * @return dependsOn
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The client_node_uuid of each node that this node depends upon. Used to define the structure of the graph. ")
+
   public List<String> getDependsOn() {
     return dependsOn;
   }
+
 
   public void setDependsOn(List<String> dependsOn) {
     this.dependsOn = dependsOn;
@@ -161,18 +166,22 @@ public class TaskGraphNodeMetadata {
 
 
   public TaskGraphNodeMetadata runLocation(TaskGraphLogRunLocation runLocation) {
+    
     this.runLocation = runLocation;
     return this;
   }
 
-  /**
+   /**
    * Get runLocation
    * @return runLocation
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public TaskGraphLogRunLocation getRunLocation() {
     return runLocation;
   }
+
 
   public void setRunLocation(TaskGraphLogRunLocation runLocation) {
     this.runLocation = runLocation;
@@ -180,18 +189,22 @@ public class TaskGraphNodeMetadata {
 
 
   public TaskGraphNodeMetadata status(ArrayTaskStatus status) {
+    
     this.status = status;
     return this;
   }
 
-  /**
+   /**
    * Get status
    * @return status
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public ArrayTaskStatus getStatus() {
     return status;
   }
+
 
   public void setStatus(ArrayTaskStatus status) {
     this.status = status;
@@ -199,32 +212,39 @@ public class TaskGraphNodeMetadata {
 
 
   public TaskGraphNodeMetadata statusMessage(String statusMessage) {
+    
     this.statusMessage = statusMessage;
     return this;
   }
 
-  /**
+   /**
    * The reason the array task status is in the state
    * @return statusMessage
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The reason the array task status is in the state")
+
   public String getStatusMessage() {
     return statusMessage;
   }
+
 
   public void setStatusMessage(String statusMessage) {
     this.statusMessage = statusMessage;
   }
 
 
-  /**
+   /**
    * ArrayTasks representing each execution attempt for this node. For nodes that have never been submitted, this will be empty. For nodes that have been retried, this may have multiple entries. The last one in the list represents the most recent execution. This is read-only and generated by the server based on the tasks it has actually executed. 
    * @return executions
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "ArrayTasks representing each execution attempt for this node. For nodes that have never been submitted, this will be empty. For nodes that have been retried, this may have multiple entries. The last one in the list represents the most recent execution. This is read-only and generated by the server based on the tasks it has actually executed. ")
+
   public List<ArrayTask> getExecutions() {
     return executions;
   }
+
 
 
   /**
@@ -237,10 +257,6 @@ public class TaskGraphNodeMetadata {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the TaskGraphNodeMetadata instance itself
    */
   public TaskGraphNodeMetadata putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -252,8 +268,6 @@ public class TaskGraphNodeMetadata {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -261,9 +275,6 @@ public class TaskGraphNodeMetadata {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -354,52 +365,18 @@ public class TaskGraphNodeMetadata {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TaskGraphNodeMetadata
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!TaskGraphNodeMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TaskGraphNodeMetadata
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TaskGraphNodeMetadata.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraphNodeMetadata is not found in the empty JSON string", TaskGraphNodeMetadata.openapiRequiredFields.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonNull()) && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("depends_on") != null && !jsonObj.get("depends_on").isJsonNull() && !jsonObj.get("depends_on").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `depends_on` to be an array in the JSON string but got `%s`", jsonObj.get("depends_on").toString()));
-      }
-      // validate the optional field `run_location`
-      if (jsonObj.get("run_location") != null && !jsonObj.get("run_location").isJsonNull()) {
-        TaskGraphLogRunLocation.validateJsonElement(jsonObj.get("run_location"));
-      }
-      // validate the optional field `status`
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
-        ArrayTaskStatus.validateJsonElement(jsonObj.get("status"));
-      }
-      if ((jsonObj.get("status_message") != null && !jsonObj.get("status_message").isJsonNull()) && !jsonObj.get("status_message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status_message").toString()));
-      }
-      if (jsonObj.get("executions") != null && !jsonObj.get("executions").isJsonNull()) {
-        JsonArray jsonArrayexecutions = jsonObj.getAsJsonArray("executions");
-        if (jsonArrayexecutions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("executions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `executions` to be an array in the JSON string but got `%s`", jsonObj.get("executions").toString()));
-          }
-
-          // validate the optional field `executions` (array)
-          for (int i = 0; i < jsonArrayexecutions.size(); i++) {
-            ArrayTask.validateJsonElement(jsonArrayexecutions.get(i));
-          };
         }
       }
   }
@@ -420,7 +397,7 @@ public class TaskGraphNodeMetadata {
            public void write(JsonWriter out, TaskGraphNodeMetadata value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -432,12 +409,7 @@ public class TaskGraphNodeMetadata {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -446,9 +418,8 @@ public class TaskGraphNodeMetadata {
 
            @Override
            public TaskGraphNodeMetadata read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              TaskGraphNodeMetadata instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -462,10 +433,8 @@ public class TaskGraphNodeMetadata {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -476,22 +445,22 @@ public class TaskGraphNodeMetadata {
     }
   }
 
-  /**
-   * Create an instance of TaskGraphNodeMetadata given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of TaskGraphNodeMetadata
-   * @throws IOException if the JSON string is invalid with respect to TaskGraphNodeMetadata
-   */
+ /**
+  * Create an instance of TaskGraphNodeMetadata given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TaskGraphNodeMetadata
+  * @throws IOException if the JSON string is invalid with respect to TaskGraphNodeMetadata
+  */
   public static TaskGraphNodeMetadata fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TaskGraphNodeMetadata.class);
   }
 
-  /**
-   * Convert an instance of TaskGraphNodeMetadata to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of TaskGraphNodeMetadata to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

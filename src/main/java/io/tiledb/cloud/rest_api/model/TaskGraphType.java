@@ -14,11 +14,10 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
-import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -30,9 +29,9 @@ import com.google.gson.stream.JsonWriter;
 public enum TaskGraphType {
   
   BATCH("batch"),
-
+  
   REALTIME("realtime"),
-
+  
   NEXTFLOW("nextflow");
 
   private String value;
@@ -70,11 +69,6 @@ public enum TaskGraphType {
       String value = jsonReader.nextString();
       return TaskGraphType.fromValue(value);
     }
-  }
-
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    String value = jsonElement.getAsString();
-    TaskGraphType.fromValue(value);
   }
 }
 

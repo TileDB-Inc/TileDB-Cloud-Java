@@ -7,7 +7,7 @@ All URIs are relative to */v1*
 | [**getTiledbStats**](StatsApi.md#getTiledbStats) | **GET** /.stats |  |
 
 
-<a id="getTiledbStats"></a>
+<a name="getTiledbStats"></a>
 # **getTiledbStats**
 > GetTiledbStats200Response getTiledbStats()
 
@@ -16,43 +16,44 @@ All URIs are relative to */v1*
 Fetch libtiledb stat
 
 ### Example
+
 ```java
 // Import classes:
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.auth.*;
-import io.tiledb.cloud.rest_api.models.*;
-import io.tiledb.cloud.rest_api.api.StatsApi;
+
+import org.openapitools.client.rest_api.ApiClient;
+import org.openapitools.client.rest_api.ApiException;
+import org.openapitools.client.rest_api.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.rest_api.api.StatsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    StatsApi apiInstance = new StatsApi(defaultClient);
-    try {
-      GetTiledbStats200Response result = apiInstance.getTiledbStats();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling StatsApi#getTiledbStats");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        StatsApi apiInstance = new StatsApi(defaultClient);
+        try {
+            GetTiledbStats200Response result = apiInstance.getTiledbStats();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling StatsApi#getTiledbStats");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -65,7 +66,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 

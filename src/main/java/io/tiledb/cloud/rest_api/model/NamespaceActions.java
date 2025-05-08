@@ -14,11 +14,10 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
-import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -88,11 +87,6 @@ public enum NamespaceActions {
       String value = jsonReader.nextString();
       return NamespaceActions.fromValue(value);
     }
-  }
-
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    String value = jsonElement.getAsString();
-    NamespaceActions.fromValue(value);
   }
 }
 

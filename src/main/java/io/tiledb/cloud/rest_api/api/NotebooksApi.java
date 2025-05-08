@@ -19,8 +19,6 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ProgressRequestBody;
-import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -28,7 +26,6 @@ import java.io.IOException;
 
 
 import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
-import io.tiledb.cloud.rest_api.model.Error;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -74,8 +71,9 @@ public class NotebooksApi {
     }
 
     /**
-     * Build call for notebooksNamespaceArrayEndTimestampsGet
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * Build call for notebooksWorkspaceTeamspaceArrayEndTimestampsGet
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
@@ -90,7 +88,7 @@ public class NotebooksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call notebooksNamespaceArrayEndTimestampsGetCall(String namespace, String array, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call notebooksWorkspaceTeamspaceArrayEndTimestampsGetCall(String workspace, String teamspace, String array, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,9 +105,10 @@ public class NotebooksApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notebooks/{namespace}/{array}/end_timestamps"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
+        String localVarPath = "/notebooks/{workspace}/{teamspace}/{array}/end_timestamps"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -134,36 +133,46 @@ public class NotebooksApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call notebooksNamespaceArrayEndTimestampsGetValidateBeforeCall(String namespace, String array, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling notebooksNamespaceArrayEndTimestampsGet(Async)");
+    private okhttp3.Call notebooksWorkspaceTeamspaceArrayEndTimestampsGetValidateBeforeCall(String workspace, String teamspace, String array, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling notebooksWorkspaceTeamspaceArrayEndTimestampsGet(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling notebooksWorkspaceTeamspaceArrayEndTimestampsGet(Async)");
+        }
+        
         // verify the required parameter 'array' is set
         if (array == null) {
-            throw new ApiException("Missing the required parameter 'array' when calling notebooksNamespaceArrayEndTimestampsGet(Async)");
+            throw new ApiException("Missing the required parameter 'array' when calling notebooksWorkspaceTeamspaceArrayEndTimestampsGet(Async)");
         }
+        
 
-        return notebooksNamespaceArrayEndTimestampsGetCall(namespace, array, page, perPage, _callback);
+        okhttp3.Call localVarCall = notebooksWorkspaceTeamspaceArrayEndTimestampsGetCall(workspace, teamspace, array, page, perPage, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * retrieve a list of timestamps from the array fragment info listing in milliseconds, paginated
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
@@ -177,15 +186,16 @@ public class NotebooksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ArrayEndTimestampData notebooksNamespaceArrayEndTimestampsGet(String namespace, String array, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<ArrayEndTimestampData> localVarResp = notebooksNamespaceArrayEndTimestampsGetWithHttpInfo(namespace, array, page, perPage);
+    public ArrayEndTimestampData notebooksWorkspaceTeamspaceArrayEndTimestampsGet(String workspace, String teamspace, String array, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<ArrayEndTimestampData> localVarResp = notebooksWorkspaceTeamspaceArrayEndTimestampsGetWithHttpInfo(workspace, teamspace, array, page, perPage);
         return localVarResp.getData();
     }
 
     /**
      * 
      * retrieve a list of timestamps from the array fragment info listing in milliseconds, paginated
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
@@ -199,8 +209,8 @@ public class NotebooksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArrayEndTimestampData> notebooksNamespaceArrayEndTimestampsGetWithHttpInfo(String namespace, String array, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = notebooksNamespaceArrayEndTimestampsGetValidateBeforeCall(namespace, array, page, perPage, null);
+    public ApiResponse<ArrayEndTimestampData> notebooksWorkspaceTeamspaceArrayEndTimestampsGetWithHttpInfo(String workspace, String teamspace, String array, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = notebooksWorkspaceTeamspaceArrayEndTimestampsGetValidateBeforeCall(workspace, teamspace, array, page, perPage, null);
         Type localVarReturnType = new TypeToken<ArrayEndTimestampData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -208,7 +218,8 @@ public class NotebooksApi {
     /**
      *  (asynchronously)
      * retrieve a list of timestamps from the array fragment info listing in milliseconds, paginated
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param page pagination offset (optional)
      * @param perPage pagination limit (optional)
@@ -223,16 +234,17 @@ public class NotebooksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call notebooksNamespaceArrayEndTimestampsGetAsync(String namespace, String array, Integer page, Integer perPage, final ApiCallback<ArrayEndTimestampData> _callback) throws ApiException {
+    public okhttp3.Call notebooksWorkspaceTeamspaceArrayEndTimestampsGetAsync(String workspace, String teamspace, String array, Integer page, Integer perPage, final ApiCallback<ArrayEndTimestampData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = notebooksNamespaceArrayEndTimestampsGetValidateBeforeCall(namespace, array, page, perPage, _callback);
+        okhttp3.Call localVarCall = notebooksWorkspaceTeamspaceArrayEndTimestampsGetValidateBeforeCall(workspace, teamspace, array, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<ArrayEndTimestampData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for notebooksNamespaceArrayPrunePost
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * Build call for notebooksWorkspaceTeamspaceArrayPrunePost
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param keepVersions The number of most recents fragment to preserve (optional)
      * @param _callback Callback for upload/download progress
@@ -246,7 +258,7 @@ public class NotebooksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call notebooksNamespaceArrayPrunePostCall(String namespace, String array, Integer keepVersions, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call notebooksWorkspaceTeamspaceArrayPrunePostCall(String workspace, String teamspace, String array, Integer keepVersions, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -263,9 +275,10 @@ public class NotebooksApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notebooks/{namespace}/{array}/prune"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
+        String localVarPath = "/notebooks/{workspace}/{teamspace}/{array}/prune"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -286,36 +299,46 @@ public class NotebooksApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call notebooksNamespaceArrayPrunePostValidateBeforeCall(String namespace, String array, Integer keepVersions, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling notebooksNamespaceArrayPrunePost(Async)");
+    private okhttp3.Call notebooksWorkspaceTeamspaceArrayPrunePostValidateBeforeCall(String workspace, String teamspace, String array, Integer keepVersions, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling notebooksWorkspaceTeamspaceArrayPrunePost(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling notebooksWorkspaceTeamspaceArrayPrunePost(Async)");
+        }
+        
         // verify the required parameter 'array' is set
         if (array == null) {
-            throw new ApiException("Missing the required parameter 'array' when calling notebooksNamespaceArrayPrunePost(Async)");
+            throw new ApiException("Missing the required parameter 'array' when calling notebooksWorkspaceTeamspaceArrayPrunePost(Async)");
         }
+        
 
-        return notebooksNamespaceArrayPrunePostCall(namespace, array, keepVersions, _callback);
+        okhttp3.Call localVarCall = notebooksWorkspaceTeamspaceArrayPrunePostCall(workspace, teamspace, array, keepVersions, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * prune fragments of the notebook
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param keepVersions The number of most recents fragment to preserve (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -327,14 +350,15 @@ public class NotebooksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void notebooksNamespaceArrayPrunePost(String namespace, String array, Integer keepVersions) throws ApiException {
-        notebooksNamespaceArrayPrunePostWithHttpInfo(namespace, array, keepVersions);
+    public void notebooksWorkspaceTeamspaceArrayPrunePost(String workspace, String teamspace, String array, Integer keepVersions) throws ApiException {
+        notebooksWorkspaceTeamspaceArrayPrunePostWithHttpInfo(workspace, teamspace, array, keepVersions);
     }
 
     /**
      * 
      * prune fragments of the notebook
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param keepVersions The number of most recents fragment to preserve (optional)
      * @return ApiResponse&lt;Void&gt;
@@ -347,15 +371,16 @@ public class NotebooksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> notebooksNamespaceArrayPrunePostWithHttpInfo(String namespace, String array, Integer keepVersions) throws ApiException {
-        okhttp3.Call localVarCall = notebooksNamespaceArrayPrunePostValidateBeforeCall(namespace, array, keepVersions, null);
+    public ApiResponse<Void> notebooksWorkspaceTeamspaceArrayPrunePostWithHttpInfo(String workspace, String teamspace, String array, Integer keepVersions) throws ApiException {
+        okhttp3.Call localVarCall = notebooksWorkspaceTeamspaceArrayPrunePostValidateBeforeCall(workspace, teamspace, array, keepVersions, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * prune fragments of the notebook
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param keepVersions The number of most recents fragment to preserve (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -369,9 +394,9 @@ public class NotebooksApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call notebooksNamespaceArrayPrunePostAsync(String namespace, String array, Integer keepVersions, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call notebooksWorkspaceTeamspaceArrayPrunePostAsync(String workspace, String teamspace, String array, Integer keepVersions, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = notebooksNamespaceArrayPrunePostValidateBeforeCall(namespace, array, keepVersions, _callback);
+        okhttp3.Call localVarCall = notebooksWorkspaceTeamspaceArrayPrunePostValidateBeforeCall(workspace, teamspace, array, keepVersions, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -14,38 +14,31 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.TaskGraphNode;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -53,7 +46,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * The structure and metadata of a task graph that can be stored on TileDB Cloud and executed by users who have access to it. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "The structure and metadata of a task graph that can be stored on TileDB Cloud and executed by users who have access to it. ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class RegisteredTaskGraph {
   public static final String SERIALIZED_NAME_UUID = "uuid";
   @SerializedName(SERIALIZED_NAME_UUID)
@@ -81,28 +75,32 @@ public class RegisteredTaskGraph {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags = null;
 
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
-  private List<TaskGraphNode> nodes = new ArrayList<>();
+  private List<TaskGraphNode> nodes = null;
 
-  public RegisteredTaskGraph() {
+  public RegisteredTaskGraph() { 
   }
 
   public RegisteredTaskGraph uuid(String uuid) {
+    
     this.uuid = uuid;
     return this;
   }
 
-  /**
+   /**
    * A server-assigned unique ID for the UDF, in UUID format.
    * @return uuid
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "A server-assigned unique ID for the UDF, in UUID format.")
+
   public String getUuid() {
     return uuid;
   }
+
 
   public void setUuid(String uuid) {
     this.uuid = uuid;
@@ -110,18 +108,22 @@ public class RegisteredTaskGraph {
 
 
   public RegisteredTaskGraph namespace(String namespace) {
+    
     this.namespace = namespace;
     return this;
   }
 
-  /**
+   /**
    * The namespace that owns this task graph log.
    * @return namespace
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The namespace that owns this task graph log.")
+
   public String getNamespace() {
     return namespace;
   }
+
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
@@ -129,18 +131,22 @@ public class RegisteredTaskGraph {
 
 
   public RegisteredTaskGraph name(String name) {
+    
     this.name = name;
     return this;
   }
 
-  /**
+   /**
    * The name of this graph, to appear in URLs. Must be unique per-namespace. 
    * @return name
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The name of this graph, to appear in URLs. Must be unique per-namespace. ")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
@@ -148,18 +154,22 @@ public class RegisteredTaskGraph {
 
 
   public RegisteredTaskGraph readme(String readme) {
+    
     this.readme = readme;
     return this;
   }
 
-  /**
+   /**
    * Documentation for the task graph, in Markdown format.
    * @return readme
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Documentation for the task graph, in Markdown format.")
+
   public String getReadme() {
     return readme;
   }
+
 
   public void setReadme(String readme) {
     this.readme = readme;
@@ -167,18 +177,22 @@ public class RegisteredTaskGraph {
 
 
   public RegisteredTaskGraph licenseId(String licenseId) {
+    
     this.licenseId = licenseId;
     return this;
   }
 
-  /**
+   /**
    * SPDX license identifier.
    * @return licenseId
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "SPDX license identifier.")
+
   public String getLicenseId() {
     return licenseId;
   }
+
 
   public void setLicenseId(String licenseId) {
     this.licenseId = licenseId;
@@ -186,18 +200,22 @@ public class RegisteredTaskGraph {
 
 
   public RegisteredTaskGraph licenseText(String licenseText) {
+    
     this.licenseText = licenseText;
     return this;
   }
 
-  /**
+   /**
    * Full text of the license.
    * @return licenseText
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Full text of the license.")
+
   public String getLicenseText() {
     return licenseText;
   }
+
 
   public void setLicenseText(String licenseText) {
     this.licenseText = licenseText;
@@ -205,6 +223,7 @@ public class RegisteredTaskGraph {
 
 
   public RegisteredTaskGraph tags(List<String> tags) {
+    
     this.tags = tags;
     return this;
   }
@@ -217,14 +236,17 @@ public class RegisteredTaskGraph {
     return this;
   }
 
-  /**
+   /**
    * Optional tags to classify the graph.
    * @return tags
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Optional tags to classify the graph.")
+
   public List<String> getTags() {
     return tags;
   }
+
 
   public void setTags(List<String> tags) {
     this.tags = tags;
@@ -232,6 +254,7 @@ public class RegisteredTaskGraph {
 
 
   public RegisteredTaskGraph nodes(List<TaskGraphNode> nodes) {
+    
     this.nodes = nodes;
     return this;
   }
@@ -244,14 +267,17 @@ public class RegisteredTaskGraph {
     return this;
   }
 
-  /**
+   /**
    * The structure of the graph, in the form of the nodes that make it up. As with &#x60;TaskGraphLog&#x60;, nodes must topologically sorted, so that any node appears after all the nodes it depends on. 
    * @return nodes
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The structure of the graph, in the form of the nodes that make it up. As with `TaskGraphLog`, nodes must topologically sorted, so that any node appears after all the nodes it depends on. ")
+
   public List<TaskGraphNode> getNodes() {
     return nodes;
   }
+
 
   public void setNodes(List<TaskGraphNode> nodes) {
     this.nodes = nodes;
@@ -267,10 +293,6 @@ public class RegisteredTaskGraph {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the RegisteredTaskGraph instance itself
    */
   public RegisteredTaskGraph putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -282,8 +304,6 @@ public class RegisteredTaskGraph {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -291,9 +311,6 @@ public class RegisteredTaskGraph {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -387,54 +404,53 @@ public class RegisteredTaskGraph {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RegisteredTaskGraph
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RegisteredTaskGraph.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to RegisteredTaskGraph
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (RegisteredTaskGraph.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in RegisteredTaskGraph is not found in the empty JSON string", RegisteredTaskGraph.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonNull()) && !jsonObj.get("uuid").isJsonPrimitive()) {
+      if (jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uuid").toString()));
       }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("readme") != null && !jsonObj.get("readme").isJsonNull()) && !jsonObj.get("readme").isJsonPrimitive()) {
+      if (jsonObj.get("readme") != null && !jsonObj.get("readme").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `readme` to be a primitive type in the JSON string but got `%s`", jsonObj.get("readme").toString()));
       }
-      if ((jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonNull()) && !jsonObj.get("license_id").isJsonPrimitive()) {
+      if (jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `license_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_id").toString()));
       }
-      if ((jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonNull()) && !jsonObj.get("license_text").isJsonPrimitive()) {
+      if (jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `license_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_text").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      if (jsonObj.get("nodes") != null && !jsonObj.get("nodes").isJsonNull()) {
-        JsonArray jsonArraynodes = jsonObj.getAsJsonArray("nodes");
-        if (jsonArraynodes != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("nodes").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `nodes` to be an array in the JSON string but got `%s`", jsonObj.get("nodes").toString()));
-          }
-
-          // validate the optional field `nodes` (array)
-          for (int i = 0; i < jsonArraynodes.size(); i++) {
-            TaskGraphNode.validateJsonElement(jsonArraynodes.get(i));
-          };
+      JsonArray jsonArraynodes = jsonObj.getAsJsonArray("nodes");
+      if (jsonArraynodes != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("nodes").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `nodes` to be an array in the JSON string but got `%s`", jsonObj.get("nodes").toString()));
         }
+
+        // validate the optional field `nodes` (array)
+        for (int i = 0; i < jsonArraynodes.size(); i++) {
+          TaskGraphNode.validateJsonObject(jsonArraynodes.get(i).getAsJsonObject());
+        };
       }
   }
 
@@ -454,7 +470,7 @@ public class RegisteredTaskGraph {
            public void write(JsonWriter out, RegisteredTaskGraph value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -466,12 +482,7 @@ public class RegisteredTaskGraph {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -480,9 +491,8 @@ public class RegisteredTaskGraph {
 
            @Override
            public RegisteredTaskGraph read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              RegisteredTaskGraph instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -496,10 +506,8 @@ public class RegisteredTaskGraph {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -510,22 +518,22 @@ public class RegisteredTaskGraph {
     }
   }
 
-  /**
-   * Create an instance of RegisteredTaskGraph given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of RegisteredTaskGraph
-   * @throws IOException if the JSON string is invalid with respect to RegisteredTaskGraph
-   */
+ /**
+  * Create an instance of RegisteredTaskGraph given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of RegisteredTaskGraph
+  * @throws IOException if the JSON string is invalid with respect to RegisteredTaskGraph
+  */
   public static RegisteredTaskGraph fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, RegisteredTaskGraph.class);
   }
 
-  /**
-   * Convert an instance of RegisteredTaskGraph to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of RegisteredTaskGraph to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

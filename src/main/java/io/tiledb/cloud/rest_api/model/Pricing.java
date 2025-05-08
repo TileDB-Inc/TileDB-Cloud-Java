@@ -14,39 +14,26 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.PricingAggregateUsage;
-import io.tiledb.cloud.rest_api.model.PricingCurrency;
-import io.tiledb.cloud.rest_api.model.PricingInterval;
-import io.tiledb.cloud.rest_api.model.PricingType;
-import io.tiledb.cloud.rest_api.model.PricingUnitLabel;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -54,7 +41,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Pricing created by converting an array to product
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Pricing created by converting an array to product")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class Pricing {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -108,22 +96,26 @@ public class Pricing {
   @SerializedName(SERIALIZED_NAME_ACTIVATED)
   private Boolean activated;
 
-  public Pricing() {
+  public Pricing() { 
   }
 
   public Pricing id(String id) {
+    
     this.id = id;
     return this;
   }
 
-  /**
+   /**
    * Unique ID of plan as defined by Stripe
    * @return id
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "planID", value = "Unique ID of plan as defined by Stripe")
+
   public String getId() {
     return id;
   }
+
 
   public void setId(String id) {
     this.id = id;
@@ -131,18 +123,22 @@ public class Pricing {
 
 
   public Pricing arrayUuid(String arrayUuid) {
+    
     this.arrayUuid = arrayUuid;
     return this;
   }
 
-  /**
+   /**
    * Unique ID of registered array
    * @return arrayUuid
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of registered array")
+
   public String getArrayUuid() {
     return arrayUuid;
   }
+
 
   public void setArrayUuid(String arrayUuid) {
     this.arrayUuid = arrayUuid;
@@ -150,18 +146,22 @@ public class Pricing {
 
 
   public Pricing pricingName(String pricingName) {
+    
     this.pricingName = pricingName;
     return this;
   }
 
-  /**
+   /**
    * Name of pricing
    * @return pricingName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of pricing")
+
   public String getPricingName() {
     return pricingName;
   }
+
 
   public void setPricingName(String pricingName) {
     this.pricingName = pricingName;
@@ -169,18 +169,22 @@ public class Pricing {
 
 
   public Pricing pricingType(PricingType pricingType) {
+    
     this.pricingType = pricingType;
     return this;
   }
 
-  /**
+   /**
    * Get pricingType
    * @return pricingType
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public PricingType getPricingType() {
     return pricingType;
   }
+
 
   public void setPricingType(PricingType pricingType) {
     this.pricingType = pricingType;
@@ -188,18 +192,22 @@ public class Pricing {
 
 
   public Pricing productName(String productName) {
+    
     this.productName = productName;
     return this;
   }
 
-  /**
+   /**
    * Name of product
    * @return productName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of product")
+
   public String getProductName() {
     return productName;
   }
+
 
   public void setProductName(String productName) {
     this.productName = productName;
@@ -207,18 +215,22 @@ public class Pricing {
 
 
   public Pricing productStatementDescriptor(String productStatementDescriptor) {
+    
     this.productStatementDescriptor = productStatementDescriptor;
     return this;
   }
 
-  /**
+   /**
    * Extra information about a product which will appear on the credit card statement of the customer
    * @return productStatementDescriptor
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Extra information about a product which will appear on the credit card statement of the customer")
+
   public String getProductStatementDescriptor() {
     return productStatementDescriptor;
   }
+
 
   public void setProductStatementDescriptor(String productStatementDescriptor) {
     this.productStatementDescriptor = productStatementDescriptor;
@@ -226,18 +238,22 @@ public class Pricing {
 
 
   public Pricing productUnitLabel(PricingUnitLabel productUnitLabel) {
+    
     this.productUnitLabel = productUnitLabel;
     return this;
   }
 
-  /**
+   /**
    * Get productUnitLabel
    * @return productUnitLabel
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public PricingUnitLabel getProductUnitLabel() {
     return productUnitLabel;
   }
+
 
   public void setProductUnitLabel(PricingUnitLabel productUnitLabel) {
     this.productUnitLabel = productUnitLabel;
@@ -245,18 +261,22 @@ public class Pricing {
 
 
   public Pricing currency(PricingCurrency currency) {
+    
     this.currency = currency;
     return this;
   }
 
-  /**
+   /**
    * Get currency
    * @return currency
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public PricingCurrency getCurrency() {
     return currency;
   }
+
 
   public void setCurrency(PricingCurrency currency) {
     this.currency = currency;
@@ -264,18 +284,22 @@ public class Pricing {
 
 
   public Pricing aggregateUsage(PricingAggregateUsage aggregateUsage) {
+    
     this.aggregateUsage = aggregateUsage;
     return this;
   }
 
-  /**
+   /**
    * Get aggregateUsage
    * @return aggregateUsage
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public PricingAggregateUsage getAggregateUsage() {
     return aggregateUsage;
   }
+
 
   public void setAggregateUsage(PricingAggregateUsage aggregateUsage) {
     this.aggregateUsage = aggregateUsage;
@@ -283,18 +307,22 @@ public class Pricing {
 
 
   public Pricing interval(PricingInterval interval) {
+    
     this.interval = interval;
     return this;
   }
 
-  /**
+   /**
    * Get interval
    * @return interval
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public PricingInterval getInterval() {
     return interval;
   }
+
 
   public void setInterval(PricingInterval interval) {
     this.interval = interval;
@@ -302,18 +330,22 @@ public class Pricing {
 
 
   public Pricing dividedBy(Long dividedBy) {
+    
     this.dividedBy = dividedBy;
     return this;
   }
 
-  /**
+   /**
    * Group of n product unit labels
    * @return dividedBy
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1048576", value = "Group of n product unit labels")
+
   public Long getDividedBy() {
     return dividedBy;
   }
+
 
   public void setDividedBy(Long dividedBy) {
     this.dividedBy = dividedBy;
@@ -321,18 +353,22 @@ public class Pricing {
 
 
   public Pricing charge(Double charge) {
+    
     this.charge = charge;
     return this;
   }
 
-  /**
+   /**
    * Price in cents (decimal) per unitlabel
    * @return charge
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Price in cents (decimal) per unitlabel")
+
   public Double getCharge() {
     return charge;
   }
+
 
   public void setCharge(Double charge) {
     this.charge = charge;
@@ -340,18 +376,22 @@ public class Pricing {
 
 
   public Pricing activated(Boolean activated) {
+    
     this.activated = activated;
     return this;
   }
 
-  /**
+   /**
    * If pricing is activated
    * @return activated
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If pricing is activated")
+
   public Boolean getActivated() {
     return activated;
   }
+
 
   public void setActivated(Boolean activated) {
     this.activated = activated;
@@ -367,10 +407,6 @@ public class Pricing {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the Pricing instance itself
    */
   public Pricing putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -382,8 +418,6 @@ public class Pricing {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -391,9 +425,6 @@ public class Pricing {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -491,53 +522,34 @@ public class Pricing {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Pricing
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Pricing.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Pricing
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Pricing.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in Pricing is not found in the empty JSON string", Pricing.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("array_uuid") != null && !jsonObj.get("array_uuid").isJsonNull()) && !jsonObj.get("array_uuid").isJsonPrimitive()) {
+      if (jsonObj.get("array_uuid") != null && !jsonObj.get("array_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_uuid").toString()));
       }
-      if ((jsonObj.get("pricing_name") != null && !jsonObj.get("pricing_name").isJsonNull()) && !jsonObj.get("pricing_name").isJsonPrimitive()) {
+      if (jsonObj.get("pricing_name") != null && !jsonObj.get("pricing_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `pricing_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricing_name").toString()));
       }
-      // validate the optional field `pricing_type`
-      if (jsonObj.get("pricing_type") != null && !jsonObj.get("pricing_type").isJsonNull()) {
-        PricingType.validateJsonElement(jsonObj.get("pricing_type"));
-      }
-      if ((jsonObj.get("product_name") != null && !jsonObj.get("product_name").isJsonNull()) && !jsonObj.get("product_name").isJsonPrimitive()) {
+      if (jsonObj.get("product_name") != null && !jsonObj.get("product_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `product_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product_name").toString()));
       }
-      if ((jsonObj.get("product_statement_descriptor") != null && !jsonObj.get("product_statement_descriptor").isJsonNull()) && !jsonObj.get("product_statement_descriptor").isJsonPrimitive()) {
+      if (jsonObj.get("product_statement_descriptor") != null && !jsonObj.get("product_statement_descriptor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `product_statement_descriptor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product_statement_descriptor").toString()));
-      }
-      // validate the optional field `product_unit_label`
-      if (jsonObj.get("product_unit_label") != null && !jsonObj.get("product_unit_label").isJsonNull()) {
-        PricingUnitLabel.validateJsonElement(jsonObj.get("product_unit_label"));
-      }
-      // validate the optional field `currency`
-      if (jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) {
-        PricingCurrency.validateJsonElement(jsonObj.get("currency"));
-      }
-      // validate the optional field `aggregate_usage`
-      if (jsonObj.get("aggregate_usage") != null && !jsonObj.get("aggregate_usage").isJsonNull()) {
-        PricingAggregateUsage.validateJsonElement(jsonObj.get("aggregate_usage"));
-      }
-      // validate the optional field `interval`
-      if (jsonObj.get("interval") != null && !jsonObj.get("interval").isJsonNull()) {
-        PricingInterval.validateJsonElement(jsonObj.get("interval"));
       }
   }
 
@@ -557,7 +569,7 @@ public class Pricing {
            public void write(JsonWriter out, Pricing value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -569,12 +581,7 @@ public class Pricing {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -583,9 +590,8 @@ public class Pricing {
 
            @Override
            public Pricing read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              Pricing instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -599,10 +605,8 @@ public class Pricing {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -613,22 +617,22 @@ public class Pricing {
     }
   }
 
-  /**
-   * Create an instance of Pricing given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of Pricing
-   * @throws IOException if the JSON string is invalid with respect to Pricing
-   */
+ /**
+  * Create an instance of Pricing given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Pricing
+  * @throws IOException if the JSON string is invalid with respect to Pricing
+  */
   public static Pricing fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Pricing.class);
   }
 
-  /**
-   * Convert an instance of Pricing to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of Pricing to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

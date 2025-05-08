@@ -14,38 +14,29 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.TokenScope;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -53,7 +44,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * A api token and its metadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "A api token and its metadata")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class Token {
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
@@ -73,24 +65,28 @@ public class Token {
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
-  private List<TokenScope> scope = new ArrayList<>();
+  private List<TokenScope> scope = null;
 
-  public Token() {
+  public Token() { 
   }
 
   public Token token(String token) {
+    
     this.token = token;
     return this;
   }
 
-  /**
+   /**
    * A api token
    * @return token
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "A api token")
+
   public String getToken() {
     return token;
   }
+
 
   public void setToken(String token) {
     this.token = token;
@@ -98,18 +94,22 @@ public class Token {
 
 
   public Token name(String name) {
+    
     this.name = name;
     return this;
   }
 
-  /**
+   /**
    * Name of token to revoke
    * @return name
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Name of token to revoke")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
@@ -117,18 +117,22 @@ public class Token {
 
 
   public Token issuedAt(OffsetDateTime issuedAt) {
+    
     this.issuedAt = issuedAt;
     return this;
   }
 
-  /**
+   /**
    * datetime the token was created
    * @return issuedAt
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "datetime the token was created")
+
   public OffsetDateTime getIssuedAt() {
     return issuedAt;
   }
+
 
   public void setIssuedAt(OffsetDateTime issuedAt) {
     this.issuedAt = issuedAt;
@@ -136,18 +140,22 @@ public class Token {
 
 
   public Token expiresAt(OffsetDateTime expiresAt) {
+    
     this.expiresAt = expiresAt;
     return this;
   }
 
-  /**
+   /**
    * datetime the token when token will expire
    * @return expiresAt
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "datetime the token when token will expire")
+
   public OffsetDateTime getExpiresAt() {
     return expiresAt;
   }
+
 
   public void setExpiresAt(OffsetDateTime expiresAt) {
     this.expiresAt = expiresAt;
@@ -155,6 +163,7 @@ public class Token {
 
 
   public Token scope(List<TokenScope> scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -167,14 +176,17 @@ public class Token {
     return this;
   }
 
-  /**
+   /**
    * Optional scope to limit token, defaults to all permissions, current supported values are password_reset or *
    * @return scope
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Optional scope to limit token, defaults to all permissions, current supported values are password_reset or *")
+
   public List<TokenScope> getScope() {
     return scope;
   }
+
 
   public void setScope(List<TokenScope> scope) {
     this.scope = scope;
@@ -190,10 +202,6 @@ public class Token {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the Token instance itself
    */
   public Token putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -205,8 +213,6 @@ public class Token {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -214,9 +220,6 @@ public class Token {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -290,27 +293,28 @@ public class Token {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Token
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Token.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Token
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Token.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in Token is not found in the empty JSON string", Token.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("token") != null && !jsonObj.get("token").isJsonNull()) && !jsonObj.get("token").isJsonPrimitive()) {
+      if (jsonObj.get("token") != null && !jsonObj.get("token").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull() && !jsonObj.get("scope").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be an array in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
   }
@@ -331,7 +335,7 @@ public class Token {
            public void write(JsonWriter out, Token value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -343,12 +347,7 @@ public class Token {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -357,9 +356,8 @@ public class Token {
 
            @Override
            public Token read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              Token instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -373,10 +371,8 @@ public class Token {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -387,22 +383,22 @@ public class Token {
     }
   }
 
-  /**
-   * Create an instance of Token given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of Token
-   * @throws IOException if the JSON string is invalid with respect to Token
-   */
+ /**
+  * Create an instance of Token given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Token
+  * @throws IOException if the JSON string is invalid with respect to Token
+  */
   public static Token fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Token.class);
   }
 
-  /**
-   * Convert an instance of Token to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of Token to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

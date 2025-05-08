@@ -13,10 +13,8 @@
 
 package io.tiledb.cloud.rest_api;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class Configuration {
-    public static final String VERSION = "2.17.51";
-
     private static ApiClient defaultApiClient = new ApiClient();
 
     /**

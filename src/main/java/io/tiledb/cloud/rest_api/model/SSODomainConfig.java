@@ -14,40 +14,31 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.DomainCheckResult;
-import io.tiledb.cloud.rest_api.model.DomainVerificationStatus;
-import io.tiledb.cloud.rest_api.model.SSODomainSetup;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -55,7 +46,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * The information used to set up a single-sign on connection to a customer domain. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "The information used to set up a single-sign on connection to a customer domain. ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class SSODomainConfig {
   public static final String SERIALIZED_NAME_UUID = "uuid";
   @SerializedName(SERIALIZED_NAME_UUID)
@@ -87,24 +79,28 @@ public class SSODomainConfig {
 
   public static final String SERIALIZED_NAME_CHECK_RESULTS = "check_results";
   @SerializedName(SERIALIZED_NAME_CHECK_RESULTS)
-  private List<DomainCheckResult> checkResults = new ArrayList<>();
+  private List<DomainCheckResult> checkResults = null;
 
-  public SSODomainConfig() {
+  public SSODomainConfig() { 
   }
 
   public SSODomainConfig uuid(String uuid) {
+    
     this.uuid = uuid;
     return this;
   }
 
-  /**
+   /**
    * A server-generated ID for the configuration.
    * @return uuid
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "A server-generated ID for the configuration.")
+
   public String getUuid() {
     return uuid;
   }
+
 
   public void setUuid(String uuid) {
     this.uuid = uuid;
@@ -112,18 +108,22 @@ public class SSODomainConfig {
 
 
   public SSODomainConfig domain(String domain) {
+    
     this.domain = domain;
     return this;
   }
 
-  /**
+   /**
    * The fully-qualified domain (but with no trailing dot) to connect for single sign-on. This may not be changed after creation. 
    * @return domain
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The fully-qualified domain (but with no trailing dot) to connect for single sign-on. This may not be changed after creation. ")
+
   public String getDomain() {
     return domain;
   }
+
 
   public void setDomain(String domain) {
     this.domain = domain;
@@ -131,18 +131,22 @@ public class SSODomainConfig {
 
 
   public SSODomainConfig oidcIssuer(String oidcIssuer) {
+    
     this.oidcIssuer = oidcIssuer;
     return this;
   }
 
-  /**
+   /**
    * The URL of the OpenID Connect issuer that can be used to authenticate this domain&#39;s users. The prefix where the &#x60;/.well-known/openid-configuration&#x60; file can be found; usually without a trailing slash. 
    * @return oidcIssuer
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The URL of the OpenID Connect issuer that can be used to authenticate this domain's users. The prefix where the `/.well-known/openid-configuration` file can be found; usually without a trailing slash. ")
+
   public String getOidcIssuer() {
     return oidcIssuer;
   }
+
 
   public void setOidcIssuer(String oidcIssuer) {
     this.oidcIssuer = oidcIssuer;
@@ -150,18 +154,22 @@ public class SSODomainConfig {
 
 
   public SSODomainConfig oidcClientId(String oidcClientId) {
+    
     this.oidcClientId = oidcClientId;
     return this;
   }
 
-  /**
+   /**
    * The OpenID Connect client ID for this SSO instance.
    * @return oidcClientId
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The OpenID Connect client ID for this SSO instance.")
+
   public String getOidcClientId() {
     return oidcClientId;
   }
+
 
   public void setOidcClientId(String oidcClientId) {
     this.oidcClientId = oidcClientId;
@@ -169,18 +177,22 @@ public class SSODomainConfig {
 
 
   public SSODomainConfig oidcClientSecret(String oidcClientSecret) {
+    
     this.oidcClientSecret = oidcClientSecret;
     return this;
   }
 
-  /**
+   /**
    * The OpenID Connect client secret for this SSO instance.
    * @return oidcClientSecret
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The OpenID Connect client secret for this SSO instance.")
+
   public String getOidcClientSecret() {
     return oidcClientSecret;
   }
+
 
   public void setOidcClientSecret(String oidcClientSecret) {
     this.oidcClientSecret = oidcClientSecret;
@@ -188,18 +200,22 @@ public class SSODomainConfig {
 
 
   public SSODomainConfig domainSetup(SSODomainSetup domainSetup) {
+    
     this.domainSetup = domainSetup;
     return this;
   }
 
-  /**
+   /**
    * Get domainSetup
    * @return domainSetup
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public SSODomainSetup getDomainSetup() {
     return domainSetup;
   }
+
 
   public void setDomainSetup(SSODomainSetup domainSetup) {
     this.domainSetup = domainSetup;
@@ -207,18 +223,22 @@ public class SSODomainConfig {
 
 
   public SSODomainConfig verificationStatus(DomainVerificationStatus verificationStatus) {
+    
     this.verificationStatus = verificationStatus;
     return this;
   }
 
-  /**
+   /**
    * Get verificationStatus
    * @return verificationStatus
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public DomainVerificationStatus getVerificationStatus() {
     return verificationStatus;
   }
+
 
   public void setVerificationStatus(DomainVerificationStatus verificationStatus) {
     this.verificationStatus = verificationStatus;
@@ -226,6 +246,7 @@ public class SSODomainConfig {
 
 
   public SSODomainConfig checkResults(List<DomainCheckResult> checkResults) {
+    
     this.checkResults = checkResults;
     return this;
   }
@@ -238,14 +259,17 @@ public class SSODomainConfig {
     return this;
   }
 
-  /**
+   /**
    * A list of the results of recent attempts to verify this domain. 
    * @return checkResults
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of the results of recent attempts to verify this domain. ")
+
   public List<DomainCheckResult> getCheckResults() {
     return checkResults;
   }
+
 
   public void setCheckResults(List<DomainCheckResult> checkResults) {
     this.checkResults = checkResults;
@@ -261,10 +285,6 @@ public class SSODomainConfig {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the SSODomainConfig instance itself
    */
   public SSODomainConfig putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -276,8 +296,6 @@ public class SSODomainConfig {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -285,9 +303,6 @@ public class SSODomainConfig {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -381,55 +396,50 @@ public class SSODomainConfig {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to SSODomainConfig
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!SSODomainConfig.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to SSODomainConfig
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (SSODomainConfig.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in SSODomainConfig is not found in the empty JSON string", SSODomainConfig.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonNull()) && !jsonObj.get("uuid").isJsonPrimitive()) {
+      if (jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uuid").toString()));
       }
-      if ((jsonObj.get("domain") != null && !jsonObj.get("domain").isJsonNull()) && !jsonObj.get("domain").isJsonPrimitive()) {
+      if (jsonObj.get("domain") != null && !jsonObj.get("domain").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `domain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domain").toString()));
       }
-      if ((jsonObj.get("oidc_issuer") != null && !jsonObj.get("oidc_issuer").isJsonNull()) && !jsonObj.get("oidc_issuer").isJsonPrimitive()) {
+      if (jsonObj.get("oidc_issuer") != null && !jsonObj.get("oidc_issuer").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `oidc_issuer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("oidc_issuer").toString()));
       }
-      if ((jsonObj.get("oidc_client_id") != null && !jsonObj.get("oidc_client_id").isJsonNull()) && !jsonObj.get("oidc_client_id").isJsonPrimitive()) {
+      if (jsonObj.get("oidc_client_id") != null && !jsonObj.get("oidc_client_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `oidc_client_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("oidc_client_id").toString()));
       }
-      if ((jsonObj.get("oidc_client_secret") != null && !jsonObj.get("oidc_client_secret").isJsonNull()) && !jsonObj.get("oidc_client_secret").isJsonPrimitive()) {
+      if (jsonObj.get("oidc_client_secret") != null && !jsonObj.get("oidc_client_secret").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `oidc_client_secret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("oidc_client_secret").toString()));
       }
       // validate the optional field `domain_setup`
-      if (jsonObj.get("domain_setup") != null && !jsonObj.get("domain_setup").isJsonNull()) {
-        SSODomainSetup.validateJsonElement(jsonObj.get("domain_setup"));
+      if (jsonObj.getAsJsonObject("domain_setup") != null) {
+        SSODomainSetup.validateJsonObject(jsonObj.getAsJsonObject("domain_setup"));
       }
-      // validate the optional field `verification_status`
-      if (jsonObj.get("verification_status") != null && !jsonObj.get("verification_status").isJsonNull()) {
-        DomainVerificationStatus.validateJsonElement(jsonObj.get("verification_status"));
-      }
-      if (jsonObj.get("check_results") != null && !jsonObj.get("check_results").isJsonNull()) {
-        JsonArray jsonArraycheckResults = jsonObj.getAsJsonArray("check_results");
-        if (jsonArraycheckResults != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("check_results").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `check_results` to be an array in the JSON string but got `%s`", jsonObj.get("check_results").toString()));
-          }
-
-          // validate the optional field `check_results` (array)
-          for (int i = 0; i < jsonArraycheckResults.size(); i++) {
-            DomainCheckResult.validateJsonElement(jsonArraycheckResults.get(i));
-          };
+      JsonArray jsonArraycheckResults = jsonObj.getAsJsonArray("check_results");
+      if (jsonArraycheckResults != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("check_results").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `check_results` to be an array in the JSON string but got `%s`", jsonObj.get("check_results").toString()));
         }
+
+        // validate the optional field `check_results` (array)
+        for (int i = 0; i < jsonArraycheckResults.size(); i++) {
+          DomainCheckResult.validateJsonObject(jsonArraycheckResults.get(i).getAsJsonObject());
+        };
       }
   }
 
@@ -449,7 +459,7 @@ public class SSODomainConfig {
            public void write(JsonWriter out, SSODomainConfig value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -461,12 +471,7 @@ public class SSODomainConfig {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -475,9 +480,8 @@ public class SSODomainConfig {
 
            @Override
            public SSODomainConfig read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              SSODomainConfig instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -491,10 +495,8 @@ public class SSODomainConfig {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -505,22 +507,22 @@ public class SSODomainConfig {
     }
   }
 
-  /**
-   * Create an instance of SSODomainConfig given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of SSODomainConfig
-   * @throws IOException if the JSON string is invalid with respect to SSODomainConfig
-   */
+ /**
+  * Create an instance of SSODomainConfig given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of SSODomainConfig
+  * @throws IOException if the JSON string is invalid with respect to SSODomainConfig
+  */
   public static SSODomainConfig fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, SSODomainConfig.class);
   }
 
-  /**
-   * Convert an instance of SSODomainConfig to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of SSODomainConfig to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

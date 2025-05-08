@@ -14,38 +14,30 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.ResultFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -53,11 +45,12 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * A node specifying an SQL query to execute in TileDB Cloud. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "A node specifying an SQL query to execute in TileDB Cloud. ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class TGSQLNodeData {
   public static final String SERIALIZED_NAME_INIT_COMMANDS = "init_commands";
   @SerializedName(SERIALIZED_NAME_INIT_COMMANDS)
-  private List<String> initCommands = new ArrayList<>();
+  private List<String> initCommands = null;
 
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -65,7 +58,7 @@ public class TGSQLNodeData {
 
   public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
   @SerializedName(SERIALIZED_NAME_PARAMETERS)
-  private List<Object> parameters = new ArrayList<>();
+  private List<Object> parameters = null;
 
   public static final String SERIALIZED_NAME_RESULT_FORMAT = "result_format";
   @SerializedName(SERIALIZED_NAME_RESULT_FORMAT)
@@ -75,10 +68,11 @@ public class TGSQLNodeData {
   @SerializedName(SERIALIZED_NAME_NAMESPACE)
   private String namespace;
 
-  public TGSQLNodeData() {
+  public TGSQLNodeData() { 
   }
 
   public TGSQLNodeData initCommands(List<String> initCommands) {
+    
     this.initCommands = initCommands;
     return this;
   }
@@ -91,14 +85,17 @@ public class TGSQLNodeData {
     return this;
   }
 
-  /**
+   /**
    * The commands to execute before running the query itself.
    * @return initCommands
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The commands to execute before running the query itself.")
+
   public List<String> getInitCommands() {
     return initCommands;
   }
+
 
   public void setInitCommands(List<String> initCommands) {
     this.initCommands = initCommands;
@@ -106,18 +103,22 @@ public class TGSQLNodeData {
 
 
   public TGSQLNodeData query(String query) {
+    
     this.query = query;
     return this;
   }
 
-  /**
+   /**
    * The text of the SQL query to execute. Parameters are substituted in for &#x60;?&#x60;s, just as in a regular MariaDB query. 
    * @return query
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The text of the SQL query to execute. Parameters are substituted in for `?`s, just as in a regular MariaDB query. ")
+
   public String getQuery() {
     return query;
   }
+
 
   public void setQuery(String query) {
     this.query = query;
@@ -125,6 +126,7 @@ public class TGSQLNodeData {
 
 
   public TGSQLNodeData parameters(List<Object> parameters) {
+    
     this.parameters = parameters;
     return this;
   }
@@ -137,14 +139,17 @@ public class TGSQLNodeData {
     return this;
   }
 
-  /**
+   /**
    * The parameters to substitute in for arguments in the &#x60;query&#x60;. Fixed-length. Arguments must be in JSON format. 
    * @return parameters
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The parameters to substitute in for arguments in the `query`. Fixed-length. Arguments must be in JSON format. ")
+
   public List<Object> getParameters() {
     return parameters;
   }
+
 
   public void setParameters(List<Object> parameters) {
     this.parameters = parameters;
@@ -152,18 +157,22 @@ public class TGSQLNodeData {
 
 
   public TGSQLNodeData resultFormat(ResultFormat resultFormat) {
+    
     this.resultFormat = resultFormat;
     return this;
   }
 
-  /**
+   /**
    * Get resultFormat
    * @return resultFormat
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public ResultFormat getResultFormat() {
     return resultFormat;
   }
+
 
   public void setResultFormat(ResultFormat resultFormat) {
     this.resultFormat = resultFormat;
@@ -171,18 +180,22 @@ public class TGSQLNodeData {
 
 
   public TGSQLNodeData namespace(String namespace) {
+    
     this.namespace = namespace;
     return this;
   }
 
-  /**
+   /**
    * If set, the non-default namespace to execute this SQL query under. 
    * @return namespace
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "If set, the non-default namespace to execute this SQL query under. ")
+
   public String getNamespace() {
     return namespace;
   }
+
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
@@ -198,10 +211,6 @@ public class TGSQLNodeData {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the TGSQLNodeData instance itself
    */
   public TGSQLNodeData putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -213,8 +222,6 @@ public class TGSQLNodeData {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -222,9 +229,6 @@ public class TGSQLNodeData {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -309,35 +313,32 @@ public class TGSQLNodeData {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TGSQLNodeData
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!TGSQLNodeData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TGSQLNodeData
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TGSQLNodeData.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in TGSQLNodeData is not found in the empty JSON string", TGSQLNodeData.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("init_commands") != null && !jsonObj.get("init_commands").isJsonNull() && !jsonObj.get("init_commands").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("init_commands") != null && !jsonObj.get("init_commands").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `init_commands` to be an array in the JSON string but got `%s`", jsonObj.get("init_commands").toString()));
       }
-      if ((jsonObj.get("query") != null && !jsonObj.get("query").isJsonNull()) && !jsonObj.get("query").isJsonPrimitive()) {
+      if (jsonObj.get("query") != null && !jsonObj.get("query").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `query` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull() && !jsonObj.get("parameters").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `parameters` to be an array in the JSON string but got `%s`", jsonObj.get("parameters").toString()));
       }
-      // validate the optional field `result_format`
-      if (jsonObj.get("result_format") != null && !jsonObj.get("result_format").isJsonNull()) {
-        ResultFormat.validateJsonElement(jsonObj.get("result_format"));
-      }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
       }
   }
@@ -358,7 +359,7 @@ public class TGSQLNodeData {
            public void write(JsonWriter out, TGSQLNodeData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -370,12 +371,7 @@ public class TGSQLNodeData {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -384,9 +380,8 @@ public class TGSQLNodeData {
 
            @Override
            public TGSQLNodeData read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              TGSQLNodeData instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -400,10 +395,8 @@ public class TGSQLNodeData {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -414,22 +407,22 @@ public class TGSQLNodeData {
     }
   }
 
-  /**
-   * Create an instance of TGSQLNodeData given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of TGSQLNodeData
-   * @throws IOException if the JSON string is invalid with respect to TGSQLNodeData
-   */
+ /**
+  * Create an instance of TGSQLNodeData given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TGSQLNodeData
+  * @throws IOException if the JSON string is invalid with respect to TGSQLNodeData
+  */
   public static TGSQLNodeData fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TGSQLNodeData.class);
   }
 
-  /**
-   * Convert an instance of TGSQLNodeData to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of TGSQLNodeData to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

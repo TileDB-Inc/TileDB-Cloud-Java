@@ -7,52 +7,53 @@ All URIs are relative to */v1*
 | [**getArrayTasksSidebar**](ArrayTasksApi.md#getArrayTasksSidebar) | **GET** /tasks/sidebar |  |
 
 
-<a id="getArrayTasksSidebar"></a>
+<a name="getArrayTasksSidebar"></a>
 # **getArrayTasksSidebar**
 > ArrayTaskBrowserSidebar getArrayTasksSidebar(start, end)
 
 
 
 ### Example
+
 ```java
 // Import classes:
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.auth.*;
-import io.tiledb.cloud.rest_api.models.*;
-import io.tiledb.cloud.rest_api.api.ArrayTasksApi;
+
+import org.openapitools.client.rest_api.ApiClient;
+import org.openapitools.client.rest_api.ApiException;
+import org.openapitools.client.rest_api.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.rest_api.api.ArrayTasksApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    ArrayTasksApi apiInstance = new ArrayTasksApi(defaultClient);
-    Integer start = 56; // Integer | Fetch tasks created after this time, unix epoch in seconds, default 7 days ago
-    Integer end = 56; // Integer | Fetch tasks created before this time, unix epoch in seconds, default now
-    try {
-      ArrayTaskBrowserSidebar result = apiInstance.getArrayTasksSidebar(start, end);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ArrayTasksApi#getArrayTasksSidebar");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        ArrayTasksApi apiInstance = new ArrayTasksApi(defaultClient);
+        Integer start = 56; // Integer | Fetch tasks created after this time, unix epoch in seconds, default 7 days ago
+        Integer end = 56; // Integer | Fetch tasks created before this time, unix epoch in seconds, default now
+        try {
+            ArrayTaskBrowserSidebar result = apiInstance.getArrayTasksSidebar(start, end);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ArrayTasksApi#getArrayTasksSidebar");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -69,7 +70,7 @@ public class Example {
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 

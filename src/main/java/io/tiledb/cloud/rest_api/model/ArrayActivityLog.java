@@ -14,36 +14,27 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.ActivityEventType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -51,7 +42,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Actvity of an Array
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Actvity of an Array")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class ArrayActivityLog {
   public static final String SERIALIZED_NAME_EVENT_AT = "event_at";
   @SerializedName(SERIALIZED_NAME_EVENT_AT)
@@ -89,22 +81,26 @@ public class ArrayActivityLog {
   @SerializedName(SERIALIZED_NAME_QUERY_STATS)
   private String queryStats;
 
-  public ArrayActivityLog() {
+  public ArrayActivityLog() { 
   }
 
   public ArrayActivityLog eventAt(OffsetDateTime eventAt) {
+    
     this.eventAt = eventAt;
     return this;
   }
 
-  /**
+   /**
    * time event took place (RFC3339)
    * @return eventAt
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "time event took place (RFC3339)")
+
   public OffsetDateTime getEventAt() {
     return eventAt;
   }
+
 
   public void setEventAt(OffsetDateTime eventAt) {
     this.eventAt = eventAt;
@@ -112,18 +108,22 @@ public class ArrayActivityLog {
 
 
   public ArrayActivityLog action(ActivityEventType action) {
+    
     this.action = action;
     return this;
   }
 
-  /**
+   /**
    * Get action
    * @return action
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public ActivityEventType getAction() {
     return action;
   }
+
 
   public void setAction(ActivityEventType action) {
     this.action = action;
@@ -131,18 +131,22 @@ public class ArrayActivityLog {
 
 
   public ArrayActivityLog username(String username) {
+    
     this.username = username;
     return this;
   }
 
-  /**
+   /**
    * User who performed action
    * @return username
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "user1", value = "User who performed action")
+
   public String getUsername() {
     return username;
   }
+
 
   public void setUsername(String username) {
     this.username = username;
@@ -150,18 +154,22 @@ public class ArrayActivityLog {
 
 
   public ArrayActivityLog bytesSent(Integer bytesSent) {
+    
     this.bytesSent = bytesSent;
     return this;
   }
 
-  /**
+   /**
    * Bytes sent to client
    * @return bytesSent
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1073741824", value = "Bytes sent to client")
+
   public Integer getBytesSent() {
     return bytesSent;
   }
+
 
   public void setBytesSent(Integer bytesSent) {
     this.bytesSent = bytesSent;
@@ -169,18 +177,22 @@ public class ArrayActivityLog {
 
 
   public ArrayActivityLog bytesReceived(Integer bytesReceived) {
+    
     this.bytesReceived = bytesReceived;
     return this;
   }
 
-  /**
+   /**
    * Bytes recieved from client
    * @return bytesReceived
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1073741824", value = "Bytes recieved from client")
+
   public Integer getBytesReceived() {
     return bytesReceived;
   }
+
 
   public void setBytesReceived(Integer bytesReceived) {
     this.bytesReceived = bytesReceived;
@@ -188,18 +200,22 @@ public class ArrayActivityLog {
 
 
   public ArrayActivityLog arrayTaskId(String arrayTaskId) {
+    
     this.arrayTaskId = arrayTaskId;
     return this;
   }
 
-  /**
+   /**
    * UUID of associated array task
    * @return arrayTaskId
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "UUID of associated array task")
+
   public String getArrayTaskId() {
     return arrayTaskId;
   }
+
 
   public void setArrayTaskId(String arrayTaskId) {
     this.arrayTaskId = arrayTaskId;
@@ -207,18 +223,22 @@ public class ArrayActivityLog {
 
 
   public ArrayActivityLog id(String id) {
+    
     this.id = id;
     return this;
   }
 
-  /**
+   /**
    * ID of the activity
    * @return id
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "ID of the activity")
+
   public String getId() {
     return id;
   }
+
 
   public void setId(String id) {
     this.id = id;
@@ -226,18 +246,22 @@ public class ArrayActivityLog {
 
 
   public ArrayActivityLog queryRanges(String queryRanges) {
+    
     this.queryRanges = queryRanges;
     return this;
   }
 
-  /**
+   /**
    * ranges for query
    * @return queryRanges
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "{\"rows\":[{\"start\": 1, \"end\": 1},{\"start\": 3, \"end\": 4}],\"cols\":[{\"start\": 1, \"end\": 4}]}", value = "ranges for query")
+
   public String getQueryRanges() {
     return queryRanges;
   }
+
 
   public void setQueryRanges(String queryRanges) {
     this.queryRanges = queryRanges;
@@ -245,18 +269,22 @@ public class ArrayActivityLog {
 
 
   public ArrayActivityLog queryStats(String queryStats) {
+    
     this.queryStats = queryStats;
     return this;
   }
 
-  /**
+   /**
    * stats for query
    * @return queryStats
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "{\"timers\": {\"Context.StorageManager.read_load_array_schema_from_uri.sum\": 0.0255293, \"...\": \"...\"}, \"counters\": {\"Context.StorageManager.read_unfiltered_byte_num\": 191, \"...\": \"...\"}}", value = "stats for query")
+
   public String getQueryStats() {
     return queryStats;
   }
+
 
   public void setQueryStats(String queryStats) {
     this.queryStats = queryStats;
@@ -272,10 +300,6 @@ public class ArrayActivityLog {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the ArrayActivityLog instance itself
    */
   public ArrayActivityLog putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -287,8 +311,6 @@ public class ArrayActivityLog {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -296,9 +318,6 @@ public class ArrayActivityLog {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -384,67 +403,33 @@ public class ArrayActivityLog {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Object and throws an exception if issues found
-   *
-   * @param jsonObj JSON Object
-   * @throws IOException if the JSON Object is invalid with respect to ArrayActivityLog
-   */
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ArrayActivityLog
+  */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-    if (jsonObj == null) {
-      if (ArrayActivityLog.openapiRequiredFields.isEmpty()) {
-        return;
-      } else { // has required fields
-        throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayActivityLog is not found in the empty JSON string", ArrayActivityLog.openapiRequiredFields.toString()));
-      }
-    }
-    if (jsonObj.get("username") != null && !jsonObj.get("username").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
-    }
-    if (jsonObj.get("array_task_id") != null && !jsonObj.get("array_task_id").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `array_task_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_task_id").toString()));
-    }
-    if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-    }
-    if (jsonObj.get("query_ranges") != null && !jsonObj.get("query_ranges").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `query_ranges` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_ranges").toString()));
-    }
-    if (jsonObj.get("query_stats") != null && !jsonObj.get("query_stats").isJsonPrimitive()) {
-      throw new IllegalArgumentException(String.format("Expected the field `query_stats` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_stats").toString()));
-    }
-  }
-
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ArrayActivityLog
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ArrayActivityLog.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+      if (jsonObj == null) {
+        if (ArrayActivityLog.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayActivityLog is not found in the empty JSON string", ArrayActivityLog.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `action`
-      if (jsonObj.get("action") != null && !jsonObj.get("action").isJsonNull()) {
-        ActivityEventType.validateJsonElement(jsonObj.get("action"));
-      }
-      if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
+      if (jsonObj.get("username") != null && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
-      if ((jsonObj.get("array_task_id") != null && !jsonObj.get("array_task_id").isJsonNull()) && !jsonObj.get("array_task_id").isJsonPrimitive()) {
+      if (jsonObj.get("array_task_id") != null && !jsonObj.get("array_task_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_task_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_task_id").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("query_ranges") != null && !jsonObj.get("query_ranges").isJsonNull()) && !jsonObj.get("query_ranges").isJsonPrimitive()) {
+      if (jsonObj.get("query_ranges") != null && !jsonObj.get("query_ranges").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `query_ranges` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_ranges").toString()));
       }
-      if ((jsonObj.get("query_stats") != null && !jsonObj.get("query_stats").isJsonNull()) && !jsonObj.get("query_stats").isJsonPrimitive()) {
+      if (jsonObj.get("query_stats") != null && !jsonObj.get("query_stats").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `query_stats` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_stats").toString()));
       }
   }
@@ -465,7 +450,7 @@ public class ArrayActivityLog {
            public void write(JsonWriter out, ArrayActivityLog value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -477,12 +462,7 @@ public class ArrayActivityLog {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -491,9 +471,8 @@ public class ArrayActivityLog {
 
            @Override
            public ArrayActivityLog read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              ArrayActivityLog instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -507,10 +486,8 @@ public class ArrayActivityLog {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -521,22 +498,22 @@ public class ArrayActivityLog {
     }
   }
 
-  /**
-   * Create an instance of ArrayActivityLog given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of ArrayActivityLog
-   * @throws IOException if the JSON string is invalid with respect to ArrayActivityLog
-   */
+ /**
+  * Create an instance of ArrayActivityLog given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ArrayActivityLog
+  * @throws IOException if the JSON string is invalid with respect to ArrayActivityLog
+  */
   public static ArrayActivityLog fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ArrayActivityLog.class);
   }
 
-  /**
-   * Convert an instance of ArrayActivityLog to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of ArrayActivityLog to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

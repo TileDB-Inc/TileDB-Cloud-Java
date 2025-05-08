@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
-import io.gsonfire.TypeSelector;
 
 import okio.ByteString;
 
@@ -86,7 +85,7 @@ public class JSON {
         return clazz;
     }
 
-    static {
+    {
         GsonBuilder gsonBuilder = createGson();
         gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
         gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
@@ -121,6 +120,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.tiledb.cloud.rest_api.model.AttributeBufferHeader.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.tiledb.cloud.rest_api.model.AttributeBufferSize.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.tiledb.cloud.rest_api.model.Backoff.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.tiledb.cloud.rest_api.model.ChangeAssetCredentialsRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.tiledb.cloud.rest_api.model.Dimension.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.tiledb.cloud.rest_api.model.DimensionCoordinate.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.tiledb.cloud.rest_api.model.DimensionTileExtent.CustomTypeAdapterFactory());

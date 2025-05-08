@@ -14,11 +14,10 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
-import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -29,27 +28,27 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(FilterType.Adapter.class)
 public enum FilterType {
   
-  NONE("NONE"),
+  NONE("FILTER_NONE"),
   
-  GZIP("GZIP"),
+  GZIP("FILTER_GZIP"),
   
-  ZSTD("ZSTD"),
+  ZSTD("FILTER_ZSTD"),
   
-  LZ4("LZ4"),
+  LZ4("FILTER_LZ4"),
   
-  RLE("RLE"),
+  RLE("FILTER_RLE"),
   
-  BZIP2("BZIP2"),
+  BZIP2("FILTER_BZIP2"),
   
-  DOUBLE_DELTA("DOUBLE_DELTA"),
+  DOUBLE_DELTA("FILTER_DOUBLE_DELTA"),
   
-  BIT_WIDTH_REDUCTION("BIT_WIDTH_REDUCTION"),
+  BIT_WIDTH_REDUCTION("FILTER_BIT_WIDTH_REDUCTION"),
   
-  BITSHUFFLE("BITSHUFFLE"),
+  BITSHUFFLE("FILTER_BITSHUFFLE"),
   
-  BYTESHUFFLE("BYTESHUFFLE"),
+  BYTESHUFFLE("FILTER_BYTESHUFFLE"),
   
-  POSITIVE_DELTA("POSITIVE_DELTA");
+  POSITIVE_DELTA("FILTER_POSITIVE_DELTA");
 
   private String value;
 
@@ -86,11 +85,6 @@ public enum FilterType {
       String value = jsonReader.nextString();
       return FilterType.fromValue(value);
     }
-  }
-
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    String value = jsonElement.getAsString();
-    FilterType.fromValue(value);
   }
 }
 

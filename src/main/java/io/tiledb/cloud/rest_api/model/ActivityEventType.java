@@ -14,11 +14,10 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
-import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -59,7 +58,9 @@ public enum ActivityEventType {
   
   READ_FRAGMENT_INFO("read_fragment_info"),
   
-  READ_ENUMERATIONS("read_enumerations");
+  READ_ENUMERATIONS("read_enumerations"),
+  
+  NEXTFLOW("nextflow");
 
   private String value;
 
@@ -96,11 +97,6 @@ public enum ActivityEventType {
       String value = jsonReader.nextString();
       return ActivityEventType.fromValue(value);
     }
-  }
-
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    String value = jsonElement.getAsString();
-    ActivityEventType.fromValue(value);
   }
 }
 

@@ -14,40 +14,32 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.TGUDFEnvironmentResources;
-import io.tiledb.cloud.rest_api.model.UDFLanguage;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -55,7 +47,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Metadata about the environment where we want to execute a UDF.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Metadata about the environment where we want to execute a UDF.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class TGUDFEnvironment {
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
@@ -95,24 +88,28 @@ public class TGUDFEnvironment {
 
   public static final String SERIALIZED_NAME_STORAGE = "storage";
   @SerializedName(SERIALIZED_NAME_STORAGE)
-  private List<Object> storage = new ArrayList<>();
+  private List<TGUDFStorage> storage = null;
 
-  public TGUDFEnvironment() {
+  public TGUDFEnvironment() { 
   }
 
   public TGUDFEnvironment language(UDFLanguage language) {
+    
     this.language = language;
     return this;
   }
 
-  /**
+   /**
    * Get language
    * @return language
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public UDFLanguage getLanguage() {
     return language;
   }
+
 
   public void setLanguage(UDFLanguage language) {
     this.language = language;
@@ -120,18 +117,22 @@ public class TGUDFEnvironment {
 
 
   public TGUDFEnvironment languageVersion(String languageVersion) {
+    
     this.languageVersion = languageVersion;
     return this;
   }
 
-  /**
+   /**
    * The language version used to execute this UDF. Neither this nor &#x60;language&#x60; needs to be set for registered UDFs, since the language and version are stored server-side with the UDF itself. 
    * @return languageVersion
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The language version used to execute this UDF. Neither this nor `language` needs to be set for registered UDFs, since the language and version are stored server-side with the UDF itself. ")
+
   public String getLanguageVersion() {
     return languageVersion;
   }
+
 
   public void setLanguageVersion(String languageVersion) {
     this.languageVersion = languageVersion;
@@ -139,18 +140,22 @@ public class TGUDFEnvironment {
 
 
   public TGUDFEnvironment imageName(String imageName) {
+    
     this.imageName = imageName;
     return this;
   }
 
-  /**
+   /**
    * The name of the image to use for the execution environment. 
    * @return imageName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The name of the image to use for the execution environment. ")
+
   public String getImageName() {
     return imageName;
   }
+
 
   public void setImageName(String imageName) {
     this.imageName = imageName;
@@ -158,18 +163,22 @@ public class TGUDFEnvironment {
 
 
   public TGUDFEnvironment accessCredentialsName(String accessCredentialsName) {
+    
     this.accessCredentialsName = accessCredentialsName;
     return this;
   }
 
-  /**
+   /**
    * The name of the access credentials to use. if unset, no credentials will be configured in the environment. 
    * @return accessCredentialsName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The name of the access credentials to use. if unset, no credentials will be configured in the environment. ")
+
   public String getAccessCredentialsName() {
     return accessCredentialsName;
   }
+
 
   public void setAccessCredentialsName(String accessCredentialsName) {
     this.accessCredentialsName = accessCredentialsName;
@@ -177,18 +186,22 @@ public class TGUDFEnvironment {
 
 
   public TGUDFEnvironment namespace(String namespace) {
+    
     this.namespace = namespace;
     return this;
   }
 
-  /**
+   /**
    * If set, the non-default namespace to execute this UDF under (and to query any Array Nodes that are used as inputs to this UDF). 
    * @return namespace
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "If set, the non-default namespace to execute this UDF under (and to query any Array Nodes that are used as inputs to this UDF). ")
+
   public String getNamespace() {
     return namespace;
   }
+
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
@@ -196,18 +209,22 @@ public class TGUDFEnvironment {
 
 
   public TGUDFEnvironment resourceClass(String resourceClass) {
+    
     this.resourceClass = resourceClass;
     return this;
   }
 
-  /**
+   /**
    * The resource class to use for the UDF execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the UDF will execute in the standard resource class of the TileDB Cloud provider. 
    * @return resourceClass
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The resource class to use for the UDF execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the UDF will execute in the standard resource class of the TileDB Cloud provider. ")
+
   public String getResourceClass() {
     return resourceClass;
   }
+
 
   public void setResourceClass(String resourceClass) {
     this.resourceClass = resourceClass;
@@ -215,18 +232,22 @@ public class TGUDFEnvironment {
 
 
   public TGUDFEnvironment resources(TGUDFEnvironmentResources resources) {
+    
     this.resources = resources;
     return this;
   }
 
-  /**
+   /**
    * Get resources
    * @return resources
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public TGUDFEnvironmentResources getResources() {
     return resources;
   }
+
 
   public void setResources(TGUDFEnvironmentResources resources) {
     this.resources = resources;
@@ -234,18 +255,22 @@ public class TGUDFEnvironment {
 
 
   public TGUDFEnvironment runClientSide(Boolean runClientSide) {
+    
     this.runClientSide = runClientSide;
     return this;
   }
 
-  /**
+   /**
    * A hint that, if possible, this function should be executed on the client side rather than on the server. Registered UDFs and functions which take arrays as inputs can never be executed client-side. If the client’s environment is incompatible, or the client does not support client-side execution, the function will be executed on the server. 
    * @return runClientSide
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "A hint that, if possible, this function should be executed on the client side rather than on the server. Registered UDFs and functions which take arrays as inputs can never be executed client-side. If the client’s environment is incompatible, or the client does not support client-side execution, the function will be executed on the server. ")
+
   public Boolean getRunClientSide() {
     return runClientSide;
   }
+
 
   public void setRunClientSide(Boolean runClientSide) {
     this.runClientSide = runClientSide;
@@ -253,30 +278,35 @@ public class TGUDFEnvironment {
 
 
   public TGUDFEnvironment timeout(BigDecimal timeout) {
+    
     this.timeout = timeout;
     return this;
   }
 
-  /**
+   /**
    * The maximum length of time this UDF is allowed to execute for before it is killed and fails. If not present (or zero), the function is allowed to run indefinitely (subject to the server’s global limits). 
    * @return timeout
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The maximum length of time this UDF is allowed to execute for before it is killed and fails. If not present (or zero), the function is allowed to run indefinitely (subject to the server’s global limits). ")
+
   public BigDecimal getTimeout() {
     return timeout;
   }
+
 
   public void setTimeout(BigDecimal timeout) {
     this.timeout = timeout;
   }
 
 
-  public TGUDFEnvironment storage(List<Object> storage) {
+  public TGUDFEnvironment storage(List<TGUDFStorage> storage) {
+    
     this.storage = storage;
     return this;
   }
 
-  public TGUDFEnvironment addStorageItem(Object storageItem) {
+  public TGUDFEnvironment addStorageItem(TGUDFStorage storageItem) {
     if (this.storage == null) {
       this.storage = new ArrayList<>();
     }
@@ -284,16 +314,19 @@ public class TGUDFEnvironment {
     return this;
   }
 
-  /**
-   * Storage options for mounting persistent volumes
+   /**
+   * Storage options for mounting persistent volumes. 
    * @return storage
-   */
+  **/
   @javax.annotation.Nullable
-  public List<Object> getStorage() {
+  @ApiModelProperty(value = "Storage options for mounting persistent volumes. ")
+
+  public List<TGUDFStorage> getStorage() {
     return storage;
   }
 
-  public void setStorage(List<Object> storage) {
+
+  public void setStorage(List<TGUDFStorage> storage) {
     this.storage = storage;
   }
 
@@ -307,10 +340,6 @@ public class TGUDFEnvironment {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the TGUDFEnvironment instance itself
    */
   public TGUDFEnvironment putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -322,8 +351,6 @@ public class TGUDFEnvironment {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -331,9 +358,6 @@ public class TGUDFEnvironment {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -433,45 +457,50 @@ public class TGUDFEnvironment {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TGUDFEnvironment
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!TGUDFEnvironment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TGUDFEnvironment
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TGUDFEnvironment.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in TGUDFEnvironment is not found in the empty JSON string", TGUDFEnvironment.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `language`
-      if (jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) {
-        UDFLanguage.validateJsonElement(jsonObj.get("language"));
-      }
-      if ((jsonObj.get("language_version") != null && !jsonObj.get("language_version").isJsonNull()) && !jsonObj.get("language_version").isJsonPrimitive()) {
+      if (jsonObj.get("language_version") != null && !jsonObj.get("language_version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `language_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language_version").toString()));
       }
-      if ((jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonNull()) && !jsonObj.get("image_name").isJsonPrimitive()) {
+      if (jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_name").toString()));
       }
-      if ((jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonNull()) && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
+      if (jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_credentials_name").toString()));
       }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
       }
-      if ((jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonNull()) && !jsonObj.get("resource_class").isJsonPrimitive()) {
+      if (jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `resource_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_class").toString()));
       }
       // validate the optional field `resources`
-      if (jsonObj.get("resources") != null && !jsonObj.get("resources").isJsonNull()) {
-        TGUDFEnvironmentResources.validateJsonElement(jsonObj.get("resources"));
+      if (jsonObj.getAsJsonObject("resources") != null) {
+        TGUDFEnvironmentResources.validateJsonObject(jsonObj.getAsJsonObject("resources"));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("storage") != null && !jsonObj.get("storage").isJsonNull() && !jsonObj.get("storage").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `storage` to be an array in the JSON string but got `%s`", jsonObj.get("storage").toString()));
+      JsonArray jsonArraystorage = jsonObj.getAsJsonArray("storage");
+      if (jsonArraystorage != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("storage").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `storage` to be an array in the JSON string but got `%s`", jsonObj.get("storage").toString()));
+        }
+
+        // validate the optional field `storage` (array)
+        for (int i = 0; i < jsonArraystorage.size(); i++) {
+          TGUDFStorage.validateJsonObject(jsonArraystorage.get(i).getAsJsonObject());
+        };
       }
   }
 
@@ -491,7 +520,7 @@ public class TGUDFEnvironment {
            public void write(JsonWriter out, TGUDFEnvironment value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -503,12 +532,7 @@ public class TGUDFEnvironment {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -517,9 +541,8 @@ public class TGUDFEnvironment {
 
            @Override
            public TGUDFEnvironment read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              TGUDFEnvironment instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -533,10 +556,8 @@ public class TGUDFEnvironment {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -547,22 +568,22 @@ public class TGUDFEnvironment {
     }
   }
 
-  /**
-   * Create an instance of TGUDFEnvironment given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of TGUDFEnvironment
-   * @throws IOException if the JSON string is invalid with respect to TGUDFEnvironment
-   */
+ /**
+  * Create an instance of TGUDFEnvironment given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TGUDFEnvironment
+  * @throws IOException if the JSON string is invalid with respect to TGUDFEnvironment
+  */
   public static TGUDFEnvironment fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TGUDFEnvironment.class);
   }
 
-  /**
-   * Convert an instance of TGUDFEnvironment to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of TGUDFEnvironment to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

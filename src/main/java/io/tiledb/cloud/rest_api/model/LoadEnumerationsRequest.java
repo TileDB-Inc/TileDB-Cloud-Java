@@ -14,37 +14,28 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.TileDBConfig;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -52,7 +43,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Request to return enumerations for attributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Request to return enumerations for attributes")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class LoadEnumerationsRequest {
   public static final String SERIALIZED_NAME_CONFIG = "config";
   @SerializedName(SERIALIZED_NAME_CONFIG)
@@ -60,24 +52,28 @@ public class LoadEnumerationsRequest {
 
   public static final String SERIALIZED_NAME_ENUMERATIONS = "enumerations";
   @SerializedName(SERIALIZED_NAME_ENUMERATIONS)
-  private List<String> enumerations = new ArrayList<>();
+  private List<String> enumerations = null;
 
-  public LoadEnumerationsRequest() {
+  public LoadEnumerationsRequest() { 
   }
 
   public LoadEnumerationsRequest config(TileDBConfig config) {
+    
     this.config = config;
     return this;
   }
 
-  /**
+   /**
    * Get config
    * @return config
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public TileDBConfig getConfig() {
     return config;
   }
+
 
   public void setConfig(TileDBConfig config) {
     this.config = config;
@@ -85,6 +81,7 @@ public class LoadEnumerationsRequest {
 
 
   public LoadEnumerationsRequest enumerations(List<String> enumerations) {
+    
     this.enumerations = enumerations;
     return this;
   }
@@ -97,14 +94,17 @@ public class LoadEnumerationsRequest {
     return this;
   }
 
-  /**
+   /**
    * Get enumerations
    * @return enumerations
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<String> getEnumerations() {
     return enumerations;
   }
+
 
   public void setEnumerations(List<String> enumerations) {
     this.enumerations = enumerations;
@@ -120,10 +120,6 @@ public class LoadEnumerationsRequest {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the LoadEnumerationsRequest instance itself
    */
   public LoadEnumerationsRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -135,8 +131,6 @@ public class LoadEnumerationsRequest {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -144,9 +138,6 @@ public class LoadEnumerationsRequest {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -211,25 +202,26 @@ public class LoadEnumerationsRequest {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LoadEnumerationsRequest
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoadEnumerationsRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to LoadEnumerationsRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (LoadEnumerationsRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoadEnumerationsRequest is not found in the empty JSON string", LoadEnumerationsRequest.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `config`
-      if (jsonObj.get("config") != null && !jsonObj.get("config").isJsonNull()) {
-        TileDBConfig.validateJsonElement(jsonObj.get("config"));
+      if (jsonObj.getAsJsonObject("config") != null) {
+        TileDBConfig.validateJsonObject(jsonObj.getAsJsonObject("config"));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("enumerations") != null && !jsonObj.get("enumerations").isJsonNull() && !jsonObj.get("enumerations").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("enumerations") != null && !jsonObj.get("enumerations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `enumerations` to be an array in the JSON string but got `%s`", jsonObj.get("enumerations").toString()));
       }
   }
@@ -250,7 +242,7 @@ public class LoadEnumerationsRequest {
            public void write(JsonWriter out, LoadEnumerationsRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -262,12 +254,7 @@ public class LoadEnumerationsRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -276,9 +263,8 @@ public class LoadEnumerationsRequest {
 
            @Override
            public LoadEnumerationsRequest read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              LoadEnumerationsRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -292,10 +278,8 @@ public class LoadEnumerationsRequest {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -306,22 +290,22 @@ public class LoadEnumerationsRequest {
     }
   }
 
-  /**
-   * Create an instance of LoadEnumerationsRequest given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of LoadEnumerationsRequest
-   * @throws IOException if the JSON string is invalid with respect to LoadEnumerationsRequest
-   */
+ /**
+  * Create an instance of LoadEnumerationsRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of LoadEnumerationsRequest
+  * @throws IOException if the JSON string is invalid with respect to LoadEnumerationsRequest
+  */
   public static LoadEnumerationsRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, LoadEnumerationsRequest.class);
   }
 
-  /**
-   * Convert an instance of LoadEnumerationsRequest to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of LoadEnumerationsRequest to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

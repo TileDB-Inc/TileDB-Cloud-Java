@@ -14,36 +14,28 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.PodStatus;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -51,7 +43,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Status details of a notebook server
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Status details of a notebook server")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class NotebookStatus {
   public static final String SERIALIZED_NAME_NAMESPACE = "namespace";
   @SerializedName(SERIALIZED_NAME_NAMESPACE)
@@ -101,22 +94,26 @@ public class NotebookStatus {
   @SerializedName(SERIALIZED_NAME_POD_STATUS)
   private PodStatus podStatus;
 
-  public NotebookStatus() {
+  public NotebookStatus() { 
   }
 
   public NotebookStatus namespace(String namespace) {
+    
     this.namespace = namespace;
     return this;
   }
 
-  /**
+   /**
    * namespace of notebook
    * @return namespace
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "namespace of notebook")
+
   public String getNamespace() {
     return namespace;
   }
+
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
@@ -124,18 +121,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus uptime(Integer uptime) {
+    
     this.uptime = uptime;
     return this;
   }
 
-  /**
+   /**
    * duration notebook has been running in seconds
    * @return uptime
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "120", value = "duration notebook has been running in seconds")
+
   public Integer getUptime() {
     return uptime;
   }
+
 
   public void setUptime(Integer uptime) {
     this.uptime = uptime;
@@ -143,18 +144,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus cpuUsage(Integer cpuUsage) {
+    
     this.cpuUsage = cpuUsage;
     return this;
   }
 
-  /**
+   /**
    * current cpu usage in millicpu
    * @return cpuUsage
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "4000", value = "current cpu usage in millicpu")
+
   public Integer getCpuUsage() {
     return cpuUsage;
   }
+
 
   public void setCpuUsage(Integer cpuUsage) {
     this.cpuUsage = cpuUsage;
@@ -162,18 +167,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus gpuUsage(Integer gpuUsage) {
+    
     this.gpuUsage = gpuUsage;
     return this;
   }
 
-  /**
+   /**
    * gpu usage in milligpu
    * @return gpuUsage
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "4000", value = "gpu usage in milligpu")
+
   public Integer getGpuUsage() {
     return gpuUsage;
   }
+
 
   public void setGpuUsage(Integer gpuUsage) {
     this.gpuUsage = gpuUsage;
@@ -181,18 +190,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus memoryUsage(Integer memoryUsage) {
+    
     this.memoryUsage = memoryUsage;
     return this;
   }
 
-  /**
+   /**
    * memory usage in bytes
    * @return memoryUsage
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1073741824", value = "memory usage in bytes")
+
   public Integer getMemoryUsage() {
     return memoryUsage;
   }
+
 
   public void setMemoryUsage(Integer memoryUsage) {
     this.memoryUsage = memoryUsage;
@@ -200,18 +213,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus gpuLimit(Integer gpuLimit) {
+    
     this.gpuLimit = gpuLimit;
     return this;
   }
 
-  /**
+   /**
    * gpu limit in milligpu
    * @return gpuLimit
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1073741824", value = "gpu limit in milligpu")
+
   public Integer getGpuLimit() {
     return gpuLimit;
   }
+
 
   public void setGpuLimit(Integer gpuLimit) {
     this.gpuLimit = gpuLimit;
@@ -219,18 +236,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus memoryLimit(Integer memoryLimit) {
+    
     this.memoryLimit = memoryLimit;
     return this;
   }
 
-  /**
+   /**
    * memory allocated to notebook server in bytes
    * @return memoryLimit
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1073741824", value = "memory allocated to notebook server in bytes")
+
   public Integer getMemoryLimit() {
     return memoryLimit;
   }
+
 
   public void setMemoryLimit(Integer memoryLimit) {
     this.memoryLimit = memoryLimit;
@@ -238,18 +259,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus storageUsage(Integer storageUsage) {
+    
     this.storageUsage = storageUsage;
     return this;
   }
 
-  /**
+   /**
    * storage usage in bytes
    * @return storageUsage
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1073741824", value = "storage usage in bytes")
+
   public Integer getStorageUsage() {
     return storageUsage;
   }
+
 
   public void setStorageUsage(Integer storageUsage) {
     this.storageUsage = storageUsage;
@@ -257,18 +282,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus storageLimit(Integer storageLimit) {
+    
     this.storageLimit = storageLimit;
     return this;
   }
 
-  /**
+   /**
    * storage allocated to notebook server in bytes
    * @return storageLimit
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1073741824", value = "storage allocated to notebook server in bytes")
+
   public Integer getStorageLimit() {
     return storageLimit;
   }
+
 
   public void setStorageLimit(Integer storageLimit) {
     this.storageLimit = storageLimit;
@@ -276,18 +305,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus cpuCount(Integer cpuCount) {
+    
     this.cpuCount = cpuCount;
     return this;
   }
 
-  /**
+   /**
    * millicpu allocated to notebook server
    * @return cpuCount
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "4000", value = "millicpu allocated to notebook server")
+
   public Integer getCpuCount() {
     return cpuCount;
   }
+
 
   public void setCpuCount(Integer cpuCount) {
     this.cpuCount = cpuCount;
@@ -295,18 +328,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus cost(Double cost) {
+    
     this.cost = cost;
     return this;
   }
 
-  /**
+   /**
    * cost in USD for the current notebook session
    * @return cost
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "0.27", value = "cost in USD for the current notebook session")
+
   public Double getCost() {
     return cost;
   }
+
 
   public void setCost(Double cost) {
     this.cost = cost;
@@ -314,18 +351,22 @@ public class NotebookStatus {
 
 
   public NotebookStatus podStatus(PodStatus podStatus) {
+    
     this.podStatus = podStatus;
     return this;
   }
 
-  /**
+   /**
    * Get podStatus
    * @return podStatus
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public PodStatus getPodStatus() {
     return podStatus;
   }
+
 
   public void setPodStatus(PodStatus podStatus) {
     this.podStatus = podStatus;
@@ -341,10 +382,6 @@ public class NotebookStatus {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the NotebookStatus instance itself
    */
   public NotebookStatus putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -356,8 +393,6 @@ public class NotebookStatus {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -365,9 +400,6 @@ public class NotebookStatus {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -473,25 +505,22 @@ public class NotebookStatus {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to NotebookStatus
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!NotebookStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to NotebookStatus
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (NotebookStatus.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in NotebookStatus is not found in the empty JSON string", NotebookStatus.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
-      }
-      // validate the optional field `pod_status`
-      if (jsonObj.get("pod_status") != null && !jsonObj.get("pod_status").isJsonNull()) {
-        PodStatus.validateJsonElement(jsonObj.get("pod_status"));
       }
   }
 
@@ -511,7 +540,7 @@ public class NotebookStatus {
            public void write(JsonWriter out, NotebookStatus value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -523,12 +552,7 @@ public class NotebookStatus {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -537,9 +561,8 @@ public class NotebookStatus {
 
            @Override
            public NotebookStatus read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              NotebookStatus instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -553,10 +576,8 @@ public class NotebookStatus {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -567,22 +588,22 @@ public class NotebookStatus {
     }
   }
 
-  /**
-   * Create an instance of NotebookStatus given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of NotebookStatus
-   * @throws IOException if the JSON string is invalid with respect to NotebookStatus
-   */
+ /**
+  * Create an instance of NotebookStatus given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of NotebookStatus
+  * @throws IOException if the JSON string is invalid with respect to NotebookStatus
+  */
   public static NotebookStatus fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, NotebookStatus.class);
   }
 
-  /**
-   * Convert an instance of NotebookStatus to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of NotebookStatus to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

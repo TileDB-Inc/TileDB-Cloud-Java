@@ -14,35 +14,26 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.StorageLocation;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -50,7 +41,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Custom storage locations on a per–asset type basis. If any is unset, a suffix of the owning (user/organization) &#x60;default_s3_path&#x60; is used. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Custom storage locations on a per–asset type basis. If any is unset, a suffix of the owning (user/organization) `default_s3_path` is used. ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class AssetLocations {
   public static final String SERIALIZED_NAME_ARRAYS = "arrays";
   @SerializedName(SERIALIZED_NAME_ARRAYS)
@@ -80,22 +72,26 @@ public class AssetLocations {
   @SerializedName(SERIALIZED_NAME_UDFS)
   private StorageLocation udfs;
 
-  public AssetLocations() {
+  public AssetLocations() { 
   }
 
   public AssetLocations arrays(StorageLocation arrays) {
+    
     this.arrays = arrays;
     return this;
   }
 
-  /**
+   /**
    * Get arrays
    * @return arrays
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public StorageLocation getArrays() {
     return arrays;
   }
+
 
   public void setArrays(StorageLocation arrays) {
     this.arrays = arrays;
@@ -103,18 +99,22 @@ public class AssetLocations {
 
 
   public AssetLocations files(StorageLocation files) {
+    
     this.files = files;
     return this;
   }
 
-  /**
+   /**
    * Get files
    * @return files
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public StorageLocation getFiles() {
     return files;
   }
+
 
   public void setFiles(StorageLocation files) {
     this.files = files;
@@ -122,18 +122,22 @@ public class AssetLocations {
 
 
   public AssetLocations groups(StorageLocation groups) {
+    
     this.groups = groups;
     return this;
   }
 
-  /**
+   /**
    * Get groups
    * @return groups
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public StorageLocation getGroups() {
     return groups;
   }
+
 
   public void setGroups(StorageLocation groups) {
     this.groups = groups;
@@ -141,18 +145,22 @@ public class AssetLocations {
 
 
   public AssetLocations mlModels(StorageLocation mlModels) {
+    
     this.mlModels = mlModels;
     return this;
   }
 
-  /**
+   /**
    * Get mlModels
    * @return mlModels
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public StorageLocation getMlModels() {
     return mlModels;
   }
+
 
   public void setMlModels(StorageLocation mlModels) {
     this.mlModels = mlModels;
@@ -160,18 +168,22 @@ public class AssetLocations {
 
 
   public AssetLocations notebooks(StorageLocation notebooks) {
+    
     this.notebooks = notebooks;
     return this;
   }
 
-  /**
+   /**
    * Get notebooks
    * @return notebooks
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public StorageLocation getNotebooks() {
     return notebooks;
   }
+
 
   public void setNotebooks(StorageLocation notebooks) {
     this.notebooks = notebooks;
@@ -179,18 +191,22 @@ public class AssetLocations {
 
 
   public AssetLocations taskGraphs(StorageLocation taskGraphs) {
+    
     this.taskGraphs = taskGraphs;
     return this;
   }
 
-  /**
+   /**
    * Get taskGraphs
    * @return taskGraphs
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public StorageLocation getTaskGraphs() {
     return taskGraphs;
   }
+
 
   public void setTaskGraphs(StorageLocation taskGraphs) {
     this.taskGraphs = taskGraphs;
@@ -198,18 +214,22 @@ public class AssetLocations {
 
 
   public AssetLocations udfs(StorageLocation udfs) {
+    
     this.udfs = udfs;
     return this;
   }
 
-  /**
+   /**
    * Get udfs
    * @return udfs
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public StorageLocation getUdfs() {
     return udfs;
   }
+
 
   public void setUdfs(StorageLocation udfs) {
     this.udfs = udfs;
@@ -225,10 +245,6 @@ public class AssetLocations {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the AssetLocations instance itself
    */
   public AssetLocations putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -240,8 +256,6 @@ public class AssetLocations {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -249,9 +263,6 @@ public class AssetLocations {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -331,46 +342,47 @@ public class AssetLocations {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AssetLocations
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!AssetLocations.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to AssetLocations
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (AssetLocations.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in AssetLocations is not found in the empty JSON string", AssetLocations.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `arrays`
-      if (jsonObj.get("arrays") != null && !jsonObj.get("arrays").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("arrays"));
+      if (jsonObj.getAsJsonObject("arrays") != null) {
+        StorageLocation.validateJsonObject(jsonObj.getAsJsonObject("arrays"));
       }
       // validate the optional field `files`
-      if (jsonObj.get("files") != null && !jsonObj.get("files").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("files"));
+      if (jsonObj.getAsJsonObject("files") != null) {
+        StorageLocation.validateJsonObject(jsonObj.getAsJsonObject("files"));
       }
       // validate the optional field `groups`
-      if (jsonObj.get("groups") != null && !jsonObj.get("groups").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("groups"));
+      if (jsonObj.getAsJsonObject("groups") != null) {
+        StorageLocation.validateJsonObject(jsonObj.getAsJsonObject("groups"));
       }
       // validate the optional field `ml_models`
-      if (jsonObj.get("ml_models") != null && !jsonObj.get("ml_models").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("ml_models"));
+      if (jsonObj.getAsJsonObject("ml_models") != null) {
+        StorageLocation.validateJsonObject(jsonObj.getAsJsonObject("ml_models"));
       }
       // validate the optional field `notebooks`
-      if (jsonObj.get("notebooks") != null && !jsonObj.get("notebooks").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("notebooks"));
+      if (jsonObj.getAsJsonObject("notebooks") != null) {
+        StorageLocation.validateJsonObject(jsonObj.getAsJsonObject("notebooks"));
       }
       // validate the optional field `task_graphs`
-      if (jsonObj.get("task_graphs") != null && !jsonObj.get("task_graphs").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("task_graphs"));
+      if (jsonObj.getAsJsonObject("task_graphs") != null) {
+        StorageLocation.validateJsonObject(jsonObj.getAsJsonObject("task_graphs"));
       }
       // validate the optional field `udfs`
-      if (jsonObj.get("udfs") != null && !jsonObj.get("udfs").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("udfs"));
+      if (jsonObj.getAsJsonObject("udfs") != null) {
+        StorageLocation.validateJsonObject(jsonObj.getAsJsonObject("udfs"));
       }
   }
 
@@ -390,7 +402,7 @@ public class AssetLocations {
            public void write(JsonWriter out, AssetLocations value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -402,12 +414,7 @@ public class AssetLocations {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -416,9 +423,8 @@ public class AssetLocations {
 
            @Override
            public AssetLocations read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              AssetLocations instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -432,10 +438,8 @@ public class AssetLocations {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -446,22 +450,22 @@ public class AssetLocations {
     }
   }
 
-  /**
-   * Create an instance of AssetLocations given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of AssetLocations
-   * @throws IOException if the JSON string is invalid with respect to AssetLocations
-   */
+ /**
+  * Create an instance of AssetLocations given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of AssetLocations
+  * @throws IOException if the JSON string is invalid with respect to AssetLocations
+  */
   public static AssetLocations fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, AssetLocations.class);
   }
 
-  /**
-   * Convert an instance of AssetLocations to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of AssetLocations to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

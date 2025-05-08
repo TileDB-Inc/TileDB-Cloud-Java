@@ -14,50 +14,38 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.RetryStrategy;
-import io.tiledb.cloud.rest_api.model.TGInputNodeData;
-import io.tiledb.cloud.rest_api.model.TGSQLNodeData;
-import io.tiledb.cloud.rest_api.model.TGUDFNodeData;
-import io.tiledb.cloud.rest_api.model.UDFArrayDetails;
+import io.tiledb.cloud.rest_api.JSON;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
-
-import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * Information about a single node within a registered task graph. A single node represents one piece of data or a computational step; either as an input value, a data source, or a computation that acts upon earlier nodes. The structure parallels the existing &#x60;TaskGraphNodeMetadata&#x60;. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Information about a single node within a registered task graph. A single node represents one piece of data or a computational step; either as an input value, a data source, or a computation that acts upon earlier nodes. The structure parallels the existing `TaskGraphNodeMetadata`. ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class TaskGraphNode {
   public static final String SERIALIZED_NAME_CLIENT_NODE_ID = "client_node_id";
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_ID)
@@ -69,7 +57,7 @@ public class TaskGraphNode {
 
   public static final String SERIALIZED_NAME_DEPENDS_ON = "depends_on";
   @SerializedName(SERIALIZED_NAME_DEPENDS_ON)
-  private List<String> dependsOn = new ArrayList<>();
+  private List<String> dependsOn = null;
 
   public static final String SERIALIZED_NAME_ARRAY_NODE = "array_node";
   @SerializedName(SERIALIZED_NAME_ARRAY_NODE)
@@ -99,22 +87,26 @@ public class TaskGraphNode {
   @SerializedName(SERIALIZED_NAME_DEADLINE)
   private Long deadline;
 
-  public TaskGraphNode() {
+  public TaskGraphNode() { 
   }
 
   public TaskGraphNode clientNodeId(String clientNodeId) {
+    
     this.clientNodeId = clientNodeId;
     return this;
   }
 
-  /**
+   /**
    * The client-generated UUID of the given graph node.
    * @return clientNodeId
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The client-generated UUID of the given graph node.")
+
   public String getClientNodeId() {
     return clientNodeId;
   }
+
 
   public void setClientNodeId(String clientNodeId) {
     this.clientNodeId = clientNodeId;
@@ -122,18 +114,22 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode name(String name) {
+    
     this.name = name;
     return this;
   }
 
-  /**
+   /**
    * A client-specified name for the node. If provided, this must be unique. 
    * @return name
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "A client-specified name for the node. If provided, this must be unique. ")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
@@ -141,6 +137,7 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode dependsOn(List<String> dependsOn) {
+    
     this.dependsOn = dependsOn;
     return this;
   }
@@ -153,14 +150,17 @@ public class TaskGraphNode {
     return this;
   }
 
-  /**
+   /**
    * The client_node_uuid of each node that this node depends upon. Used to define the structure of the graph. 
    * @return dependsOn
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The client_node_uuid of each node that this node depends upon. Used to define the structure of the graph. ")
+
   public List<String> getDependsOn() {
     return dependsOn;
   }
+
 
   public void setDependsOn(List<String> dependsOn) {
     this.dependsOn = dependsOn;
@@ -168,18 +168,22 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode arrayNode(UDFArrayDetails arrayNode) {
+    
     this.arrayNode = arrayNode;
     return this;
   }
 
-  /**
+   /**
    * Get arrayNode
    * @return arrayNode
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public UDFArrayDetails getArrayNode() {
     return arrayNode;
   }
+
 
   public void setArrayNode(UDFArrayDetails arrayNode) {
     this.arrayNode = arrayNode;
@@ -187,18 +191,22 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode inputNode(TGInputNodeData inputNode) {
+    
     this.inputNode = inputNode;
     return this;
   }
 
-  /**
+   /**
    * Get inputNode
    * @return inputNode
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public TGInputNodeData getInputNode() {
     return inputNode;
   }
+
 
   public void setInputNode(TGInputNodeData inputNode) {
     this.inputNode = inputNode;
@@ -206,18 +214,22 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode sqlNode(TGSQLNodeData sqlNode) {
+    
     this.sqlNode = sqlNode;
     return this;
   }
 
-  /**
+   /**
    * Get sqlNode
    * @return sqlNode
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public TGSQLNodeData getSqlNode() {
     return sqlNode;
   }
+
 
   public void setSqlNode(TGSQLNodeData sqlNode) {
     this.sqlNode = sqlNode;
@@ -225,18 +237,22 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode udfNode(TGUDFNodeData udfNode) {
+    
     this.udfNode = udfNode;
     return this;
   }
 
-  /**
+   /**
    * Get udfNode
    * @return udfNode
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public TGUDFNodeData getUdfNode() {
     return udfNode;
   }
+
 
   public void setUdfNode(TGUDFNodeData udfNode) {
     this.udfNode = udfNode;
@@ -244,18 +260,22 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode retryStrategy(RetryStrategy retryStrategy) {
+    
     this.retryStrategy = retryStrategy;
     return this;
   }
 
-  /**
+   /**
    * Get retryStrategy
    * @return retryStrategy
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public RetryStrategy getRetryStrategy() {
     return retryStrategy;
   }
+
 
   public void setRetryStrategy(RetryStrategy retryStrategy) {
     this.retryStrategy = retryStrategy;
@@ -263,18 +283,22 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode expandNodeOutput(String expandNodeOutput) {
+    
     this.expandNodeOutput = expandNodeOutput;
     return this;
   }
 
-  /**
+   /**
    * Used to create dynamic tasks based on the output of another node. The other node&#39;s output must be a JSON list of values. The expansion process creates one task per item in the output list. The item is also passed as an argument to each task. The value is the client_node_uuid of the node that we want to expand. 
    * @return expandNodeOutput
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Used to create dynamic tasks based on the output of another node. The other node's output must be a JSON list of values. The expansion process creates one task per item in the output list. The item is also passed as an argument to each task. The value is the client_node_uuid of the node that we want to expand. ")
+
   public String getExpandNodeOutput() {
     return expandNodeOutput;
   }
+
 
   public void setExpandNodeOutput(String expandNodeOutput) {
     this.expandNodeOutput = expandNodeOutput;
@@ -282,18 +306,22 @@ public class TaskGraphNode {
 
 
   public TaskGraphNode deadline(Long deadline) {
+    
     this.deadline = deadline;
     return this;
   }
 
-  /**
+   /**
    * Duration in seconds relative to the node start time which the node is allowed to run before it gets terminated. 
    * @return deadline
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Duration in seconds relative to the node start time which the node is allowed to run before it gets terminated. ")
+
   public Long getDeadline() {
     return deadline;
   }
+
 
   public void setDeadline(Long deadline) {
     this.deadline = deadline;
@@ -309,10 +337,6 @@ public class TaskGraphNode {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the TaskGraphNode instance itself
    */
   public TaskGraphNode putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -324,8 +348,6 @@ public class TaskGraphNode {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -333,9 +355,6 @@ public class TaskGraphNode {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -435,51 +454,19 @@ public class TaskGraphNode {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TaskGraphNode
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!TaskGraphNode.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TaskGraphNode
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TaskGraphNode.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraphNode is not found in the empty JSON string", TaskGraphNode.openapiRequiredFields.toString()));
         }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("client_node_id") != null && !jsonObj.get("client_node_id").isJsonNull()) && !jsonObj.get("client_node_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `client_node_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_id").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("depends_on") != null && !jsonObj.get("depends_on").isJsonNull() && !jsonObj.get("depends_on").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `depends_on` to be an array in the JSON string but got `%s`", jsonObj.get("depends_on").toString()));
-      }
-      // validate the optional field `array_node`
-      if (jsonObj.get("array_node") != null && !jsonObj.get("array_node").isJsonNull()) {
-        UDFArrayDetails.validateJsonElement(jsonObj.get("array_node"));
-      }
-      // validate the optional field `input_node`
-      if (jsonObj.get("input_node") != null && !jsonObj.get("input_node").isJsonNull()) {
-        TGInputNodeData.validateJsonElement(jsonObj.get("input_node"));
-      }
-      // validate the optional field `sql_node`
-      if (jsonObj.get("sql_node") != null && !jsonObj.get("sql_node").isJsonNull()) {
-        TGSQLNodeData.validateJsonElement(jsonObj.get("sql_node"));
-      }
-      // validate the optional field `udf_node`
-      if (jsonObj.get("udf_node") != null && !jsonObj.get("udf_node").isJsonNull()) {
-        TGUDFNodeData.validateJsonElement(jsonObj.get("udf_node"));
-      }
-      // validate the optional field `retry_strategy`
-      if (jsonObj.get("retry_strategy") != null && !jsonObj.get("retry_strategy").isJsonNull()) {
-        RetryStrategy.validateJsonElement(jsonObj.get("retry_strategy"));
-      }
-      if ((jsonObj.get("expand_node_output") != null && !jsonObj.get("expand_node_output").isJsonNull()) && !jsonObj.get("expand_node_output").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `expand_node_output` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expand_node_output").toString()));
       }
   }
 
@@ -499,7 +486,7 @@ public class TaskGraphNode {
            public void write(JsonWriter out, TaskGraphNode value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -511,12 +498,7 @@ public class TaskGraphNode {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -525,9 +507,8 @@ public class TaskGraphNode {
 
            @Override
            public TaskGraphNode read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              TaskGraphNode instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -541,10 +522,8 @@ public class TaskGraphNode {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -555,22 +534,22 @@ public class TaskGraphNode {
     }
   }
 
-  /**
-   * Create an instance of TaskGraphNode given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of TaskGraphNode
-   * @throws IOException if the JSON string is invalid with respect to TaskGraphNode
-   */
+ /**
+  * Create an instance of TaskGraphNode given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TaskGraphNode
+  * @throws IOException if the JSON string is invalid with respect to TaskGraphNode
+  */
   public static TaskGraphNode fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TaskGraphNode.class);
   }
 
-  /**
-   * Convert an instance of TaskGraphNode to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of TaskGraphNode to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

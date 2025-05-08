@@ -14,37 +14,26 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.Layout;
-import io.tiledb.cloud.rest_api.model.ReadState;
-import io.tiledb.cloud.rest_api.model.Subarray;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -52,7 +41,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Read struct (can&#39;t be called reader due to class name conflict)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Read struct (can't be called reader due to class name conflict)")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class QueryReader {
   public static final String SERIALIZED_NAME_LAYOUT = "layout";
   @SerializedName(SERIALIZED_NAME_LAYOUT)
@@ -78,22 +68,26 @@ public class QueryReader {
   @SerializedName(SERIALIZED_NAME_VAR_OFFSETS_BITSIZE)
   private Integer varOffsetsBitsize;
 
-  public QueryReader() {
+  public QueryReader() { 
   }
 
   public QueryReader layout(Layout layout) {
+    
     this.layout = layout;
     return this;
   }
 
-  /**
+   /**
    * Get layout
    * @return layout
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public Layout getLayout() {
     return layout;
   }
+
 
   public void setLayout(Layout layout) {
     this.layout = layout;
@@ -101,18 +95,22 @@ public class QueryReader {
 
 
   public QueryReader subarray(Subarray subarray) {
+    
     this.subarray = subarray;
     return this;
   }
 
-  /**
+   /**
    * Get subarray
    * @return subarray
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public Subarray getSubarray() {
     return subarray;
   }
+
 
   public void setSubarray(Subarray subarray) {
     this.subarray = subarray;
@@ -120,18 +118,22 @@ public class QueryReader {
 
 
   public QueryReader readState(ReadState readState) {
+    
     this.readState = readState;
     return this;
   }
 
-  /**
+   /**
    * Get readState
    * @return readState
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public ReadState getReadState() {
     return readState;
   }
+
 
   public void setReadState(ReadState readState) {
     this.readState = readState;
@@ -139,18 +141,22 @@ public class QueryReader {
 
 
   public QueryReader varOffsetsMode(String varOffsetsMode) {
+    
     this.varOffsetsMode = varOffsetsMode;
     return this;
   }
 
-  /**
+   /**
    * The offsets format (bytes or elements) to be used.
    * @return varOffsetsMode
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The offsets format (bytes or elements) to be used.")
+
   public String getVarOffsetsMode() {
     return varOffsetsMode;
   }
+
 
   public void setVarOffsetsMode(String varOffsetsMode) {
     this.varOffsetsMode = varOffsetsMode;
@@ -158,18 +164,22 @@ public class QueryReader {
 
 
   public QueryReader varOffsetsAddExtraElement(Boolean varOffsetsAddExtraElement) {
+    
     this.varOffsetsAddExtraElement = varOffsetsAddExtraElement;
     return this;
   }
 
-  /**
+   /**
    * True if an extra element will be added to the end of the offsets buffer.
    * @return varOffsetsAddExtraElement
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "True if an extra element will be added to the end of the offsets buffer.")
+
   public Boolean getVarOffsetsAddExtraElement() {
     return varOffsetsAddExtraElement;
   }
+
 
   public void setVarOffsetsAddExtraElement(Boolean varOffsetsAddExtraElement) {
     this.varOffsetsAddExtraElement = varOffsetsAddExtraElement;
@@ -177,18 +187,22 @@ public class QueryReader {
 
 
   public QueryReader varOffsetsBitsize(Integer varOffsetsBitsize) {
+    
     this.varOffsetsBitsize = varOffsetsBitsize;
     return this;
   }
 
-  /**
+   /**
    * The offsets bitsize (32 or 64) to be used.
    * @return varOffsetsBitsize
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The offsets bitsize (32 or 64) to be used.")
+
   public Integer getVarOffsetsBitsize() {
     return varOffsetsBitsize;
   }
+
 
   public void setVarOffsetsBitsize(Integer varOffsetsBitsize) {
     this.varOffsetsBitsize = varOffsetsBitsize;
@@ -204,10 +218,6 @@ public class QueryReader {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the QueryReader instance itself
    */
   public QueryReader putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -219,8 +229,6 @@ public class QueryReader {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -228,9 +236,6 @@ public class QueryReader {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -307,32 +312,29 @@ public class QueryReader {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to QueryReader
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!QueryReader.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to QueryReader
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (QueryReader.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in QueryReader is not found in the empty JSON string", QueryReader.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `layout`
-      if (jsonObj.get("layout") != null && !jsonObj.get("layout").isJsonNull()) {
-        Layout.validateJsonElement(jsonObj.get("layout"));
-      }
       // validate the optional field `subarray`
-      if (jsonObj.get("subarray") != null && !jsonObj.get("subarray").isJsonNull()) {
-        Subarray.validateJsonElement(jsonObj.get("subarray"));
+      if (jsonObj.getAsJsonObject("subarray") != null) {
+        Subarray.validateJsonObject(jsonObj.getAsJsonObject("subarray"));
       }
       // validate the optional field `readState`
-      if (jsonObj.get("readState") != null && !jsonObj.get("readState").isJsonNull()) {
-        ReadState.validateJsonElement(jsonObj.get("readState"));
+      if (jsonObj.getAsJsonObject("readState") != null) {
+        ReadState.validateJsonObject(jsonObj.getAsJsonObject("readState"));
       }
-      if ((jsonObj.get("varOffsetsMode") != null && !jsonObj.get("varOffsetsMode").isJsonNull()) && !jsonObj.get("varOffsetsMode").isJsonPrimitive()) {
+      if (jsonObj.get("varOffsetsMode") != null && !jsonObj.get("varOffsetsMode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `varOffsetsMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("varOffsetsMode").toString()));
       }
   }
@@ -353,7 +355,7 @@ public class QueryReader {
            public void write(JsonWriter out, QueryReader value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -365,12 +367,7 @@ public class QueryReader {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -379,9 +376,8 @@ public class QueryReader {
 
            @Override
            public QueryReader read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              QueryReader instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -395,10 +391,8 @@ public class QueryReader {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -409,22 +403,22 @@ public class QueryReader {
     }
   }
 
-  /**
-   * Create an instance of QueryReader given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of QueryReader
-   * @throws IOException if the JSON string is invalid with respect to QueryReader
-   */
+ /**
+  * Create an instance of QueryReader given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of QueryReader
+  * @throws IOException if the JSON string is invalid with respect to QueryReader
+  */
   public static QueryReader fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, QueryReader.class);
   }
 
-  /**
-   * Convert an instance of QueryReader to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of QueryReader to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

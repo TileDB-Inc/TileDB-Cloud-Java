@@ -14,36 +14,27 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.ActivityEventType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -51,7 +42,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Information related to last access of an array
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Information related to last access of an array")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class LastAccessedArray {
   public static final String SERIALIZED_NAME_ARRAY_ID = "array_id";
   @SerializedName(SERIALIZED_NAME_ARRAY_ID)
@@ -73,22 +65,26 @@ public class LastAccessedArray {
   @SerializedName(SERIALIZED_NAME_ACCESS_TYPE)
   private ActivityEventType accessType;
 
-  public LastAccessedArray() {
+  public LastAccessedArray() { 
   }
 
   public LastAccessedArray arrayId(String arrayId) {
+    
     this.arrayId = arrayId;
     return this;
   }
 
-  /**
+   /**
    * unique ID of array
    * @return arrayId
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "unique ID of array")
+
   public String getArrayId() {
     return arrayId;
   }
+
 
   public void setArrayId(String arrayId) {
     this.arrayId = arrayId;
@@ -96,18 +92,22 @@ public class LastAccessedArray {
 
 
   public LastAccessedArray arrayName(String arrayName) {
+    
     this.arrayName = arrayName;
     return this;
   }
 
-  /**
+   /**
    * name of the array
    * @return arrayName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "array1", value = "name of the array")
+
   public String getArrayName() {
     return arrayName;
   }
+
 
   public void setArrayName(String arrayName) {
     this.arrayName = arrayName;
@@ -115,18 +115,22 @@ public class LastAccessedArray {
 
 
   public LastAccessedArray namespace(String namespace) {
+    
     this.namespace = namespace;
     return this;
   }
 
-  /**
+   /**
    * namespace of a user or organization
    * @return namespace
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "mockuser", value = "namespace of a user or organization")
+
   public String getNamespace() {
     return namespace;
   }
+
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
@@ -134,18 +138,22 @@ public class LastAccessedArray {
 
 
   public LastAccessedArray accessedTime(BigDecimal accessedTime) {
+    
     this.accessedTime = accessedTime;
     return this;
   }
 
-  /**
+   /**
    * timestamp (epoch milliseconds) array is last accessed
    * @return accessedTime
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "1540471791873", value = "timestamp (epoch milliseconds) array is last accessed")
+
   public BigDecimal getAccessedTime() {
     return accessedTime;
   }
+
 
   public void setAccessedTime(BigDecimal accessedTime) {
     this.accessedTime = accessedTime;
@@ -153,18 +161,22 @@ public class LastAccessedArray {
 
 
   public LastAccessedArray accessType(ActivityEventType accessType) {
+    
     this.accessType = accessType;
     return this;
   }
 
-  /**
+   /**
    * Get accessType
    * @return accessType
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public ActivityEventType getAccessType() {
     return accessType;
   }
+
 
   public void setAccessType(ActivityEventType accessType) {
     this.accessType = accessType;
@@ -180,10 +192,6 @@ public class LastAccessedArray {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the LastAccessedArray instance itself
    */
   public LastAccessedArray putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -195,8 +203,6 @@ public class LastAccessedArray {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -204,9 +210,6 @@ public class LastAccessedArray {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -280,31 +283,28 @@ public class LastAccessedArray {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LastAccessedArray
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LastAccessedArray.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to LastAccessedArray
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (LastAccessedArray.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in LastAccessedArray is not found in the empty JSON string", LastAccessedArray.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("array_id") != null && !jsonObj.get("array_id").isJsonNull()) && !jsonObj.get("array_id").isJsonPrimitive()) {
+      if (jsonObj.get("array_id") != null && !jsonObj.get("array_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_id").toString()));
       }
-      if ((jsonObj.get("array_name") != null && !jsonObj.get("array_name").isJsonNull()) && !jsonObj.get("array_name").isJsonPrimitive()) {
+      if (jsonObj.get("array_name") != null && !jsonObj.get("array_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_name").toString()));
       }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
-      }
-      // validate the optional field `access_type`
-      if (jsonObj.get("access_type") != null && !jsonObj.get("access_type").isJsonNull()) {
-        ActivityEventType.validateJsonElement(jsonObj.get("access_type"));
       }
   }
 
@@ -324,7 +324,7 @@ public class LastAccessedArray {
            public void write(JsonWriter out, LastAccessedArray value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -336,12 +336,7 @@ public class LastAccessedArray {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -350,9 +345,8 @@ public class LastAccessedArray {
 
            @Override
            public LastAccessedArray read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              LastAccessedArray instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -366,10 +360,8 @@ public class LastAccessedArray {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -380,22 +372,22 @@ public class LastAccessedArray {
     }
   }
 
-  /**
-   * Create an instance of LastAccessedArray given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of LastAccessedArray
-   * @throws IOException if the JSON string is invalid with respect to LastAccessedArray
-   */
+ /**
+  * Create an instance of LastAccessedArray given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of LastAccessedArray
+  * @throws IOException if the JSON string is invalid with respect to LastAccessedArray
+  */
   public static LastAccessedArray fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, LastAccessedArray.class);
   }
 
-  /**
-   * Convert an instance of LastAccessedArray to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of LastAccessedArray to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

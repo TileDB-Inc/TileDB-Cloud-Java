@@ -14,11 +14,10 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
-import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -33,9 +32,7 @@ public enum UDFType {
   
   SINGLE_ARRAY("single_array"),
   
-  GENERIC("generic"),
-
-  BASH("bash");
+  GENERIC("generic");
 
   private String value;
 
@@ -72,11 +69,6 @@ public enum UDFType {
       String value = jsonReader.nextString();
       return UDFType.fromValue(value);
     }
-  }
-
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    String value = jsonElement.getAsString();
-    UDFType.fromValue(value);
   }
 }
 

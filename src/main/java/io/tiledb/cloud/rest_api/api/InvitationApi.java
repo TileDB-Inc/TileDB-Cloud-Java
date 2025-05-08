@@ -19,18 +19,14 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ProgressRequestBody;
-import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.tiledb.cloud.rest_api.model.Error;
 import io.tiledb.cloud.rest_api.model.InvitationArrayShareEmail;
 import io.tiledb.cloud.rest_api.model.InvitationData;
-import io.tiledb.cloud.rest_api.model.InvitationFailedRecipients;
 import io.tiledb.cloud.rest_api.model.InvitationGroupShareEmail;
 import io.tiledb.cloud.rest_api.model.InvitationOrganizationJoinEmail;
 import io.tiledb.cloud.rest_api.model.SharePaymentRequest;
@@ -111,7 +107,7 @@ public class InvitationApi {
 
         // create path and map variables
         String localVarPath = "/invitations/{invitation}"
-            .replace("{" + "invitation" + "}", localVarApiClient.escapeString(invitation.toString()));
+            .replaceAll("\\{" + "invitation" + "\\}", localVarApiClient.escapeString(invitation.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -128,24 +124,28 @@ public class InvitationApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call acceptInvitationValidateBeforeCall(String invitation, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'invitation' is set
         if (invitation == null) {
             throw new ApiException("Missing the required parameter 'invitation' when calling acceptInvitation(Async)");
         }
+        
 
-        return acceptInvitationCall(invitation, _callback);
+        okhttp3.Call localVarCall = acceptInvitationCall(invitation, _callback);
+        return localVarCall;
 
     }
 
@@ -243,8 +243,8 @@ public class InvitationApi {
 
         // create path and map variables
         String localVarPath = "/invitations/{invitation}/{organization}/join"
-            .replace("{" + "invitation" + "}", localVarApiClient.escapeString(invitation.toString()))
-            .replace("{" + "organization" + "}", localVarApiClient.escapeString(organization.toString()));
+            .replaceAll("\\{" + "invitation" + "\\}", localVarApiClient.escapeString(invitation.toString()))
+            .replaceAll("\\{" + "organization" + "\\}", localVarApiClient.escapeString(organization.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -261,29 +261,33 @@ public class InvitationApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call cancelJoinOrganizationValidateBeforeCall(String invitation, String organization, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'invitation' is set
         if (invitation == null) {
             throw new ApiException("Missing the required parameter 'invitation' when calling cancelJoinOrganization(Async)");
         }
-
+        
         // verify the required parameter 'organization' is set
         if (organization == null) {
             throw new ApiException("Missing the required parameter 'organization' when calling cancelJoinOrganization(Async)");
         }
+        
 
-        return cancelJoinOrganizationCall(invitation, organization, _callback);
+        okhttp3.Call localVarCall = cancelJoinOrganizationCall(invitation, organization, _callback);
+        return localVarCall;
 
     }
 
@@ -352,7 +356,8 @@ public class InvitationApi {
     }
     /**
      * Build call for cancelShareArrayByInvite
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param invitation the ID of invitation about to be cancelled (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param _callback Callback for upload/download progress
@@ -367,7 +372,7 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelShareArrayByInviteCall(String namespace, String invitation, String array, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cancelShareArrayByInviteCall(String workspace, String teamspace, String invitation, String array, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -384,10 +389,11 @@ public class InvitationApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/invitations/{invitation}/{namespace}/{array}/share"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "invitation" + "}", localVarApiClient.escapeString(invitation.toString()))
-            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
+        String localVarPath = "/invitations/{invitation}/{workspace}/{teamspace}/{array}/share"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "invitation" + "\\}", localVarApiClient.escapeString(invitation.toString()))
+            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -404,41 +410,51 @@ public class InvitationApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelShareArrayByInviteValidateBeforeCall(String namespace, String invitation, String array, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling cancelShareArrayByInvite(Async)");
+    private okhttp3.Call cancelShareArrayByInviteValidateBeforeCall(String workspace, String teamspace, String invitation, String array, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling cancelShareArrayByInvite(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling cancelShareArrayByInvite(Async)");
+        }
+        
         // verify the required parameter 'invitation' is set
         if (invitation == null) {
             throw new ApiException("Missing the required parameter 'invitation' when calling cancelShareArrayByInvite(Async)");
         }
-
+        
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling cancelShareArrayByInvite(Async)");
         }
+        
 
-        return cancelShareArrayByInviteCall(namespace, invitation, array, _callback);
+        okhttp3.Call localVarCall = cancelShareArrayByInviteCall(workspace, teamspace, invitation, array, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Cancels array sharing invitation
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param invitation the ID of invitation about to be cancelled (required)
      * @param array name/uri of array that is url-encoded (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -451,14 +467,15 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void cancelShareArrayByInvite(String namespace, String invitation, String array) throws ApiException {
-        cancelShareArrayByInviteWithHttpInfo(namespace, invitation, array);
+    public void cancelShareArrayByInvite(String workspace, String teamspace, String invitation, String array) throws ApiException {
+        cancelShareArrayByInviteWithHttpInfo(workspace, teamspace, invitation, array);
     }
 
     /**
      * 
      * Cancels array sharing invitation
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param invitation the ID of invitation about to be cancelled (required)
      * @param array name/uri of array that is url-encoded (required)
      * @return ApiResponse&lt;Void&gt;
@@ -472,15 +489,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cancelShareArrayByInviteWithHttpInfo(String namespace, String invitation, String array) throws ApiException {
-        okhttp3.Call localVarCall = cancelShareArrayByInviteValidateBeforeCall(namespace, invitation, array, null);
+    public ApiResponse<Void> cancelShareArrayByInviteWithHttpInfo(String workspace, String teamspace, String invitation, String array) throws ApiException {
+        okhttp3.Call localVarCall = cancelShareArrayByInviteValidateBeforeCall(workspace, teamspace, invitation, array, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Cancels array sharing invitation
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param invitation the ID of invitation about to be cancelled (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -495,15 +513,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelShareArrayByInviteAsync(String namespace, String invitation, String array, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cancelShareArrayByInviteAsync(String workspace, String teamspace, String invitation, String array, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelShareArrayByInviteValidateBeforeCall(namespace, invitation, array, _callback);
+        okhttp3.Call localVarCall = cancelShareArrayByInviteValidateBeforeCall(workspace, teamspace, invitation, array, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for cancelShareGroupByInvite
-     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param invitation the ID of invitation about to be cancelled (required)
      * @param groupName name/uuid of group that is url-encoded (required)
      * @param _callback Callback for upload/download progress
@@ -518,7 +537,7 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelShareGroupByInviteCall(String namespace, String invitation, String groupName, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cancelShareGroupByInviteCall(String workspace, String teamspace, String invitation, String groupName, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -535,10 +554,11 @@ public class InvitationApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/invitations/group/{invitation}/{namespace}/{group_name}/share"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "invitation" + "}", localVarApiClient.escapeString(invitation.toString()))
-            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
+        String localVarPath = "/invitations/group/{invitation}/{workspace}/{teamspace}/{group_name}/share"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "invitation" + "\\}", localVarApiClient.escapeString(invitation.toString()))
+            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -555,41 +575,51 @@ public class InvitationApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelShareGroupByInviteValidateBeforeCall(String namespace, String invitation, String groupName, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling cancelShareGroupByInvite(Async)");
+    private okhttp3.Call cancelShareGroupByInviteValidateBeforeCall(String workspace, String teamspace, String invitation, String groupName, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling cancelShareGroupByInvite(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling cancelShareGroupByInvite(Async)");
+        }
+        
         // verify the required parameter 'invitation' is set
         if (invitation == null) {
             throw new ApiException("Missing the required parameter 'invitation' when calling cancelShareGroupByInvite(Async)");
         }
-
+        
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling cancelShareGroupByInvite(Async)");
         }
+        
 
-        return cancelShareGroupByInviteCall(namespace, invitation, groupName, _callback);
+        okhttp3.Call localVarCall = cancelShareGroupByInviteCall(workspace, teamspace, invitation, groupName, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Cancels group sharing invitation
-     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param invitation the ID of invitation about to be cancelled (required)
      * @param groupName name/uuid of group that is url-encoded (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -602,14 +632,15 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void cancelShareGroupByInvite(String namespace, String invitation, String groupName) throws ApiException {
-        cancelShareGroupByInviteWithHttpInfo(namespace, invitation, groupName);
+    public void cancelShareGroupByInvite(String workspace, String teamspace, String invitation, String groupName) throws ApiException {
+        cancelShareGroupByInviteWithHttpInfo(workspace, teamspace, invitation, groupName);
     }
 
     /**
      * 
      * Cancels group sharing invitation
-     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param invitation the ID of invitation about to be cancelled (required)
      * @param groupName name/uuid of group that is url-encoded (required)
      * @return ApiResponse&lt;Void&gt;
@@ -623,15 +654,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cancelShareGroupByInviteWithHttpInfo(String namespace, String invitation, String groupName) throws ApiException {
-        okhttp3.Call localVarCall = cancelShareGroupByInviteValidateBeforeCall(namespace, invitation, groupName, null);
+    public ApiResponse<Void> cancelShareGroupByInviteWithHttpInfo(String workspace, String teamspace, String invitation, String groupName) throws ApiException {
+        okhttp3.Call localVarCall = cancelShareGroupByInviteValidateBeforeCall(workspace, teamspace, invitation, groupName, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Cancels group sharing invitation
-     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param invitation the ID of invitation about to be cancelled (required)
      * @param groupName name/uuid of group that is url-encoded (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -646,15 +678,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelShareGroupByInviteAsync(String namespace, String invitation, String groupName, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cancelShareGroupByInviteAsync(String workspace, String teamspace, String invitation, String groupName, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelShareGroupByInviteValidateBeforeCall(namespace, invitation, groupName, _callback);
+        okhttp3.Call localVarCall = cancelShareGroupByInviteValidateBeforeCall(workspace, teamspace, invitation, groupName, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for cancelSharePayment
-     * @param namespace name or UUID of namespace sharing their payment info (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param target name or UUID of recipient namespace (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -667,7 +700,7 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelSharePaymentCall(String namespace, String target, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cancelSharePaymentCall(String workspace, String teamspace, String target, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -684,9 +717,10 @@ public class InvitationApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/invitations/share_payment/{namespace}/{target}"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "target" + "}", localVarApiClient.escapeString(target.toString()));
+        String localVarPath = "/invitations/share_payment/{workspace}/{teamspace}/{target}"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "target" + "\\}", localVarApiClient.escapeString(target.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -703,36 +737,46 @@ public class InvitationApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelSharePaymentValidateBeforeCall(String namespace, String target, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling cancelSharePayment(Async)");
+    private okhttp3.Call cancelSharePaymentValidateBeforeCall(String workspace, String teamspace, String target, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling cancelSharePayment(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling cancelSharePayment(Async)");
+        }
+        
         // verify the required parameter 'target' is set
         if (target == null) {
             throw new ApiException("Missing the required parameter 'target' when calling cancelSharePayment(Async)");
         }
+        
 
-        return cancelSharePaymentCall(namespace, target, _callback);
+        okhttp3.Call localVarCall = cancelSharePaymentCall(workspace, teamspace, target, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Revokes invitation from the source namespace to the target.
-     * @param namespace name or UUID of namespace sharing their payment info (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param target name or UUID of recipient namespace (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -743,14 +787,15 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void cancelSharePayment(String namespace, String target) throws ApiException {
-        cancelSharePaymentWithHttpInfo(namespace, target);
+    public void cancelSharePayment(String workspace, String teamspace, String target) throws ApiException {
+        cancelSharePaymentWithHttpInfo(workspace, teamspace, target);
     }
 
     /**
      * 
      * Revokes invitation from the source namespace to the target.
-     * @param namespace name or UUID of namespace sharing their payment info (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param target name or UUID of recipient namespace (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -762,15 +807,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> cancelSharePaymentWithHttpInfo(String namespace, String target) throws ApiException {
-        okhttp3.Call localVarCall = cancelSharePaymentValidateBeforeCall(namespace, target, null);
+    public ApiResponse<Void> cancelSharePaymentWithHttpInfo(String workspace, String teamspace, String target) throws ApiException {
+        okhttp3.Call localVarCall = cancelSharePaymentValidateBeforeCall(workspace, teamspace, target, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Revokes invitation from the source namespace to the target.
-     * @param namespace name or UUID of namespace sharing their payment info (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param target name or UUID of recipient namespace (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -783,9 +829,9 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelSharePaymentAsync(String namespace, String target, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call cancelSharePaymentAsync(String workspace, String teamspace, String target, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelSharePaymentValidateBeforeCall(namespace, target, _callback);
+        okhttp3.Call localVarCall = cancelSharePaymentValidateBeforeCall(workspace, teamspace, target, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -886,19 +932,23 @@ public class InvitationApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call fetchInvitationsValidateBeforeCall(String organization, String array, String group, Integer start, Integer end, Integer page, Integer perPage, String type, String status, String orderby, final ApiCallback _callback) throws ApiException {
-        return fetchInvitationsCall(organization, array, group, start, end, page, perPage, type, status, orderby, _callback);
+        
+
+        okhttp3.Call localVarCall = fetchInvitationsCall(organization, array, group, start, end, page, perPage, type, status, orderby, _callback);
+        return localVarCall;
 
     }
 
@@ -1025,7 +1075,7 @@ public class InvitationApi {
 
         // create path and map variables
         String localVarPath = "/invitations/{organization}/join"
-            .replace("{" + "organization" + "}", localVarApiClient.escapeString(organization.toString()));
+            .replaceAll("\\{" + "organization" + "\\}", localVarApiClient.escapeString(organization.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1049,23 +1099,26 @@ public class InvitationApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call joinOrganizationValidateBeforeCall(String organization, InvitationOrganizationJoinEmail emailInvite, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'organization' is set
         if (organization == null) {
             throw new ApiException("Missing the required parameter 'organization' when calling joinOrganization(Async)");
         }
-
+        
         // verify the required parameter 'emailInvite' is set
         if (emailInvite == null) {
             throw new ApiException("Missing the required parameter 'emailInvite' when calling joinOrganization(Async)");
         }
+        
 
-        return joinOrganizationCall(organization, emailInvite, _callback);
+        okhttp3.Call localVarCall = joinOrganizationCall(organization, emailInvite, _callback);
+        return localVarCall;
 
     }
 
@@ -1137,7 +1190,8 @@ public class InvitationApi {
     }
     /**
      * Build call for shareArrayByInvite
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param emailInvite list of email recipients (required)
      * @param _callback Callback for upload/download progress
@@ -1153,7 +1207,7 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call shareArrayByInviteCall(String namespace, String array, InvitationArrayShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call shareArrayByInviteCall(String workspace, String teamspace, String array, InvitationArrayShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1170,9 +1224,10 @@ public class InvitationApi {
         Object localVarPostBody = emailInvite;
 
         // create path and map variables
-        String localVarPath = "/invitations/{namespace}/{array}/share"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
+        String localVarPath = "/invitations/{workspace}/{teamspace}/{array}/share"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1196,35 +1251,44 @@ public class InvitationApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call shareArrayByInviteValidateBeforeCall(String namespace, String array, InvitationArrayShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling shareArrayByInvite(Async)");
+    private okhttp3.Call shareArrayByInviteValidateBeforeCall(String workspace, String teamspace, String array, InvitationArrayShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling shareArrayByInvite(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling shareArrayByInvite(Async)");
+        }
+        
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling shareArrayByInvite(Async)");
         }
-
+        
         // verify the required parameter 'emailInvite' is set
         if (emailInvite == null) {
             throw new ApiException("Missing the required parameter 'emailInvite' when calling shareArrayByInvite(Async)");
         }
+        
 
-        return shareArrayByInviteCall(namespace, array, emailInvite, _callback);
+        okhttp3.Call localVarCall = shareArrayByInviteCall(workspace, teamspace, array, emailInvite, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Sends email to multiple recipients with sharing information regarding an array
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param emailInvite list of email recipients (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1238,14 +1302,15 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void shareArrayByInvite(String namespace, String array, InvitationArrayShareEmail emailInvite) throws ApiException {
-        shareArrayByInviteWithHttpInfo(namespace, array, emailInvite);
+    public void shareArrayByInvite(String workspace, String teamspace, String array, InvitationArrayShareEmail emailInvite) throws ApiException {
+        shareArrayByInviteWithHttpInfo(workspace, teamspace, array, emailInvite);
     }
 
     /**
      * 
      * Sends email to multiple recipients with sharing information regarding an array
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param emailInvite list of email recipients (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1260,15 +1325,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> shareArrayByInviteWithHttpInfo(String namespace, String array, InvitationArrayShareEmail emailInvite) throws ApiException {
-        okhttp3.Call localVarCall = shareArrayByInviteValidateBeforeCall(namespace, array, emailInvite, null);
+    public ApiResponse<Void> shareArrayByInviteWithHttpInfo(String workspace, String teamspace, String array, InvitationArrayShareEmail emailInvite) throws ApiException {
+        okhttp3.Call localVarCall = shareArrayByInviteValidateBeforeCall(workspace, teamspace, array, emailInvite, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Sends email to multiple recipients with sharing information regarding an array
-     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
      * @param emailInvite list of email recipients (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1284,15 +1350,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call shareArrayByInviteAsync(String namespace, String array, InvitationArrayShareEmail emailInvite, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call shareArrayByInviteAsync(String workspace, String teamspace, String array, InvitationArrayShareEmail emailInvite, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = shareArrayByInviteValidateBeforeCall(namespace, array, emailInvite, _callback);
+        okhttp3.Call localVarCall = shareArrayByInviteValidateBeforeCall(workspace, teamspace, array, emailInvite, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for shareGroupByInvite
-     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param group name/uri of group that is url-encoded (required)
      * @param emailInvite list of email/namespace recipients (required)
      * @param _callback Callback for upload/download progress
@@ -1308,7 +1375,7 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call shareGroupByInviteCall(String namespace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call shareGroupByInviteCall(String workspace, String teamspace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1325,9 +1392,10 @@ public class InvitationApi {
         Object localVarPostBody = emailInvite;
 
         // create path and map variables
-        String localVarPath = "/invitations/group/{namespace}/{group}/share"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "group" + "}", localVarApiClient.escapeString(group.toString()));
+        String localVarPath = "/invitations/group/{workspace}/{teamspace}/{group}/share"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "group" + "\\}", localVarApiClient.escapeString(group.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1351,35 +1419,44 @@ public class InvitationApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call shareGroupByInviteValidateBeforeCall(String namespace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling shareGroupByInvite(Async)");
+    private okhttp3.Call shareGroupByInviteValidateBeforeCall(String workspace, String teamspace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling shareGroupByInvite(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling shareGroupByInvite(Async)");
+        }
+        
         // verify the required parameter 'group' is set
         if (group == null) {
             throw new ApiException("Missing the required parameter 'group' when calling shareGroupByInvite(Async)");
         }
-
+        
         // verify the required parameter 'emailInvite' is set
         if (emailInvite == null) {
             throw new ApiException("Missing the required parameter 'emailInvite' when calling shareGroupByInvite(Async)");
         }
+        
 
-        return shareGroupByInviteCall(namespace, group, emailInvite, _callback);
+        okhttp3.Call localVarCall = shareGroupByInviteCall(workspace, teamspace, group, emailInvite, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Sends email to multiple recipients with sharing information regarding a group
-     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param group name/uri of group that is url-encoded (required)
      * @param emailInvite list of email/namespace recipients (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1393,14 +1470,15 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void shareGroupByInvite(String namespace, String group, InvitationGroupShareEmail emailInvite) throws ApiException {
-        shareGroupByInviteWithHttpInfo(namespace, group, emailInvite);
+    public void shareGroupByInvite(String workspace, String teamspace, String group, InvitationGroupShareEmail emailInvite) throws ApiException {
+        shareGroupByInviteWithHttpInfo(workspace, teamspace, group, emailInvite);
     }
 
     /**
      * 
      * Sends email to multiple recipients with sharing information regarding a group
-     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param group name/uri of group that is url-encoded (required)
      * @param emailInvite list of email/namespace recipients (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1415,15 +1493,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> shareGroupByInviteWithHttpInfo(String namespace, String group, InvitationGroupShareEmail emailInvite) throws ApiException {
-        okhttp3.Call localVarCall = shareGroupByInviteValidateBeforeCall(namespace, group, emailInvite, null);
+    public ApiResponse<Void> shareGroupByInviteWithHttpInfo(String workspace, String teamspace, String group, InvitationGroupShareEmail emailInvite) throws ApiException {
+        okhttp3.Call localVarCall = shareGroupByInviteValidateBeforeCall(workspace, teamspace, group, emailInvite, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Sends email to multiple recipients with sharing information regarding a group
-     * @param namespace namespace group is in (an organization name or user&#39;s username) (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param group name/uri of group that is url-encoded (required)
      * @param emailInvite list of email/namespace recipients (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1439,15 +1518,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call shareGroupByInviteAsync(String namespace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call shareGroupByInviteAsync(String workspace, String teamspace, String group, InvitationGroupShareEmail emailInvite, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = shareGroupByInviteValidateBeforeCall(namespace, group, emailInvite, _callback);
+        okhttp3.Call localVarCall = shareGroupByInviteValidateBeforeCall(workspace, teamspace, group, emailInvite, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for sharePayment
-     * @param namespace name or UUID of namespace sharing their payment info (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param emailInvite Recipients of the invitation. These may only be namespaces, not email addresses.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1462,7 +1542,7 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sharePaymentCall(String namespace, SharePaymentRequest emailInvite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call sharePaymentCall(String workspace, String teamspace, SharePaymentRequest emailInvite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1479,8 +1559,9 @@ public class InvitationApi {
         Object localVarPostBody = emailInvite;
 
         // create path and map variables
-        String localVarPath = "/invitations/share_payment/{namespace}"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()));
+        String localVarPath = "/invitations/share_payment/{workspace}/{teamspace}"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1504,25 +1585,34 @@ public class InvitationApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call sharePaymentValidateBeforeCall(String namespace, SharePaymentRequest emailInvite, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling sharePayment(Async)");
+    private okhttp3.Call sharePaymentValidateBeforeCall(String workspace, String teamspace, SharePaymentRequest emailInvite, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling sharePayment(Async)");
         }
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling sharePayment(Async)");
+        }
+        
 
-        return sharePaymentCall(namespace, emailInvite, _callback);
+        okhttp3.Call localVarCall = sharePaymentCall(workspace, teamspace, emailInvite, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Sends email to multiple recipients allowing them to use the payment instrument provided by the source namespace. 
-     * @param namespace name or UUID of namespace sharing their payment info (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param emailInvite Recipients of the invitation. These may only be namespaces, not email addresses.  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1535,14 +1625,15 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void sharePayment(String namespace, SharePaymentRequest emailInvite) throws ApiException {
-        sharePaymentWithHttpInfo(namespace, emailInvite);
+    public void sharePayment(String workspace, String teamspace, SharePaymentRequest emailInvite) throws ApiException {
+        sharePaymentWithHttpInfo(workspace, teamspace, emailInvite);
     }
 
     /**
      * 
      * Sends email to multiple recipients allowing them to use the payment instrument provided by the source namespace. 
-     * @param namespace name or UUID of namespace sharing their payment info (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param emailInvite Recipients of the invitation. These may only be namespaces, not email addresses.  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1556,15 +1647,16 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> sharePaymentWithHttpInfo(String namespace, SharePaymentRequest emailInvite) throws ApiException {
-        okhttp3.Call localVarCall = sharePaymentValidateBeforeCall(namespace, emailInvite, null);
+    public ApiResponse<Void> sharePaymentWithHttpInfo(String workspace, String teamspace, SharePaymentRequest emailInvite) throws ApiException {
+        okhttp3.Call localVarCall = sharePaymentValidateBeforeCall(workspace, teamspace, emailInvite, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Sends email to multiple recipients allowing them to use the payment instrument provided by the source namespace. 
-     * @param namespace name or UUID of namespace sharing their payment info (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param emailInvite Recipients of the invitation. These may only be namespaces, not email addresses.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1579,9 +1671,9 @@ public class InvitationApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sharePaymentAsync(String namespace, SharePaymentRequest emailInvite, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call sharePaymentAsync(String workspace, String teamspace, SharePaymentRequest emailInvite, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = sharePaymentValidateBeforeCall(namespace, emailInvite, _callback);
+        okhttp3.Call localVarCall = sharePaymentValidateBeforeCall(workspace, teamspace, emailInvite, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

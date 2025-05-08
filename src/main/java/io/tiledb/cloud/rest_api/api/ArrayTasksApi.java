@@ -19,8 +19,6 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ProgressRequestBody;
-import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -28,7 +26,6 @@ import java.io.IOException;
 
 
 import io.tiledb.cloud.rest_api.model.ArrayTaskBrowserSidebar;
-import io.tiledb.cloud.rest_api.model.Error;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -131,19 +128,23 @@ public class ArrayTasksApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayTasksSidebarValidateBeforeCall(Integer start, Integer end, final ApiCallback _callback) throws ApiException {
-        return getArrayTasksSidebarCall(start, end, _callback);
+        
+
+        okhttp3.Call localVarCall = getArrayTasksSidebarCall(start, end, _callback);
+        return localVarCall;
 
     }
 

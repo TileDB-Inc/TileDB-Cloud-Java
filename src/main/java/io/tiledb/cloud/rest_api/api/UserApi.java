@@ -19,8 +19,6 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
-import io.tiledb.cloud.rest_api.ProgressRequestBody;
-import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -28,7 +26,8 @@ import java.io.IOException;
 
 
 import io.tiledb.cloud.rest_api.model.AWSAccessCredentials;
-import io.tiledb.cloud.rest_api.model.Error;
+
+import java.time.OffsetDateTime;
 import io.tiledb.cloud.rest_api.model.OrganizationUser;
 import io.tiledb.cloud.rest_api.model.ResetUserPasswordRequest;
 import io.tiledb.cloud.rest_api.model.Token;
@@ -81,7 +80,8 @@ public class UserApi {
 
     /**
      * Build call for addAWSAccessCredentials
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param awsAccessCredentials aws access credentials to store for a namespace (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -94,7 +94,7 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addAWSAccessCredentialsCall(String namespace, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addAWSAccessCredentialsCall(String workspace, String teamspace, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -111,8 +111,9 @@ public class UserApi {
         Object localVarPostBody = awsAccessCredentials;
 
         // create path and map variables
-        String localVarPath = "/credentials/{namespace}/aws"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()));
+        String localVarPath = "/credentials/{workspace}/{teamspace}/aws"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -136,30 +137,39 @@ public class UserApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addAWSAccessCredentialsValidateBeforeCall(String namespace, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling addAWSAccessCredentials(Async)");
+    private okhttp3.Call addAWSAccessCredentialsValidateBeforeCall(String workspace, String teamspace, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling addAWSAccessCredentials(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling addAWSAccessCredentials(Async)");
+        }
+        
         // verify the required parameter 'awsAccessCredentials' is set
         if (awsAccessCredentials == null) {
             throw new ApiException("Missing the required parameter 'awsAccessCredentials' when calling addAWSAccessCredentials(Async)");
         }
+        
 
-        return addAWSAccessCredentialsCall(namespace, awsAccessCredentials, _callback);
+        okhttp3.Call localVarCall = addAWSAccessCredentialsCall(workspace, teamspace, awsAccessCredentials, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Add aws keys
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param awsAccessCredentials aws access credentials to store for a namespace (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -170,14 +180,15 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void addAWSAccessCredentials(String namespace, AWSAccessCredentials awsAccessCredentials) throws ApiException {
-        addAWSAccessCredentialsWithHttpInfo(namespace, awsAccessCredentials);
+    public void addAWSAccessCredentials(String workspace, String teamspace, AWSAccessCredentials awsAccessCredentials) throws ApiException {
+        addAWSAccessCredentialsWithHttpInfo(workspace, teamspace, awsAccessCredentials);
     }
 
     /**
      * 
      * Add aws keys
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param awsAccessCredentials aws access credentials to store for a namespace (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -189,15 +200,16 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addAWSAccessCredentialsWithHttpInfo(String namespace, AWSAccessCredentials awsAccessCredentials) throws ApiException {
-        okhttp3.Call localVarCall = addAWSAccessCredentialsValidateBeforeCall(namespace, awsAccessCredentials, null);
+    public ApiResponse<Void> addAWSAccessCredentialsWithHttpInfo(String workspace, String teamspace, AWSAccessCredentials awsAccessCredentials) throws ApiException {
+        okhttp3.Call localVarCall = addAWSAccessCredentialsValidateBeforeCall(workspace, teamspace, awsAccessCredentials, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Add aws keys
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param awsAccessCredentials aws access credentials to store for a namespace (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -210,9 +222,9 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addAWSAccessCredentialsAsync(String namespace, AWSAccessCredentials awsAccessCredentials, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addAWSAccessCredentialsAsync(String workspace, String teamspace, AWSAccessCredentials awsAccessCredentials, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addAWSAccessCredentialsValidateBeforeCall(namespace, awsAccessCredentials, _callback);
+        okhttp3.Call localVarCall = addAWSAccessCredentialsValidateBeforeCall(workspace, teamspace, awsAccessCredentials, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -249,7 +261,7 @@ public class UserApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{organization}/user"
-            .replace("{" + "organization" + "}", localVarApiClient.escapeString(organization.toString()));
+            .replaceAll("\\{" + "organization" + "\\}", localVarApiClient.escapeString(organization.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -273,23 +285,26 @@ public class UserApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addUserToOrganizationValidateBeforeCall(String organization, OrganizationUser user, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'organization' is set
         if (organization == null) {
             throw new ApiException("Missing the required parameter 'organization' when calling addUserToOrganization(Async)");
         }
-
+        
         // verify the required parameter 'user' is set
         if (user == null) {
             throw new ApiException("Missing the required parameter 'user' when calling addUserToOrganization(Async)");
         }
+        
 
-        return addUserToOrganizationCall(organization, user, _callback);
+        okhttp3.Call localVarCall = addUserToOrganizationCall(organization, user, _callback);
+        return localVarCall;
 
     }
 
@@ -355,7 +370,8 @@ public class UserApi {
     }
     /**
      * Build call for checkAWSAccessCredentials
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -367,7 +383,7 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkAWSAccessCredentialsCall(String namespace, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkAWSAccessCredentialsCall(String workspace, String teamspace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -384,8 +400,9 @@ public class UserApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/credentials/{namespace}/aws"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()));
+        String localVarPath = "/credentials/{workspace}/{teamspace}/aws"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -402,31 +419,41 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkAWSAccessCredentialsValidateBeforeCall(String namespace, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling checkAWSAccessCredentials(Async)");
+    private okhttp3.Call checkAWSAccessCredentialsValidateBeforeCall(String workspace, String teamspace, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling checkAWSAccessCredentials(Async)");
         }
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling checkAWSAccessCredentials(Async)");
+        }
+        
 
-        return checkAWSAccessCredentialsCall(namespace, _callback);
+        okhttp3.Call localVarCall = checkAWSAccessCredentialsCall(workspace, teamspace, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Check if aws keys are set
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @return List&lt;AWSAccessCredentials&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -437,15 +464,16 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public List<AWSAccessCredentials> checkAWSAccessCredentials(String namespace) throws ApiException {
-        ApiResponse<List<AWSAccessCredentials>> localVarResp = checkAWSAccessCredentialsWithHttpInfo(namespace);
+    public List<AWSAccessCredentials> checkAWSAccessCredentials(String workspace, String teamspace) throws ApiException {
+        ApiResponse<List<AWSAccessCredentials>> localVarResp = checkAWSAccessCredentialsWithHttpInfo(workspace, teamspace);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Check if aws keys are set
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @return ApiResponse&lt;List&lt;AWSAccessCredentials&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -456,8 +484,8 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<AWSAccessCredentials>> checkAWSAccessCredentialsWithHttpInfo(String namespace) throws ApiException {
-        okhttp3.Call localVarCall = checkAWSAccessCredentialsValidateBeforeCall(namespace, null);
+    public ApiResponse<List<AWSAccessCredentials>> checkAWSAccessCredentialsWithHttpInfo(String workspace, String teamspace) throws ApiException {
+        okhttp3.Call localVarCall = checkAWSAccessCredentialsValidateBeforeCall(workspace, teamspace, null);
         Type localVarReturnType = new TypeToken<List<AWSAccessCredentials>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -465,7 +493,8 @@ public class UserApi {
     /**
      *  (asynchronously)
      * Check if aws keys are set
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -477,16 +506,17 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkAWSAccessCredentialsAsync(String namespace, final ApiCallback<List<AWSAccessCredentials>> _callback) throws ApiException {
+    public okhttp3.Call checkAWSAccessCredentialsAsync(String workspace, String teamspace, final ApiCallback<List<AWSAccessCredentials>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = checkAWSAccessCredentialsValidateBeforeCall(namespace, _callback);
+        okhttp3.Call localVarCall = checkAWSAccessCredentialsValidateBeforeCall(workspace, teamspace, _callback);
         Type localVarReturnType = new TypeToken<List<AWSAccessCredentials>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for checkAWSAccessCredentialsByName
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -499,7 +529,7 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkAWSAccessCredentialsByNameCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkAWSAccessCredentialsByNameCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -516,9 +546,10 @@ public class UserApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/credentials/{namespace}/aws/{name}"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+        String localVarPath = "/credentials/{workspace}/{teamspace}/aws/{name}"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -535,36 +566,46 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkAWSAccessCredentialsByNameValidateBeforeCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling checkAWSAccessCredentialsByName(Async)");
+    private okhttp3.Call checkAWSAccessCredentialsByNameValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling checkAWSAccessCredentialsByName(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling checkAWSAccessCredentialsByName(Async)");
+        }
+        
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling checkAWSAccessCredentialsByName(Async)");
         }
+        
 
-        return checkAWSAccessCredentialsByNameCall(namespace, name, _callback);
+        okhttp3.Call localVarCall = checkAWSAccessCredentialsByNameCall(workspace, teamspace, name, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Check if aws keys are set by name
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @return AWSAccessCredentials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -576,15 +617,16 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public AWSAccessCredentials checkAWSAccessCredentialsByName(String namespace, String name) throws ApiException {
-        ApiResponse<AWSAccessCredentials> localVarResp = checkAWSAccessCredentialsByNameWithHttpInfo(namespace, name);
+    public AWSAccessCredentials checkAWSAccessCredentialsByName(String workspace, String teamspace, String name) throws ApiException {
+        ApiResponse<AWSAccessCredentials> localVarResp = checkAWSAccessCredentialsByNameWithHttpInfo(workspace, teamspace, name);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Check if aws keys are set by name
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @return ApiResponse&lt;AWSAccessCredentials&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -596,8 +638,8 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AWSAccessCredentials> checkAWSAccessCredentialsByNameWithHttpInfo(String namespace, String name) throws ApiException {
-        okhttp3.Call localVarCall = checkAWSAccessCredentialsByNameValidateBeforeCall(namespace, name, null);
+    public ApiResponse<AWSAccessCredentials> checkAWSAccessCredentialsByNameWithHttpInfo(String workspace, String teamspace, String name) throws ApiException {
+        okhttp3.Call localVarCall = checkAWSAccessCredentialsByNameValidateBeforeCall(workspace, teamspace, name, null);
         Type localVarReturnType = new TypeToken<AWSAccessCredentials>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -605,7 +647,8 @@ public class UserApi {
     /**
      *  (asynchronously)
      * Check if aws keys are set by name
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -618,9 +661,9 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkAWSAccessCredentialsByNameAsync(String namespace, String name, final ApiCallback<AWSAccessCredentials> _callback) throws ApiException {
+    public okhttp3.Call checkAWSAccessCredentialsByNameAsync(String workspace, String teamspace, String name, final ApiCallback<AWSAccessCredentials> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = checkAWSAccessCredentialsByNameValidateBeforeCall(namespace, name, _callback);
+        okhttp3.Call localVarCall = checkAWSAccessCredentialsByNameValidateBeforeCall(workspace, teamspace, name, _callback);
         Type localVarReturnType = new TypeToken<AWSAccessCredentials>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -672,19 +715,23 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call confirmEmailValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return confirmEmailCall(_callback);
+        
+
+        okhttp3.Call localVarCall = confirmEmailCall(_callback);
+        return localVarCall;
 
     }
 
@@ -797,18 +844,21 @@ public class UserApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createUserValidateBeforeCall(User user, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'user' is set
         if (user == null) {
             throw new ApiException("Missing the required parameter 'user' when calling createUser(Async)");
         }
+        
 
-        return createUserCall(user, _callback);
+        okhttp3.Call localVarCall = createUserCall(user, _callback);
+        return localVarCall;
 
     }
 
@@ -871,7 +921,8 @@ public class UserApi {
     }
     /**
      * Build call for deleteAWSAccessCredentials
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -884,7 +935,7 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAWSAccessCredentialsCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAWSAccessCredentialsCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -901,9 +952,10 @@ public class UserApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/credentials/{namespace}/aws/{name}"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+        String localVarPath = "/credentials/{workspace}/{teamspace}/aws/{name}"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -920,36 +972,46 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAWSAccessCredentialsValidateBeforeCall(String namespace, String name, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling deleteAWSAccessCredentials(Async)");
+    private okhttp3.Call deleteAWSAccessCredentialsValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling deleteAWSAccessCredentials(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling deleteAWSAccessCredentials(Async)");
+        }
+        
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteAWSAccessCredentials(Async)");
         }
+        
 
-        return deleteAWSAccessCredentialsCall(namespace, name, _callback);
+        okhttp3.Call localVarCall = deleteAWSAccessCredentialsCall(workspace, teamspace, name, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * delete a AWS Access credentials in a namespace. This will likely cause arrays to become unreachable
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -960,14 +1022,15 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteAWSAccessCredentials(String namespace, String name) throws ApiException {
-        deleteAWSAccessCredentialsWithHttpInfo(namespace, name);
+    public void deleteAWSAccessCredentials(String workspace, String teamspace, String name) throws ApiException {
+        deleteAWSAccessCredentialsWithHttpInfo(workspace, teamspace, name);
     }
 
     /**
      * 
      * delete a AWS Access credentials in a namespace. This will likely cause arrays to become unreachable
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -979,15 +1042,16 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteAWSAccessCredentialsWithHttpInfo(String namespace, String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteAWSAccessCredentialsValidateBeforeCall(namespace, name, null);
+    public ApiResponse<Void> deleteAWSAccessCredentialsWithHttpInfo(String workspace, String teamspace, String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteAWSAccessCredentialsValidateBeforeCall(workspace, teamspace, name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * delete a AWS Access credentials in a namespace. This will likely cause arrays to become unreachable
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1000,9 +1064,9 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAWSAccessCredentialsAsync(String namespace, String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAWSAccessCredentialsAsync(String workspace, String teamspace, String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteAWSAccessCredentialsValidateBeforeCall(namespace, name, _callback);
+        okhttp3.Call localVarCall = deleteAWSAccessCredentialsValidateBeforeCall(workspace, teamspace, name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1038,7 +1102,7 @@ public class UserApi {
 
         // create path and map variables
         String localVarPath = "/users/{username}"
-            .replace("{" + "username" + "}", localVarApiClient.escapeString(username.toString()));
+            .replaceAll("\\{" + "username" + "\\}", localVarApiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1055,24 +1119,28 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteUserValidateBeforeCall(String username, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new ApiException("Missing the required parameter 'username' when calling deleteUser(Async)");
         }
+        
 
-        return deleteUserCall(username, _callback);
+        okhttp3.Call localVarCall = deleteUserCall(username, _callback);
+        return localVarCall;
 
     }
 
@@ -1166,8 +1234,8 @@ public class UserApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{organization}/{username}"
-            .replace("{" + "organization" + "}", localVarApiClient.escapeString(organization.toString()))
-            .replace("{" + "username" + "}", localVarApiClient.escapeString(username.toString()));
+            .replaceAll("\\{" + "organization" + "\\}", localVarApiClient.escapeString(organization.toString()))
+            .replaceAll("\\{" + "username" + "\\}", localVarApiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1184,29 +1252,33 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteUserFromOrganizationValidateBeforeCall(String organization, String username, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'organization' is set
         if (organization == null) {
             throw new ApiException("Missing the required parameter 'organization' when calling deleteUserFromOrganization(Async)");
         }
-
+        
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new ApiException("Missing the required parameter 'username' when calling deleteUserFromOrganization(Async)");
         }
+        
 
-        return deleteUserFromOrganizationCall(organization, username, _callback);
+        okhttp3.Call localVarCall = deleteUserFromOrganizationCall(organization, username, _callback);
+        return localVarCall;
 
     }
 
@@ -1304,8 +1376,8 @@ public class UserApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{organization}/{username}"
-            .replace("{" + "organization" + "}", localVarApiClient.escapeString(organization.toString()))
-            .replace("{" + "username" + "}", localVarApiClient.escapeString(username.toString()));
+            .replaceAll("\\{" + "organization" + "\\}", localVarApiClient.escapeString(organization.toString()))
+            .replaceAll("\\{" + "username" + "\\}", localVarApiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1322,29 +1394,33 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getOrganizationUserValidateBeforeCall(String organization, String username, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'organization' is set
         if (organization == null) {
             throw new ApiException("Missing the required parameter 'organization' when calling getOrganizationUser(Async)");
         }
-
+        
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new ApiException("Missing the required parameter 'username' when calling getOrganizationUser(Async)");
         }
+        
 
-        return getOrganizationUserCall(organization, username, _callback);
+        okhttp3.Call localVarCall = getOrganizationUserCall(organization, username, _callback);
+        return localVarCall;
 
     }
 
@@ -1418,6 +1494,7 @@ public class UserApi {
     /**
      * Build call for getSession
      * @param rememberMe flag to create a token with expiration of 30 days, default is false (optional)
+     * @param expires Expiration date for token, if empty token defaults to 30 minutes (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1429,7 +1506,7 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSessionCall(String rememberMe, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSessionCall(String rememberMe, OffsetDateTime expires, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1458,6 +1535,10 @@ public class UserApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("remember_me", rememberMe));
         }
 
+        if (expires != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("expires", expires));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1467,19 +1548,23 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSessionValidateBeforeCall(String rememberMe, final ApiCallback _callback) throws ApiException {
-        return getSessionCall(rememberMe, _callback);
+    private okhttp3.Call getSessionValidateBeforeCall(String rememberMe, OffsetDateTime expires, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getSessionCall(rememberMe, expires, _callback);
+        return localVarCall;
 
     }
 
@@ -1487,6 +1572,7 @@ public class UserApi {
      * 
      * Get session token for user
      * @param rememberMe flag to create a token with expiration of 30 days, default is false (optional)
+     * @param expires Expiration date for token, if empty token defaults to 30 minutes (optional)
      * @return Token
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1497,8 +1583,8 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public Token getSession(String rememberMe) throws ApiException {
-        ApiResponse<Token> localVarResp = getSessionWithHttpInfo(rememberMe);
+    public Token getSession(String rememberMe, OffsetDateTime expires) throws ApiException {
+        ApiResponse<Token> localVarResp = getSessionWithHttpInfo(rememberMe, expires);
         return localVarResp.getData();
     }
 
@@ -1506,6 +1592,7 @@ public class UserApi {
      * 
      * Get session token for user
      * @param rememberMe flag to create a token with expiration of 30 days, default is false (optional)
+     * @param expires Expiration date for token, if empty token defaults to 30 minutes (optional)
      * @return ApiResponse&lt;Token&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1516,8 +1603,8 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Token> getSessionWithHttpInfo(String rememberMe) throws ApiException {
-        okhttp3.Call localVarCall = getSessionValidateBeforeCall(rememberMe, null);
+    public ApiResponse<Token> getSessionWithHttpInfo(String rememberMe, OffsetDateTime expires) throws ApiException {
+        okhttp3.Call localVarCall = getSessionValidateBeforeCall(rememberMe, expires, null);
         Type localVarReturnType = new TypeToken<Token>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1526,6 +1613,7 @@ public class UserApi {
      *  (asynchronously)
      * Get session token for user
      * @param rememberMe flag to create a token with expiration of 30 days, default is false (optional)
+     * @param expires Expiration date for token, if empty token defaults to 30 minutes (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1537,9 +1625,9 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSessionAsync(String rememberMe, final ApiCallback<Token> _callback) throws ApiException {
+    public okhttp3.Call getSessionAsync(String rememberMe, OffsetDateTime expires, final ApiCallback<Token> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSessionValidateBeforeCall(rememberMe, _callback);
+        okhttp3.Call localVarCall = getSessionValidateBeforeCall(rememberMe, expires, _callback);
         Type localVarReturnType = new TypeToken<Token>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1591,19 +1679,23 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getTokenScopesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getTokenScopesCall(_callback);
+        
+
+        okhttp3.Call localVarCall = getTokenScopesCall(_callback);
+        return localVarCall;
 
     }
 
@@ -1712,19 +1804,23 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getUserValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getUserCall(_callback);
+        
+
+        okhttp3.Call localVarCall = getUserCall(_callback);
+        return localVarCall;
 
     }
 
@@ -1819,7 +1915,7 @@ public class UserApi {
 
         // create path and map variables
         String localVarPath = "/users/{username}"
-            .replace("{" + "username" + "}", localVarApiClient.escapeString(username.toString()));
+            .replaceAll("\\{" + "username" + "\\}", localVarApiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1836,24 +1932,28 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getUserWithUsernameValidateBeforeCall(String username, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new ApiException("Missing the required parameter 'username' when calling getUserWithUsername(Async)");
         }
+        
 
-        return getUserWithUsernameCall(username, _callback);
+        okhttp3.Call localVarCall = getUserWithUsernameCall(username, _callback);
+        return localVarCall;
 
     }
 
@@ -1976,13 +2076,16 @@ public class UserApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call requestTokenValidateBeforeCall(TokenRequest tokenRequest, final ApiCallback _callback) throws ApiException {
-        return requestTokenCall(tokenRequest, _callback);
+        
+
+        okhttp3.Call localVarCall = requestTokenCall(tokenRequest, _callback);
+        return localVarCall;
 
     }
 
@@ -2103,18 +2206,21 @@ public class UserApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call resetUserPasswordValidateBeforeCall(ResetUserPasswordRequest user, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'user' is set
         if (user == null) {
             throw new ApiException("Missing the required parameter 'user' when calling resetUserPassword(Async)");
         }
+        
 
-        return resetUserPasswordCall(user, _callback);
+        okhttp3.Call localVarCall = resetUserPasswordCall(user, _callback);
+        return localVarCall;
 
     }
 
@@ -2210,7 +2316,7 @@ public class UserApi {
 
         // create path and map variables
         String localVarPath = "/tokens/{token}"
-            .replace("{" + "token" + "}", localVarApiClient.escapeString(token.toString()));
+            .replaceAll("\\{" + "token" + "\\}", localVarApiClient.escapeString(token.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2227,24 +2333,28 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call revokeTokenValidateBeforeCall(String token, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'token' is set
         if (token == null) {
             throw new ApiException("Missing the required parameter 'token' when calling revokeToken(Async)");
         }
+        
 
-        return revokeTokenCall(token, _callback);
+        okhttp3.Call localVarCall = revokeTokenCall(token, _callback);
+        return localVarCall;
 
     }
 
@@ -2352,19 +2462,23 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call tokensGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return tokensGetCall(_callback);
+        
+
+        okhttp3.Call localVarCall = tokensGetCall(_callback);
+        return localVarCall;
 
     }
 
@@ -2473,19 +2587,23 @@ public class UserApi {
         }
 
         final String[] localVarContentTypes = {
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call tokensSessionGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return tokensSessionGetCall(_callback);
+        
+
+        okhttp3.Call localVarCall = tokensSessionGetCall(_callback);
+        return localVarCall;
 
     }
 
@@ -2549,7 +2667,8 @@ public class UserApi {
     }
     /**
      * Build call for updateAWSAccessCredentials
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @param awsAccessCredentials aws credentials to update (required)
      * @param _callback Callback for upload/download progress
@@ -2563,7 +2682,7 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAWSAccessCredentialsCall(String namespace, String name, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAWSAccessCredentialsCall(String workspace, String teamspace, String name, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2580,9 +2699,10 @@ public class UserApi {
         Object localVarPostBody = awsAccessCredentials;
 
         // create path and map variables
-        String localVarPath = "/credentials/{namespace}/aws/{name}"
-            .replace("{" + "namespace" + "}", localVarApiClient.escapeString(namespace.toString()))
-            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+        String localVarPath = "/credentials/{workspace}/{teamspace}/aws/{name}"
+            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
+            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
+            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2606,35 +2726,44 @@ public class UserApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAWSAccessCredentialsValidateBeforeCall(String namespace, String name, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'namespace' is set
-        if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling updateAWSAccessCredentials(Async)");
+    private okhttp3.Call updateAWSAccessCredentialsValidateBeforeCall(String workspace, String teamspace, String name, AWSAccessCredentials awsAccessCredentials, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling updateAWSAccessCredentials(Async)");
         }
-
+        
+        // verify the required parameter 'teamspace' is set
+        if (teamspace == null) {
+            throw new ApiException("Missing the required parameter 'teamspace' when calling updateAWSAccessCredentials(Async)");
+        }
+        
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling updateAWSAccessCredentials(Async)");
         }
-
+        
         // verify the required parameter 'awsAccessCredentials' is set
         if (awsAccessCredentials == null) {
             throw new ApiException("Missing the required parameter 'awsAccessCredentials' when calling updateAWSAccessCredentials(Async)");
         }
+        
 
-        return updateAWSAccessCredentialsCall(namespace, name, awsAccessCredentials, _callback);
+        okhttp3.Call localVarCall = updateAWSAccessCredentialsCall(workspace, teamspace, name, awsAccessCredentials, _callback);
+        return localVarCall;
 
     }
 
     /**
      * 
      * Update aws keys or associated buckets. This will update the key associations for each array in the namespace
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @param awsAccessCredentials aws credentials to update (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2646,14 +2775,15 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public void updateAWSAccessCredentials(String namespace, String name, AWSAccessCredentials awsAccessCredentials) throws ApiException {
-        updateAWSAccessCredentialsWithHttpInfo(namespace, name, awsAccessCredentials);
+    public void updateAWSAccessCredentials(String workspace, String teamspace, String name, AWSAccessCredentials awsAccessCredentials) throws ApiException {
+        updateAWSAccessCredentialsWithHttpInfo(workspace, teamspace, name, awsAccessCredentials);
     }
 
     /**
      * 
      * Update aws keys or associated buckets. This will update the key associations for each array in the namespace
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @param awsAccessCredentials aws credentials to update (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2666,15 +2796,16 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateAWSAccessCredentialsWithHttpInfo(String namespace, String name, AWSAccessCredentials awsAccessCredentials) throws ApiException {
-        okhttp3.Call localVarCall = updateAWSAccessCredentialsValidateBeforeCall(namespace, name, awsAccessCredentials, null);
+    public ApiResponse<Void> updateAWSAccessCredentialsWithHttpInfo(String workspace, String teamspace, String name, AWSAccessCredentials awsAccessCredentials) throws ApiException {
+        okhttp3.Call localVarCall = updateAWSAccessCredentialsValidateBeforeCall(workspace, teamspace, name, awsAccessCredentials, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Update aws keys or associated buckets. This will update the key associations for each array in the namespace
-     * @param namespace namespace (required)
+     * @param workspace the workspace containing the teamspace the array belongs to (required)
+     * @param teamspace the teamspace the array belongs to (required)
      * @param name name (required)
      * @param awsAccessCredentials aws credentials to update (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2688,9 +2819,9 @@ public class UserApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAWSAccessCredentialsAsync(String namespace, String name, AWSAccessCredentials awsAccessCredentials, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateAWSAccessCredentialsAsync(String workspace, String teamspace, String name, AWSAccessCredentials awsAccessCredentials, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateAWSAccessCredentialsValidateBeforeCall(namespace, name, awsAccessCredentials, _callback);
+        okhttp3.Call localVarCall = updateAWSAccessCredentialsValidateBeforeCall(workspace, teamspace, name, awsAccessCredentials, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -2727,7 +2858,7 @@ public class UserApi {
 
         // create path and map variables
         String localVarPath = "/users/{username}"
-            .replace("{" + "username" + "}", localVarApiClient.escapeString(username.toString()));
+            .replaceAll("\\{" + "username" + "\\}", localVarApiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2751,23 +2882,26 @@ public class UserApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateUserValidateBeforeCall(String username, User user, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new ApiException("Missing the required parameter 'username' when calling updateUser(Async)");
         }
-
+        
         // verify the required parameter 'user' is set
         if (user == null) {
             throw new ApiException("Missing the required parameter 'user' when calling updateUser(Async)");
         }
+        
 
-        return updateUserCall(username, user, _callback);
+        okhttp3.Call localVarCall = updateUserCall(username, user, _callback);
+        return localVarCall;
 
     }
 
@@ -2865,8 +2999,8 @@ public class UserApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{organization}/{username}"
-            .replace("{" + "organization" + "}", localVarApiClient.escapeString(organization.toString()))
-            .replace("{" + "username" + "}", localVarApiClient.escapeString(username.toString()));
+            .replaceAll("\\{" + "organization" + "\\}", localVarApiClient.escapeString(organization.toString()))
+            .replaceAll("\\{" + "username" + "\\}", localVarApiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2890,28 +3024,31 @@ public class UserApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateUserInOrganizationValidateBeforeCall(String organization, String username, OrganizationUser user, final ApiCallback _callback) throws ApiException {
+        
         // verify the required parameter 'organization' is set
         if (organization == null) {
             throw new ApiException("Missing the required parameter 'organization' when calling updateUserInOrganization(Async)");
         }
-
+        
         // verify the required parameter 'username' is set
         if (username == null) {
             throw new ApiException("Missing the required parameter 'username' when calling updateUserInOrganization(Async)");
         }
-
+        
         // verify the required parameter 'user' is set
         if (user == null) {
             throw new ApiException("Missing the required parameter 'user' when calling updateUserInOrganization(Async)");
         }
+        
 
-        return updateUserInOrganizationCall(organization, username, user, _callback);
+        okhttp3.Call localVarCall = updateUserInOrganizationCall(organization, username, user, _callback);
+        return localVarCall;
 
     }
 

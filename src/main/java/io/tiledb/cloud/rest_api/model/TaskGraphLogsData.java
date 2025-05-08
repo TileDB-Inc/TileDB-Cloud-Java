@@ -14,38 +14,29 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.PaginationMetadata;
-import io.tiledb.cloud.rest_api.model.TaskGraphLog;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -53,20 +44,22 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Response data for a task graph list, including pagination metadata.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Response data for a task graph list, including pagination metadata.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class TaskGraphLogsData {
   public static final String SERIALIZED_NAME_TASK_GRAPH_LOGS = "task_graph_logs";
   @SerializedName(SERIALIZED_NAME_TASK_GRAPH_LOGS)
-  private List<TaskGraphLog> taskGraphLogs = new ArrayList<>();
+  private List<TaskGraphLog> taskGraphLogs = null;
 
   public static final String SERIALIZED_NAME_PAGINATION_METADATA = "pagination_metadata";
   @SerializedName(SERIALIZED_NAME_PAGINATION_METADATA)
   private PaginationMetadata paginationMetadata;
 
-  public TaskGraphLogsData() {
+  public TaskGraphLogsData() { 
   }
 
   public TaskGraphLogsData taskGraphLogs(List<TaskGraphLog> taskGraphLogs) {
+    
     this.taskGraphLogs = taskGraphLogs;
     return this;
   }
@@ -79,14 +72,17 @@ public class TaskGraphLogsData {
     return this;
   }
 
-  /**
+   /**
    * The requested task graph logs.
    * @return taskGraphLogs
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The requested task graph logs.")
+
   public List<TaskGraphLog> getTaskGraphLogs() {
     return taskGraphLogs;
   }
+
 
   public void setTaskGraphLogs(List<TaskGraphLog> taskGraphLogs) {
     this.taskGraphLogs = taskGraphLogs;
@@ -94,18 +90,22 @@ public class TaskGraphLogsData {
 
 
   public TaskGraphLogsData paginationMetadata(PaginationMetadata paginationMetadata) {
+    
     this.paginationMetadata = paginationMetadata;
     return this;
   }
 
-  /**
+   /**
    * Get paginationMetadata
    * @return paginationMetadata
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public PaginationMetadata getPaginationMetadata() {
     return paginationMetadata;
   }
+
 
   public void setPaginationMetadata(PaginationMetadata paginationMetadata) {
     this.paginationMetadata = paginationMetadata;
@@ -121,10 +121,6 @@ public class TaskGraphLogsData {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the TaskGraphLogsData instance itself
    */
   public TaskGraphLogsData putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -136,8 +132,6 @@ public class TaskGraphLogsData {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -145,9 +139,6 @@ public class TaskGraphLogsData {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -212,36 +203,35 @@ public class TaskGraphLogsData {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TaskGraphLogsData
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!TaskGraphLogsData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to TaskGraphLogsData
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (TaskGraphLogsData.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraphLogsData is not found in the empty JSON string", TaskGraphLogsData.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("task_graph_logs") != null && !jsonObj.get("task_graph_logs").isJsonNull()) {
-        JsonArray jsonArraytaskGraphLogs = jsonObj.getAsJsonArray("task_graph_logs");
-        if (jsonArraytaskGraphLogs != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("task_graph_logs").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `task_graph_logs` to be an array in the JSON string but got `%s`", jsonObj.get("task_graph_logs").toString()));
-          }
-
-          // validate the optional field `task_graph_logs` (array)
-          for (int i = 0; i < jsonArraytaskGraphLogs.size(); i++) {
-            TaskGraphLog.validateJsonElement(jsonArraytaskGraphLogs.get(i));
-          };
+      JsonArray jsonArraytaskGraphLogs = jsonObj.getAsJsonArray("task_graph_logs");
+      if (jsonArraytaskGraphLogs != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("task_graph_logs").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `task_graph_logs` to be an array in the JSON string but got `%s`", jsonObj.get("task_graph_logs").toString()));
         }
+
+        // validate the optional field `task_graph_logs` (array)
+        for (int i = 0; i < jsonArraytaskGraphLogs.size(); i++) {
+          TaskGraphLog.validateJsonObject(jsonArraytaskGraphLogs.get(i).getAsJsonObject());
+        };
       }
       // validate the optional field `pagination_metadata`
-      if (jsonObj.get("pagination_metadata") != null && !jsonObj.get("pagination_metadata").isJsonNull()) {
-        PaginationMetadata.validateJsonElement(jsonObj.get("pagination_metadata"));
+      if (jsonObj.getAsJsonObject("pagination_metadata") != null) {
+        PaginationMetadata.validateJsonObject(jsonObj.getAsJsonObject("pagination_metadata"));
       }
   }
 
@@ -261,7 +251,7 @@ public class TaskGraphLogsData {
            public void write(JsonWriter out, TaskGraphLogsData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -273,12 +263,7 @@ public class TaskGraphLogsData {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -287,9 +272,8 @@ public class TaskGraphLogsData {
 
            @Override
            public TaskGraphLogsData read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              TaskGraphLogsData instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -303,10 +287,8 @@ public class TaskGraphLogsData {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -317,22 +299,22 @@ public class TaskGraphLogsData {
     }
   }
 
-  /**
-   * Create an instance of TaskGraphLogsData given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of TaskGraphLogsData
-   * @throws IOException if the JSON string is invalid with respect to TaskGraphLogsData
-   */
+ /**
+  * Create an instance of TaskGraphLogsData given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of TaskGraphLogsData
+  * @throws IOException if the JSON string is invalid with respect to TaskGraphLogsData
+  */
   public static TaskGraphLogsData fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TaskGraphLogsData.class);
   }
 
-  /**
-   * Convert an instance of TaskGraphLogsData to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of TaskGraphLogsData to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

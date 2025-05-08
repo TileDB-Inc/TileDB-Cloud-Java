@@ -14,40 +14,30 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.FileType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -55,7 +45,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * metadata of an array
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "metadata of an array")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class ArrayInfoUpdate {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -75,7 +66,7 @@ public class ArrayInfoUpdate {
 
   public static final String SERIALIZED_NAME_FILE_PROPERTIES = "file_properties";
   @SerializedName(SERIALIZED_NAME_FILE_PROPERTIES)
-  private Map<String, String> fileProperties = new HashMap<>();
+  private Map<String, String> fileProperties = null;
 
   public static final String SERIALIZED_NAME_ACCESS_CREDENTIALS_NAME = "access_credentials_name";
   @SerializedName(SERIALIZED_NAME_ACCESS_CREDENTIALS_NAME)
@@ -87,7 +78,7 @@ public class ArrayInfoUpdate {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags = null;
 
   public static final String SERIALIZED_NAME_LICENSE_ID = "license_id";
   @SerializedName(SERIALIZED_NAME_LICENSE_ID)
@@ -101,22 +92,26 @@ public class ArrayInfoUpdate {
   @SerializedName(SERIALIZED_NAME_READ_ONLY)
   private Boolean readOnly;
 
-  public ArrayInfoUpdate() {
+  public ArrayInfoUpdate() { 
   }
 
   public ArrayInfoUpdate description(String description) {
+    
     this.description = description;
     return this;
   }
 
-  /**
+   /**
    * description of array
    * @return description
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "description of array")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
@@ -124,18 +119,22 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate name(String name) {
+    
     this.name = name;
     return this;
   }
 
-  /**
+   /**
    * description of array
    * @return name
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "myarray1", value = "description of array")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
@@ -143,18 +142,22 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate uri(String uri) {
+    
     this.uri = uri;
     return this;
   }
 
-  /**
+   /**
    * uri of array
    * @return uri
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "s3://bucket/array", value = "uri of array")
+
   public String getUri() {
     return uri;
   }
+
 
   public void setUri(String uri) {
     this.uri = uri;
@@ -162,18 +165,22 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate fileType(FileType fileType) {
+    
     this.fileType = fileType;
     return this;
   }
 
-  /**
+   /**
    * Get fileType
    * @return fileType
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public FileType getFileType() {
     return fileType;
   }
+
 
   public void setFileType(FileType fileType) {
     this.fileType = fileType;
@@ -181,6 +188,7 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate fileProperties(Map<String, String> fileProperties) {
+    
     this.fileProperties = fileProperties;
     return this;
   }
@@ -193,14 +201,17 @@ public class ArrayInfoUpdate {
     return this;
   }
 
-  /**
+   /**
    * map of file properties created for this array
    * @return fileProperties
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "map of file properties created for this array")
+
   public Map<String, String> getFileProperties() {
     return fileProperties;
   }
+
 
   public void setFileProperties(Map<String, String> fileProperties) {
     this.fileProperties = fileProperties;
@@ -208,18 +219,22 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate accessCredentialsName(String accessCredentialsName) {
+    
     this.accessCredentialsName = accessCredentialsName;
     return this;
   }
 
-  /**
+   /**
    * the name of the access credentials to use. if unset, the default credentials will be used
    * @return accessCredentialsName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "the name of the access credentials to use. if unset, the default credentials will be used")
+
   public String getAccessCredentialsName() {
     return accessCredentialsName;
   }
+
 
   public void setAccessCredentialsName(String accessCredentialsName) {
     this.accessCredentialsName = accessCredentialsName;
@@ -227,18 +242,22 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate logo(String logo) {
+    
     this.logo = logo;
     return this;
   }
 
-  /**
+   /**
    * logo (base64 encoded) for the array. Optional
    * @return logo
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "logo (base64 encoded) for the array. Optional")
+
   public String getLogo() {
     return logo;
   }
+
 
   public void setLogo(String logo) {
     this.logo = logo;
@@ -246,6 +265,7 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate tags(List<String> tags) {
+    
     this.tags = tags;
     return this;
   }
@@ -258,14 +278,17 @@ public class ArrayInfoUpdate {
     return this;
   }
 
-  /**
+   /**
    * optional tags for array
    * @return tags
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "optional tags for array")
+
   public List<String> getTags() {
     return tags;
   }
+
 
   public void setTags(List<String> tags) {
     this.tags = tags;
@@ -273,18 +296,22 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate licenseId(String licenseId) {
+    
     this.licenseId = licenseId;
     return this;
   }
 
-  /**
+   /**
    * License identifier from SPDX License List or Custom
    * @return licenseId
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "License identifier from SPDX License List or Custom")
+
   public String getLicenseId() {
     return licenseId;
   }
+
 
   public void setLicenseId(String licenseId) {
     this.licenseId = licenseId;
@@ -292,18 +319,22 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate licenseText(String licenseText) {
+    
     this.licenseText = licenseText;
     return this;
   }
 
-  /**
+   /**
    * License text
    * @return licenseText
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "License text")
+
   public String getLicenseText() {
     return licenseText;
   }
+
 
   public void setLicenseText(String licenseText) {
     this.licenseText = licenseText;
@@ -311,18 +342,22 @@ public class ArrayInfoUpdate {
 
 
   public ArrayInfoUpdate readOnly(Boolean readOnly) {
+    
     this.readOnly = readOnly;
     return this;
   }
 
-  /**
+   /**
    * Suggests if the array is in read_only mode
    * @return readOnly
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Suggests if the array is in read_only mode")
+
   public Boolean getReadOnly() {
     return readOnly;
   }
+
 
   public void setReadOnly(Boolean readOnly) {
     this.readOnly = readOnly;
@@ -338,10 +373,6 @@ public class ArrayInfoUpdate {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the ArrayInfoUpdate instance itself
    */
   public ArrayInfoUpdate putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -353,8 +384,6 @@ public class ArrayInfoUpdate {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -362,9 +391,6 @@ public class ArrayInfoUpdate {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -467,46 +493,43 @@ public class ArrayInfoUpdate {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ArrayInfoUpdate
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ArrayInfoUpdate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ArrayInfoUpdate
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (ArrayInfoUpdate.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayInfoUpdate is not found in the empty JSON string", ArrayInfoUpdate.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+      if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonNull()) && !jsonObj.get("uri").isJsonPrimitive()) {
+      if (jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
       }
-      // validate the optional field `file_type`
-      if (jsonObj.get("file_type") != null && !jsonObj.get("file_type").isJsonNull()) {
-        FileType.validateJsonElement(jsonObj.get("file_type"));
-      }
-      if ((jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonNull()) && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
+      if (jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_credentials_name").toString()));
       }
-      if ((jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonNull()) && !jsonObj.get("logo").isJsonPrimitive()) {
+      if (jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      if ((jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonNull()) && !jsonObj.get("license_id").isJsonPrimitive()) {
+      if (jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `license_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_id").toString()));
       }
-      if ((jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonNull()) && !jsonObj.get("license_text").isJsonPrimitive()) {
+      if (jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `license_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_text").toString()));
       }
   }
@@ -527,7 +550,7 @@ public class ArrayInfoUpdate {
            public void write(JsonWriter out, ArrayInfoUpdate value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -539,12 +562,7 @@ public class ArrayInfoUpdate {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -553,9 +571,8 @@ public class ArrayInfoUpdate {
 
            @Override
            public ArrayInfoUpdate read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              ArrayInfoUpdate instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -569,10 +586,8 @@ public class ArrayInfoUpdate {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -583,22 +598,22 @@ public class ArrayInfoUpdate {
     }
   }
 
-  /**
-   * Create an instance of ArrayInfoUpdate given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of ArrayInfoUpdate
-   * @throws IOException if the JSON string is invalid with respect to ArrayInfoUpdate
-   */
+ /**
+  * Create an instance of ArrayInfoUpdate given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ArrayInfoUpdate
+  * @throws IOException if the JSON string is invalid with respect to ArrayInfoUpdate
+  */
   public static ArrayInfoUpdate fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ArrayInfoUpdate.class);
   }
 
-  /**
-   * Convert an instance of ArrayInfoUpdate to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of ArrayInfoUpdate to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

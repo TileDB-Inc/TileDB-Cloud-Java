@@ -4,60 +4,62 @@ All URIs are relative to */v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**notebooksNamespaceArrayEndTimestampsGet**](NotebooksApi.md#notebooksNamespaceArrayEndTimestampsGet) | **GET** /notebooks/{namespace}/{array}/end_timestamps |  |
-| [**notebooksNamespaceArrayPrunePost**](NotebooksApi.md#notebooksNamespaceArrayPrunePost) | **POST** /notebooks/{namespace}/{array}/prune |  |
+| [**notebooksWorkspaceTeamspaceArrayEndTimestampsGet**](NotebooksApi.md#notebooksWorkspaceTeamspaceArrayEndTimestampsGet) | **GET** /notebooks/{workspace}/{teamspace}/{array}/end_timestamps |  |
+| [**notebooksWorkspaceTeamspaceArrayPrunePost**](NotebooksApi.md#notebooksWorkspaceTeamspaceArrayPrunePost) | **POST** /notebooks/{workspace}/{teamspace}/{array}/prune |  |
 
 
-<a id="notebooksNamespaceArrayEndTimestampsGet"></a>
-# **notebooksNamespaceArrayEndTimestampsGet**
-> ArrayEndTimestampData notebooksNamespaceArrayEndTimestampsGet(namespace, array, page, perPage)
+<a name="notebooksWorkspaceTeamspaceArrayEndTimestampsGet"></a>
+# **notebooksWorkspaceTeamspaceArrayEndTimestampsGet**
+> ArrayEndTimestampData notebooksWorkspaceTeamspaceArrayEndTimestampsGet(workspace, teamspace, array, page, perPage)
 
 
 
 retrieve a list of timestamps from the array fragment info listing in milliseconds, paginated
 
 ### Example
+
 ```java
 // Import classes:
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.auth.*;
-import io.tiledb.cloud.rest_api.models.*;
-import io.tiledb.cloud.rest_api.api.NotebooksApi;
+
+import org.openapitools.client.rest_api.ApiClient;
+import org.openapitools.client.rest_api.ApiException;
+import org.openapitools.client.rest_api.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.rest_api.api.NotebooksApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    NotebooksApi apiInstance = new NotebooksApi(defaultClient);
-    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-    String array = "array_example"; // String | name/uri of array that is url-encoded
-    Integer page = 56; // Integer | pagination offset
-    Integer perPage = 56; // Integer | pagination limit
-    try {
-      ArrayEndTimestampData result = apiInstance.notebooksNamespaceArrayEndTimestampsGet(namespace, array, page, perPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling NotebooksApi#notebooksNamespaceArrayEndTimestampsGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        NotebooksApi apiInstance = new NotebooksApi(defaultClient);
+        String workspace = "workspace_example"; // String | the workspace containing the teamspace the array belongs to
+        String teamspace = "teamspace_example"; // String | the teamspace the array belongs to
+        String array = "array_example"; // String | name/uri of array that is url-encoded
+        Integer page = 56; // Integer | pagination offset
+        Integer perPage = 56; // Integer | pagination limit
+        try {
+            ArrayEndTimestampData result = apiInstance.notebooksWorkspaceTeamspaceArrayEndTimestampsGet(workspace, teamspace, array, page, perPage);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NotebooksApi#notebooksWorkspaceTeamspaceArrayEndTimestampsGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -65,7 +67,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **workspace** | **String**| the workspace containing the teamspace the array belongs to | |
+| **teamspace** | **String**| the teamspace the array belongs to | |
 | **array** | **String**| name/uri of array that is url-encoded | |
 | **page** | **Integer**| pagination offset | [optional] |
 | **perPage** | **Integer**| pagination limit | [optional] |
@@ -76,7 +79,7 @@ public class Example {
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -90,54 +93,56 @@ public class Example {
 | **502** | Bad Gateway |  -  |
 | **0** | error response |  -  |
 
-<a id="notebooksNamespaceArrayPrunePost"></a>
-# **notebooksNamespaceArrayPrunePost**
-> notebooksNamespaceArrayPrunePost(namespace, array, keepVersions)
+<a name="notebooksWorkspaceTeamspaceArrayPrunePost"></a>
+# **notebooksWorkspaceTeamspaceArrayPrunePost**
+> notebooksWorkspaceTeamspaceArrayPrunePost(workspace, teamspace, array, keepVersions)
 
 
 
 prune fragments of the notebook
 
 ### Example
+
 ```java
 // Import classes:
-import io.tiledb.cloud.rest_api.ApiClient;
-import io.tiledb.cloud.rest_api.ApiException;
-import io.tiledb.cloud.rest_api.Configuration;
-import io.tiledb.cloud.rest_api.auth.*;
-import io.tiledb.cloud.rest_api.models.*;
-import io.tiledb.cloud.rest_api.api.NotebooksApi;
+
+import org.openapitools.client.rest_api.ApiClient;
+import org.openapitools.client.rest_api.ApiException;
+import org.openapitools.client.rest_api.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.rest_api.api.NotebooksApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("/v1");
-    
-    // Configure HTTP basic authorization: BasicAuth
-    HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
-    BasicAuth.setUsername("YOUR USERNAME");
-    BasicAuth.setPassword("YOUR PASSWORD");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("/v1");
 
-    // Configure API key authorization: ApiKeyAuth
-    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    ApiKeyAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ApiKeyAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ApiKeyAuth
+        ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+        ApiKeyAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    NotebooksApi apiInstance = new NotebooksApi(defaultClient);
-    String namespace = "namespace_example"; // String | namespace array is in (an organization name or user's username)
-    String array = "array_example"; // String | name/uri of array that is url-encoded
-    Integer keepVersions = 56; // Integer | The number of most recents fragment to preserve
-    try {
-      apiInstance.notebooksNamespaceArrayPrunePost(namespace, array, keepVersions);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling NotebooksApi#notebooksNamespaceArrayPrunePost");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        // Configure HTTP basic authorization: BasicAuth
+        HttpBasicAuth BasicAuth = (HttpBasicAuth) defaultClient.getAuthentication("BasicAuth");
+        BasicAuth.setUsername("YOUR USERNAME");
+        BasicAuth.setPassword("YOUR PASSWORD");
+
+        NotebooksApi apiInstance = new NotebooksApi(defaultClient);
+        String workspace = "workspace_example"; // String | the workspace containing the teamspace the array belongs to
+        String teamspace = "teamspace_example"; // String | the teamspace the array belongs to
+        String array = "array_example"; // String | name/uri of array that is url-encoded
+        Integer keepVersions = 56; // Integer | The number of most recents fragment to preserve
+        try {
+            apiInstance.notebooksWorkspaceTeamspaceArrayPrunePost(workspace, teamspace, array, keepVersions);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NotebooksApi#notebooksWorkspaceTeamspaceArrayPrunePost");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -145,7 +150,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **namespace** | **String**| namespace array is in (an organization name or user&#39;s username) | |
+| **workspace** | **String**| the workspace containing the teamspace the array belongs to | |
+| **teamspace** | **String**| the teamspace the array belongs to | |
 | **array** | **String**| name/uri of array that is url-encoded | |
 | **keepVersions** | **Integer**| The number of most recents fragment to preserve | [optional] |
 
@@ -155,7 +161,7 @@ null (empty response body)
 
 ### Authorization
 
-[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 

@@ -14,36 +14,27 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.Querytype;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -51,7 +42,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Represents an open array
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Represents an open array")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class Array {
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)
@@ -65,22 +57,26 @@ public class Array {
   @SerializedName(SERIALIZED_NAME_URI)
   private String uri;
 
-  public Array() {
+  public Array() { 
   }
 
   public Array timestamp(BigDecimal timestamp) {
+    
     this.timestamp = timestamp;
     return this;
   }
 
-  /**
+   /**
    * timestamp (epoch milliseconds) array is opened at
    * @return timestamp
-   */
+  **/
   @javax.annotation.Nonnull
+  @ApiModelProperty(example = "1540471791873", required = true, value = "timestamp (epoch milliseconds) array is opened at")
+
   public BigDecimal getTimestamp() {
     return timestamp;
   }
+
 
   public void setTimestamp(BigDecimal timestamp) {
     this.timestamp = timestamp;
@@ -88,18 +84,22 @@ public class Array {
 
 
   public Array queryType(Querytype queryType) {
+    
     this.queryType = queryType;
     return this;
   }
 
-  /**
+   /**
    * Get queryType
    * @return queryType
-   */
+  **/
   @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
   public Querytype getQueryType() {
     return queryType;
   }
+
 
   public void setQueryType(Querytype queryType) {
     this.queryType = queryType;
@@ -107,18 +107,22 @@ public class Array {
 
 
   public Array uri(String uri) {
+    
     this.uri = uri;
     return this;
   }
 
-  /**
+   /**
    * Array uri
    * @return uri
-   */
+  **/
   @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Array uri")
+
   public String getUri() {
     return uri;
   }
+
 
   public void setUri(String uri) {
     this.uri = uri;
@@ -134,10 +138,6 @@ public class Array {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the Array instance itself
    */
   public Array putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -149,8 +149,6 @@ public class Array {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -158,9 +156,6 @@ public class Array {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -231,29 +226,28 @@ public class Array {
     openapiRequiredFields.add("uri");
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Array
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Array.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Array
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (Array.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in Array is not found in the empty JSON string", Array.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Array.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `queryType`
-      Querytype.validateJsonElement(jsonObj.get("queryType"));
-      if (!jsonObj.get("uri").isJsonPrimitive()) {
+      if (jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
       }
   }
@@ -274,7 +268,7 @@ public class Array {
            public void write(JsonWriter out, Array value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -286,12 +280,7 @@ public class Array {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -300,9 +289,8 @@ public class Array {
 
            @Override
            public Array read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              Array instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -316,10 +304,8 @@ public class Array {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -330,22 +316,22 @@ public class Array {
     }
   }
 
-  /**
-   * Create an instance of Array given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of Array
-   * @throws IOException if the JSON string is invalid with respect to Array
-   */
+ /**
+  * Create an instance of Array given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Array
+  * @throws IOException if the JSON string is invalid with respect to Array
+  */
   public static Array fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Array.class);
   }
 
-  /**
-   * Convert an instance of Array to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of Array to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -14,36 +14,26 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.Backoff;
-import io.tiledb.cloud.rest_api.model.RetryPolicy;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -51,7 +41,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * RetryStrategy provides controls on how to retry a taskgraph node
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "RetryStrategy provides controls on how to retry a taskgraph node")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class RetryStrategy {
   public static final String SERIALIZED_NAME_BACKOFF = "backoff";
   @SerializedName(SERIALIZED_NAME_BACKOFF)
@@ -69,22 +60,26 @@ public class RetryStrategy {
   @SerializedName(SERIALIZED_NAME_RETRY_POLICY)
   private RetryPolicy retryPolicy;
 
-  public RetryStrategy() {
+  public RetryStrategy() { 
   }
 
   public RetryStrategy backoff(Backoff backoff) {
+    
     this.backoff = backoff;
     return this;
   }
 
-  /**
+   /**
    * Get backoff
    * @return backoff
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public Backoff getBackoff() {
     return backoff;
   }
+
 
   public void setBackoff(Backoff backoff) {
     this.backoff = backoff;
@@ -92,18 +87,22 @@ public class RetryStrategy {
 
 
   public RetryStrategy expression(String expression) {
+    
     this.expression = expression;
     return this;
   }
 
-  /**
+   /**
    * Expression is a condition expression for when a node will be retried. If it evaluates to false, the node will not be retried and the retry strategy will be ignored
    * @return expression
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Expression is a condition expression for when a node will be retried. If it evaluates to false, the node will not be retried and the retry strategy will be ignored")
+
   public String getExpression() {
     return expression;
   }
+
 
   public void setExpression(String expression) {
     this.expression = expression;
@@ -111,18 +110,22 @@ public class RetryStrategy {
 
 
   public RetryStrategy limit(Integer limit) {
+    
     this.limit = limit;
     return this;
   }
 
-  /**
+   /**
    * Limit is the maximum number of retry attempts when retrying a container. It does not include the original container; the maximum number of total attempts will be &#x60;limit + 1&#x60;.
    * @return limit
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Limit is the maximum number of retry attempts when retrying a container. It does not include the original container; the maximum number of total attempts will be `limit + 1`.")
+
   public Integer getLimit() {
     return limit;
   }
+
 
   public void setLimit(Integer limit) {
     this.limit = limit;
@@ -130,18 +133,22 @@ public class RetryStrategy {
 
 
   public RetryStrategy retryPolicy(RetryPolicy retryPolicy) {
+    
     this.retryPolicy = retryPolicy;
     return this;
   }
 
-  /**
+   /**
    * Get retryPolicy
    * @return retryPolicy
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public RetryPolicy getRetryPolicy() {
     return retryPolicy;
   }
+
 
   public void setRetryPolicy(RetryPolicy retryPolicy) {
     this.retryPolicy = retryPolicy;
@@ -157,10 +164,6 @@ public class RetryStrategy {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the RetryStrategy instance itself
    */
   public RetryStrategy putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -172,8 +175,6 @@ public class RetryStrategy {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -181,9 +182,6 @@ public class RetryStrategy {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -254,29 +252,26 @@ public class RetryStrategy {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RetryStrategy
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RetryStrategy.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to RetryStrategy
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (RetryStrategy.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in RetryStrategy is not found in the empty JSON string", RetryStrategy.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `backoff`
-      if (jsonObj.get("backoff") != null && !jsonObj.get("backoff").isJsonNull()) {
-        Backoff.validateJsonElement(jsonObj.get("backoff"));
+      if (jsonObj.getAsJsonObject("backoff") != null) {
+        Backoff.validateJsonObject(jsonObj.getAsJsonObject("backoff"));
       }
-      if ((jsonObj.get("expression") != null && !jsonObj.get("expression").isJsonNull()) && !jsonObj.get("expression").isJsonPrimitive()) {
+      if (jsonObj.get("expression") != null && !jsonObj.get("expression").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `expression` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expression").toString()));
-      }
-      // validate the optional field `retryPolicy`
-      if (jsonObj.get("retryPolicy") != null && !jsonObj.get("retryPolicy").isJsonNull()) {
-        RetryPolicy.validateJsonElement(jsonObj.get("retryPolicy"));
       }
   }
 
@@ -296,7 +291,7 @@ public class RetryStrategy {
            public void write(JsonWriter out, RetryStrategy value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -308,12 +303,7 @@ public class RetryStrategy {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -322,9 +312,8 @@ public class RetryStrategy {
 
            @Override
            public RetryStrategy read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              RetryStrategy instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -338,10 +327,8 @@ public class RetryStrategy {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -352,22 +339,22 @@ public class RetryStrategy {
     }
   }
 
-  /**
-   * Create an instance of RetryStrategy given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of RetryStrategy
-   * @throws IOException if the JSON string is invalid with respect to RetryStrategy
-   */
+ /**
+  * Create an instance of RetryStrategy given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of RetryStrategy
+  * @throws IOException if the JSON string is invalid with respect to RetryStrategy
+  */
   public static RetryStrategy fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, RetryStrategy.class);
   }
 
-  /**
-   * Convert an instance of RetryStrategy to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of RetryStrategy to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

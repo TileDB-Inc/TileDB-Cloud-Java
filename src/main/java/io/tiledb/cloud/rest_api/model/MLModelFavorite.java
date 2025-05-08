@@ -14,34 +14,26 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -49,7 +41,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * A user-favorite MLModel item
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "A user-favorite MLModel item")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class MLModelFavorite {
   public static final String SERIALIZED_NAME_MLMODEL_UUID = "mlmodel_uuid";
   @SerializedName(SERIALIZED_NAME_MLMODEL_UUID)
@@ -63,22 +56,26 @@ public class MLModelFavorite {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public MLModelFavorite() {
+  public MLModelFavorite() { 
   }
 
   public MLModelFavorite mlmodelUuid(String mlmodelUuid) {
+    
     this.mlmodelUuid = mlmodelUuid;
     return this;
   }
 
-  /**
+   /**
    * unique UUID of the MLModel
    * @return mlmodelUuid
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "unique UUID of the MLModel")
+
   public String getMlmodelUuid() {
     return mlmodelUuid;
   }
+
 
   public void setMlmodelUuid(String mlmodelUuid) {
     this.mlmodelUuid = mlmodelUuid;
@@ -86,18 +83,22 @@ public class MLModelFavorite {
 
 
   public MLModelFavorite namespace(String namespace) {
+    
     this.namespace = namespace;
     return this;
   }
 
-  /**
+   /**
    * the namespace of the MLModel
    * @return namespace
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "the namespace of the MLModel")
+
   public String getNamespace() {
     return namespace;
   }
+
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
@@ -105,18 +106,22 @@ public class MLModelFavorite {
 
 
   public MLModelFavorite name(String name) {
+    
     this.name = name;
     return this;
   }
 
-  /**
+   /**
    * the name of the MLModel
    * @return name
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "the name of the MLModel")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
@@ -132,10 +137,6 @@ public class MLModelFavorite {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the MLModelFavorite instance itself
    */
   public MLModelFavorite putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -147,8 +148,6 @@ public class MLModelFavorite {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -156,9 +155,6 @@ public class MLModelFavorite {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -226,26 +222,27 @@ public class MLModelFavorite {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MLModelFavorite
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!MLModelFavorite.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to MLModelFavorite
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (MLModelFavorite.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in MLModelFavorite is not found in the empty JSON string", MLModelFavorite.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("mlmodel_uuid") != null && !jsonObj.get("mlmodel_uuid").isJsonNull()) && !jsonObj.get("mlmodel_uuid").isJsonPrimitive()) {
+      if (jsonObj.get("mlmodel_uuid") != null && !jsonObj.get("mlmodel_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mlmodel_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mlmodel_uuid").toString()));
       }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
@@ -266,7 +263,7 @@ public class MLModelFavorite {
            public void write(JsonWriter out, MLModelFavorite value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -278,12 +275,7 @@ public class MLModelFavorite {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -292,9 +284,8 @@ public class MLModelFavorite {
 
            @Override
            public MLModelFavorite read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              MLModelFavorite instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -308,10 +299,8 @@ public class MLModelFavorite {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -322,22 +311,22 @@ public class MLModelFavorite {
     }
   }
 
-  /**
-   * Create an instance of MLModelFavorite given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of MLModelFavorite
-   * @throws IOException if the JSON string is invalid with respect to MLModelFavorite
-   */
+ /**
+  * Create an instance of MLModelFavorite given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of MLModelFavorite
+  * @throws IOException if the JSON string is invalid with respect to MLModelFavorite
+  */
   public static MLModelFavorite fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MLModelFavorite.class);
   }
 
-  /**
-   * Convert an instance of MLModelFavorite to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of MLModelFavorite to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

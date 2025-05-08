@@ -14,51 +14,39 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.QueryRanges;
-import io.tiledb.cloud.rest_api.model.ResultFormat;
-import io.tiledb.cloud.rest_api.model.TGUDFArgument;
-import io.tiledb.cloud.rest_api.model.UDFArrayDetails;
-import io.tiledb.cloud.rest_api.model.UDFLanguage;
-import io.tiledb.cloud.rest_api.model.UDFSubarray;
+import io.tiledb.cloud.rest_api.JSON;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
-
-import io.tiledb.cloud.rest_api.JSON;
 
 /**
  * User-defined function
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "User-defined function")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class MultiArrayUDF {
   public static final String SERIALIZED_NAME_UDF_INFO_NAME = "udf_info_name";
   @SerializedName(SERIALIZED_NAME_UDF_INFO_NAME)
@@ -106,11 +94,11 @@ public class MultiArrayUDF {
 
   public static final String SERIALIZED_NAME_ARGUMENTS_JSON = "arguments_json";
   @SerializedName(SERIALIZED_NAME_ARGUMENTS_JSON)
-  private List<TGUDFArgument> argumentsJson;
+  private List<TGUDFArgument> argumentsJson = null;
 
   public static final String SERIALIZED_NAME_STORED_PARAM_UUIDS = "stored_param_uuids";
   @SerializedName(SERIALIZED_NAME_STORED_PARAM_UUIDS)
-  private List<String> storedParamUuids = new ArrayList<>();
+  private List<String> storedParamUuids = null;
 
   public static final String SERIALIZED_NAME_STORE_RESULTS = "store_results";
   @SerializedName(SERIALIZED_NAME_STORE_RESULTS)
@@ -130,11 +118,11 @@ public class MultiArrayUDF {
 
   public static final String SERIALIZED_NAME_BUFFERS = "buffers";
   @SerializedName(SERIALIZED_NAME_BUFFERS)
-  private List<String> buffers = new ArrayList<>();
+  private List<String> buffers = null;
 
   public static final String SERIALIZED_NAME_ARRAYS = "arrays";
   @SerializedName(SERIALIZED_NAME_ARRAYS)
-  private List<UDFArrayDetails> arrays = new ArrayList<>();
+  private List<UDFArrayDetails> arrays = null;
 
   public static final String SERIALIZED_NAME_TIMEOUT = "timeout";
   @SerializedName(SERIALIZED_NAME_TIMEOUT)
@@ -148,22 +136,26 @@ public class MultiArrayUDF {
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_UUID)
   private String clientNodeUuid;
 
-  public MultiArrayUDF() {
+  public MultiArrayUDF() { 
   }
 
   public MultiArrayUDF udfInfoName(String udfInfoName) {
+    
     this.udfInfoName = udfInfoName;
     return this;
   }
 
-  /**
+   /**
    * name of UDFInfo to run, format is {namespace}/{udf_name}. Can not be used with exec
    * @return udfInfoName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "TileDB-Inc/quickstart_median", value = "name of UDFInfo to run, format is {namespace}/{udf_name}. Can not be used with exec")
+
   public String getUdfInfoName() {
     return udfInfoName;
   }
+
 
   public void setUdfInfoName(String udfInfoName) {
     this.udfInfoName = udfInfoName;
@@ -171,18 +163,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF language(UDFLanguage language) {
+    
     this.language = language;
     return this;
   }
 
-  /**
+   /**
    * Get language
    * @return language
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public UDFLanguage getLanguage() {
     return language;
   }
+
 
   public void setLanguage(UDFLanguage language) {
     this.language = language;
@@ -190,18 +186,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF version(String version) {
+    
     this.version = version;
     return this;
   }
 
-  /**
+   /**
    * Type-specific version
    * @return version
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Type-specific version")
+
   public String getVersion() {
     return version;
   }
+
 
   public void setVersion(String version) {
     this.version = version;
@@ -209,18 +209,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF imageName(String imageName) {
+    
     this.imageName = imageName;
     return this;
   }
 
-  /**
+   /**
    * Docker image name to use for UDF
    * @return imageName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Docker image name to use for UDF")
+
   public String getImageName() {
     return imageName;
   }
+
 
   public void setImageName(String imageName) {
     this.imageName = imageName;
@@ -228,18 +232,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF accessCredentialsName(String accessCredentialsName) {
+    
     this.accessCredentialsName = accessCredentialsName;
     return this;
   }
 
-  /**
+   /**
    * The name of the access credentials to use. if unset, no credentials will be configured in the environment.
    * @return accessCredentialsName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The name of the access credentials to use. if unset, no credentials will be configured in the environment.")
+
   public String getAccessCredentialsName() {
     return accessCredentialsName;
   }
+
 
   public void setAccessCredentialsName(String accessCredentialsName) {
     this.accessCredentialsName = accessCredentialsName;
@@ -247,18 +255,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF resourceClass(String resourceClass) {
+    
     this.resourceClass = resourceClass;
     return this;
   }
 
-  /**
+   /**
    * The resource class to use for the UDF execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the UDF will execute in the standard resource class of the TileDB Cloud provider. 
    * @return resourceClass
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "standard", value = "The resource class to use for the UDF execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the UDF will execute in the standard resource class of the TileDB Cloud provider. ")
+
   public String getResourceClass() {
     return resourceClass;
   }
+
 
   public void setResourceClass(String resourceClass) {
     this.resourceClass = resourceClass;
@@ -266,18 +278,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF exec(String exec) {
+    
     this.exec = exec;
     return this;
   }
 
-  /**
+   /**
    * Type-specific executable text
    * @return exec
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Type-specific executable text")
+
   public String getExec() {
     return exec;
   }
+
 
   public void setExec(String exec) {
     this.exec = exec;
@@ -285,18 +301,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF execRaw(String execRaw) {
+    
     this.execRaw = execRaw;
     return this;
   }
 
-  /**
+   /**
    * optional raw text to store of serialized function, used for showing in UI
    * @return execRaw
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "optional raw text to store of serialized function, used for showing in UI")
+
   public String getExecRaw() {
     return execRaw;
   }
+
 
   public void setExecRaw(String execRaw) {
     this.execRaw = execRaw;
@@ -304,18 +324,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF resultFormat(ResultFormat resultFormat) {
+    
     this.resultFormat = resultFormat;
     return this;
   }
 
-  /**
+   /**
    * Get resultFormat
    * @return resultFormat
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public ResultFormat getResultFormat() {
     return resultFormat;
   }
+
 
   public void setResultFormat(ResultFormat resultFormat) {
     this.resultFormat = resultFormat;
@@ -323,18 +347,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF taskName(String taskName) {
+    
     this.taskName = taskName;
     return this;
   }
 
-  /**
+   /**
    * name of task, optional
    * @return taskName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "name of task, optional")
+
   public String getTaskName() {
     return taskName;
   }
+
 
   public void setTaskName(String taskName) {
     this.taskName = taskName;
@@ -342,18 +370,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF argument(String argument) {
+    
     this.argument = argument;
     return this;
   }
 
-  /**
+   /**
    * Deprecated: Prefer to use &#x60;argument_json&#x60; instead. Argument(s) to pass to UDF function, tuple or list of args/kwargs which can be in native or JSON format 
    * @return argument
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Deprecated: Prefer to use `argument_json` instead. Argument(s) to pass to UDF function, tuple or list of args/kwargs which can be in native or JSON format ")
+
   public String getArgument() {
     return argument;
   }
+
 
   public void setArgument(String argument) {
     this.argument = argument;
@@ -361,6 +393,7 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF argumentsJson(List<TGUDFArgument> argumentsJson) {
+    
     this.argumentsJson = argumentsJson;
     return this;
   }
@@ -373,14 +406,17 @@ public class MultiArrayUDF {
     return this;
   }
 
-  /**
+   /**
    * A series of key-value pairs to be passed as arguments into the UDF. See &#x60;TGUDFNodeData.arguments&#x60; for more information. If this format is used to pass arguments, arrays will be passed into the UDF as specified by the Node placeholders passed in here, rather than the classic method of putting all array arguments in the first parameter. Either this or &#x60;argument&#x60; should be set. 
    * @return argumentsJson
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "A series of key-value pairs to be passed as arguments into the UDF. See `TGUDFNodeData.arguments` for more information. If this format is used to pass arguments, arrays will be passed into the UDF as specified by the Node placeholders passed in here, rather than the classic method of putting all array arguments in the first parameter. Either this or `argument` should be set. ")
+
   public List<TGUDFArgument> getArgumentsJson() {
     return argumentsJson;
   }
+
 
   public void setArgumentsJson(List<TGUDFArgument> argumentsJson) {
     this.argumentsJson = argumentsJson;
@@ -388,6 +424,7 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF storedParamUuids(List<String> storedParamUuids) {
+    
     this.storedParamUuids = storedParamUuids;
     return this;
   }
@@ -400,14 +437,17 @@ public class MultiArrayUDF {
     return this;
   }
 
-  /**
+   /**
    * The UUIDs of stored input parameters (passed in a language-specific format within \&quot;argument\&quot;) to be retrieved from the server-side cache. Serialized in standard hex format with no {}.
    * @return storedParamUuids
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "The UUIDs of stored input parameters (passed in a language-specific format within \"argument\") to be retrieved from the server-side cache. Serialized in standard hex format with no {}.")
+
   public List<String> getStoredParamUuids() {
     return storedParamUuids;
   }
+
 
   public void setStoredParamUuids(List<String> storedParamUuids) {
     this.storedParamUuids = storedParamUuids;
@@ -415,18 +455,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF storeResults(Boolean storeResults) {
+    
     this.storeResults = storeResults;
     return this;
   }
 
-  /**
+   /**
    * store results for later retrieval
    * @return storeResults
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "store results for later retrieval")
+
   public Boolean getStoreResults() {
     return storeResults;
   }
+
 
   public void setStoreResults(Boolean storeResults) {
     this.storeResults = storeResults;
@@ -434,18 +478,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF dontDownloadResults(Boolean dontDownloadResults) {
+    
     this.dontDownloadResults = dontDownloadResults;
     return this;
   }
 
-  /**
+   /**
    * Set to true to avoid downloading the results of this UDF. Useful for intermediate nodes in a task graph where you will not be using the results of your function. Defaults to false (\&quot;yes download results\&quot;).
    * @return dontDownloadResults
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Set to true to avoid downloading the results of this UDF. Useful for intermediate nodes in a task graph where you will not be using the results of your function. Defaults to false (\"yes download results\").")
+
   public Boolean getDontDownloadResults() {
     return dontDownloadResults;
   }
+
 
   public void setDontDownloadResults(Boolean dontDownloadResults) {
     this.dontDownloadResults = dontDownloadResults;
@@ -453,18 +501,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF ranges(QueryRanges ranges) {
+    
     this.ranges = ranges;
     return this;
   }
 
-  /**
+   /**
    * Get ranges
    * @return ranges
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public QueryRanges getRanges() {
     return ranges;
   }
+
 
   public void setRanges(QueryRanges ranges) {
     this.ranges = ranges;
@@ -472,18 +524,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF subarray(UDFSubarray subarray) {
+    
     this.subarray = subarray;
     return this;
   }
 
-  /**
+   /**
    * Get subarray
    * @return subarray
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public UDFSubarray getSubarray() {
     return subarray;
   }
+
 
   public void setSubarray(UDFSubarray subarray) {
     this.subarray = subarray;
@@ -491,6 +547,7 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF buffers(List<String> buffers) {
+    
     this.buffers = buffers;
     return this;
   }
@@ -503,14 +560,17 @@ public class MultiArrayUDF {
     return this;
   }
 
-  /**
+   /**
    * List of buffers to fetch (attributes + dimensions). Deprecated; please set arrays with &#x60;UDFArrayDetails&#x60;.
    * @return buffers
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "List of buffers to fetch (attributes + dimensions). Deprecated; please set arrays with `UDFArrayDetails`.")
+
   public List<String> getBuffers() {
     return buffers;
   }
+
 
   public void setBuffers(List<String> buffers) {
     this.buffers = buffers;
@@ -518,6 +578,7 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF arrays(List<UDFArrayDetails> arrays) {
+    
     this.arrays = arrays;
     return this;
   }
@@ -530,14 +591,17 @@ public class MultiArrayUDF {
     return this;
   }
 
-  /**
+   /**
    * Array ranges/buffer into to run UDF on
    * @return arrays
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "Array ranges/buffer into to run UDF on")
+
   public List<UDFArrayDetails> getArrays() {
     return arrays;
   }
+
 
   public void setArrays(List<UDFArrayDetails> arrays) {
     this.arrays = arrays;
@@ -545,18 +609,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF timeout(Integer timeout) {
+    
     this.timeout = timeout;
     return this;
   }
 
-  /**
+   /**
    * UDF-type timeout in seconds (default: 900)
    * @return timeout
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "UDF-type timeout in seconds (default: 900)")
+
   public Integer getTimeout() {
     return timeout;
   }
+
 
   public void setTimeout(Integer timeout) {
     this.timeout = timeout;
@@ -564,18 +632,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF taskGraphUuid(String taskGraphUuid) {
+    
     this.taskGraphUuid = taskGraphUuid;
     return this;
   }
 
-  /**
+   /**
    * If set, the ID of the log for the task graph that this was part of. 
    * @return taskGraphUuid
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "If set, the ID of the log for the task graph that this was part of. ")
+
   public String getTaskGraphUuid() {
     return taskGraphUuid;
   }
+
 
   public void setTaskGraphUuid(String taskGraphUuid) {
     this.taskGraphUuid = taskGraphUuid;
@@ -583,18 +655,22 @@ public class MultiArrayUDF {
 
 
   public MultiArrayUDF clientNodeUuid(String clientNodeUuid) {
+    
     this.clientNodeUuid = clientNodeUuid;
     return this;
   }
 
-  /**
+   /**
    * If set, the client-defined ID of the node within this task&#39;s graph. 
    * @return clientNodeUuid
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "If set, the client-defined ID of the node within this task's graph. ")
+
   public String getClientNodeUuid() {
     return clientNodeUuid;
   }
+
 
   public void setClientNodeUuid(String clientNodeUuid) {
     this.clientNodeUuid = clientNodeUuid;
@@ -610,10 +686,6 @@ public class MultiArrayUDF {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the MultiArrayUDF instance itself
    */
   public MultiArrayUDF putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -625,8 +697,6 @@ public class MultiArrayUDF {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -634,9 +704,6 @@ public class MultiArrayUDF {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -772,102 +839,91 @@ public class MultiArrayUDF {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MultiArrayUDF
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!MultiArrayUDF.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to MultiArrayUDF
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (MultiArrayUDF.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in MultiArrayUDF is not found in the empty JSON string", MultiArrayUDF.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("udf_info_name") != null && !jsonObj.get("udf_info_name").isJsonNull()) && !jsonObj.get("udf_info_name").isJsonPrimitive()) {
+      if (jsonObj.get("udf_info_name") != null && !jsonObj.get("udf_info_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `udf_info_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("udf_info_name").toString()));
       }
-      // validate the optional field `language`
-      if (jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) {
-        UDFLanguage.validateJsonElement(jsonObj.get("language"));
-      }
-      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
-      if ((jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonNull()) && !jsonObj.get("image_name").isJsonPrimitive()) {
+      if (jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_name").toString()));
       }
-      if ((jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonNull()) && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
+      if (jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_credentials_name").toString()));
       }
-      if ((jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonNull()) && !jsonObj.get("resource_class").isJsonPrimitive()) {
+      if (jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `resource_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_class").toString()));
       }
-      if ((jsonObj.get("exec") != null && !jsonObj.get("exec").isJsonNull()) && !jsonObj.get("exec").isJsonPrimitive()) {
+      if (jsonObj.get("exec") != null && !jsonObj.get("exec").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exec` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec").toString()));
       }
-      if ((jsonObj.get("exec_raw") != null && !jsonObj.get("exec_raw").isJsonNull()) && !jsonObj.get("exec_raw").isJsonPrimitive()) {
+      if (jsonObj.get("exec_raw") != null && !jsonObj.get("exec_raw").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exec_raw` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec_raw").toString()));
       }
-      // validate the optional field `result_format`
-      if (jsonObj.get("result_format") != null && !jsonObj.get("result_format").isJsonNull()) {
-        ResultFormat.validateJsonElement(jsonObj.get("result_format"));
-      }
-      if ((jsonObj.get("task_name") != null && !jsonObj.get("task_name").isJsonNull()) && !jsonObj.get("task_name").isJsonPrimitive()) {
+      if (jsonObj.get("task_name") != null && !jsonObj.get("task_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `task_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_name").toString()));
       }
-      if ((jsonObj.get("argument") != null && !jsonObj.get("argument").isJsonNull()) && !jsonObj.get("argument").isJsonPrimitive()) {
+      if (jsonObj.get("argument") != null && !jsonObj.get("argument").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `argument` to be a primitive type in the JSON string but got `%s`", jsonObj.get("argument").toString()));
       }
-      if (jsonObj.get("arguments_json") != null && !jsonObj.get("arguments_json").isJsonNull()) {
-        JsonArray jsonArrayargumentsJson = jsonObj.getAsJsonArray("arguments_json");
-        if (jsonArrayargumentsJson != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("arguments_json").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `arguments_json` to be an array in the JSON string but got `%s`", jsonObj.get("arguments_json").toString()));
-          }
-
-          // validate the optional field `arguments_json` (array)
-          for (int i = 0; i < jsonArrayargumentsJson.size(); i++) {
-            TGUDFArgument.validateJsonElement(jsonArrayargumentsJson.get(i));
-          };
+      JsonArray jsonArrayargumentsJson = jsonObj.getAsJsonArray("arguments_json");
+      if (jsonArrayargumentsJson != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("arguments_json").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `arguments_json` to be an array in the JSON string but got `%s`", jsonObj.get("arguments_json").toString()));
         }
+
+        // validate the optional field `arguments_json` (array)
+        for (int i = 0; i < jsonArrayargumentsJson.size(); i++) {
+          TGUDFArgument.validateJsonObject(jsonArrayargumentsJson.get(i).getAsJsonObject());
+        };
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("stored_param_uuids") != null && !jsonObj.get("stored_param_uuids").isJsonNull() && !jsonObj.get("stored_param_uuids").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("stored_param_uuids") != null && !jsonObj.get("stored_param_uuids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `stored_param_uuids` to be an array in the JSON string but got `%s`", jsonObj.get("stored_param_uuids").toString()));
       }
       // validate the optional field `ranges`
-      if (jsonObj.get("ranges") != null && !jsonObj.get("ranges").isJsonNull()) {
-        QueryRanges.validateJsonElement(jsonObj.get("ranges"));
+      if (jsonObj.getAsJsonObject("ranges") != null) {
+        QueryRanges.validateJsonObject(jsonObj.getAsJsonObject("ranges"));
       }
       // validate the optional field `subarray`
-      if (jsonObj.get("subarray") != null && !jsonObj.get("subarray").isJsonNull()) {
-        UDFSubarray.validateJsonElement(jsonObj.get("subarray"));
+      if (jsonObj.getAsJsonObject("subarray") != null) {
+        UDFSubarray.validateJsonObject(jsonObj.getAsJsonObject("subarray"));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("buffers") != null && !jsonObj.get("buffers").isJsonNull() && !jsonObj.get("buffers").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("buffers") != null && !jsonObj.get("buffers").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `buffers` to be an array in the JSON string but got `%s`", jsonObj.get("buffers").toString()));
       }
-      if (jsonObj.get("arrays") != null && !jsonObj.get("arrays").isJsonNull()) {
-        JsonArray jsonArrayarrays = jsonObj.getAsJsonArray("arrays");
-        if (jsonArrayarrays != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("arrays").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `arrays` to be an array in the JSON string but got `%s`", jsonObj.get("arrays").toString()));
-          }
-
-          // validate the optional field `arrays` (array)
-          for (int i = 0; i < jsonArrayarrays.size(); i++) {
-            UDFArrayDetails.validateJsonElement(jsonArrayarrays.get(i));
-          };
+      JsonArray jsonArrayarrays = jsonObj.getAsJsonArray("arrays");
+      if (jsonArrayarrays != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("arrays").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `arrays` to be an array in the JSON string but got `%s`", jsonObj.get("arrays").toString()));
         }
+
+        // validate the optional field `arrays` (array)
+        for (int i = 0; i < jsonArrayarrays.size(); i++) {
+          UDFArrayDetails.validateJsonObject(jsonArrayarrays.get(i).getAsJsonObject());
+        };
       }
-      if ((jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonNull()) && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
+      if (jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `task_graph_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_graph_uuid").toString()));
       }
-      if ((jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonNull()) && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
+      if (jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
       }
   }
@@ -888,7 +944,7 @@ public class MultiArrayUDF {
            public void write(JsonWriter out, MultiArrayUDF value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -900,12 +956,7 @@ public class MultiArrayUDF {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -914,9 +965,8 @@ public class MultiArrayUDF {
 
            @Override
            public MultiArrayUDF read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              MultiArrayUDF instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -930,10 +980,8 @@ public class MultiArrayUDF {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -944,22 +992,22 @@ public class MultiArrayUDF {
     }
   }
 
-  /**
-   * Create an instance of MultiArrayUDF given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of MultiArrayUDF
-   * @throws IOException if the JSON string is invalid with respect to MultiArrayUDF
-   */
+ /**
+  * Create an instance of MultiArrayUDF given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of MultiArrayUDF
+  * @throws IOException if the JSON string is invalid with respect to MultiArrayUDF
+  */
   public static MultiArrayUDF fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MultiArrayUDF.class);
   }
 
-  /**
-   * Convert an instance of MultiArrayUDF to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of MultiArrayUDF to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

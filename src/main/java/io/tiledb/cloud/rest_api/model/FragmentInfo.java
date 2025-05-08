@@ -14,40 +14,29 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.ArraySchema;
-import io.tiledb.cloud.rest_api.model.SingleFragmentInfo;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -55,24 +44,26 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Fragment info of an array
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Fragment info of an array")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class FragmentInfo {
   public static final String SERIALIZED_NAME_ARRAY_SCHEMA_ALL = "arraySchemaAll";
   @SerializedName(SERIALIZED_NAME_ARRAY_SCHEMA_ALL)
-  private Map<String, ArraySchema> arraySchemaAll = new HashMap<>();
+  private Map<String, ArraySchema> arraySchemaAll = null;
 
   public static final String SERIALIZED_NAME_FRAGMENT_INFO = "fragmentInfo";
   @SerializedName(SERIALIZED_NAME_FRAGMENT_INFO)
-  private List<SingleFragmentInfo> fragmentInfo = new ArrayList<>();
+  private List<SingleFragmentInfo> fragmentInfo = null;
 
   public static final String SERIALIZED_NAME_TO_VACUUM = "toVacuum";
   @SerializedName(SERIALIZED_NAME_TO_VACUUM)
-  private List<String> toVacuum = new ArrayList<>();
+  private List<String> toVacuum = null;
 
-  public FragmentInfo() {
+  public FragmentInfo() { 
   }
 
   public FragmentInfo arraySchemaAll(Map<String, ArraySchema> arraySchemaAll) {
+    
     this.arraySchemaAll = arraySchemaAll;
     return this;
   }
@@ -85,14 +76,17 @@ public class FragmentInfo {
     return this;
   }
 
-  /**
+   /**
    * map of all array schemas
    * @return arraySchemaAll
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "map of all array schemas")
+
   public Map<String, ArraySchema> getArraySchemaAll() {
     return arraySchemaAll;
   }
+
 
   public void setArraySchemaAll(Map<String, ArraySchema> arraySchemaAll) {
     this.arraySchemaAll = arraySchemaAll;
@@ -100,6 +94,7 @@ public class FragmentInfo {
 
 
   public FragmentInfo fragmentInfo(List<SingleFragmentInfo> fragmentInfo) {
+    
     this.fragmentInfo = fragmentInfo;
     return this;
   }
@@ -112,14 +107,17 @@ public class FragmentInfo {
     return this;
   }
 
-  /**
+   /**
    * information about fragments in the array
    * @return fragmentInfo
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "information about fragments in the array")
+
   public List<SingleFragmentInfo> getFragmentInfo() {
     return fragmentInfo;
   }
+
 
   public void setFragmentInfo(List<SingleFragmentInfo> fragmentInfo) {
     this.fragmentInfo = fragmentInfo;
@@ -127,6 +125,7 @@ public class FragmentInfo {
 
 
   public FragmentInfo toVacuum(List<String> toVacuum) {
+    
     this.toVacuum = toVacuum;
     return this;
   }
@@ -139,14 +138,17 @@ public class FragmentInfo {
     return this;
   }
 
-  /**
+   /**
    * the URIs of the fragments to vacuum
    * @return toVacuum
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "the URIs of the fragments to vacuum")
+
   public List<String> getToVacuum() {
     return toVacuum;
   }
+
 
   public void setToVacuum(List<String> toVacuum) {
     this.toVacuum = toVacuum;
@@ -162,10 +164,6 @@ public class FragmentInfo {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the FragmentInfo instance itself
    */
   public FragmentInfo putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -177,8 +175,6 @@ public class FragmentInfo {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -186,9 +182,6 @@ public class FragmentInfo {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -256,35 +249,34 @@ public class FragmentInfo {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to FragmentInfo
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!FragmentInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FragmentInfo
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (FragmentInfo.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in FragmentInfo is not found in the empty JSON string", FragmentInfo.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("fragmentInfo") != null && !jsonObj.get("fragmentInfo").isJsonNull()) {
-        JsonArray jsonArrayfragmentInfo = jsonObj.getAsJsonArray("fragmentInfo");
-        if (jsonArrayfragmentInfo != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("fragmentInfo").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `fragmentInfo` to be an array in the JSON string but got `%s`", jsonObj.get("fragmentInfo").toString()));
-          }
-
-          // validate the optional field `fragmentInfo` (array)
-          for (int i = 0; i < jsonArrayfragmentInfo.size(); i++) {
-            SingleFragmentInfo.validateJsonElement(jsonArrayfragmentInfo.get(i));
-          };
+      JsonArray jsonArrayfragmentInfo = jsonObj.getAsJsonArray("fragmentInfo");
+      if (jsonArrayfragmentInfo != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("fragmentInfo").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `fragmentInfo` to be an array in the JSON string but got `%s`", jsonObj.get("fragmentInfo").toString()));
         }
+
+        // validate the optional field `fragmentInfo` (array)
+        for (int i = 0; i < jsonArrayfragmentInfo.size(); i++) {
+          SingleFragmentInfo.validateJsonObject(jsonArrayfragmentInfo.get(i).getAsJsonObject());
+        };
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("toVacuum") != null && !jsonObj.get("toVacuum").isJsonNull() && !jsonObj.get("toVacuum").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("toVacuum") != null && !jsonObj.get("toVacuum").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `toVacuum` to be an array in the JSON string but got `%s`", jsonObj.get("toVacuum").toString()));
       }
   }
@@ -305,7 +297,7 @@ public class FragmentInfo {
            public void write(JsonWriter out, FragmentInfo value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -317,12 +309,7 @@ public class FragmentInfo {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -331,9 +318,8 @@ public class FragmentInfo {
 
            @Override
            public FragmentInfo read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              FragmentInfo instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -347,10 +333,8 @@ public class FragmentInfo {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -361,22 +345,22 @@ public class FragmentInfo {
     }
   }
 
-  /**
-   * Create an instance of FragmentInfo given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of FragmentInfo
-   * @throws IOException if the JSON string is invalid with respect to FragmentInfo
-   */
+ /**
+  * Create an instance of FragmentInfo given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FragmentInfo
+  * @throws IOException if the JSON string is invalid with respect to FragmentInfo
+  */
   public static FragmentInfo fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, FragmentInfo.class);
   }
 
-  /**
-   * Convert an instance of FragmentInfo to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of FragmentInfo to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -14,11 +14,10 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
-import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -32,6 +31,8 @@ public enum OrganizationRoles {
   OWNER("owner"),
   
   ADMIN("admin"),
+  
+  READ_WRITE_DELETE("read_write_delete"),
   
   READ_WRITE("read_write"),
   
@@ -72,11 +73,6 @@ public enum OrganizationRoles {
       String value = jsonReader.nextString();
       return OrganizationRoles.fromValue(value);
     }
-  }
-
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    String value = jsonElement.getAsString();
-    OrganizationRoles.fromValue(value);
   }
 }
 

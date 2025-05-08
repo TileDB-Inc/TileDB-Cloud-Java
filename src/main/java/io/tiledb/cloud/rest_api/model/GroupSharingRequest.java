@@ -14,38 +14,28 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.tiledb.cloud.rest_api.model.ArrayActions;
-import io.tiledb.cloud.rest_api.model.GroupActions;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -53,24 +43,26 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * a request to share a group and all the contents with a namespace
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "a request to share a group and all the contents with a namespace")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class GroupSharingRequest {
   public static final String SERIALIZED_NAME_GROUP_ACTIONS = "group_actions";
   @SerializedName(SERIALIZED_NAME_GROUP_ACTIONS)
-  private List<GroupActions> groupActions = new ArrayList<>();
+  private List<GroupActions> groupActions = null;
 
   public static final String SERIALIZED_NAME_ARRAY_ACTIONS = "array_actions";
   @SerializedName(SERIALIZED_NAME_ARRAY_ACTIONS)
-  private List<ArrayActions> arrayActions = new ArrayList<>();
+  private List<ArrayActions> arrayActions = null;
 
   public static final String SERIALIZED_NAME_NAMESPACE = "namespace";
   @SerializedName(SERIALIZED_NAME_NAMESPACE)
   private String namespace;
 
-  public GroupSharingRequest() {
+  public GroupSharingRequest() { 
   }
 
   public GroupSharingRequest groupActions(List<GroupActions> groupActions) {
+    
     this.groupActions = groupActions;
     return this;
   }
@@ -83,14 +75,17 @@ public class GroupSharingRequest {
     return this;
   }
 
-  /**
+   /**
    * List of permitted actions for the group and all subgroups
    * @return groupActions
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "[read, write]", value = "List of permitted actions for the group and all subgroups")
+
   public List<GroupActions> getGroupActions() {
     return groupActions;
   }
+
 
   public void setGroupActions(List<GroupActions> groupActions) {
     this.groupActions = groupActions;
@@ -98,6 +93,7 @@ public class GroupSharingRequest {
 
 
   public GroupSharingRequest arrayActions(List<ArrayActions> arrayActions) {
+    
     this.arrayActions = arrayActions;
     return this;
   }
@@ -110,14 +106,17 @@ public class GroupSharingRequest {
     return this;
   }
 
-  /**
+   /**
    * List of permitted actions for all the subarrays of the group
    * @return arrayActions
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "[read, write]", value = "List of permitted actions for all the subarrays of the group")
+
   public List<ArrayActions> getArrayActions() {
     return arrayActions;
   }
+
 
   public void setArrayActions(List<ArrayActions> arrayActions) {
     this.arrayActions = arrayActions;
@@ -125,18 +124,22 @@ public class GroupSharingRequest {
 
 
   public GroupSharingRequest namespace(String namespace) {
+    
     this.namespace = namespace;
     return this;
   }
 
-  /**
+   /**
    * namespace being granted group access can be a user or organization
    * @return namespace
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(example = "MyOrganization", value = "namespace being granted group access can be a user or organization")
+
   public String getNamespace() {
     return namespace;
   }
+
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
@@ -152,10 +155,6 @@ public class GroupSharingRequest {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the GroupSharingRequest instance itself
    */
   public GroupSharingRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -167,8 +166,6 @@ public class GroupSharingRequest {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -176,9 +173,6 @@ public class GroupSharingRequest {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -246,28 +240,29 @@ public class GroupSharingRequest {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GroupSharingRequest
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GroupSharingRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to GroupSharingRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (GroupSharingRequest.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in GroupSharingRequest is not found in the empty JSON string", GroupSharingRequest.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("group_actions") != null && !jsonObj.get("group_actions").isJsonNull() && !jsonObj.get("group_actions").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("group_actions") != null && !jsonObj.get("group_actions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `group_actions` to be an array in the JSON string but got `%s`", jsonObj.get("group_actions").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("array_actions") != null && !jsonObj.get("array_actions").isJsonNull() && !jsonObj.get("array_actions").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("array_actions") != null && !jsonObj.get("array_actions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_actions` to be an array in the JSON string but got `%s`", jsonObj.get("array_actions").toString()));
       }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
       }
   }
@@ -288,7 +283,7 @@ public class GroupSharingRequest {
            public void write(JsonWriter out, GroupSharingRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -300,12 +295,7 @@ public class GroupSharingRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -314,9 +304,8 @@ public class GroupSharingRequest {
 
            @Override
            public GroupSharingRequest read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              GroupSharingRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -330,10 +319,8 @@ public class GroupSharingRequest {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -344,22 +331,22 @@ public class GroupSharingRequest {
     }
   }
 
-  /**
-   * Create an instance of GroupSharingRequest given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of GroupSharingRequest
-   * @throws IOException if the JSON string is invalid with respect to GroupSharingRequest
-   */
+ /**
+  * Create an instance of GroupSharingRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of GroupSharingRequest
+  * @throws IOException if the JSON string is invalid with respect to GroupSharingRequest
+  */
   public static GroupSharingRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, GroupSharingRequest.class);
   }
 
-  /**
-   * Convert an instance of GroupSharingRequest to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of GroupSharingRequest to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

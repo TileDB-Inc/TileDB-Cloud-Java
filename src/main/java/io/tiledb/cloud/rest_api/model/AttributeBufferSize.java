@@ -14,34 +14,26 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -49,7 +41,8 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * object representing buffer size of an attribute
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "object representing buffer size of an attribute")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class AttributeBufferSize {
   public static final String SERIALIZED_NAME_ATTRIBUTE = "attribute";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE)
@@ -63,22 +56,26 @@ public class AttributeBufferSize {
   @SerializedName(SERIALIZED_NAME_DATA_BYTES)
   private Integer dataBytes;
 
-  public AttributeBufferSize() {
+  public AttributeBufferSize() { 
   }
 
   public AttributeBufferSize attribute(String attribute) {
+    
     this.attribute = attribute;
     return this;
   }
 
-  /**
+   /**
    * name of attribute
    * @return attribute
-   */
+  **/
   @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "name of attribute")
+
   public String getAttribute() {
     return attribute;
   }
+
 
   public void setAttribute(String attribute) {
     this.attribute = attribute;
@@ -86,18 +83,22 @@ public class AttributeBufferSize {
 
 
   public AttributeBufferSize offsetBytes(Integer offsetBytes) {
+    
     this.offsetBytes = offsetBytes;
     return this;
   }
 
-  /**
+   /**
    * buffer size (in bytes) of offset buffer
    * @return offsetBytes
-   */
+  **/
   @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "buffer size (in bytes) of offset buffer")
+
   public Integer getOffsetBytes() {
     return offsetBytes;
   }
+
 
   public void setOffsetBytes(Integer offsetBytes) {
     this.offsetBytes = offsetBytes;
@@ -105,18 +106,22 @@ public class AttributeBufferSize {
 
 
   public AttributeBufferSize dataBytes(Integer dataBytes) {
+    
     this.dataBytes = dataBytes;
     return this;
   }
 
-  /**
+   /**
    * buffer size (in bytes) of data buffer
    * @return dataBytes
-   */
+  **/
   @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "buffer size (in bytes) of data buffer")
+
   public Integer getDataBytes() {
     return dataBytes;
   }
+
 
   public void setDataBytes(Integer dataBytes) {
     this.dataBytes = dataBytes;
@@ -132,10 +137,6 @@ public class AttributeBufferSize {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the AttributeBufferSize instance itself
    */
   public AttributeBufferSize putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -147,8 +148,6 @@ public class AttributeBufferSize {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -156,9 +155,6 @@ public class AttributeBufferSize {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -229,27 +225,28 @@ public class AttributeBufferSize {
     openapiRequiredFields.add("dataBytes");
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AttributeBufferSize
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!AttributeBufferSize.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to AttributeBufferSize
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (AttributeBufferSize.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in AttributeBufferSize is not found in the empty JSON string", AttributeBufferSize.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AttributeBufferSize.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("attribute").isJsonPrimitive()) {
+      if (jsonObj.get("attribute") != null && !jsonObj.get("attribute").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `attribute` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attribute").toString()));
       }
   }
@@ -270,7 +267,7 @@ public class AttributeBufferSize {
            public void write(JsonWriter out, AttributeBufferSize value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -282,12 +279,7 @@ public class AttributeBufferSize {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -296,9 +288,8 @@ public class AttributeBufferSize {
 
            @Override
            public AttributeBufferSize read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              AttributeBufferSize instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -312,10 +303,8 @@ public class AttributeBufferSize {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -326,22 +315,22 @@ public class AttributeBufferSize {
     }
   }
 
-  /**
-   * Create an instance of AttributeBufferSize given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of AttributeBufferSize
-   * @throws IOException if the JSON string is invalid with respect to AttributeBufferSize
-   */
+ /**
+  * Create an instance of AttributeBufferSize given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of AttributeBufferSize
+  * @throws IOException if the JSON string is invalid with respect to AttributeBufferSize
+  */
   public static AttributeBufferSize fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, AttributeBufferSize.class);
   }
 
-  /**
-   * Convert an instance of AttributeBufferSize to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of AttributeBufferSize to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

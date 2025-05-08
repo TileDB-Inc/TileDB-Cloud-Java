@@ -14,36 +14,28 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -51,52 +43,54 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Domain object for an array of each type
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-13T19:24:49.771847040-04:00[America/New_York]", comments = "Generator version: 7.7.0")
+@ApiModel(description = "Domain object for an array of each type")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
 public class DomainArray {
   public static final String SERIALIZED_NAME_INT8 = "int8";
   @SerializedName(SERIALIZED_NAME_INT8)
-  private List<Integer> int8 = new ArrayList<>();
+  private List<Integer> int8 = null;
 
   public static final String SERIALIZED_NAME_UINT8 = "uint8";
   @SerializedName(SERIALIZED_NAME_UINT8)
-  private List<Integer> uint8 = new ArrayList<>();
+  private List<Integer> uint8 = null;
 
   public static final String SERIALIZED_NAME_INT16 = "int16";
   @SerializedName(SERIALIZED_NAME_INT16)
-  private List<Integer> int16 = new ArrayList<>();
+  private List<Integer> int16 = null;
 
   public static final String SERIALIZED_NAME_UINT16 = "uint16";
   @SerializedName(SERIALIZED_NAME_UINT16)
-  private List<Integer> uint16 = new ArrayList<>();
+  private List<Integer> uint16 = null;
 
   public static final String SERIALIZED_NAME_INT32 = "int32";
   @SerializedName(SERIALIZED_NAME_INT32)
-  private List<Integer> int32 = new ArrayList<>();
+  private List<Integer> int32 = null;
 
   public static final String SERIALIZED_NAME_UINT32 = "uint32";
   @SerializedName(SERIALIZED_NAME_UINT32)
-  private List<Integer> uint32 = new ArrayList<>();
+  private List<Integer> uint32 = null;
 
   public static final String SERIALIZED_NAME_INT64 = "int64";
   @SerializedName(SERIALIZED_NAME_INT64)
-  private List<Long> int64 = new ArrayList<>();
+  private List<Long> int64 = null;
 
   public static final String SERIALIZED_NAME_UINT64 = "uint64";
   @SerializedName(SERIALIZED_NAME_UINT64)
-  private List<Integer> uint64 = new ArrayList<>();
+  private List<Integer> uint64 = null;
 
   public static final String SERIALIZED_NAME_FLOAT32 = "float32";
   @SerializedName(SERIALIZED_NAME_FLOAT32)
-  private List<Float> float32 = new ArrayList<>();
+  private List<Float> float32 = null;
 
   public static final String SERIALIZED_NAME_FLOAT64 = "float64";
   @SerializedName(SERIALIZED_NAME_FLOAT64)
-  private List<Double> float64 = new ArrayList<>();
+  private List<Double> float64 = null;
 
-  public DomainArray() {
+  public DomainArray() { 
   }
 
   public DomainArray int8(List<Integer> int8) {
+    
     this.int8 = int8;
     return this;
   }
@@ -109,14 +103,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get int8
    * @return int8
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getInt8() {
     return int8;
   }
+
 
   public void setInt8(List<Integer> int8) {
     this.int8 = int8;
@@ -124,6 +121,7 @@ public class DomainArray {
 
 
   public DomainArray uint8(List<Integer> uint8) {
+    
     this.uint8 = uint8;
     return this;
   }
@@ -136,14 +134,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get uint8
    * @return uint8
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getUint8() {
     return uint8;
   }
+
 
   public void setUint8(List<Integer> uint8) {
     this.uint8 = uint8;
@@ -151,6 +152,7 @@ public class DomainArray {
 
 
   public DomainArray int16(List<Integer> int16) {
+    
     this.int16 = int16;
     return this;
   }
@@ -163,14 +165,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get int16
    * @return int16
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getInt16() {
     return int16;
   }
+
 
   public void setInt16(List<Integer> int16) {
     this.int16 = int16;
@@ -178,6 +183,7 @@ public class DomainArray {
 
 
   public DomainArray uint16(List<Integer> uint16) {
+    
     this.uint16 = uint16;
     return this;
   }
@@ -190,14 +196,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get uint16
    * @return uint16
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getUint16() {
     return uint16;
   }
+
 
   public void setUint16(List<Integer> uint16) {
     this.uint16 = uint16;
@@ -205,6 +214,7 @@ public class DomainArray {
 
 
   public DomainArray int32(List<Integer> int32) {
+    
     this.int32 = int32;
     return this;
   }
@@ -217,14 +227,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get int32
    * @return int32
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getInt32() {
     return int32;
   }
+
 
   public void setInt32(List<Integer> int32) {
     this.int32 = int32;
@@ -232,6 +245,7 @@ public class DomainArray {
 
 
   public DomainArray uint32(List<Integer> uint32) {
+    
     this.uint32 = uint32;
     return this;
   }
@@ -244,14 +258,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get uint32
    * @return uint32
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getUint32() {
     return uint32;
   }
+
 
   public void setUint32(List<Integer> uint32) {
     this.uint32 = uint32;
@@ -259,6 +276,7 @@ public class DomainArray {
 
 
   public DomainArray int64(List<Long> int64) {
+    
     this.int64 = int64;
     return this;
   }
@@ -271,14 +289,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get int64
    * @return int64
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Long> getInt64() {
     return int64;
   }
+
 
   public void setInt64(List<Long> int64) {
     this.int64 = int64;
@@ -286,6 +307,7 @@ public class DomainArray {
 
 
   public DomainArray uint64(List<Integer> uint64) {
+    
     this.uint64 = uint64;
     return this;
   }
@@ -298,14 +320,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get uint64
    * @return uint64
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Integer> getUint64() {
     return uint64;
   }
+
 
   public void setUint64(List<Integer> uint64) {
     this.uint64 = uint64;
@@ -313,6 +338,7 @@ public class DomainArray {
 
 
   public DomainArray float32(List<Float> float32) {
+    
     this.float32 = float32;
     return this;
   }
@@ -325,14 +351,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get float32
    * @return float32
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Float> getFloat32() {
     return float32;
   }
+
 
   public void setFloat32(List<Float> float32) {
     this.float32 = float32;
@@ -340,6 +369,7 @@ public class DomainArray {
 
 
   public DomainArray float64(List<Double> float64) {
+    
     this.float64 = float64;
     return this;
   }
@@ -352,14 +382,17 @@ public class DomainArray {
     return this;
   }
 
-  /**
+   /**
    * Get float64
    * @return float64
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public List<Double> getFloat64() {
     return float64;
   }
+
 
   public void setFloat64(List<Double> float64) {
     this.float64 = float64;
@@ -375,10 +408,6 @@ public class DomainArray {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the DomainArray instance itself
    */
   public DomainArray putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -390,8 +419,6 @@ public class DomainArray {
 
   /**
    * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -399,9 +426,6 @@ public class DomainArray {
 
   /**
    * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -490,57 +514,58 @@ public class DomainArray {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to DomainArray
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!DomainArray.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DomainArray
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (DomainArray.openapiRequiredFields.isEmpty()) {
+          return;
+        } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in DomainArray is not found in the empty JSON string", DomainArray.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("int8") != null && !jsonObj.get("int8").isJsonNull() && !jsonObj.get("int8").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("int8") != null && !jsonObj.get("int8").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `int8` to be an array in the JSON string but got `%s`", jsonObj.get("int8").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("uint8") != null && !jsonObj.get("uint8").isJsonNull() && !jsonObj.get("uint8").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("uint8") != null && !jsonObj.get("uint8").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `uint8` to be an array in the JSON string but got `%s`", jsonObj.get("uint8").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("int16") != null && !jsonObj.get("int16").isJsonNull() && !jsonObj.get("int16").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("int16") != null && !jsonObj.get("int16").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `int16` to be an array in the JSON string but got `%s`", jsonObj.get("int16").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("uint16") != null && !jsonObj.get("uint16").isJsonNull() && !jsonObj.get("uint16").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("uint16") != null && !jsonObj.get("uint16").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `uint16` to be an array in the JSON string but got `%s`", jsonObj.get("uint16").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("int32") != null && !jsonObj.get("int32").isJsonNull() && !jsonObj.get("int32").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("int32") != null && !jsonObj.get("int32").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `int32` to be an array in the JSON string but got `%s`", jsonObj.get("int32").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("uint32") != null && !jsonObj.get("uint32").isJsonNull() && !jsonObj.get("uint32").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("uint32") != null && !jsonObj.get("uint32").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `uint32` to be an array in the JSON string but got `%s`", jsonObj.get("uint32").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("int64") != null && !jsonObj.get("int64").isJsonNull() && !jsonObj.get("int64").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("int64") != null && !jsonObj.get("int64").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `int64` to be an array in the JSON string but got `%s`", jsonObj.get("int64").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("uint64") != null && !jsonObj.get("uint64").isJsonNull() && !jsonObj.get("uint64").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("uint64") != null && !jsonObj.get("uint64").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `uint64` to be an array in the JSON string but got `%s`", jsonObj.get("uint64").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("float32") != null && !jsonObj.get("float32").isJsonNull() && !jsonObj.get("float32").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("float32") != null && !jsonObj.get("float32").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `float32` to be an array in the JSON string but got `%s`", jsonObj.get("float32").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("float64") != null && !jsonObj.get("float64").isJsonNull() && !jsonObj.get("float64").isJsonArray()) {
+      // ensure the json data is an array
+      if (jsonObj.get("float64") != null && !jsonObj.get("float64").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `float64` to be an array in the JSON string but got `%s`", jsonObj.get("float64").toString()));
       }
   }
@@ -561,7 +586,7 @@ public class DomainArray {
            public void write(JsonWriter out, DomainArray value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additional properties
+             // serialize additonal properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -573,12 +598,7 @@ public class DomainArray {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
@@ -587,9 +607,8 @@ public class DomainArray {
 
            @Override
            public DomainArray read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
              DomainArray instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
@@ -603,10 +622,8 @@ public class DomainArray {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
@@ -617,22 +634,22 @@ public class DomainArray {
     }
   }
 
-  /**
-   * Create an instance of DomainArray given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of DomainArray
-   * @throws IOException if the JSON string is invalid with respect to DomainArray
-   */
+ /**
+  * Create an instance of DomainArray given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DomainArray
+  * @throws IOException if the JSON string is invalid with respect to DomainArray
+  */
   public static DomainArray fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, DomainArray.class);
   }
 
-  /**
-   * Convert an instance of DomainArray to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of DomainArray to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }
