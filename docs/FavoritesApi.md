@@ -39,11 +39,11 @@ Add a new array favorite
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -119,11 +119,11 @@ Add a new ML model favorite
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -199,11 +199,11 @@ Add a new notebook favorite
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -279,11 +279,11 @@ Add a new UDF favorite
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -357,11 +357,11 @@ Delete specific array favorite
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -437,11 +437,11 @@ Delete specific ML model favorite
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -517,11 +517,11 @@ Delete specific notebook favorite
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -597,11 +597,11 @@ Delete specific UDF favorite
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -675,11 +675,11 @@ Fetch array favorite of a specific array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -756,11 +756,11 @@ Fetch ML model favorite of a specific ML model
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -837,11 +837,11 @@ Fetch notebook favorite of a specific notebook
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -918,11 +918,11 @@ Fetch UDF favorite of a specific UDF
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -997,11 +997,11 @@ Fetch a page of array favorites of connected user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1076,11 +1076,11 @@ Fetch all favorite array uuids of connected user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1149,11 +1149,11 @@ Fetch a page of ML models favorites of connected user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1228,11 +1228,11 @@ Fetch all favorite ML models uuids of connected user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1301,11 +1301,11 @@ Fetch a page of notebook favorites of connected user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1382,11 +1382,11 @@ Fetch all favorite notebook uuids of connected user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1455,11 +1455,11 @@ Fetch a page of UDF favorites of connected user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1534,11 +1534,11 @@ Fetch all favorite UDF uuids of connected user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.FavoritesApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.FavoritesApi;
 
 public class Example {
     public static void main(String[] args) {

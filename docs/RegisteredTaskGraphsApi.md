@@ -25,11 +25,11 @@ Delete the given registered task graph.
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.RegisteredTaskGraphsApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.RegisteredTaskGraphsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -103,11 +103,11 @@ Fetch the contents of this registered task graph.
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.RegisteredTaskGraphsApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.RegisteredTaskGraphsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -182,11 +182,11 @@ Get sharing policies for the task graph.
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.RegisteredTaskGraphsApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.RegisteredTaskGraphsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -262,11 +262,11 @@ Register a task graph in the given namespace, with the given name.
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.RegisteredTaskGraphsApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.RegisteredTaskGraphsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -342,11 +342,11 @@ Share a task graph.
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.RegisteredTaskGraphsApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.RegisteredTaskGraphsApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -423,11 +423,11 @@ Update the contents of an existing registered task graph.
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.RegisteredTaskGraphsApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.RegisteredTaskGraphsApi;
 
 public class Example {
     public static void main(String[] args) {

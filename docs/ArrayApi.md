@@ -53,11 +53,11 @@ get array activity logs
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -144,11 +144,11 @@ Fetch a list of all arrays that are owned directly by user or user&#39;s organiz
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -243,11 +243,11 @@ Fetch a sidebar for arrays that are owned directly by user or user&#39;s organiz
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -324,11 +324,11 @@ Fetch a list of all arrays that have been shared publically
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -423,11 +423,11 @@ Fetch a sidebar of all arrays that have been shared publically
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -504,11 +504,11 @@ Fetch a list of all arrays that have been shared with the user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -605,11 +605,11 @@ Fetch a list of all arrays that have been shared with the user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -688,11 +688,11 @@ retrieve a list of timestamps from the array fragment info listing in millisecon
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -773,11 +773,11 @@ consolidate an array at a specified URI
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -855,11 +855,11 @@ create a array schema at a specified URI registered to a group/project
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -941,11 +941,11 @@ delete a array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1023,11 +1023,11 @@ deregister a array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1103,11 +1103,11 @@ fetch an array&#39;s fragment info
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1187,11 +1187,11 @@ get activity log by ID
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1270,11 +1270,11 @@ get all array metadata user has access to
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1347,11 +1347,11 @@ get an ArraySchema using a url encoded uri
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1430,11 +1430,11 @@ get the max buffer sizes of an array for a subarray
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1517,11 +1517,11 @@ get metadata from the array in JSON format
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1602,11 +1602,11 @@ get metadata on an array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1683,11 +1683,11 @@ get metadata on an array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1764,11 +1764,11 @@ get the non empty domain of an array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1849,11 +1849,11 @@ get non-empty domain from the array in json format
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1930,11 +1930,11 @@ get an sample set of data from the array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2013,11 +2013,11 @@ Get all sharing details of the array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2095,11 +2095,11 @@ get metadata on all arrays in a namespace
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2176,11 +2176,11 @@ Get fragment end_timestamp on an array, will search for the closest end_timestam
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2257,11 +2257,11 @@ public class Example {
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2330,11 +2330,11 @@ request to get the array schema
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2414,11 +2414,11 @@ request to get the enumerations of the arrays&#39; attributes
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2498,11 +2498,11 @@ register an array at a specified URI registered to the given namespace
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2581,11 +2581,11 @@ Share an array with a user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2664,11 +2664,11 @@ update metadata on an array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2746,11 +2746,11 @@ update metadata on an array
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -2828,11 +2828,11 @@ vacuum an array at a specified URI
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.ArrayApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.ArrayApi;
 
 public class Example {
     public static void main(String[] args) {

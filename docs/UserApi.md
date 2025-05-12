@@ -41,11 +41,11 @@ Add aws keys
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -121,11 +121,11 @@ add a user to an organization
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -199,11 +199,11 @@ Check if aws keys are set
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -278,11 +278,11 @@ Check if aws keys are set by name
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -359,11 +359,11 @@ confirm user email
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -431,11 +431,11 @@ create a user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -507,11 +507,11 @@ delete a AWS Access credentials in a namespace. This will likely cause arrays to
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -587,11 +587,11 @@ delete a user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -663,11 +663,11 @@ delete a user from an organization
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -741,11 +741,11 @@ get a user from an organization
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -821,11 +821,11 @@ Get session token for user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -900,11 +900,11 @@ retrieves available token scopes for a user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -973,11 +973,11 @@ get a user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1046,11 +1046,11 @@ get a user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1124,11 +1124,11 @@ Request an authorization token, optionally taken a TokenRequest object to set pa
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1201,11 +1201,11 @@ reset user password
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1278,11 +1278,11 @@ revoke an authorization token
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1354,11 +1354,11 @@ Fetch a list of user tokens
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1427,11 +1427,11 @@ Fetch a list of user session tokens
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1500,11 +1500,11 @@ Update aws keys or associated buckets. This will update the key associations for
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1582,11 +1582,11 @@ update a user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -1660,11 +1660,11 @@ update a user in an organization
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UserApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UserApi;
 
 public class Example {
     public static void main(String[] args) {

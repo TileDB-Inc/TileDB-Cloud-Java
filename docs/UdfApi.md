@@ -30,11 +30,11 @@ delete a registered UDF -- this will remove all sharing and can not be undone
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -108,11 +108,11 @@ get a specific UDF in the given namespace
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -188,11 +188,11 @@ Get all sharing details of the UDF
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -268,11 +268,11 @@ Copy a tiledb udf at the specified location
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -353,11 +353,11 @@ register a UDF in the given namespace
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -433,11 +433,11 @@ Share a UDF with a user
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -514,11 +514,11 @@ submit a generic UDF in the given namespace
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -595,11 +595,11 @@ submit a multi-array UDF in the given namespace
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -676,11 +676,11 @@ send a UDF to run against a specified array/URI registered to a group/project
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -765,11 +765,11 @@ retrieve a list of timestamps from the array fragment info listing in millisecon
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -848,11 +848,11 @@ update an existing registered UDF in the given namespace
 ```java
 // Import classes:
 
-import org.openapitools.client.rest_api.ApiClient;
-import org.openapitools.client.rest_api.ApiException;
-import org.openapitools.client.rest_api.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.rest_api.api.UdfApi;
+import io.tiledb.cloud.rest_api.ApiClient;
+import io.tiledb.cloud.rest_api.ApiException;
+import io.tiledb.cloud.rest_api.Configuration;
+import io.tiledb.cloud.models.*;
+import io.tiledb.cloud.rest_api.api.UdfApi;
 
 public class Example {
     public static void main(String[] args) {
