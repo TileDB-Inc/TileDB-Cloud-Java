@@ -187,18 +187,6 @@ public class TaskGraphs {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraphs is not found in the empty JSON string", TaskGraphs.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraygraphs = jsonObj.getAsJsonArray("graphs");
-      if (jsonArraygraphs != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("graphs").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `graphs` to be an array in the JSON string but got `%s`", jsonObj.get("graphs").toString()));
-        }
-
-        // validate the optional field `graphs` (array)
-        for (int i = 0; i < jsonArraygraphs.size(); i++) {
-          TaskGraph.validateJsonObject(jsonArraygraphs.get(i).getAsJsonObject());
-        };
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

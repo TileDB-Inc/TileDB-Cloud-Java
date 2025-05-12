@@ -759,49 +759,6 @@ public class TaskGraphLog {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraphLog is not found in the empty JSON string", TaskGraphLog.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uuid").toString()));
-      }
-      if (jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
-      }
-      if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `created_by` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_by").toString()));
-      }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (jsonObj.get("execution_time") != null && !jsonObj.get("execution_time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `execution_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("execution_time").toString()));
-      }
-      JsonArray jsonArraynodes = jsonObj.getAsJsonArray("nodes");
-      if (jsonArraynodes != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("nodes").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `nodes` to be an array in the JSON string but got `%s`", jsonObj.get("nodes").toString()));
-        }
-
-        // validate the optional field `nodes` (array)
-        for (int i = 0; i < jsonArraynodes.size(); i++) {
-          TaskGraphNodeMetadata.validateJsonObject(jsonArraynodes.get(i).getAsJsonObject());
-        };
-      }
-      if (jsonObj.get("task_graph_id") != null && !jsonObj.get("task_graph_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `task_graph_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_graph_id").toString()));
-      }
-      if (jsonObj.get("cloud_provider") != null && !jsonObj.get("cloud_provider").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cloud_provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_provider").toString()));
-      }
-      if (jsonObj.get("cloud_region") != null && !jsonObj.get("cloud_region").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cloud_region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_region").toString()));
-      }
-      if (jsonObj.get("root_task_graph_uuid") != null && !jsonObj.get("root_task_graph_uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `root_task_graph_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("root_task_graph_uuid").toString()));
-      }
-      // ensure the json data is an array
-      if (jsonObj.get("children_task_graph_uuids") != null && !jsonObj.get("children_task_graph_uuids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `children_task_graph_uuids` to be an array in the JSON string but got `%s`", jsonObj.get("children_task_graph_uuids").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

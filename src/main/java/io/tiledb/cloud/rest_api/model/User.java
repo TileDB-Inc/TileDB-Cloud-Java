@@ -719,63 +719,6 @@ public class User {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if (jsonObj.get("username") != null && !jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
-      }
-      if (jsonObj.get("password") != null && !jsonObj.get("password").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
-      }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (jsonObj.get("email") != null && !jsonObj.get("email").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
-      }
-      if (jsonObj.get("company") != null && !jsonObj.get("company").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
-      }
-      if (jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
-      }
-      if (jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
-      }
-      JsonArray jsonArrayorganizations = jsonObj.getAsJsonArray("organizations");
-      if (jsonArrayorganizations != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("organizations").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `organizations` to be an array in the JSON string but got `%s`", jsonObj.get("organizations").toString()));
-        }
-
-        // validate the optional field `organizations` (array)
-        for (int i = 0; i < jsonArrayorganizations.size(); i++) {
-          OrganizationUser.validateJsonObject(jsonArrayorganizations.get(i).getAsJsonObject());
-        };
-      }
-      // ensure the json data is an array
-      if (jsonObj.get("allowed_actions") != null && !jsonObj.get("allowed_actions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `allowed_actions` to be an array in the JSON string but got `%s`", jsonObj.get("allowed_actions").toString()));
-      }
-      // ensure the json data is an array
-      if (jsonObj.get("enabled_features") != null && !jsonObj.get("enabled_features").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `enabled_features` to be an array in the JSON string but got `%s`", jsonObj.get("enabled_features").toString()));
-      }
-      if (jsonObj.get("default_s3_path") != null && !jsonObj.get("default_s3_path").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `default_s3_path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_s3_path").toString()));
-      }
-      // validate the optional field `asset_locations`
-      if (jsonObj.getAsJsonObject("asset_locations") != null) {
-        AssetLocations.validateJsonObject(jsonObj.getAsJsonObject("asset_locations"));
-      }
-      if (jsonObj.get("default_namespace_charged") != null && !jsonObj.get("default_namespace_charged").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `default_namespace_charged` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_namespace_charged").toString()));
-      }
-      if (jsonObj.get("default_region") != null && !jsonObj.get("default_region").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `default_region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_region").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
