@@ -1760,4 +1760,303 @@ public class UdfApi {
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<String> submitGenericUDFWithHttpInfoString(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitGenericUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public String submitGenericUDFString(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<String> localVarResp = submitGenericUDFWithHttpInfoString(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public byte[] submitGenericUDFBytes(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<byte[]> localVarResp = submitGenericUDFWithHttpInfoBytes(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<byte[]> submitGenericUDFWithHttpInfoBytes(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitGenericUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public Object submitGenericUDFObj(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<Object> localVarResp = submitGenericUDFWithHttpInfoObj(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<Object> submitGenericUDFWithHttpInfoObj(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitGenericUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * submit a multi-array UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public String submitMultiArrayUDFString(String namespace, MultiArrayUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<String> localVarResp = submitMultiArrayUDFWithHttpInfoString(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a multi-array UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<String> submitMultiArrayUDFWithHttpInfoString(String namespace, MultiArrayUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitMultiArrayUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * submit a multi-array UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public byte[] submitMultiArrayUDFBytes(String namespace, MultiArrayUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<byte[]> localVarResp = submitMultiArrayUDFWithHttpInfoBytes(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a multi-array UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<byte[]> submitMultiArrayUDFWithHttpInfoBytes(String namespace, MultiArrayUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitMultiArrayUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * send a UDF to run against a specified array/URI registered to a group/project
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param udf UDF to run (required)
+     * @param xPayer Name of organization or user who should be charged for this request (optional)
+     * @param acceptEncoding Encoding to use (optional)
+     * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public String submitUDFString(String workspace, String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2) throws ApiException {
+        ApiResponse<String> localVarResp = submitUDFWithHttpInfoString(workspace, namespace, array, udf, xPayer, acceptEncoding, v2);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * send a UDF to run against a specified array/URI registered to a group/project
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param udf UDF to run (required)
+     * @param xPayer Name of organization or user who should be charged for this request (optional)
+     * @param acceptEncoding Encoding to use (optional)
+     * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<String> submitUDFWithHttpInfoString(String workspace, String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2) throws ApiException {
+        okhttp3.Call localVarCall = submitUDFValidateBeforeCall(workspace, namespace, array, udf, xPayer, acceptEncoding, v2, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * send a UDF to run against a specified array/URI registered to a group/project
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param udf UDF to run (required)
+     * @param xPayer Name of organization or user who should be charged for this request (optional)
+     * @param acceptEncoding Encoding to use (optional)
+     * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public byte[] submitUDFBytes(String workspace, String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2) throws ApiException {
+        ApiResponse<byte[]> localVarResp = submitUDFWithHttpInfoBytes(workspace, namespace, array, udf, xPayer, acceptEncoding, v2);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * send a UDF to run against a specified array/URI registered to a group/project
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param udf UDF to run (required)
+     * @param xPayer Name of organization or user who should be charged for this request (optional)
+     * @param acceptEncoding Encoding to use (optional)
+     * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<byte[]> submitUDFWithHttpInfoBytes(String workspace, String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2) throws ApiException {
+        okhttp3.Call localVarCall = submitUDFValidateBeforeCall(workspace, namespace, array, udf, xPayer, acceptEncoding, v2, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
 }

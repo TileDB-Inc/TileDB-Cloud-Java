@@ -236,4 +236,47 @@ public class SqlApi {
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    /**
+     *
+     * Run a sql query
+     * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
+     * @param sql sql being submitted (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse with byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+    </table>
+     */
+    public ApiResponse<byte[]> runSQLWithHttpInfoBytes(String workspace, String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = runSQLValidateBeforeCall(workspace, namespace, sql, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * Run a sql query
+     * @param namespace namespace to run task under is in (an organization name or user&#39;s username) (required)
+     * @param sql sql being submitted (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> JSON results in array of objects form, if the query returns results </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 204 </td><td> SQL executed successfully </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
+    </table>
+     */
+    public byte[] runSQLBytes(String workspace, String namespace, SQLParameters sql, String acceptEncoding) throws ApiException {
+        ApiResponse<byte[]> localVarResp = runSQLWithHttpInfoBytes(workspace, namespace, sql, acceptEncoding);
+        return localVarResp.getData();
+    }
 }

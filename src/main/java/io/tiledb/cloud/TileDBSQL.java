@@ -18,6 +18,8 @@ import java.util.*;
 import org.apache.arrow.compression.CommonsCompressionFactory;
 
 public class TileDBSQL implements AutoCloseable{
+    private String workspace;
+
     private String namespace;
 
     private SQLParameters sql;
@@ -38,10 +40,11 @@ public class TileDBSQL implements AutoCloseable{
      * @param namespace namespace to run task under is in (an organization name or user's username)
      * @param sql sql being submitted
      */
-    public TileDBSQL(TileDBClient tileDBClient, String namespace, SQLParameters sql) {
+    public TileDBSQL(TileDBClient tileDBClient, String workspace, String namespace, SQLParameters sql) {
         Objects.requireNonNull(tileDBClient, "TileDBClient can not be null");
         Objects.requireNonNull(namespace, "Namespace can not be null");
         Objects.requireNonNull(sql, "SQL parameters can not be null");
+        this.workspace = workspace;
         this.namespace = namespace;
         this.sql = sql;
         this.tileDBClient = tileDBClient;
@@ -62,7 +65,7 @@ public class TileDBSQL implements AutoCloseable{
                         "'execArrow()' you can not specify a different ResultFormat. ");
             }
             sql.setResultFormat(ResultFormat.ARROW);
-            byte[] bytes =  apiInstance.runSQLBytes(namespace, sql, "none");
+            byte[] bytes =  apiInstance.runSQLBytes(workspace, namespace, sql, "none");
             ArrayList<ValueVector> valueVectors = null;
             int readBatchesCount = 0;
 
@@ -101,9 +104,9 @@ public class TileDBSQL implements AutoCloseable{
     public List<Map<String, Object>> exec(){
         try {
             if (sql.getResultFormat() == null ){
-                return apiInstance.runSQL(namespace, sql, ResultFormat.TILEDB_JSON.toString());
+                return apiInstance.runSQL(workspace, namespace, sql, ResultFormat.TILEDB_JSON.toString());
             } else {
-                return apiInstance.runSQL(namespace, sql, sql.getResultFormat().toString());
+                return apiInstance.runSQL(workspace, namespace, sql, sql.getResultFormat().toString());
             }
         } catch (ApiException e) {
             System.err.println("Exception when calling SqlApi#runSQL/runSQLBytes");

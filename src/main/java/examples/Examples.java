@@ -55,14 +55,14 @@ public class Examples
     private static void runSQL(TileDBClient tileDBClient) {
         SQLParameters sqlParameters = new SQLParameters();
         sqlParameters.setQuery("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`");
-        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "unittest", sqlParameters);
+        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "workspace", "unittest", sqlParameters);
         System.out.println(tileDBSQL.exec());
     }
 
     private static void runSQLArrow(TileDBClient tileDBClient) {
         SQLParameters sqlParameters = new SQLParameters();
         sqlParameters.setQuery("SELECT * FROM `tiledb://TileDB-Inc/quickstart_sparse`");
-        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "unittest", sqlParameters);
+        TileDBSQL tileDBSQL = new TileDBSQL(tileDBClient, "workspace", "unittest", sqlParameters);
         Pair<ArrayList<ValueVector>, Integer> a = tileDBSQL.execArrow();
     }
 
@@ -167,11 +167,12 @@ public class Examples
      */
     private static void deregisterArray(TileDBClient tileDBClient)
     {
+        String workspace = "<TILEDB_WORKSPACE>";
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         String array = "<ARRAY_NAME>"; // String | name/uri of array that is url-encoded
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
         try {
-            apiInstance.deregisterArray(namespace, array);
+            apiInstance.deregisterArray(workspace, namespace, array);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#deregisterArray");
             System.err.println("Status code: " + e.getCode());
@@ -186,12 +187,13 @@ public class Examples
      */
     private static void deleteArray(TileDBClient tileDBClient)
     {
+        String workspace = "<TILEDB_WORKSPACE>";
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         String array = "<ARRAY_NAME>"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
         try {
-            apiInstance.deleteArray(namespace, array, contentType);
+            apiInstance.deleteArray(workspace, namespace, array, contentType);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#deleteArray");
             System.err.println("Status code: " + e.getCode());
@@ -232,12 +234,13 @@ public class Examples
 
     private static void listArrays(TileDBClient tileDBClient)
     {
+        String workspace = "workspace";
         String namespace = "unittest"; // String | namespace array is in (an organization name or user's username)
         Boolean withMetadata = false;
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
         try {
-            List<ArrayInfo> result = apiInstance.getArraysInNamespace(namespace, withMetadata);
+            List<ArrayInfo> result = apiInstance.getArraysInNamespace(workspace, namespace, withMetadata);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#getArraysInNamespace");
@@ -249,13 +252,14 @@ public class Examples
     }
 
     private static void getArray(TileDBClient tileDBClient){
+        String workspace = "workspace";
         String namespace = "TileDB-Inc"; // String | namespace array is in (an organization name or user's username)
         String array = "quickstart_sparse"; // String | name/uri of array that is url-encoded
         String contentType = "application/json"; // String | Content Type of input and return mime
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
         try {
-            ArraySchema result = apiInstance.getArray(namespace, array, contentType);
+            ArraySchema result = apiInstance.getArray(workspace, namespace, array, contentType);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#getArray");
@@ -267,6 +271,7 @@ public class Examples
     }
 
     private static void createArray(TileDBClient tileDBClient){
+        String workspace = "<TILEDB_WORKSPACE>";
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         String arrayName = "s3://<BUCKET-NAME>/my_array"; // String | name/uri of array that is url-encoded //
         String contentType = "application/json"; // String | Content Type of input and return mime
@@ -319,7 +324,7 @@ public class Examples
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
         try {
-            apiInstance.createArray(namespace, arrayName, contentType, schema, null);
+            apiInstance.createArray(workspace, namespace, arrayName, contentType, schema, null);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#createArray");
             System.err.println("Status code: " + e.getCode());
@@ -330,6 +335,7 @@ public class Examples
     }
 
     public static void registerArray(TileDBClient tileDBClient){
+        String workspace = "<TILEDB_WORKSPACE>";
         String namespace = "<TILEDB_NAMESPACE>"; // String | namespace array is in (an organization name or user's username)
         String array = "s3://<BUCKET-NAME>/<ARRAY-URI>/"; // String | name/uri of array that is url-encoded
         ArrayInfoUpdate arrayMetadata = new ArrayInfoUpdate(); // ArrayInfoUpdate | metadata associated with array
@@ -338,7 +344,7 @@ public class Examples
         ArrayApi apiInstance = new ArrayApi(tileDBClient.getApiClient());
 
         try {
-            ArrayInfo result = apiInstance.registerArray(namespace, array, arrayMetadata);
+            ArrayInfo result = apiInstance.registerArray(workspace, namespace, array, arrayMetadata);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ArrayApi#registerArray");

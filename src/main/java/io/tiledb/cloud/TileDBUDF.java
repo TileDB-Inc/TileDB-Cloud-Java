@@ -173,7 +173,7 @@ public class TileDBUDF {
         String[] split = breakdownFullURI(arrayURI);
 
         try {
-            return apiInstance.submitUDFString(split[0], split[1], multiArrayUDF, xPayer, "none", "");
+            return apiInstance.submitUDFString(split[0], split[1], split[2], multiArrayUDF, xPayer, "none", "");
         } catch (ApiException e) {
             System.err.println("Exception when calling UdfApi#submitUDF");
             System.err.println("Status code: " + e.getCode());
@@ -206,7 +206,7 @@ public class TileDBUDF {
         String[] split = breakdownFullURI(array.getUri());
 
         try {
-            return apiInstance.submitUDFString(split[0], split[1], multiArrayUDF, xPayer, "none", "");
+            return apiInstance.submitUDFString(split[0], split[1], split[2], multiArrayUDF, xPayer, "none", "");
         } catch (ApiException e) {
             System.err.println("Exception when calling UdfApi#submitUDF");
             System.err.println("Status code: " + e.getCode());
@@ -259,7 +259,7 @@ public class TileDBUDF {
         multiArrayUDF.setResultFormat(ResultFormat.JSON);
         String result = "";
         try {
-            result = apiInstance.submitUDFString(split[0], split[1], multiArrayUDF, xPayer, "none", "");
+            result = apiInstance.submitUDFString(split[0], split[1], split[2], multiArrayUDF, xPayer, "none", "");
         } catch (ApiException e) {
             System.err.println("Exception when calling UdfApi#submitUDF");
             System.err.println("Status code: " + e.getCode());
@@ -312,7 +312,7 @@ public class TileDBUDF {
         multiArrayUDF.setResultFormat(ResultFormat.JSON);
         String result = "";
         try {
-            result = apiInstance.submitUDFString(split[0], split[1], multiArrayUDF, xPayer, "none", "");
+            result = apiInstance.submitUDFString(split[0], split[1], split[2], multiArrayUDF, xPayer, "none", "");
         } catch (ApiException e) {
             System.err.println("Exception when calling UdfApi#submitUDF");
             System.err.println("Status code: " + e.getCode());
@@ -343,7 +343,7 @@ public class TileDBUDF {
         String[] split = breakdownFullURI(arrayURI);
 
         try {
-            byte[] bytes = apiInstance.submitUDFBytes(split[0], split[1], multiArrayUDF, xPayer, "none", "");
+            byte[] bytes = apiInstance.submitUDFBytes(split[0], split[1], split[2], multiArrayUDF, xPayer, "none", "");
             return TileDBUtils.createValueVectors(bytes);
         } catch (IOException | ApiException e) {
             e.printStackTrace();
@@ -374,7 +374,7 @@ public class TileDBUDF {
         String[] split = breakdownFullURI(array.getUri());
 
         try {
-            byte[] bytes = apiInstance.submitUDFBytes(split[0], split[1], multiArrayUDF, xPayer, "none", "");
+            byte[] bytes = apiInstance.submitUDFBytes(split[0], split[1], split[2], multiArrayUDF, xPayer, "none", "");
             return TileDBUtils.createValueVectors(bytes);
         } catch (IOException | ApiException e) {
             e.printStackTrace();
