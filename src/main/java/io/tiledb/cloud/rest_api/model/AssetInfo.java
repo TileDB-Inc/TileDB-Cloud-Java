@@ -14,27 +14,39 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.AssetBackingType;
+import io.tiledb.cloud.rest_api.model.AssetOwnershipLevel;
+import io.tiledb.cloud.rest_api.model.AssetType;
+import io.tiledb.cloud.rest_api.model.MetadataStringified;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -42,8 +54,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * metadata of an asset
  */
-@ApiModel(description = "metadata of an asset")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class AssetInfo {
   public static final String SERIALIZED_NAME_UUID = "uuid";
   @SerializedName(SERIALIZED_NAME_UUID)
@@ -85,10 +96,9 @@ public class AssetInfo {
   @SerializedName(SERIALIZED_NAME_METADATA)
   private MetadataStringified metadata;
 
-  public AssetInfo() { 
+  public AssetInfo() {
   }
 
-  
   public AssetInfo(
      OffsetDateTime createdAt
   ) {
@@ -97,22 +107,18 @@ public class AssetInfo {
   }
 
   public AssetInfo uuid(String uuid) {
-    
     this.uuid = uuid;
     return this;
   }
 
-   /**
+  /**
    * unique ID of a registered asset
    * @return uuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "unique ID of a registered asset")
-
   public String getUuid() {
     return uuid;
   }
-
 
   public void setUuid(String uuid) {
     this.uuid = uuid;
@@ -120,22 +126,18 @@ public class AssetInfo {
 
 
   public AssetInfo assetType(AssetType assetType) {
-    
     this.assetType = assetType;
     return this;
   }
 
-   /**
+  /**
    * Get assetType
    * @return assetType
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public AssetType getAssetType() {
     return assetType;
   }
-
 
   public void setAssetType(AssetType assetType) {
     this.assetType = assetType;
@@ -143,22 +145,18 @@ public class AssetInfo {
 
 
   public AssetInfo assetBackingType(AssetBackingType assetBackingType) {
-    
     this.assetBackingType = assetBackingType;
     return this;
   }
 
-   /**
+  /**
    * Get assetBackingType
    * @return assetBackingType
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public AssetBackingType getAssetBackingType() {
     return assetBackingType;
   }
-
 
   public void setAssetBackingType(AssetBackingType assetBackingType) {
     this.assetBackingType = assetBackingType;
@@ -166,22 +164,18 @@ public class AssetInfo {
 
 
   public AssetInfo assetOwnershipLevel(AssetOwnershipLevel assetOwnershipLevel) {
-    
     this.assetOwnershipLevel = assetOwnershipLevel;
     return this;
   }
 
-   /**
+  /**
    * Get assetOwnershipLevel
    * @return assetOwnershipLevel
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public AssetOwnershipLevel getAssetOwnershipLevel() {
     return assetOwnershipLevel;
   }
-
 
   public void setAssetOwnershipLevel(AssetOwnershipLevel assetOwnershipLevel) {
     this.assetOwnershipLevel = assetOwnershipLevel;
@@ -189,22 +183,18 @@ public class AssetInfo {
 
 
   public AssetInfo namespaceName(String namespaceName) {
-    
     this.namespaceName = namespaceName;
     return this;
   }
 
-   /**
+  /**
    * namespace_name that the asset is registered to
    * @return namespaceName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "user1", value = "namespace_name that the asset is registered to")
-
   public String getNamespaceName() {
     return namespaceName;
   }
-
 
   public void setNamespaceName(String namespaceName) {
     this.namespaceName = namespaceName;
@@ -212,22 +202,18 @@ public class AssetInfo {
 
 
   public AssetInfo namespaceUuid(String namespaceUuid) {
-    
     this.namespaceUuid = namespaceUuid;
     return this;
   }
 
-   /**
+  /**
    * namespace_uuid that the asset is registered to
    * @return namespaceUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "namespace_uuid that the asset is registered to")
-
   public String getNamespaceUuid() {
     return namespaceUuid;
   }
-
 
   public void setNamespaceUuid(String namespaceUuid) {
     this.namespaceUuid = namespaceUuid;
@@ -235,22 +221,18 @@ public class AssetInfo {
 
 
   public AssetInfo name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * name of asset
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "myarray1", value = "name of asset")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -258,99 +240,53 @@ public class AssetInfo {
 
 
   public AssetInfo mimeType(String mimeType) {
-    
     this.mimeType = mimeType;
     return this;
   }
 
-   /**
+  /**
    * mime type of the asset
    * @return mimeType
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "application/vnd.tiledb.v1.array", value = "mime type of the asset")
-
   public String getMimeType() {
     return mimeType;
   }
-
 
   public void setMimeType(String mimeType) {
     this.mimeType = mimeType;
   }
 
 
-   /**
+  /**
    * Time when the asset was created (rfc3339)
    * @return createdAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Time when the asset was created (rfc3339)")
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
 
 
 
-
   public AssetInfo metadata(MetadataStringified metadata) {
-    
     this.metadata = metadata;
     return this;
   }
 
-   /**
+  /**
    * Get metadata
    * @return metadata
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public MetadataStringified getMetadata() {
     return metadata;
   }
-
 
   public void setMetadata(MetadataStringified metadata) {
     this.metadata = metadata;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public AssetInfo putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -371,13 +307,12 @@ public class AssetInfo {
         Objects.equals(this.name, assetInfo.name) &&
         Objects.equals(this.mimeType, assetInfo.mimeType) &&
         Objects.equals(this.createdAt, assetInfo.createdAt) &&
-        Objects.equals(this.metadata, assetInfo.metadata)&&
-        Objects.equals(this.additionalProperties, assetInfo.additionalProperties);
+        Objects.equals(this.metadata, assetInfo.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uuid, assetType, assetBackingType, assetOwnershipLevel, namespaceName, namespaceUuid, name, mimeType, createdAt, metadata, additionalProperties);
+    return Objects.hash(uuid, assetType, assetBackingType, assetOwnershipLevel, namespaceName, namespaceUuid, name, mimeType, createdAt, metadata);
   }
 
   @Override
@@ -394,7 +329,6 @@ public class AssetInfo {
     sb.append("    mimeType: ").append(toIndentedString(mimeType)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -432,38 +366,57 @@ public class AssetInfo {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to AssetInfo
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (AssetInfo.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to AssetInfo
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!AssetInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AssetInfo is not found in the empty JSON string", AssetInfo.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonPrimitive()) {
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!AssetInfo.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AssetInfo` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonNull()) && !jsonObj.get("uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uuid").toString()));
       }
-      if (jsonObj.get("namespace_name") != null && !jsonObj.get("namespace_name").isJsonPrimitive()) {
+      // validate the optional field `asset_type`
+      if (jsonObj.get("asset_type") != null && !jsonObj.get("asset_type").isJsonNull()) {
+        AssetType.validateJsonElement(jsonObj.get("asset_type"));
+      }
+      // validate the optional field `asset_backing_type`
+      if (jsonObj.get("asset_backing_type") != null && !jsonObj.get("asset_backing_type").isJsonNull()) {
+        AssetBackingType.validateJsonElement(jsonObj.get("asset_backing_type"));
+      }
+      // validate the optional field `asset_ownership_level`
+      if (jsonObj.get("asset_ownership_level") != null && !jsonObj.get("asset_ownership_level").isJsonNull()) {
+        AssetOwnershipLevel.validateJsonElement(jsonObj.get("asset_ownership_level"));
+      }
+      if ((jsonObj.get("namespace_name") != null && !jsonObj.get("namespace_name").isJsonNull()) && !jsonObj.get("namespace_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace_name").toString()));
       }
-      if (jsonObj.get("namespace_uuid") != null && !jsonObj.get("namespace_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("namespace_uuid") != null && !jsonObj.get("namespace_uuid").isJsonNull()) && !jsonObj.get("namespace_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace_uuid").toString()));
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (jsonObj.get("mime_type") != null && !jsonObj.get("mime_type").isJsonPrimitive()) {
+      if ((jsonObj.get("mime_type") != null && !jsonObj.get("mime_type").isJsonNull()) && !jsonObj.get("mime_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mime_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mime_type").toString()));
       }
       // validate the optional field `metadata`
-      if (jsonObj.getAsJsonObject("metadata") != null) {
-        MetadataStringified.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        MetadataStringified.validateJsonElement(jsonObj.get("metadata"));
       }
   }
 
@@ -482,71 +435,36 @@ public class AssetInfo {
            @Override
            public void write(JsonWriter out, AssetInfo value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public AssetInfo read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             AssetInfo instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of AssetInfo given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of AssetInfo
-  * @throws IOException if the JSON string is invalid with respect to AssetInfo
-  */
+  /**
+   * Create an instance of AssetInfo given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of AssetInfo
+   * @throws IOException if the JSON string is invalid with respect to AssetInfo
+   */
   public static AssetInfo fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, AssetInfo.class);
   }
 
- /**
-  * Convert an instance of AssetInfo to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of AssetInfo to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

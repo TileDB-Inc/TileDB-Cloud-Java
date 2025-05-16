@@ -14,31 +14,40 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.AssetLocations;
+import io.tiledb.cloud.rest_api.model.NamespaceActions;
+import io.tiledb.cloud.rest_api.model.OrganizationUser;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -46,8 +55,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * User
  */
-@ApiModel(description = "User")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class User {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -91,15 +99,15 @@ public class User {
 
   public static final String SERIALIZED_NAME_ORGANIZATIONS = "organizations";
   @SerializedName(SERIALIZED_NAME_ORGANIZATIONS)
-  private List<OrganizationUser> organizations = null;
+  private List<OrganizationUser> organizations = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ALLOWED_ACTIONS = "allowed_actions";
   @SerializedName(SERIALIZED_NAME_ALLOWED_ACTIONS)
-  private List<NamespaceActions> allowedActions = null;
+  private List<NamespaceActions> allowedActions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ENABLED_FEATURES = "enabled_features";
   @SerializedName(SERIALIZED_NAME_ENABLED_FEATURES)
-  private List<String> enabledFeatures = null;
+  private List<String> enabledFeatures = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_UNPAID_SUBSCRIPTION = "unpaid_subscription";
   @SerializedName(SERIALIZED_NAME_UNPAID_SUBSCRIPTION)
@@ -125,10 +133,9 @@ public class User {
   @SerializedName(SERIALIZED_NAME_DEFAULT_REGION)
   private String defaultRegion;
 
-  public User() { 
+  public User() {
   }
 
-  
   public User(
      Boolean isValidEmail, 
      Boolean stripeConnect, 
@@ -145,22 +152,18 @@ public class User {
   }
 
   public User id(String id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * unique ID of user
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "unique ID of user")
-
   public String getId() {
     return id;
   }
-
 
   public void setId(String id) {
     this.id = id;
@@ -168,22 +171,18 @@ public class User {
 
 
   public User username(String username) {
-    
     this.username = username;
     return this;
   }
 
-   /**
+  /**
    * username must be unique
    * @return username
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "username", required = true, value = "username must be unique")
-
   public String getUsername() {
     return username;
   }
-
 
   public void setUsername(String username) {
     this.username = username;
@@ -191,22 +190,18 @@ public class User {
 
 
   public User password(String password) {
-    
     this.password = password;
     return this;
   }
 
-   /**
+  /**
    * password
    * @return password
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "password", value = "password")
-
   public String getPassword() {
     return password;
   }
-
 
   public void setPassword(String password) {
     this.password = password;
@@ -214,22 +209,18 @@ public class User {
 
 
   public User name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * the user&#39;s full, real name
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Jane Doe", value = "the user's full, real name")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -237,73 +228,59 @@ public class User {
 
 
   public User email(String email) {
-    
     this.email = email;
     return this;
   }
 
-   /**
+  /**
    * the user&#39;s email
    * @return email
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "jane.doe@example.com", value = "the user's email")
-
   public String getEmail() {
     return email;
   }
-
 
   public void setEmail(String email) {
     this.email = email;
   }
 
 
-   /**
+  /**
    * user&#39;s email is validated to be correct
    * @return isValidEmail
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "user's email is validated to be correct")
-
   public Boolean getIsValidEmail() {
     return isValidEmail;
   }
 
 
 
-
-   /**
+  /**
    * Denotes that the user is able to apply pricing to arrays by means of Stripe Connect
    * @return stripeConnect
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Denotes that the user is able to apply pricing to arrays by means of Stripe Connect")
-
   public Boolean getStripeConnect() {
     return stripeConnect;
   }
 
 
 
-
   public User company(String company) {
-    
     this.company = company;
     return this;
   }
 
-   /**
+  /**
    * the user&#39;s company
    * @return company
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "TileDB", value = "the user's company")
-
   public String getCompany() {
     return company;
   }
-
 
   public void setCompany(String company) {
     this.company = company;
@@ -311,22 +288,18 @@ public class User {
 
 
   public User logo(String logo) {
-    
     this.logo = logo;
     return this;
   }
 
-   /**
+  /**
    * the user&#39;s logo
    * @return logo
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the user's logo")
-
   public String getLogo() {
     return logo;
   }
-
 
   public void setLogo(String logo) {
     this.logo = logo;
@@ -334,44 +307,36 @@ public class User {
 
 
   public User timezone(String timezone) {
-    
     this.timezone = timezone;
     return this;
   }
 
-   /**
+  /**
    * Get timezone
    * @return timezone
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Europe/Athens", value = "")
-
   public String getTimezone() {
     return timezone;
   }
-
 
   public void setTimezone(String timezone) {
     this.timezone = timezone;
   }
 
 
-   /**
+  /**
    * Array of organizations a user is part of and their roles
    * @return organizations
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Array of organizations a user is part of and their roles")
-
   public List<OrganizationUser> getOrganizations() {
     return organizations;
   }
 
 
 
-
   public User allowedActions(List<NamespaceActions> allowedActions) {
-    
     this.allowedActions = allowedActions;
     return this;
   }
@@ -384,68 +349,55 @@ public class User {
     return this;
   }
 
-   /**
+  /**
    * list of actions user is allowed to do on this organization
    * @return allowedActions
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "list of actions user is allowed to do on this organization")
-
   public List<NamespaceActions> getAllowedActions() {
     return allowedActions;
   }
-
 
   public void setAllowedActions(List<NamespaceActions> allowedActions) {
     this.allowedActions = allowedActions;
   }
 
 
-   /**
+  /**
    * List of extra/optional/beta features to enable for namespace
    * @return enabledFeatures
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "List of extra/optional/beta features to enable for namespace")
-
   public List<String> getEnabledFeatures() {
     return enabledFeatures;
   }
 
 
 
-
-   /**
+  /**
    * A notice that the user has an unpaid subscription
    * @return unpaidSubscription
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A notice that the user has an unpaid subscription")
-
   public Boolean getUnpaidSubscription() {
     return unpaidSubscription;
   }
 
 
 
-
   public User defaultS3Path(String defaultS3Path) {
-    
     this.defaultS3Path = defaultS3Path;
     return this;
   }
 
-   /**
+  /**
    * The default location to store newly-created notebooks and other assets like UDFs. The name &#x60;default_s3_path&#x60; is a legacy holdover; it may refer to any supported storage location. 
    * @return defaultS3Path
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The default location to store newly-created notebooks and other assets like UDFs. The name `default_s3_path` is a legacy holdover; it may refer to any supported storage location. ")
-
   public String getDefaultS3Path() {
     return defaultS3Path;
   }
-
 
   public void setDefaultS3Path(String defaultS3Path) {
     this.defaultS3Path = defaultS3Path;
@@ -453,22 +405,18 @@ public class User {
 
 
   public User defaultS3PathCredentialsName(Object defaultS3PathCredentialsName) {
-    
     this.defaultS3PathCredentialsName = defaultS3PathCredentialsName;
     return this;
   }
 
-   /**
+  /**
    * The name of the credentials used to create and access files in the &#x60;default_s3_path&#x60;, if needed. 
    * @return defaultS3PathCredentialsName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the credentials used to create and access files in the `default_s3_path`, if needed. ")
-
   public Object getDefaultS3PathCredentialsName() {
     return defaultS3PathCredentialsName;
   }
-
 
   public void setDefaultS3PathCredentialsName(Object defaultS3PathCredentialsName) {
     this.defaultS3PathCredentialsName = defaultS3PathCredentialsName;
@@ -476,22 +424,18 @@ public class User {
 
 
   public User assetLocations(AssetLocations assetLocations) {
-    
     this.assetLocations = assetLocations;
     return this;
   }
 
-   /**
+  /**
    * Get assetLocations
    * @return assetLocations
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public AssetLocations getAssetLocations() {
     return assetLocations;
   }
-
 
   public void setAssetLocations(AssetLocations assetLocations) {
     this.assetLocations = assetLocations;
@@ -499,22 +443,18 @@ public class User {
 
 
   public User defaultNamespaceCharged(String defaultNamespaceCharged) {
-    
     this.defaultNamespaceCharged = defaultNamespaceCharged;
     return this;
   }
 
-   /**
+  /**
    * Override the default namespace charged for actions when no namespace is specified
    * @return defaultNamespaceCharged
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Override the default namespace charged for actions when no namespace is specified")
-
   public String getDefaultNamespaceCharged() {
     return defaultNamespaceCharged;
   }
-
 
   public void setDefaultNamespaceCharged(String defaultNamespaceCharged) {
     this.defaultNamespaceCharged = defaultNamespaceCharged;
@@ -522,62 +462,23 @@ public class User {
 
 
   public User defaultRegion(String defaultRegion) {
-    
     this.defaultRegion = defaultRegion;
     return this;
   }
 
-   /**
+  /**
    * The default region to use for notebooks and other operations. It must be a region supported by TileDB, see https://docs.tiledb.com/cloud/concepts/tiledb-cloud-internals/architecture#orchestration 
    * @return defaultRegion
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The default region to use for notebooks and other operations. It must be a region supported by TileDB, see https://docs.tiledb.com/cloud/concepts/tiledb-cloud-internals/architecture#orchestration ")
-
   public String getDefaultRegion() {
     return defaultRegion;
   }
-
 
   public void setDefaultRegion(String defaultRegion) {
     this.defaultRegion = defaultRegion;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public User putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -607,8 +508,7 @@ public class User {
         Objects.equals(this.defaultS3PathCredentialsName, user.defaultS3PathCredentialsName) &&
         Objects.equals(this.assetLocations, user.assetLocations) &&
         Objects.equals(this.defaultNamespaceCharged, user.defaultNamespaceCharged) &&
-        Objects.equals(this.defaultRegion, user.defaultRegion)&&
-        Objects.equals(this.additionalProperties, user.additionalProperties);
+        Objects.equals(this.defaultRegion, user.defaultRegion);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -617,7 +517,7 @@ public class User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, password, name, email, isValidEmail, stripeConnect, company, logo, timezone, organizations, allowedActions, enabledFeatures, unpaidSubscription, defaultS3Path, defaultS3PathCredentialsName, assetLocations, defaultNamespaceCharged, defaultRegion, additionalProperties);
+    return Objects.hash(id, username, password, name, email, isValidEmail, stripeConnect, company, logo, timezone, organizations, allowedActions, enabledFeatures, unpaidSubscription, defaultS3Path, defaultS3PathCredentialsName, assetLocations, defaultNamespaceCharged, defaultRegion);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -650,7 +550,6 @@ public class User {
     sb.append("    assetLocations: ").append(toIndentedString(assetLocations)).append("\n");
     sb.append("    defaultNamespaceCharged: ").append(toIndentedString(defaultNamespaceCharged)).append("\n");
     sb.append("    defaultRegion: ").append(toIndentedString(defaultRegion)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -698,26 +597,92 @@ public class User {
     openapiRequiredFields.add("username");
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to User
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (User.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to User
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!User.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in User is not found in the empty JSON string", User.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!User.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `User` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : User.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (!jsonObj.get("username").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+      }
+      if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
+      }
+      if ((jsonObj.get("company") != null && !jsonObj.get("company").isJsonNull()) && !jsonObj.get("company").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
+      }
+      if ((jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonNull()) && !jsonObj.get("logo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
+      }
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
+      }
+      if (jsonObj.get("organizations") != null && !jsonObj.get("organizations").isJsonNull()) {
+        JsonArray jsonArrayorganizations = jsonObj.getAsJsonArray("organizations");
+        if (jsonArrayorganizations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("organizations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `organizations` to be an array in the JSON string but got `%s`", jsonObj.get("organizations").toString()));
+          }
+
+          // validate the optional field `organizations` (array)
+          for (int i = 0; i < jsonArrayorganizations.size(); i++) {
+            OrganizationUser.validateJsonElement(jsonArrayorganizations.get(i));
+          };
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("allowed_actions") != null && !jsonObj.get("allowed_actions").isJsonNull() && !jsonObj.get("allowed_actions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `allowed_actions` to be an array in the JSON string but got `%s`", jsonObj.get("allowed_actions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("enabled_features") != null && !jsonObj.get("enabled_features").isJsonNull() && !jsonObj.get("enabled_features").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `enabled_features` to be an array in the JSON string but got `%s`", jsonObj.get("enabled_features").toString()));
+      }
+      if ((jsonObj.get("default_s3_path") != null && !jsonObj.get("default_s3_path").isJsonNull()) && !jsonObj.get("default_s3_path").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `default_s3_path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_s3_path").toString()));
+      }
+      // validate the optional field `asset_locations`
+      if (jsonObj.get("asset_locations") != null && !jsonObj.get("asset_locations").isJsonNull()) {
+        AssetLocations.validateJsonElement(jsonObj.get("asset_locations"));
+      }
+      if ((jsonObj.get("default_namespace_charged") != null && !jsonObj.get("default_namespace_charged").isJsonNull()) && !jsonObj.get("default_namespace_charged").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `default_namespace_charged` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_namespace_charged").toString()));
+      }
+      if ((jsonObj.get("default_region") != null && !jsonObj.get("default_region").isJsonNull()) && !jsonObj.get("default_region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `default_region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_region").toString()));
       }
   }
 
@@ -736,71 +701,36 @@ public class User {
            @Override
            public void write(JsonWriter out, User value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public User read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             User instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of User given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of User
-  * @throws IOException if the JSON string is invalid with respect to User
-  */
+  /**
+   * Create an instance of User given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of User
+   * @throws IOException if the JSON string is invalid with respect to User
+   */
   public static User fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, User.class);
   }
 
- /**
-  * Convert an instance of User to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of User to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

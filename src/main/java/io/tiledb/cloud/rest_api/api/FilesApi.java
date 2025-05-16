@@ -19,12 +19,15 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
+import io.tiledb.cloud.rest_api.model.Error;
 import java.io.File;
 import io.tiledb.cloud.rest_api.model.FileCreate;
 import io.tiledb.cloud.rest_api.model.FileCreated;
@@ -110,8 +113,8 @@ public class FilesApi {
 
         // create path and map variables
         String localVarPath = "/files/{workspace}/{teamspace}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -139,31 +142,28 @@ public class FilesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call handleCreateFileValidateBeforeCall(String workspace, String teamspace, FileCreate fileCreate, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling handleCreateFile(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling handleCreateFile(Async)");
         }
-        
+
         // verify the required parameter 'fileCreate' is set
         if (fileCreate == null) {
             throw new ApiException("Missing the required parameter 'fileCreate' when calling handleCreateFile(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = handleCreateFileCall(workspace, teamspace, fileCreate, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, _callback);
-        return localVarCall;
+        return handleCreateFileCall(workspace, teamspace, fileCreate, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, _callback);
 
     }
 
@@ -272,9 +272,9 @@ public class FilesApi {
 
         // create path and map variables
         String localVarPath = "/files/{workspace}/{teamspace}/{file}/export"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "file" + "\\}", localVarApiClient.escapeString(_file.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "file" + "}", localVarApiClient.escapeString(_file.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -298,36 +298,33 @@ public class FilesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call handleExportFileValidateBeforeCall(String workspace, String teamspace, String _file, FileExport fileExport, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling handleExportFile(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling handleExportFile(Async)");
         }
-        
+
         // verify the required parameter '_file' is set
         if (_file == null) {
             throw new ApiException("Missing the required parameter '_file' when calling handleExportFile(Async)");
         }
-        
+
         // verify the required parameter 'fileExport' is set
         if (fileExport == null) {
             throw new ApiException("Missing the required parameter 'fileExport' when calling handleExportFile(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = handleExportFileCall(workspace, teamspace, _file, fileExport, _callback);
-        return localVarCall;
+        return handleExportFileCall(workspace, teamspace, _file, fileExport, _callback);
 
     }
 
@@ -438,8 +435,8 @@ public class FilesApi {
 
         // create path and map variables
         String localVarPath = "/files/{workspace}/{teamspace}/upload"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -479,31 +476,28 @@ public class FilesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call handleUploadFileValidateBeforeCall(String workspace, String teamspace, File inputFile, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, String outputUri, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling handleUploadFile(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling handleUploadFile(Async)");
         }
-        
+
         // verify the required parameter 'inputFile' is set
         if (inputFile == null) {
             throw new ApiException("Missing the required parameter 'inputFile' when calling handleUploadFile(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = handleUploadFileCall(workspace, teamspace, inputFile, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, outputUri, name, _callback);
-        return localVarCall;
+        return handleUploadFileCall(workspace, teamspace, inputFile, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, outputUri, name, _callback);
 
     }
 

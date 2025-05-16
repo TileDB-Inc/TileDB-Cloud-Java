@@ -14,28 +14,36 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -43,8 +51,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Request body to change the credentials of the given assets
  */
-@ApiModel(description = "Request body to change the credentials of the given assets")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ChangeAssetCredentialsRequest {
   public static final String SERIALIZED_NAME_ACCESS_CREDENTIALS = "access_credentials";
   @SerializedName(SERIALIZED_NAME_ACCESS_CREDENTIALS)
@@ -54,26 +61,22 @@ public class ChangeAssetCredentialsRequest {
   @SerializedName(SERIALIZED_NAME_ASSET_UUIDS)
   private List<String> assetUuids = new ArrayList<>();
 
-  public ChangeAssetCredentialsRequest() { 
+  public ChangeAssetCredentialsRequest() {
   }
 
   public ChangeAssetCredentialsRequest accessCredentials(String accessCredentials) {
-    
     this.accessCredentials = accessCredentials;
     return this;
   }
 
-   /**
+  /**
    * The name or uuid of the access credentials
    * @return accessCredentials
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The name or uuid of the access credentials")
-
   public String getAccessCredentials() {
     return accessCredentials;
   }
-
 
   public void setAccessCredentials(String accessCredentials) {
     this.accessCredentials = accessCredentials;
@@ -81,67 +84,31 @@ public class ChangeAssetCredentialsRequest {
 
 
   public ChangeAssetCredentialsRequest assetUuids(List<String> assetUuids) {
-    
     this.assetUuids = assetUuids;
     return this;
   }
 
   public ChangeAssetCredentialsRequest addAssetUuidsItem(String assetUuidsItem) {
+    if (this.assetUuids == null) {
+      this.assetUuids = new ArrayList<>();
+    }
     this.assetUuids.add(assetUuidsItem);
     return this;
   }
 
-   /**
+  /**
    * The list of asset uuids to have their credentials changed
    * @return assetUuids
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The list of asset uuids to have their credentials changed")
-
   public List<String> getAssetUuids() {
     return assetUuids;
   }
-
 
   public void setAssetUuids(List<String> assetUuids) {
     this.assetUuids = assetUuids;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public ChangeAssetCredentialsRequest putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -154,13 +121,12 @@ public class ChangeAssetCredentialsRequest {
     }
     ChangeAssetCredentialsRequest changeAssetCredentialsRequest = (ChangeAssetCredentialsRequest) o;
     return Objects.equals(this.accessCredentials, changeAssetCredentialsRequest.accessCredentials) &&
-        Objects.equals(this.assetUuids, changeAssetCredentialsRequest.assetUuids)&&
-        Objects.equals(this.additionalProperties, changeAssetCredentialsRequest.additionalProperties);
+        Objects.equals(this.assetUuids, changeAssetCredentialsRequest.assetUuids);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessCredentials, assetUuids, additionalProperties);
+    return Objects.hash(accessCredentials, assetUuids);
   }
 
   @Override
@@ -169,7 +135,6 @@ public class ChangeAssetCredentialsRequest {
     sb.append("class ChangeAssetCredentialsRequest {\n");
     sb.append("    accessCredentials: ").append(toIndentedString(accessCredentials)).append("\n");
     sb.append("    assetUuids: ").append(toIndentedString(assetUuids)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -201,32 +166,41 @@ public class ChangeAssetCredentialsRequest {
     openapiRequiredFields.add("asset_uuids");
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ChangeAssetCredentialsRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (ChangeAssetCredentialsRequest.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ChangeAssetCredentialsRequest
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ChangeAssetCredentialsRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ChangeAssetCredentialsRequest is not found in the empty JSON string", ChangeAssetCredentialsRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!ChangeAssetCredentialsRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ChangeAssetCredentialsRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ChangeAssetCredentialsRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
-      if (jsonObj.get("access_credentials") != null && !jsonObj.get("access_credentials").isJsonPrimitive()) {
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("access_credentials").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_credentials` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_credentials").toString()));
       }
-      // ensure the json data is an array
-      if (jsonObj.get("asset_uuids") != null && !jsonObj.get("asset_uuids").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("asset_uuids") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("asset_uuids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `asset_uuids` to be an array in the JSON string but got `%s`", jsonObj.get("asset_uuids").toString()));
       }
   }
@@ -246,71 +220,36 @@ public class ChangeAssetCredentialsRequest {
            @Override
            public void write(JsonWriter out, ChangeAssetCredentialsRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public ChangeAssetCredentialsRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             ChangeAssetCredentialsRequest instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of ChangeAssetCredentialsRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ChangeAssetCredentialsRequest
-  * @throws IOException if the JSON string is invalid with respect to ChangeAssetCredentialsRequest
-  */
+  /**
+   * Create an instance of ChangeAssetCredentialsRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ChangeAssetCredentialsRequest
+   * @throws IOException if the JSON string is invalid with respect to ChangeAssetCredentialsRequest
+   */
   public static ChangeAssetCredentialsRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ChangeAssetCredentialsRequest.class);
   }
 
- /**
-  * Convert an instance of ChangeAssetCredentialsRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ChangeAssetCredentialsRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -14,28 +14,38 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.ResultFormat;
+import io.tiledb.cloud.rest_api.model.UDFLanguage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -43,8 +53,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * User-defined function
  */
-@ApiModel(description = "User-defined function")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class GenericUDF {
   public static final String SERIALIZED_NAME_UDF_INFO_NAME = "udf_info_name";
   @SerializedName(SERIALIZED_NAME_UDF_INFO_NAME)
@@ -84,7 +93,7 @@ public class GenericUDF {
 
   public static final String SERIALIZED_NAME_STORED_PARAM_UUIDS = "stored_param_uuids";
   @SerializedName(SERIALIZED_NAME_STORED_PARAM_UUIDS)
-  private List<String> storedParamUuids = null;
+  private List<String> storedParamUuids = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RESULT_FORMAT = "result_format";
   @SerializedName(SERIALIZED_NAME_RESULT_FORMAT)
@@ -114,26 +123,22 @@ public class GenericUDF {
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_UUID)
   private String clientNodeUuid;
 
-  public GenericUDF() { 
+  public GenericUDF() {
   }
 
   public GenericUDF udfInfoName(String udfInfoName) {
-    
     this.udfInfoName = udfInfoName;
     return this;
   }
 
-   /**
+  /**
    * name of UDFInfo to run, format is {namespace}/{udf_name}. Can not be used with exec
    * @return udfInfoName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "TileDB-Inc/csv_ingestor", value = "name of UDFInfo to run, format is {namespace}/{udf_name}. Can not be used with exec")
-
   public String getUdfInfoName() {
     return udfInfoName;
   }
-
 
   public void setUdfInfoName(String udfInfoName) {
     this.udfInfoName = udfInfoName;
@@ -141,22 +146,18 @@ public class GenericUDF {
 
 
   public GenericUDF language(UDFLanguage language) {
-    
     this.language = language;
     return this;
   }
 
-   /**
+  /**
    * Get language
    * @return language
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public UDFLanguage getLanguage() {
     return language;
   }
-
 
   public void setLanguage(UDFLanguage language) {
     this.language = language;
@@ -164,22 +165,18 @@ public class GenericUDF {
 
 
   public GenericUDF version(String version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * Type-specific version
    * @return version
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Type-specific version")
-
   public String getVersion() {
     return version;
   }
-
 
   public void setVersion(String version) {
     this.version = version;
@@ -187,22 +184,18 @@ public class GenericUDF {
 
 
   public GenericUDF imageName(String imageName) {
-    
     this.imageName = imageName;
     return this;
   }
 
-   /**
+  /**
    * Docker image name to use for UDF
    * @return imageName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Docker image name to use for UDF")
-
   public String getImageName() {
     return imageName;
   }
-
 
   public void setImageName(String imageName) {
     this.imageName = imageName;
@@ -210,22 +203,18 @@ public class GenericUDF {
 
 
   public GenericUDF accessCredentialsName(String accessCredentialsName) {
-    
     this.accessCredentialsName = accessCredentialsName;
     return this;
   }
 
-   /**
+  /**
    * The name of the access credentials to use. if unset, no credentials will be configured in the environment.
    * @return accessCredentialsName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the access credentials to use. if unset, no credentials will be configured in the environment.")
-
   public String getAccessCredentialsName() {
     return accessCredentialsName;
   }
-
 
   public void setAccessCredentialsName(String accessCredentialsName) {
     this.accessCredentialsName = accessCredentialsName;
@@ -233,22 +222,18 @@ public class GenericUDF {
 
 
   public GenericUDF resourceClass(String resourceClass) {
-    
     this.resourceClass = resourceClass;
     return this;
   }
 
-   /**
+  /**
    * The resource class to use for the UDF execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the UDF will execute in the standard resource class of the TileDB Cloud provider. 
    * @return resourceClass
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "standard", value = "The resource class to use for the UDF execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the UDF will execute in the standard resource class of the TileDB Cloud provider. ")
-
   public String getResourceClass() {
     return resourceClass;
   }
-
 
   public void setResourceClass(String resourceClass) {
     this.resourceClass = resourceClass;
@@ -256,22 +241,18 @@ public class GenericUDF {
 
 
   public GenericUDF exec(String exec) {
-    
     this.exec = exec;
     return this;
   }
 
-   /**
+  /**
    * Type-specific executable text
    * @return exec
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Type-specific executable text")
-
   public String getExec() {
     return exec;
   }
-
 
   public void setExec(String exec) {
     this.exec = exec;
@@ -279,22 +260,18 @@ public class GenericUDF {
 
 
   public GenericUDF execRaw(String execRaw) {
-    
     this.execRaw = execRaw;
     return this;
   }
 
-   /**
+  /**
    * optional raw text to store of serialized function, used for showing in UI
    * @return execRaw
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "optional raw text to store of serialized function, used for showing in UI")
-
   public String getExecRaw() {
     return execRaw;
   }
-
 
   public void setExecRaw(String execRaw) {
     this.execRaw = execRaw;
@@ -302,22 +279,18 @@ public class GenericUDF {
 
 
   public GenericUDF argument(String argument) {
-    
     this.argument = argument;
     return this;
   }
 
-   /**
+  /**
    * Argument(s) to pass to UDF function, tuple or list of args/kwargs which can be in native or JSON format
    * @return argument
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Argument(s) to pass to UDF function, tuple or list of args/kwargs which can be in native or JSON format")
-
   public String getArgument() {
     return argument;
   }
-
 
   public void setArgument(String argument) {
     this.argument = argument;
@@ -325,7 +298,6 @@ public class GenericUDF {
 
 
   public GenericUDF storedParamUuids(List<String> storedParamUuids) {
-    
     this.storedParamUuids = storedParamUuids;
     return this;
   }
@@ -338,17 +310,14 @@ public class GenericUDF {
     return this;
   }
 
-   /**
+  /**
    * The UUIDs of stored input parameters (passed in a language-specific format within \&quot;argument\&quot;) to be retrieved from the server-side cache. Serialized in standard hex format with no {}.
    * @return storedParamUuids
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The UUIDs of stored input parameters (passed in a language-specific format within \"argument\") to be retrieved from the server-side cache. Serialized in standard hex format with no {}.")
-
   public List<String> getStoredParamUuids() {
     return storedParamUuids;
   }
-
 
   public void setStoredParamUuids(List<String> storedParamUuids) {
     this.storedParamUuids = storedParamUuids;
@@ -356,22 +325,18 @@ public class GenericUDF {
 
 
   public GenericUDF resultFormat(ResultFormat resultFormat) {
-    
     this.resultFormat = resultFormat;
     return this;
   }
 
-   /**
+  /**
    * Get resultFormat
    * @return resultFormat
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public ResultFormat getResultFormat() {
     return resultFormat;
   }
-
 
   public void setResultFormat(ResultFormat resultFormat) {
     this.resultFormat = resultFormat;
@@ -379,22 +344,18 @@ public class GenericUDF {
 
 
   public GenericUDF taskName(String taskName) {
-    
     this.taskName = taskName;
     return this;
   }
 
-   /**
+  /**
    * name of task, optional
    * @return taskName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "name of task, optional")
-
   public String getTaskName() {
     return taskName;
   }
-
 
   public void setTaskName(String taskName) {
     this.taskName = taskName;
@@ -402,22 +363,18 @@ public class GenericUDF {
 
 
   public GenericUDF storeResults(Boolean storeResults) {
-    
     this.storeResults = storeResults;
     return this;
   }
 
-   /**
+  /**
    * store results for later retrieval
    * @return storeResults
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "store results for later retrieval")
-
   public Boolean getStoreResults() {
     return storeResults;
   }
-
 
   public void setStoreResults(Boolean storeResults) {
     this.storeResults = storeResults;
@@ -425,22 +382,18 @@ public class GenericUDF {
 
 
   public GenericUDF timeout(Integer timeout) {
-    
     this.timeout = timeout;
     return this;
   }
 
-   /**
+  /**
    * UDF-type timeout in seconds (default: 900)
    * @return timeout
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "UDF-type timeout in seconds (default: 900)")
-
   public Integer getTimeout() {
     return timeout;
   }
-
 
   public void setTimeout(Integer timeout) {
     this.timeout = timeout;
@@ -448,22 +401,18 @@ public class GenericUDF {
 
 
   public GenericUDF dontDownloadResults(Boolean dontDownloadResults) {
-    
     this.dontDownloadResults = dontDownloadResults;
     return this;
   }
 
-   /**
+  /**
    * Set to true to avoid downloading the results of this UDF. Useful for intermediate nodes in a task graph where you will not be using the results of your function. Defaults to false (\&quot;yes download results\&quot;).
    * @return dontDownloadResults
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Set to true to avoid downloading the results of this UDF. Useful for intermediate nodes in a task graph where you will not be using the results of your function. Defaults to false (\"yes download results\").")
-
   public Boolean getDontDownloadResults() {
     return dontDownloadResults;
   }
-
 
   public void setDontDownloadResults(Boolean dontDownloadResults) {
     this.dontDownloadResults = dontDownloadResults;
@@ -471,22 +420,18 @@ public class GenericUDF {
 
 
   public GenericUDF taskGraphUuid(String taskGraphUuid) {
-    
     this.taskGraphUuid = taskGraphUuid;
     return this;
   }
 
-   /**
+  /**
    * If set, the ID of the log for the task graph that this was part of. 
    * @return taskGraphUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If set, the ID of the log for the task graph that this was part of. ")
-
   public String getTaskGraphUuid() {
     return taskGraphUuid;
   }
-
 
   public void setTaskGraphUuid(String taskGraphUuid) {
     this.taskGraphUuid = taskGraphUuid;
@@ -494,62 +439,23 @@ public class GenericUDF {
 
 
   public GenericUDF clientNodeUuid(String clientNodeUuid) {
-    
     this.clientNodeUuid = clientNodeUuid;
     return this;
   }
 
-   /**
+  /**
    * If set, the client-defined ID of the node within this task&#39;s graph. 
    * @return clientNodeUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If set, the client-defined ID of the node within this task's graph. ")
-
   public String getClientNodeUuid() {
     return clientNodeUuid;
   }
-
 
   public void setClientNodeUuid(String clientNodeUuid) {
     this.clientNodeUuid = clientNodeUuid;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public GenericUDF putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -577,13 +483,12 @@ public class GenericUDF {
         Objects.equals(this.timeout, genericUDF.timeout) &&
         Objects.equals(this.dontDownloadResults, genericUDF.dontDownloadResults) &&
         Objects.equals(this.taskGraphUuid, genericUDF.taskGraphUuid) &&
-        Objects.equals(this.clientNodeUuid, genericUDF.clientNodeUuid)&&
-        Objects.equals(this.additionalProperties, genericUDF.additionalProperties);
+        Objects.equals(this.clientNodeUuid, genericUDF.clientNodeUuid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(udfInfoName, language, version, imageName, accessCredentialsName, resourceClass, exec, execRaw, argument, storedParamUuids, resultFormat, taskName, storeResults, timeout, dontDownloadResults, taskGraphUuid, clientNodeUuid, additionalProperties);
+    return Objects.hash(udfInfoName, language, version, imageName, accessCredentialsName, resourceClass, exec, execRaw, argument, storedParamUuids, resultFormat, taskName, storeResults, timeout, dontDownloadResults, taskGraphUuid, clientNodeUuid);
   }
 
   @Override
@@ -607,7 +512,6 @@ public class GenericUDF {
     sb.append("    dontDownloadResults: ").append(toIndentedString(dontDownloadResults)).append("\n");
     sb.append("    taskGraphUuid: ").append(toIndentedString(taskGraphUuid)).append("\n");
     sb.append("    clientNodeUuid: ").append(toIndentedString(clientNodeUuid)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -652,55 +556,70 @@ public class GenericUDF {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to GenericUDF
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (GenericUDF.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to GenericUDF
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!GenericUDF.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in GenericUDF is not found in the empty JSON string", GenericUDF.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("udf_info_name") != null && !jsonObj.get("udf_info_name").isJsonPrimitive()) {
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!GenericUDF.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GenericUDF` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("udf_info_name") != null && !jsonObj.get("udf_info_name").isJsonNull()) && !jsonObj.get("udf_info_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `udf_info_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("udf_info_name").toString()));
       }
-      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonPrimitive()) {
+      // validate the optional field `language`
+      if (jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) {
+        UDFLanguage.validateJsonElement(jsonObj.get("language"));
+      }
+      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
-      if (jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonPrimitive()) {
+      if ((jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonNull()) && !jsonObj.get("image_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_name").toString()));
       }
-      if (jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
+      if ((jsonObj.get("access_credentials_name") != null && !jsonObj.get("access_credentials_name").isJsonNull()) && !jsonObj.get("access_credentials_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_credentials_name").toString()));
       }
-      if (jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonPrimitive()) {
+      if ((jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonNull()) && !jsonObj.get("resource_class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `resource_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_class").toString()));
       }
-      if (jsonObj.get("exec") != null && !jsonObj.get("exec").isJsonPrimitive()) {
+      if ((jsonObj.get("exec") != null && !jsonObj.get("exec").isJsonNull()) && !jsonObj.get("exec").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exec` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec").toString()));
       }
-      if (jsonObj.get("exec_raw") != null && !jsonObj.get("exec_raw").isJsonPrimitive()) {
+      if ((jsonObj.get("exec_raw") != null && !jsonObj.get("exec_raw").isJsonNull()) && !jsonObj.get("exec_raw").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exec_raw` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec_raw").toString()));
       }
-      if (jsonObj.get("argument") != null && !jsonObj.get("argument").isJsonPrimitive()) {
+      if ((jsonObj.get("argument") != null && !jsonObj.get("argument").isJsonNull()) && !jsonObj.get("argument").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `argument` to be a primitive type in the JSON string but got `%s`", jsonObj.get("argument").toString()));
       }
-      // ensure the json data is an array
-      if (jsonObj.get("stored_param_uuids") != null && !jsonObj.get("stored_param_uuids").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("stored_param_uuids") != null && !jsonObj.get("stored_param_uuids").isJsonNull() && !jsonObj.get("stored_param_uuids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `stored_param_uuids` to be an array in the JSON string but got `%s`", jsonObj.get("stored_param_uuids").toString()));
       }
-      if (jsonObj.get("task_name") != null && !jsonObj.get("task_name").isJsonPrimitive()) {
+      // validate the optional field `result_format`
+      if (jsonObj.get("result_format") != null && !jsonObj.get("result_format").isJsonNull()) {
+        ResultFormat.validateJsonElement(jsonObj.get("result_format"));
+      }
+      if ((jsonObj.get("task_name") != null && !jsonObj.get("task_name").isJsonNull()) && !jsonObj.get("task_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `task_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_name").toString()));
       }
-      if (jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonNull()) && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `task_graph_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_graph_uuid").toString()));
       }
-      if (jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonNull()) && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
       }
   }
@@ -720,71 +639,36 @@ public class GenericUDF {
            @Override
            public void write(JsonWriter out, GenericUDF value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public GenericUDF read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             GenericUDF instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of GenericUDF given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of GenericUDF
-  * @throws IOException if the JSON string is invalid with respect to GenericUDF
-  */
+  /**
+   * Create an instance of GenericUDF given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of GenericUDF
+   * @throws IOException if the JSON string is invalid with respect to GenericUDF
+   */
   public static GenericUDF fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, GenericUDF.class);
   }
 
- /**
-  * Convert an instance of GenericUDF to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of GenericUDF to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

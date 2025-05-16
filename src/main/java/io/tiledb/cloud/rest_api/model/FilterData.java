@@ -14,26 +14,34 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -41,8 +49,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Filter data
  */
-@ApiModel(description = "Filter data")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class FilterData {
   public static final String SERIALIZED_NAME_INT8 = "int8";
   @SerializedName(SERIALIZED_NAME_INT8)
@@ -84,26 +91,22 @@ public class FilterData {
   @SerializedName(SERIALIZED_NAME_FLOAT64)
   private Integer float64;
 
-  public FilterData() { 
+  public FilterData() {
   }
 
   public FilterData int8(Integer int8) {
-    
     this.int8 = int8;
     return this;
   }
 
-   /**
+  /**
    * Get int8
    * @return int8
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getInt8() {
     return int8;
   }
-
 
   public void setInt8(Integer int8) {
     this.int8 = int8;
@@ -111,22 +114,18 @@ public class FilterData {
 
 
   public FilterData uint8(Integer uint8) {
-    
     this.uint8 = uint8;
     return this;
   }
 
-   /**
+  /**
    * Get uint8
    * @return uint8
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getUint8() {
     return uint8;
   }
-
 
   public void setUint8(Integer uint8) {
     this.uint8 = uint8;
@@ -134,22 +133,18 @@ public class FilterData {
 
 
   public FilterData int16(Integer int16) {
-    
     this.int16 = int16;
     return this;
   }
 
-   /**
+  /**
    * Get int16
    * @return int16
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getInt16() {
     return int16;
   }
-
 
   public void setInt16(Integer int16) {
     this.int16 = int16;
@@ -157,22 +152,18 @@ public class FilterData {
 
 
   public FilterData uint16(Integer uint16) {
-    
     this.uint16 = uint16;
     return this;
   }
 
-   /**
+  /**
    * Get uint16
    * @return uint16
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getUint16() {
     return uint16;
   }
-
 
   public void setUint16(Integer uint16) {
     this.uint16 = uint16;
@@ -180,22 +171,18 @@ public class FilterData {
 
 
   public FilterData int32(Integer int32) {
-    
     this.int32 = int32;
     return this;
   }
 
-   /**
+  /**
    * Get int32
    * @return int32
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getInt32() {
     return int32;
   }
-
 
   public void setInt32(Integer int32) {
     this.int32 = int32;
@@ -203,22 +190,18 @@ public class FilterData {
 
 
   public FilterData uint32(Integer uint32) {
-    
     this.uint32 = uint32;
     return this;
   }
 
-   /**
+  /**
    * Get uint32
    * @return uint32
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getUint32() {
     return uint32;
   }
-
 
   public void setUint32(Integer uint32) {
     this.uint32 = uint32;
@@ -226,22 +209,18 @@ public class FilterData {
 
 
   public FilterData int64(Long int64) {
-    
     this.int64 = int64;
     return this;
   }
 
-   /**
+  /**
    * Get int64
    * @return int64
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Long getInt64() {
     return int64;
   }
-
 
   public void setInt64(Long int64) {
     this.int64 = int64;
@@ -249,22 +228,18 @@ public class FilterData {
 
 
   public FilterData uint64(Integer uint64) {
-    
     this.uint64 = uint64;
     return this;
   }
 
-   /**
+  /**
    * Get uint64
    * @return uint64
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getUint64() {
     return uint64;
   }
-
 
   public void setUint64(Integer uint64) {
     this.uint64 = uint64;
@@ -272,22 +247,18 @@ public class FilterData {
 
 
   public FilterData float32(Integer float32) {
-    
     this.float32 = float32;
     return this;
   }
 
-   /**
+  /**
    * Get float32
    * @return float32
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getFloat32() {
     return float32;
   }
-
 
   public void setFloat32(Integer float32) {
     this.float32 = float32;
@@ -295,62 +266,23 @@ public class FilterData {
 
 
   public FilterData float64(Integer float64) {
-    
     this.float64 = float64;
     return this;
   }
 
-   /**
+  /**
    * Get float64
    * @return float64
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Integer getFloat64() {
     return float64;
   }
-
 
   public void setFloat64(Integer float64) {
     this.float64 = float64;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public FilterData putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -371,13 +303,12 @@ public class FilterData {
         Objects.equals(this.int64, filterData.int64) &&
         Objects.equals(this.uint64, filterData.uint64) &&
         Objects.equals(this.float32, filterData.float32) &&
-        Objects.equals(this.float64, filterData.float64)&&
-        Objects.equals(this.additionalProperties, filterData.additionalProperties);
+        Objects.equals(this.float64, filterData.float64);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(int8, uint8, int16, uint16, int32, uint32, int64, uint64, float32, float64, additionalProperties);
+    return Objects.hash(int8, uint8, int16, uint16, int32, uint32, int64, uint64, float32, float64);
   }
 
   @Override
@@ -394,7 +325,6 @@ public class FilterData {
     sb.append("    uint64: ").append(toIndentedString(uint64)).append("\n");
     sb.append("    float32: ").append(toIndentedString(float32)).append("\n");
     sb.append("    float64: ").append(toIndentedString(float64)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -432,20 +362,27 @@ public class FilterData {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to FilterData
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (FilterData.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to FilterData
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!FilterData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in FilterData is not found in the empty JSON string", FilterData.openapiRequiredFields.toString()));
         }
       }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!FilterData.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FilterData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -463,71 +400,36 @@ public class FilterData {
            @Override
            public void write(JsonWriter out, FilterData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public FilterData read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             FilterData instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of FilterData given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of FilterData
-  * @throws IOException if the JSON string is invalid with respect to FilterData
-  */
+  /**
+   * Create an instance of FilterData given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of FilterData
+   * @throws IOException if the JSON string is invalid with respect to FilterData
+   */
   public static FilterData fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, FilterData.class);
   }
 
- /**
-  * Convert an instance of FilterData to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of FilterData to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

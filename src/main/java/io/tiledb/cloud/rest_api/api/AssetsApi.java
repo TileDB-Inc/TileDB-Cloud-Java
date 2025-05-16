@@ -19,6 +19,8 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -27,6 +29,7 @@ import java.io.IOException;
 
 import io.tiledb.cloud.rest_api.model.AssetListResponse;
 import io.tiledb.cloud.rest_api.model.ChangeAssetCredentialsRequest;
+import io.tiledb.cloud.rest_api.model.Error;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -105,8 +108,8 @@ public class AssetsApi {
 
         // create path and map variables
         String localVarPath = "/assets/{workspace}/{teamspace}/change_credentials"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -130,31 +133,28 @@ public class AssetsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call changeAssetCredentialsValidateBeforeCall(String workspace, String teamspace, ChangeAssetCredentialsRequest changeCredentialsRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling changeAssetCredentials(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling changeAssetCredentials(Async)");
         }
-        
+
         // verify the required parameter 'changeCredentialsRequest' is set
         if (changeCredentialsRequest == null) {
             throw new ApiException("Missing the required parameter 'changeCredentialsRequest' when calling changeAssetCredentials(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = changeAssetCredentialsCall(workspace, teamspace, changeCredentialsRequest, _callback);
-        return localVarCall;
+        return changeAssetCredentialsCall(workspace, teamspace, changeCredentialsRequest, _callback);
 
     }
 
@@ -262,8 +262,8 @@ public class AssetsApi {
 
         // create path and map variables
         String localVarPath = "/assets/{workspace}/{teamspace}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -312,33 +312,29 @@ public class AssetsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listAssetsValidateBeforeCall(String workspace, String teamspace, String assetType, String ownershipLevel, String depth, String search, Integer page, Integer perPage, String orderBy, String expand, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling listAssets(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling listAssets(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listAssetsCall(workspace, teamspace, assetType, ownershipLevel, depth, search, page, perPage, orderBy, expand, _callback);
-        return localVarCall;
+        return listAssetsCall(workspace, teamspace, assetType, ownershipLevel, depth, search, page, perPage, orderBy, expand, _callback);
 
     }
 
@@ -507,23 +503,19 @@ public class AssetsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listPublicAssetsValidateBeforeCall(String assetType, String depth, String search, Integer page, Integer perPage, String orderBy, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listPublicAssetsCall(assetType, depth, search, page, perPage, orderBy, _callback);
-        return localVarCall;
+        return listPublicAssetsCall(assetType, depth, search, page, perPage, orderBy, _callback);
 
     }
 

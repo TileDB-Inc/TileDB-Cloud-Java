@@ -7,11 +7,11 @@
 
 * `ALWAYS` (value: `"Always"`)
 
-* `ONFAILURE` (value: `"OnFailure"`)
+* `ON_FAILURE` (value: `"OnFailure"`)
 
-* `ONERROR` (value: `"OnError"`)
+* `ON_ERROR` (value: `"OnError"`)
 
-* `ONTRANSIENTERROR` (value: `"OnTransientError"`)
+* `ON_TRANSIENT_ERROR` (value: `"OnTransientError"`)
 
 
 

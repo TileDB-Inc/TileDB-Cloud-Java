@@ -16,16 +16,19 @@ package io.tiledb.cloud.rest_api;
 import java.util.Map;
 import java.util.List;
 
+
 /**
  * <p>ApiException class.</p>
  */
 @SuppressWarnings("serial")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ApiException extends Exception {
+    private static final long serialVersionUID = 1L;
+
     private int code = 0;
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;
- 
+
     /**
      * <p>Constructor for ApiException.</p>
      */
@@ -97,7 +100,7 @@ public class ApiException extends Exception {
      * @param responseBody the response body
      */
     public ApiException(int code, Map<String, List<String>> responseHeaders, String responseBody) {
-        this((String) null, (Throwable) null, code, responseHeaders, responseBody);
+        this("Response Code: " + code + " Response Body: " + responseBody, (Throwable) null, code, responseHeaders, responseBody);
     }
 
     /**

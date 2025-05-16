@@ -19,6 +19,8 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -27,6 +29,7 @@ import java.io.IOException;
 
 import io.tiledb.cloud.rest_api.model.ArrayFavorite;
 import io.tiledb.cloud.rest_api.model.ArrayFavoritesData;
+import io.tiledb.cloud.rest_api.model.Error;
 import io.tiledb.cloud.rest_api.model.MLModelFavorite;
 import io.tiledb.cloud.rest_api.model.MLModelFavoritesData;
 import io.tiledb.cloud.rest_api.model.NotebookFavorite;
@@ -111,9 +114,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/arrays/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -130,38 +133,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addArrayFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling addArrayFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling addArrayFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling addArrayFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = addArrayFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return addArrayFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -262,9 +261,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/ml_models/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -281,38 +280,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addMLModelFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling addMLModelFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling addMLModelFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling addMLModelFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = addMLModelFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return addMLModelFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -413,9 +408,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/notebooks/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -432,38 +427,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addNotebookFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling addNotebookFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling addNotebookFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling addNotebookFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = addNotebookFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return addNotebookFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -563,8 +554,8 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/udfs/favorites/{workspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -581,33 +572,29 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call addUDFFavoriteValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling addUDFFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling addUDFFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = addUDFFavoriteCall(workspace, name, _callback);
-        return localVarCall;
+        return addUDFFavoriteCall(workspace, name, _callback);
 
     }
 
@@ -705,9 +692,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/arrays/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -724,38 +711,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteArrayFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deleteArrayFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling deleteArrayFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteArrayFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteArrayFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return deleteArrayFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -856,9 +839,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/ml_models/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -875,38 +858,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteMLModelFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deleteMLModelFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling deleteMLModelFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteMLModelFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteMLModelFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return deleteMLModelFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -1007,9 +986,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/notebooks/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1026,38 +1005,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteNotebookFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deleteNotebookFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling deleteNotebookFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteNotebookFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteNotebookFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return deleteNotebookFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -1157,8 +1132,8 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/udfs/favorites/{workspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1175,33 +1150,29 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteUDFFavoriteValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deleteUDFFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteUDFFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteUDFFavoriteCall(workspace, name, _callback);
-        return localVarCall;
+        return deleteUDFFavoriteCall(workspace, name, _callback);
 
     }
 
@@ -1299,9 +1270,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/arrays/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1318,38 +1289,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArrayFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArrayFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getArrayFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArrayFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return getArrayFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -1454,9 +1421,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/ml_models/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1473,38 +1440,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMLModelFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getMLModelFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getMLModelFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getMLModelFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getMLModelFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return getMLModelFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -1609,9 +1572,9 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/notebooks/favorites/{workspace}/{teamspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1628,38 +1591,34 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getNotebookFavoriteValidateBeforeCall(String workspace, String teamspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getNotebookFavorite(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getNotebookFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getNotebookFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getNotebookFavoriteCall(workspace, teamspace, name, _callback);
-        return localVarCall;
+        return getNotebookFavoriteCall(workspace, teamspace, name, _callback);
 
     }
 
@@ -1763,8 +1722,8 @@ public class FavoritesApi {
 
         // create path and map variables
         String localVarPath = "/udfs/favorites/{workspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1781,33 +1740,29 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getUDFFavoriteValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getUDFFavorite(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getUDFFavorite(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getUDFFavoriteCall(workspace, name, _callback);
-        return localVarCall;
+        return getUDFFavoriteCall(workspace, name, _callback);
 
     }
 
@@ -1932,23 +1887,19 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listArrayFavoritesValidateBeforeCall(Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listArrayFavoritesCall(page, perPage, _callback);
-        return localVarCall;
+        return listArrayFavoritesCall(page, perPage, _callback);
 
     }
 
@@ -2063,23 +2014,19 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listArrayFavoritesUUIDsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listArrayFavoritesUUIDsCall(_callback);
-        return localVarCall;
+        return listArrayFavoritesUUIDsCall(_callback);
 
     }
 
@@ -2198,23 +2145,19 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listMLModelFavoritesValidateBeforeCall(Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listMLModelFavoritesCall(page, perPage, _callback);
-        return localVarCall;
+        return listMLModelFavoritesCall(page, perPage, _callback);
 
     }
 
@@ -2329,23 +2272,19 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listMLModelFavoritesUUIDsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listMLModelFavoritesUUIDsCall(_callback);
-        return localVarCall;
+        return listMLModelFavoritesUUIDsCall(_callback);
 
     }
 
@@ -2469,23 +2408,19 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listNotebookFavoritesValidateBeforeCall(Boolean isDashboard, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listNotebookFavoritesCall(isDashboard, page, perPage, _callback);
-        return localVarCall;
+        return listNotebookFavoritesCall(isDashboard, page, perPage, _callback);
 
     }
 
@@ -2603,23 +2538,19 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listNotebookFavoritesUUIDsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listNotebookFavoritesUUIDsCall(_callback);
-        return localVarCall;
+        return listNotebookFavoritesUUIDsCall(_callback);
 
     }
 
@@ -2738,23 +2669,19 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listUDFFavoritesValidateBeforeCall(Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listUDFFavoritesCall(page, perPage, _callback);
-        return localVarCall;
+        return listUDFFavoritesCall(page, perPage, _callback);
 
     }
 
@@ -2869,23 +2796,19 @@ public class FavoritesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listUDFFavoritesUUIDsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listUDFFavoritesUUIDsCall(_callback);
-        return localVarCall;
+        return listUDFFavoritesUUIDsCall(_callback);
 
     }
 

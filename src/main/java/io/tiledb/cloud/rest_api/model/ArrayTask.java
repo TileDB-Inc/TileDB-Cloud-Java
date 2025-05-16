@@ -14,33 +14,46 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.ArrayActivityLog;
+import io.tiledb.cloud.rest_api.model.ArrayInfo;
+import io.tiledb.cloud.rest_api.model.ArrayTaskStatus;
+import io.tiledb.cloud.rest_api.model.ArrayTaskType;
+import io.tiledb.cloud.rest_api.model.DomainArray;
+import io.tiledb.cloud.rest_api.model.Querytype;
+import io.tiledb.cloud.rest_api.model.ResultFormat;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -48,8 +61,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Synchronous Task to Run
  */
-@ApiModel(description = "Synchronous Task to Run")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ArrayTask {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -137,7 +149,7 @@ public class ArrayTask {
 
   public static final String SERIALIZED_NAME_ACTIVITY = "activity";
   @SerializedName(SERIALIZED_NAME_ACTIVITY)
-  private List<ArrayActivityLog> activity = null;
+  private List<ArrayActivityLog> activity = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LOGS = "logs";
   @SerializedName(SERIALIZED_NAME_LOGS)
@@ -149,11 +161,11 @@ public class ArrayTask {
 
   public static final String SERIALIZED_NAME_SQL_INIT_COMMANDS = "sql_init_commands";
   @SerializedName(SERIALIZED_NAME_SQL_INIT_COMMANDS)
-  private List<String> sqlInitCommands = null;
+  private List<String> sqlInitCommands = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SQL_PARAMETERS = "sql_parameters";
   @SerializedName(SERIALIZED_NAME_SQL_PARAMETERS)
-  private List<Object> sqlParameters = null;
+  private List<Object> sqlParameters = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RESULT_FORMAT = "result_format";
   @SerializedName(SERIALIZED_NAME_RESULT_FORMAT)
@@ -175,26 +187,22 @@ public class ArrayTask {
   @SerializedName(SERIALIZED_NAME_CLOUD_REGION)
   private String cloudRegion;
 
-  public ArrayTask() { 
+  public ArrayTask() {
   }
 
   public ArrayTask id(String id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * task ID
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "task ID")
-
   public String getId() {
     return id;
   }
-
 
   public void setId(String id) {
     this.id = id;
@@ -202,22 +210,18 @@ public class ArrayTask {
 
 
   public ArrayTask name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Optional task name
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "subarray-multiplier", value = "Optional task name")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -225,22 +229,18 @@ public class ArrayTask {
 
 
   public ArrayTask username(String username) {
-    
     this.username = username;
     return this;
   }
 
-   /**
+  /**
    * username that executed this task
    * @return username
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "demo", value = "username that executed this task")
-
   public String getUsername() {
     return username;
   }
-
 
   public void setUsername(String username) {
     this.username = username;
@@ -248,22 +248,18 @@ public class ArrayTask {
 
 
   public ArrayTask description(String description) {
-    
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Optional task description (Tasks purpose)
    * @return description
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Return attr a1 in the subarray bounded by coordinates and multiply attr1 by 2", value = "Optional task description (Tasks purpose)")
-
   public String getDescription() {
     return description;
   }
-
 
   public void setDescription(String description) {
     this.description = description;
@@ -271,22 +267,18 @@ public class ArrayTask {
 
 
   public ArrayTask arrayMetadata(ArrayInfo arrayMetadata) {
-    
     this.arrayMetadata = arrayMetadata;
     return this;
   }
 
-   /**
+  /**
    * Get arrayMetadata
    * @return arrayMetadata
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public ArrayInfo getArrayMetadata() {
     return arrayMetadata;
   }
-
 
   public void setArrayMetadata(ArrayInfo arrayMetadata) {
     this.arrayMetadata = arrayMetadata;
@@ -294,22 +286,18 @@ public class ArrayTask {
 
 
   public ArrayTask subarray(DomainArray subarray) {
-    
     this.subarray = subarray;
     return this;
   }
 
-   /**
+  /**
    * Get subarray
    * @return subarray
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public DomainArray getSubarray() {
     return subarray;
   }
-
 
   public void setSubarray(DomainArray subarray) {
     this.subarray = subarray;
@@ -317,22 +305,18 @@ public class ArrayTask {
 
 
   public ArrayTask memory(Integer memory) {
-    
     this.memory = memory;
     return this;
   }
 
-   /**
+  /**
    * memory allocated to task in bytes
    * @return memory
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1073741824", value = "memory allocated to task in bytes")
-
   public Integer getMemory() {
     return memory;
   }
-
 
   public void setMemory(Integer memory) {
     this.memory = memory;
@@ -340,22 +324,18 @@ public class ArrayTask {
 
 
   public ArrayTask cpu(Integer cpu) {
-    
     this.cpu = cpu;
     return this;
   }
 
-   /**
+  /**
    * millicpu allocated to task
    * @return cpu
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "4000", value = "millicpu allocated to task")
-
   public Integer getCpu() {
     return cpu;
   }
-
 
   public void setCpu(Integer cpu) {
     this.cpu = cpu;
@@ -363,22 +343,18 @@ public class ArrayTask {
 
 
   public ArrayTask namespace(String namespace) {
-    
     this.namespace = namespace;
     return this;
   }
 
-   /**
+  /**
    * namespace task is tied to
    * @return namespace
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "organization1", value = "namespace task is tied to")
-
   public String getNamespace() {
     return namespace;
   }
-
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
@@ -386,22 +362,18 @@ public class ArrayTask {
 
 
   public ArrayTask status(ArrayTaskStatus status) {
-    
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public ArrayTaskStatus getStatus() {
     return status;
   }
-
 
   public void setStatus(ArrayTaskStatus status) {
     this.status = status;
@@ -409,22 +381,18 @@ public class ArrayTask {
 
 
   public ArrayTask statusMessage(String statusMessage) {
-    
     this.statusMessage = statusMessage;
     return this;
   }
 
-   /**
+  /**
    * The reason the array task status is in the state
    * @return statusMessage
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The reason the array task status is in the state")
-
   public String getStatusMessage() {
     return statusMessage;
   }
-
 
   public void setStatusMessage(String statusMessage) {
     this.statusMessage = statusMessage;
@@ -432,22 +400,18 @@ public class ArrayTask {
 
 
   public ArrayTask startTime(OffsetDateTime startTime) {
-    
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * Start time RFC3339 for job
    * @return startTime
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Start time RFC3339 for job")
-
   public OffsetDateTime getStartTime() {
     return startTime;
   }
-
 
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
@@ -455,22 +419,18 @@ public class ArrayTask {
 
 
   public ArrayTask finishTime(OffsetDateTime finishTime) {
-    
     this.finishTime = finishTime;
     return this;
   }
 
-   /**
+  /**
    * Finish time RFC3339 for job
    * @return finishTime
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Finish time RFC3339 for job")
-
   public OffsetDateTime getFinishTime() {
     return finishTime;
   }
-
 
   public void setFinishTime(OffsetDateTime finishTime) {
     this.finishTime = finishTime;
@@ -478,22 +438,18 @@ public class ArrayTask {
 
 
   public ArrayTask cost(Double cost) {
-    
     this.cost = cost;
     return this;
   }
 
-   /**
+  /**
    * Total accumulated for task in USD, example is $0.12
    * @return cost
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0.12", value = "Total accumulated for task in USD, example is $0.12")
-
   public Double getCost() {
     return cost;
   }
-
 
   public void setCost(Double cost) {
     this.cost = cost;
@@ -501,22 +457,18 @@ public class ArrayTask {
 
 
   public ArrayTask egressCost(Double egressCost) {
-    
     this.egressCost = egressCost;
     return this;
   }
 
-   /**
+  /**
    * Total accumulated for egress task in USD, example is $0.12
    * @return egressCost
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0.12", value = "Total accumulated for egress task in USD, example is $0.12")
-
   public Double getEgressCost() {
     return egressCost;
   }
-
 
   public void setEgressCost(Double egressCost) {
     this.egressCost = egressCost;
@@ -524,22 +476,18 @@ public class ArrayTask {
 
 
   public ArrayTask accessCost(Double accessCost) {
-    
     this.accessCost = accessCost;
     return this;
   }
 
-   /**
+  /**
    * Cost accumulated for access task in USD, example is $0.12
    * @return accessCost
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0.12", value = "Cost accumulated for access task in USD, example is $0.12")
-
   public Double getAccessCost() {
     return accessCost;
   }
-
 
   public void setAccessCost(Double accessCost) {
     this.accessCost = accessCost;
@@ -547,22 +495,18 @@ public class ArrayTask {
 
 
   public ArrayTask queryType(Querytype queryType) {
-    
     this.queryType = queryType;
     return this;
   }
 
-   /**
+  /**
    * Get queryType
    * @return queryType
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Querytype getQueryType() {
     return queryType;
   }
-
 
   public void setQueryType(Querytype queryType) {
     this.queryType = queryType;
@@ -570,22 +514,18 @@ public class ArrayTask {
 
 
   public ArrayTask udfCode(String udfCode) {
-    
     this.udfCode = udfCode;
     return this;
   }
 
-   /**
+  /**
    * Optional actual code that is going to be executed
    * @return udfCode
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Optional actual code that is going to be executed")
-
   public String getUdfCode() {
     return udfCode;
   }
-
 
   public void setUdfCode(String udfCode) {
     this.udfCode = udfCode;
@@ -593,22 +533,18 @@ public class ArrayTask {
 
 
   public ArrayTask udfLanguage(String udfLanguage) {
-    
     this.udfLanguage = udfLanguage;
     return this;
   }
 
-   /**
+  /**
    * Optional actual language used to express udf_code
    * @return udfLanguage
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Optional actual language used to express udf_code")
-
   public String getUdfLanguage() {
     return udfLanguage;
   }
-
 
   public void setUdfLanguage(String udfLanguage) {
     this.udfLanguage = udfLanguage;
@@ -616,22 +552,18 @@ public class ArrayTask {
 
 
   public ArrayTask sqlQuery(String sqlQuery) {
-    
     this.sqlQuery = sqlQuery;
     return this;
   }
 
-   /**
+  /**
    * Optional actual sql query that is going to be executed
    * @return sqlQuery
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Optional actual sql query that is going to be executed")
-
   public String getSqlQuery() {
     return sqlQuery;
   }
-
 
   public void setSqlQuery(String sqlQuery) {
     this.sqlQuery = sqlQuery;
@@ -639,22 +571,18 @@ public class ArrayTask {
 
 
   public ArrayTask type(ArrayTaskType type) {
-    
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public ArrayTaskType getType() {
     return type;
   }
-
 
   public void setType(ArrayTaskType type) {
     this.type = type;
@@ -662,7 +590,6 @@ public class ArrayTask {
 
 
   public ArrayTask activity(List<ArrayActivityLog> activity) {
-    
     this.activity = activity;
     return this;
   }
@@ -675,17 +602,14 @@ public class ArrayTask {
     return this;
   }
 
-   /**
+  /**
    * Array activity logs for task
    * @return activity
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Array activity logs for task")
-
   public List<ArrayActivityLog> getActivity() {
     return activity;
   }
-
 
   public void setActivity(List<ArrayActivityLog> activity) {
     this.activity = activity;
@@ -693,22 +617,18 @@ public class ArrayTask {
 
 
   public ArrayTask logs(String logs) {
-    
     this.logs = logs;
     return this;
   }
 
-   /**
+  /**
    * logs from array task
    * @return logs
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "logs from array task")
-
   public String getLogs() {
     return logs;
   }
-
 
   public void setLogs(String logs) {
     this.logs = logs;
@@ -716,22 +636,18 @@ public class ArrayTask {
 
 
   public ArrayTask duration(BigDecimal duration) {
-    
     this.duration = duration;
     return this;
   }
 
-   /**
+  /**
    * duration in nanoseconds of an array task
    * @return duration
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "3.41E+11", value = "duration in nanoseconds of an array task")
-
   public BigDecimal getDuration() {
     return duration;
   }
-
 
   public void setDuration(BigDecimal duration) {
     this.duration = duration;
@@ -739,7 +655,6 @@ public class ArrayTask {
 
 
   public ArrayTask sqlInitCommands(List<String> sqlInitCommands) {
-    
     this.sqlInitCommands = sqlInitCommands;
     return this;
   }
@@ -752,17 +667,14 @@ public class ArrayTask {
     return this;
   }
 
-   /**
+  /**
    * SQL queries or commands to run before main sql query
    * @return sqlInitCommands
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "SQL queries or commands to run before main sql query")
-
   public List<String> getSqlInitCommands() {
     return sqlInitCommands;
   }
-
 
   public void setSqlInitCommands(List<String> sqlInitCommands) {
     this.sqlInitCommands = sqlInitCommands;
@@ -770,7 +682,6 @@ public class ArrayTask {
 
 
   public ArrayTask sqlParameters(List<Object> sqlParameters) {
-    
     this.sqlParameters = sqlParameters;
     return this;
   }
@@ -783,17 +694,14 @@ public class ArrayTask {
     return this;
   }
 
-   /**
+  /**
    * SQL query parameters
    * @return sqlParameters
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "SQL query parameters")
-
   public List<Object> getSqlParameters() {
     return sqlParameters;
   }
-
 
   public void setSqlParameters(List<Object> sqlParameters) {
     this.sqlParameters = sqlParameters;
@@ -801,22 +709,18 @@ public class ArrayTask {
 
 
   public ArrayTask resultFormat(ResultFormat resultFormat) {
-    
     this.resultFormat = resultFormat;
     return this;
   }
 
-   /**
+  /**
    * Get resultFormat
    * @return resultFormat
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public ResultFormat getResultFormat() {
     return resultFormat;
   }
-
 
   public void setResultFormat(ResultFormat resultFormat) {
     this.resultFormat = resultFormat;
@@ -824,22 +728,18 @@ public class ArrayTask {
 
 
   public ArrayTask taskGraphUuid(String taskGraphUuid) {
-    
     this.taskGraphUuid = taskGraphUuid;
     return this;
   }
 
-   /**
+  /**
    * If set, the ID of the log for the task graph that this was part of. 
    * @return taskGraphUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If set, the ID of the log for the task graph that this was part of. ")
-
   public String getTaskGraphUuid() {
     return taskGraphUuid;
   }
-
 
   public void setTaskGraphUuid(String taskGraphUuid) {
     this.taskGraphUuid = taskGraphUuid;
@@ -847,22 +747,18 @@ public class ArrayTask {
 
 
   public ArrayTask clientNodeUuid(String clientNodeUuid) {
-    
     this.clientNodeUuid = clientNodeUuid;
     return this;
   }
 
-   /**
+  /**
    * If set, the client-defined ID of the node within this task&#39;s graph. 
    * @return clientNodeUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If set, the client-defined ID of the node within this task's graph. ")
-
   public String getClientNodeUuid() {
     return clientNodeUuid;
   }
-
 
   public void setClientNodeUuid(String clientNodeUuid) {
     this.clientNodeUuid = clientNodeUuid;
@@ -870,22 +766,18 @@ public class ArrayTask {
 
 
   public ArrayTask cloudProvider(String cloudProvider) {
-    
     this.cloudProvider = cloudProvider;
     return this;
   }
 
-   /**
+  /**
    * The name of the cloud provider where this task executed.
    * @return cloudProvider
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the cloud provider where this task executed.")
-
   public String getCloudProvider() {
     return cloudProvider;
   }
-
 
   public void setCloudProvider(String cloudProvider) {
     this.cloudProvider = cloudProvider;
@@ -893,62 +785,23 @@ public class ArrayTask {
 
 
   public ArrayTask cloudRegion(String cloudRegion) {
-    
     this.cloudRegion = cloudRegion;
     return this;
   }
 
-   /**
+  /**
    * The region of the cloud provider where this task executed.
    * @return cloudRegion
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The region of the cloud provider where this task executed.")
-
   public String getCloudRegion() {
     return cloudRegion;
   }
-
 
   public void setCloudRegion(String cloudRegion) {
     this.cloudRegion = cloudRegion;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public ArrayTask putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -990,8 +843,7 @@ public class ArrayTask {
         Objects.equals(this.taskGraphUuid, arrayTask.taskGraphUuid) &&
         Objects.equals(this.clientNodeUuid, arrayTask.clientNodeUuid) &&
         Objects.equals(this.cloudProvider, arrayTask.cloudProvider) &&
-        Objects.equals(this.cloudRegion, arrayTask.cloudRegion)&&
-        Objects.equals(this.additionalProperties, arrayTask.additionalProperties);
+        Objects.equals(this.cloudRegion, arrayTask.cloudRegion);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1000,7 +852,7 @@ public class ArrayTask {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, username, description, arrayMetadata, subarray, memory, cpu, namespace, status, statusMessage, startTime, finishTime, cost, egressCost, accessCost, queryType, udfCode, udfLanguage, sqlQuery, type, activity, logs, duration, sqlInitCommands, sqlParameters, resultFormat, taskGraphUuid, clientNodeUuid, cloudProvider, cloudRegion, additionalProperties);
+    return Objects.hash(id, name, username, description, arrayMetadata, subarray, memory, cpu, namespace, status, statusMessage, startTime, finishTime, cost, egressCost, accessCost, queryType, udfCode, udfLanguage, sqlQuery, type, activity, logs, duration, sqlInitCommands, sqlParameters, resultFormat, taskGraphUuid, clientNodeUuid, cloudProvider, cloudRegion);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1045,7 +897,6 @@ public class ArrayTask {
     sb.append("    clientNodeUuid: ").append(toIndentedString(clientNodeUuid)).append("\n");
     sb.append("    cloudProvider: ").append(toIndentedString(cloudProvider)).append("\n");
     sb.append("    cloudRegion: ").append(toIndentedString(cloudRegion)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1104,19 +955,114 @@ public class ArrayTask {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ArrayTask
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (ArrayTask.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ArrayTask
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ArrayTask.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayTask is not found in the empty JSON string", ArrayTask.openapiRequiredFields.toString()));
         }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!ArrayTask.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArrayTask` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `array_metadata`
+      if (jsonObj.get("array_metadata") != null && !jsonObj.get("array_metadata").isJsonNull()) {
+        ArrayInfo.validateJsonElement(jsonObj.get("array_metadata"));
+      }
+      // validate the optional field `subarray`
+      if (jsonObj.get("subarray") != null && !jsonObj.get("subarray").isJsonNull()) {
+        DomainArray.validateJsonElement(jsonObj.get("subarray"));
+      }
+      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
+      }
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        ArrayTaskStatus.validateJsonElement(jsonObj.get("status"));
+      }
+      if ((jsonObj.get("status_message") != null && !jsonObj.get("status_message").isJsonNull()) && !jsonObj.get("status_message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status_message").toString()));
+      }
+      // validate the optional field `query_type`
+      if (jsonObj.get("query_type") != null && !jsonObj.get("query_type").isJsonNull()) {
+        Querytype.validateJsonElement(jsonObj.get("query_type"));
+      }
+      if ((jsonObj.get("udf_code") != null && !jsonObj.get("udf_code").isJsonNull()) && !jsonObj.get("udf_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `udf_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("udf_code").toString()));
+      }
+      if ((jsonObj.get("udf_language") != null && !jsonObj.get("udf_language").isJsonNull()) && !jsonObj.get("udf_language").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `udf_language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("udf_language").toString()));
+      }
+      if ((jsonObj.get("sql_query") != null && !jsonObj.get("sql_query").isJsonNull()) && !jsonObj.get("sql_query").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sql_query` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sql_query").toString()));
+      }
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        ArrayTaskType.validateJsonElement(jsonObj.get("type"));
+      }
+      if (jsonObj.get("activity") != null && !jsonObj.get("activity").isJsonNull()) {
+        JsonArray jsonArrayactivity = jsonObj.getAsJsonArray("activity");
+        if (jsonArrayactivity != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("activity").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `activity` to be an array in the JSON string but got `%s`", jsonObj.get("activity").toString()));
+          }
+
+          // validate the optional field `activity` (array)
+          for (int i = 0; i < jsonArrayactivity.size(); i++) {
+            ArrayActivityLog.validateJsonElement(jsonArrayactivity.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("logs") != null && !jsonObj.get("logs").isJsonNull()) && !jsonObj.get("logs").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logs` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logs").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("sql_init_commands") != null && !jsonObj.get("sql_init_commands").isJsonNull() && !jsonObj.get("sql_init_commands").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sql_init_commands` to be an array in the JSON string but got `%s`", jsonObj.get("sql_init_commands").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("sql_parameters") != null && !jsonObj.get("sql_parameters").isJsonNull() && !jsonObj.get("sql_parameters").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sql_parameters` to be an array in the JSON string but got `%s`", jsonObj.get("sql_parameters").toString()));
+      }
+      // validate the optional field `result_format`
+      if (jsonObj.get("result_format") != null && !jsonObj.get("result_format").isJsonNull()) {
+        ResultFormat.validateJsonElement(jsonObj.get("result_format"));
+      }
+      if ((jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonNull()) && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `task_graph_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_graph_uuid").toString()));
+      }
+      if ((jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonNull()) && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
+      }
+      if ((jsonObj.get("cloud_provider") != null && !jsonObj.get("cloud_provider").isJsonNull()) && !jsonObj.get("cloud_provider").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cloud_provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_provider").toString()));
+      }
+      if ((jsonObj.get("cloud_region") != null && !jsonObj.get("cloud_region").isJsonNull()) && !jsonObj.get("cloud_region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cloud_region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_region").toString()));
       }
   }
 
@@ -1135,71 +1081,36 @@ public class ArrayTask {
            @Override
            public void write(JsonWriter out, ArrayTask value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public ArrayTask read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             ArrayTask instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of ArrayTask given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ArrayTask
-  * @throws IOException if the JSON string is invalid with respect to ArrayTask
-  */
+  /**
+   * Create an instance of ArrayTask given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ArrayTask
+   * @throws IOException if the JSON string is invalid with respect to ArrayTask
+   */
   public static ArrayTask fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ArrayTask.class);
   }
 
- /**
-  * Convert an instance of ArrayTask to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ArrayTask to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

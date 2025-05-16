@@ -19,12 +19,15 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
+import io.tiledb.cloud.rest_api.model.Error;
 import java.io.File;
 import io.tiledb.cloud.rest_api.model.Query;
 import io.tiledb.cloud.rest_api.model.QueryJson;
@@ -112,9 +115,9 @@ public class QueryApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/query/finalize"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -139,7 +142,8 @@ public class QueryApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -147,53 +151,51 @@ public class QueryApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call finalizeQueryValidateBeforeCall(String workspace, String teamspace, String array, String type, String contentType, Query query, String xPayer, Integer openAt, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling finalizeQuery(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling finalizeQuery(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling finalizeQuery(Async)");
         }
-        
+
         // verify the required parameter 'type' is set
         if (type == null) {
             throw new ApiException("Missing the required parameter 'type' when calling finalizeQuery(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling finalizeQuery(Async)");
         }
-        
+
         // verify the required parameter 'query' is set
         if (query == null) {
             throw new ApiException("Missing the required parameter 'query' when calling finalizeQuery(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = finalizeQueryCall(workspace, teamspace, array, type, contentType, query, xPayer, openAt, _callback);
-        return localVarCall;
+        return finalizeQueryCall(workspace, teamspace, array, type, contentType, query, xPayer, openAt, _callback);
 
     }
 
@@ -322,9 +324,9 @@ public class QueryApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/query/est_result_sizes"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -349,7 +351,8 @@ public class QueryApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -357,53 +360,51 @@ public class QueryApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getEstResultSizesValidateBeforeCall(String workspace, String teamspace, String array, String type, String contentType, Query query, String xPayer, Integer openAt, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getEstResultSizes(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getEstResultSizes(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getEstResultSizes(Async)");
         }
-        
+
         // verify the required parameter 'type' is set
         if (type == null) {
             throw new ApiException("Missing the required parameter 'type' when calling getEstResultSizes(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling getEstResultSizes(Async)");
         }
-        
+
         // verify the required parameter 'query' is set
         if (query == null) {
             throw new ApiException("Missing the required parameter 'query' when calling getEstResultSizes(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getEstResultSizesCall(workspace, teamspace, array, type, contentType, query, xPayer, openAt, _callback);
-        return localVarCall;
+        return getEstResultSizesCall(workspace, teamspace, array, type, contentType, query, xPayer, openAt, _callback);
 
     }
 
@@ -528,9 +529,9 @@ public class QueryApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/query/get_file"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -555,43 +556,39 @@ public class QueryApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getFileValidateBeforeCall(String workspace, String teamspace, String array, String contentType, String xPayer, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getFile(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getFile(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getFile(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling getFile(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getFileCall(workspace, teamspace, array, contentType, xPayer, _callback);
-        return localVarCall;
+        return getFileCall(workspace, teamspace, array, contentType, xPayer, _callback);
 
     }
 
@@ -708,9 +705,9 @@ public class QueryApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/query/submit"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -735,7 +732,8 @@ public class QueryApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -743,53 +741,51 @@ public class QueryApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call submitQueryValidateBeforeCall(String workspace, String teamspace, String array, String type, String contentType, Query query, String xPayer, Integer openAt, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling submitQuery(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling submitQuery(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling submitQuery(Async)");
         }
-        
+
         // verify the required parameter 'type' is set
         if (type == null) {
             throw new ApiException("Missing the required parameter 'type' when calling submitQuery(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling submitQuery(Async)");
         }
-        
+
         // verify the required parameter 'query' is set
         if (query == null) {
             throw new ApiException("Missing the required parameter 'query' when calling submitQuery(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = submitQueryCall(workspace, teamspace, array, type, contentType, query, xPayer, openAt, _callback);
-        return localVarCall;
+        return submitQueryCall(workspace, teamspace, array, type, contentType, query, xPayer, openAt, _callback);
 
     }
 
@@ -915,9 +911,9 @@ public class QueryApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/query/submit_query_json"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -949,41 +945,38 @@ public class QueryApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call submitQueryJsonValidateBeforeCall(String workspace, String teamspace, String array, String contentType, QueryJson queryJson, String xPayer, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling submitQueryJson(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling submitQueryJson(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling submitQueryJson(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling submitQueryJson(Async)");
         }
-        
+
         // verify the required parameter 'queryJson' is set
         if (queryJson == null) {
             throw new ApiException("Missing the required parameter 'queryJson' when calling submitQueryJson(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = submitQueryJsonCall(workspace, teamspace, array, contentType, queryJson, xPayer, _callback);
-        return localVarCall;
+        return submitQueryJsonCall(workspace, teamspace, array, contentType, queryJson, xPayer, _callback);
 
     }
 

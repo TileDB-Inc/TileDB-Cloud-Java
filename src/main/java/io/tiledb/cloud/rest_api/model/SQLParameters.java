@@ -14,28 +14,37 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.ResultFormat;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -43,8 +52,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Parameters for running sql query
  */
-@ApiModel(description = "Parameters for running sql query")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class SQLParameters {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -76,11 +84,11 @@ public class SQLParameters {
 
   public static final String SERIALIZED_NAME_INIT_COMMANDS = "init_commands";
   @SerializedName(SERIALIZED_NAME_INIT_COMMANDS)
-  private List<String> initCommands = null;
+  private List<String> initCommands = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
   @SerializedName(SERIALIZED_NAME_PARAMETERS)
-  private List<Object> parameters = null;
+  private List<Object> parameters = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TASK_GRAPH_UUID = "task_graph_uuid";
   @SerializedName(SERIALIZED_NAME_TASK_GRAPH_UUID)
@@ -90,26 +98,22 @@ public class SQLParameters {
   @SerializedName(SERIALIZED_NAME_CLIENT_NODE_UUID)
   private String clientNodeUuid;
 
-  public SQLParameters() { 
+  public SQLParameters() {
   }
 
   public SQLParameters name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * name of task, optional
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "name of task, optional")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -117,22 +121,18 @@ public class SQLParameters {
 
 
   public SQLParameters query(String query) {
-    
     this.query = query;
     return this;
   }
 
-   /**
+  /**
    * query to run
    * @return query
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "query to run")
-
   public String getQuery() {
     return query;
   }
-
 
   public void setQuery(String query) {
     this.query = query;
@@ -140,22 +140,18 @@ public class SQLParameters {
 
 
   public SQLParameters outputUri(String outputUri) {
-    
     this.outputUri = outputUri;
     return this;
   }
 
-   /**
+  /**
    * Output array uri
    * @return outputUri
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "s3://my_bucket/my_output_array", value = "Output array uri")
-
   public String getOutputUri() {
     return outputUri;
   }
-
 
   public void setOutputUri(String outputUri) {
     this.outputUri = outputUri;
@@ -163,22 +159,18 @@ public class SQLParameters {
 
 
   public SQLParameters storeResults(Boolean storeResults) {
-    
     this.storeResults = storeResults;
     return this;
   }
 
-   /**
+  /**
    * store results for later retrieval
    * @return storeResults
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "store results for later retrieval")
-
   public Boolean getStoreResults() {
     return storeResults;
   }
-
 
   public void setStoreResults(Boolean storeResults) {
     this.storeResults = storeResults;
@@ -186,22 +178,18 @@ public class SQLParameters {
 
 
   public SQLParameters dontDownloadResults(Boolean dontDownloadResults) {
-    
     this.dontDownloadResults = dontDownloadResults;
     return this;
   }
 
-   /**
+  /**
    * Set to true to avoid downloading the results of this UDF. Useful for intermediate nodes in a task graph where you will not be using the results of your function. Defaults to false (\&quot;yes download results\&quot;).
    * @return dontDownloadResults
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Set to true to avoid downloading the results of this UDF. Useful for intermediate nodes in a task graph where you will not be using the results of your function. Defaults to false (\"yes download results\").")
-
   public Boolean getDontDownloadResults() {
     return dontDownloadResults;
   }
-
 
   public void setDontDownloadResults(Boolean dontDownloadResults) {
     this.dontDownloadResults = dontDownloadResults;
@@ -209,22 +197,18 @@ public class SQLParameters {
 
 
   public SQLParameters resourceClass(String resourceClass) {
-    
     this.resourceClass = resourceClass;
     return this;
   }
 
-   /**
+  /**
    * The resource class to use for the SQL execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the SQL will execute in the standard resource class of the TileDB Cloud provider. 
    * @return resourceClass
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "standard", value = "The resource class to use for the SQL execution. Resource classes define resource limits for memory and CPUs. If this is empty, then the SQL will execute in the standard resource class of the TileDB Cloud provider. ")
-
   public String getResourceClass() {
     return resourceClass;
   }
-
 
   public void setResourceClass(String resourceClass) {
     this.resourceClass = resourceClass;
@@ -232,22 +216,18 @@ public class SQLParameters {
 
 
   public SQLParameters resultFormat(ResultFormat resultFormat) {
-    
     this.resultFormat = resultFormat;
     return this;
   }
 
-   /**
+  /**
    * Get resultFormat
    * @return resultFormat
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public ResultFormat getResultFormat() {
     return resultFormat;
   }
-
 
   public void setResultFormat(ResultFormat resultFormat) {
     this.resultFormat = resultFormat;
@@ -255,7 +235,6 @@ public class SQLParameters {
 
 
   public SQLParameters initCommands(List<String> initCommands) {
-    
     this.initCommands = initCommands;
     return this;
   }
@@ -268,17 +247,14 @@ public class SQLParameters {
     return this;
   }
 
-   /**
+  /**
    * Queries or commands to run before main query
    * @return initCommands
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Queries or commands to run before main query")
-
   public List<String> getInitCommands() {
     return initCommands;
   }
-
 
   public void setInitCommands(List<String> initCommands) {
     this.initCommands = initCommands;
@@ -286,7 +262,6 @@ public class SQLParameters {
 
 
   public SQLParameters parameters(List<Object> parameters) {
-    
     this.parameters = parameters;
     return this;
   }
@@ -299,17 +274,14 @@ public class SQLParameters {
     return this;
   }
 
-   /**
+  /**
    * SQL query parameters
    * @return parameters
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "SQL query parameters")
-
   public List<Object> getParameters() {
     return parameters;
   }
-
 
   public void setParameters(List<Object> parameters) {
     this.parameters = parameters;
@@ -317,22 +289,18 @@ public class SQLParameters {
 
 
   public SQLParameters taskGraphUuid(String taskGraphUuid) {
-    
     this.taskGraphUuid = taskGraphUuid;
     return this;
   }
 
-   /**
+  /**
    * If set, the ID of the log for the task graph that this was part of. 
    * @return taskGraphUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If set, the ID of the log for the task graph that this was part of. ")
-
   public String getTaskGraphUuid() {
     return taskGraphUuid;
   }
-
 
   public void setTaskGraphUuid(String taskGraphUuid) {
     this.taskGraphUuid = taskGraphUuid;
@@ -340,62 +308,23 @@ public class SQLParameters {
 
 
   public SQLParameters clientNodeUuid(String clientNodeUuid) {
-    
     this.clientNodeUuid = clientNodeUuid;
     return this;
   }
 
-   /**
+  /**
    * If set, the client-defined ID of the node within this task&#39;s graph. 
    * @return clientNodeUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If set, the client-defined ID of the node within this task's graph. ")
-
   public String getClientNodeUuid() {
     return clientNodeUuid;
   }
-
 
   public void setClientNodeUuid(String clientNodeUuid) {
     this.clientNodeUuid = clientNodeUuid;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public SQLParameters putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -417,13 +346,12 @@ public class SQLParameters {
         Objects.equals(this.initCommands, sqLParameters.initCommands) &&
         Objects.equals(this.parameters, sqLParameters.parameters) &&
         Objects.equals(this.taskGraphUuid, sqLParameters.taskGraphUuid) &&
-        Objects.equals(this.clientNodeUuid, sqLParameters.clientNodeUuid)&&
-        Objects.equals(this.additionalProperties, sqLParameters.additionalProperties);
+        Objects.equals(this.clientNodeUuid, sqLParameters.clientNodeUuid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, query, outputUri, storeResults, dontDownloadResults, resourceClass, resultFormat, initCommands, parameters, taskGraphUuid, clientNodeUuid, additionalProperties);
+    return Objects.hash(name, query, outputUri, storeResults, dontDownloadResults, resourceClass, resultFormat, initCommands, parameters, taskGraphUuid, clientNodeUuid);
   }
 
   @Override
@@ -441,7 +369,6 @@ public class SQLParameters {
     sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
     sb.append("    taskGraphUuid: ").append(toIndentedString(taskGraphUuid)).append("\n");
     sb.append("    clientNodeUuid: ").append(toIndentedString(clientNodeUuid)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -480,44 +407,55 @@ public class SQLParameters {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SQLParameters
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (SQLParameters.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to SQLParameters
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!SQLParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SQLParameters is not found in the empty JSON string", SQLParameters.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!SQLParameters.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SQLParameters` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (jsonObj.get("query") != null && !jsonObj.get("query").isJsonPrimitive()) {
+      if ((jsonObj.get("query") != null && !jsonObj.get("query").isJsonNull()) && !jsonObj.get("query").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `query` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query").toString()));
       }
-      if (jsonObj.get("output_uri") != null && !jsonObj.get("output_uri").isJsonPrimitive()) {
+      if ((jsonObj.get("output_uri") != null && !jsonObj.get("output_uri").isJsonNull()) && !jsonObj.get("output_uri").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `output_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("output_uri").toString()));
       }
-      if (jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonPrimitive()) {
+      if ((jsonObj.get("resource_class") != null && !jsonObj.get("resource_class").isJsonNull()) && !jsonObj.get("resource_class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `resource_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_class").toString()));
       }
-      // ensure the json data is an array
-      if (jsonObj.get("init_commands") != null && !jsonObj.get("init_commands").isJsonArray()) {
+      // validate the optional field `result_format`
+      if (jsonObj.get("result_format") != null && !jsonObj.get("result_format").isJsonNull()) {
+        ResultFormat.validateJsonElement(jsonObj.get("result_format"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("init_commands") != null && !jsonObj.get("init_commands").isJsonNull() && !jsonObj.get("init_commands").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `init_commands` to be an array in the JSON string but got `%s`", jsonObj.get("init_commands").toString()));
       }
-      // ensure the json data is an array
-      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull() && !jsonObj.get("parameters").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `parameters` to be an array in the JSON string but got `%s`", jsonObj.get("parameters").toString()));
       }
-      if (jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("task_graph_uuid") != null && !jsonObj.get("task_graph_uuid").isJsonNull()) && !jsonObj.get("task_graph_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `task_graph_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("task_graph_uuid").toString()));
       }
-      if (jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonNull()) && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
       }
   }
@@ -537,71 +475,36 @@ public class SQLParameters {
            @Override
            public void write(JsonWriter out, SQLParameters value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public SQLParameters read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             SQLParameters instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of SQLParameters given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of SQLParameters
-  * @throws IOException if the JSON string is invalid with respect to SQLParameters
-  */
+  /**
+   * Create an instance of SQLParameters given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of SQLParameters
+   * @throws IOException if the JSON string is invalid with respect to SQLParameters
+   */
   public static SQLParameters fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, SQLParameters.class);
   }
 
- /**
-  * Convert an instance of SQLParameters to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of SQLParameters to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

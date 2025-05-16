@@ -14,28 +14,36 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.AssetLocations;
 import java.io.IOException;
-
+import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -43,8 +51,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * OrganizationUpdate
  */
-@ApiModel(description = "OrganizationUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class OrganizationUpdate {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -70,26 +77,22 @@ public class OrganizationUpdate {
   @SerializedName(SERIALIZED_NAME_ASSET_LOCATIONS)
   private AssetLocations assetLocations;
 
-  public OrganizationUpdate() { 
+  public OrganizationUpdate() {
   }
 
   public OrganizationUpdate name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * organization name must be unique
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "organization name must be unique")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -97,22 +100,18 @@ public class OrganizationUpdate {
 
 
   public OrganizationUpdate logo(String logo) {
-    
     this.logo = logo;
     return this;
   }
 
-   /**
+  /**
    * Organization logo
    * @return logo
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Organization logo")
-
   public String getLogo() {
     return logo;
   }
-
 
   public void setLogo(String logo) {
     this.logo = logo;
@@ -120,22 +119,18 @@ public class OrganizationUpdate {
 
 
   public OrganizationUpdate description(String description) {
-    
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Organization description
    * @return description
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Organization description")
-
   public String getDescription() {
     return description;
   }
-
 
   public void setDescription(String description) {
     this.description = description;
@@ -143,22 +138,18 @@ public class OrganizationUpdate {
 
 
   public OrganizationUpdate defaultS3Path(String defaultS3Path) {
-    
     this.defaultS3Path = defaultS3Path;
     return this;
   }
 
-   /**
+  /**
    * The default location to store newly-created notebooks and other assets like UDFs. The name &#x60;default_s3_path&#x60; is a legacy holdover; it may refer to any supported storage location. 
    * @return defaultS3Path
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The default location to store newly-created notebooks and other assets like UDFs. The name `default_s3_path` is a legacy holdover; it may refer to any supported storage location. ")
-
   public String getDefaultS3Path() {
     return defaultS3Path;
   }
-
 
   public void setDefaultS3Path(String defaultS3Path) {
     this.defaultS3Path = defaultS3Path;
@@ -166,22 +157,18 @@ public class OrganizationUpdate {
 
 
   public OrganizationUpdate defaultS3PathCredentialsName(String defaultS3PathCredentialsName) {
-    
     this.defaultS3PathCredentialsName = defaultS3PathCredentialsName;
     return this;
   }
 
-   /**
+  /**
    * The name of the credentials used to create and access files in the &#x60;default_s3_path&#x60;, if needed. 
    * @return defaultS3PathCredentialsName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the credentials used to create and access files in the `default_s3_path`, if needed. ")
-
   public String getDefaultS3PathCredentialsName() {
     return defaultS3PathCredentialsName;
   }
-
 
   public void setDefaultS3PathCredentialsName(String defaultS3PathCredentialsName) {
     this.defaultS3PathCredentialsName = defaultS3PathCredentialsName;
@@ -189,62 +176,23 @@ public class OrganizationUpdate {
 
 
   public OrganizationUpdate assetLocations(AssetLocations assetLocations) {
-    
     this.assetLocations = assetLocations;
     return this;
   }
 
-   /**
+  /**
    * Get assetLocations
    * @return assetLocations
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public AssetLocations getAssetLocations() {
     return assetLocations;
   }
-
 
   public void setAssetLocations(AssetLocations assetLocations) {
     this.assetLocations = assetLocations;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public OrganizationUpdate putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -261,8 +209,7 @@ public class OrganizationUpdate {
         Objects.equals(this.description, organizationUpdate.description) &&
         Objects.equals(this.defaultS3Path, organizationUpdate.defaultS3Path) &&
         Objects.equals(this.defaultS3PathCredentialsName, organizationUpdate.defaultS3PathCredentialsName) &&
-        Objects.equals(this.assetLocations, organizationUpdate.assetLocations)&&
-        Objects.equals(this.additionalProperties, organizationUpdate.additionalProperties);
+        Objects.equals(this.assetLocations, organizationUpdate.assetLocations);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -271,7 +218,7 @@ public class OrganizationUpdate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, logo, description, defaultS3Path, defaultS3PathCredentialsName, assetLocations, additionalProperties);
+    return Objects.hash(name, logo, description, defaultS3Path, defaultS3PathCredentialsName, assetLocations);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -291,7 +238,6 @@ public class OrganizationUpdate {
     sb.append("    defaultS3Path: ").append(toIndentedString(defaultS3Path)).append("\n");
     sb.append("    defaultS3PathCredentialsName: ").append(toIndentedString(defaultS3PathCredentialsName)).append("\n");
     sb.append("    assetLocations: ").append(toIndentedString(assetLocations)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -325,38 +271,45 @@ public class OrganizationUpdate {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to OrganizationUpdate
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (OrganizationUpdate.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to OrganizationUpdate
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!OrganizationUpdate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OrganizationUpdate is not found in the empty JSON string", OrganizationUpdate.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!OrganizationUpdate.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OrganizationUpdate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonPrimitive()) {
+      if ((jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonNull()) && !jsonObj.get("logo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
       }
-      if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (jsonObj.get("default_s3_path") != null && !jsonObj.get("default_s3_path").isJsonPrimitive()) {
+      if ((jsonObj.get("default_s3_path") != null && !jsonObj.get("default_s3_path").isJsonNull()) && !jsonObj.get("default_s3_path").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `default_s3_path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_s3_path").toString()));
       }
-      if (jsonObj.get("default_s3_path_credentials_name") != null && !jsonObj.get("default_s3_path_credentials_name").isJsonPrimitive()) {
+      if ((jsonObj.get("default_s3_path_credentials_name") != null && !jsonObj.get("default_s3_path_credentials_name").isJsonNull()) && !jsonObj.get("default_s3_path_credentials_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `default_s3_path_credentials_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_s3_path_credentials_name").toString()));
       }
       // validate the optional field `asset_locations`
-      if (jsonObj.getAsJsonObject("asset_locations") != null) {
-        AssetLocations.validateJsonObject(jsonObj.getAsJsonObject("asset_locations"));
+      if (jsonObj.get("asset_locations") != null && !jsonObj.get("asset_locations").isJsonNull()) {
+        AssetLocations.validateJsonElement(jsonObj.get("asset_locations"));
       }
   }
 
@@ -375,71 +328,36 @@ public class OrganizationUpdate {
            @Override
            public void write(JsonWriter out, OrganizationUpdate value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public OrganizationUpdate read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             OrganizationUpdate instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of OrganizationUpdate given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of OrganizationUpdate
-  * @throws IOException if the JSON string is invalid with respect to OrganizationUpdate
-  */
+  /**
+   * Create an instance of OrganizationUpdate given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of OrganizationUpdate
+   * @throws IOException if the JSON string is invalid with respect to OrganizationUpdate
+   */
   public static OrganizationUpdate fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, OrganizationUpdate.class);
   }
 
- /**
-  * Convert an instance of OrganizationUpdate to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of OrganizationUpdate to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

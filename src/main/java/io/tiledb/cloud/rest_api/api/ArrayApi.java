@@ -19,6 +19,8 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -38,7 +40,7 @@ import io.tiledb.cloud.rest_api.model.ArraySchema;
 import io.tiledb.cloud.rest_api.model.ArraySharing;
 import io.tiledb.cloud.rest_api.model.ArrayVacuumRequest;
 import java.math.BigDecimal;
-
+import io.tiledb.cloud.rest_api.model.Error;
 import io.tiledb.cloud.rest_api.model.FragmentInfo;
 import io.tiledb.cloud.rest_api.model.FragmentInfoRequest;
 import io.tiledb.cloud.rest_api.model.LastAccessedArray;
@@ -131,9 +133,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/activity"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -170,38 +172,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call arrayActivityLogValidateBeforeCall(String workspace, String teamspace, String array, Integer start, Integer end, String eventTypes, String taskId, Boolean hasTaskId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling arrayActivityLog(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling arrayActivityLog(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling arrayActivityLog(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = arrayActivityLogCall(workspace, teamspace, array, start, end, eventTypes, taskId, hasTaskId, _callback);
-        return localVarCall;
+        return arrayActivityLogCall(workspace, teamspace, array, start, end, eventTypes, taskId, hasTaskId, _callback);
 
     }
 
@@ -394,23 +392,19 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call arraysBrowserOwnedGetValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, Boolean withMetadata, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = arraysBrowserOwnedGetCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, withMetadata, _callback);
-        return localVarCall;
+        return arraysBrowserOwnedGetCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, withMetadata, _callback);
 
     }
 
@@ -570,23 +564,19 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call arraysBrowserOwnedSidebarGetValidateBeforeCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = arraysBrowserOwnedSidebarGetCall(fileType, excludeFileType, fileProperty, _callback);
-        return localVarCall;
+        return arraysBrowserOwnedSidebarGetCall(fileType, excludeFileType, fileProperty, _callback);
 
     }
 
@@ -764,23 +754,19 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call arraysBrowserPublicGetValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, Boolean withMetadata, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = arraysBrowserPublicGetCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, withMetadata, _callback);
-        return localVarCall;
+        return arraysBrowserPublicGetCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, withMetadata, _callback);
 
     }
 
@@ -940,23 +926,19 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call arraysBrowserPublicSidebarGetValidateBeforeCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = arraysBrowserPublicSidebarGetCall(fileType, excludeFileType, fileProperty, _callback);
-        return localVarCall;
+        return arraysBrowserPublicSidebarGetCall(fileType, excludeFileType, fileProperty, _callback);
 
     }
 
@@ -1139,23 +1121,19 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call arraysBrowserSharedGetValidateBeforeCall(Integer page, Integer perPage, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo, Boolean withMetadata, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = arraysBrowserSharedGetCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo, withMetadata, _callback);
-        return localVarCall;
+        return arraysBrowserSharedGetCall(page, perPage, search, namespace, orderby, permissions, tag, excludeTag, fileType, excludeFileType, fileProperty, sharedTo, withMetadata, _callback);
 
     }
 
@@ -1323,23 +1301,19 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call arraysBrowserSharedSidebarGetValidateBeforeCall(List<String> fileType, List<String> excludeFileType, List<String> fileProperty, List<String> sharedTo, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = arraysBrowserSharedSidebarGetCall(fileType, excludeFileType, fileProperty, sharedTo, _callback);
-        return localVarCall;
+        return arraysBrowserSharedSidebarGetCall(fileType, excludeFileType, fileProperty, sharedTo, _callback);
 
     }
 
@@ -1449,9 +1423,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/end_timestamps"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1476,38 +1450,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call arraysWorkspaceTeamspaceArrayEndTimestampsGetValidateBeforeCall(String workspace, String teamspace, String array, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling arraysWorkspaceTeamspaceArrayEndTimestampsGet(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling arraysWorkspaceTeamspaceArrayEndTimestampsGet(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling arraysWorkspaceTeamspaceArrayEndTimestampsGet(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = arraysWorkspaceTeamspaceArrayEndTimestampsGetCall(workspace, teamspace, array, page, perPage, _callback);
-        return localVarCall;
+        return arraysWorkspaceTeamspaceArrayEndTimestampsGetCall(workspace, teamspace, array, page, perPage, _callback);
 
     }
 
@@ -1619,9 +1589,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/consolidate"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1645,36 +1615,33 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call consolidateArrayValidateBeforeCall(String workspace, String teamspace, String array, ArrayConsolidationRequest consolidateRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling consolidateArray(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling consolidateArray(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling consolidateArray(Async)");
         }
-        
+
         // verify the required parameter 'consolidateRequest' is set
         if (consolidateRequest == null) {
             throw new ApiException("Missing the required parameter 'consolidateRequest' when calling consolidateArray(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = consolidateArrayCall(workspace, teamspace, array, consolidateRequest, _callback);
-        return localVarCall;
+        return consolidateArrayCall(workspace, teamspace, array, consolidateRequest, _callback);
 
     }
 
@@ -1781,9 +1748,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1815,41 +1782,38 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createArrayValidateBeforeCall(String workspace, String teamspace, String array, String contentType, ArraySchema arraySchema, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling createArray(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling createArray(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling createArray(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling createArray(Async)");
         }
-        
+
         // verify the required parameter 'arraySchema' is set
         if (arraySchema == null) {
             throw new ApiException("Missing the required parameter 'arraySchema' when calling createArray(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createArrayCall(workspace, teamspace, array, contentType, arraySchema, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, _callback);
-        return localVarCall;
+        return createArrayCall(workspace, teamspace, array, contentType, arraySchema, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, _callback);
 
     }
 
@@ -1960,9 +1924,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1983,43 +1947,39 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteArrayValidateBeforeCall(String workspace, String teamspace, String array, String contentType, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deleteArray(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling deleteArray(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling deleteArray(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling deleteArray(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteArrayCall(workspace, teamspace, array, contentType, _callback);
-        return localVarCall;
+        return deleteArrayCall(workspace, teamspace, array, contentType, _callback);
 
     }
 
@@ -2123,9 +2083,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/deregister"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2142,38 +2102,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deregisterArrayValidateBeforeCall(String workspace, String teamspace, String array, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deregisterArray(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling deregisterArray(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling deregisterArray(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deregisterArrayCall(workspace, teamspace, array, _callback);
-        return localVarCall;
+        return deregisterArrayCall(workspace, teamspace, array, _callback);
 
     }
 
@@ -2275,9 +2231,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/fragment_info"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2305,41 +2261,38 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call fragmentInfoValidateBeforeCall(String workspace, String teamspace, String array, String contentType, FragmentInfoRequest fragmentInfoRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling fragmentInfo(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling fragmentInfo(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling fragmentInfo(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling fragmentInfo(Async)");
         }
-        
+
         // verify the required parameter 'fragmentInfoRequest' is set
         if (fragmentInfoRequest == null) {
             throw new ApiException("Missing the required parameter 'fragmentInfoRequest' when calling fragmentInfo(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = fragmentInfoCall(workspace, teamspace, array, contentType, fragmentInfoRequest, _callback);
-        return localVarCall;
+        return fragmentInfoCall(workspace, teamspace, array, contentType, fragmentInfoRequest, _callback);
 
     }
 
@@ -2448,10 +2401,10 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/activity/{id}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2468,43 +2421,39 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getActivityLogByIdValidateBeforeCall(String workspace, String teamspace, String array, String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getActivityLogById(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getActivityLogById(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getActivityLogById(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getActivityLogById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getActivityLogByIdCall(workspace, teamspace, array, id, _callback);
-        return localVarCall;
+        return getActivityLogByIdCall(workspace, teamspace, array, id, _callback);
 
     }
 
@@ -2630,23 +2579,19 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAllArrayMetadataValidateBeforeCall(String publicShare, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = getAllArrayMetadataCall(publicShare, _callback);
-        return localVarCall;
+        return getAllArrayMetadataCall(publicShare, _callback);
 
     }
 
@@ -2746,9 +2691,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2761,7 +2706,8 @@ public class ArrayApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2769,43 +2715,39 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayValidateBeforeCall(String workspace, String teamspace, String array, String contentType, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArray(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArray(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArray(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling getArray(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArrayCall(workspace, teamspace, array, contentType, _callback);
-        return localVarCall;
+        return getArrayCall(workspace, teamspace, array, contentType, _callback);
 
     }
 
@@ -2916,9 +2858,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/max_buffer_sizes"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2947,48 +2889,44 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayMaxBufferSizesValidateBeforeCall(String workspace, String teamspace, String array, String subarray, String contentType, String xPayer, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArrayMaxBufferSizes(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArrayMaxBufferSizes(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArrayMaxBufferSizes(Async)");
         }
-        
+
         // verify the required parameter 'subarray' is set
         if (subarray == null) {
             throw new ApiException("Missing the required parameter 'subarray' when calling getArrayMaxBufferSizes(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling getArrayMaxBufferSizes(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArrayMaxBufferSizesCall(workspace, teamspace, array, subarray, contentType, xPayer, _callback);
-        return localVarCall;
+        return getArrayMaxBufferSizesCall(workspace, teamspace, array, subarray, contentType, xPayer, _callback);
 
     }
 
@@ -3104,9 +3042,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/metadata_json"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3131,38 +3069,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayMetaDataJsonValidateBeforeCall(String workspace, String teamspace, String array, Integer length, Integer endTimestamp, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArrayMetaDataJson(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArrayMetaDataJson(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArrayMetaDataJson(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArrayMetaDataJsonCall(workspace, teamspace, array, length, endTimestamp, _callback);
-        return localVarCall;
+        return getArrayMetaDataJsonCall(workspace, teamspace, array, length, endTimestamp, _callback);
 
     }
 
@@ -3174,7 +3108,7 @@ public class ArrayApi {
      * @param array name/uri of array that is url-encoded (required)
      * @param length (optional) limit character length of returned values (optional)
      * @param endTimestamp Milliseconds since Unix epoch, metadata will use open_at functionality to open array at the specific timestamp (optional)
-     * @return Object
+     * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3184,8 +3118,8 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public Object getArrayMetaDataJson(String workspace, String teamspace, String array, Integer length, Integer endTimestamp) throws ApiException {
-        ApiResponse<Object> localVarResp = getArrayMetaDataJsonWithHttpInfo(workspace, teamspace, array, length, endTimestamp);
+    public Map<String, Object> getArrayMetaDataJson(String workspace, String teamspace, String array, Integer length, Integer endTimestamp) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getArrayMetaDataJsonWithHttpInfo(workspace, teamspace, array, length, endTimestamp);
         return localVarResp.getData();
     }
 
@@ -3197,7 +3131,7 @@ public class ArrayApi {
      * @param array name/uri of array that is url-encoded (required)
      * @param length (optional) limit character length of returned values (optional)
      * @param endTimestamp Milliseconds since Unix epoch, metadata will use open_at functionality to open array at the specific timestamp (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3207,9 +3141,9 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getArrayMetaDataJsonWithHttpInfo(String workspace, String teamspace, String array, Integer length, Integer endTimestamp) throws ApiException {
+    public ApiResponse<Map<String, Object>> getArrayMetaDataJsonWithHttpInfo(String workspace, String teamspace, String array, Integer length, Integer endTimestamp) throws ApiException {
         okhttp3.Call localVarCall = getArrayMetaDataJsonValidateBeforeCall(workspace, teamspace, array, length, endTimestamp, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3232,10 +3166,10 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getArrayMetaDataJsonAsync(String workspace, String teamspace, String array, Integer length, Integer endTimestamp, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getArrayMetaDataJsonAsync(String workspace, String teamspace, String array, Integer length, Integer endTimestamp, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getArrayMetaDataJsonValidateBeforeCall(workspace, teamspace, array, length, endTimestamp, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3273,9 +3207,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/metadata"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3292,38 +3226,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayMetadataValidateBeforeCall(String workspace, String teamspace, String array, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArrayMetadata(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArrayMetadata(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArrayMetadata(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArrayMetadataCall(workspace, teamspace, array, _callback);
-        return localVarCall;
+        return getArrayMetadataCall(workspace, teamspace, array, _callback);
 
     }
 
@@ -3428,9 +3358,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/array_metadata"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3439,7 +3369,8 @@ public class ArrayApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3447,38 +3378,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayMetadataCapnpValidateBeforeCall(String workspace, String teamspace, String array, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArrayMetadataCapnp(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArrayMetadataCapnp(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArrayMetadataCapnp(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArrayMetadataCapnpCall(workspace, teamspace, array, _callback);
-        return localVarCall;
+        return getArrayMetadataCapnpCall(workspace, teamspace, array, _callback);
 
     }
 
@@ -3585,9 +3512,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/non_empty_domain"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3612,43 +3539,39 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayNonEmptyDomainValidateBeforeCall(String workspace, String teamspace, String array, String contentType, String xPayer, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArrayNonEmptyDomain(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArrayNonEmptyDomain(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArrayNonEmptyDomain(Async)");
         }
-        
+
         // verify the required parameter 'contentType' is set
         if (contentType == null) {
             throw new ApiException("Missing the required parameter 'contentType' when calling getArrayNonEmptyDomain(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArrayNonEmptyDomainCall(workspace, teamspace, array, contentType, xPayer, _callback);
-        return localVarCall;
+        return getArrayNonEmptyDomainCall(workspace, teamspace, array, contentType, xPayer, _callback);
 
     }
 
@@ -3759,9 +3682,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/non_empty_domain_json"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3778,38 +3701,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArrayNonEmptyDomainJsonValidateBeforeCall(String workspace, String teamspace, String array, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArrayNonEmptyDomainJson(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArrayNonEmptyDomainJson(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArrayNonEmptyDomainJson(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArrayNonEmptyDomainJsonCall(workspace, teamspace, array, _callback);
-        return localVarCall;
+        return getArrayNonEmptyDomainJsonCall(workspace, teamspace, array, _callback);
 
     }
 
@@ -3819,7 +3738,7 @@ public class ArrayApi {
      * @param workspace the workspace containing the teamspace the array belongs to (required)
      * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @return Object
+     * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3829,8 +3748,8 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public Object getArrayNonEmptyDomainJson(String workspace, String teamspace, String array) throws ApiException {
-        ApiResponse<Object> localVarResp = getArrayNonEmptyDomainJsonWithHttpInfo(workspace, teamspace, array);
+    public Map<String, Object> getArrayNonEmptyDomainJson(String workspace, String teamspace, String array) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getArrayNonEmptyDomainJsonWithHttpInfo(workspace, teamspace, array);
         return localVarResp.getData();
     }
 
@@ -3840,7 +3759,7 @@ public class ArrayApi {
      * @param workspace the workspace containing the teamspace the array belongs to (required)
      * @param teamspace the teamspace the array belongs to (required)
      * @param array name/uri of array that is url-encoded (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3850,9 +3769,9 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getArrayNonEmptyDomainJsonWithHttpInfo(String workspace, String teamspace, String array) throws ApiException {
+    public ApiResponse<Map<String, Object>> getArrayNonEmptyDomainJsonWithHttpInfo(String workspace, String teamspace, String array) throws ApiException {
         okhttp3.Call localVarCall = getArrayNonEmptyDomainJsonValidateBeforeCall(workspace, teamspace, array, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3873,10 +3792,10 @@ public class ArrayApi {
         <tr><td> 0 </td><td> error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getArrayNonEmptyDomainJsonAsync(String workspace, String teamspace, String array, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getArrayNonEmptyDomainJsonAsync(String workspace, String teamspace, String array, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getArrayNonEmptyDomainJsonValidateBeforeCall(workspace, teamspace, array, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3915,9 +3834,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/sample"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3938,38 +3857,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArraySampleDataValidateBeforeCall(String workspace, String teamspace, String array, BigDecimal samples, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArraySampleData(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArraySampleData(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArraySampleData(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArraySampleDataCall(workspace, teamspace, array, samples, _callback);
-        return localVarCall;
+        return getArraySampleDataCall(workspace, teamspace, array, samples, _callback);
 
     }
 
@@ -4078,9 +3993,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/share"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4097,38 +4012,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArraySharingPoliciesValidateBeforeCall(String workspace, String teamspace, String array, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArraySharingPolicies(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArraySharingPolicies(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getArraySharingPolicies(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArraySharingPoliciesCall(workspace, teamspace, array, _callback);
-        return localVarCall;
+        return getArraySharingPoliciesCall(workspace, teamspace, array, _callback);
 
     }
 
@@ -4236,8 +4147,8 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4258,33 +4169,29 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getArraysInNamespaceValidateBeforeCall(String workspace, String teamspace, Boolean withMetadata, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getArraysInNamespace(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getArraysInNamespace(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getArraysInNamespaceCall(workspace, teamspace, withMetadata, _callback);
-        return localVarCall;
+        return getArraysInNamespaceCall(workspace, teamspace, withMetadata, _callback);
 
     }
 
@@ -4390,9 +4297,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/fragment_end_timestamp"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4413,38 +4320,34 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getFragmentEndTimestampValidateBeforeCall(String workspace, String teamspace, String array, Integer endTimestamp, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getFragmentEndTimestamp(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getFragmentEndTimestamp(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling getFragmentEndTimestamp(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getFragmentEndTimestampCall(workspace, teamspace, array, endTimestamp, _callback);
-        return localVarCall;
+        return getFragmentEndTimestampCall(workspace, teamspace, array, endTimestamp, _callback);
 
     }
 
@@ -4565,23 +4468,19 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getLastAccessedArraysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = getLastAccessedArraysCall(_callback);
-        return localVarCall;
+        return getLastAccessedArraysCall(_callback);
 
     }
 
@@ -4679,9 +4578,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/schema"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4705,36 +4604,33 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call loadArraySchemaValidateBeforeCall(String workspace, String teamspace, String array, LoadArraySchemaRequest loadArraySchemaRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling loadArraySchema(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling loadArraySchema(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling loadArraySchema(Async)");
         }
-        
+
         // verify the required parameter 'loadArraySchemaRequest' is set
         if (loadArraySchemaRequest == null) {
             throw new ApiException("Missing the required parameter 'loadArraySchemaRequest' when calling loadArraySchema(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = loadArraySchemaCall(workspace, teamspace, array, loadArraySchemaRequest, _callback);
-        return localVarCall;
+        return loadArraySchemaCall(workspace, teamspace, array, loadArraySchemaRequest, _callback);
 
     }
 
@@ -4847,9 +4743,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/enumerations"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4873,36 +4769,33 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call loadEnumerationsValidateBeforeCall(String workspace, String teamspace, String array, LoadEnumerationsRequest loadEnumerationsRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling loadEnumerations(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling loadEnumerations(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling loadEnumerations(Async)");
         }
-        
+
         // verify the required parameter 'loadEnumerationsRequest' is set
         if (loadEnumerationsRequest == null) {
             throw new ApiException("Missing the required parameter 'loadEnumerationsRequest' when calling loadEnumerations(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = loadEnumerationsCall(workspace, teamspace, array, loadEnumerationsRequest, _callback);
-        return localVarCall;
+        return loadEnumerationsCall(workspace, teamspace, array, loadEnumerationsRequest, _callback);
 
     }
 
@@ -4983,7 +4876,7 @@ public class ArrayApi {
      * Build call for registerArray
      * @param workspace the workspace containing the teamspace the array belongs to (required)
      * @param teamspace the teamspace the array belongs to (required)
-     * @param array name/uri of array that is url-encoded (required)
+     * @param array asset id or path of array that is url-encoded (required)
      * @param arrayMetadata metadata associated with array (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -5014,9 +4907,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/register"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5040,36 +4933,33 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call registerArrayValidateBeforeCall(String workspace, String teamspace, String array, ArrayInfoUpdate arrayMetadata, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling registerArray(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling registerArray(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling registerArray(Async)");
         }
-        
+
         // verify the required parameter 'arrayMetadata' is set
         if (arrayMetadata == null) {
             throw new ApiException("Missing the required parameter 'arrayMetadata' when calling registerArray(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = registerArrayCall(workspace, teamspace, array, arrayMetadata, _callback);
-        return localVarCall;
+        return registerArrayCall(workspace, teamspace, array, arrayMetadata, _callback);
 
     }
 
@@ -5078,7 +4968,7 @@ public class ArrayApi {
      * register an array at a specified URI registered to the given namespace
      * @param workspace the workspace containing the teamspace the array belongs to (required)
      * @param teamspace the teamspace the array belongs to (required)
-     * @param array name/uri of array that is url-encoded (required)
+     * @param array asset id or path of array that is url-encoded (required)
      * @param arrayMetadata metadata associated with array (required)
      * @return ArrayInfo
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5100,7 +4990,7 @@ public class ArrayApi {
      * register an array at a specified URI registered to the given namespace
      * @param workspace the workspace containing the teamspace the array belongs to (required)
      * @param teamspace the teamspace the array belongs to (required)
-     * @param array name/uri of array that is url-encoded (required)
+     * @param array asset id or path of array that is url-encoded (required)
      * @param arrayMetadata metadata associated with array (required)
      * @return ApiResponse&lt;ArrayInfo&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5123,7 +5013,7 @@ public class ArrayApi {
      * register an array at a specified URI registered to the given namespace
      * @param workspace the workspace containing the teamspace the array belongs to (required)
      * @param teamspace the teamspace the array belongs to (required)
-     * @param array name/uri of array that is url-encoded (required)
+     * @param array asset id or path of array that is url-encoded (required)
      * @param arrayMetadata metadata associated with array (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5179,9 +5069,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/share"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5205,36 +5095,33 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call shareArrayValidateBeforeCall(String workspace, String teamspace, String array, ArraySharing arraySharing, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling shareArray(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling shareArray(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling shareArray(Async)");
         }
-        
+
         // verify the required parameter 'arraySharing' is set
         if (arraySharing == null) {
             throw new ApiException("Missing the required parameter 'arraySharing' when calling shareArray(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = shareArrayCall(workspace, teamspace, array, arraySharing, _callback);
-        return localVarCall;
+        return shareArrayCall(workspace, teamspace, array, arraySharing, _callback);
 
     }
 
@@ -5342,9 +5229,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/metadata"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5368,36 +5255,33 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateArrayMetadataValidateBeforeCall(String workspace, String teamspace, String array, ArrayInfoUpdate arrayMetadata, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling updateArrayMetadata(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling updateArrayMetadata(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling updateArrayMetadata(Async)");
         }
-        
+
         // verify the required parameter 'arrayMetadata' is set
         if (arrayMetadata == null) {
             throw new ApiException("Missing the required parameter 'arrayMetadata' when calling updateArrayMetadata(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateArrayMetadataCall(workspace, teamspace, array, arrayMetadata, _callback);
-        return localVarCall;
+        return updateArrayMetadataCall(workspace, teamspace, array, arrayMetadata, _callback);
 
     }
 
@@ -5502,9 +5386,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/array_metadata"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5513,7 +5397,8 @@ public class ArrayApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5521,43 +5406,41 @@ public class ArrayApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json", "application/capnp"
+            "application/json",
+            "application/capnp"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateArrayMetadataCapnpValidateBeforeCall(String workspace, String teamspace, String array, ArrayMetadata arrayMetadataEntries, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling updateArrayMetadataCapnp(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling updateArrayMetadataCapnp(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling updateArrayMetadataCapnp(Async)");
         }
-        
+
         // verify the required parameter 'arrayMetadataEntries' is set
         if (arrayMetadataEntries == null) {
             throw new ApiException("Missing the required parameter 'arrayMetadataEntries' when calling updateArrayMetadataCapnp(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateArrayMetadataCapnpCall(workspace, teamspace, array, arrayMetadataEntries, _callback);
-        return localVarCall;
+        return updateArrayMetadataCapnpCall(workspace, teamspace, array, arrayMetadataEntries, _callback);
 
     }
 
@@ -5662,9 +5545,9 @@ public class ArrayApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/vacuum"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5688,36 +5571,33 @@ public class ArrayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call vacuumArrayValidateBeforeCall(String workspace, String teamspace, String array, ArrayVacuumRequest vaccumRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling vacuumArray(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling vacuumArray(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling vacuumArray(Async)");
         }
-        
+
         // verify the required parameter 'vaccumRequest' is set
         if (vaccumRequest == null) {
             throw new ApiException("Missing the required parameter 'vaccumRequest' when calling vacuumArray(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = vacuumArrayCall(workspace, teamspace, array, vaccumRequest, _callback);
-        return localVarCall;
+        return vacuumArrayCall(workspace, teamspace, array, vaccumRequest, _callback);
 
     }
 

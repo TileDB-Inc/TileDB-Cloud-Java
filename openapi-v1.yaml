@@ -5612,7 +5612,7 @@ paths:
         required: true
       - name: array
         in: path
-        description: name/uri of array that is url-encoded
+        description: asset id or path of array that is url-encoded
         type: string
         required: true
     post:
@@ -6772,7 +6772,7 @@ paths:
         required: true
       - name: teamspace
         in: path
-        description: the teamspace the array belongs to
+        description: the teamspace the credentials belongs to
         type: string
         required: true
     get:
@@ -6826,7 +6826,7 @@ paths:
         required: true
       - name: teamspace
         in: path
-        description: the teamspace the array belongs to
+        description: the teamspace the credentials belongs to
         type: string
         required: true
       - name: name
@@ -7593,7 +7593,7 @@ paths:
         required: true
       - name: teamspace
         in: path
-        description: the teamspace the array belongs to
+        description: the teamspace the sql query belongs to
         type: string
         required: true
       - name: Accept-Encoding

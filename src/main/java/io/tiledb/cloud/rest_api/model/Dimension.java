@@ -14,26 +14,38 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.Datatype;
+import io.tiledb.cloud.rest_api.model.DimensionTileExtent;
+import io.tiledb.cloud.rest_api.model.DomainArray;
+import io.tiledb.cloud.rest_api.model.FilterPipeline;
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -41,8 +53,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Dimension of array
  */
-@ApiModel(description = "Dimension of array")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Dimension {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -68,26 +79,22 @@ public class Dimension {
   @SerializedName(SERIALIZED_NAME_FILTER_PIPELINE)
   private FilterPipeline filterPipeline;
 
-  public Dimension() { 
+  public Dimension() {
   }
 
   public Dimension name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Dimension name
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "row", value = "Dimension name")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -95,22 +102,18 @@ public class Dimension {
 
 
   public Dimension type(Datatype type) {
-    
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
   public Datatype getType() {
     return type;
   }
-
 
   public void setType(Datatype type) {
     this.type = type;
@@ -118,22 +121,18 @@ public class Dimension {
 
 
   public Dimension domain(DomainArray domain) {
-    
     this.domain = domain;
     return this;
   }
 
-   /**
+  /**
    * Get domain
    * @return domain
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
   public DomainArray getDomain() {
     return domain;
   }
-
 
   public void setDomain(DomainArray domain) {
     this.domain = domain;
@@ -141,22 +140,18 @@ public class Dimension {
 
 
   public Dimension nullTileExtent(Boolean nullTileExtent) {
-    
     this.nullTileExtent = nullTileExtent;
     return this;
   }
 
-   /**
+  /**
    * Is tile extent null
    * @return nullTileExtent
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "true", required = true, value = "Is tile extent null")
-
   public Boolean getNullTileExtent() {
     return nullTileExtent;
   }
-
 
   public void setNullTileExtent(Boolean nullTileExtent) {
     this.nullTileExtent = nullTileExtent;
@@ -164,22 +159,18 @@ public class Dimension {
 
 
   public Dimension tileExtent(DimensionTileExtent tileExtent) {
-    
     this.tileExtent = tileExtent;
     return this;
   }
 
-   /**
+  /**
    * Get tileExtent
    * @return tileExtent
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public DimensionTileExtent getTileExtent() {
     return tileExtent;
   }
-
 
   public void setTileExtent(DimensionTileExtent tileExtent) {
     this.tileExtent = tileExtent;
@@ -187,62 +178,23 @@ public class Dimension {
 
 
   public Dimension filterPipeline(FilterPipeline filterPipeline) {
-    
     this.filterPipeline = filterPipeline;
     return this;
   }
 
-   /**
+  /**
    * Get filterPipeline
    * @return filterPipeline
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public FilterPipeline getFilterPipeline() {
     return filterPipeline;
   }
-
 
   public void setFilterPipeline(FilterPipeline filterPipeline) {
     this.filterPipeline = filterPipeline;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public Dimension putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -259,13 +211,12 @@ public class Dimension {
         Objects.equals(this.domain, dimension.domain) &&
         Objects.equals(this.nullTileExtent, dimension.nullTileExtent) &&
         Objects.equals(this.tileExtent, dimension.tileExtent) &&
-        Objects.equals(this.filterPipeline, dimension.filterPipeline)&&
-        Objects.equals(this.additionalProperties, dimension.additionalProperties);
+        Objects.equals(this.filterPipeline, dimension.filterPipeline);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, domain, nullTileExtent, tileExtent, filterPipeline, additionalProperties);
+    return Objects.hash(name, type, domain, nullTileExtent, tileExtent, filterPipeline);
   }
 
   @Override
@@ -278,7 +229,6 @@ public class Dimension {
     sb.append("    nullTileExtent: ").append(toIndentedString(nullTileExtent)).append("\n");
     sb.append("    tileExtent: ").append(toIndentedString(tileExtent)).append("\n");
     sb.append("    filterPipeline: ").append(toIndentedString(filterPipeline)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -315,41 +265,48 @@ public class Dimension {
     openapiRequiredFields.add("nullTileExtent");
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Dimension
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (Dimension.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Dimension
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Dimension.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Dimension is not found in the empty JSON string", Dimension.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!Dimension.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Dimension` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Dimension.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the optional field `domain`
-      if (jsonObj.getAsJsonObject("domain") != null) {
-        DomainArray.validateJsonObject(jsonObj.getAsJsonObject("domain"));
-      }
+      // validate the required field `type`
+      Datatype.validateJsonElement(jsonObj.get("type"));
+      // validate the required field `domain`
+      DomainArray.validateJsonElement(jsonObj.get("domain"));
       // validate the optional field `tileExtent`
-      if (jsonObj.getAsJsonObject("tileExtent") != null) {
-        DimensionTileExtent.validateJsonObject(jsonObj.getAsJsonObject("tileExtent"));
+      if (jsonObj.get("tileExtent") != null && !jsonObj.get("tileExtent").isJsonNull()) {
+        DimensionTileExtent.validateJsonElement(jsonObj.get("tileExtent"));
       }
       // validate the optional field `filterPipeline`
-      if (jsonObj.getAsJsonObject("filterPipeline") != null) {
-        FilterPipeline.validateJsonObject(jsonObj.getAsJsonObject("filterPipeline"));
+      if (jsonObj.get("filterPipeline") != null && !jsonObj.get("filterPipeline").isJsonNull()) {
+        FilterPipeline.validateJsonElement(jsonObj.get("filterPipeline"));
       }
   }
 
@@ -368,71 +325,36 @@ public class Dimension {
            @Override
            public void write(JsonWriter out, Dimension value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public Dimension read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             Dimension instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of Dimension given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Dimension
-  * @throws IOException if the JSON string is invalid with respect to Dimension
-  */
+  /**
+   * Create an instance of Dimension given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Dimension
+   * @throws IOException if the JSON string is invalid with respect to Dimension
+   */
   public static Dimension fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Dimension.class);
   }
 
- /**
-  * Convert an instance of Dimension to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Dimension to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -14,28 +14,42 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.AttributeBufferHeader;
+import io.tiledb.cloud.rest_api.model.Layout;
+import io.tiledb.cloud.rest_api.model.QueryReader;
+import io.tiledb.cloud.rest_api.model.Querystatus;
+import io.tiledb.cloud.rest_api.model.Querytype;
+import io.tiledb.cloud.rest_api.model.Writer;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -43,7 +57,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Query
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Query {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -81,26 +95,22 @@ public class Query {
   @SerializedName(SERIALIZED_NAME_TOTAL_VAR_LEN_BUFFER_BYTES)
   private Integer totalVarLenBufferBytes;
 
-  public Query() { 
+  public Query() {
   }
 
   public Query type(Querytype type) {
-    
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
   public Querytype getType() {
     return type;
   }
-
 
   public void setType(Querytype type) {
     this.type = type;
@@ -108,22 +118,18 @@ public class Query {
 
 
   public Query layout(Layout layout) {
-    
     this.layout = layout;
     return this;
   }
 
-   /**
+  /**
    * Get layout
    * @return layout
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
   public Layout getLayout() {
     return layout;
   }
-
 
   public void setLayout(Layout layout) {
     this.layout = layout;
@@ -131,22 +137,18 @@ public class Query {
 
 
   public Query status(Querystatus status) {
-    
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
   public Querystatus getStatus() {
     return status;
   }
-
 
   public void setStatus(Querystatus status) {
     this.status = status;
@@ -154,27 +156,26 @@ public class Query {
 
 
   public Query attributeBufferHeaders(List<AttributeBufferHeader> attributeBufferHeaders) {
-    
     this.attributeBufferHeaders = attributeBufferHeaders;
     return this;
   }
 
   public Query addAttributeBufferHeadersItem(AttributeBufferHeader attributeBufferHeadersItem) {
+    if (this.attributeBufferHeaders == null) {
+      this.attributeBufferHeaders = new ArrayList<>();
+    }
     this.attributeBufferHeaders.add(attributeBufferHeadersItem);
     return this;
   }
 
-   /**
+  /**
    * List of attribute buffer headers
    * @return attributeBufferHeaders
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "List of attribute buffer headers")
-
   public List<AttributeBufferHeader> getAttributeBufferHeaders() {
     return attributeBufferHeaders;
   }
-
 
   public void setAttributeBufferHeaders(List<AttributeBufferHeader> attributeBufferHeaders) {
     this.attributeBufferHeaders = attributeBufferHeaders;
@@ -182,22 +183,18 @@ public class Query {
 
 
   public Query writer(Writer writer) {
-    
     this.writer = writer;
     return this;
   }
 
-   /**
+  /**
    * Get writer
    * @return writer
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Writer getWriter() {
     return writer;
   }
-
 
   public void setWriter(Writer writer) {
     this.writer = writer;
@@ -205,22 +202,18 @@ public class Query {
 
 
   public Query reader(QueryReader reader) {
-    
     this.reader = reader;
     return this;
   }
 
-   /**
+  /**
    * Get reader
    * @return reader
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public QueryReader getReader() {
     return reader;
   }
-
 
   public void setReader(QueryReader reader) {
     this.reader = reader;
@@ -228,22 +221,18 @@ public class Query {
 
 
   public Query array(Array array) {
-    
     this.array = array;
     return this;
   }
 
-   /**
+  /**
    * Get array
    * @return array
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
   public Array getArray() {
     return array;
   }
-
 
   public void setArray(Array array) {
     this.array = array;
@@ -251,22 +240,18 @@ public class Query {
 
 
   public Query totalFixedLengthBufferBytes(Integer totalFixedLengthBufferBytes) {
-    
     this.totalFixedLengthBufferBytes = totalFixedLengthBufferBytes;
     return this;
   }
 
-   /**
+  /**
    * Total number of bytes in fixed size attribute buffers.
    * @return totalFixedLengthBufferBytes
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Total number of bytes in fixed size attribute buffers.")
-
   public Integer getTotalFixedLengthBufferBytes() {
     return totalFixedLengthBufferBytes;
   }
-
 
   public void setTotalFixedLengthBufferBytes(Integer totalFixedLengthBufferBytes) {
     this.totalFixedLengthBufferBytes = totalFixedLengthBufferBytes;
@@ -274,62 +259,23 @@ public class Query {
 
 
   public Query totalVarLenBufferBytes(Integer totalVarLenBufferBytes) {
-    
     this.totalVarLenBufferBytes = totalVarLenBufferBytes;
     return this;
   }
 
-   /**
+  /**
    * Total number of bytes in variable size attribute buffers.
    * @return totalVarLenBufferBytes
-  **/
+   */
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Total number of bytes in variable size attribute buffers.")
-
   public Integer getTotalVarLenBufferBytes() {
     return totalVarLenBufferBytes;
   }
-
 
   public void setTotalVarLenBufferBytes(Integer totalVarLenBufferBytes) {
     this.totalVarLenBufferBytes = totalVarLenBufferBytes;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public Query putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -349,13 +295,12 @@ public class Query {
         Objects.equals(this.reader, query.reader) &&
         Objects.equals(this.array, query.array) &&
         Objects.equals(this.totalFixedLengthBufferBytes, query.totalFixedLengthBufferBytes) &&
-        Objects.equals(this.totalVarLenBufferBytes, query.totalVarLenBufferBytes)&&
-        Objects.equals(this.additionalProperties, query.additionalProperties);
+        Objects.equals(this.totalVarLenBufferBytes, query.totalVarLenBufferBytes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, layout, status, attributeBufferHeaders, writer, reader, array, totalFixedLengthBufferBytes, totalVarLenBufferBytes, additionalProperties);
+    return Objects.hash(type, layout, status, attributeBufferHeaders, writer, reader, array, totalFixedLengthBufferBytes, totalVarLenBufferBytes);
   }
 
   @Override
@@ -371,7 +316,6 @@ public class Query {
     sb.append("    array: ").append(toIndentedString(array)).append("\n");
     sb.append("    totalFixedLengthBufferBytes: ").append(toIndentedString(totalFixedLengthBufferBytes)).append("\n");
     sb.append("    totalVarLenBufferBytes: ").append(toIndentedString(totalVarLenBufferBytes)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -415,51 +359,60 @@ public class Query {
     openapiRequiredFields.add("totalVarLenBufferBytes");
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Query
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (Query.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Query
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Query.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Query is not found in the empty JSON string", Query.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!Query.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Query` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Query.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
-      JsonArray jsonArrayattributeBufferHeaders = jsonObj.getAsJsonArray("attributeBufferHeaders");
-      if (jsonArrayattributeBufferHeaders != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("attributeBufferHeaders").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `attributeBufferHeaders` to be an array in the JSON string but got `%s`", jsonObj.get("attributeBufferHeaders").toString()));
-        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `type`
+      Querytype.validateJsonElement(jsonObj.get("type"));
+      // validate the required field `layout`
+      Layout.validateJsonElement(jsonObj.get("layout"));
+      // validate the required field `status`
+      Querystatus.validateJsonElement(jsonObj.get("status"));
+      // ensure the json data is an array
+      if (!jsonObj.get("attributeBufferHeaders").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `attributeBufferHeaders` to be an array in the JSON string but got `%s`", jsonObj.get("attributeBufferHeaders").toString()));
+      }
 
-        // validate the optional field `attributeBufferHeaders` (array)
-        for (int i = 0; i < jsonArrayattributeBufferHeaders.size(); i++) {
-          AttributeBufferHeader.validateJsonObject(jsonArrayattributeBufferHeaders.get(i).getAsJsonObject());
-        };
-      }
+      JsonArray jsonArrayattributeBufferHeaders = jsonObj.getAsJsonArray("attributeBufferHeaders");
+      // validate the required field `attributeBufferHeaders` (array)
+      for (int i = 0; i < jsonArrayattributeBufferHeaders.size(); i++) {
+        AttributeBufferHeader.validateJsonElement(jsonArrayattributeBufferHeaders.get(i));
+      };
       // validate the optional field `writer`
-      if (jsonObj.getAsJsonObject("writer") != null) {
-        Writer.validateJsonObject(jsonObj.getAsJsonObject("writer"));
+      if (jsonObj.get("writer") != null && !jsonObj.get("writer").isJsonNull()) {
+        Writer.validateJsonElement(jsonObj.get("writer"));
       }
       // validate the optional field `reader`
-      if (jsonObj.getAsJsonObject("reader") != null) {
-        QueryReader.validateJsonObject(jsonObj.getAsJsonObject("reader"));
+      if (jsonObj.get("reader") != null && !jsonObj.get("reader").isJsonNull()) {
+        QueryReader.validateJsonElement(jsonObj.get("reader"));
       }
-      // validate the optional field `array`
-      if (jsonObj.getAsJsonObject("array") != null) {
-        Array.validateJsonObject(jsonObj.getAsJsonObject("array"));
-      }
+      // validate the required field `array`
+      Array.validateJsonElement(jsonObj.get("array"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -477,71 +430,36 @@ public class Query {
            @Override
            public void write(JsonWriter out, Query value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public Query read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             Query instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of Query given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Query
-  * @throws IOException if the JSON string is invalid with respect to Query
-  */
+  /**
+   * Create an instance of Query given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Query
+   * @throws IOException if the JSON string is invalid with respect to Query
+   */
   public static Query fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Query.class);
   }
 
- /**
-  * Convert an instance of Query to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Query to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

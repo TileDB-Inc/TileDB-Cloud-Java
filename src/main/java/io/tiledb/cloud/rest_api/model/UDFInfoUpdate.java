@@ -14,28 +14,38 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.UDFLanguage;
+import io.tiledb.cloud.rest_api.model.UDFType;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -43,8 +53,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * User-defined function that can persist in db, used and shared multiple times
  */
-@ApiModel(description = "User-defined function that can persist in db, used and shared multiple times")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class UDFInfoUpdate {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -88,28 +97,24 @@ public class UDFInfoUpdate {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags = new ArrayList<>();
 
-  public UDFInfoUpdate() { 
+  public UDFInfoUpdate() {
   }
 
   public UDFInfoUpdate name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * name of UDF
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "name of UDF")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -117,22 +122,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate language(UDFLanguage language) {
-    
     this.language = language;
     return this;
   }
 
-   /**
+  /**
    * Get language
    * @return language
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public UDFLanguage getLanguage() {
     return language;
   }
-
 
   public void setLanguage(UDFLanguage language) {
     this.language = language;
@@ -140,22 +141,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate version(String version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * Type-specific version
    * @return version
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Type-specific version")
-
   public String getVersion() {
     return version;
   }
-
 
   public void setVersion(String version) {
     this.version = version;
@@ -163,22 +160,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate imageName(String imageName) {
-    
     this.imageName = imageName;
     return this;
   }
 
-   /**
+  /**
    * Docker image name to use for UDF
    * @return imageName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Docker image name to use for UDF")
-
   public String getImageName() {
     return imageName;
   }
-
 
   public void setImageName(String imageName) {
     this.imageName = imageName;
@@ -186,22 +179,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate type(UDFType type) {
-    
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public UDFType getType() {
     return type;
   }
-
 
   public void setType(UDFType type) {
     this.type = type;
@@ -209,22 +198,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate exec(String exec) {
-    
     this.exec = exec;
     return this;
   }
 
-   /**
+  /**
    * Type-specific executable text
    * @return exec
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Type-specific executable text")
-
   public String getExec() {
     return exec;
   }
-
 
   public void setExec(String exec) {
     this.exec = exec;
@@ -232,22 +217,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate execRaw(String execRaw) {
-    
     this.execRaw = execRaw;
     return this;
   }
 
-   /**
+  /**
    * optional raw text to store of serialized function, used for showing in UI
    * @return execRaw
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "optional raw text to store of serialized function, used for showing in UI")
-
   public String getExecRaw() {
     return execRaw;
   }
-
 
   public void setExecRaw(String execRaw) {
     this.execRaw = execRaw;
@@ -255,22 +236,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate readme(String readme) {
-    
     this.readme = readme;
     return this;
   }
 
-   /**
+  /**
    * Markdown readme of UDFs
    * @return readme
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Markdown readme of UDFs")
-
   public String getReadme() {
     return readme;
   }
-
 
   public void setReadme(String readme) {
     this.readme = readme;
@@ -278,22 +255,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate licenseId(String licenseId) {
-    
     this.licenseId = licenseId;
     return this;
   }
 
-   /**
+  /**
    * License identifier from SPDX License List or Custom
    * @return licenseId
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "License identifier from SPDX License List or Custom")
-
   public String getLicenseId() {
     return licenseId;
   }
-
 
   public void setLicenseId(String licenseId) {
     this.licenseId = licenseId;
@@ -301,22 +274,18 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate licenseText(String licenseText) {
-    
     this.licenseText = licenseText;
     return this;
   }
 
-   /**
+  /**
    * License text
    * @return licenseText
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "License text")
-
   public String getLicenseText() {
     return licenseText;
   }
-
 
   public void setLicenseText(String licenseText) {
     this.licenseText = licenseText;
@@ -324,7 +293,6 @@ public class UDFInfoUpdate {
 
 
   public UDFInfoUpdate tags(List<String> tags) {
-    
     this.tags = tags;
     return this;
   }
@@ -337,57 +305,19 @@ public class UDFInfoUpdate {
     return this;
   }
 
-   /**
+  /**
    * optional tags for UDF
    * @return tags
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "optional tags for UDF")
-
   public List<String> getTags() {
     return tags;
   }
-
 
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public UDFInfoUpdate putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -409,13 +339,12 @@ public class UDFInfoUpdate {
         Objects.equals(this.readme, udFInfoUpdate.readme) &&
         Objects.equals(this.licenseId, udFInfoUpdate.licenseId) &&
         Objects.equals(this.licenseText, udFInfoUpdate.licenseText) &&
-        Objects.equals(this.tags, udFInfoUpdate.tags)&&
-        Objects.equals(this.additionalProperties, udFInfoUpdate.additionalProperties);
+        Objects.equals(this.tags, udFInfoUpdate.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, language, version, imageName, type, exec, execRaw, readme, licenseId, licenseText, tags, additionalProperties);
+    return Objects.hash(name, language, version, imageName, type, exec, execRaw, readme, licenseId, licenseText, tags);
   }
 
   @Override
@@ -433,7 +362,6 @@ public class UDFInfoUpdate {
     sb.append("    licenseId: ").append(toIndentedString(licenseId)).append("\n");
     sb.append("    licenseText: ").append(toIndentedString(licenseText)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -472,46 +400,61 @@ public class UDFInfoUpdate {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to UDFInfoUpdate
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (UDFInfoUpdate.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to UDFInfoUpdate
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!UDFInfoUpdate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in UDFInfoUpdate is not found in the empty JSON string", UDFInfoUpdate.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!UDFInfoUpdate.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UDFInfoUpdate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonPrimitive()) {
+      // validate the optional field `language`
+      if (jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) {
+        UDFLanguage.validateJsonElement(jsonObj.get("language"));
+      }
+      if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
-      if (jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonPrimitive()) {
+      if ((jsonObj.get("image_name") != null && !jsonObj.get("image_name").isJsonNull()) && !jsonObj.get("image_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_name").toString()));
       }
-      if (jsonObj.get("exec") != null && !jsonObj.get("exec").isJsonPrimitive()) {
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        UDFType.validateJsonElement(jsonObj.get("type"));
+      }
+      if ((jsonObj.get("exec") != null && !jsonObj.get("exec").isJsonNull()) && !jsonObj.get("exec").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exec` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec").toString()));
       }
-      if (jsonObj.get("exec_raw") != null && !jsonObj.get("exec_raw").isJsonPrimitive()) {
+      if ((jsonObj.get("exec_raw") != null && !jsonObj.get("exec_raw").isJsonNull()) && !jsonObj.get("exec_raw").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exec_raw` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exec_raw").toString()));
       }
-      if (jsonObj.get("readme") != null && !jsonObj.get("readme").isJsonPrimitive()) {
+      if ((jsonObj.get("readme") != null && !jsonObj.get("readme").isJsonNull()) && !jsonObj.get("readme").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `readme` to be a primitive type in the JSON string but got `%s`", jsonObj.get("readme").toString()));
       }
-      if (jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonPrimitive()) {
+      if ((jsonObj.get("license_id") != null && !jsonObj.get("license_id").isJsonNull()) && !jsonObj.get("license_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `license_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_id").toString()));
       }
-      if (jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonPrimitive()) {
+      if ((jsonObj.get("license_text") != null && !jsonObj.get("license_text").isJsonNull()) && !jsonObj.get("license_text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `license_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license_text").toString()));
       }
-      // ensure the json data is an array
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
@@ -531,71 +474,36 @@ public class UDFInfoUpdate {
            @Override
            public void write(JsonWriter out, UDFInfoUpdate value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public UDFInfoUpdate read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             UDFInfoUpdate instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of UDFInfoUpdate given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of UDFInfoUpdate
-  * @throws IOException if the JSON string is invalid with respect to UDFInfoUpdate
-  */
+  /**
+   * Create an instance of UDFInfoUpdate given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of UDFInfoUpdate
+   * @throws IOException if the JSON string is invalid with respect to UDFInfoUpdate
+   */
   public static UDFInfoUpdate fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, UDFInfoUpdate.class);
   }
 
- /**
-  * Convert an instance of UDFInfoUpdate to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of UDFInfoUpdate to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

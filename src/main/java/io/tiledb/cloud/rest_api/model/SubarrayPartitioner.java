@@ -14,29 +14,40 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.AttributeBufferSize;
+import io.tiledb.cloud.rest_api.model.Subarray;
+import io.tiledb.cloud.rest_api.model.SubarrayPartitionerCurrent;
+import io.tiledb.cloud.rest_api.model.SubarrayPartitionerState;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -44,8 +55,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * The subarray partitioner
  */
-@ApiModel(description = "The subarray partitioner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class SubarrayPartitioner {
   public static final String SERIALIZED_NAME_SUBARRAY = "subarray";
   @SerializedName(SERIALIZED_NAME_SUBARRAY)
@@ -53,7 +63,7 @@ public class SubarrayPartitioner {
 
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
-  private List<AttributeBufferSize> budget = null;
+  private List<AttributeBufferSize> budget = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CURRENT = "current";
   @SerializedName(SERIALIZED_NAME_CURRENT)
@@ -71,26 +81,22 @@ public class SubarrayPartitioner {
   @SerializedName(SERIALIZED_NAME_MEMORY_BUDGET_VAR)
   private Integer memoryBudgetVar;
 
-  public SubarrayPartitioner() { 
+  public SubarrayPartitioner() {
   }
 
   public SubarrayPartitioner subarray(Subarray subarray) {
-    
     this.subarray = subarray;
     return this;
   }
 
-   /**
+  /**
    * Get subarray
    * @return subarray
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public Subarray getSubarray() {
     return subarray;
   }
-
 
   public void setSubarray(Subarray subarray) {
     this.subarray = subarray;
@@ -98,7 +104,6 @@ public class SubarrayPartitioner {
 
 
   public SubarrayPartitioner budget(List<AttributeBufferSize> budget) {
-    
     this.budget = budget;
     return this;
   }
@@ -111,17 +116,14 @@ public class SubarrayPartitioner {
     return this;
   }
 
-   /**
+  /**
    * Result size budget (in bytes) for all attributes.
    * @return budget
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Result size budget (in bytes) for all attributes.")
-
   public List<AttributeBufferSize> getBudget() {
     return budget;
   }
-
 
   public void setBudget(List<AttributeBufferSize> budget) {
     this.budget = budget;
@@ -129,22 +131,18 @@ public class SubarrayPartitioner {
 
 
   public SubarrayPartitioner current(SubarrayPartitionerCurrent current) {
-    
     this.current = current;
     return this;
   }
 
-   /**
+  /**
    * Get current
    * @return current
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public SubarrayPartitionerCurrent getCurrent() {
     return current;
   }
-
 
   public void setCurrent(SubarrayPartitionerCurrent current) {
     this.current = current;
@@ -152,22 +150,18 @@ public class SubarrayPartitioner {
 
 
   public SubarrayPartitioner state(SubarrayPartitionerState state) {
-    
     this.state = state;
     return this;
   }
 
-   /**
+  /**
    * Get state
    * @return state
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public SubarrayPartitionerState getState() {
     return state;
   }
-
 
   public void setState(SubarrayPartitionerState state) {
     this.state = state;
@@ -175,22 +169,18 @@ public class SubarrayPartitioner {
 
 
   public SubarrayPartitioner memoryBudget(Integer memoryBudget) {
-    
     this.memoryBudget = memoryBudget;
     return this;
   }
 
-   /**
+  /**
    * The memory budget for the fixed-sized attributes and the offsets of the var-sized attributes
    * @return memoryBudget
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The memory budget for the fixed-sized attributes and the offsets of the var-sized attributes")
-
   public Integer getMemoryBudget() {
     return memoryBudget;
   }
-
 
   public void setMemoryBudget(Integer memoryBudget) {
     this.memoryBudget = memoryBudget;
@@ -198,62 +188,23 @@ public class SubarrayPartitioner {
 
 
   public SubarrayPartitioner memoryBudgetVar(Integer memoryBudgetVar) {
-    
     this.memoryBudgetVar = memoryBudgetVar;
     return this;
   }
 
-   /**
+  /**
    * The memory budget for the var-sized attributes
    * @return memoryBudgetVar
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The memory budget for the var-sized attributes")
-
   public Integer getMemoryBudgetVar() {
     return memoryBudgetVar;
   }
-
 
   public void setMemoryBudgetVar(Integer memoryBudgetVar) {
     this.memoryBudgetVar = memoryBudgetVar;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public SubarrayPartitioner putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -270,13 +221,12 @@ public class SubarrayPartitioner {
         Objects.equals(this.current, subarrayPartitioner.current) &&
         Objects.equals(this.state, subarrayPartitioner.state) &&
         Objects.equals(this.memoryBudget, subarrayPartitioner.memoryBudget) &&
-        Objects.equals(this.memoryBudgetVar, subarrayPartitioner.memoryBudgetVar)&&
-        Objects.equals(this.additionalProperties, subarrayPartitioner.additionalProperties);
+        Objects.equals(this.memoryBudgetVar, subarrayPartitioner.memoryBudgetVar);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(subarray, budget, current, state, memoryBudget, memoryBudgetVar, additionalProperties);
+    return Objects.hash(subarray, budget, current, state, memoryBudget, memoryBudgetVar);
   }
 
   @Override
@@ -289,7 +239,6 @@ public class SubarrayPartitioner {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    memoryBudget: ").append(toIndentedString(memoryBudget)).append("\n");
     sb.append("    memoryBudgetVar: ").append(toIndentedString(memoryBudgetVar)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -323,43 +272,52 @@ public class SubarrayPartitioner {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SubarrayPartitioner
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (SubarrayPartitioner.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to SubarrayPartitioner
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!SubarrayPartitioner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SubarrayPartitioner is not found in the empty JSON string", SubarrayPartitioner.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `subarray`
-      if (jsonObj.getAsJsonObject("subarray") != null) {
-        Subarray.validateJsonObject(jsonObj.getAsJsonObject("subarray"));
-      }
-      JsonArray jsonArraybudget = jsonObj.getAsJsonArray("budget");
-      if (jsonArraybudget != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("budget").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `budget` to be an array in the JSON string but got `%s`", jsonObj.get("budget").toString()));
-        }
 
-        // validate the optional field `budget` (array)
-        for (int i = 0; i < jsonArraybudget.size(); i++) {
-          AttributeBufferSize.validateJsonObject(jsonArraybudget.get(i).getAsJsonObject());
-        };
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!SubarrayPartitioner.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SubarrayPartitioner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `subarray`
+      if (jsonObj.get("subarray") != null && !jsonObj.get("subarray").isJsonNull()) {
+        Subarray.validateJsonElement(jsonObj.get("subarray"));
+      }
+      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
+        JsonArray jsonArraybudget = jsonObj.getAsJsonArray("budget");
+        if (jsonArraybudget != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("budget").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `budget` to be an array in the JSON string but got `%s`", jsonObj.get("budget").toString()));
+          }
+
+          // validate the optional field `budget` (array)
+          for (int i = 0; i < jsonArraybudget.size(); i++) {
+            AttributeBufferSize.validateJsonElement(jsonArraybudget.get(i));
+          };
+        }
       }
       // validate the optional field `current`
-      if (jsonObj.getAsJsonObject("current") != null) {
-        SubarrayPartitionerCurrent.validateJsonObject(jsonObj.getAsJsonObject("current"));
+      if (jsonObj.get("current") != null && !jsonObj.get("current").isJsonNull()) {
+        SubarrayPartitionerCurrent.validateJsonElement(jsonObj.get("current"));
       }
       // validate the optional field `state`
-      if (jsonObj.getAsJsonObject("state") != null) {
-        SubarrayPartitionerState.validateJsonObject(jsonObj.getAsJsonObject("state"));
+      if (jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) {
+        SubarrayPartitionerState.validateJsonElement(jsonObj.get("state"));
       }
   }
 
@@ -378,71 +336,36 @@ public class SubarrayPartitioner {
            @Override
            public void write(JsonWriter out, SubarrayPartitioner value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public SubarrayPartitioner read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             SubarrayPartitioner instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of SubarrayPartitioner given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of SubarrayPartitioner
-  * @throws IOException if the JSON string is invalid with respect to SubarrayPartitioner
-  */
+  /**
+   * Create an instance of SubarrayPartitioner given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of SubarrayPartitioner
+   * @throws IOException if the JSON string is invalid with respect to SubarrayPartitioner
+   */
   public static SubarrayPartitioner fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, SubarrayPartitioner.class);
   }
 
- /**
-  * Convert an instance of SubarrayPartitioner to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of SubarrayPartitioner to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

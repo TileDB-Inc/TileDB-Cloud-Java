@@ -14,29 +14,37 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -44,8 +52,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Model representing aws keys or service role, service roles are currently ignored, but will be preferred option in the future
  */
-@ApiModel(description = "Model representing aws keys or service role, service roles are currently ignored, but will be preferred option in the future")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class AWSAccessCredentials {
   public static final String SERIALIZED_NAME_SECRET_ACCESS_KEY = "secret_access_key";
   @SerializedName(SERIALIZED_NAME_SECRET_ACCESS_KEY)
@@ -69,7 +76,7 @@ public class AWSAccessCredentials {
 
   public static final String SERIALIZED_NAME_BUCKETS = "buckets";
   @SerializedName(SERIALIZED_NAME_BUCKETS)
-  private List<String> buckets = null;
+  private List<String> buckets = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -79,10 +86,9 @@ public class AWSAccessCredentials {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public AWSAccessCredentials() { 
+  public AWSAccessCredentials() {
   }
 
-  
   public AWSAccessCredentials(
      OffsetDateTime createdAt, 
      OffsetDateTime updatedAt
@@ -93,22 +99,18 @@ public class AWSAccessCredentials {
   }
 
   public AWSAccessCredentials secretAccessKey(String secretAccessKey) {
-    
     this.secretAccessKey = secretAccessKey;
     return this;
   }
 
-   /**
+  /**
    * aws secret access key, never returned in get requests
    * @return secretAccessKey
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "aws secret access key, never returned in get requests")
-
   public String getSecretAccessKey() {
     return secretAccessKey;
   }
-
 
   public void setSecretAccessKey(String secretAccessKey) {
     this.secretAccessKey = secretAccessKey;
@@ -116,22 +118,18 @@ public class AWSAccessCredentials {
 
 
   public AWSAccessCredentials accessKeyId(String accessKeyId) {
-    
     this.accessKeyId = accessKeyId;
     return this;
   }
 
-   /**
+  /**
    * aws access key
    * @return accessKeyId
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "aws access key")
-
   public String getAccessKeyId() {
     return accessKeyId;
   }
-
 
   public void setAccessKeyId(String accessKeyId) {
     this.accessKeyId = accessKeyId;
@@ -139,22 +137,18 @@ public class AWSAccessCredentials {
 
 
   public AWSAccessCredentials serviceRoleArn(String serviceRoleArn) {
-    
     this.serviceRoleArn = serviceRoleArn;
     return this;
   }
 
-   /**
+  /**
    * aws service role to use for access
    * @return serviceRoleArn
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "aws service role to use for access")
-
   public String getServiceRoleArn() {
     return serviceRoleArn;
   }
-
 
   public void setServiceRoleArn(String serviceRoleArn) {
     this.serviceRoleArn = serviceRoleArn;
@@ -162,22 +156,18 @@ public class AWSAccessCredentials {
 
 
   public AWSAccessCredentials name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * human readable name
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "human readable name")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -185,22 +175,18 @@ public class AWSAccessCredentials {
 
 
   public AWSAccessCredentials _default(Boolean _default) {
-    
     this._default = _default;
     return this;
   }
 
-   /**
+  /**
    * true if this is the default credential to be used within this namespace
    * @return _default
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "true if this is the default credential to be used within this namespace")
-
   public Boolean getDefault() {
     return _default;
   }
-
 
   public void setDefault(Boolean _default) {
     this._default = _default;
@@ -208,7 +194,6 @@ public class AWSAccessCredentials {
 
 
   public AWSAccessCredentials buckets(List<String> buckets) {
-    
     this.buckets = buckets;
     return this;
   }
@@ -221,85 +206,41 @@ public class AWSAccessCredentials {
     return this;
   }
 
-   /**
+  /**
    * a whitelist of one or more buckets this key should access
    * @return buckets
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "a whitelist of one or more buckets this key should access")
-
   public List<String> getBuckets() {
     return buckets;
   }
-
 
   public void setBuckets(List<String> buckets) {
     this.buckets = buckets;
   }
 
 
-   /**
+  /**
    * Time when UDF dependencies were created (rfc3339)
    * @return createdAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Time when UDF dependencies were created (rfc3339)")
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
 
 
 
-
-   /**
+  /**
    * Time when UDF dependencies was last updated (rfc3339)
    * @return updatedAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Time when UDF dependencies was last updated (rfc3339)")
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
 
 
-
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public AWSAccessCredentials putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -318,13 +259,12 @@ public class AWSAccessCredentials {
         Objects.equals(this._default, awSAccessCredentials._default) &&
         Objects.equals(this.buckets, awSAccessCredentials.buckets) &&
         Objects.equals(this.createdAt, awSAccessCredentials.createdAt) &&
-        Objects.equals(this.updatedAt, awSAccessCredentials.updatedAt)&&
-        Objects.equals(this.additionalProperties, awSAccessCredentials.additionalProperties);
+        Objects.equals(this.updatedAt, awSAccessCredentials.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(secretAccessKey, accessKeyId, serviceRoleArn, name, _default, buckets, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(secretAccessKey, accessKeyId, serviceRoleArn, name, _default, buckets, createdAt, updatedAt);
   }
 
   @Override
@@ -339,7 +279,6 @@ public class AWSAccessCredentials {
     sb.append("    buckets: ").append(toIndentedString(buckets)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -375,34 +314,41 @@ public class AWSAccessCredentials {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to AWSAccessCredentials
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (AWSAccessCredentials.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to AWSAccessCredentials
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!AWSAccessCredentials.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AWSAccessCredentials is not found in the empty JSON string", AWSAccessCredentials.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("secret_access_key") != null && !jsonObj.get("secret_access_key").isJsonPrimitive()) {
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!AWSAccessCredentials.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AWSAccessCredentials` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("secret_access_key") != null && !jsonObj.get("secret_access_key").isJsonNull()) && !jsonObj.get("secret_access_key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `secret_access_key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("secret_access_key").toString()));
       }
-      if (jsonObj.get("access_key_id") != null && !jsonObj.get("access_key_id").isJsonPrimitive()) {
+      if ((jsonObj.get("access_key_id") != null && !jsonObj.get("access_key_id").isJsonNull()) && !jsonObj.get("access_key_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_key_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_key_id").toString()));
       }
-      if (jsonObj.get("service_role_arn") != null && !jsonObj.get("service_role_arn").isJsonPrimitive()) {
+      if ((jsonObj.get("service_role_arn") != null && !jsonObj.get("service_role_arn").isJsonNull()) && !jsonObj.get("service_role_arn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `service_role_arn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("service_role_arn").toString()));
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // ensure the json data is an array
-      if (jsonObj.get("buckets") != null && !jsonObj.get("buckets").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("buckets") != null && !jsonObj.get("buckets").isJsonNull() && !jsonObj.get("buckets").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `buckets` to be an array in the JSON string but got `%s`", jsonObj.get("buckets").toString()));
       }
   }
@@ -422,71 +368,36 @@ public class AWSAccessCredentials {
            @Override
            public void write(JsonWriter out, AWSAccessCredentials value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public AWSAccessCredentials read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             AWSAccessCredentials instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of AWSAccessCredentials given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of AWSAccessCredentials
-  * @throws IOException if the JSON string is invalid with respect to AWSAccessCredentials
-  */
+  /**
+   * Create an instance of AWSAccessCredentials given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of AWSAccessCredentials
+   * @throws IOException if the JSON string is invalid with respect to AWSAccessCredentials
+   */
   public static AWSAccessCredentials fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, AWSAccessCredentials.class);
   }
 
- /**
-  * Convert an instance of AWSAccessCredentials to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of AWSAccessCredentials to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

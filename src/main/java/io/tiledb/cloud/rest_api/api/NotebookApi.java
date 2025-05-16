@@ -19,6 +19,8 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -26,7 +28,7 @@ import java.io.IOException;
 
 
 import io.tiledb.cloud.rest_api.model.ArrayInfoUpdate;
-
+import io.tiledb.cloud.rest_api.model.Error;
 import java.io.File;
 import io.tiledb.cloud.rest_api.model.FileUploaded;
 import io.tiledb.cloud.rest_api.model.NotebookCopied;
@@ -111,8 +113,8 @@ public class NotebookApi {
 
         // create path and map variables
         String localVarPath = "/notebooks/server/{workspace}/{teamspace}/status"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -129,33 +131,29 @@ public class NotebookApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getNotebookServerStatusValidateBeforeCall(String workspace, String teamspace, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getNotebookServerStatus(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getNotebookServerStatus(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getNotebookServerStatusCall(workspace, teamspace, _callback);
-        return localVarCall;
+        return getNotebookServerStatusCall(workspace, teamspace, _callback);
 
     }
 
@@ -266,9 +264,9 @@ public class NotebookApi {
 
         // create path and map variables
         String localVarPath = "/notebooks/{workspace}/{teamspace}/{array}/copy"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -300,36 +298,33 @@ public class NotebookApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call handleCopyNotebookValidateBeforeCall(String workspace, String teamspace, String array, NotebookCopy notebookCopy, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, Integer endTimestamp, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling handleCopyNotebook(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling handleCopyNotebook(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling handleCopyNotebook(Async)");
         }
-        
+
         // verify the required parameter 'notebookCopy' is set
         if (notebookCopy == null) {
             throw new ApiException("Missing the required parameter 'notebookCopy' when calling handleCopyNotebook(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = handleCopyNotebookCall(workspace, teamspace, array, notebookCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp, _callback);
-        return localVarCall;
+        return handleCopyNotebookCall(workspace, teamspace, array, notebookCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp, _callback);
 
     }
 
@@ -446,8 +441,8 @@ public class NotebookApi {
 
         // create path and map variables
         String localVarPath = "/notebooks/{workspace}/{teamspace}/upload"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -487,31 +482,28 @@ public class NotebookApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call handleUploadNotebookValidateBeforeCall(String workspace, String teamspace, File inputFile, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, String outputUri, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling handleUploadNotebook(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling handleUploadNotebook(Async)");
         }
-        
+
         // verify the required parameter 'inputFile' is set
         if (inputFile == null) {
             throw new ApiException("Missing the required parameter 'inputFile' when calling handleUploadNotebook(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = handleUploadNotebookCall(workspace, teamspace, inputFile, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, outputUri, name, _callback);
-        return localVarCall;
+        return handleUploadNotebookCall(workspace, teamspace, inputFile, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, outputUri, name, _callback);
 
     }
 
@@ -625,8 +617,8 @@ public class NotebookApi {
 
         // create path and map variables
         String localVarPath = "/notebooks/server/{workspace}/{teamspace}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -643,33 +635,29 @@ public class NotebookApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call shutdownNotebookServerValidateBeforeCall(String workspace, String teamspace, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling shutdownNotebookServer(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling shutdownNotebookServer(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = shutdownNotebookServerCall(workspace, teamspace, _callback);
-        return localVarCall;
+        return shutdownNotebookServerCall(workspace, teamspace, _callback);
 
     }
 
@@ -771,9 +759,9 @@ public class NotebookApi {
 
         // create path and map variables
         String localVarPath = "/notebooks/{workspace}/{teamspace}/{array}/rename"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -797,36 +785,33 @@ public class NotebookApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateNotebookNameValidateBeforeCall(String workspace, String teamspace, String array, ArrayInfoUpdate notebookMetadata, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling updateNotebookName(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling updateNotebookName(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling updateNotebookName(Async)");
         }
-        
+
         // verify the required parameter 'notebookMetadata' is set
         if (notebookMetadata == null) {
             throw new ApiException("Missing the required parameter 'notebookMetadata' when calling updateNotebookName(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateNotebookNameCall(workspace, teamspace, array, notebookMetadata, _callback);
-        return localVarCall;
+        return updateNotebookNameCall(workspace, teamspace, array, notebookMetadata, _callback);
 
     }
 

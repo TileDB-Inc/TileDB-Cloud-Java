@@ -19,12 +19,15 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
+import io.tiledb.cloud.rest_api.model.Error;
 import io.tiledb.cloud.rest_api.model.RegisteredTaskGraph;
 import io.tiledb.cloud.rest_api.model.TaskGraphSharing;
 
@@ -104,8 +107,8 @@ public class RegisteredTaskGraphsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/registered/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -122,33 +125,29 @@ public class RegisteredTaskGraphsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteRegisteredTaskGraphValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deleteRegisteredTaskGraph(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteRegisteredTaskGraph(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteRegisteredTaskGraphCall(workspace, name, _callback);
-        return localVarCall;
+        return deleteRegisteredTaskGraphCall(workspace, name, _callback);
 
     }
 
@@ -245,8 +244,8 @@ public class RegisteredTaskGraphsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/registered/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -263,33 +262,29 @@ public class RegisteredTaskGraphsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getRegisteredTaskGraphValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getRegisteredTaskGraph(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getRegisteredTaskGraph(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getRegisteredTaskGraphCall(workspace, name, _callback);
-        return localVarCall;
+        return getRegisteredTaskGraphCall(workspace, name, _callback);
 
     }
 
@@ -391,8 +386,8 @@ public class RegisteredTaskGraphsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/registered/{name}/share"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -409,33 +404,29 @@ public class RegisteredTaskGraphsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getRegisteredTaskGraphSharingPoliciesValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getRegisteredTaskGraphSharingPolicies(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getRegisteredTaskGraphSharingPolicies(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getRegisteredTaskGraphSharingPoliciesCall(workspace, name, _callback);
-        return localVarCall;
+        return getRegisteredTaskGraphSharingPoliciesCall(workspace, name, _callback);
 
     }
 
@@ -540,8 +531,8 @@ public class RegisteredTaskGraphsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/registered/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -565,26 +556,23 @@ public class RegisteredTaskGraphsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call registerRegisteredTaskGraphValidateBeforeCall(String workspace, String name, RegisteredTaskGraph graph, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling registerRegisteredTaskGraph(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling registerRegisteredTaskGraph(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = registerRegisteredTaskGraphCall(workspace, name, graph, _callback);
-        return localVarCall;
+        return registerRegisteredTaskGraphCall(workspace, name, graph, _callback);
 
     }
 
@@ -686,8 +674,8 @@ public class RegisteredTaskGraphsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/registered/{name}/share"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -711,31 +699,28 @@ public class RegisteredTaskGraphsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call shareRegisteredTaskGraphValidateBeforeCall(String workspace, String name, TaskGraphSharing taskGraphSharing, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling shareRegisteredTaskGraph(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling shareRegisteredTaskGraph(Async)");
         }
-        
+
         // verify the required parameter 'taskGraphSharing' is set
         if (taskGraphSharing == null) {
             throw new ApiException("Missing the required parameter 'taskGraphSharing' when calling shareRegisteredTaskGraph(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = shareRegisteredTaskGraphCall(workspace, name, taskGraphSharing, _callback);
-        return localVarCall;
+        return shareRegisteredTaskGraphCall(workspace, name, taskGraphSharing, _callback);
 
     }
 
@@ -839,8 +824,8 @@ public class RegisteredTaskGraphsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/registered/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -864,26 +849,23 @@ public class RegisteredTaskGraphsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateRegisteredTaskGraphValidateBeforeCall(String workspace, String name, RegisteredTaskGraph graph, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling updateRegisteredTaskGraph(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling updateRegisteredTaskGraph(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateRegisteredTaskGraphCall(workspace, name, graph, _callback);
-        return localVarCall;
+        return updateRegisteredTaskGraphCall(workspace, name, graph, _callback);
 
     }
 

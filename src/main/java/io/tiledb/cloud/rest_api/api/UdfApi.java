@@ -19,6 +19,8 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -26,7 +28,7 @@ import java.io.IOException;
 
 
 import io.tiledb.cloud.rest_api.model.ArrayEndTimestampData;
-
+import io.tiledb.cloud.rest_api.model.Error;
 import java.io.File;
 import io.tiledb.cloud.rest_api.model.GenericUDF;
 import io.tiledb.cloud.rest_api.model.MultiArrayUDF;
@@ -112,8 +114,8 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udf/{workspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -130,33 +132,29 @@ public class UdfApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteUDFInfoValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deleteUDFInfo(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling deleteUDFInfo(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteUDFInfoCall(workspace, name, _callback);
-        return localVarCall;
+        return deleteUDFInfoCall(workspace, name, _callback);
 
     }
 
@@ -254,8 +252,8 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udf/{workspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -272,33 +270,29 @@ public class UdfApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getUDFInfoValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getUDFInfo(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getUDFInfo(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getUDFInfoCall(workspace, name, _callback);
-        return localVarCall;
+        return getUDFInfoCall(workspace, name, _callback);
 
     }
 
@@ -403,8 +397,8 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udf/{workspace}/{name}/share"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -421,33 +415,29 @@ public class UdfApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getUDFInfoSharingPoliciesValidateBeforeCall(String workspace, String name, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getUDFInfoSharingPolicies(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getUDFInfoSharingPolicies(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getUDFInfoSharingPoliciesCall(workspace, name, _callback);
-        return localVarCall;
+        return getUDFInfoSharingPoliciesCall(workspace, name, _callback);
 
     }
 
@@ -554,8 +544,8 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udf/{workspace}/{name}/copy"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -587,31 +577,28 @@ public class UdfApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call handleCopyUDFValidateBeforeCall(String workspace, String name, UDFCopy udFCopy, String X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, Integer endTimestamp, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling handleCopyUDF(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling handleCopyUDF(Async)");
         }
-        
+
         // verify the required parameter 'udFCopy' is set
         if (udFCopy == null) {
             throw new ApiException("Missing the required parameter 'udFCopy' when calling handleCopyUDF(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = handleCopyUDFCall(workspace, name, udFCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp, _callback);
-        return localVarCall;
+        return handleCopyUDFCall(workspace, name, udFCopy, X_TILEDB_CLOUD_ACCESS_CREDENTIALS_NAME, endTimestamp, _callback);
 
     }
 
@@ -722,8 +709,8 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udf/{workspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -747,31 +734,28 @@ public class UdfApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call registerUDFInfoValidateBeforeCall(String workspace, String name, UDFInfoUpdate udf, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling registerUDFInfo(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling registerUDFInfo(Async)");
         }
-        
+
         // verify the required parameter 'udf' is set
         if (udf == null) {
             throw new ApiException("Missing the required parameter 'udf' when calling registerUDFInfo(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = registerUDFInfoCall(workspace, name, udf, _callback);
-        return localVarCall;
+        return registerUDFInfoCall(workspace, name, udf, _callback);
 
     }
 
@@ -873,8 +857,8 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udf/{workspace}/{name}/share"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -898,31 +882,28 @@ public class UdfApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call shareUDFInfoValidateBeforeCall(String workspace, String name, UDFSharing udfSharing, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling shareUDFInfo(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling shareUDFInfo(Async)");
         }
-        
+
         // verify the required parameter 'udfSharing' is set
         if (udfSharing == null) {
             throw new ApiException("Missing the required parameter 'udfSharing' when calling shareUDFInfo(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = shareUDFInfoCall(workspace, name, udfSharing, _callback);
-        return localVarCall;
+        return shareUDFInfoCall(workspace, name, udfSharing, _callback);
 
     }
 
@@ -1026,7 +1007,7 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udfs/generic/{workspace}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1054,26 +1035,23 @@ public class UdfApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call submitGenericUDFValidateBeforeCall(String workspace, GenericUDF udf, String acceptEncoding, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling submitGenericUDF(Async)");
         }
-        
+
         // verify the required parameter 'udf' is set
         if (udf == null) {
             throw new ApiException("Missing the required parameter 'udf' when calling submitGenericUDF(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = submitGenericUDFCall(workspace, udf, acceptEncoding, _callback);
-        return localVarCall;
+        return submitGenericUDFCall(workspace, udf, acceptEncoding, _callback);
 
     }
 
@@ -1178,7 +1156,7 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udfs/arrays/{workspace}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1206,26 +1184,23 @@ public class UdfApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call submitMultiArrayUDFValidateBeforeCall(String workspace, MultiArrayUDF udf, String acceptEncoding, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling submitMultiArrayUDF(Async)");
         }
-        
+
         // verify the required parameter 'udf' is set
         if (udf == null) {
             throw new ApiException("Missing the required parameter 'udf' when calling submitMultiArrayUDF(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = submitMultiArrayUDFCall(workspace, udf, acceptEncoding, _callback);
-        return localVarCall;
+        return submitMultiArrayUDFCall(workspace, udf, acceptEncoding, _callback);
 
     }
 
@@ -1334,9 +1309,9 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/arrays/{workspace}/{teamspace}/{array}/udf/submit"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1372,36 +1347,33 @@ public class UdfApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call submitUDFValidateBeforeCall(String workspace, String teamspace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling submitUDF(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling submitUDF(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling submitUDF(Async)");
         }
-        
+
         // verify the required parameter 'udf' is set
         if (udf == null) {
             throw new ApiException("Missing the required parameter 'udf' when calling submitUDF(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = submitUDFCall(workspace, teamspace, array, udf, xPayer, acceptEncoding, v2, _callback);
-        return localVarCall;
+        return submitUDFCall(workspace, teamspace, array, udf, xPayer, acceptEncoding, v2, _callback);
 
     }
 
@@ -1519,8 +1491,8 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udf/{workspace}/{array}/end_timestamps"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1545,33 +1517,29 @@ public class UdfApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call udfWorkspaceArrayEndTimestampsGetValidateBeforeCall(String workspace, String array, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling udfWorkspaceArrayEndTimestampsGet(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling udfWorkspaceArrayEndTimestampsGet(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = udfWorkspaceArrayEndTimestampsGetCall(workspace, array, page, perPage, _callback);
-        return localVarCall;
+        return udfWorkspaceArrayEndTimestampsGetCall(workspace, array, page, perPage, _callback);
 
     }
 
@@ -1679,8 +1647,8 @@ public class UdfApi {
 
         // create path and map variables
         String localVarPath = "/udf/{workspace}/{name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "name" + "\\}", localVarApiClient.escapeString(name.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1704,31 +1672,28 @@ public class UdfApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateUDFInfoValidateBeforeCall(String workspace, String name, UDFInfoUpdate udf, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling updateUDFInfo(Async)");
         }
-        
+
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling updateUDFInfo(Async)");
         }
-        
+
         // verify the required parameter 'udf' is set
         if (udf == null) {
             throw new ApiException("Missing the required parameter 'udf' when calling updateUDFInfo(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateUDFInfoCall(workspace, name, udf, _callback);
-        return localVarCall;
+        return updateUDFInfoCall(workspace, name, udf, _callback);
 
     }
 
@@ -1794,5 +1759,304 @@ public class UdfApi {
         okhttp3.Call localVarCall = updateUDFInfoValidateBeforeCall(workspace, name, udf, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<String> submitGenericUDFWithHttpInfoString(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitGenericUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public String submitGenericUDFString(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<String> localVarResp = submitGenericUDFWithHttpInfoString(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public byte[] submitGenericUDFBytes(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<byte[]> localVarResp = submitGenericUDFWithHttpInfoBytes(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<byte[]> submitGenericUDFWithHttpInfoBytes(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitGenericUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public Object submitGenericUDFObj(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<Object> localVarResp = submitGenericUDFWithHttpInfoObj(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a generic UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<Object> submitGenericUDFWithHttpInfoObj(String namespace, GenericUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitGenericUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * submit a multi-array UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public String submitMultiArrayUDFString(String namespace, MultiArrayUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<String> localVarResp = submitMultiArrayUDFWithHttpInfoString(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a multi-array UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<String> submitMultiArrayUDFWithHttpInfoString(String namespace, MultiArrayUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitMultiArrayUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * submit a multi-array UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public byte[] submitMultiArrayUDFBytes(String namespace, MultiArrayUDF udf, String acceptEncoding) throws ApiException {
+        ApiResponse<byte[]> localVarResp = submitMultiArrayUDFWithHttpInfoBytes(namespace, udf, acceptEncoding);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * submit a multi-array UDF in the given namespace
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param udf UDF to run (required)
+     * @param acceptEncoding Encoding to use (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<byte[]> submitMultiArrayUDFWithHttpInfoBytes(String namespace, MultiArrayUDF udf, String acceptEncoding) throws ApiException {
+        okhttp3.Call localVarCall = submitMultiArrayUDFValidateBeforeCall(namespace, udf, acceptEncoding, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * send a UDF to run against a specified array/URI registered to a group/project
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param udf UDF to run (required)
+     * @param xPayer Name of organization or user who should be charged for this request (optional)
+     * @param acceptEncoding Encoding to use (optional)
+     * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public String submitUDFString(String workspace, String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2) throws ApiException {
+        ApiResponse<String> localVarResp = submitUDFWithHttpInfoString(workspace, namespace, array, udf, xPayer, acceptEncoding, v2);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * send a UDF to run against a specified array/URI registered to a group/project
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param udf UDF to run (required)
+     * @param xPayer Name of organization or user who should be charged for this request (optional)
+     * @param acceptEncoding Encoding to use (optional)
+     * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<String> submitUDFWithHttpInfoString(String workspace, String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2) throws ApiException {
+        okhttp3.Call localVarCall = submitUDFValidateBeforeCall(workspace, namespace, array, udf, xPayer, acceptEncoding, v2, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *
+     * send a UDF to run against a specified array/URI registered to a group/project
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param udf UDF to run (required)
+     * @param xPayer Name of organization or user who should be charged for this request (optional)
+     * @param acceptEncoding Encoding to use (optional)
+     * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public byte[] submitUDFBytes(String workspace, String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2) throws ApiException {
+        ApiResponse<byte[]> localVarResp = submitUDFWithHttpInfoBytes(workspace, namespace, array, udf, xPayer, acceptEncoding, v2);
+        return localVarResp.getData();
+    }
+
+    /**
+     *
+     * send a UDF to run against a specified array/URI registered to a group/project
+     * @param namespace namespace array is in (an organization name or user&#39;s username) (required)
+     * @param array name/uri of array that is url-encoded (required)
+     * @param udf UDF to run (required)
+     * @param xPayer Name of organization or user who should be charged for this request (optional)
+     * @param acceptEncoding Encoding to use (optional)
+     * @param v2 flag to indicate if v2 array UDFs should be used, currently in beta testing. Setting any value will enable v2 array UDFs. (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+    <table summary="Response Details" border="1">
+    <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+    <tr><td> 200 </td><td> UDF completed and the UDF-type specific result is returned </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    <tr><td> 0 </td><td> error response </td><td>  * X-TILEDB-CLOUD-TASK-ID - Task ID for just completed request <br>  </td></tr>
+    </table>
+     */
+    public ApiResponse<byte[]> submitUDFWithHttpInfoBytes(String workspace, String namespace, String array, MultiArrayUDF udf, String xPayer, String acceptEncoding, String v2) throws ApiException {
+        okhttp3.Call localVarCall = submitUDFValidateBeforeCall(workspace, namespace, array, udf, xPayer, acceptEncoding, v2, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 }

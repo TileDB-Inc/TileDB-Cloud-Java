@@ -19,12 +19,15 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
+import io.tiledb.cloud.rest_api.model.Error;
 import io.tiledb.cloud.rest_api.model.GroupBrowserData;
 import io.tiledb.cloud.rest_api.model.GroupBrowserFilterData;
 import io.tiledb.cloud.rest_api.model.GroupChanges;
@@ -116,9 +119,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}/contents"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -142,31 +145,28 @@ public class GroupsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call changeGroupContentsValidateBeforeCall(String workspace, String teamspace, String groupName, GroupChanges groupChanges, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling changeGroupContents(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling changeGroupContents(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling changeGroupContents(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = changeGroupContentsCall(workspace, teamspace, groupName, groupChanges, _callback);
-        return localVarCall;
+        return changeGroupContentsCall(workspace, teamspace, groupName, groupChanges, _callback);
 
     }
 
@@ -270,8 +270,8 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/create"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -295,26 +295,23 @@ public class GroupsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createGroupValidateBeforeCall(String workspace, String teamspace, GroupCreate groupCreate, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling createGroup(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling createGroup(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createGroupCall(workspace, teamspace, groupCreate, _callback);
-        return localVarCall;
+        return createGroupCall(workspace, teamspace, groupCreate, _callback);
 
     }
 
@@ -415,9 +412,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -434,38 +431,34 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteGroupValidateBeforeCall(String workspace, String teamspace, String groupName, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling deleteGroup(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling deleteGroup(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling deleteGroup(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteGroupCall(workspace, teamspace, groupName, _callback);
-        return localVarCall;
+        return deleteGroupCall(workspace, teamspace, groupName, _callback);
 
     }
 
@@ -566,9 +559,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -585,38 +578,34 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getGroupValidateBeforeCall(String workspace, String teamspace, String groupName, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getGroup(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getGroup(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling getGroup(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getGroupCall(workspace, teamspace, groupName, _callback);
-        return localVarCall;
+        return getGroupCall(workspace, teamspace, groupName, _callback);
 
     }
 
@@ -723,9 +712,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}/content_activity"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -750,38 +739,34 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getGroupActivityValidateBeforeCall(String workspace, String teamspace, String groupName, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getGroupActivity(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getGroupActivity(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling getGroupActivity(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getGroupActivityCall(workspace, teamspace, groupName, page, perPage, _callback);
-        return localVarCall;
+        return getGroupActivityCall(workspace, teamspace, groupName, page, perPage, _callback);
 
     }
 
@@ -901,9 +886,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}/contents"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -956,38 +941,34 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getGroupContentsValidateBeforeCall(String workspace, String teamspace, String groupName, Integer page, Integer perPage, String namespace, String search, String orderby, List<String> tag, List<String> excludeTag, List<String> memberType, List<String> excludeMemberType, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getGroupContents(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getGroupContents(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling getGroupContents(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getGroupContentsCall(workspace, teamspace, groupName, page, perPage, namespace, search, orderby, tag, excludeTag, memberType, excludeMemberType, _callback);
-        return localVarCall;
+        return getGroupContentsCall(workspace, teamspace, groupName, page, perPage, namespace, search, orderby, tag, excludeTag, memberType, excludeMemberType, _callback);
 
     }
 
@@ -1120,9 +1101,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}/share"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1139,38 +1120,34 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getGroupSharingPoliciesValidateBeforeCall(String workspace, String teamspace, String groupName, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getGroupSharingPolicies(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling getGroupSharingPolicies(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling getGroupSharingPolicies(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getGroupSharingPoliciesCall(workspace, teamspace, groupName, _callback);
-        return localVarCall;
+        return getGroupSharingPoliciesCall(workspace, teamspace, groupName, _callback);
 
     }
 
@@ -1296,23 +1273,19 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call groupsBrowserOwnedFiltersGetValidateBeforeCall(String namespace, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = groupsBrowserOwnedFiltersGetCall(namespace, _callback);
-        return localVarCall;
+        return groupsBrowserOwnedFiltersGetCall(namespace, _callback);
 
     }
 
@@ -1424,23 +1397,19 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call groupsBrowserPublicFiltersGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = groupsBrowserPublicFiltersGetCall(_callback);
-        return localVarCall;
+        return groupsBrowserPublicFiltersGetCall(_callback);
 
     }
 
@@ -1554,23 +1523,19 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call groupsBrowserSharedFiltersGetValidateBeforeCall(String namespace, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = groupsBrowserSharedFiltersGetCall(namespace, _callback);
-        return localVarCall;
+        return groupsBrowserSharedFiltersGetCall(namespace, _callback);
 
     }
 
@@ -1669,9 +1634,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}/contents/filters"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1688,38 +1653,34 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call groupsWorkspaceTeamspaceGroupNameContentsFiltersGetValidateBeforeCall(String workspace, String teamspace, String groupName, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling groupsWorkspaceTeamspaceGroupNameContentsFiltersGet(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling groupsWorkspaceTeamspaceGroupNameContentsFiltersGet(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling groupsWorkspaceTeamspaceGroupNameContentsFiltersGet(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = groupsWorkspaceTeamspaceGroupNameContentsFiltersGetCall(workspace, teamspace, groupName, _callback);
-        return localVarCall;
+        return groupsWorkspaceTeamspaceGroupNameContentsFiltersGetCall(workspace, teamspace, groupName, _callback);
 
     }
 
@@ -1897,23 +1858,19 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listOwnedGroupsValidateBeforeCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, Boolean withMetadata, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listOwnedGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata, _callback);
-        return localVarCall;
+        return listOwnedGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata, _callback);
 
     }
 
@@ -2118,23 +2075,19 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listPublicGroupsValidateBeforeCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, Boolean withMetadata, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listPublicGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata, _callback);
-        return localVarCall;
+        return listPublicGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, withMetadata, _callback);
 
     }
 
@@ -2344,23 +2297,19 @@ public class GroupsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listSharedGroupsValidateBeforeCall(Integer page, Integer perPage, String groupType, String search, String namespace, String orderby, String permissions, List<String> tag, List<String> excludeTag, Boolean flat, String parent, List<String> sharedTo, Boolean withMetadata, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listSharedGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, withMetadata, _callback);
-        return localVarCall;
+        return listSharedGroupsCall(page, perPage, groupType, search, namespace, orderby, permissions, tag, excludeTag, flat, parent, sharedTo, withMetadata, _callback);
 
     }
 
@@ -2496,9 +2445,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{array}/register"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "array" + "\\}", localVarApiClient.escapeString(array.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "array" + "}", localVarApiClient.escapeString(array.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2522,31 +2471,28 @@ public class GroupsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call registerGroupValidateBeforeCall(String workspace, String teamspace, String array, GroupRegister groupRegister, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling registerGroup(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling registerGroup(Async)");
         }
-        
+
         // verify the required parameter 'array' is set
         if (array == null) {
             throw new ApiException("Missing the required parameter 'array' when calling registerGroup(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = registerGroupCall(workspace, teamspace, array, groupRegister, _callback);
-        return localVarCall;
+        return registerGroupCall(workspace, teamspace, array, groupRegister, _callback);
 
     }
 
@@ -2652,9 +2598,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}/share"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2678,36 +2624,33 @@ public class GroupsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call shareGroupValidateBeforeCall(String workspace, String teamspace, String groupName, GroupSharingRequest groupSharingRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling shareGroup(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling shareGroup(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling shareGroup(Async)");
         }
-        
+
         // verify the required parameter 'groupSharingRequest' is set
         if (groupSharingRequest == null) {
             throw new ApiException("Missing the required parameter 'groupSharingRequest' when calling shareGroup(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = shareGroupCall(workspace, teamspace, groupName, groupSharingRequest, _callback);
-        return localVarCall;
+        return shareGroupCall(workspace, teamspace, groupName, groupSharingRequest, _callback);
 
     }
 
@@ -2815,9 +2758,9 @@ public class GroupsApi {
 
         // create path and map variables
         String localVarPath = "/groups/{workspace}/{teamspace}/{group_name}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "teamspace" + "\\}", localVarApiClient.escapeString(teamspace.toString()))
-            .replaceAll("\\{" + "group_name" + "\\}", localVarApiClient.escapeString(groupName.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "teamspace" + "}", localVarApiClient.escapeString(teamspace.toString()))
+            .replace("{" + "group_name" + "}", localVarApiClient.escapeString(groupName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2841,31 +2784,28 @@ public class GroupsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateGroupValidateBeforeCall(String workspace, String teamspace, String groupName, GroupUpdate groupUpdate, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling updateGroup(Async)");
         }
-        
+
         // verify the required parameter 'teamspace' is set
         if (teamspace == null) {
             throw new ApiException("Missing the required parameter 'teamspace' when calling updateGroup(Async)");
         }
-        
+
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
             throw new ApiException("Missing the required parameter 'groupName' when calling updateGroup(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateGroupCall(workspace, teamspace, groupName, groupUpdate, _callback);
-        return localVarCall;
+        return updateGroupCall(workspace, teamspace, groupName, groupUpdate, _callback);
 
     }
 

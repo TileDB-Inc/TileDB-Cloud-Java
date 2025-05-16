@@ -19,12 +19,15 @@ import io.tiledb.cloud.rest_api.ApiException;
 import io.tiledb.cloud.rest_api.ApiResponse;
 import io.tiledb.cloud.rest_api.Configuration;
 import io.tiledb.cloud.rest_api.Pair;
+import io.tiledb.cloud.rest_api.ProgressRequestBody;
+import io.tiledb.cloud.rest_api.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
+import io.tiledb.cloud.rest_api.model.Error;
 import java.time.OffsetDateTime;
 import io.tiledb.cloud.rest_api.model.TaskGraphClientNodeStatus;
 import io.tiledb.cloud.rest_api.model.TaskGraphLog;
@@ -106,7 +109,7 @@ public class TaskGraphLogsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/log"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -130,26 +133,23 @@ public class TaskGraphLogsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createTaskGraphLogValidateBeforeCall(String workspace, TaskGraphLog log, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling createTaskGraphLog(Async)");
         }
-        
+
         // verify the required parameter 'log' is set
         if (log == null) {
             throw new ApiException("Missing the required parameter 'log' when calling createTaskGraphLog(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createTaskGraphLogCall(workspace, log, _callback);
-        return localVarCall;
+        return createTaskGraphLogCall(workspace, log, _callback);
 
     }
 
@@ -250,8 +250,8 @@ public class TaskGraphLogsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/logs/{id}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -268,33 +268,29 @@ public class TaskGraphLogsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getTaskGraphLogValidateBeforeCall(String workspace, String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling getTaskGraphLog(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getTaskGraphLog(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getTaskGraphLogCall(workspace, id, _callback);
-        return localVarCall;
+        return getTaskGraphLogCall(workspace, id, _callback);
 
     }
 
@@ -449,23 +445,19 @@ public class TaskGraphLogsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listTaskGraphLogsValidateBeforeCall(String namespace, String createdBy, String status, String search, OffsetDateTime startTime, OffsetDateTime endTime, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listTaskGraphLogsCall(namespace, createdBy, status, search, startTime, endTime, page, perPage, _callback);
-        return localVarCall;
+        return listTaskGraphLogsCall(namespace, createdBy, status, search, startTime, endTime, page, perPage, _callback);
 
     }
 
@@ -585,8 +577,8 @@ public class TaskGraphLogsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/logs/{id}/report_client_node"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -610,31 +602,28 @@ public class TaskGraphLogsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call reportClientNodeValidateBeforeCall(String workspace, String id, TaskGraphClientNodeStatus report, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling reportClientNode(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling reportClientNode(Async)");
         }
-        
+
         // verify the required parameter 'report' is set
         if (report == null) {
             throw new ApiException("Missing the required parameter 'report' when calling reportClientNode(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = reportClientNodeCall(workspace, id, report, _callback);
-        return localVarCall;
+        return reportClientNodeCall(workspace, id, report, _callback);
 
     }
 
@@ -734,8 +723,8 @@ public class TaskGraphLogsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/executions/{id}/resubmit"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -752,33 +741,29 @@ public class TaskGraphLogsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call resubmitTaskGraphExecutionValidateBeforeCall(String workspace, String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling resubmitTaskGraphExecution(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling resubmitTaskGraphExecution(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = resubmitTaskGraphExecutionCall(workspace, id, _callback);
-        return localVarCall;
+        return resubmitTaskGraphExecutionCall(workspace, id, _callback);
 
     }
 
@@ -879,8 +864,8 @@ public class TaskGraphLogsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/executions/{id}/retry"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -897,33 +882,29 @@ public class TaskGraphLogsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call retryTaskGraphExecutionValidateBeforeCall(String workspace, String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling retryTaskGraphExecution(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling retryTaskGraphExecution(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = retryTaskGraphExecutionCall(workspace, id, _callback);
-        return localVarCall;
+        return retryTaskGraphExecutionCall(workspace, id, _callback);
 
     }
 
@@ -1024,8 +1005,8 @@ public class TaskGraphLogsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/executions/{id}/stop"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1042,33 +1023,29 @@ public class TaskGraphLogsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call stopTaskGraphExecutionValidateBeforeCall(String workspace, String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling stopTaskGraphExecution(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling stopTaskGraphExecution(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = stopTaskGraphExecutionCall(workspace, id, _callback);
-        return localVarCall;
+        return stopTaskGraphExecutionCall(workspace, id, _callback);
 
     }
 
@@ -1166,8 +1143,8 @@ public class TaskGraphLogsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/graphs/{id}/submit"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1188,33 +1165,29 @@ public class TaskGraphLogsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call submitTaskGraphValidateBeforeCall(String workspace, String id, String rootTaskGraphUuid, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling submitTaskGraph(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling submitTaskGraph(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = submitTaskGraphCall(workspace, id, rootTaskGraphUuid, _callback);
-        return localVarCall;
+        return submitTaskGraphCall(workspace, id, rootTaskGraphUuid, _callback);
 
     }
 
@@ -1319,8 +1292,8 @@ public class TaskGraphLogsApi {
 
         // create path and map variables
         String localVarPath = "/taskgraphs/{workspace}/logs/{id}"
-            .replaceAll("\\{" + "workspace" + "\\}", localVarApiClient.escapeString(workspace.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1344,31 +1317,28 @@ public class TaskGraphLogsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "BasicAuth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateTaskGraphLogValidateBeforeCall(String workspace, String id, TaskGraphLog log, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
             throw new ApiException("Missing the required parameter 'workspace' when calling updateTaskGraphLog(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateTaskGraphLog(Async)");
         }
-        
+
         // verify the required parameter 'log' is set
         if (log == null) {
             throw new ApiException("Missing the required parameter 'log' when calling updateTaskGraphLog(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateTaskGraphLogCall(workspace, id, log, _callback);
-        return localVarCall;
+        return updateTaskGraphLogCall(workspace, id, log, _callback);
 
     }
 

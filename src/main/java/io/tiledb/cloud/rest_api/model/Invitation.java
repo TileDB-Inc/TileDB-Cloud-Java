@@ -14,27 +14,38 @@
 package io.tiledb.cloud.rest_api.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.tiledb.cloud.rest_api.model.InvitationStatus;
+import io.tiledb.cloud.rest_api.model.InvitationType;
+import io.tiledb.cloud.rest_api.model.OrganizationRoles;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import io.tiledb.cloud.rest_api.JSON;
@@ -42,8 +53,7 @@ import io.tiledb.cloud.rest_api.JSON;
 /**
  * Invitations to share or collaborate
  */
-@ApiModel(description = "Invitations to share or collaborate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-08T21:39:23.775746+03:00[Europe/Athens]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Invitation {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -125,26 +135,22 @@ public class Invitation {
   @SerializedName(SERIALIZED_NAME_NAMESPACE_INVITED)
   private String namespaceInvited;
 
-  public Invitation() { 
+  public Invitation() {
   }
 
   public Invitation id(String id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Unique ID of invitation added to magic link
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of invitation added to magic link")
-
   public String getId() {
     return id;
   }
-
 
   public void setId(String id) {
     this.id = id;
@@ -152,22 +158,18 @@ public class Invitation {
 
 
   public Invitation invitationType(InvitationType invitationType) {
-    
     this.invitationType = invitationType;
     return this;
   }
 
-   /**
+  /**
    * Get invitationType
    * @return invitationType
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public InvitationType getInvitationType() {
     return invitationType;
   }
-
 
   public void setInvitationType(InvitationType invitationType) {
     this.invitationType = invitationType;
@@ -175,22 +177,18 @@ public class Invitation {
 
 
   public Invitation ownerNamespaceUuid(String ownerNamespaceUuid) {
-    
     this.ownerNamespaceUuid = ownerNamespaceUuid;
     return this;
   }
 
-   /**
+  /**
    * Namespace of the owner of the invitation (user or organization)
    * @return ownerNamespaceUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Namespace of the owner of the invitation (user or organization)")
-
   public String getOwnerNamespaceUuid() {
     return ownerNamespaceUuid;
   }
-
 
   public void setOwnerNamespaceUuid(String ownerNamespaceUuid) {
     this.ownerNamespaceUuid = ownerNamespaceUuid;
@@ -198,22 +196,18 @@ public class Invitation {
 
 
   public Invitation inviterUuid(String inviterUuid) {
-    
     this.inviterUuid = inviterUuid;
     return this;
   }
 
-   /**
+  /**
    * Unique ID of the user that sent the invitation
    * @return inviterUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the user that sent the invitation")
-
   public String getInviterUuid() {
     return inviterUuid;
   }
-
 
   public void setInviterUuid(String inviterUuid) {
     this.inviterUuid = inviterUuid;
@@ -221,22 +215,18 @@ public class Invitation {
 
 
   public Invitation userNamespaceUuid(String userNamespaceUuid) {
-    
     this.userNamespaceUuid = userNamespaceUuid;
     return this;
   }
 
-   /**
+  /**
    * Unique ID of the user accepted the invitation
    * @return userNamespaceUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the user accepted the invitation")
-
   public String getUserNamespaceUuid() {
     return userNamespaceUuid;
   }
-
 
   public void setUserNamespaceUuid(String userNamespaceUuid) {
     this.userNamespaceUuid = userNamespaceUuid;
@@ -244,22 +234,18 @@ public class Invitation {
 
 
   public Invitation organizationUserUuid(String organizationUserUuid) {
-    
     this.organizationUserUuid = organizationUserUuid;
     return this;
   }
 
-   /**
+  /**
    * Unique ID of the organization user accepted the invitation
    * @return organizationUserUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the organization user accepted the invitation")
-
   public String getOrganizationUserUuid() {
     return organizationUserUuid;
   }
-
 
   public void setOrganizationUserUuid(String organizationUserUuid) {
     this.organizationUserUuid = organizationUserUuid;
@@ -267,22 +253,18 @@ public class Invitation {
 
 
   public Invitation organizationName(String organizationName) {
-    
     this.organizationName = organizationName;
     return this;
   }
 
-   /**
+  /**
    * Name of the organization, does not persist in database
    * @return organizationName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "organization_name", value = "Name of the organization, does not persist in database")
-
   public String getOrganizationName() {
     return organizationName;
   }
-
 
   public void setOrganizationName(String organizationName) {
     this.organizationName = organizationName;
@@ -290,22 +272,18 @@ public class Invitation {
 
 
   public Invitation organizationRole(OrganizationRoles organizationRole) {
-    
     this.organizationRole = organizationRole;
     return this;
   }
 
-   /**
+  /**
    * Get organizationRole
    * @return organizationRole
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public OrganizationRoles getOrganizationRole() {
     return organizationRole;
   }
-
 
   public void setOrganizationRole(OrganizationRoles organizationRole) {
     this.organizationRole = organizationRole;
@@ -313,22 +291,18 @@ public class Invitation {
 
 
   public Invitation organizationUuid(String organizationUuid) {
-    
     this.organizationUuid = organizationUuid;
     return this;
   }
 
-   /**
+  /**
    * Unique ID of the organization whose user(s) accepted the invitation
    * @return organizationUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the organization whose user(s) accepted the invitation")
-
   public String getOrganizationUuid() {
     return organizationUuid;
   }
-
 
   public void setOrganizationUuid(String organizationUuid) {
     this.organizationUuid = organizationUuid;
@@ -336,22 +310,18 @@ public class Invitation {
 
 
   public Invitation arrayUuid(String arrayUuid) {
-    
     this.arrayUuid = arrayUuid;
     return this;
   }
 
-   /**
+  /**
    * Unique ID of the array
    * @return arrayUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the array")
-
   public String getArrayUuid() {
     return arrayUuid;
   }
-
 
   public void setArrayUuid(String arrayUuid) {
     this.arrayUuid = arrayUuid;
@@ -359,22 +329,18 @@ public class Invitation {
 
 
   public Invitation groupUuid(String groupUuid) {
-    
     this.groupUuid = groupUuid;
     return this;
   }
 
-   /**
+  /**
    * Unique ID of the group
    * @return groupUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "00000000-0000-0000-0000-000000000000", value = "Unique ID of the group")
-
   public String getGroupUuid() {
     return groupUuid;
   }
-
 
   public void setGroupUuid(String groupUuid) {
     this.groupUuid = groupUuid;
@@ -382,22 +348,18 @@ public class Invitation {
 
 
   public Invitation arrayName(String arrayName) {
-    
     this.arrayName = arrayName;
     return this;
   }
 
-   /**
+  /**
    * Name of the array, does not persist in database
    * @return arrayName
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "array_name", value = "Name of the array, does not persist in database")
-
   public String getArrayName() {
     return arrayName;
   }
-
 
   public void setArrayName(String arrayName) {
     this.arrayName = arrayName;
@@ -405,22 +367,18 @@ public class Invitation {
 
 
   public Invitation email(String email) {
-    
     this.email = email;
     return this;
   }
 
-   /**
+  /**
    * Email of the individual we send the invitation to
    * @return email
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "jane@doe.com", value = "Email of the individual we send the invitation to")
-
   public String getEmail() {
     return email;
   }
-
 
   public void setEmail(String email) {
     this.email = email;
@@ -428,22 +386,18 @@ public class Invitation {
 
 
   public Invitation actions(String actions) {
-    
     this.actions = actions;
     return this;
   }
 
-   /**
+  /**
    * A comma separated list of ArrayActions or NamespaceActions
    * @return actions
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "read,write", value = "A comma separated list of ArrayActions or NamespaceActions")
-
   public String getActions() {
     return actions;
   }
-
 
   public void setActions(String actions) {
     this.actions = actions;
@@ -451,22 +405,18 @@ public class Invitation {
 
 
   public Invitation groupActions(String groupActions) {
-    
     this.groupActions = groupActions;
     return this;
   }
 
-   /**
+  /**
    * A comma separated list of GroupActions
    * @return groupActions
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "read,write", value = "A comma separated list of GroupActions")
-
   public String getGroupActions() {
     return groupActions;
   }
-
 
   public void setGroupActions(String groupActions) {
     this.groupActions = groupActions;
@@ -474,22 +424,18 @@ public class Invitation {
 
 
   public Invitation status(InvitationStatus status) {
-    
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public InvitationStatus getStatus() {
     return status;
   }
-
 
   public void setStatus(InvitationStatus status) {
     this.status = status;
@@ -497,22 +443,18 @@ public class Invitation {
 
 
   public Invitation createdAt(OffsetDateTime createdAt) {
-    
     this.createdAt = createdAt;
     return this;
   }
 
-   /**
+  /**
    * Datetime the invitation was created in UTC
    * @return createdAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Datetime the invitation was created in UTC")
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
-
 
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
@@ -520,22 +462,18 @@ public class Invitation {
 
 
   public Invitation expiresAt(OffsetDateTime expiresAt) {
-    
     this.expiresAt = expiresAt;
     return this;
   }
 
-   /**
+  /**
    * Datetime the invitation is expected to expire in UTC
    * @return expiresAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Datetime the invitation is expected to expire in UTC")
-
   public OffsetDateTime getExpiresAt() {
     return expiresAt;
   }
-
 
   public void setExpiresAt(OffsetDateTime expiresAt) {
     this.expiresAt = expiresAt;
@@ -543,22 +481,18 @@ public class Invitation {
 
 
   public Invitation acceptedAt(OffsetDateTime acceptedAt) {
-    
     this.acceptedAt = acceptedAt;
     return this;
   }
 
-   /**
+  /**
    * Datetime the invitation was accepted in UTC
    * @return acceptedAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Datetime the invitation was accepted in UTC")
-
   public OffsetDateTime getAcceptedAt() {
     return acceptedAt;
   }
-
 
   public void setAcceptedAt(OffsetDateTime acceptedAt) {
     this.acceptedAt = acceptedAt;
@@ -566,62 +500,23 @@ public class Invitation {
 
 
   public Invitation namespaceInvited(String namespaceInvited) {
-    
     this.namespaceInvited = namespaceInvited;
     return this;
   }
 
-   /**
+  /**
    * The namespace invited (user or organization, if it exists in the DB)
    * @return namespaceInvited
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The namespace invited (user or organization, if it exists in the DB)")
-
   public String getNamespaceInvited() {
     return namespaceInvited;
   }
-
 
   public void setNamespaceInvited(String namespaceInvited) {
     this.namespaceInvited = namespaceInvited;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public Invitation putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -652,13 +547,12 @@ public class Invitation {
         Objects.equals(this.createdAt, invitation.createdAt) &&
         Objects.equals(this.expiresAt, invitation.expiresAt) &&
         Objects.equals(this.acceptedAt, invitation.acceptedAt) &&
-        Objects.equals(this.namespaceInvited, invitation.namespaceInvited)&&
-        Objects.equals(this.additionalProperties, invitation.additionalProperties);
+        Objects.equals(this.namespaceInvited, invitation.namespaceInvited);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, invitationType, ownerNamespaceUuid, inviterUuid, userNamespaceUuid, organizationUserUuid, organizationName, organizationRole, organizationUuid, arrayUuid, groupUuid, arrayName, email, actions, groupActions, status, createdAt, expiresAt, acceptedAt, namespaceInvited, additionalProperties);
+    return Objects.hash(id, invitationType, ownerNamespaceUuid, inviterUuid, userNamespaceUuid, organizationUserUuid, organizationName, organizationRole, organizationUuid, arrayUuid, groupUuid, arrayName, email, actions, groupActions, status, createdAt, expiresAt, acceptedAt, namespaceInvited);
   }
 
   @Override
@@ -685,7 +579,6 @@ public class Invitation {
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    acceptedAt: ").append(toIndentedString(acceptedAt)).append("\n");
     sb.append("    namespaceInvited: ").append(toIndentedString(namespaceInvited)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -733,60 +626,79 @@ public class Invitation {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Invitation
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (Invitation.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Invitation
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Invitation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Invitation is not found in the empty JSON string", Invitation.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!Invitation.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Invitation` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (jsonObj.get("owner_namespace_uuid") != null && !jsonObj.get("owner_namespace_uuid").isJsonPrimitive()) {
+      // validate the optional field `invitation_type`
+      if (jsonObj.get("invitation_type") != null && !jsonObj.get("invitation_type").isJsonNull()) {
+        InvitationType.validateJsonElement(jsonObj.get("invitation_type"));
+      }
+      if ((jsonObj.get("owner_namespace_uuid") != null && !jsonObj.get("owner_namespace_uuid").isJsonNull()) && !jsonObj.get("owner_namespace_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `owner_namespace_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner_namespace_uuid").toString()));
       }
-      if (jsonObj.get("inviter_uuid") != null && !jsonObj.get("inviter_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("inviter_uuid") != null && !jsonObj.get("inviter_uuid").isJsonNull()) && !jsonObj.get("inviter_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `inviter_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("inviter_uuid").toString()));
       }
-      if (jsonObj.get("user_namespace_uuid") != null && !jsonObj.get("user_namespace_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("user_namespace_uuid") != null && !jsonObj.get("user_namespace_uuid").isJsonNull()) && !jsonObj.get("user_namespace_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_namespace_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_namespace_uuid").toString()));
       }
-      if (jsonObj.get("organization_user_uuid") != null && !jsonObj.get("organization_user_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("organization_user_uuid") != null && !jsonObj.get("organization_user_uuid").isJsonNull()) && !jsonObj.get("organization_user_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `organization_user_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_user_uuid").toString()));
       }
-      if (jsonObj.get("organization_name") != null && !jsonObj.get("organization_name").isJsonPrimitive()) {
+      if ((jsonObj.get("organization_name") != null && !jsonObj.get("organization_name").isJsonNull()) && !jsonObj.get("organization_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `organization_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_name").toString()));
       }
-      if (jsonObj.get("organization_uuid") != null && !jsonObj.get("organization_uuid").isJsonPrimitive()) {
+      // validate the optional field `organization_role`
+      if (jsonObj.get("organization_role") != null && !jsonObj.get("organization_role").isJsonNull()) {
+        OrganizationRoles.validateJsonElement(jsonObj.get("organization_role"));
+      }
+      if ((jsonObj.get("organization_uuid") != null && !jsonObj.get("organization_uuid").isJsonNull()) && !jsonObj.get("organization_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `organization_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_uuid").toString()));
       }
-      if (jsonObj.get("array_uuid") != null && !jsonObj.get("array_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("array_uuid") != null && !jsonObj.get("array_uuid").isJsonNull()) && !jsonObj.get("array_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_uuid").toString()));
       }
-      if (jsonObj.get("group_uuid") != null && !jsonObj.get("group_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("group_uuid") != null && !jsonObj.get("group_uuid").isJsonNull()) && !jsonObj.get("group_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `group_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group_uuid").toString()));
       }
-      if (jsonObj.get("array_name") != null && !jsonObj.get("array_name").isJsonPrimitive()) {
+      if ((jsonObj.get("array_name") != null && !jsonObj.get("array_name").isJsonNull()) && !jsonObj.get("array_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `array_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_name").toString()));
       }
-      if (jsonObj.get("email") != null && !jsonObj.get("email").isJsonPrimitive()) {
+      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
       }
-      if (jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonPrimitive()) {
+      if ((jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonNull()) && !jsonObj.get("actions").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `actions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actions").toString()));
       }
-      if (jsonObj.get("group_actions") != null && !jsonObj.get("group_actions").isJsonPrimitive()) {
+      if ((jsonObj.get("group_actions") != null && !jsonObj.get("group_actions").isJsonNull()) && !jsonObj.get("group_actions").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `group_actions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group_actions").toString()));
       }
-      if (jsonObj.get("namespace_invited") != null && !jsonObj.get("namespace_invited").isJsonPrimitive()) {
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        InvitationStatus.validateJsonElement(jsonObj.get("status"));
+      }
+      if ((jsonObj.get("namespace_invited") != null && !jsonObj.get("namespace_invited").isJsonNull()) && !jsonObj.get("namespace_invited").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `namespace_invited` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace_invited").toString()));
       }
   }
@@ -806,71 +718,36 @@ public class Invitation {
            @Override
            public void write(JsonWriter out, Invitation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
            public Invitation read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             Invitation instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
     }
   }
 
- /**
-  * Create an instance of Invitation given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Invitation
-  * @throws IOException if the JSON string is invalid with respect to Invitation
-  */
+  /**
+   * Create an instance of Invitation given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Invitation
+   * @throws IOException if the JSON string is invalid with respect to Invitation
+   */
   public static Invitation fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Invitation.class);
   }
 
- /**
-  * Convert an instance of Invitation to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Invitation to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }
