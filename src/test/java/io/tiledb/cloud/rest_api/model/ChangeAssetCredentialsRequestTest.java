@@ -19,54 +19,40 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for FileUploaded
+ * Model tests for ChangeAssetCredentialsRequest
  */
-public class FileUploadedTest {
-    private final FileUploaded model = new FileUploaded();
+public class ChangeAssetCredentialsRequestTest {
+    private final ChangeAssetCredentialsRequest model = new ChangeAssetCredentialsRequest();
 
     /**
-     * Model tests for FileUploaded
+     * Model tests for ChangeAssetCredentialsRequest
      */
     @Test
-    public void testFileUploaded() {
-        // TODO: test FileUploaded
+    public void testChangeAssetCredentialsRequest() {
+        // TODO: test ChangeAssetCredentialsRequest
     }
 
     /**
-     * Test the property 'outputUri'
+     * Test the property 'accessCredentials'
      */
     @Test
-    public void outputUriTest() {
-        // TODO: test outputUri
+    public void accessCredentialsTest() {
+        // TODO: test accessCredentials
     }
 
     /**
-     * Test the property 'fileName'
+     * Test the property 'assetUuids'
      */
     @Test
-    public void fileNameTest() {
-        // TODO: test fileName
-    }
-
-    /**
-     * Test the property 'assetId'
-     */
-    @Test
-    public void assetIdTest() {
-        // TODO: test assetId
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
+    public void assetUuidsTest() {
+        // TODO: test assetUuids
     }
 
 }
