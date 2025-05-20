@@ -151,29 +151,6 @@ public class TaskGraphs {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraphs is not found in the empty JSON string", TaskGraphs.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!TaskGraphs.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TaskGraphs` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("graphs") != null && !jsonObj.get("graphs").isJsonNull()) {
-        JsonArray jsonArraygraphs = jsonObj.getAsJsonArray("graphs");
-        if (jsonArraygraphs != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("graphs").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `graphs` to be an array in the JSON string but got `%s`", jsonObj.get("graphs").toString()));
-          }
-
-          // validate the optional field `graphs` (array)
-          for (int i = 0; i < jsonArraygraphs.size(); i++) {
-            TaskGraph.validateJsonElement(jsonArraygraphs.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
