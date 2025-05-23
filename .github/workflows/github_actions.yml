@@ -15,36 +15,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'adopt'
-          java-version: '11'
+          java-version: 17
           check-latest: true
 
-      - run: |
-          unset SYSTEM
-          ./gradlew assemble;
+      - name: assemble
         shell: bash
-        name: assemble
+        run: |
+          unset SYSTEM
+          ./gradlew assemble
 
       - name: Run examples
         env:
           API_TOKEN: ${{ secrets.API_TOKEN }}
         run: |
-          cd build/libs
-          rm *javadoc* *sources* *default*
-          p=$(readlink -f *.jar)
-          cd ../../src/main/java/examples
-          javac -cp $p *.java
-          for x in $(ls -1 *.java | sed 's/.java//'); 
-          do 
-          echo $x;
-          class_name=examples.$x; 
-          java -cp $p $class_name; 
-          done
+          jar_relpath="$(find build/libs -type f | grep -v -e javadoc -e sources -e default)"
+          jar="$(readlink -f "$jar_relpath")"
+          cd src/main/java/examples
+          javac -cp "$jar" Examples.java
+          # arrow-java requires the --add-opens flag in Java ≥16; see https://arrow.apache.org/docs/java/install.html#id3
+          java --add-opens=java.base/java.nio=org.apache.arrow.memory.core,ALL-UNNAMED -cp "$jar" examples.Examples
   Release:
     if: startsWith(github.ref, 'refs/tags/')
     needs: [Examples]
@@ -52,17 +47,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'adopt'
-          java-version: '11'
+          java-version: 17
           check-latest: true
 
-      - name: Create-Jars
-        run: unset SYSTEM; set +e; ./gradlew assemble; ./gradlew shadowJar; mkdir jars/; cp ./build/libs/*.jar jars/
+      - name: Create JARs
+        run: |
+          unset SYSTEM
+          ./gradlew assemble
+          ./gradlew shadowJar
+          mkdir jars/
+          cp ./build/libs/*.jar jars/
 
       - name: Create Release
         id: create_release
@@ -77,9 +77,7 @@ jobs:
           prerelease: false
 
       - name: Upload to maven
-        run: |
-          chmod +x ./ci/upload_to_maven.sh
-          ./ci/upload_to_maven.sh
+        run: ./ci/upload_to_maven.sh
         shell: bash
         env:
           GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
