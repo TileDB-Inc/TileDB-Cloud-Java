@@ -178,33 +178,6 @@ public class GroupContentActivityResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in GroupContentActivityResponse is not found in the empty JSON string", GroupContentActivityResponse.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GroupContentActivityResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GroupContentActivityResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("activity") != null && !jsonObj.get("activity").isJsonNull()) {
-        JsonArray jsonArrayactivity = jsonObj.getAsJsonArray("activity");
-        if (jsonArrayactivity != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("activity").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `activity` to be an array in the JSON string but got `%s`", jsonObj.get("activity").toString()));
-          }
-
-          // validate the optional field `activity` (array)
-          for (int i = 0; i < jsonArrayactivity.size(); i++) {
-            GroupContentActivity.validateJsonElement(jsonArrayactivity.get(i));
-          };
-        }
-      }
-      // validate the optional field `pagination_metadata`
-      if (jsonObj.get("pagination_metadata") != null && !jsonObj.get("pagination_metadata").isJsonNull()) {
-        PaginationMetadata.validateJsonElement(jsonObj.get("pagination_metadata"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -286,33 +286,6 @@ public class Attribute {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Attribute is not found in the empty JSON string", Attribute.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Attribute.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Attribute` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Attribute.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // validate the required field `type`
-      Datatype.validateJsonElement(jsonObj.get("type"));
-      // validate the required field `filterPipeline`
-      FilterPipeline.validateJsonElement(jsonObj.get("filterPipeline"));
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("fillValue") != null && !jsonObj.get("fillValue").isJsonNull() && !jsonObj.get("fillValue").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fillValue` to be an array in the JSON string but got `%s`", jsonObj.get("fillValue").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

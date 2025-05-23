@@ -151,29 +151,6 @@ public class SSODomainConfigResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SSODomainConfigResponse is not found in the empty JSON string", SSODomainConfigResponse.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SSODomainConfigResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SSODomainConfigResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("domain_configs") != null && !jsonObj.get("domain_configs").isJsonNull()) {
-        JsonArray jsonArraydomainConfigs = jsonObj.getAsJsonArray("domain_configs");
-        if (jsonArraydomainConfigs != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("domain_configs").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `domain_configs` to be an array in the JSON string but got `%s`", jsonObj.get("domain_configs").toString()));
-          }
-
-          // validate the optional field `domain_configs` (array)
-          for (int i = 0; i < jsonArraydomainConfigs.size(); i++) {
-            SSODomainConfig.validateJsonElement(jsonArraydomainConfigs.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

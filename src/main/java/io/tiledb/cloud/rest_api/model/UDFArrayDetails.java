@@ -241,29 +241,6 @@ public class UDFArrayDetails {
           throw new IllegalArgumentException(String.format("The required field(s) %s in UDFArrayDetails is not found in the empty JSON string", UDFArrayDetails.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!UDFArrayDetails.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UDFArrayDetails` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("parameter_id") != null && !jsonObj.get("parameter_id").isJsonNull()) && !jsonObj.get("parameter_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `parameter_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parameter_id").toString()));
-      }
-      if ((jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonNull()) && !jsonObj.get("uri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
-      }
-      // validate the optional field `ranges`
-      if (jsonObj.get("ranges") != null && !jsonObj.get("ranges").isJsonNull()) {
-        QueryRanges.validateJsonElement(jsonObj.get("ranges"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("buffers") != null && !jsonObj.get("buffers").isJsonNull() && !jsonObj.get("buffers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `buffers` to be an array in the JSON string but got `%s`", jsonObj.get("buffers").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

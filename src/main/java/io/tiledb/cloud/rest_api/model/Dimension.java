@@ -277,37 +277,6 @@ public class Dimension {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Dimension is not found in the empty JSON string", Dimension.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Dimension.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Dimension` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Dimension.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // validate the required field `type`
-      Datatype.validateJsonElement(jsonObj.get("type"));
-      // validate the required field `domain`
-      DomainArray.validateJsonElement(jsonObj.get("domain"));
-      // validate the optional field `tileExtent`
-      if (jsonObj.get("tileExtent") != null && !jsonObj.get("tileExtent").isJsonNull()) {
-        DimensionTileExtent.validateJsonElement(jsonObj.get("tileExtent"));
-      }
-      // validate the optional field `filterPipeline`
-      if (jsonObj.get("filterPipeline") != null && !jsonObj.get("filterPipeline").isJsonNull()) {
-        FilterPipeline.validateJsonElement(jsonObj.get("filterPipeline"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

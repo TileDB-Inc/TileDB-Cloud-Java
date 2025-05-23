@@ -275,33 +275,6 @@ public class TGSQLNodeData {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TGSQLNodeData is not found in the empty JSON string", TGSQLNodeData.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!TGSQLNodeData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TGSQLNodeData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("init_commands") != null && !jsonObj.get("init_commands").isJsonNull() && !jsonObj.get("init_commands").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `init_commands` to be an array in the JSON string but got `%s`", jsonObj.get("init_commands").toString()));
-      }
-      if ((jsonObj.get("query") != null && !jsonObj.get("query").isJsonNull()) && !jsonObj.get("query").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `query` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull() && !jsonObj.get("parameters").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `parameters` to be an array in the JSON string but got `%s`", jsonObj.get("parameters").toString()));
-      }
-      // validate the optional field `result_format`
-      if (jsonObj.get("result_format") != null && !jsonObj.get("result_format").isJsonNull()) {
-        ResultFormat.validateJsonElement(jsonObj.get("result_format"));
-      }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

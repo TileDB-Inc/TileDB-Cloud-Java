@@ -192,24 +192,6 @@ public class MLModelFavorite {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MLModelFavorite is not found in the empty JSON string", MLModelFavorite.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!MLModelFavorite.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MLModelFavorite` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("mlmodel_uuid") != null && !jsonObj.get("mlmodel_uuid").isJsonNull()) && !jsonObj.get("mlmodel_uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mlmodel_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mlmodel_uuid").toString()));
-      }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

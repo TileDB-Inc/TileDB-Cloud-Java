@@ -273,30 +273,6 @@ public class QueryReader {
           throw new IllegalArgumentException(String.format("The required field(s) %s in QueryReader is not found in the empty JSON string", QueryReader.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!QueryReader.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `QueryReader` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `layout`
-      if (jsonObj.get("layout") != null && !jsonObj.get("layout").isJsonNull()) {
-        Layout.validateJsonElement(jsonObj.get("layout"));
-      }
-      // validate the optional field `subarray`
-      if (jsonObj.get("subarray") != null && !jsonObj.get("subarray").isJsonNull()) {
-        Subarray.validateJsonElement(jsonObj.get("subarray"));
-      }
-      // validate the optional field `readState`
-      if (jsonObj.get("readState") != null && !jsonObj.get("readState").isJsonNull()) {
-        ReadState.validateJsonElement(jsonObj.get("readState"));
-      }
-      if ((jsonObj.get("varOffsetsMode") != null && !jsonObj.get("varOffsetsMode").isJsonNull()) && !jsonObj.get("varOffsetsMode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `varOffsetsMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("varOffsetsMode").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

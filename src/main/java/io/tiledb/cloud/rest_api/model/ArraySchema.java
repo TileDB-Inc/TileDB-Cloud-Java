@@ -432,53 +432,6 @@ public class ArraySchema {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ArraySchema is not found in the empty JSON string", ArraySchema.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ArraySchema.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArraySchema` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ArraySchema.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("uri") != null && !jsonObj.get("uri").isJsonNull()) && !jsonObj.get("uri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uri").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("version") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("version").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `version` to be an array in the JSON string but got `%s`", jsonObj.get("version").toString()));
-      }
-      // validate the required field `arrayType`
-      ArrayType.validateJsonElement(jsonObj.get("arrayType"));
-      // validate the required field `tileOrder`
-      Layout.validateJsonElement(jsonObj.get("tileOrder"));
-      // validate the required field `cellOrder`
-      Layout.validateJsonElement(jsonObj.get("cellOrder"));
-      // validate the required field `coordsFilterPipeline`
-      FilterPipeline.validateJsonElement(jsonObj.get("coordsFilterPipeline"));
-      // validate the required field `offsetFilterPipeline`
-      FilterPipeline.validateJsonElement(jsonObj.get("offsetFilterPipeline"));
-      // validate the required field `domain`
-      Domain.validateJsonElement(jsonObj.get("domain"));
-      // ensure the json data is an array
-      if (!jsonObj.get("attributes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `attributes` to be an array in the JSON string but got `%s`", jsonObj.get("attributes").toString()));
-      }
-
-      JsonArray jsonArrayattributes = jsonObj.getAsJsonArray("attributes");
-      // validate the required field `attributes` (array)
-      for (int i = 0; i < jsonArrayattributes.size(); i++) {
-        Attribute.validateJsonElement(jsonArrayattributes.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

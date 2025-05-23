@@ -350,34 +350,6 @@ public class ArrayActivityLog {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ArrayActivityLog is not found in the empty JSON string", ArrayActivityLog.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ArrayActivityLog.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ArrayActivityLog` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `action`
-      if (jsonObj.get("action") != null && !jsonObj.get("action").isJsonNull()) {
-        ActivityEventType.validateJsonElement(jsonObj.get("action"));
-      }
-      if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
-      }
-      if ((jsonObj.get("array_task_id") != null && !jsonObj.get("array_task_id").isJsonNull()) && !jsonObj.get("array_task_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `array_task_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_task_id").toString()));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("query_ranges") != null && !jsonObj.get("query_ranges").isJsonNull()) && !jsonObj.get("query_ranges").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `query_ranges` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_ranges").toString()));
-      }
-      if ((jsonObj.get("query_stats") != null && !jsonObj.get("query_stats").isJsonNull()) && !jsonObj.get("query_stats").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `query_stats` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_stats").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

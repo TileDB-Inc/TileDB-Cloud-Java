@@ -387,49 +387,6 @@ public class TaskGraph {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraph is not found in the empty JSON string", TaskGraph.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!TaskGraph.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TaskGraph` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonNull()) && !jsonObj.get("uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uuid").toString()));
-      }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
-      }
-      if ((jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) && !jsonObj.get("created_by").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `created_by` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_by").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (jsonObj.get("nodes") != null && !jsonObj.get("nodes").isJsonNull()) {
-        JsonArray jsonArraynodes = jsonObj.getAsJsonArray("nodes");
-        if (jsonArraynodes != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("nodes").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `nodes` to be an array in the JSON string but got `%s`", jsonObj.get("nodes").toString()));
-          }
-
-          // validate the optional field `nodes` (array)
-          for (int i = 0; i < jsonArraynodes.size(); i++) {
-            TaskGraphNode.validateJsonElement(jsonArraynodes.get(i));
-          };
-        }
-      }
-      // validate the optional field `retry_strategy`
-      if (jsonObj.get("retry_strategy") != null && !jsonObj.get("retry_strategy").isJsonNull()) {
-        RetryStrategy.validateJsonElement(jsonObj.get("retry_strategy"));
-      }
-      // validate the optional field `task_graph_type`
-      if (jsonObj.get("task_graph_type") != null && !jsonObj.get("task_graph_type").isJsonNull()) {
-        TaskGraphType.validateJsonElement(jsonObj.get("task_graph_type"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

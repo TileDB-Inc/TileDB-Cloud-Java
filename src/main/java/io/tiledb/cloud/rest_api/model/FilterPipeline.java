@@ -151,29 +151,6 @@ public class FilterPipeline {
           throw new IllegalArgumentException(String.format("The required field(s) %s in FilterPipeline is not found in the empty JSON string", FilterPipeline.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!FilterPipeline.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FilterPipeline` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
-        JsonArray jsonArrayfilters = jsonObj.getAsJsonArray("filters");
-        if (jsonArrayfilters != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("filters").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `filters` to be an array in the JSON string but got `%s`", jsonObj.get("filters").toString()));
-          }
-
-          // validate the optional field `filters` (array)
-          for (int i = 0; i < jsonArrayfilters.size(); i++) {
-            Filter.validateJsonElement(jsonArrayfilters.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

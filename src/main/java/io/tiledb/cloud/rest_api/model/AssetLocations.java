@@ -297,43 +297,6 @@ public class AssetLocations {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AssetLocations is not found in the empty JSON string", AssetLocations.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!AssetLocations.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AssetLocations` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `arrays`
-      if (jsonObj.get("arrays") != null && !jsonObj.get("arrays").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("arrays"));
-      }
-      // validate the optional field `files`
-      if (jsonObj.get("files") != null && !jsonObj.get("files").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("files"));
-      }
-      // validate the optional field `groups`
-      if (jsonObj.get("groups") != null && !jsonObj.get("groups").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("groups"));
-      }
-      // validate the optional field `ml_models`
-      if (jsonObj.get("ml_models") != null && !jsonObj.get("ml_models").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("ml_models"));
-      }
-      // validate the optional field `notebooks`
-      if (jsonObj.get("notebooks") != null && !jsonObj.get("notebooks").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("notebooks"));
-      }
-      // validate the optional field `task_graphs`
-      if (jsonObj.get("task_graphs") != null && !jsonObj.get("task_graphs").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("task_graphs"));
-      }
-      // validate the optional field `udfs`
-      if (jsonObj.get("udfs") != null && !jsonObj.get("udfs").isJsonNull()) {
-        StorageLocation.validateJsonElement(jsonObj.get("udfs"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

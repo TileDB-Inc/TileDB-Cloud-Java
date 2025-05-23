@@ -168,23 +168,6 @@ public class GroupContentActivity {
           throw new IllegalArgumentException(String.format("The required field(s) %s in GroupContentActivity is not found in the empty JSON string", GroupContentActivity.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GroupContentActivity.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GroupContentActivity` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `asset`
-      if (jsonObj.get("asset") != null && !jsonObj.get("asset").isJsonNull()) {
-        GroupContentActivityAsset.validateJsonElement(jsonObj.get("asset"));
-      }
-      // validate the optional field `activity_log`
-      if (jsonObj.get("activity_log") != null && !jsonObj.get("activity_log").isJsonNull()) {
-        ArrayActivityLog.validateJsonElement(jsonObj.get("activity_log"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

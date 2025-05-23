@@ -218,27 +218,6 @@ public class TGUDFStorage {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TGUDFStorage is not found in the empty JSON string", TGUDFStorage.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!TGUDFStorage.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TGUDFStorage` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("path") != null && !jsonObj.get("path").isJsonNull()) && !jsonObj.get("path").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("path").toString()));
-      }
-      if ((jsonObj.get("tiledb_uri") != null && !jsonObj.get("tiledb_uri").isJsonNull()) && !jsonObj.get("tiledb_uri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tiledb_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tiledb_uri").toString()));
-      }
-      if ((jsonObj.get("size") != null && !jsonObj.get("size").isJsonNull()) && !jsonObj.get("size").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `size` to be a primitive type in the JSON string but got `%s`", jsonObj.get("size").toString()));
-      }
-      if ((jsonObj.get("storage_class") != null && !jsonObj.get("storage_class").isJsonNull()) && !jsonObj.get("storage_class").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `storage_class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("storage_class").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

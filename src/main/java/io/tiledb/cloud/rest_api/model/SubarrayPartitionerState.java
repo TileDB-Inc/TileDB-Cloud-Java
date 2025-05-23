@@ -237,43 +237,6 @@ public class SubarrayPartitionerState {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SubarrayPartitionerState is not found in the empty JSON string", SubarrayPartitionerState.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SubarrayPartitionerState.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SubarrayPartitionerState` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("singleRange") != null && !jsonObj.get("singleRange").isJsonNull()) {
-        JsonArray jsonArraysingleRange = jsonObj.getAsJsonArray("singleRange");
-        if (jsonArraysingleRange != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("singleRange").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `singleRange` to be an array in the JSON string but got `%s`", jsonObj.get("singleRange").toString()));
-          }
-
-          // validate the optional field `singleRange` (array)
-          for (int i = 0; i < jsonArraysingleRange.size(); i++) {
-            Subarray.validateJsonElement(jsonArraysingleRange.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("multiRange") != null && !jsonObj.get("multiRange").isJsonNull()) {
-        JsonArray jsonArraymultiRange = jsonObj.getAsJsonArray("multiRange");
-        if (jsonArraymultiRange != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("multiRange").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `multiRange` to be an array in the JSON string but got `%s`", jsonObj.get("multiRange").toString()));
-          }
-
-          // validate the optional field `multiRange` (array)
-          for (int i = 0; i < jsonArraymultiRange.size(); i++) {
-            Subarray.validateJsonElement(jsonArraymultiRange.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

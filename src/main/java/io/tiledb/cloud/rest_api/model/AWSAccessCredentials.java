@@ -326,31 +326,6 @@ public class AWSAccessCredentials {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AWSAccessCredentials is not found in the empty JSON string", AWSAccessCredentials.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!AWSAccessCredentials.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AWSAccessCredentials` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("secret_access_key") != null && !jsonObj.get("secret_access_key").isJsonNull()) && !jsonObj.get("secret_access_key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `secret_access_key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("secret_access_key").toString()));
-      }
-      if ((jsonObj.get("access_key_id") != null && !jsonObj.get("access_key_id").isJsonNull()) && !jsonObj.get("access_key_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `access_key_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_key_id").toString()));
-      }
-      if ((jsonObj.get("service_role_arn") != null && !jsonObj.get("service_role_arn").isJsonNull()) && !jsonObj.get("service_role_arn").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `service_role_arn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("service_role_arn").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("buckets") != null && !jsonObj.get("buckets").isJsonNull() && !jsonObj.get("buckets").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `buckets` to be an array in the JSON string but got `%s`", jsonObj.get("buckets").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

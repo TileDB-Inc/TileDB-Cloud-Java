@@ -151,29 +151,6 @@ public class MetadataStringified {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetadataStringified is not found in the empty JSON string", MetadataStringified.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!MetadataStringified.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MetadataStringified` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("entries") != null && !jsonObj.get("entries").isJsonNull()) {
-        JsonArray jsonArrayentries = jsonObj.getAsJsonArray("entries");
-        if (jsonArrayentries != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("entries").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `entries` to be an array in the JSON string but got `%s`", jsonObj.get("entries").toString()));
-          }
-
-          // validate the optional field `entries` (array)
-          for (int i = 0; i < jsonArrayentries.size(); i++) {
-            MetadataStringifiedEntry.validateJsonElement(jsonArrayentries.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

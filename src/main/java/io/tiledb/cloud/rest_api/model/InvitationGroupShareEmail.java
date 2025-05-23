@@ -223,40 +223,6 @@ public class InvitationGroupShareEmail {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InvitationGroupShareEmail is not found in the empty JSON string", InvitationGroupShareEmail.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!InvitationGroupShareEmail.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InvitationGroupShareEmail` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : InvitationGroupShareEmail.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("array_actions") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("array_actions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `array_actions` to be an array in the JSON string but got `%s`", jsonObj.get("array_actions").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("group_actions") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("group_actions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `group_actions` to be an array in the JSON string but got `%s`", jsonObj.get("group_actions").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("invitee_email_or_name") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("invitee_email_or_name").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `invitee_email_or_name` to be an array in the JSON string but got `%s`", jsonObj.get("invitee_email_or_name").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

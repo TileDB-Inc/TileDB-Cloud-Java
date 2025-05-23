@@ -219,19 +219,6 @@ public class ReadState {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReadState is not found in the empty JSON string", ReadState.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ReadState.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadState` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `subarrayPartitioner`
-      if (jsonObj.get("subarrayPartitioner") != null && !jsonObj.get("subarrayPartitioner").isJsonNull()) {
-        SubarrayPartitioner.validateJsonElement(jsonObj.get("subarrayPartitioner"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

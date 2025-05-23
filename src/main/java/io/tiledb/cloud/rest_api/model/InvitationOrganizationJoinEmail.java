@@ -214,34 +214,6 @@ public class InvitationOrganizationJoinEmail {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InvitationOrganizationJoinEmail is not found in the empty JSON string", InvitationOrganizationJoinEmail.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!InvitationOrganizationJoinEmail.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InvitationOrganizationJoinEmail` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : InvitationOrganizationJoinEmail.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonNull() && !jsonObj.get("actions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `actions` to be an array in the JSON string but got `%s`", jsonObj.get("actions").toString()));
-      }
-      // validate the required field `organization_role`
-      OrganizationRoles.validateJsonElement(jsonObj.get("organization_role"));
-      // ensure the required json array is present
-      if (jsonObj.get("invitee_email") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("invitee_email").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `invitee_email` to be an array in the JSON string but got `%s`", jsonObj.get("invitee_email").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

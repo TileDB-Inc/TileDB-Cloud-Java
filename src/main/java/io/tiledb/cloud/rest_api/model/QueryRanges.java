@@ -178,23 +178,6 @@ public class QueryRanges {
           throw new IllegalArgumentException(String.format("The required field(s) %s in QueryRanges is not found in the empty JSON string", QueryRanges.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!QueryRanges.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `QueryRanges` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `layout`
-      if (jsonObj.get("layout") != null && !jsonObj.get("layout").isJsonNull()) {
-        Layout.validateJsonElement(jsonObj.get("layout"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("ranges") != null && !jsonObj.get("ranges").isJsonNull() && !jsonObj.get("ranges").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ranges").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

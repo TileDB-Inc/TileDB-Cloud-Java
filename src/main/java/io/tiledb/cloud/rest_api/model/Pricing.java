@@ -457,50 +457,6 @@ public class Pricing {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Pricing is not found in the empty JSON string", Pricing.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Pricing.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Pricing` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("array_uuid") != null && !jsonObj.get("array_uuid").isJsonNull()) && !jsonObj.get("array_uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `array_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("array_uuid").toString()));
-      }
-      if ((jsonObj.get("pricing_name") != null && !jsonObj.get("pricing_name").isJsonNull()) && !jsonObj.get("pricing_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pricing_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricing_name").toString()));
-      }
-      // validate the optional field `pricing_type`
-      if (jsonObj.get("pricing_type") != null && !jsonObj.get("pricing_type").isJsonNull()) {
-        PricingType.validateJsonElement(jsonObj.get("pricing_type"));
-      }
-      if ((jsonObj.get("product_name") != null && !jsonObj.get("product_name").isJsonNull()) && !jsonObj.get("product_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product_name").toString()));
-      }
-      if ((jsonObj.get("product_statement_descriptor") != null && !jsonObj.get("product_statement_descriptor").isJsonNull()) && !jsonObj.get("product_statement_descriptor").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product_statement_descriptor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product_statement_descriptor").toString()));
-      }
-      // validate the optional field `product_unit_label`
-      if (jsonObj.get("product_unit_label") != null && !jsonObj.get("product_unit_label").isJsonNull()) {
-        PricingUnitLabel.validateJsonElement(jsonObj.get("product_unit_label"));
-      }
-      // validate the optional field `currency`
-      if (jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) {
-        PricingCurrency.validateJsonElement(jsonObj.get("currency"));
-      }
-      // validate the optional field `aggregate_usage`
-      if (jsonObj.get("aggregate_usage") != null && !jsonObj.get("aggregate_usage").isJsonNull()) {
-        PricingAggregateUsage.validateJsonElement(jsonObj.get("aggregate_usage"));
-      }
-      // validate the optional field `interval`
-      if (jsonObj.get("interval") != null && !jsonObj.get("interval").isJsonNull()) {
-        PricingInterval.validateJsonElement(jsonObj.get("interval"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

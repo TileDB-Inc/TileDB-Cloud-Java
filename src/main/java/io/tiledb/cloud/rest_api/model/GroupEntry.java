@@ -193,26 +193,6 @@ public class GroupEntry {
           throw new IllegalArgumentException(String.format("The required field(s) %s in GroupEntry is not found in the empty JSON string", GroupEntry.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GroupEntry.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GroupEntry` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("member_id") != null && !jsonObj.get("member_id").isJsonNull()) && !jsonObj.get("member_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `member_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("member_id").toString()));
-      }
-      // validate the optional field `group`
-      if (jsonObj.get("group") != null && !jsonObj.get("group").isJsonNull()) {
-        GroupInfo.validateJsonElement(jsonObj.get("group"));
-      }
-      // validate the optional field `array`
-      if (jsonObj.get("array") != null && !jsonObj.get("array").isJsonNull()) {
-        ArrayInfo.validateJsonElement(jsonObj.get("array"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

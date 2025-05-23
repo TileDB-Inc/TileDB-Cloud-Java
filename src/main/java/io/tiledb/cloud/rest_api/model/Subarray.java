@@ -178,33 +178,6 @@ public class Subarray {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Subarray is not found in the empty JSON string", Subarray.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Subarray.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Subarray` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `layout`
-      if (jsonObj.get("layout") != null && !jsonObj.get("layout").isJsonNull()) {
-        Layout.validateJsonElement(jsonObj.get("layout"));
-      }
-      if (jsonObj.get("ranges") != null && !jsonObj.get("ranges").isJsonNull()) {
-        JsonArray jsonArrayranges = jsonObj.getAsJsonArray("ranges");
-        if (jsonArrayranges != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("ranges").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ranges").toString()));
-          }
-
-          // validate the optional field `ranges` (array)
-          for (int i = 0; i < jsonArrayranges.size(); i++) {
-            SubarrayRanges.validateJsonElement(jsonArrayranges.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

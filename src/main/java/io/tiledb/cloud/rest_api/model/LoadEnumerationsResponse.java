@@ -151,29 +151,6 @@ public class LoadEnumerationsResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoadEnumerationsResponse is not found in the empty JSON string", LoadEnumerationsResponse.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LoadEnumerationsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoadEnumerationsResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("enumerations") != null && !jsonObj.get("enumerations").isJsonNull()) {
-        JsonArray jsonArrayenumerations = jsonObj.getAsJsonArray("enumerations");
-        if (jsonArrayenumerations != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("enumerations").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `enumerations` to be an array in the JSON string but got `%s`", jsonObj.get("enumerations").toString()));
-          }
-
-          // validate the optional field `enumerations` (array)
-          for (int i = 0; i < jsonArrayenumerations.size(); i++) {
-            Enumeration.validateJsonElement(jsonArrayenumerations.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

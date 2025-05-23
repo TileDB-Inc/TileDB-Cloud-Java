@@ -222,33 +222,6 @@ public class FragmentInfo {
           throw new IllegalArgumentException(String.format("The required field(s) %s in FragmentInfo is not found in the empty JSON string", FragmentInfo.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!FragmentInfo.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FragmentInfo` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("fragmentInfo") != null && !jsonObj.get("fragmentInfo").isJsonNull()) {
-        JsonArray jsonArrayfragmentInfo = jsonObj.getAsJsonArray("fragmentInfo");
-        if (jsonArrayfragmentInfo != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("fragmentInfo").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `fragmentInfo` to be an array in the JSON string but got `%s`", jsonObj.get("fragmentInfo").toString()));
-          }
-
-          // validate the optional field `fragmentInfo` (array)
-          for (int i = 0; i < jsonArrayfragmentInfo.size(); i++) {
-            SingleFragmentInfo.validateJsonElement(jsonArrayfragmentInfo.get(i));
-          };
-        }
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("toVacuum") != null && !jsonObj.get("toVacuum").isJsonNull() && !jsonObj.get("toVacuum").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `toVacuum` to be an array in the JSON string but got `%s`", jsonObj.get("toVacuum").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

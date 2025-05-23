@@ -229,38 +229,6 @@ public class Subscription {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Subscription is not found in the empty JSON string", Subscription.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Subscription.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Subscription` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("owner_namespace_uuid") != null && !jsonObj.get("owner_namespace_uuid").isJsonNull()) && !jsonObj.get("owner_namespace_uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `owner_namespace_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner_namespace_uuid").toString()));
-      }
-      if ((jsonObj.get("customer_namespace_uuid") != null && !jsonObj.get("customer_namespace_uuid").isJsonNull()) && !jsonObj.get("customer_namespace_uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customer_namespace_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_namespace_uuid").toString()));
-      }
-      if (jsonObj.get("pricing") != null && !jsonObj.get("pricing").isJsonNull()) {
-        JsonArray jsonArraypricing = jsonObj.getAsJsonArray("pricing");
-        if (jsonArraypricing != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("pricing").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `pricing` to be an array in the JSON string but got `%s`", jsonObj.get("pricing").toString()));
-          }
-
-          // validate the optional field `pricing` (array)
-          for (int i = 0; i < jsonArraypricing.size(); i++) {
-            Pricing.validateJsonElement(jsonArraypricing.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

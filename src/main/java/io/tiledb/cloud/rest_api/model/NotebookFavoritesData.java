@@ -178,33 +178,6 @@ public class NotebookFavoritesData {
           throw new IllegalArgumentException(String.format("The required field(s) %s in NotebookFavoritesData is not found in the empty JSON string", NotebookFavoritesData.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!NotebookFavoritesData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `NotebookFavoritesData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("notebooks") != null && !jsonObj.get("notebooks").isJsonNull()) {
-        JsonArray jsonArraynotebooks = jsonObj.getAsJsonArray("notebooks");
-        if (jsonArraynotebooks != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("notebooks").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `notebooks` to be an array in the JSON string but got `%s`", jsonObj.get("notebooks").toString()));
-          }
-
-          // validate the optional field `notebooks` (array)
-          for (int i = 0; i < jsonArraynotebooks.size(); i++) {
-            ArrayInfo.validateJsonElement(jsonArraynotebooks.get(i));
-          };
-        }
-      }
-      // validate the optional field `pagination_metadata`
-      if (jsonObj.get("pagination_metadata") != null && !jsonObj.get("pagination_metadata").isJsonNull()) {
-        PaginationMetadata.validateJsonElement(jsonObj.get("pagination_metadata"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

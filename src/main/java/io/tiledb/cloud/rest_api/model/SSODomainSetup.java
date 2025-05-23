@@ -192,24 +192,6 @@ public class SSODomainSetup {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SSODomainSetup is not found in the empty JSON string", SSODomainSetup.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SSODomainSetup.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SSODomainSetup` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("txt") != null && !jsonObj.get("txt").isJsonNull()) && !jsonObj.get("txt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `txt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("txt").toString()));
-      }
-      if ((jsonObj.get("cname_src") != null && !jsonObj.get("cname_src").isJsonNull()) && !jsonObj.get("cname_src").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cname_src` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cname_src").toString()));
-      }
-      if ((jsonObj.get("cname_dst") != null && !jsonObj.get("cname_dst").isJsonNull()) && !jsonObj.get("cname_dst").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cname_dst` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cname_dst").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

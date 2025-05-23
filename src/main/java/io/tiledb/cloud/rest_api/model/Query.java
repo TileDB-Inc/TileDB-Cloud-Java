@@ -371,48 +371,6 @@ public class Query {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Query is not found in the empty JSON string", Query.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Query.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Query` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Query.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `type`
-      Querytype.validateJsonElement(jsonObj.get("type"));
-      // validate the required field `layout`
-      Layout.validateJsonElement(jsonObj.get("layout"));
-      // validate the required field `status`
-      Querystatus.validateJsonElement(jsonObj.get("status"));
-      // ensure the json data is an array
-      if (!jsonObj.get("attributeBufferHeaders").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `attributeBufferHeaders` to be an array in the JSON string but got `%s`", jsonObj.get("attributeBufferHeaders").toString()));
-      }
-
-      JsonArray jsonArrayattributeBufferHeaders = jsonObj.getAsJsonArray("attributeBufferHeaders");
-      // validate the required field `attributeBufferHeaders` (array)
-      for (int i = 0; i < jsonArrayattributeBufferHeaders.size(); i++) {
-        AttributeBufferHeader.validateJsonElement(jsonArrayattributeBufferHeaders.get(i));
-      };
-      // validate the optional field `writer`
-      if (jsonObj.get("writer") != null && !jsonObj.get("writer").isJsonNull()) {
-        Writer.validateJsonElement(jsonObj.get("writer"));
-      }
-      // validate the optional field `reader`
-      if (jsonObj.get("reader") != null && !jsonObj.get("reader").isJsonNull()) {
-        QueryReader.validateJsonElement(jsonObj.get("reader"));
-      }
-      // validate the required field `array`
-      Array.validateJsonElement(jsonObj.get("array"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -284,41 +284,6 @@ public class SubarrayPartitioner {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SubarrayPartitioner is not found in the empty JSON string", SubarrayPartitioner.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SubarrayPartitioner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SubarrayPartitioner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `subarray`
-      if (jsonObj.get("subarray") != null && !jsonObj.get("subarray").isJsonNull()) {
-        Subarray.validateJsonElement(jsonObj.get("subarray"));
-      }
-      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
-        JsonArray jsonArraybudget = jsonObj.getAsJsonArray("budget");
-        if (jsonArraybudget != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("budget").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `budget` to be an array in the JSON string but got `%s`", jsonObj.get("budget").toString()));
-          }
-
-          // validate the optional field `budget` (array)
-          for (int i = 0; i < jsonArraybudget.size(); i++) {
-            AttributeBufferSize.validateJsonElement(jsonArraybudget.get(i));
-          };
-        }
-      }
-      // validate the optional field `current`
-      if (jsonObj.get("current") != null && !jsonObj.get("current").isJsonNull()) {
-        SubarrayPartitionerCurrent.validateJsonElement(jsonObj.get("current"));
-      }
-      // validate the optional field `state`
-      if (jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) {
-        SubarrayPartitionerState.validateJsonElement(jsonObj.get("state"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

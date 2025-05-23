@@ -185,43 +185,6 @@ public class GroupChanges {
           throw new IllegalArgumentException(String.format("The required field(s) %s in GroupChanges is not found in the empty JSON string", GroupChanges.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GroupChanges.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GroupChanges` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("add") != null && !jsonObj.get("add").isJsonNull()) {
-        JsonArray jsonArrayadd = jsonObj.getAsJsonArray("add");
-        if (jsonArrayadd != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("add").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `add` to be an array in the JSON string but got `%s`", jsonObj.get("add").toString()));
-          }
-
-          // validate the optional field `add` (array)
-          for (int i = 0; i < jsonArrayadd.size(); i++) {
-            GroupMember.validateJsonElement(jsonArrayadd.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("remove") != null && !jsonObj.get("remove").isJsonNull()) {
-        JsonArray jsonArrayremove = jsonObj.getAsJsonArray("remove");
-        if (jsonArrayremove != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("remove").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `remove` to be an array in the JSON string but got `%s`", jsonObj.get("remove").toString()));
-          }
-
-          // validate the optional field `remove` (array)
-          for (int i = 0; i < jsonArrayremove.size(); i++) {
-            GroupMember.validateJsonElement(jsonArrayremove.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

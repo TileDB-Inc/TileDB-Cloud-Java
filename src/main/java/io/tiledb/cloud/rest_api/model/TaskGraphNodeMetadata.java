@@ -320,50 +320,6 @@ public class TaskGraphNodeMetadata {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TaskGraphNodeMetadata is not found in the empty JSON string", TaskGraphNodeMetadata.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!TaskGraphNodeMetadata.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TaskGraphNodeMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("client_node_uuid") != null && !jsonObj.get("client_node_uuid").isJsonNull()) && !jsonObj.get("client_node_uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `client_node_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_node_uuid").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("depends_on") != null && !jsonObj.get("depends_on").isJsonNull() && !jsonObj.get("depends_on").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `depends_on` to be an array in the JSON string but got `%s`", jsonObj.get("depends_on").toString()));
-      }
-      // validate the optional field `run_location`
-      if (jsonObj.get("run_location") != null && !jsonObj.get("run_location").isJsonNull()) {
-        TaskGraphLogRunLocation.validateJsonElement(jsonObj.get("run_location"));
-      }
-      // validate the optional field `status`
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
-        ArrayTaskStatus.validateJsonElement(jsonObj.get("status"));
-      }
-      if ((jsonObj.get("status_message") != null && !jsonObj.get("status_message").isJsonNull()) && !jsonObj.get("status_message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status_message").toString()));
-      }
-      if (jsonObj.get("executions") != null && !jsonObj.get("executions").isJsonNull()) {
-        JsonArray jsonArrayexecutions = jsonObj.getAsJsonArray("executions");
-        if (jsonArrayexecutions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("executions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `executions` to be an array in the JSON string but got `%s`", jsonObj.get("executions").toString()));
-          }
-
-          // validate the optional field `executions` (array)
-          for (int i = 0; i < jsonArrayexecutions.size(); i++) {
-            ArrayTask.validateJsonElement(jsonArrayexecutions.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
