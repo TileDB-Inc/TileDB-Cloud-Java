@@ -781,4 +781,3 @@ public class TaskGraphLog {
     return JSON.getGson().toJson(this);
   }
 }
-
