@@ -1,0 +1,4691 @@
+openapi: 3.0.0
+info:
+  title: Specification file for tiledb-server v4 API
+  description: This spec is exposed to the public under /v4 route group
+  version: 0.0.1
+  contact:
+    name: TileDB-Inc
+    url: https://tiledb.com
+    email: info@tiledb.com
+servers:
+  - url: '{protocol}://{host}{basePath}'
+    description: Dynamic server URL
+    variables:
+      protocol:
+        default: https
+        enum:
+          - http
+          - https
+      host:
+        default: api.tiledb.com
+      basePath:
+        default: /v4
+security:
+  - BasicAuth: []
+  - ApiKeyAuth: []
+  - OAuth2:
+      - read
+      - write
+      - admin
+tags:
+  - name: assets
+    description: Operations related to assets.
+paths:
+  /academy/lessons:
+    get:
+      tags:
+        - academy
+      summary: Get information about user lessons
+      description: Get a list of user lessons with details about each of them
+      operationId: getAcademyLessons
+      responses:
+        '200':
+          description: Academy lessons
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcademyLessonsListResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - academy
+      requestBody:
+        description: Academy lesson to create
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AcademyLesson'
+      summary: Academy lessons to create
+      description: Create one or more user lessons
+      operationId: putAcademyLessons
+      responses:
+        '200':
+          description: create or update success
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /academy/questionnaires/{questionnaire_id}:
+    parameters:
+      - name: questionnaire_id
+        in: path
+        description: questionnaire's id
+        schema:
+          type: string
+        required: true
+    get:
+      tags:
+        - academy
+      summary: Get academy questionnaire information for user
+      description: Get academy questionnaire information for user. For example, questionnaire version, completion status and user answers
+      operationId: getAcademyQuestionnaire
+      responses:
+        '200':
+          description: Successful academy questionnaire response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcademyQuestionnaireListResponse'
+        '404':
+          description: answers not found
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - academy
+      requestBody:
+        description: academy lesson to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcademyQuestionnairePutRequest'
+      summary: Create or update academy questionnaire
+      description: Create a new questionnaire or update an existing one
+      operationId: putAcademyQuestionnaire
+      responses:
+        '200':
+          description: create or update success
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/teamspaces/{workspace}/{teamspace}/users/bulk_delete:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+    post:
+      tags:
+        - teamspaces
+      summary: Delete the given teamspace users in a teamspace
+      description: Delete the given teamspace users in a teamspace
+      operationId: deleteTeamspaceUsers
+      requestBody:
+        description: The request body containing the teamspace users to delete
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserID'
+      responses:
+        '204':
+          description: Teamspace users deleted
+        '404':
+          description: One or more of the given teamspace users do not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/teamspaces/{workspace}/{teamspace}/users/bulk_update:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+    patch:
+      tags:
+        - teamspaces
+      summary: Update multiple teamspace users in a teamspace
+      description: Update multiple teamspace users in a teamspace
+      operationId: updateTeamspaceUsers
+      requestBody:
+        description: The request body containing the teamspace users to update
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TeamspaceUsersBulkUpdateRequestInner'
+      responses:
+        '204':
+          description: Teamspace users updated successfully
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/teamspaces/{workspace}/{teamspace}/users/join:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+    post:
+      tags:
+        - teamspaces
+      summary: Join the given public teamspace
+      description: |
+        Allows users to join a public teamspace if they are a member of the
+        corresponding workspace
+      operationId: joinTeamspace
+      responses:
+        '201':
+          description: Teamspace joined
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamspaceUsersJoinResponse'
+        '404':
+          description: Teamspace ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/teamspaces/{workspace}/{teamspace}/users/leave:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+    post:
+      tags:
+        - teamspaces
+      summary: Leave the given teamspace
+      description: Allows teamspace members to leave a teamspace
+      operationId: leaveTeamspace
+      responses:
+        '204':
+          description: Teamspace left
+        '404':
+          description: Teamspace ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/workspaces/{workspace}/users/bulk_delete:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+    post:
+      tags:
+        - workspaces
+      summary: Delete the given workspace users in a workspace
+      description: Delete the given workspace users in a workspace
+      operationId: deleteWorkspaceUsers
+      requestBody:
+        description: The request body containing the workspace users to delete
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserID'
+      responses:
+        '204':
+          description: Workspace users deleted
+        '404':
+          description: One or more of the given workspace users do not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/workspaces/{workspace}/users/bulk_update:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+    post:
+      tags:
+        - workspaces
+      summary: Update multiple workspace users in a workspace
+      description: Update multiple workspace users in a workspace
+      operationId: updateWorkspaceUsers
+      requestBody:
+        description: The request body containing the workspace users to update
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WorkspaceUsersBulkUpdateRequestInner'
+      responses:
+        '204':
+          description: Workspace users updated successfully
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/assets/{workspace}/{teamspace}/{asset_id}/metadata/bulk_delete:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - $ref: '#/components/parameters/ParamRequiredAssetID'
+    delete:
+      description: Delete asset's metadata
+      summary: Delete the given asset's metadata pairs
+      tags:
+        - assets
+      operationId: deleteAssetMetadata
+      requestBody:
+        description: asset metadata pairs to delete
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AssetMetadataDeleteRequestInner'
+      responses:
+        '204':
+          description: Asset metadata deleted
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/users/change_password:
+    post:
+      tags:
+        - users
+      summary: Changes a user's password.
+      description: |
+        This endpoint allows a user to change their password. The user must provide the current password along with the new password.
+      operationId: changePassword
+      requestBody:
+        description: data required to changes a user's password
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+      responses:
+        '204':
+          description: Password updated successfully
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/users/confirm_email:
+    post:
+      tags:
+        - users
+      summary: Confirm an email address
+      description: Operation to confirm the email address by providing the token sent to user's email address
+      operationId: confirmEmail
+      parameters:
+        - name: X-TILEDB-REST-API-KEY
+          description: The confirm email scoped token to validate the user's email address
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Email confirmed successfully
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/users/request_email_confirmation:
+    post:
+      tags:
+        - users
+      summary: Request a new email to be sent containing the email confirmation token
+      description: |
+        Operation to request for a new email to allow the user to confirm their email address. This email contains a link with the required api token.
+      operationId: requestEmailConfirmation
+      requestBody:
+        description: data required to initiate a password reset request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEmailConfirmationRequest'
+      responses:
+        '204':
+          description: Email sent successfully
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/users/request_password_reset:
+    post:
+      tags:
+        - users
+      summary: Request a password reset while unauthorized
+      description: |
+        This endpoint sends an email to the user's registered email address with a password reset link.   The link contains a scoped token that authorizes the user to reset their password securely.
+      operationId: requestPasswordReset
+      requestBody:
+        description: data required to initiate a password reset request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPasswordResetRequest'
+      responses:
+        '204':
+          description: The request was accepted. If the user exists they will receive an email.
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /actions/users/reset_password:
+    post:
+      tags:
+        - users
+      summary: Reset a user's password using a scoped token.
+      description: |
+        This endpoint allows a user to reset their password.  The user must provide a valid scoped token, received via email, along with their new password. The token ensures secure and authorized access to update the password.
+      operationId: resetPassword
+      parameters:
+        - name: X-TILEDB-REST-API-KEY
+          description: The reset password scoped token to reset the user's password
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: data required to initiate a password reset request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+      responses:
+        '204':
+          description: Password updated successfully
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /assets/item/{workspace}/{teamspace}/{asset}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: asset
+        in: path
+        required: true
+        description: The asset id or path for which to retrieve assets
+        schema:
+          type: string
+          example: ast_9m4e2mr0ui3e8a215n4g or /a/b/c
+    get:
+      tags:
+        - assets
+      summary: Retrieve asset
+      description: Retrieve the asset by the given asset_id or path
+      operationId: getAsset
+      responses:
+        '200':
+          description: Asset retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetGetResponse'
+        '404':
+          description: Asset ID or path does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /assets/item/{workspace}/{teamspace}/{asset}/metadata:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: asset
+        in: path
+        required: true
+        description: The asset id or path for which to retrieve assets
+        schema:
+          type: string
+          example: ast_9m4e2mr0ui3e8a215n4g or /a/b/c
+    get:
+      tags:
+        - assets
+      summary: Retrieve asset's metadata
+      description: Retrieve the given asset's metadata
+      operationId: getAssetMetadata
+      responses:
+        '200':
+          description: Asset metadata retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetMetadataListResponse'
+        '404':
+          description: Asset ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+        - assets
+      summary: Create asset's pair metadata
+      description: Create asset's pair metadata (key, value and type should be provided)
+      operationId: createAssetMetadata
+      requestBody:
+        description: asset metadata pairs to create
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AssetMetadataCreateRequestInner'
+      responses:
+        '201':
+          description: Successful asset metadata create response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetMetadataCreateResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      description: Update asset's metadata
+      summary: Update the given asset's metadata pair
+      tags:
+        - assets
+      operationId: updateAssetMetadata
+      requestBody:
+        description: asset metadata pairs to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetMetadataUpdateRequest'
+      responses:
+        '204':
+          description: Asset metadata updated
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /assets/list/{workspace}/{teamspace}/{path}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: path
+        in: path
+        required: true
+        description: The path for which to retrieve assets
+        schema:
+          type: string
+          example: /a/b/c
+    get:
+      summary: Retrieves asset listing for the given teamspace
+      description: |
+        End point to retrieve assets for the passed teamspace
+      tags:
+        - assets
+      operationId: listAssets
+      parameters:
+        - $ref: '#/components/parameters/ParamPaginationPage'
+        - $ref: '#/components/parameters/ParamPaginationPerPage'
+        - $ref: '#/components/parameters/ParamAssetType'
+        - $ref: '#/components/parameters/ParamCreatedBy'
+        - $ref: '#/components/parameters/ParamOrderBy'
+        - $ref: '#/components/parameters/ParamExpand'
+      responses:
+        '200':
+          description: Successful asset listing response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetListResponse'
+        '404':
+          description: Teamspace not found
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /assets/path/{workspace}/{teamspace}/{path}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: path
+        in: path
+        required: true
+        description: The path for which to retrieve assets
+        schema:
+          type: string
+          example: /a/b/c
+    get:
+      tags:
+        - assets
+      summary: Retrieve all assets in a given path
+      description: |
+        Retrieve all assets in a given path, e.g., a request for `/a/b/c` will
+        return the assets `a`, `b`, and `c`.
+      operationId: getAssetsInPath
+      responses:
+        '200':
+          description: Assets in path retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetPathResponse'
+        '404':
+          description: One or more of the given path components do not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /capabilities:
+    get:
+      summary: Get REST capabilities
+      description: Get REST capabilities
+      tags:
+        - capabilities
+      operationId: HandleGetCapabilities
+      responses:
+        '200':
+          description: Retrieved REST capabilities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestCapabilities'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /credentials/{workspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamTeamspaceID'
+    post:
+      tags:
+        - credentials
+      summary: Create a credential
+      description: create a new credential, the user will create a new credential to access assets
+      operationId: createCredential
+      requestBody:
+        description: the new credentials to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialCreateRequest'
+      responses:
+        '201':
+          description: The new credential was successfully added
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      parameters:
+        - name: provider
+          in: query
+          required: false
+          description: Show only the credentials from this provider. This should be one of the CloudProvider enum values.
+          schema:
+            $ref: '#/components/schemas/CloudProvider'
+        - name: type
+          in: query
+          required: false
+          description: Show only the credentials of this type. This should be one of the AccessCredentialType enum values.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/ParamPaginationPage'
+        - $ref: '#/components/parameters/ParamPaginationPerPage'
+      tags:
+        - credentials
+      summary: Get user credentials
+      description: list the credentials available for the user
+      operationId: getCredentials
+      responses:
+        '200':
+          description: Successful credentials list response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsListResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /credentials/{workspace}/verify:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamTeamspaceID'
+    post:
+      tags:
+        - credentials
+      summary: Verify a given credential
+      description: verify the credentials connection for a namespace
+      operationId: verifyCredential
+      requestBody:
+        description: credential to verify
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialsVerifyRequest'
+      responses:
+        '200':
+          description: successful connection
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /credentials/{workspace}/{name}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamTeamspaceID'
+      - name: name
+        in: path
+        required: true
+        description: The name of the credentials to run CRUD operations against
+        schema:
+          type: string
+    get:
+      tags:
+        - credentials
+      summary: Get user credential
+      description: get information about user credential by name
+      operationId: getCredentialByName
+      responses:
+        '200':
+          description: Successful credential response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialGetResponse'
+        '404':
+          description: Credential does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+        - credentials
+      summary: Update user credential
+      description: update user credential given by the user
+      operationId: patchCredentialByName
+      requestBody:
+        description: credential update details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialUpdateRequest'
+      responses:
+        '204':
+          description: The credential was updated successfully
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - credentials
+      summary: Delete user credential
+      description: Delete the named access credential. Any arrays still set to use this credential will use the user's default and may become unreachable
+      operationId: deleteCredentialByName
+      responses:
+        '204':
+          description: user credential deleted
+        '404':
+          description: credential does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /files/{workspace}/{teamspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: prefix
+        in: query
+        required: false
+        description: The directory of files to list.
+        schema:
+          type: string
+      - name: list-type
+        in: query
+        required: true
+        description: Required for S3 API compatibility, must be set to 2.
+        schema:
+          type: integer
+      - name: delimiter
+        in: query
+        required: true
+        description: The string that delimits the path segments. Only forward slash is supported
+        schema:
+          type: string
+      - name: max-keys
+        in: query
+        required: false
+        description: The maximum number of items to return.
+        schema:
+          type: integer
+      - name: continuation-token
+        in: query
+        required: false
+        description: Used to resume an incomplete list operation
+        schema:
+          type: string
+    get:
+      summary: List folders and files contained in a folder
+      description: |
+        End point to list files and folders for the passed teamspace
+      tags:
+        - files
+      operationId: folderList
+      responses:
+        '200':
+          description: Successful folder list response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/FileListResponse'
+        '404':
+          description: Teamspace does not exist
+        '502':
+          description: Bad Gateway
+        default:
+          description: error response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorXML'
+  /files/{workspace}/{teamspace}/{path}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: path
+        in: path
+        required: true
+        description: The path to the file
+        schema:
+          type: string
+    get:
+      summary: Download the file at the given path
+      description: |
+        End point to download the file at the given path
+      tags:
+        - files
+      operationId: fileGet
+      parameters:
+        - name: Range
+          in: header
+          required: false
+          description: The range of bytes to fetch. Supports only single ranges.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful file get response
+        '206':
+          description: Successful file ranged get response
+        '404':
+          description: Teamspace or file does not exist
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorXML'
+        '416':
+          description: Range not satisfiable
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorXML'
+        '502':
+          description: Bad Gateway
+        default:
+          description: error response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorXML'
+    head:
+      summary: Get information about the file at the given path
+      description: |
+        End point to get information about the file at the given path
+      tags:
+        - files
+      operationId: fileHead
+      responses:
+        '200':
+          description: Successful file get response
+        '206':
+          description: Successful file ranged get response
+        '404':
+          description: Teamspace or file does not exist
+        '416':
+          description: Range not satisfiable
+        '502':
+          description: Bad Gateway
+    put:
+      summary: Upload Part
+      description: Uploads a part in a multipart upload session.
+      tags:
+        - files
+      operationId: uploadPart
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Successfully uploaded the part.
+          headers:
+            ETag:
+              description: ETag of the uploaded part.
+              schema:
+                type: string
+        '400':
+          description: Bad request
+        default:
+          description: error response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorXML'
+  /folders/{workspace}/{teamspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+    get:
+      summary: Retrieves folder listing for the given teamspace
+      description: |
+        End point to retrieve folders for the passed teamspace
+      tags:
+        - folders
+      operationId: listFolders
+      parameters:
+        - $ref: '#/components/parameters/ParamPaginationPage'
+        - $ref: '#/components/parameters/ParamPaginationPerPage'
+      responses:
+        '200':
+          description: Successful folders listing response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderListResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /folders/{workspace}/{teamspace}/{folder}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: folder
+        in: path
+        required: true
+        description: The path to the folder or the folder's assetID
+        schema:
+          type: string
+    get:
+      tags:
+        - folders
+      summary: Retrieve a folder's content
+      description: Retrieve the given folder's content
+      operationId: getFolder
+      responses:
+        '200':
+          description: Folder retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderGetResponse'
+        '404':
+          description: Folder does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a folder in the given teamspace
+      description: |
+        Create a new folder in the given teamspace
+      tags:
+        - folders
+      operationId: createFolder
+      requestBody:
+        description: folder to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FolderCreateRequestInner'
+      responses:
+        '201':
+          description: Successful folder response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderCreateResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      description: Update a folder
+      summary: Update the given folder
+      tags:
+        - folders
+      operationId: updateFolder
+      requestBody:
+        description: The request body containing the folder to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FolderUpdateRequest'
+      responses:
+        '204':
+          description: Folder updated
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a folder
+      description: delete a folder
+      tags:
+        - folders
+      operationId: deleteFolder
+      responses:
+        '204':
+          description: folder deleted
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /folders/{workspace}/{teamspace}/{folder}/contents:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: folder
+        in: path
+        required: true
+        description: The path to the folder or the folder's assetID
+        schema:
+          type: string
+    get:
+      tags:
+        - folders
+      summary: Retrieve a folder
+      description: Retrieve the given folder
+      operationId: getFolderContents
+      responses:
+        '200':
+          description: Folder contents retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderContentsResponse'
+        '404':
+          description: Folder does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Add or remove assets under a folder
+      description: |
+        Add or remove assets under a folder
+      tags:
+        - folders
+      operationId: modifyFolderContents
+      requestBody:
+        description: assets to add or remove
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FoldersContentsModifyInner'
+      responses:
+        '204':
+          description: Folder contents modified successfully
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /generalspaces/{workspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+    get:
+      operationId: getGeneralspaceByWorkspace
+      summary: Retrieve a generalspace
+      description: Retrieve the given general space
+      tags:
+        - generalspaces
+      responses:
+        '200':
+          description: Generalspace retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralspaceGetResponse'
+        '404':
+          description: Generalspace does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateGeneralspaceByWorkspace
+      description: Update a generalspace
+      summary: Update the given generalspace
+      tags:
+        - generalspaces
+      requestBody:
+        description: The request body containing the generalspace to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralspaceUpdateRequest'
+      responses:
+        '204':
+          description: Generalspace updated
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /generalspaces/{workspace}/{generalspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredGeneralspace'
+    get:
+      summary: Retrieve a generalspace
+      description: Retrieve the given general space
+      tags:
+        - generalspaces
+      operationId: getGeneralSpace
+      responses:
+        '200':
+          description: Generalspace retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralspaceGetResponse'
+        '404':
+          description: Generalspace does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      description: Update a generalspace
+      summary: Update the given generalspace
+      tags:
+        - generalspaces
+      operationId: updateGeneralspaceByID
+      requestBody:
+        description: The request body containing the generalspace to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralspaceUpdateRequest'
+      responses:
+        '204':
+          description: Generalspace updated
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invitations/admin/{workspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+    post:
+      tags:
+        - invitations
+      summary: Create one or more invitations
+      description: Create one or more invitations
+      operationId: createInvitations
+      requestBody:
+        description: The request body containing the invitation to create
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/InvitationsCreateRequestInner'
+      responses:
+        '201':
+          description: Invitations created
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/ParamPaginationPage'
+        - $ref: '#/components/parameters/ParamPaginationPerPage'
+      tags:
+        - invitations
+      summary: Retrieve all sent invitations
+      description: Retrieve all invitations that the user has sent
+      operationId: listInvitations
+      responses:
+        '200':
+          description: Invitations list retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvitationsListResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invitations/admin/{workspace}/{invitation_id}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - name: invitation_id
+        in: path
+        required: true
+        description: The invitation ID in the form inv_9m4e2mr0ui3e8a215n4g
+        schema:
+          type: string
+    delete:
+      tags:
+        - invitations
+      summary: Revoke an invitation
+      description: Inviter revokes a previously-sent invitation
+      operationId: revokeInvitation
+      responses:
+        '204':
+          description: Invitation revoked
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invitations/{invitation_id}:
+    parameters:
+      - name: invitation_id
+        in: path
+        required: true
+        description: The invitation ID in the form inv_9m4e2mr0ui3e8a215n4g
+        schema:
+          type: string
+    post:
+      tags:
+        - invitations
+      summary: Retrieve an invitation
+      description: Invitee retrieves an invitation
+      operationId: getInvitation
+      requestBody:
+        description: The request body for retrieving an invitation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvitationRetrieveRequest'
+      responses:
+        '200':
+          description: Invitation retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvitationRetrieveResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+        - invitations
+      summary: Respond to an invitation
+      description: Invitee responds to an invitation
+      operationId: respondInvitation
+      requestBody:
+        description: The request body for responding to an invitation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvitationRespondRequest'
+      responses:
+        '204':
+          description: Invitation responded to
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /onboarding:
+    get:
+      tags:
+        - onboarding
+      description: Get onboarding items
+      summary: Get onboarding items
+      operationId: getOnboardingItems
+      responses:
+        '200':
+          description: Onboarding Items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardingGetItemsResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+        - onboarding
+      description: Set Onboarding items
+      summary: Set Onboarding items
+      operationId: setOnboardingItems
+      requestBody:
+        description: workspace to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnboardingSetItemsRequest'
+      responses:
+        '204':
+          description: Onboarding item complete
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - onboarding
+      description: Delete Onboarding items
+      summary: Delete Onboarding items
+      operationId: deleteOnboardingItems
+      responses:
+        '204':
+          description: UI requests Rest server to delete Onboarding items
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /static/images/{image_id}:
+    parameters:
+      - name: image_id
+        in: path
+        required: true
+        description: The image id in the form img_9m4e2mr0ui3e8a215n4g
+        schema:
+          type: string
+    get:
+      summary: Retrieves the given image
+      description: |
+        End point to get the given workspace
+      tags:
+        - images
+      operationId: getImage
+      responses:
+        '200':
+          description: Successful image response
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/gif:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Image does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /teamspaces/{workspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+    post:
+      tags:
+        - teamspaces
+      summary: Create a teamspace
+      description: |
+        Create a teamspace. The user creating the teamspace will be the teamspace
+        owner.
+      operationId: createTeamspaces
+      requestBody:
+        description: The request body containing the teamspace to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamspacesCreateRequest'
+      responses:
+        '201':
+          description: Teamspaces created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamspacesCreateResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/ParamTeamspaceOrderBy'
+        - $ref: '#/components/parameters/ParamOrder'
+      tags:
+        - teamspaces
+      summary: Retrieve all teamspaces in the workspace
+      description: Retrieve all teamspaces in the workspace
+      operationId: listTeamspaces
+      responses:
+        '200':
+          description: Teamspaces retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamspacesListResponse'
+        '404':
+          description: Teamspace ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - teamspaces
+      summary: Delete all teamspaces in the workspace
+      description: Delete all teamspaces in the workspace
+      operationId: deleteTeamspaces
+      responses:
+        '204':
+          description: Teamspaces deleted
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /teamspaces/{workspace}/{teamspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+    get:
+      summary: Retrieve a teamspace
+      description: Retrieve the given teamspace
+      tags:
+        - teamspaces
+      operationId: getTeamspace
+      responses:
+        '200':
+          description: Teamspace retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamspaceGetResponse'
+        '404':
+          description: Teamspace does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a teamspace
+      description: Delete the given teamspace
+      tags:
+        - teamspaces
+      operationId: deleteTeamspace
+      responses:
+        '204':
+          description: Teamspace deleted
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      description: Update a teamspace
+      summary: Update the given teamspace
+      tags:
+        - teamspaces
+      operationId: updateTeamspace
+      requestBody:
+        description: The request body containing the teamspace to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamspaceUpdateRequest'
+      responses:
+        '204':
+          description: Teamspace updated
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /teamspaces/{workspace}/{teamspace}/users:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+    post:
+      tags:
+        - teamspaces
+      summary: Create one or more teamspace users in a teamspace
+      description: Create one or more teamspace users in a teamspace
+      operationId: createTeamspaceUsers
+      requestBody:
+        description: The request body containing the teamspace users to create
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TeamspaceUsersCreateRequestInner'
+      responses:
+        '201':
+          description: Teamspace users created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamspaceUsersCreateResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      tags:
+        - teamspaces
+      summary: Retrieve all teamspace users in a teamspace
+      description: Retrieve a list of all teamspace users in a teamspace
+      operationId: listTeamspaceUsers
+      responses:
+        '200':
+          description: Teamspace users list retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamspaceUsersListResponse'
+        '404':
+          description: Teamspace ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /teamspaces/{workspace}/{teamspace}/users/{user_id}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredTeamspace'
+      - name: user_id
+        in: path
+        required: true
+        description: The user ID in the form usr_9m4e2mr0ui3e8a215n4g
+        schema:
+          type: string
+    get:
+      tags:
+        - teamspaces
+      summary: Retrieve a teamspace user
+      description: Retrieve the given teamspace user
+      operationId: getTeamspaceUser
+      responses:
+        '200':
+          description: Teamspace user retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamspaceUserGetResponse'
+        '404':
+          description: Teamspace user ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+        - teamspaces
+      summary: Update a teamspace user
+      description: Update the given teamspace user
+      operationId: updateTeamspaceUser
+      requestBody:
+        description: The request body containing the teamspace user to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamspaceUserUpdateRequest'
+      responses:
+        '204':
+          description: Teamspace user updated
+        '404':
+          description: Teamspace user ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - teamspaces
+      summary: Delete a teamspace user
+      description: Delete the given teamspace user
+      operationId: deleteTeamspaceUser
+      responses:
+        '204':
+          description: Teamspace user deleted
+        '404':
+          description: Teamspace user ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /tokens:
+    post:
+      tags:
+        - tokens
+      summary: Create a new token
+      description: Create a new token
+      operationId: createToken
+      requestBody:
+        description: The request body containing the token to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenCreateRequest'
+      responses:
+        '201':
+          description: Token created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenCreateResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/ParamPaginationPage'
+        - $ref: '#/components/parameters/ParamPaginationPerPage'
+        - name: type
+          in: query
+          required: true
+          description: The type of tokens to retrieve
+          schema:
+            type: string
+            enum:
+              - api
+              - session
+      tags:
+        - tokens
+      summary: Retrieve all of the user's tokens
+      description: Retrieve all of the user's tokens of the given type
+      operationId: listTokens
+      responses:
+        '200':
+          description: Tokens retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenListResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /tokens/{token_id}:
+    delete:
+      tags:
+        - tokens
+      summary: Revoke a token
+      description: Revoke a token that was previously created
+      operationId: revokeToken
+      parameters:
+        - name: token_id
+          in: path
+          required: true
+          description: The ID of the token to revoke
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Token revoked
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /userspaces/{workspace}/{userspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamRequiredUserspace'
+    get:
+      summary: Retrieve a userspace
+      description: Retrieve the given userspace
+      tags:
+        - userspaces
+      operationId: getUserspace
+      responses:
+        '200':
+          description: Userspace retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserspaceGetResponse'
+        '404':
+          description: Userspace does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      description: Update a userspace
+      summary: Update the given userspace
+      tags:
+        - userspaces
+      operationId: updateUserspace
+      requestBody:
+        description: The request body containing the userspace to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserspaceUpdateRequest'
+      responses:
+        '204':
+          description: Userspace updated
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users:
+    post:
+      tags:
+        - users
+      summary: Create a user
+      description: create a user for a new registration
+      operationId: createUser
+      requestBody:
+        description: user to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+      responses:
+        '201':
+          description: Successful user response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreateResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/self:
+    get:
+      tags:
+        - users
+      summary: Retrieve the current user
+      description: Retrieve the user that is currently logged in
+      operationId: getSelfUser
+      responses:
+        '200':
+          description: Successful user response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSelfResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/{user_id}:
+    parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The user id in the form usr_9m4e2mr0ui3e8a215n4g
+        schema:
+          type: string
+    get:
+      tags:
+        - users
+      summary: Retrieve a user
+      description: Retrieve an existing user based on the provided user id
+      operationId: getUser
+      responses:
+        '200':
+          description: Successfully retrieved user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGetResponse'
+        '404':
+          description: User does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+        - users
+      summary: Update a user
+      description: Update an existing user based on the provided data
+      operationId: updateUser
+      requestBody:
+        description: userUpdateDetails
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '204':
+          description: Successfully updated user
+        '404':
+          description: User does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - users
+      summary: Delete a user
+      description: Delete an existing user based on the provided user id
+      operationId: deleteUser
+      responses:
+        '204':
+          description: Successfully deleted user
+        '404':
+          description: User does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /storagesettings/{workspace}/{stset_id}:
+    parameters:
+      - name: stset_id
+        in: path
+        required: true
+        description: The storage setting id in the form stset_9m4e2mr0ui3e8a215n4g
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamTeamspaceID'
+    get:
+      tags:
+        - storagesettings
+      summary: Get storage setting
+      description: get information about storage setting by ID
+      operationId: getStorageSettingByID
+      responses:
+        '200':
+          description: Successful storage setting response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageSettingGetResponse'
+        '404':
+          description: Storage setting does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+        - storagesettings
+      summary: Update storage setting
+      description: update storage setting given by the user
+      operationId: patchStorageSettingByID
+      requestBody:
+        description: storage setting update details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageSettingUpdateRequest'
+      responses:
+        '204':
+          description: The storage setting was updated successfully
+        '404':
+          description: Storage setting does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - storagesettings
+      summary: Delete storage setting
+      description: Delete the storage setting.
+      operationId: deleteStorageSettingByID
+      responses:
+        '204':
+          description: storage setting deleted
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /storagesettings/{workspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - $ref: '#/components/parameters/ParamTeamspaceID'
+    post:
+      tags:
+        - storagesettings
+      summary: Create a new storage setting
+      description: create a storage setting
+      operationId: createStorageSetting
+      requestBody:
+        description: The request body containing the storage setting to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageSettingsCreateRequest'
+      responses:
+        '201':
+          description: Storage settings created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageSettingsCreateResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      parameters:
+        - name: page
+          in: query
+          required: false
+          description: pagination offset
+          schema:
+            type: integer
+        - name: per_page
+          in: query
+          required: false
+          description: pagination limit
+          schema:
+            type: integer
+      tags:
+        - storagesettings
+      summary: Get storage settings
+      description: list the storage settings available for the user
+      operationId: listStorageSettings
+      responses:
+        '200':
+          description: Successful storage settings list response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageSettingsListResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /workspaces:
+    post:
+      tags:
+        - workspaces
+      summary: Create a workspace
+      description: create a workspace, the user creating will be listed as owner
+      operationId: createWorkspace
+      requestBody:
+        description: workspace to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkspaceCreateRequest'
+      responses:
+        '201':
+          description: Successful workspace response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceCreateResponse'
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /workspaces/{workspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+    get:
+      summary: Retrieves metadata for the given workspace
+      description: |
+        End point to retrieve metadata for the passed workspace
+      tags:
+        - workspaces
+      operationId: getWorkspace
+      responses:
+        '200':
+          description: Successful workspace response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceGetResponse'
+        '404':
+          description: Workspace does not exist
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a workspace
+      description: delete a workspace
+      tags:
+        - workspaces
+      operationId: deleteWorkspace
+      responses:
+        '204':
+          description: workspace deleted
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      description: update a workspace
+      summary: Update a workspace
+      tags:
+        - workspaces
+      operationId: updateWorkspace
+      requestBody:
+        description: workspaceUpdateDetails
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkspaceUpdateRequest'
+      responses:
+        '204':
+          description: workspace updated
+        default:
+          description: error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /workspaceusers/{workspace}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+    post:
+      tags:
+        - workspaces
+      summary: Create one or more workspace users
+      description: Create one or more workspace users
+      operationId: createWorkspaceUsers
+      requestBody:
+        description: The request body containing the workspace users to create
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WorkspaceUsersCreateRequestInner'
+      responses:
+        '201':
+          description: Workspace user(s) created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceUsersCreateResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/ParamPaginationPage'
+        - $ref: '#/components/parameters/ParamPaginationPerPage'
+      tags:
+        - workspaces
+      summary: Retrieve multiple workspace users
+      description: Retrieve a list of workspace users
+      operationId: listWorkspaceUsers
+      responses:
+        '200':
+          description: Workspace user(s) list retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceUsersListResponse'
+        '404':
+          description: Workspace ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /workspaceusers/{workspace}/{user_id}:
+    parameters:
+      - $ref: '#/components/parameters/ParamRequiredWorkspace'
+      - name: user_id
+        in: path
+        required: true
+        description: The user id in the form usr_9m4e2mr0ui3e8a215n4g
+        schema:
+          type: string
+    get:
+      tags:
+        - workspaces
+      summary: Retrieve a workspace user
+      description: Retrieve the given workspace user
+      operationId: getWorkspaceUser
+      responses:
+        '200':
+          description: Workspace user retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceUserGetResponse'
+        '404':
+          description: Workspace user ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+        - workspaces
+      summary: Update a workspace user
+      description: Update the given workspace user
+      operationId: updateWorkspaceUser
+      requestBody:
+        description: The request body containing the workspace user to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkspaceUserUpdateRequest'
+      responses:
+        '204':
+          description: Workspace user updated
+        '404':
+          description: Workspace user ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - workspaces
+      summary: Delete a workspace user
+      description: Delete the given workspace user
+      operationId: deleteWorkspaceUser
+      responses:
+        '204':
+          description: Workspace user deleted
+        '404':
+          description: Workspace user ID does not exist
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  parameters:
+    TeamspaceID:
+      $ref: '#/components/parameters/ParamTeamspaceID'
+    ParamRequiredWorkspace:
+      name: workspace
+      in: path
+      required: true
+      description: The workspace name or id
+      schema:
+        type: string
+        example: ws_9m4e2mr0ui3e8a215n4g
+    ParamRequiredTeamspace:
+      name: teamspace
+      in: path
+      required: true
+      description: The teamspace name or id
+      schema:
+        type: string
+        example: ts_9m4e2mr0ui3e8a215n4g
+    ParamRequiredAssetID:
+      name: asset_id
+      in: path
+      required: true
+      description: The asset id in the form ast_9m4e2mr0ui3e8a215n4g
+      schema:
+        type: string
+    ParamPaginationPage:
+      name: page
+      in: query
+      required: false
+      description: pagination offset
+      schema:
+        type: integer
+    ParamPaginationPerPage:
+      name: per_page
+      in: query
+      required: false
+      description: pagination limit
+      schema:
+        type: integer
+    ParamAssetType:
+      name: asset_type
+      in: query
+      required: false
+      description: asset type to filter to
+      schema:
+        $ref: '#/components/schemas/AssetType'
+    ParamCreatedBy:
+      name: created_by
+      in: query
+      required: false
+      description: users that created the asset to filter to
+      schema:
+        $ref: '#/components/schemas/UserID'
+    ParamOrderBy:
+      name: order_by
+      in: query
+      required: false
+      description: order by string
+      schema:
+        type: string
+    ParamExpand:
+      name: expand
+      in: query
+      required: false
+      description: expand api response with supplemental information
+      schema:
+        type: string
+    ParamTeamspaceID:
+      name: teamspace_id
+      in: query
+      required: false
+      description: Teamspace id should be empty, if the request is about an action on workspace level
+      schema:
+        type: string
+    ParamRequiredGeneralspace:
+      name: generalspace
+      in: path
+      required: true
+      description: The generalspace id or name
+      schema:
+        type: string
+        example: ts_9m4e2mr0ui3e8a215n4g or general
+    ParamTeamspaceOrderBy:
+      name: order_by
+      in: query
+      description: |
+        The field to order the results by. Defaults to `created_at`.
+        Can be one of the following:
+        - name
+        - created_at
+        - updated_at
+      required: false
+      schema:
+        type: string
+        enum:
+          - name
+          - created_at
+          - updated_at
+      x-oapi-codegen-extra-tags:
+        validate: omitempty,oneof=name created_at updated_at
+    ParamOrder:
+      name: order
+      in: query
+      required: false
+      description: |
+        Specifies the sorting direction for the results returned by the query. Defaults to `desc`.
+        Can be one of the following:
+        - asc
+        - desc
+      schema:
+        type: string
+        enum:
+          - asc
+          - desc
+      x-oapi-codegen-extra-tags:
+        validate: omitempty,oneof=asc desc
+    ParamRequiredUserspace:
+      name: userspace
+      in: path
+      required: true
+      description: The userspace id or the user's username
+      schema:
+        type: string
+        example: ts_9m4e2mr0ui3e8a215n4g or alice
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-TILEDB-REST-API-KEY
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth2.tiledb.com/oauth2/authorize
+          tokenUrl: https://oauth2.tiledb.com/oauth2/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
+            admin: Grants read and write access to administrative information
+  responses:
+    default:
+      $ref: '#/components/responses/DefaultError'
+    DefaultError:
+      description: The default (handled) REST Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      description: Object containing data about a handled error by REST server
+      type: object
+      required:
+        - code
+        - message
+        - request_id
+      properties:
+        code:
+          description: A hardcoded integer which points to a specific file/line of the code that returned the error
+          type: integer
+        message:
+          description: A friendly message to be shown to the client
+          type: string
+        request_id:
+          description: The request id to be used for tracing/debugging
+          type: string
+        validation_error:
+          description: Additional data about validation check failures (if any)
+          $ref: '#/components/schemas/ValidationError'
+    ValidationErrorField:
+      description: Object containing data about a handled error by REST server
+      type: object
+      required:
+        - field
+        - message
+      properties:
+        field:
+          description: The name of the field that failed validation
+          type: string
+        message:
+          description: A friendly message about the validation error
+          type: string
+    ValidationError:
+      description: Object containing data about a handled error by REST server
+      type: object
+      required:
+        - fields
+      properties:
+        fields:
+          description: The list of fields that failed validation
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorField'
+    AcademyLesson:
+      description: The academy lesson object
+      type: object
+      required:
+        - lesson_id
+        - lesson_version
+      properties:
+        lesson_id:
+          description: Unique ID of the lesson
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        lesson_version:
+          description: Version of the lesson
+          type: string
+          example: v1
+        completed:
+          description: Indicates if lesson is completed
+          type: boolean
+          example: false
+        pinned:
+          description: Indicates if lesson is pinned
+          type: boolean
+          example: false
+    AcademyLessonsListResponse:
+      description: object for get academy lessons list response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: List of academy lessons items
+          type: array
+          items:
+            $ref: '#/components/schemas/AcademyLesson'
+    UserAnswer:
+      description: The academy questionnaire user's answer
+      type: object
+      required:
+        - question_id
+        - answer_id
+      properties:
+        question_id:
+          description: ID of the question in the questionnaire
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        answer_id:
+          description: ID of the answer in the questionnaire
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+    AcademyQuestionnaire:
+      description: The academy questionnaire object
+      type: object
+      required:
+        - questionnaire_id
+        - questionnaire_version
+        - completed
+        - user_answers
+      properties:
+        questionnaire_id:
+          description: Unique ID of the questionnaire
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        questionnaire_version:
+          description: Version of the questionnaire
+          type: string
+          example: v1
+        completed:
+          description: Indicates if questionnaire is completed
+          type: boolean
+          example: false
+        user_answers:
+          type: array
+          description: Array of user answers
+          items:
+            $ref: '#/components/schemas/UserAnswer'
+    AcademyQuestionnaireListResponse:
+      description: object for get academy questionnaire list response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: List of academy questionnaires items
+          type: array
+          items:
+            $ref: '#/components/schemas/AcademyQuestionnaire'
+    AcademyQuestionnairePutRequest:
+      description: parameters for build create academy questionnaire request
+      type: object
+      required:
+        - questionnaire_id
+        - questionnaire_version
+        - completed
+        - user_answers
+      properties:
+        questionnaire_id:
+          description: Unique ID of the questionnaire
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        questionnaire_version:
+          description: Version of the questionnaire
+          type: string
+          example: v1
+        completed:
+          description: Indicates if questionnaire is completed
+          type: boolean
+          example: false
+        user_answers:
+          type: array
+          description: Array of user answers
+          items:
+            $ref: '#/components/schemas/UserAnswer'
+    UserID:
+      type: string
+      description: The user's ID
+      example: usr_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=usr_,min=24,max=24
+    TeamspaceRole:
+      type: string
+      description: The enumeration of roles a user can have within a teamspace
+      enum:
+        - owner
+        - editor
+        - viewer
+    TeamspaceUsersBulkUpdateRequestInner:
+      description: The teamspace user update object
+      type: object
+      required:
+        - user_id
+        - role
+      properties:
+        user_id:
+          $ref: '#/components/schemas/UserID'
+        role:
+          $ref: '#/components/schemas/TeamspaceRole'
+    ImageID:
+      type: string
+      description: The image's ID
+      example: img_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=img_,min=24,max=24
+    TeamspaceUser:
+      description: The teamspace user object
+      type: object
+      required:
+        - user_id
+        - username
+        - display_name
+        - email
+        - role
+        - added_by
+        - created_at
+      properties:
+        user_id:
+          $ref: '#/components/schemas/UserID'
+        username:
+          type: string
+          description: The user's username
+        display_name:
+          type: string
+          description: The user's display name
+        email:
+          type: string
+          description: The user's email
+        image_id:
+          $ref: '#/components/schemas/ImageID'
+        role:
+          $ref: '#/components/schemas/TeamspaceRole'
+        added_by:
+          $ref: '#/components/schemas/UserID'
+        created_at:
+          description: The datetime the teamspace user was created (in UTC)
+          type: string
+          format: date-time
+    TeamspaceUsersJoinResponse:
+      description: The response object when joining a teamspace
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamspaceUser'
+    WorkspaceRole:
+      type: string
+      description: The enumeration of roles a user can have within a workspace
+      enum:
+        - owner
+        - admin
+        - member
+    WorkspaceUsersBulkUpdateRequestInner:
+      description: The workspace user update object
+      type: object
+      required:
+        - user_id
+        - role
+      properties:
+        user_id:
+          $ref: '#/components/schemas/UserID'
+        role:
+          $ref: '#/components/schemas/WorkspaceRole'
+    AssetMetadataDeleteRequestInner:
+      type: object
+      required:
+        - key
+      properties:
+        key:
+          type: string
+          description: The key property of metadata pair.
+    ChangePasswordRequest:
+      description: Object containing the necessary data to change a user's password
+      type: object
+      required:
+        - current_password
+        - new_password
+      properties:
+        current_password:
+          type: string
+          description: The user's current password
+          x-oapi-codegen-extra-tags:
+            validate: required,min=8,max=72
+        new_password:
+          type: string
+          description: The new password
+          x-oapi-codegen-extra-tags:
+            validate: required,min=8,max=72
+    RequestEmailConfirmationRequest:
+      description: Object containing the necessary data to request an email address confirmation email.
+      type: object
+      required:
+        - username_or_email
+      properties:
+        username_or_email:
+          description: username or email of the user that will receive the email with the required token
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,max=64
+    RequestPasswordResetRequest:
+      description: Object containing the necessary data to request a password reset link.
+      type: object
+      required:
+        - username_or_email
+      properties:
+        username_or_email:
+          description: username or email of the user that will receive the email with the password reset link
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,max=64
+    ResetPasswordRequest:
+      description: Object containing the necessary data to reset a user's password
+      type: object
+      required:
+        - new_password
+      properties:
+        new_password:
+          type: string
+          description: the new password
+          x-oapi-codegen-extra-tags:
+            validate: required,min=8,max=72
+    AssetID:
+      type: string
+      description: The asset's ID
+      example: ast_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=ast_,min=24,max=24
+    WorkspaceID:
+      type: string
+      description: The workspace's ID
+      example: ws_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=ws_,min=23,max=23
+    TeamspaceID:
+      type: string
+      description: The teamspace's ID
+      example: ts_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=ts_,min=23,max=23
+    AssetMemberType:
+      description: The member type associated with the asset.
+      type: string
+      enum:
+        - vcf_member
+        - soma_member
+        - bioimg_member
+        - vector_search_member
+        - geometry_member
+        - raster_member
+        - point_cloud_member
+    AssetBackingType:
+      description: The backing type of the asset (e.g., array, group, file, folder).
+      type: string
+      enum:
+        - array
+        - group
+        - file
+        - folder
+    AssetType:
+      description: The type of asset based on how it is represented.
+      type: string
+      enum:
+        - array
+        - notebook
+        - dashboard
+        - user_defined_function
+        - ml_model
+        - file
+        - registered_task_graph
+        - group
+        - vcf
+        - soma
+        - pointcloud
+        - bioimg
+        - geometry
+        - raster
+        - vector_search
+        - folder
+    WorkspaceUser:
+      description: The workspace user object
+      type: object
+      required:
+        - user_id
+        - username
+        - display_name
+        - email
+        - role
+        - added_by
+        - created_at
+      properties:
+        user_id:
+          $ref: '#/components/schemas/UserID'
+        username:
+          type: string
+          description: The user's username
+        display_name:
+          type: string
+          description: The user's display name
+        email:
+          type: string
+          description: The user's email
+        image_id:
+          $ref: '#/components/schemas/ImageID'
+        role:
+          $ref: '#/components/schemas/WorkspaceRole'
+        added_by:
+          $ref: '#/components/schemas/UserID'
+        created_at:
+          description: Datetime workspace user was created in UTC
+          type: string
+          format: date-time
+    AssetMetadataType:
+      type: string
+      description: The TileDB type property of metadata pair
+      enum:
+        - INT32
+        - INT64
+        - FLOAT32
+        - FLOAT64
+        - CHAR
+        - INT8
+        - UINT8
+        - INT16
+        - UINT16
+        - UINT32
+        - UINT64
+        - STRING_ASCII
+        - STRING_UTF8
+        - STRING_UTF16
+        - STRING_UTF32
+        - STRING_UCS2
+        - STRING_UCS4
+        - ANY
+        - DATETIME_YEAR
+        - DATETIME_MONTH
+        - DATETIME_WEEK
+        - DATETIME_DAY
+        - DATETIME_HR
+        - DATETIME_MIN
+        - DATETIME_SEC
+        - DATETIME_MS
+        - DATETIME_US
+        - DATETIME_NS
+        - DATETIME_PS
+        - DATETIME_FS
+        - DATETIME_AS
+        - TIME_HR
+        - TIME_MIN
+        - TIME_SEC
+        - TIME_MS
+        - TIME_US
+        - TIME_NS
+        - TIME_PS
+        - TIME_FS
+        - TIME_AS
+        - BLOB
+        - BOOL
+    AssetMetadata:
+      type: object
+      description: key/value pair representing an asset metadata entry
+      required:
+        - key
+        - value
+        - type
+      properties:
+        key:
+          type: string
+          description: The key property of metadata pair.
+        value:
+          type: string
+          description: The value property of metadata pair.
+        type:
+          $ref: '#/components/schemas/AssetMetadataType'
+    Asset:
+      type: object
+      required:
+        - id
+        - workspace_id
+        - teamspace_id
+        - name
+        - backing_type
+        - type
+        - path
+        - created_at
+        - created_by
+      properties:
+        id:
+          $ref: '#/components/schemas/AssetID'
+        workspace_id:
+          $ref: '#/components/schemas/WorkspaceID'
+        teamspace_id:
+          $ref: '#/components/schemas/TeamspaceID'
+        name:
+          type: string
+          description: The name of the asset.
+        description:
+          type: string
+          description: The description of the asset.
+        member_type:
+          $ref: '#/components/schemas/AssetMemberType'
+        mime:
+          type: string
+          description: The MIME type of the asset.
+        backing_type:
+          $ref: '#/components/schemas/AssetBackingType'
+        type:
+          $ref: '#/components/schemas/AssetType'
+        path:
+          type: string
+          description: The path of the asset.
+          example: /path/to/asset
+        created_at:
+          description: Datetime asset was created in UTC
+          type: string
+          format: date-time
+        updated_at:
+          description: Datetime asset was updated in UTC
+          type: string
+          format: date-time
+        created_by:
+          $ref: '#/components/schemas/WorkspaceUser'
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetMetadata'
+    AssetGetResponse:
+      description: The response object when requesting a single asset
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Asset'
+    PaginationMetadata:
+      description: Pagination metadata object
+      type: object
+      required:
+        - page
+        - per_page
+        - total_pages
+        - total_items
+      properties:
+        page:
+          description: pagination offset. Use it to skip the first ((page - 1) * per_page) items
+          type: integer
+          example: 1
+        per_page:
+          description: pagination limit (page size)
+          type: integer
+          example: 10
+        total_pages:
+          description: number of total pages with current limit
+          type: integer
+          example: 14
+        total_items:
+          description: number of total available items
+          type: integer
+          example: 138
+    AssetMetadataListResponse:
+      description: The response object when requesting the list of asset metadata
+      type: object
+      required:
+        - data
+        - pagination_metadata
+      properties:
+        data:
+          description: An array of asset's metadata
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetMetadata'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    AssetMetadataCreateRequestInner:
+      type: object
+      description: Asset metadata entry
+      required:
+        - key
+        - value
+        - type
+      properties:
+        key:
+          type: string
+          description: The key property of metadata pair.
+        value:
+          type: string
+          description: The value property of metadata pair.
+        type:
+          $ref: '#/components/schemas/AssetMetadataType'
+    AssetMetadataCreateResponse:
+      description: object for create asset metadata response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: An array of asset's metadata that were created
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetMetadata'
+    AssetMetadataUpdateObject:
+      type: object
+      required:
+        - key
+      properties:
+        key:
+          type: string
+          description: The key property of metadata pair.
+        value:
+          type: string
+          description: The value property of metadata pair.
+        type:
+          $ref: '#/components/schemas/AssetMetadataType'
+    AssetMetadataUpdateRequest:
+      type: object
+      required:
+        - asset_backing_type
+        - metadata
+      properties:
+        asset_backing_type:
+          $ref: '#/components/schemas/AssetBackingType'
+        metadata:
+          description: An array of metadata updates
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetMetadataUpdateObject'
+    AssetListResponse:
+      description: The response object when requesting the list of assets
+      type: object
+      required:
+        - data
+        - pagination_metadata
+      properties:
+        data:
+          description: An array of assets
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    AssetPathResponse:
+      description: The response object when requesting all assets in a given path
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: |
+            An array of assets. The order of the assets corresponds to the order of
+            the path elements.
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+    TileDBVersion:
+      description: Model representing TileDB version
+      type: object
+      required:
+        - major
+        - minor
+        - patch
+      properties:
+        major:
+          type: integer
+          format: uint16
+          description: TileDB core major version
+        minor:
+          type: integer
+          format: uint16
+          description: TileDB core minor version
+        patch:
+          type: integer
+          format: uint16
+          description: TileDB core patch version
+    RestCapabilities:
+      description: Model representing REST capabilities
+      type: object
+      required:
+        - deployedTileDBVersion
+        - minimumSupportedTileDBClientVersion
+      properties:
+        deployedTileDBVersion:
+          $ref: '#/components/schemas/TileDBVersion'
+        minimumSupportedTileDBClientVersion:
+          $ref: '#/components/schemas/TileDBVersion'
+    CloudProvider:
+      description: A service where data is stored or computations take place
+      type: string
+      enum:
+        - AWS
+        - AZURE
+        - GCP
+    CredentialType:
+      type: string
+      description: Enumeration of tileDB Credential types
+      enum:
+        - workspace
+        - teamspace
+    AWSCredential:
+      description: Credential information to access Amazon Web Services
+      type: object
+      required:
+        - access_key_id
+        - secret_access_key
+      properties:
+        access_key_id:
+          description: The ID of the access key
+          type: string
+          x-oapi-codegen-extra-tags:
+            tdbrest: key_id
+        secret_access_key:
+          description: The access key's secret. Never returned in responses.
+          type: string
+          x-oapi-codegen-extra-tags:
+            tdbrest: secret
+        endpoint:
+          description: The endpoint used for this credential
+          type: string
+          example: https://example.us-west-2.amazonaws.com
+    AzureCredential:
+      description: Credential information to access Microsoft Azure. Each supported property is the snake_case version of its name in an Azure Storage connection string
+      type: object
+      properties:
+        account_name:
+          description: The name of the Azure account to access
+          type: string
+          x-oapi-codegen-extra-tags:
+            tdbrest: key_id" validate:"required
+        account_key:
+          description: The secret key. Never returned in responses.
+          type: string
+          x-oapi-codegen-extra-tags:
+            tdbrest: secret" validate:"required
+    GCPInteroperabilityCredential:
+      description: Credential information to access Google Cloud. using well knows key/secret pair to access storage.
+      type: object
+      properties:
+        access_key_id:
+          description: The ID of the access key
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required
+        secret_access_key:
+          description: The access key's secret. Never returned in responses.
+          type: string
+          x-oapi-codegen-extra-tags:
+            tdbrest: secret" validate:"required
+    Credential:
+      description: The credential information itself. Exactly one sub-field may be set. The names match those in the CloudProvider enum.
+      type: object
+      x-oapi-codegen-extra-tags:
+        tdbrest: cred_field
+      properties:
+        aws:
+          $ref: '#/components/schemas/AWSCredential'
+        azure:
+          $ref: '#/components/schemas/AzureCredential'
+        gcp:
+          $ref: '#/components/schemas/GCPInteroperabilityCredential'
+    AWSRole:
+      description: The role information itself. Exactly one sub-field may be set. The names match those in the CloudProvider enum
+      type: object
+      required:
+        - external_id
+        - role_arn
+      properties:
+        role_arn:
+          description: The role arn used to access
+          x-go-name: RoleARN
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required" tdbrest:"key_id,limit_20
+          example: arn:partition:service:region:account-id:resource-type:resource-id
+        external_id:
+          description: The role external id used to access
+          x-oapi-codegen-extra-tags:
+            validate: required" tdbrest:"secret
+          type: string
+          example: MzU0M2UwMTItMWJhYy00NWUwLThmZDItZTgwYmQ1NjE5Yjhm
+        endpoint:
+          description: The endpoint used for this role
+          type: string
+          example: https://example.us-west-2.amazonaws.com
+    AccessCredentialRole:
+      description: object for access credential role
+      type: object
+      x-oapi-codegen-extra-tags:
+        tdbrest: cred_field
+      properties:
+        aws:
+          $ref: '#/components/schemas/AWSRole'
+    AzureToken:
+      description: Token information to access Azure services
+      type: object
+      required:
+        - account_name
+        - sas_token
+      properties:
+        account_name:
+          description: The account name of the configuration
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required" tdbrest:"key_id
+          example: tiledbpoc
+        sas_token:
+          description: The token to use for this account
+          type: string
+          example: sv=2022-11-02&ss=bfqt&srt=sco&sp=dsafdssdfafasdfsda&se=2024-03-28T03:02:08Z&st=2024-03-27T19:02:08Z&spr=https&sig=444444555555555555555555555555555555555%3D
+    GCPServiceAccountKey:
+      description: The key to a Google Cloud Platform service account.
+      type: object
+      required:
+        - account_id
+        - key_id
+        - key_text
+      properties:
+        account_id:
+          description: |
+            The ID of the service account (i.e., its email address).
+
+            This is ignored when uploading key information, and is only provided
+            by the server when downloading metadata about an existing key.
+          type: string
+          x-oapi-codegen-extra-tags:
+            tdbrest: key_id,output_only
+          example: identity-data-reader@cinco-research.iam.gserviceaccount.com
+        key_id:
+          description: |
+            The ID of the particular key. This identifies it among other keys
+            issued for this service account.
+
+            This is ignored when uploading key information, and is only provided
+            by the server when downloading metadata about an existing key.
+          type: string
+          x-oapi-codegen-extra-tags:
+            tdbrest: output_only
+          example: b85b7bac16fabf44fd9cd6885d4d1b444f07e9ab
+        key_text:
+          description: |
+            The full file provided by Google Cloud. This is usually in the form of
+            a JSON document, but TileDB Cloud treats it as opaque (except to
+            attempt to extract the service account ID and the key ID).
+          type: string
+          x-oapi-codegen-extra-tags:
+            tdbrest: secret
+          example: |
+            {
+              "type": "service_account",
+              "project_id": "cinco-research",
+              "private_key_id": "XXXX",
+              "private_key": "-----BEGIN PRIVATE KEY-----\n[lots of data goes here]\n-----END PRIVATE KEY-----\n",
+              "client_email": "identity-data-reader@cinco-research.iam.gserviceaccount.com",
+              "client_id": "XXXX",
+              "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+              "token_uri": "https://oauth2.googleapis.com/token",
+              "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+              "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/identity-data-reader%40cinco-research.iam.gserviceaccount.com",
+              "universe_domain": "googleapis.com"
+            }
+    Token:
+      description: The token information itself. Exactly one sub-field may be set. The names match those in the CloudProvider enum
+      type: object
+      x-oapi-codegen-extra-tags:
+        tdbrest: cred_field
+      properties:
+        azure:
+          $ref: '#/components/schemas/AzureToken'
+        gcp:
+          $ref: '#/components/schemas/GCPServiceAccountKey'
+    AccessCredential:
+      description: The user credential object
+      type: object
+      required:
+        - id
+        - name
+        - provider
+        - created_at
+        - credential_type
+      properties:
+        credential_type:
+          $ref: '#/components/schemas/CredentialType'
+        id:
+          description: The ID of the credential
+          type: string
+        name:
+          description: credential name
+          type: string
+        provider:
+          $ref: '#/components/schemas/CloudProvider'
+        provider_default:
+          description: True if this is the user's default credential to be used when connecting to the given cloud provider. There can be at most one default for each unique provider
+          type: boolean
+        created_at:
+          description: Datetime credentials were created in UTC
+          type: string
+          format: date-time
+        updated_at:
+          description: Datetime credentials were updated in UTC
+          type: string
+          format: date-time
+        allowed_in_tasks:
+          description: Is this credential allowed to be used in tasks
+          type: boolean
+        credential:
+          $ref: '#/components/schemas/Credential'
+        role:
+          $ref: '#/components/schemas/AccessCredentialRole'
+        token:
+          $ref: '#/components/schemas/Token'
+    CredentialsListResponse:
+      description: object for get credentials list response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: List of credentials items
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessCredential'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    CredentialCreateRequest:
+      description: object metadata for a credential that will be created
+      type: object
+      required:
+        - name
+        - provider
+      properties:
+        name:
+          type: string
+          description: credential name
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+        provider:
+          $ref: '#/components/schemas/CloudProvider'
+        provider_default:
+          description: True if this is the namespace's default credential to be used when connecting to the given cloud provider. There can be at most one default for each unique provider
+          type: boolean
+        allowed_in_tasks:
+          description: Is this credential allowed to be used in tasks
+          type: boolean
+        credential:
+          $ref: '#/components/schemas/Credential'
+        role:
+          $ref: '#/components/schemas/AccessCredentialRole'
+        token:
+          $ref: '#/components/schemas/Token'
+    CredentialsVerifyRequest:
+      description: object metadata for a credential that will be created
+      type: object
+      required:
+        - name
+        - provider
+      properties:
+        name:
+          type: string
+          description: credential name
+        provider:
+          $ref: '#/components/schemas/CloudProvider'
+        provider_default:
+          description: True if this is the namespace's default credential to be used when connecting to the given cloud provider. There can be at most one default for each unique provider
+          type: boolean
+        allowed_in_tasks:
+          description: Is this credential allowed to be used in tasks
+          type: boolean
+        credential:
+          $ref: '#/components/schemas/Credential'
+        role:
+          $ref: '#/components/schemas/AccessCredentialRole'
+        token:
+          $ref: '#/components/schemas/Token'
+    CredentialGetResponse:
+      description: object for get credential response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/AccessCredential'
+    CredentialUpdateRequest:
+      description: The credential update object
+      type: object
+      properties:
+        name:
+          description: A user-specified name for the key
+          type: string
+        provider_default:
+          description: True if this is the user's default credential to be used when connecting to the given cloud provider. There can be at most one default for each unique provider
+          type: boolean
+        provider:
+          $ref: '#/components/schemas/CloudProvider'
+        allowed_in_tasks:
+          description: Is this credential allowed to be used in tasks
+          type: boolean
+        credential:
+          $ref: '#/components/schemas/Credential'
+        role:
+          $ref: '#/components/schemas/AccessCredentialRole'
+        token:
+          $ref: '#/components/schemas/Token'
+    ErrorXML:
+      description: Object containing data about a handled error by REST server, presented in a format compatible with S3
+      type: object
+      required:
+        - code
+        - message
+        - request_id
+      properties:
+        code:
+          description: A machine-friendly string that describes the error
+          type: string
+          xml:
+            name: Code
+        message:
+          description: A friendly message to be shown to the client
+          type: string
+          xml:
+            name: Code
+        request_id:
+          description: The request id to be used for tracing/debugging
+          type: string
+          xml:
+            name: RequestId
+      xml:
+        name: Error
+    CommonPrefix:
+      description: A folder returned by FileList
+      type: object
+      properties:
+        Prefix:
+          description: A prefix
+          type: string
+    Object:
+      description: Description of a TileDB file.
+      type: object
+      properties:
+        Key:
+          description: The path to the file
+          type: string
+        LastModified:
+          description: The date the file was last modified
+          type: string
+          format: datetime
+        ETag:
+          description: The file's ETag
+          type: string
+        Size:
+          description: The file's size
+          type: integer
+          format: int64
+    FileListResponse:
+      description: The result of a list files operation. Compatible with S3's ListObjectResult
+      type: object
+      properties:
+        Name:
+          description: The name of the bucket (teamspace) with the objects
+          type: string
+        Prefix:
+          description: The prefix under which objects are listed
+          type: string
+        Delimiter:
+          description: The string that delimits the path segments. Only forward slash is supported
+          type: string
+        MaxKeys:
+          description: The maximum amount of objects to return
+          type: integer
+          format: int32
+        ContinuationToken:
+          description: The continuation token that was passed to the operation
+          type: string
+        NextContinuationToken:
+          description: The continuation token to pass to list the next items
+          type: string
+        IsTruncated:
+          description: Whether there are no more files to list
+          type: boolean
+        CommonPrefixes:
+          description: The common prefixes (folders) contained under prefix.
+          type: array
+          items:
+            $ref: '#/components/schemas/CommonPrefix'
+        Objects:
+          description: The objects (files) contained under prefix.
+          type: array
+          items:
+            $ref: '#/components/schemas/Object'
+      xml:
+        name: ListObjectsResult
+    FolderID:
+      type: string
+      description: The folder's ID
+      example: fld_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: omitempty,startswith=fld_,min=24,max=24
+    GroupID:
+      type: string
+      description: The group's ID
+      example: grp_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=grp_,min=24,max=24
+    Folder:
+      type: object
+      required:
+        - id
+        - workspace_id
+        - teamspace_id
+        - asset_id
+        - name
+        - created_at
+        - created_by
+      properties:
+        id:
+          $ref: '#/components/schemas/FolderID'
+        workspace_id:
+          $ref: '#/components/schemas/WorkspaceID'
+        teamspace_id:
+          $ref: '#/components/schemas/TeamspaceID'
+        group_id:
+          $ref: '#/components/schemas/GroupID'
+        asset_id:
+          $ref: '#/components/schemas/AssetID'
+        parent_folder_id:
+          $ref: '#/components/schemas/FolderID'
+        name:
+          type: string
+          description: The name of the folder.
+        created_at:
+          description: Datetime asset was created in UTC
+          type: string
+          format: date-time
+        updated_at:
+          description: Datetime asset was updated in UTC
+          type: string
+          format: date-time
+        created_by:
+          $ref: '#/components/schemas/WorkspaceUser'
+        description:
+          type: string
+          description: The description of the folder.
+    FolderListResponse:
+      description: The response object when requesting the list of folders
+      type: object
+      required:
+        - data
+        - pagination_metadata
+      properties:
+        data:
+          description: An array of folders
+          type: array
+          items:
+            $ref: '#/components/schemas/Folder'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    FolderGetResponse:
+      description: The response object when requesting a single folder
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Folder'
+    FolderCreateRequestInner:
+      description: object metadata for folders that will be created
+      type: object
+      properties:
+        description:
+          description: Folder description
+          type: string
+    FolderCreateResponse:
+      description: object for create folder response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Folder'
+    FolderUpdateRequest:
+      description: The request object for updating a folder
+      type: object
+      properties:
+        name:
+          type: string
+          description: The teamspace name
+        description:
+          type: string
+          format: string
+          description: The folder description
+    FolderContentsResponse:
+      description: The response object when requesting the list of folder contents
+      type: object
+      required:
+        - data
+        - pagination_metadata
+      properties:
+        data:
+          description: An array of assets
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    FoldersContentsModifyInner:
+      description: The request object to add or remove contents under a folder
+      type: object
+      required:
+        - members_to_add
+        - members_to_remove
+      properties:
+        members_to_add:
+          description: An array of asset ids to add under a folder
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetID'
+        members_to_remove:
+          description: An array of asset ids to remove from a folder
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetID'
+    GeneralspaceID:
+      type: string
+      description: The generalspace's ID
+      example: ts_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=ts_,min=23,max=23
+    Generalspace:
+      description: The generalspace object
+      type: object
+      required:
+        - generalspace_id
+        - name
+        - created_at
+      properties:
+        generalspace_id:
+          $ref: '#/components/schemas/GeneralspaceID'
+        name:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+          description: The generalspace name
+        icon:
+          type: string
+          description: The generalspace icon as a UTF8-encoded Unicode symbol, e.g. 🚀
+        created_at:
+          description: The datetime the generalspace was created (in UTC)
+          type: string
+          format: date-time
+        description:
+          type: string
+          format: string
+          description: The generalspace description
+        updated_at:
+          description: The datetime the generalspace was updated (in UTC)
+          type: string
+          format: date-time
+    GeneralspaceGetResponse:
+      description: The response object when requesting a generalspace
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Generalspace'
+    TeamspaceVisibility:
+      type: string
+      description: The enumeration of visibility levels for a teamspace
+      enum:
+        - private
+        - public
+    GeneralspaceUpdateRequest:
+      description: The request object for updating a generalspace
+      type: object
+      properties:
+        name:
+          type: string
+          description: The generalspace name
+        description:
+          type: string
+          format: string
+          description: The generalspace description
+        icon:
+          type: string
+          description: The generalspace icon as a UTF8-encoded Unicode symbol, e.g. 🚀
+        visibility_level:
+          $ref: '#/components/schemas/TeamspaceVisibility'
+    InvitationID:
+      type: string
+      description: The invitation's ID
+      example: inv_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=inv_,min=24,max=24
+    InvitingUser:
+      description: The user who sent the invitation
+      type: object
+      required:
+        - user_id
+        - display_name
+        - email
+        - workspace_role
+      properties:
+        user_id:
+          $ref: '#/components/schemas/UserID'
+        display_name:
+          type: string
+          description: The user's display name
+        email:
+          type: string
+          description: The user's email
+        image_id:
+          $ref: '#/components/schemas/ImageID'
+        workspace_role:
+          $ref: '#/components/schemas/WorkspaceRole'
+    InvitationWorkspace:
+      type: object
+      required:
+        - workspace_id
+        - name
+        - prospective_role
+      properties:
+        workspace_id:
+          $ref: '#/components/schemas/WorkspaceID'
+        name:
+          type: string
+          description: The workspace's name
+        description:
+          type: string
+          format: string
+          description: The workspace's description
+        image_id:
+          $ref: '#/components/schemas/ImageID'
+        prospective_role:
+          $ref: '#/components/schemas/WorkspaceRole'
+    Invitation:
+      description: The invitation object
+      type: object
+      required:
+        - invitation_id
+        - invitee_email
+        - created_by
+        - created_at
+      properties:
+        invitation_id:
+          $ref: '#/components/schemas/InvitationID'
+        invitee_email:
+          type: string
+          example: jane.doe@example.com
+          description: The invited user's email address
+        created_by:
+          $ref: '#/components/schemas/InvitingUser'
+        created_at:
+          description: The date and time the invitation was created
+          type: string
+          format: date-time
+        workspace_invitation:
+          $ref: '#/components/schemas/InvitationWorkspace'
+    InvitationsListResponse:
+      description: The response object when requesting all invitations
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: An array of invitations for the user
+          type: array
+          items:
+            $ref: '#/components/schemas/Invitation'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    InvitationsCreateRequestWorkspace:
+      type: object
+      required:
+        - workspace_id
+        - prospective_role
+      properties:
+        workspace_id:
+          $ref: '#/components/schemas/WorkspaceID'
+        prospective_role:
+          $ref: '#/components/schemas/WorkspaceRole'
+    InvitationsCreateRequestInner:
+      description: The invitations to create
+      type: object
+      required:
+        - invitee_email
+      properties:
+        invitee_email:
+          type: string
+          example: jane.doe@example.com
+          description: The invited user's email address
+        workspace_invitation:
+          $ref: '#/components/schemas/InvitationsCreateRequestWorkspace'
+    InvitationRetrieveRequest:
+      description: The request body for retrieving an invitation
+      type: object
+      required:
+        - jwt
+      properties:
+        jwt:
+          description: The JWT that authorizes the invitee to retrieve the invitation
+          type: string
+    InvitationRetrieveResponse:
+      description: The response object when retrieving an invitation
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Invitation'
+    InvitationRespondRequest:
+      description: The request body for responding to an invitation
+      type: object
+      required:
+        - response
+        - jwt
+      properties:
+        jwt:
+          description: The JWT that authorizes the invitee to respond to the invitation
+          type: string
+        response:
+          description: The response to the invitation
+          type: string
+          enum:
+            - accept
+            - reject
+    Item:
+      description: List of values that Item can take.
+      type: string
+      enum:
+        - theme_selection
+        - profile_info
+        - claim_credits
+        - cloud_storage
+        - root_path
+        - intro
+        - basic_tour
+        - skip_user_onboarding
+        - add_asset
+        - launch_notebook
+        - indicate_finish_user_onboarding
+        - organization_basic_tour
+        - indicate_finish_org_onboarding
+        - skip_organization_onboarding
+    OnboardingGetItemsResponse:
+      description: object for get items response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          description: user's onboarding items
+          required:
+            - entries
+          properties:
+            entries:
+              description: List of onboarding items
+              type: array
+              x-omitempty: false
+              items:
+                $ref: '#/components/schemas/Item'
+    OnboardingSetItemsRequest:
+      description: object for get items response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          description: user's onboarding items
+          required:
+            - entries
+          properties:
+            entries:
+              description: List of onboarding items
+              type: array
+              x-omitempty: false
+              items:
+                $ref: '#/components/schemas/Item'
+    TeamspaceType:
+      type: string
+      description: The enumeration of space types of a teamspace
+      enum:
+        - teamspace
+        - userspace
+        - generalspace
+    Teamspace:
+      description: The teamspace object
+      type: object
+      required:
+        - teamspace_id
+        - name
+        - space_type
+        - created_at
+        - created_by
+        - visibility
+      properties:
+        teamspace_id:
+          $ref: '#/components/schemas/TeamspaceID'
+        name:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+          description: The teamspace name
+        space_type:
+          $ref: '#/components/schemas/TeamspaceType'
+        icon:
+          type: string
+          description: The teamspace icon as a UTF8-encoded Unicode symbol, e.g. 🚀
+        created_at:
+          description: The datetime the teamspace was created (in UTC)
+          type: string
+          format: date-time
+        created_by:
+          $ref: '#/components/schemas/TeamspaceUser'
+        description:
+          type: string
+          format: string
+          description: The teamspace description
+        self:
+          $ref: '#/components/schemas/TeamspaceUser'
+        visibility:
+          $ref: '#/components/schemas/TeamspaceVisibility'
+        updated_at:
+          description: The datetime the teamspace was updated (in UTC)
+          type: string
+          format: date-time
+    TeamspacesListResponse:
+      description: The response object when requesting multiple teamspaces
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: An array of teamspaces
+          type: array
+          items:
+            $ref: '#/components/schemas/Teamspace'
+    TeamspaceDefaultCredential:
+      description: |
+        default credential object for a teamspace. Gives the option to use an existing credential 
+        from parent workspace or create a new credential on teamspace level
+      type: object
+      properties:
+        new_credential:
+          $ref: '#/components/schemas/CredentialCreateRequest'
+        existing_credential_name:
+          description: Existing workspace credential name
+          type: string
+    StorageSettingsForTeamspaceCreateRequest:
+      description: |
+        The path at which a given asset will be stored, and the credentials used to access that asset. Storage setting contains a pair of storage path  and storage credentials
+      type: object
+      required:
+        - name
+        - is_default
+        - path
+      properties:
+        name:
+          description: storage location name
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+        is_default:
+          description: True if this is the workspace's or teamspace's default storage setting
+          type: boolean
+        path:
+          description: The path to store an asset.
+          type: string
+          example: s3://my-bucket-name/folder
+    TeamspacesCreateRequest:
+      description: The request object for creating a teamspace
+      type: object
+      required:
+        - name
+        - visibility
+      properties:
+        name:
+          type: string
+          maxLength: 64
+          description: The teamspace name
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+        description:
+          description: The teamspace description
+          type: string
+        icon:
+          description: The teamspace icon as a UTF8-encoded Unicode symbol, e.g. 🚀
+          type: string
+        visibility:
+          $ref: '#/components/schemas/TeamspaceVisibility'
+        default_credential:
+          $ref: '#/components/schemas/TeamspaceDefaultCredential'
+        default_storage_setting:
+          $ref: '#/components/schemas/StorageSettingsForTeamspaceCreateRequest'
+    TeamspacesCreateResponse:
+      description: The response object when creating one or more teamspaces
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Teamspace'
+    TeamspaceGetResponse:
+      description: The response object when requesting a single teamspace
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Teamspace'
+    TeamspaceUpdateRequest:
+      description: The request object for updating a teamspace
+      type: object
+      properties:
+        name:
+          type: string
+          description: The teamspace name
+        description:
+          type: string
+          format: string
+          description: The teamspace description
+        icon:
+          type: string
+          description: The teamspace icon as a UTF8-encoded Unicode symbol, e.g. 🚀
+        visibility_level:
+          $ref: '#/components/schemas/TeamspaceVisibility'
+    TeamspaceUsersListResponse:
+      description: The response object when requesting multiple teamspace users
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: An array of teamspace users
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamspaceUser'
+    TeamspaceUsersCreateRequestInner:
+      description: The teamspace user that should be created
+      type: object
+      required:
+        - user_id
+        - role
+      properties:
+        user_id:
+          $ref: '#/components/schemas/UserID'
+        role:
+          $ref: '#/components/schemas/TeamspaceRole'
+    TeamspaceUsersCreateResponse:
+      description: The response object when creating multiple teamspace users
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: An array of teamspace users that were created
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamspaceUser'
+    TeamspaceUserGetResponse:
+      description: The response object when requesting a single teamspace user
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamspaceUser'
+    TeamspaceUserUpdateRequest:
+      description: The request object for updating a single teamspace user
+      type: object
+      required:
+        - role
+      properties:
+        role:
+          $ref: '#/components/schemas/TeamspaceRole'
+    TokenID:
+      type: string
+      description: The token's ID
+      example: tkn_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=tkn_,min=24,max=24
+    TokenScope:
+      type: string
+      description: The scopes a token can have
+      enum:
+        - '*'
+        - password_reset
+        - confirm_email
+        - user:read
+        - user:read-write
+        - user:admin
+        - array:read
+        - array:read-write
+        - array:admin
+        - organization:read
+        - organization:read-write
+        - organization:admin
+        - group:read
+        - group:read-write
+        - group:admin
+    APIToken:
+      description: An API token
+      type: object
+      required:
+        - token_id
+        - name
+        - api_key
+        - created_at
+        - expires_at
+        - scope
+      properties:
+        token_id:
+          $ref: '#/components/schemas/TokenID'
+        name:
+          type: string
+          description: The name of the token
+        created_at:
+          type: string
+          description: The creation date and time of the token
+          format: date-time
+        expires_at:
+          type: string
+          description: The expiration date and time of the token
+          format: date-time
+        api_key:
+          type: string
+          description: The secret API key, which acts as a bearer token
+        workspace_id:
+          type: string
+          description: The workspace ID of the token (if API token)
+        scope:
+          $ref: '#/components/schemas/TokenScope'
+    TokenListResponse:
+      description: The response object when requesting all tokens
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: An array of tokens
+          type: array
+          items:
+            $ref: '#/components/schemas/APIToken'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    TokenCreateRequest:
+      description: The request object for creating a token
+      type: object
+      required:
+        - scope
+      properties:
+        name:
+          type: string
+          description: |
+            A human-readable name for the token. The name must be provided if the
+            token is an API token (i.e. if `workspace_id` is provided).
+          x-oapi-codegen-extra-tags:
+            validate: omitempty,tiledb-name,max=64
+        scope:
+          $ref: '#/components/schemas/TokenScope'
+        workspace_id:
+          type: string
+          description: |
+            The workspace ID that the token will be scoped for. This must be provided
+            if the token is meant to be an API token (instead of a session token).
+        expires_at:
+          type: string
+          description: |
+            The expiration date and time of the token. If no expiration date is
+            provided, the server will set the default expiration date.
+          format: date-time
+    TokenCreateResponse:
+      description: The response object when creating a token
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/APIToken'
+    UserspaceID:
+      type: string
+      description: The userspace's ID
+      example: ts_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=ts_,min=23,max=23
+    Userspace:
+      description: The userspace object
+      type: object
+      required:
+        - userspace_id
+        - name
+        - created_at
+      properties:
+        userspace_id:
+          $ref: '#/components/schemas/UserspaceID'
+        name:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+          description: The userspace name
+        icon:
+          type: string
+          description: The userspace icon as a UTF8-encoded Unicode symbol, e.g. 🚀
+        created_at:
+          description: The datetime the userspace was created (in UTC)
+          type: string
+          format: date-time
+        description:
+          type: string
+          format: string
+          description: The userspace description
+        updated_at:
+          description: The datetime the userspace was updated (in UTC)
+          type: string
+          format: date-time
+    UserspaceGetResponse:
+      description: The response object when requesting a userspace
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Userspace'
+    UserspaceUpdateRequest:
+      description: The request object for updating a userspace
+      type: object
+      properties:
+        name:
+          type: string
+          description: The userspace name
+        description:
+          type: string
+          format: string
+          description: The userspace description
+        icon:
+          type: string
+          description: The userspace icon as a UTF8-encoded Unicode symbol, e.g. 🚀
+    Image:
+      description: Image data in the form data:image/png;base64,iVBORw0KGgoAAAA
+      type: string
+    UserCreateRequest:
+      description: object metadata for a user that will be created
+      type: object
+      required:
+        - email
+        - username
+        - password
+      properties:
+        display_name:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: omitempty,tiledb-name,max=64
+          description: display name of the user shown everywhere
+        email:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,email
+          description: user email
+        username:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,printascii,max=64
+          description: username that can be logged in with
+        password:
+          type: string
+          description: password for the user
+          x-oapi-codegen-extra-tags:
+            validate: required,min=8,max=72
+        timezone:
+          type: string
+          description: user timezone
+        image:
+          $ref: '#/components/schemas/Image'
+    UserRole:
+      type: string
+      description: Enumeration of possible roles a user can have within a deployment
+      enum:
+        - owner
+        - admin
+        - member
+    User:
+      description: object for a registered user
+      type: object
+      required:
+        - id
+        - display_name
+        - email
+        - username
+        - timezone
+        - role
+        - created_at
+      properties:
+        id:
+          $ref: '#/components/schemas/UserID'
+        display_name:
+          type: string
+          description: display name of the user
+        image_id:
+          $ref: '#/components/schemas/ImageID'
+        email:
+          type: string
+          description: user email
+        is_valid_email:
+          type: boolean
+          description: if a user has validated their email
+        role:
+          $ref: '#/components/schemas/UserRole'
+        username:
+          type: string
+          description: user email
+        timezone:
+          type: string
+          description: user timezone
+        created_at:
+          description: Datetime workspace was created in UTC
+          type: string
+          format: date-time
+        updated_at:
+          description: Datetime workspace was updated in UTC
+          type: string
+          format: date-time
+    UserCreateResponse:
+      description: object for create user response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    UserSelfWorkspace:
+      description: list of workspaces a user is a part of
+      type: object
+      required:
+        - workspace_id
+        - name
+        - created_at
+        - created_by
+        - self
+      properties:
+        workspace_id:
+          $ref: '#/components/schemas/WorkspaceID'
+        name:
+          type: string
+          description: workspace name
+        created_by:
+          $ref: '#/components/schemas/WorkspaceUser'
+        self:
+          $ref: '#/components/schemas/WorkspaceUser'
+        description:
+          type: string
+          format: string
+          description: Workspace description
+        created_at:
+          description: Datetime workspace was created in UTC
+          type: string
+          format: date-time
+        updated_at:
+          description: Datetime workspace was updated in UTC
+          type: string
+          format: date-time
+        image_id:
+          $ref: '#/components/schemas/ImageID'
+    UserSelfResponse:
+      description: object for get self user response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - user
+            - workspaces
+          properties:
+            user:
+              $ref: '#/components/schemas/User'
+            workspaces:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserSelfWorkspace'
+    UserGetResponse:
+      description: object for get user response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    UserUpdateRequest:
+      description: object metadata for updates made to a user
+      type: object
+      properties:
+        display_name:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: omitempty,tiledb-name,max=64
+          description: display name of the user shown everywhere
+        email:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: omitempty,email
+          description: user email
+        timezone:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: omitempty
+          description: user timezone
+        image:
+          $ref: '#/components/schemas/Image'
+    StorageSettingID:
+      type: string
+      description: The storage setting's ID
+      example: stset_9m4e2mr0ui3e8a215n4g
+      x-oapi-codegen-extra-tags:
+        validate: startswith=stset_,min=26,max=26
+    StorageSetting:
+      description: |
+        The path at which a given asset will be stored, and the credentials used to access that asset. Storage location contains a pair of storage path  and storage credentials
+      type: object
+      required:
+        - storage_setting_id
+        - name
+        - is_default
+        - path
+        - credentials_name
+      properties:
+        storage_setting_id:
+          $ref: '#/components/schemas/StorageSettingID'
+        name:
+          description: storage location name
+          type: string
+        is_default:
+          description: True if this is the workspace's or teamspace's default storage setting
+          type: boolean
+        path:
+          description: The path to store an asset.
+          type: string
+          example: s3://workspace/test
+        credentials_name:
+          description: The name of the credentials used to access this storage path
+          type: string
+    StorageSettingGetResponse:
+      description: object for get storage setting response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/StorageSetting'
+    StorageSettingUpdateRequest:
+      description: |
+        The path at which a given asset will be stored, and the credentials used to access that asset. Storage setting contains a pair of storage path  and storage credentials
+      type: object
+      properties:
+        name:
+          description: storage location name
+          type: string
+        is_default:
+          description: True if this is the workspace's or teamspace's default storage setting
+          type: boolean
+        path:
+          description: The path to store an asset.
+          type: string
+        credentials_name:
+          description: The name of the credentials used to access this storage path
+          type: string
+    StorageSettingsListResponse:
+      description: object for get storage settings list response
+      type: object
+      required:
+        - data
+        - pagination_metadata
+      properties:
+        data:
+          description: List of storage settings items
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageSetting'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    StorageSettingsCreateRequest:
+      description: |
+        The path at which a given asset will be stored, and the credentials used to access that asset. Storage setting contains a pair of storage path  and storage credentials
+      type: object
+      required:
+        - name
+        - is_default
+        - path
+        - credentials_name
+      properties:
+        name:
+          description: storage location name
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+        is_default:
+          description: True if this is the workspace's or teamspace's default storage setting
+          type: boolean
+        path:
+          description: The path to store an asset.
+          type: string
+        credentials_name:
+          description: The name of the credentials used to access this storage path
+          type: string
+    StorageSettingsCreateResponse:
+      description: object for create workspace response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/StorageSetting'
+    WorkspaceCreateRequest:
+      description: object metadata for a workspace that will be created
+      type: object
+      required:
+        - name
+        - default_credential
+        - default_storage_setting
+      properties:
+        name:
+          type: string
+          maxLength: 64
+          description: workspace name
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+        description:
+          description: Workspace description
+          type: string
+        image:
+          $ref: '#/components/schemas/Image'
+        default_credential:
+          $ref: '#/components/schemas/CredentialCreateRequest'
+        default_storage_setting:
+          $ref: '#/components/schemas/StorageSettingsCreateRequest'
+    Workspace:
+      description: The response object of the GetWorkspace endpoint
+      type: object
+      required:
+        - workspace_id
+        - name
+        - created_at
+        - created_by
+        - self
+      properties:
+        workspace_id:
+          $ref: '#/components/schemas/WorkspaceID'
+        image_id:
+          $ref: '#/components/schemas/ImageID'
+        name:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: required,tiledb-name,max=64
+          description: workspace name
+        created_by:
+          $ref: '#/components/schemas/WorkspaceUser'
+        description:
+          type: string
+          format: string
+          description: Workspace description
+        self:
+          $ref: '#/components/schemas/WorkspaceUser'
+        created_at:
+          description: Datetime workspace was created in UTC
+          type: string
+          format: date-time
+        updated_at:
+          description: Datetime workspace was updated in UTC
+          type: string
+          format: date-time
+    WorkspaceCreateResponse:
+      description: object for create workspace response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Workspace'
+    WorkspaceGetResponse:
+      description: object for get workspace response
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/Workspace'
+    WorkspaceUpdateRequest:
+      description: The workspace update object of the UpdateWorkspace endpoint
+      type: object
+      properties:
+        name:
+          type: string
+          x-oapi-codegen-extra-tags:
+            validate: omitempty,tiledb-name,max=64
+          description: workspace name
+        image:
+          $ref: '#/components/schemas/Image'
+        description:
+          type: string
+          format: string
+          description: Workspace description
+    WorkspaceUsersListResponse:
+      description: The response object when requesting multiple workspace users
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: An array of workspace users
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkspaceUser'
+        pagination_metadata:
+          $ref: '#/components/schemas/PaginationMetadata'
+    WorkspaceUsersCreateRequestInner:
+      description: The workspace user that should be created
+      type: object
+      required:
+        - user_id
+        - role
+      properties:
+        user_id:
+          $ref: '#/components/schemas/UserID'
+        role:
+          $ref: '#/components/schemas/WorkspaceRole'
+    WorkspaceUsersCreateResponse:
+      description: The response object when creating multiple workspace users
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          description: An array of workspace users that were created
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkspaceUser'
+    WorkspaceUserGetResponse:
+      description: The response object when requesting a single workspace user
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/components/schemas/WorkspaceUser'
+    WorkspaceUserUpdateRequest:
+      description: The request object for updating a single workspace users
+      type: object
+      required:
+        - role
+      properties:
+        role:
+          $ref: '#/components/schemas/WorkspaceRole'
