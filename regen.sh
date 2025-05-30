@@ -12,6 +12,8 @@ git add -u .
 # openapi-generator-cli tries to bump our Gradle version
 git checkout HEAD -- gradle/wrapper/gradle-wrapper.properties
 
+rm .github/workflows/maven.yml .travis.yml build.sbt pom.xml src/main/AndroidManifest.xml
+
 # Apply custom code / patches
 git cherry-pick -n patch
 
