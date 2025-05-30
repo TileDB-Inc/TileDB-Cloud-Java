@@ -1,0 +1,11 @@
+.github/workflows/maven.yml
+.travis.yml
+api/openapi.yaml
+#build.gradle
+build.sbt
+git_push.sh
+gradle.properties
+pom.xml
+README.md
+settings.gradle
+src/main/AndroidManifest.xml

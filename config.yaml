@@ -1,4 +1,8 @@
 additionalProperties:
   apiPackage: io.tiledb.cloud.v4.api
+  artifactId: cloud-java-v4
+  groupId: io.tiledb
+  snapshotVersion: true
+  artifactVersion: 0.0.1
   modelPackage: io.tiledb.cloud.v4.model
   hideGenerationTimestamp: true
