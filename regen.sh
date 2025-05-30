@@ -3,7 +3,7 @@
 set -ex
 
 # Regenerate client code
-openapi-generator-cli generate -i openapi-v1.yaml -g java -c config.yaml
+openapi-generator-cli generate -i openapi-v4.yaml -g java -c config.yaml
 
 # Add all src files
 git add src/{main,test}/java
